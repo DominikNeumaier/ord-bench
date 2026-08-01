@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-05_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to track some updates we're making to meet regulatory requirements, including the equipment changes and related service work orders. Can you help us log this through the right system?",
+    "n_resources": 273,
+    "user_msg_chars": 53846
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:AssetProvisioningIntegrationAPI:v1\"\n}\n```\n\n**Rationale:** The activity requires tracking equipment changes and related service work orders to meet regulatory requirements. The **Asset Provisioning Integration API** is the best match because it:\n\n1. **Manages equipment provisioning requests** linked to service tickets and change approvals\n2. **Integrates with change approval workflows** for coordinated management\n3. **Tracks service tickets** associated with asset changes\n4. **Supports regulatory compliance** through structured change management\n\nWhile other APIs like `ChangeRequestApprovalWorkflow` handle approvals and `ServiceTicketOrderManagementAPI` manages tickets individually, the Asset Provisioning Integration API specifically coordinates equipment changes with service work orders\u2014the exact combination needed for this regulatory tracking scenario.",
+    "picked_ordId": "corp.itsm:apiResource:AssetProvisioningIntegrationAPI:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1"
+  ],
+  "solved": false,
+  "tokens": 13711,
+  "latency_s": 3.269,
+  "wall_s": 3.271,
+  "cached": false
+}

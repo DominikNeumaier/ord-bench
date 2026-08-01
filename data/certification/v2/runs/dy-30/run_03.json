@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-30_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Can you pull up the current status of ticket #12847 and check who our top-performing sales representative is in the Northeast region so I can route this escalation appropriately, then also retrieve what products that employee is certified to sell?",
+    "n_resources": 273,
+    "user_msg_chars": 53902
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1\"\n}\n```\n\n**Rationale:**\n\nThis activity requires three pieces of information:\n1. **Ticket status** - Multiple resources can handle this, but it's secondary\n2. **Top-performing sales rep in Northeast** - Requires sales performance data and regional hierarchy\n3. **Product certifications for that employee** - Requires employee capability/product mapping\n\nThe **Sales Employee Hierarchy and Capability Directory API** is the single best match because it:\n- Exposes employee organizational structure and regional hierarchies (to identify Northeast team)\n- Provides sales capabilities and certifications tied to employees\n- Integrates sales performance data needed to identify top performers by region\n- Directly supports routing escalations to qualified personnel\n\nWhile `sap.crm:apiResource:ServiceTicketOrderFulfillmentTracking:v1` could retrieve ticket #12847, the Hierarchy and Capability Directory is the critical differentiator for the complete workflow of finding the right person with proper product certifications.",
+    "picked_ordId": "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13783,
+  "latency_s": 3.926,
+  "wall_s": 3.928,
+  "cached": false
+}

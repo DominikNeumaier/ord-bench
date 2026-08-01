@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-18_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We have an engineering change request that needs to go through full impact validation, business case analysis, specification updates, and workforce cost review.",
+    "n_resources": 273,
+    "user_msg_chars": 53815
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1\"\n}\n```\n\n**Rationale:** The Change Request Approval Workflow API is specifically designed to manage change request approvals, scheduling, and impact assessment. It directly addresses the core requirement of processing an engineering change request through full impact validation. While other resources like `siemens.plm:apiResource:EngineringChangeManagement:v1` or `sap.s4:agent:EngineeringChangeOrchestrator:v1` could support portions of this workflow, the ITSM Change Request Approval Workflow is the primary system of record for managing the complete approval process including impact assessment, business case validation, and cross-functional reviews needed for specification updates and workforce cost review.",
+    "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+  },
+  "expected_ordIds": [
+    "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13692,
+  "latency_s": 3.2,
+  "wall_s": 3.202,
+  "cached": false
+}

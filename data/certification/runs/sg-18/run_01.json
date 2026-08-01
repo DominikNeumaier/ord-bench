@@ -1,0 +1,8 @@
+{
+  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "solved": false,
+  "tokens": 13703,
+  "latency_s": 3.462,
+  "wall_s": 3.462,
+  "run": 1
+}

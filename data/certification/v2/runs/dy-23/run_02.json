@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-23_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together our incident tracking data for the quarterly board review while simultaneously updating several customer cases that are stuck in our resolution queue\u2014can you help me access both of those systems in one go so I don't have to toggle between platforms?",
+    "n_resources": 273,
+    "user_msg_chars": 53928
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:IncidentRootCauseAnalyzer:v1\"\n}\n```\n\n**Rationale:** You need to access incident tracking data for the board review AND update customer cases simultaneously. The **IncidentRootCauseAnalyzer** agent is designed to autonomously analyze service tickets to identify root causes and recommend preventive actions. Combined with its companion data product **IncidentComplianceAnalytics** (which aggregates incident data for compliance reporting), this resource provides unified access to both incident tracking and case resolution workflows without requiring platform toggling.\n\nHowever, if you need a more integrated solution that explicitly handles both incident data retrieval AND case/ticket updates in one interface, **corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1** would be the alternative single resource, as it \"retrieves and manages customer service tickets and orders with status tracking\"\u2014covering both the incident tracking pull and case queue updates you need.",
+    "picked_ordId": "corp.itsm:agent:IncidentRootCauseAnalyzer:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:dataProduct:SafetyIncidentMetrics:v1"
+  ],
+  "solved": false,
+  "tokens": 13757,
+  "latency_s": 3.515,
+  "wall_s": 3.518,
+  "cached": false
+}

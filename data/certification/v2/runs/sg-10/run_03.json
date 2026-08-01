@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-10_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Our procurement team needs a full compensation review \u2014 payroll baseline, organizational hierarchy, benefits status, and workforce cost analysis.",
+    "n_resources": 273,
+    "user_msg_chars": 53800
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"workday.hcm:dataProduct:CompensationTrendAnalytics:v1\"\n}\n```\n\n**Rationale:** The procurement team's compensation review requirement\u2014covering payroll baseline, organizational hierarchy, benefits status, and workforce cost analysis\u2014is best fulfilled by the **Compensation Trend Analytics** data product from Workday HCM. This resource aggregates compensation metrics across employee populations and time periods, providing the comprehensive workforce cost visibility needed. While supplementary resources like `sap.sf:dataProduct:SalesCompensationAndEmployeeMetricsAnalytics:v1` and APIs such as `sap.sf:apiResource:EmployeeCompensationManagement:v1` could support specific compensation details, the Compensation Trend Analytics data product most directly addresses the full scope of payroll baseline analysis, cost trending, and compensation structure review required for a holistic compensation assessment.",
+    "picked_ordId": "workday.hcm:dataProduct:CompensationTrendAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:EmployeePayrollDataAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13713,
+  "latency_s": 4.222,
+  "wall_s": 4.224,
+  "cached": false
+}

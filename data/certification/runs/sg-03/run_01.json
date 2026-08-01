@@ -1,0 +1,8 @@
+{
+  "picked_ordId": "corp.itsm:agent:ChangeReleaseCoordinator:v1",
+  "solved": false,
+  "tokens": 13766,
+  "latency_s": 4.193,
+  "wall_s": 4.195,
+  "run": 1
+}

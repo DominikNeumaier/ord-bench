@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-35_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together a comprehensive view of our current operational health by analyzing both our recent campaign safety incidents and engagement issues alongside our product economics to understand cost drivers and supplier dependencies\u2014so I can brief leadership on where we're experiencing the most friction across both customer-facing and manufacturing operations.",
+    "n_resources": 273,
+    "user_msg_chars": 54025
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1\"\n}\n```\n\n**Rationale:** This data product is the single best match because it directly addresses your stated need for a \"comprehensive view of current operational health\" by aggregating:\n\n1. **Product Economics** - Material expenditures and cost drivers across your bill-of-materials\n2. **Regulatory/Safety Compliance** - Hazardous substance adherence and safety requirements  \n3. **Supplier Dependencies** - Engineering modification impacts on supplier qualifications and sourcing\n4. **Manufacturing Operations** - Component specifications and production implications\n\nThis resource enables you to simultaneously analyze:\n- Recent campaign safety incidents (via compliance tracking)\n- Engagement issues (via material/supplier impact on fulfillment)\n- Cost drivers (material economics analysis)\n- Supplier dependencies (regulatory and operational constraints)\n\nWhile other resources like `sap.ehs:dataProduct:IncidentComplianceEngagementAnalytics:v1` or `sap.s4:dataProduct:IncidentSafetyAnalyticsHub:v1` address safety, and procurement resources address supplier economics, **BOMCostAndComplianceAnalytics** uniquely bridges both customer-facing operational health (safety/compliance) and manufacturing operations (cost/supplier friction) in a single integrated view suitable for executive briefing.",
+    "picked_ordId": "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1"
+  ],
+  "solved": false,
+  "tokens": 13860,
+  "latency_s": 4.512,
+  "wall_s": 4.514,
+  "cached": false
+}

@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-14_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to record incoming shipments from our suppliers into the system, but I'm not sure if we should be using the invoicing module or if there's a different process for just logging what physically arrived at our warehouse before we even get the bills.",
+    "n_resources": 273,
+    "user_msg_chars": 53909
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:apiResource:MaterialReceiptInboundAPI:v1\"\n}\n```\n\n**Rationale:** The activity describes recording incoming shipments from suppliers into the system before invoices arrive\u2014this is a goods receipt or material receipt process. The `MaterialReceiptInboundAPI` is explicitly designed for \"creating and managing goods receipt transactions against purchase orders,\" which directly addresses logging physical warehouse arrivals independently from the invoicing module. This is the standard three-way match scenario where receipt precedes invoice processing.",
+    "picked_ordId": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+  ],
+  "solved": true,
+  "tokens": 13656,
+  "latency_s": 2.834,
+  "wall_s": 2.835,
+  "cached": false
+}

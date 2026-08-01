@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-28_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to verify that all the materials we're sourcing from our new suppliers meet current environmental and safety regulations, and simultaneously pull their complete specifications and vendor details so our procurement team can process these orders efficiently.",
+    "n_resources": 273,
+    "user_msg_chars": 53919
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:apiResource:MaterialSafetyAndVendorComplianceData:v1\"\n}\n```\n\n**Rationale:** This resource best fulfills the activity by providing:\n\n1. **Environmental & Safety Regulation Verification**: The \"Material Safety and Vendor Compliance Data API\" directly exposes \"material hazard classifications and vendor safety compliance records\" - essential for verifying that sourced materials meet current environmental and safety regulations.\n\n2. **Complete Specifications & Vendor Details**: It retrieves both material specifications and vendor information needed by the procurement team to process orders efficiently.\n\n3. **Supplier Focus**: It specifically addresses vendor compliance and safety certifications, which is critical for new supplier qualification.\n\nWhile other resources like `sap.ehs:apiResource:MaterialVendorHazardousSubstanceCompliance:v1` and `siemens.plm:apiResource:MaterialAndVendorQualificationManagement:v1` are also relevant, the SAP Ariba resource is optimal as it combines vendor compliance verification with material safety data and is positioned in the procurement-specific system, making it the best single resource for this procurement team's operational need.",
+    "picked_ordId": "sap.ariba:apiResource:MaterialSafetyAndVendorComplianceData:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1"
+  ],
+  "solved": false,
+  "tokens": 13796,
+  "latency_s": 3.864,
+  "wall_s": 3.867,
+  "cached": false
+}

@@ -1,0 +1,8 @@
+{
+  "picked_ordId": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+  "solved": false,
+  "tokens": 13698,
+  "latency_s": 3.61,
+  "wall_s": 3.611,
+  "run": 1
+}

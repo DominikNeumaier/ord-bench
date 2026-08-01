@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-11_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Before we move forward with production we need to confirm all materials and operations meet our compliance requirements \u2014 hazardous substances, BOM standards, and vendor purchase orders.",
+    "n_resources": 273,
+    "user_msg_chars": 53841
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1\"\n}\n```\n\n**Rationale:** This activity requires comprehensive pre-production compliance verification across three critical areas:\n\n1. **Hazardous Substances Compliance** - The HazardousSubstanceRegulatoryValidation API directly validates hazardous substances against regulatory requirements and compliance standards, which is essential before production moves forward.\n\n2. **BOM Standards** - While this specific API focuses on hazardous substance validation, it integrates with the regulatory framework needed to ensure BOM standards compliance. However, for a complete solution, this would typically be paired with agents like `sap.s4:agent:BOMComplianceAutomationAgent:v1` or `siemens.plm:agent:BOMComplianceValidator:v1`.\n\n3. **Vendor Purchase Orders** - The hazardous substance validation encompasses vendor compliance requirements, which ties to purchase order verification.\n\nThe HazardousSubstanceRegulatoryValidation API is the single best entry point as it provides the gatekeeping function needed before production\u2014validating that materials meet all regulatory standards, which is a prerequisite for BOM approval and vendor qualification.",
+    "picked_ordId": "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13803,
+  "latency_s": 4.58,
+  "wall_s": 4.581,
+  "cached": false
+}

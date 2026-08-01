@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-15_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to set up a comprehensive engineering change management process that takes us from the initial impact assessment all the way through to production handoff. The process should coordinate with our workforce teams to ensure they're ready for the changes, validate that our supply chain can support the transition, and also verify that we have the right staffing levels and skills in place to execute effectively. Additionally, we need to make sure our operational teams can actually handle the product modifications we're planning, including updating our component data and inventory systems accordingly. Can you help us design a workflow that manages all of these interdependencies from start to finish?",
+    "n_resources": 273,
+    "user_msg_chars": 54364
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Reasoning:**\n\nThe activity describes a comprehensive engineering change management process requiring coordination across multiple domains:\n\n1. **Impact assessment through production handoff** - Core change management workflow\n2. **Workforce coordination and readiness** - Ensuring teams are prepared\n3. **Supply chain validation** - Verifying supplier capability\n4. **Staffing and skills verification** - Resource planning\n5. **Operational capability** - Handling product modifications\n6. **Component data and inventory updates** - System integration\n\nThe **Change Automation Orchestrator** is explicitly designed to \"automate and coordinate engineering changes, material updates, and product item deployments\" - which directly addresses the end-to-end workflow described. \n\nWhile other resources could support specific aspects (e.g., `AssetChangeLifecycleAPI` for engineering changes, workforce management APIs for staffing), the orchestrator agent is the single resource best suited to **design and manage the comprehensive workflow** that coordinates all these interdependencies from initial assessment through production handoff.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+    "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13862,
+  "latency_s": 4.147,
+  "wall_s": 4.15,
+  "cached": false
+}

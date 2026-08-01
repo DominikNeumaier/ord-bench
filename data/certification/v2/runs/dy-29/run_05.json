@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-29_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to pull our current production queue status and see which items are scheduled for the next shift, while simultaneously checking our active campaign outreach to identify which contacts have engaged with our latest messaging so we can coordinate our manufacturing timeline with customer communication touchpoints.",
+    "n_resources": 273,
+    "user_msg_chars": 53974
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:CampaignAndCustomerOrderManagement:v1\"\n}\n```\n\n**Rationale:**\n\nThis activity requires coordinating two parallel data streams:\n1. **Production queue status & next shift scheduling** - needs manufacturing execution data\n2. **Active campaign engagement & contact interaction** - needs campaign/customer touchpoint data\n\nThe `CampaignAndCustomerOrderManagement:v1` API from the MES (Manufacturing Execution System) is the best match because it:\n- Manages **production campaigns and customer account orders** within manufacturing workflows\n- Provides access to **production queue and scheduling information** for shift planning\n- Integrates **customer order data** with manufacturing execution, enabling correlation with campaign outreach\n- Enables the coordination between manufacturing timeline and customer communication touchpoints\n\nThis single resource bridges both the manufacturing operations (queue status, shift scheduling) and customer engagement (campaign orders, account linkage) needed to synchronize the manufacturing timeline with customer communication activities.",
+    "picked_ordId": "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:apiResource:MachineProductionOrderIntegration:v1"
+  ],
+  "solved": false,
+  "tokens": 13760,
+  "latency_s": 3.679,
+  "wall_s": 3.681,
+  "cached": false
+}

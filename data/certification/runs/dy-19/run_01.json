@@ -1,0 +1,8 @@
+{
+  "picked_ordId": "sap.ehs:apiResource:ChemicalInventoryCompliance:v1",
+  "solved": false,
+  "tokens": 13782,
+  "latency_s": 4.046,
+  "wall_s": 4.047,
+  "run": 1
+}

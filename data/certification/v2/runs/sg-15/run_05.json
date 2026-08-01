@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-15_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Our team needs to review product costs and qualify our material and vendor setup before we commit to the next procurement cycle.",
+    "n_resources": 273,
+    "user_msg_chars": 53783
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:MaterialAndVendorInventoryManagement:v1\"\n}\n```\n\n**Rationale:** This activity requires reviewing product costs and qualifying material and vendor setup before procurement commitment. The **Material and Vendor Inventory Management** API is the best match because it:\n\n1. **Retrieves material stock levels** - Essential for cost review and inventory qualification\n2. **Manages vendor supply chain data** - Directly supports vendor setup qualification\n3. **Supports procurement planning** - Aligns with the procurement cycle commitment decision\n4. **Provides material specifications** - Enables cost and qualification assessment\n\nWhile other resources like `sap.s4:apiResource:EngineeringChangeProductDataAPI:v1` or `sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1` offer related functionality, the MES resource is most directly focused on the operational material and vendor inventory qualification needed before committing to procurement execution.",
+    "picked_ordId": "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13730,
+  "latency_s": 3.829,
+  "wall_s": 3.831,
+  "cached": false
+}

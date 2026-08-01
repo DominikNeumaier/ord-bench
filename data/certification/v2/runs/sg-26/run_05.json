@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-26_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "A product engineering change has been approved. Plan the manufacturing transition \u2014 operational impact, workforce scheduling, formal change registration, BOM compliance, and supply chain confirmation.",
+    "n_resources": 273,
+    "user_msg_chars": 53855
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires coordinating a manufacturing transition following an approved engineering change, with specific needs for:\n- Operational impact assessment\n- Workforce scheduling\n- Formal change registration\n- BOM compliance\n- Supply chain confirmation\n\nThe **ChangeAutomationOrchestrator** is purpose-built to \"automate and coordinate engineering changes, material updates, and product item deployments\" \u2014 precisely matching this orchestration requirement.\n\nWhile other resources address individual components (e.g., `BOMComplianceValidator` for BOM validation, workforce APIs for scheduling), the ChangeAutomationOrchestrator is the **single best resource** that integrates all these concerns into a coordinated manufacturing transition workflow, handling change registration, material coordination, and deployment orchestration across the operational landscape.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13722,
+  "latency_s": 3.581,
+  "wall_s": 3.586,
+  "cached": false
+}

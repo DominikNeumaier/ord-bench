@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-36_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to pull together workforce compensation figures alongside our current stock levels and product spec changes so we can model how our transition impacts both our labor costs and operational readiness before we commit to the new setup.",
+    "n_resources": 273,
+    "user_msg_chars": 53895
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires pulling together:\n1. **Workforce compensation figures** - salary and labor cost data\n2. **Current stock levels** - inventory/product data\n3. **Product spec changes** - engineering changes\n4. To model **labor costs AND operational readiness impact** before transition commitment\n\nThe selected resource \"Production Transition Capability and Skill Requirements Analytics\" is specifically designed to combine:\n- Engineering modifications (product spec changes)\n- Supply chain items (stock levels)\n- Manufacturing configurations (operational readiness)\n- To evaluate organizational capability for product transitions\n\nThis data product directly addresses the need to correlate workforce impact with operational changes, making it the single best match for modeling how a transition impacts both labor costs and operational readiness together.",
+    "picked_ordId": "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13729,
+  "latency_s": 4.683,
+  "wall_s": 4.685,
+  "cached": false
+}

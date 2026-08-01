@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-05_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to track some updates we're making to meet regulatory requirements, including the equipment changes and related service work orders. Can you help us log this through the right system?",
+    "n_resources": 273,
+    "user_msg_chars": 53846
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1\"\n}\n```\n\n**Rationale:** This activity requires logging regulatory compliance updates involving equipment changes and related service work orders. The Service Ticket and Order Management API is purpose-built to manage and track customer service tickets and orders with status tracking, making it the optimal choice for documenting equipment changes and associated service work in a regulatory compliance context.",
+    "picked_ordId": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1"
+  ],
+  "solved": false,
+  "tokens": 13619,
+  "latency_s": 2.356,
+  "wall_s": 2.36,
+  "cached": false
+}

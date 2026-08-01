@@ -1,0 +1,8 @@
+{
+  "picked_ordId": "my.mes:agent:BillOfMaterialsComplianceValidator:v1",
+  "solved": false,
+  "tokens": 13866,
+  "latency_s": 5.074,
+  "wall_s": 5.076,
+  "run": 1
+}

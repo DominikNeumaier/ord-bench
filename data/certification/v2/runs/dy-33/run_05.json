@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-33_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to simultaneously log incoming shipments from our suppliers while also tracking the modifications we're making to our product line and ensuring our field technicians can submit their equipment maintenance needs through a single integrated workflow.",
+    "n_resources": 273,
+    "user_msg_chars": 53910
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:ServiceTicketChangeRequestManagement:v1\"\n}\n```\n\n**Reasoning:**\n\nThe activity requires a single integrated workflow that handles three simultaneous operations:\n1. **Logging incoming shipments** from suppliers\n2. **Tracking modifications to product line** (engineering changes)\n3. **Field technicians submitting equipment maintenance needs** (service tickets)\n\nThe `my.mes:apiResource:ServiceTicketChangeRequestManagement:v1` (Service Ticket & Change Request Management API) is the best match because it:\n\n- **Manages service tickets** - directly addresses field technician equipment maintenance needs submission\n- **Manages change requests** - handles product line modification tracking\n- **Integrates with procurement** - works within a manufacturing execution system (MES) that coordinates supplier shipments and inventory\n\nThis is a Manufacturing Execution System (MES) resource designed specifically for production operations that need to coordinate equipment maintenance, engineering changes, and supplier procurement in an integrated workflow. It bridges all three requirements within a single operational context.",
+    "picked_ordId": "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13763,
+  "latency_s": 3.668,
+  "wall_s": 3.67,
+  "cached": false
+}

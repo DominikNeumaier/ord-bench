@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-13_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We have an engineering change to manage from impact assessment through workforce development and supply chain validation.",
+    "n_resources": 273,
+    "user_msg_chars": 53776
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:** The Change Automation Orchestrator is the best fit because it:\n\n1. **Manages the full engineering change lifecycle** - It automates and coordinates engineering changes, material updates, and product item deployments, which directly addresses the end-to-end change management requirement\n\n2. **Coordinates impact assessment** - It handles the initial phase of understanding what the change affects across materials and product items\n\n3. **Integrates workforce development** - It coordinates across materials and product items, which ties into workforce readiness and development needs\n\n4. **Validates supply chain** - By coordinating material updates and product item deployments, it inherently validates supply chain impacts and requirements\n\nThis agent provides orchestration across the complete workflow from impact assessment through implementation, making it the single most comprehensive resource for managing an engineering change from inception through workforce and supply chain validation.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+  ],
+  "solved": false,
+  "tokens": 13718,
+  "latency_s": 3.679,
+  "wall_s": 3.681,
+  "cached": false
+}

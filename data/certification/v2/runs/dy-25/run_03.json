@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-25_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to reconcile our incoming supplier billing against the materials we've received this quarter, and at the same time, verify that everything we've taken in meets our regulatory obligations for restricted substances in each shipment.",
+    "n_resources": 273,
+    "user_msg_chars": 53893
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:agent:VendorInvoiceReconciliationAutomation:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires two key capabilities:\n1. **Supplier billing reconciliation** against materials received\n2. **Restricted substances regulatory verification** for incoming shipments\n\nThe `VendorInvoiceReconciliationAutomation` agent is the best match because it:\n- Autonomously matches vendor invoices to purchase orders and contracts, flagging discrepancies\n- Directly addresses the billing reconciliation need against received materials\n- Works in conjunction with hazardous substance compliance data that would be linked through purchase orders and vendor certifications\n\nTo fully address both requirements, this resource would integrate with hazardous substance compliance APIs (like `sap.ehs:apiResource:MaterialVendorHazardousSubstanceCompliance` or `sap.ariba:apiResource:MaterialSafetyAndVendorComplianceData`) to validate restricted substance declarations at receipt, but the invoice reconciliation agent is the primary orchestrator for this quarterly reconciliation activity.",
+    "picked_ordId": "sap.ariba:agent:VendorInvoiceReconciliationAutomation:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13781,
+  "latency_s": 3.688,
+  "wall_s": 3.69,
+  "cached": false
+}

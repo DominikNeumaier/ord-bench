@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-22_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to pull together a comprehensive view of our production risks and costs right now - I want to see both our material expenses broken down by supplier along with any compliance gaps, and at the same time analyze our recent safety incidents and trends across all our manufacturing sites. Can you get me both of those datasets so we can address cost optimization and safety improvements in our next operations review?",
+    "n_resources": 273,
+    "user_msg_chars": 54076
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:dataProduct:IncidentSafetyAnalytics:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires **two comprehensive datasets**:\n1. **Material expenses by supplier + compliance gaps** (cost optimization)\n2. **Safety incidents and trends across manufacturing sites** (safety improvements)\n\nWhile no single resource perfectly covers both requirements, **`my.mes:dataProduct:IncidentSafetyAnalytics:v1`** is the best primary match because:\n\n- It directly aggregates **safety incidents with compliance metrics and trend analysis** across manufacturing operations\u2014the more specialized and harder-to-find requirement\n- It provides the **safety incidents and trends across all manufacturing sites** needed for the operations review\n- The MES (Manufacturing Execution System) context is appropriate for production risk analysis\n\n**For the complementary data need** (material expenses by supplier), you would additionally want to reference:\n- **`my.mes:dataProduct:SupplierPerformanceAndProcurementOptimization:v1`** (vendor reliability, contract compliance, PO metrics for supply chain optimization)\n- **`sap.ariba:dataProduct:ProcurementSpendAnalytics:v1`** (aggregated spend metrics and vendor performance)\n\nHowever, since the prompt requires selecting **a single ordId**, the safety analytics data product is the more critical and specialized requirement for an operations review addressing production risks.",
+    "picked_ordId": "my.mes:dataProduct:IncidentSafetyAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13888,
+  "latency_s": 4.834,
+  "wall_s": 4.836,
+  "cached": false
+}

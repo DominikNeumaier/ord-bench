@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-20_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to set up a comprehensive process to manage hazardous substance compliance and employee safety across our manufacturing operations. This should identify all hazardous materials in our facilities, assess which departments and teams face exposure risks, and procure necessary safety equipment and protective gear. We also need to ensure that safety protocols and equipment are distributed based on our organizational structure so that each manager can track compliance for their direct reports. Additionally, the system should coordinate with our procurement team to track where safety supplies are sourced from and maintain records of all purchase orders for audit purposes. Can you help us establish a workflow that brings all these elements together?",
+    "n_resources": 273,
+    "user_msg_chars": 54414
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:apiResource:ChemicalInventoryCompliance:v1\"\n}\n```\n\n**Rationale:**\n\nThe `ChemicalInventoryCompliance` API from SAP EHS is the best match because it directly addresses the core requirement of your activity: **managing hazardous substance compliance and employee safety**.\n\nThis resource specifically provides:\n\n1. **Hazardous Material Identification** - Manages hazardous substance inventory, which is essential for identifying all hazardous materials in your facilities\n2. **Regulatory Compliance Tracking** - Exposes regulatory compliance data needed to assess and maintain standards across operations\n3. **Comprehensive Compliance Management** - Designed for safety compliance across manufacturing operations\n\nWhile complementary resources exist (such as `sap.ehs:apiResource:EmployeeSafetyTrainingComplianceManagement` for training records, `sap.ehs:apiResource:HazardousSubstanceStorageTracking` for storage locations, and various procurement/vendor APIs for supply chain coordination), the `ChemicalInventoryCompliance` API serves as the foundational system for the integrated workflow you're building. It integrates with EHS governance frameworks and can coordinate with other systems for department risk assessment, equipment procurement tracking, and audit record maintenance.",
+    "picked_ordId": "sap.ehs:apiResource:ChemicalInventoryCompliance:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:apiResource:ProcurementVendorOrderManagement:v1",
+    "sap.s4:apiResource:WorkforceOrgStructureAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13905,
+  "latency_s": 4.261,
+  "wall_s": 4.265,
+  "cached": false
+}

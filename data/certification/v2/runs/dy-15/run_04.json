@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-15_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Our finance team is struggling to reconcile payroll data across multiple departments because we can't easily track how individual pay rates align with our established pay bands and job levels. We need to ensure our payment structures remain competitive and compliant with market rates, but right now we're manually cross-referencing spreadsheets which is error-prone and time-consuming. Can you help us integrate our payroll processes so we have a single source of truth for all employee earnings and payment configurations?",
+    "n_resources": 273,
+    "user_msg_chars": 54179
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.sf:apiResource:CompensationAndSalaryManagement:v1\"\n}\n```\n\n**Rationale:** \n\nYour finance team needs to reconcile payroll data across departments while tracking how individual pay rates align with established pay bands and job levels. The **SAP SuccessFactors Compensation and Salary Management API** directly addresses this requirement by:\n\n1. **Managing employee compensation structures** - enables tracking of salary data against defined pay bands\n2. **Salary data integration** - provides a single source of truth for all employee earnings and payment configurations\n3. **Pay band alignment** - allows you to maintain and reconcile pay rates with established job levels and market structures\n4. **Centralized payroll configuration** - consolidates all compensation data to eliminate manual cross-referencing of spreadsheets\n\nWhile other resources like `workday.hcm:apiResource:CompensationStructureDataExposure:v1` and `sap.s4:apiResource:EmployeePayrollDataAPI:v1` address payroll elements, the SuccessFactors Compensation Management API is specifically designed to manage the compensation structures, salary bands, and pay alignment workflows that your finance team needs to ensure competitive and compliant payment structures.",
+    "picked_ordId": "sap.sf:apiResource:CompensationAndSalaryManagement:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:apiResource:CompensationAndSalaryManagement:v1"
+  ],
+  "solved": true,
+  "tokens": 13864,
+  "latency_s": 4.243,
+  "wall_s": 4.245,
+  "cached": false
+}

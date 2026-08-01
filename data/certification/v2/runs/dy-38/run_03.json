@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-38_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together both our internal capability analysis to see if we're adequately staffed for the upcoming changes we're planning, and simultaneously check our procurement records to ensure all our vendor relationships maintain proper safety standings before we move forward with any new initiatives.",
+    "n_resources": 273,
+    "user_msg_chars": 53962
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires two simultaneous analyses:\n1. **Internal capability analysis** for staffing adequacy for upcoming changes\n2. **Procurement records check** for vendor safety standings\n\nThe selected resource, \"Operational Capability Assessment for Product Transitions,\" directly addresses both needs:\n\n- **Staffing adequacy**: Combines product modifications, component data, and inventory updates to evaluate **organizational capability and personnel preparedness** - providing the internal workforce capability analysis needed.\n\n- **Vendor safety standings**: Integrates material/component data which includes supplier qualification and compliance information, enabling assessment of vendor relationships and safety standings before new initiatives.\n\nThis data product aggregates the cross-functional insights (personnel capability + material/vendor compliance) required to make an informed go/no-go decision on planned changes, making it the single best resource that fulfills both aspects of the activity simultaneously.",
+    "picked_ordId": "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13761,
+  "latency_s": 3.968,
+  "wall_s": 3.97,
+  "cached": false
+}

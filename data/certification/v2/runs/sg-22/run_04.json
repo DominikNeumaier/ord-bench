@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-22_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to validate our full readiness before a product launch \u2014 inbound materials, vendor contract matching, hazardous substance screening, and workforce capacity check.",
+    "n_resources": 273,
+    "user_msg_chars": 53825
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:agent:BOMComplianceAutomationAgent:v1\"\n}\n```\n\n**Rationale:** This agent is the best match because it directly addresses all four readiness validation requirements:\n\n1. **Inbound materials** - Validates bill-of-materials and supplier compliance\n2. **Vendor contract matching** - Verifies supplier qualifications across engineering changes\n3. **Hazardous substance screening** - Ensures compliance through BOM validation workflows\n4. **Workforce capacity check** - Coordinates with supply chain readiness assessment\n\nWhile other resources address individual aspects (e.g., `sap.ehs:apiResource:HazardousSubstanceComplianceAPI:v1` for hazmat screening, `sap.s4:apiResource:WorkforceCapacityAndTimeOffManagement:v1` for workforce), the **BOMComplianceAutomationAgent** provides orchestrated, comprehensive pre-launch validation by automating compliance verification across materials, suppliers, and engineering specifications\u2014the core dependencies for product launch readiness.",
+    "picked_ordId": "sap.s4:agent:BOMComplianceAutomationAgent:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13763,
+  "latency_s": 3.944,
+  "wall_s": 3.946,
+  "cached": false
+}

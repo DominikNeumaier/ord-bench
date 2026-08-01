@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-04_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "There was a workplace hazard event. Run through our complete safety and compliance workflow \u2014 exposure assessment, equipment checks, and verify our compliance status is intact.",
+    "n_resources": 273,
+    "user_msg_chars": 53831
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1\"\n}\n```\n\n**Rationale:** This agent is specifically designed to \"monitor and coordinate safety incidents with hazardous substance involvement for compliance.\" It directly addresses the workplace hazard event and can orchestrate the complete safety and compliance workflow including exposure assessment, equipment checks, and compliance verification across the ITSM environment.",
+    "picked_ordId": "corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13615,
+  "latency_s": 2.803,
+  "wall_s": 2.805,
+  "cached": false
+}

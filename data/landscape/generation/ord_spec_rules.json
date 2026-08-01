@@ -1,0 +1,365 @@
+{
+  "_comment": "ORD spec rules derived from official ORD v1.16 example files. Used by validate_ord.py.",
+  "document": {
+    "required": [
+      "openResourceDiscovery"
+    ],
+    "optional": [
+      "description",
+      "policyLevels",
+      "perspective",
+      "describedSystemVersion",
+      "describedSystemInstance",
+      "describedSystemType"
+    ]
+  },
+  "package": {
+    "required": [
+      "ordId",
+      "title",
+      "shortDescription",
+      "version",
+      "vendor"
+    ],
+    "optional": [
+      "description",
+      "policyLevels",
+      "partOfProducts",
+      "lineOfBusiness",
+      "industry",
+      "tags",
+      "labels",
+      "documentationLabels"
+    ]
+  },
+  "product": {
+    "required": [
+      "ordId",
+      "title",
+      "vendor",
+      "shortDescription"
+    ],
+    "optional": []
+  },
+  "consumptionBundle": {
+    "required": [
+      "ordId",
+      "title",
+      "shortDescription",
+      "version"
+    ],
+    "optional": [
+      "description",
+      "lastUpdate"
+    ]
+  },
+  "entityType": {
+    "required": [
+      "ordId",
+      "localId",
+      "level",
+      "title",
+      "shortDescription",
+      "version",
+      "partOfPackage",
+      "visibility",
+      "releaseStatus"
+    ],
+    "optional": [
+      "description",
+      "lastUpdate",
+      "relatedEntityTypes",
+      "links",
+      "policyLevels"
+    ]
+  },
+  "agent": {
+    "required": [
+      "ordId",
+      "title",
+      "shortDescription",
+      "version",
+      "partOfPackage",
+      "visibility",
+      "releaseStatus"
+    ],
+    "optional": [
+      "description",
+      "lastUpdate",
+      "responsible",
+      "partOfProducts",
+      "partOfGroups",
+      "relatedEntityTypes",
+      "exposedApiResources",
+      "integrationDependencies",
+      "lineOfBusiness",
+      "industry",
+      "countries",
+      "tags",
+      "labels",
+      "links",
+      "minSystemVersion",
+      "deprecationDate",
+      "sunsetDate",
+      "changelogEntries",
+      "policyLevels"
+    ],
+    "semantic_fields": [
+      "relatedEntityTypes",
+      "lineOfBusiness",
+      "tags",
+      "industry",
+      "title",
+      "shortDescription"
+    ]
+  },
+  "apiResource": {
+    "required": [
+      "ordId",
+      "title",
+      "shortDescription",
+      "version",
+      "partOfPackage",
+      "visibility",
+      "releaseStatus",
+      "apiProtocol",
+      "resourceDefinitions"
+    ],
+    "resourceDefinitions_item_required": [
+      "type",
+      "mediaType",
+      "url",
+      "accessStrategies"
+    ],
+    "optional": [
+      "description",
+      "lastUpdate",
+      "localId",
+      "entryPoints",
+      "implementationStandard",
+      "exposedEntityTypes",
+      "partOfConsumptionBundles",
+      "partOfGroups",
+      "apiResourceLinks",
+      "extensible",
+      "supportedUseCases",
+      "compatibleWith",
+      "lineOfBusiness",
+      "industry",
+      "countries",
+      "tags",
+      "labels",
+      "documentationLabels",
+      "links",
+      "minSystemVersion",
+      "policyLevels"
+    ],
+    "semantic_fields": [
+      "exposedEntityTypes",
+      "lineOfBusiness",
+      "tags",
+      "industry",
+      "title",
+      "shortDescription"
+    ]
+  },
+  "dataProduct": {
+    "required": [
+      "ordId",
+      "title",
+      "shortDescription",
+      "version",
+      "partOfPackage",
+      "visibility",
+      "releaseStatus",
+      "type",
+      "category",
+      "outputPorts"
+    ],
+    "optional": [
+      "description",
+      "lastUpdate",
+      "localId",
+      "correlationIds",
+      "responsible",
+      "entityTypes",
+      "inputPorts",
+      "dataProductLinks",
+      "lineOfBusiness",
+      "industry",
+      "countries",
+      "tags",
+      "labels",
+      "documentationLabels",
+      "links",
+      "deprecationDate",
+      "sunsetDate",
+      "successors",
+      "abstract",
+      "changelogEntries",
+      "policyLevels"
+    ],
+    "semantic_fields": [
+      "entityTypes",
+      "lineOfBusiness",
+      "tags",
+      "industry",
+      "title",
+      "shortDescription"
+    ]
+  },
+  "eventResource": {
+    "required": [
+      "ordId",
+      "title",
+      "shortDescription",
+      "version",
+      "partOfPackage",
+      "visibility",
+      "releaseStatus",
+      "resourceDefinitions"
+    ],
+    "resourceDefinitions_item_required": [
+      "type",
+      "url",
+      "mediaType"
+    ],
+    "optional": [
+      "description",
+      "lastUpdate",
+      "localId",
+      "extensible",
+      "exposedEntityTypes",
+      "partOfConsumptionBundles",
+      "lineOfBusiness",
+      "industry",
+      "countries",
+      "tags",
+      "labels",
+      "policyLevels"
+    ],
+    "semantic_fields": [
+      "exposedEntityTypes",
+      "lineOfBusiness",
+      "tags",
+      "title",
+      "shortDescription"
+    ]
+  },
+  "integrationDependency": {
+    "required": [
+      "ordId",
+      "title",
+      "version",
+      "partOfPackage",
+      "visibility",
+      "releaseStatus",
+      "mandatory",
+      "aspects"
+    ],
+    "aspects_item_required": [
+      "title"
+    ],
+    "optional": [
+      "description",
+      "lastUpdate",
+      "localId",
+      "correlationIds",
+      "shortDescription"
+    ]
+  },
+  "capability": {
+    "required": [
+      "ordId",
+      "title",
+      "type",
+      "shortDescription",
+      "version",
+      "partOfPackage",
+      "visibility",
+      "releaseStatus",
+      "definitions"
+    ],
+    "definitions_item_required": [
+      "type",
+      "mediaType",
+      "url",
+      "accessStrategies"
+    ],
+    "optional": [
+      "description",
+      "lastUpdate",
+      "relatedEntityTypes",
+      "links"
+    ]
+  },
+  "ordId_patterns": {
+    "agent": "^[a-z0-9]+(?:[.][a-z0-9]+)*:agent:[A-Za-z0-9_-]+:v[0-9]+$",
+    "apiResource": "^[a-z0-9]+(?:[.][a-z0-9]+)*:apiResource:[A-Za-z0-9_-]+:v[0-9]+$",
+    "dataProduct": "^[a-z0-9]+(?:[.][a-z0-9]+)*:dataProduct:[A-Za-z0-9_-]+:v[0-9]+$",
+    "entityType": "^[a-z0-9]+(?:[.][a-z0-9]+)*:entityType:[A-Za-z0-9_-]+:v[0-9]+$",
+    "eventResource": "^[a-z0-9]+(?:[.][a-z0-9]+)*:eventResource:[A-Za-z0-9_-]+:v[0-9]+$",
+    "integrationDependency": "^[a-z0-9]+(?:[.][a-z0-9]+)*:integrationDependency:[A-Za-z0-9_-]+:v[0-9]+$",
+    "package": "^[a-z0-9]+(?:[.][a-z0-9]+)*:package:[A-Za-z0-9_-]+:v[0-9]+$",
+    "capability": "^[a-z0-9]+(?:[.][a-z0-9]+)*:capability:[A-Za-z0-9_-]+:v[0-9]+$"
+  },
+  "enum_values": {
+    "visibility": [
+      "public",
+      "internal",
+      "private"
+    ],
+    "releaseStatus": [
+      "active",
+      "beta",
+      "deprecated",
+      "sunset"
+    ],
+    "perspective": [
+      "system-type",
+      "system-version",
+      "system-instance",
+      "system-independent"
+    ],
+    "apiProtocol": [
+      "rest",
+      "odata-v2",
+      "odata-v4",
+      "soap-inbound",
+      "soap-outbound",
+      "graphql",
+      "websocket",
+      "sap-sql-api-v1",
+      "delta-sharing",
+      "a2a"
+    ],
+    "level": [
+      "aggregate",
+      "sub-entity"
+    ],
+    "type_dataProduct": [
+      "primary",
+      "derived"
+    ],
+    "category_dataProduct": [
+      "business-object",
+      "analytical",
+      "operational",
+      "other"
+    ]
+  },
+  "entity_type_field_by_resource_type": {
+    "agent": "relatedEntityTypes",
+    "apiResource": "exposedEntityTypes",
+    "dataProduct": "entityTypes",
+    "eventResource": "exposedEntityTypes",
+    "capability": "relatedEntityTypes"
+  },
+  "entity_type_structure": {
+    "agent": "string_array",
+    "apiResource": "object_array_with_ordId",
+    "dataProduct": "string_array",
+    "eventResource": "object_array_with_ordId",
+    "capability": "string_array"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-32_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together our current inventory specifications alongside the vendor details we have on file, and simultaneously check on the status of our pending maintenance requests and any open change orders we've submitted to understand our full operational picture.",
+    "n_resources": 273,
+    "user_msg_chars": 53923
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:MaterialAndVendorInventoryManagement:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires pulling together four interconnected operational views:\n1. **Current inventory specifications** - covered by Material and Vendor Inventory Management\n2. **Vendor details on file** - covered by Material and Vendor Inventory Management\n3. **Pending maintenance requests status** - this API retrieves and manages material stock levels and vendor supply chain data, which connects to maintenance planning\n4. **Open change orders** - vendor inventory systems typically track procurement orders and status\n\nWhile no single resource perfectly captures all four requirements, `my.mes:apiResource:MaterialAndVendorInventoryManagement:v1` is the best match because:\n- It directly retrieves material specifications and vendor information\n- MES systems inherently track inventory against production needs and maintenance requirements\n- It provides the foundational operational picture needed to cross-reference with maintenance and change order systems\n- It's specifically positioned in the manufacturing execution layer where all four data points converge\n\nThis is the optimal entry point to establish the operational picture you need, with subsequent queries to maintenance and change order APIs as logical follow-ups.",
+    "picked_ordId": "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13797,
+  "latency_s": 4.851,
+  "wall_s": 4.853,
+  "cached": false
+}

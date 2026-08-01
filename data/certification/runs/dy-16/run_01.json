@@ -1,0 +1,8 @@
+{
+  "picked_ordId": "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+  "solved": false,
+  "tokens": 13607,
+  "latency_s": 2.522,
+  "wall_s": 2.524,
+  "run": 1
+}

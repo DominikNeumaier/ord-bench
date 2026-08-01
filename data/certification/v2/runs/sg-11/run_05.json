@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-11_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Before we move forward with production we need to confirm all materials and operations meet our compliance requirements \u2014 hazardous substances, BOM standards, and vendor purchase orders.",
+    "n_resources": 273,
+    "user_msg_chars": 53841
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1\"\n}\n```\n\n**Rationale:** This activity requires comprehensive compliance validation across three key areas:\n\n1. **Hazardous Substances** - The HazardousSubstanceRegulatoryValidation API directly validates hazardous substances against regulatory requirements and compliance standards, which is essential before production.\n\n2. **BOM Standards** - While this specific API focuses on regulatory validation, it works in conjunction with the broader EHS compliance framework. However, for a more complete solution addressing all three requirements, the **sap.s4:agent:BOMComplianceAutomationAgent:v1** would be ideal as it specifically automates BOM validation and supplier compliance verification. \n\nGiven the primary emphasis on \"compliance requirements\" in the activity statement and the need for regulatory validation before proceeding to production, the **HazardousSubstanceRegulatoryValidation** API is the best single match as it directly addresses the critical compliance gate. It can be combined with BOM and vendor PO data from other systems to provide complete pre-production validation.",
+    "picked_ordId": "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13780,
+  "latency_s": 4.369,
+  "wall_s": 4.371,
+  "cached": false
+}

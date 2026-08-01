@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-13_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to track a equipment modification we're rolling out next month and manage the related service requests from our field teams. Can you help me set up the workflow to document this change and keep everyone updated on the status?",
+    "n_resources": 273,
+    "user_msg_chars": 53888
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1\"\n}\n```\n\n**Reasoning:** \n\nThe activity requires setting up a workflow to document an equipment modification rollout and manage related service requests with status tracking and team updates. The **Change Request Approval Workflow API** is the best match because it:\n\n1. **Directly supports change documentation** - Manages change request approvals and scheduling for the equipment modification\n2. **Handles workflow coordination** - Provides the infrastructure to document the change and keep stakeholders updated\n3. **Tracks status** - Includes impact assessment and status tracking capabilities needed to monitor the rollout progress\n4. **Integrates with service requests** - Works with field team service request management through the ITSM ecosystem\n\nWhile other resources like `ServiceTicketOrderManagementAPI` could handle individual service requests, and agents like `ChangeAutomationOrchestrator` could help automate aspects, the Change Request Approval Workflow API provides the core capability to establish the change management workflow itself that this activity specifically requires.",
+    "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13773,
+  "latency_s": 4.132,
+  "wall_s": 4.134,
+  "cached": false
+}

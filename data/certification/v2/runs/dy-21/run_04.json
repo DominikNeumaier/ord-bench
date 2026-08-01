@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-21_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to analyze the workforce skills and engineering requirements for our upcoming product line transition, while simultaneously ensuring our compensation structures are competitive and properly aligned with the new roles and responsibilities our team will take on during this shift.",
+    "n_resources": 273,
+    "user_msg_chars": 53941
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1\"\n}\n```\n\n**Rationale:** This data product directly addresses the activity's core requirements by aggregating product modifications, component data, and inventory updates to evaluate organizational capability and personnel preparedness for transitions. It specifically assesses workforce readiness and skill alignment with new roles and responsibilities during product line transitions.\n\nWhile several resources touch on compensation (e.g., `sap.crm:dataProduct:SalesCompensationPerformanceAnalytics:v1`, `workday.hcm:dataProduct:CompensationTrendAnalytics:v1`), the selected resource uniquely combines both dimensions: it evaluates engineering requirements/changes alongside workforce capability assessment, making it the best single resource for analyzing how skills and compensation structures must align during the product transition.",
+    "picked_ordId": "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+  ],
+  "solved": false,
+  "tokens": 13723,
+  "latency_s": 3.263,
+  "wall_s": 3.264,
+  "cached": false
+}

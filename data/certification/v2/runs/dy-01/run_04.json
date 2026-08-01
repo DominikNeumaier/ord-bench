@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-01_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull up a recent issue that one of our customers reported last week so I can see what we promised to deliver and whether we're on track. Can you help me find that and check the current status?",
+    "n_resources": 273,
+    "user_msg_chars": 53857
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1\"\n}\n```\n\n**Reasoning:** The activity requires pulling up a recent customer-reported issue and checking its current status against promised deliverables. The **Service Ticket and Order Management API** is the best match because it:\n\n1. **Retrieves customer service tickets** - directly addresses finding the reported issue\n2. **Manages status tracking** - allows checking the current status of the issue\n3. **Handles orders** - enables verification of promised deliverables\n4. **Provides ITSM integration** - designed for issue and ticket lifecycle management\n\nThis API is specifically built for retrieving and managing customer service tickets with status tracking capability, making it the most appropriate resource for this activity.",
+    "picked_ordId": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1"
+  ],
+  "solved": true,
+  "tokens": 13706,
+  "latency_s": 0.0,
+  "wall_s": 0.007,
+  "cached": true
+}

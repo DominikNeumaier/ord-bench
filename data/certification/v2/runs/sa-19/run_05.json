@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-19_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to set up a comprehensive monitoring system for our workplace safety incidents and regulatory compliance across all our facilities. This should track hazardous events as they occur, evaluate our exposure to violations, and coordinate the necessary corrective actions. As we implement this, we also need to ensure our safety team can engage with relevant stakeholders in real-time across different communication channels to coordinate responses. Additionally, we'll need to make sure all hazardous materials data is properly managed and accessible so our sales and compliance teams can verify we're meeting all regulatory requirements when working with customers. Can you help us establish this integrated approach to safety management and compliance?",
+    "n_resources": 273,
+    "user_msg_chars": 54413
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:agent:IncidentResponseCoordinator:v1\"\n}\n```\n\n**Justification:**\n\nYour activity requires an integrated safety management and compliance system that addresses:\n\n1. **Hazardous event tracking and incident coordination** - The Incident Response Coordinator automates safety incident workflows and emergency response actions\n2. **Regulatory compliance evaluation** - SAP EHS has comprehensive hazardous substance compliance APIs and monitoring capabilities\n3. **Real-time stakeholder engagement** - The agent coordinates response workflows across multiple systems\n4. **Hazardous materials data management** - SAP EHS provides extensive hazardous substance inventory, compliance tracking, and regulatory validation APIs\n5. **Sales/compliance team verification** - Integration with vendor compliance and customer safety programs\n\nWhile other resources address individual components (e.g., `sap.ehs:apiResource:ChemicalInventoryCompliance:v1` for materials data, `sap.ehs:agent:VendorComplianceAutomationOrchestrator:v1` for vendor compliance), the **Incident Response Coordinator** serves as the central orchestration engine that coordinates safety incident detection, response workflows, corrective actions, and stakeholder engagement across your facilities\u2014directly fulfilling the \"integrated approach\" requirement.",
+    "picked_ordId": "sap.ehs:agent:IncidentResponseCoordinator:v1"
+  },
+  "expected_ordIds": [
+    "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1",
+    "emarsys.cx:apiResource:HazardousSubstanceComplianceManagementAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13904,
+  "latency_s": 4.338,
+  "wall_s": 4.339,
+  "cached": false
+}

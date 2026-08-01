@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-15_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Our team needs to review product costs and qualify our material and vendor setup before we commit to the next procurement cycle.",
+    "n_resources": 273,
+    "user_msg_chars": 53783
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:MaterialAndVendorInventoryManagement:v1\"\n}\n```\n\nThis resource is the best match because:\n\n1. **Material Cost Review**: The Material and Vendor Inventory Management API directly exposes material stock levels and vendor supply chain data, enabling your team to review product costs tied to actual inventory.\n\n2. **Vendor Setup Qualification**: It provides access to vendor supply chain data necessary to qualify your vendor setup before procurement commitments.\n\n3. **Pre-Procurement Validation**: This API is positioned in the manufacturing execution system (MES) to support exactly this use case\u2014reviewing material and vendor configuration before the next procurement cycle begins.\n\n4. **Complementary Resources**: It integrates with other MES resources like Material and Vendor Master Data (my.mes:apiResource:MaterialAndVendorMasterData:v1) and Supplier Procurement Order Management (my.mes:apiResource:SupplierProcurementOrderManagement:v1) to provide a complete procurement readiness picture.",
+    "picked_ordId": "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13744,
+  "latency_s": 3.667,
+  "wall_s": 3.668,
+  "cached": false
+}

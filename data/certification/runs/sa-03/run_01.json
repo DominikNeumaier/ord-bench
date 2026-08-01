@@ -1,0 +1,8 @@
+{
+  "picked_ordId": "my.mes:agent:ProductionChangeOrchestrator:v1",
+  "solved": false,
+  "tokens": 13836,
+  "latency_s": 0.0,
+  "wall_s": 0.004,
+  "run": 1
+}

@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-09_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are going through a product and material transition triggered by an engineering change. Assess the impact, check our operational capability, and validate vendor readiness before we commit.",
+    "n_resources": 273,
+    "user_msg_chars": 53846
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1\"\n}\n```\n\n**Rationale:** The activity requires assessing impact of an engineering change, checking operational capability, and validating vendor readiness before commitment. The **Change Request Approval Workflow API** is the best match because it:\n\n1. **Manages change request approvals** - directly addresses the need to assess and approve the engineering change\n2. **Enables impact assessment** - provides the capability to evaluate the change's impact before commitment\n3. **Handles scheduling** - supports the orchestration of the transition process\n\nWhile other resources like `siemens.plm:apiResource:EngineringChangeManagement:v1` or agents like `sap.s4:agent:EngineeringChangeOrchestrator:v1` could support portions of this workflow, the Change Request Approval Workflow is specifically designed for the approval gate and impact assessment functions needed before committing to a product/material transition.",
+    "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+  ],
+  "solved": false,
+  "tokens": 13747,
+  "latency_s": 3.633,
+  "wall_s": 3.635,
+  "cached": false
+}

@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-04_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Our engineering team keeps pushing through design changes that require updates to our IT infrastructure, but we're struggling to keep pace with manual coordination across multiple systems. Right now, when a new component specification comes through, we have to manually track which servers need reconfiguration, which licenses need reallocation, and which hardware needs to be deployed\u2014and it's creating delays and tracking errors. We need a way to automate this entire workflow so that when engineering changes are approved, all the downstream IT infrastructure changes happen consistently and in the right sequence.",
+    "n_resources": 273,
+    "user_msg_chars": 54272
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:** The engineering team needs to automate the entire workflow from design change approval through IT infrastructure updates (server reconfiguration, license reallocation, hardware deployment). The **ChangeAutomationOrchestrator** is explicitly designed to \"automate and coordinate engineering changes, material updates, and product item deployments\" - which directly addresses the requirement to automatically trigger downstream IT infrastructure changes in consistent sequence when engineering changes are approved.\n\nWhile other resources like `AssetProvisioningOrchestrator` could supplement this, the primary orchestration need is met by the ChangeAutomationOrchestrator, which handles the coordination of changes across systems in the right sequence.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+  ],
+  "solved": false,
+  "tokens": 13771,
+  "latency_s": 3.266,
+  "wall_s": 3.27,
+  "cached": false
+}

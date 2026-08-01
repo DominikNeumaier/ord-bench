@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-07_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to ensure our supply chain partners can deliver the materials we need on time and at the right cost. Our goal is to have complete visibility into what we've committed to buy from each supplier and be confident that those commitments will be fulfilled according to our specifications.",
+    "n_resources": 273,
+    "user_msg_chars": 53946
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1\"\n}\n```\n\n**Rationale:** The activity requires complete visibility into supplier commitments (purchase orders), on-time delivery tracking, cost management, and confidence in fulfillment according to specifications. The **Purchase Order Network API** from SAP Ariba is the best match because it directly manages the creation, monitoring, and lifecycle of purchase orders across supplier networks\u2014providing the exact supply chain visibility, commitment tracking, and fulfillment assurance needed. This is complemented by related resources like the Vendor Performance analytics and Procurement Spend Analytics, but the PO API itself is the core resource for the stated activity.",
+    "picked_ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:VendorProcurementOrderAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13696,
+  "latency_s": 3.052,
+  "wall_s": 3.054,
+  "cached": false
+}

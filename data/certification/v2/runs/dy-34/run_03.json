@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-34_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together compensation figures and tax withholdings for our quarterly reconciliation, and at the same time I'd like to grant our marketing team access to manage client engagement initiatives across our accounts. Can you help me set this up efficiently in a single request?",
+    "n_resources": 273,
+    "user_msg_chars": 53941
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"workday.hcm:apiResource:PayrollDataExposure:v1\"\n}\n```\n\n**Rationale:**\n\nYour request contains two distinct business activities:\n1. **Primary need**: Pull compensation figures and tax withholdings for quarterly reconciliation\n2. **Secondary need**: Grant marketing team access to manage client engagement initiatives\n\nHowever, you've asked for a **single** resource selection. The `PayrollDataExposure` API is the best match because it directly addresses your primary, time-critical activity by exposing payroll records, earnings, deductions, and tax information needed for quarterly reconciliation.\n\n**Note on the secondary need:** While the primary selection handles compensation/tax withholding reconciliation, your marketing access management need would ideally be served by resources like `emarsys.cx:apiResource:CampaignAccessManagementAPI:v1` or `corp.itsm:apiResource:CampaignAccessManagementAPI:v1`, but these cannot be combined into a single request with different systems. A true \"single request\" approach would require using an orchestration agent or data product that spans both HR and marketing domains\u2014neither of which perfectly fits this hybrid scenario.",
+    "picked_ordId": "workday.hcm:apiResource:PayrollDataExposure:v1"
+  },
+  "expected_ordIds": [
+    "workday.hcm:apiResource:PayrollProcessingDataManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13809,
+  "latency_s": 4.213,
+  "wall_s": 4.215,
+  "cached": false
+}

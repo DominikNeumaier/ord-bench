@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-26_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "A product engineering change has been approved. Plan the manufacturing transition \u2014 operational impact, workforce scheduling, formal change registration, BOM compliance, and supply chain confirmation.",
+    "n_resources": 273,
+    "user_msg_chars": 53855
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:agent:ProductionChangeOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires planning a manufacturing transition for an approved engineering change, encompassing multiple operational domains:\n\n1. **Operational Impact & Change Registration**: The Production Change Orchestrator automates and coordinates engineering changes across production materials and items\n2. **Workforce Scheduling**: Works in conjunction with `my.mes:apiResource:WorkforceScheduleAndAbsenceManagement:v1` for shift assignments\n3. **BOM Compliance**: Integrates with `my.mes:agent:BillOfMaterialsComplianceValidator:v1` for component validation\n4. **Supply Chain Confirmation**: Coordinates with `my.mes:apiResource:SupplierProcurementOrderManagement:v1` for material procurement\n\nThe Production Change Orchestrator is the central orchestration agent that coordinates all these manufacturing transition elements (change coordination, materials updates, production item deployments) across the MES domain, making it the best single resource to initiate and manage the entire manufacturing transition workflow.",
+    "picked_ordId": "my.mes:agent:ProductionChangeOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13768,
+  "latency_s": 4.237,
+  "wall_s": 4.239,
+  "cached": false
+}

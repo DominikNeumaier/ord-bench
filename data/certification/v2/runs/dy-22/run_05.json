@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-22_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to pull together a comprehensive view of our production risks and costs right now - I want to see both our material expenses broken down by supplier along with any compliance gaps, and at the same time analyze our recent safety incidents and trends across all our manufacturing sites. Can you get me both of those datasets so we can address cost optimization and safety improvements in our next operations review?",
+    "n_resources": 273,
+    "user_msg_chars": 54076
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:dataProduct:IncidentSafetyAnalytics:v1\"\n}\n```\n\n**Rationale:**\n\nYour activity requires **two comprehensive datasets**:\n\n1. **Material expenses broken down by supplier + compliance gaps** \u2192 Cost optimization\n2. **Recent safety incidents and trends across manufacturing sites** \u2192 Safety improvements\n\nWhile no single resource perfectly captures both requirements, **`my.mes:dataProduct:IncidentSafetyAnalytics:v1`** is the best match because:\n\n- It **aggregates incident and safety event data** directly aligned with your manufacturing operations and safety trend analysis needs\n- It provides **compliance metrics and trend analysis** across sites\n- The MES (Manufacturing Execution System) context is specifically designed for production operations\n\n**However**, for a truly comprehensive view, you should note:\n- For **material costs by supplier**, you'd ideally also access `my.mes:dataProduct:SupplierPerformanceAndProcurementOptimization:v1` or `sap.ariba:dataProduct:ProcurementSpendAnalytics:v1`\n- The selected resource focuses on the safety/compliance half of your request, which is the critical gap-filler given the activity's emphasis on \"address cost optimization **and safety improvements**\"\n\nIf forced to pick ONE resource for an operations review dashboard, the safety analytics data product provides immediate actionable insights for your stated safety improvement objectives.",
+    "picked_ordId": "my.mes:dataProduct:IncidentSafetyAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13886,
+  "latency_s": 4.766,
+  "wall_s": 4.768,
+  "cached": false
+}

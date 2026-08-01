@@ -1,0 +1,8 @@
+{
+  "picked_ordId": "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+  "solved": false,
+  "tokens": 13734,
+  "latency_s": 3.798,
+  "wall_s": 3.799,
+  "run": 1
+}

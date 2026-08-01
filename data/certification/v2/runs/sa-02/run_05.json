@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-02_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to orchestrate a comprehensive readiness validation for our upcoming product launch that coordinates material receipt verification, workforce capability assessment, and operational readiness evaluation. As part of this process, we also need to ensure we can track and validate all the materials coming in from our suppliers, including verifying their specifications against our master records. Additionally, we'll need to reconcile all incoming supplier billing documentation with our purchase commitments to ensure financial accuracy before we greenlight the launch. Please design a workflow that brings all these validation streams together into a single orchestrated process.",
+    "n_resources": 273,
+    "user_msg_chars": 54341
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:agent:BOMComplianceAutomationAgent:v1\"\n}\n```\n\n**Rationale:**\n\nThis activity requires orchestrating a comprehensive readiness validation that integrates:\n\n1. **Material receipt verification** - tracking and validating incoming materials against specifications\n2. **Workforce capability assessment** - evaluating operational readiness\n3. **Supplier billing reconciliation** - matching invoices to purchase commitments\n\nThe **BOM Compliance Automation Agent** is the optimal resource because it:\n\n- **Automates bill-of-materials validation** against supplier specifications and master records\n- **Verifies supplier compliance** across engineering changes and material modifications\n- **Coordinates procurement workflows** that include vendor qualification and purchase order alignment\n- **Orchestrates multi-stream validation** by integrating material specifications, supplier data, and purchase commitments\n\nWhile other agents like `sap.ehs:agent:VendorComplianceInvoiceAutomation` handle invoice validation specifically, and `sap.s4:agent:AssetLifecycleChangeOrchestrator` manages asset coordination, the BOM Compliance agent is uniquely positioned to serve as the central orchestrator that brings together material receipt verification, workforce readiness assessment (through BOM complexity and supplier impact), and financial accuracy validation through its comprehensive compliance and supplier coordination capabilities.",
+    "picked_ordId": "sap.s4:agent:BOMComplianceAutomationAgent:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:MaterialAndVendorProcurementAPI:v1",
+    "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13901,
+  "latency_s": 4.476,
+  "wall_s": 4.48,
+  "cached": false
+}

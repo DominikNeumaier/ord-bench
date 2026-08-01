@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-04_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We're launching a new product line next quarter and need to orchestrate the entire go-to-market process\u2014including provisioning our key customers, qualifying our supplier network, analyzing the cost structure, managing our engineering modifications, and ensuring our teams are ready. As part of this, we also need to identify which customer segments from our marketing campaigns should be prioritized for this launch, including pulling their account details and engagement history. We'll also need to assess whether our current staff has the right skills and capacity to support the new product specifications and training requirements. Can you help us coordinate all these moving pieces into one comprehensive launch workflow?",
+    "n_resources": 273,
+    "user_msg_chars": 54381
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"emarsys.cx:agent:SegmentDrivenCampaignOptimizer:v1\"\n}\n```\n\n**Rationale:**\n\nYour product launch requires orchestrating multiple interconnected workflows\u2014customer segmentation, provisioning, supplier qualification, cost analysis, engineering changes, and workforce readiness. While no single resource perfectly covers all aspects, the **Segment-Driven Campaign Optimizer Agent** is the best orchestration hub because it:\n\n1. **Identifies high-value customer segments** for launch prioritization (your marketing campaign focus)\n2. **Retrieves customer account details and engagement history** through its access to campaign and customer data APIs\n3. **Serves as a coordination entry point** that can trigger downstream workflows through integrated APIs for:\n   - Customer provisioning (CampaignCustomerProvisioningAPI)\n   - Supplier/vendor qualification (VendorMaterialSupplyChainAPI, ProcurementVendorEngagementAPI)\n   - Cost structure analysis (linked to procurement and material data)\n   - Engineering modifications (ProductLifecycleOrchestrator integration)\n   - Team readiness assessment (SalesCapacityAndTimeOffManagementAPI for staff capacity)\n\n4. **Autonomously optimizes targeting** across your launch workflow, enabling dynamic adjustment as you execute\n\nThis agent acts as your go-to-market orchestrator by centralizing customer intelligence and campaign execution while maintaining integration hooks to procurement, operations, and workforce systems needed for a comprehensive launch.",
+    "picked_ordId": "emarsys.cx:agent:SegmentDrivenCampaignOptimizer:v1"
+  },
+  "expected_ordIds": [
+    "emarsys.cx:apiResource:CustomerAccountCampaignManagementAPI:v1",
+    "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13950,
+  "latency_s": 4.93,
+  "wall_s": 4.933,
+  "cached": false
+}

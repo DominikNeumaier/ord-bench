@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-24_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to run our end-to-end hazardous substance and employee safety workflow \u2014 substance identification, exposure assessment, equipment planning, vendor ordering, and any required staff time off.",
+    "n_resources": 273,
+    "user_msg_chars": 53852
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:apiResource:ChemicalInventoryCompliance:v1\"\n}\n```\n\n**Rationale:** This activity requires a comprehensive end-to-end hazardous substance and employee safety workflow. The `ChemicalInventoryCompliance` API is the best single match because it:\n\n1. **Substance Identification** - Manages hazardous substance inventory and regulatory compliance tracking\n2. **Core Safety Foundation** - Provides the central registry needed for exposure assessment and equipment planning decisions\n3. **Regulatory Compliance** - Ensures all downstream activities (exposure assessment, vendor ordering, equipment planning) align with compliance requirements\n\nWhile this resource is the primary hub, a complete implementation would typically orchestrate multiple resources (e.g., `sap.ehs:agent:VendorComplianceAutomationOrchestrator` for vendor ordering, `sap.sf:apiResource:TimeOffAndLeaveBalanceManagement` for staff time off, equipment planning resources). However, as the single best match that anchors the entire workflow, the Chemical Inventory Compliance API is the optimal choice as it governs the hazardous substance data that drives all downstream workflow decisions.",
+    "picked_ordId": "sap.ehs:apiResource:ChemicalInventoryCompliance:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:apiResource:HazardousSubstanceComplianceManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13790,
+  "latency_s": 4.964,
+  "wall_s": 4.966,
+  "cached": false
+}

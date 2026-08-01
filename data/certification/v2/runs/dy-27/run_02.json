@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-27_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to pull together our supplier payment terms and current commitments against what we've got coming in from our clients this quarter\u2014basically reconcile who we owe and what we're expecting to collect so we can forecast our cash position accurately.",
+    "n_resources": 273,
+    "user_msg_chars": 53909
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:dataProduct:ProcurementSpendAnalytics:v1\"\n}\n```\n\n**Rationale:** This activity requires reconciling supplier payment terms and current commitments against client receivables to forecast cash position. The **Procurement Spend Analytics** data product aggregates spend metrics, vendor performance trends, and purchase order data\u2014providing visibility into what the company owes to suppliers. Combined with customer order and invoice data from other systems, this resource best enables the cash flow reconciliation and forecasting needed. While other resources address individual components (invoices, POs, customer orders), this data product specifically aggregates the procurement spend intelligence needed for supplier commitment analysis.",
+    "picked_ordId": "sap.ariba:dataProduct:ProcurementSpendAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:apiResource:ProcurementVendorOrderManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13686,
+  "latency_s": 3.143,
+  "wall_s": 3.145,
+  "cached": false
+}

@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-05_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to orchestrate our complete manufacturing workflow from securing materials with our suppliers through final production execution and ensuring all our compliance documentation is properly filed. As part of this end-to-end process, we also need to track and reconcile all the financial documents coming in from our vendors that are tied to our material orders. Additionally, please include monitoring our production line performance metrics so we can evaluate how efficiently our equipment is running and identify any bottlenecks in our output. Make sure quality validation checkpoints are integrated throughout to catch any issues early, and we'll need comprehensive reporting at each stage to maintain our regulatory compliance standards.",
+    "n_resources": 273,
+    "user_msg_chars": 54401
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:agent:ProductionQualityMonitor:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity describes an end-to-end manufacturing workflow requiring:\n1. Material procurement and supplier management\n2. Production execution with performance monitoring\n3. Quality validation checkpoints\n4. Financial document reconciliation\n5. Compliance documentation and reporting\n\nWhile multiple resources could support individual aspects, the **Production Quality Monitor Agent** is the best single orchestrator because it:\n\n- **Autonomously monitors quality inspection results** across the entire production workflow\n- **Triggers corrective actions** when issues are detected early (quality validation checkpoints)\n- **Integrates throughout production** to catch problems at each stage\n- Works in conjunction with the broader MES ecosystem that provides access to:\n  - Equipment OEE analytics (production line performance)\n  - Supplier procurement order management (material sourcing)\n  - Hazardous substance compliance (regulatory requirements)\n  - Production execution APIs (final production execution)\n\nThis agent serves as the central quality coordinator that orchestrates compliance validation and reporting across the manufacturing workflow, making it the single best resource that fulfills the core activity of ensuring end-to-end process control with quality assurance integration.",
+    "picked_ordId": "my.mes:agent:ProductionQualityMonitor:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+    "sap.s4:apiResource:ProductionPerformanceAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13888,
+  "latency_s": 4.542,
+  "wall_s": 4.544,
+  "cached": false
+}

@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-27_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are updating our material specifications and need a full compliance and readiness check \u2014 regulatory validation, supplier qualification, workforce impact, and safety record review.",
+    "n_resources": 273,
+    "user_msg_chars": 53838
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1\"\n}\n```\n\n**Rationale:** \n\nFor a comprehensive compliance and readiness check on material specifications updates involving regulatory validation, supplier qualification, workforce impact, and safety record review, the **Safety Compliance Automation Coordinator** is the best match because it:\n\n1. **Regulatory Validation** - Automates safety validation across engineering changes and materials\n2. **Supplier Qualification** - Works in conjunction with vendor compliance systems to ensure qualified suppliers\n3. **Workforce Impact** - Coordinates across the full compliance ecosystem affecting workforce readiness\n4. **Safety Record Review** - Directly focuses on safety compliance automation and validation\n\nThis agent orchestrates safety validation across the complete material specification update lifecycle (engineering changes, materials, and product items), making it ideal for the integrated compliance and readiness check activity described.",
+    "picked_ordId": "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13719,
+  "latency_s": 3.713,
+  "wall_s": 3.718,
+  "cached": false
+}

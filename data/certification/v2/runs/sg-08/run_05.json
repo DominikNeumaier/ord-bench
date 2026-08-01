@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-08_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are transitioning to a new product line. Assess our organizational and hazardous substance readiness, handle the material and procurement impacts, and reconfigure production accordingly.",
+    "n_resources": 273,
+    "user_msg_chars": 53844
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires:\n1. **Organizational readiness assessment** - evaluating impact on the organization\n2. **Hazardous substance readiness** - assessing compliance and safety\n3. **Material and procurement impacts** - handling material changes and sourcing\n4. **Production reconfiguration** - adapting manufacturing processes\n\nThe **ChangeAutomationOrchestrator** is the best match because it:\n- Automates and coordinates **engineering changes** across the organization\n- Manages **material updates** and product item deployments\n- Orchestrates the comprehensive change workflow needed for product line transitions\n- Integrates with hazardous substance compliance and procurement systems\n- Coordinates production impact assessments across multiple domains\n\nWhile other resources address specific sub-domains (hazmat compliance, procurement, production), the ChangeAutomationOrchestrator serves as the orchestration hub that coordinates all these elements together for a complete product line transition, making it the single best resource selector for this holistic business activity.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1"
+  ],
+  "solved": false,
+  "tokens": 13775,
+  "latency_s": 4.092,
+  "wall_s": 4.093,
+  "cached": false
+}

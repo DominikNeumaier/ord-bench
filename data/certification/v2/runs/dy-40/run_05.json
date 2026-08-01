@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-40_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to streamline our component sourcing workflow by simultaneously validating our internal part specifications against supplier certifications and pulling current inventory levels along with vendor capabilities to ensure we're not creating bottlenecks during our quarterly supply chain review.",
+    "n_resources": 273,
+    "user_msg_chars": 53953
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:agent:BOMComplianceAutomationAgent:v1\"\n}\n```\n\n**Rationale:** This activity requires simultaneously validating internal part specifications against supplier certifications while pulling inventory levels and vendor capabilities. The **BOM Compliance Automation Agent** is the best match because it:\n\n1. **Automates bill-of-materials validation** - directly addresses validating internal part specifications\n2. **Verifies supplier compliance** - ensures supplier certifications are validated\n3. **Integrates with procurement data** - accesses vendor capabilities and inventory information through SAP S/4HANA's comprehensive procurement and material management systems\n4. **Prevents bottlenecks** - automation ensures efficient parallel processing during the quarterly supply chain review\n\nThis agent coordinates with supporting APIs like `sap.s4:apiResource:EngineeringChangeProductDataAPI` (for specifications), `sap.s4:apiResource:MaterialReceiptInboundAPI` (for inventory), and vendor compliance data to streamline the entire component sourcing workflow in a single orchestrated process.",
+    "picked_ordId": "sap.s4:agent:BOMComplianceAutomationAgent:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:agent:BOMComplianceAutomationAgent:v1"
+  ],
+  "solved": true,
+  "tokens": 13779,
+  "latency_s": 3.578,
+  "wall_s": 3.58,
+  "cached": false
+}

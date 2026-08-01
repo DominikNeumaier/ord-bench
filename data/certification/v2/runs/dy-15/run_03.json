@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-15_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Our finance team is struggling to reconcile payroll data across multiple departments because we can't easily track how individual pay rates align with our established pay bands and job levels. We need to ensure our payment structures remain competitive and compliant with market rates, but right now we're manually cross-referencing spreadsheets which is error-prone and time-consuming. Can you help us integrate our payroll processes so we have a single source of truth for all employee earnings and payment configurations?",
+    "n_resources": 273,
+    "user_msg_chars": 54179
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.sf:apiResource:CompensationAndSalaryManagement:v1\"\n}\n```\n\n**Rationale:**\n\nYour finance team needs to reconcile payroll data across departments and track how individual pay rates align with established pay bands and job levels. The **Compensation and Salary Management API** from SAP SuccessFactors directly addresses this requirement by:\n\n1. **Managing employee compensation structures** - Establishes and maintains salary bands and pay structure definitions\n2. **Tracking pay rates against job levels** - Enables alignment of individual compensation with organizational pay bands\n3. **Centralizing payroll data** - Provides a single source of truth for all employee earnings and payment configurations\n4. **Reducing manual reconciliation** - Automates cross-departmental payroll data integration rather than requiring spreadsheet cross-referencing\n5. **Ensuring compliance** - Helps validate that payment structures remain competitive and compliant with market rates through structured data governance\n\nThis resource provides the foundational integration needed to eliminate your manual spreadsheet processes and create the unified payroll data system your finance team requires.",
+    "picked_ordId": "sap.sf:apiResource:CompensationAndSalaryManagement:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:apiResource:CompensationAndSalaryManagement:v1"
+  ],
+  "solved": true,
+  "tokens": 13830,
+  "latency_s": 3.892,
+  "wall_s": 3.894,
+  "cached": false
+}

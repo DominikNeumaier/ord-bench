@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-02_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together the current salary information and benefits breakdown for our sourcing and contracting team so we can review our staffing costs against this quarter's budget. Can you help me access that data?",
+    "n_resources": 273,
+    "user_msg_chars": 53871
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.sf:apiResource:EmployeeCompensationManagement:v1\"\n}\n```\n\nThis API is the best match for your activity. It provides access to employee compensation data, salary structures, and related information needed to review staffing costs for the sourcing and contracting team against the quarterly budget.",
+    "picked_ordId": "sap.sf:apiResource:EmployeeCompensationManagement:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13602,
+  "latency_s": 2.167,
+  "wall_s": 2.171,
+  "cached": false
+}

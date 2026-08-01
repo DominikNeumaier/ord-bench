@@ -1,0 +1,8 @@
+{
+  "picked_ordId": "my.mes:agent:SupplierQualityComplianceOrchestrator:v1",
+  "solved": false,
+  "tokens": 13739,
+  "latency_s": 0.0,
+  "wall_s": 0.001,
+  "run": 4
+}

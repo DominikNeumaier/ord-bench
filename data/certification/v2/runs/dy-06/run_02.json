@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-06_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to schedule some updates to our manufacturing workflow next week and make sure all the dependent systems get notified at the right time. We have a few service components that need to be rolled out together, and I want to avoid any conflicts or downtime. Can you help me figure out what tool handles coordinating these kinds of synchronized deployments?",
+    "n_resources": 273,
+    "user_msg_chars": 54014
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:** The activity requires coordinating synchronized deployments of multiple service components with dependent systems notifications and conflict avoidance. The **Change Automation Orchestrator** is specifically designed to \"automate and coordinate engineering changes, material updates, and product item deployments\" - directly addressing the need for coordinated, synchronized rollouts. This agent handles the orchestration of dependent deployments while managing scheduling and impact coordination to prevent conflicts and downtime.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:agent:ProductionChangeOrchestrator:v1"
+  ],
+  "solved": false,
+  "tokens": 13681,
+  "latency_s": 2.692,
+  "wall_s": 2.695,
+  "cached": false
+}

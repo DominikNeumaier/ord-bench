@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-27_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to pull together our supplier payment terms and current commitments against what we've got coming in from our clients this quarter\u2014basically reconcile who we owe and what we're expecting to collect so we can forecast our cash position accurately.",
+    "n_resources": 273,
+    "user_msg_chars": 53909
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1\"\n}\n```\n\n**Reasoning:** The activity requires reconciling supplier payment terms and current commitments against client collections to forecast cash position. This is fundamentally a financial reconciliation and cash flow forecasting exercise.\n\nThe best match is **sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1** because it:\n- Aggregates invoice and material procurement metrics for spend analysis\n- Provides visibility into what you owe (vendor invoices and material commitments)\n- Enables analysis of procurement data needed for financial forecasting\n- Supports payables tracking and cash position planning\n\nAlternative strong candidates considered:\n- `sap.s4:apiResource:CustomerAccountFinancialAPI:v1` (client receivables/payment terms)\n- `sap.ariba:dataProduct:ProcurementSpendAnalytics:v1` (vendor spend tracking)\n\nHowever, the invoice and material procurement analytics data product most directly combines both payables (what you owe suppliers) and receivables context needed for cash flow reconciliation.",
+    "picked_ordId": "sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:apiResource:ProcurementVendorOrderManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13803,
+  "latency_s": 3.649,
+  "wall_s": 3.651,
+  "cached": false
+}

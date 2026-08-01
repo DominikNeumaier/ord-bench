@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-16_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to adjust our production schedule due to a significant surge in Q2 demand forecasting and some critical supply constraints we're facing with our primary vendors. This will require coordinating engineering changes across our product lines, verifying compliance requirements, updating our procurement orders, and adjusting our workforce capacity planning. As part of this broader initiative, we'll also need to ensure our team members are compensated fairly for any overtime or shift changes resulting from the schedule adjustments, including updating any applicable merit considerations. Can you help us orchestrate all these moving pieces together, including the financial and compensation updates that will flow from these workforce adjustments?",
+    "n_resources": 273,
+    "user_msg_chars": 54409
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.sf:agent:CompensationPolicyAutomationEngine:v1\"\n}\n```\n\n**Rationale:**\n\nYour activity requires orchestrating multiple interconnected operational changes:\n1. **Production scheduling adjustments** due to Q2 demand and supply constraints\n2. **Engineering changes** across product lines\n3. **Compliance verification**\n4. **Procurement order updates**\n5. **Workforce capacity planning**\n6. **Compensation adjustments** for overtime/shift changes and merit considerations\n\nWhile several resources address individual components (e.g., `my.mes:agent:ProductionChangeOrchestrator` for production changes, `sap.ariba:apiResource:PurchaseOrderNetworkAPI` for procurement), the **CompensationPolicyAutomationEngine** is the strategic orchestration point because:\n\n- It automates compensation policy enforcement and salary adjustments based on organizational rules\n- It can systematically process the financial and compensation impacts flowing from workforce adjustments\n- It integrates with broader organizational change frameworks\n- It handles merit considerations and compensation structure modifications\n- It serves as the hub that translates operational changes (shift changes, overtime) into proper financial treatment\n\nThis agent acts as the central coordinator for ensuring that all workforce adjustments\u2014whether from production scheduling changes, capacity planning, or shift modifications\u2014are properly reflected in compensation systems with fair and compliant financial treatment.",
+    "picked_ordId": "sap.sf:agent:CompensationPolicyAutomationEngine:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:apiResource:EmployeeCompensationManagement:v1",
+    "workday.hcm:apiResource:PayrollProcessingDataManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13924,
+  "latency_s": 4.942,
+  "wall_s": 4.944,
+  "cached": false
+}

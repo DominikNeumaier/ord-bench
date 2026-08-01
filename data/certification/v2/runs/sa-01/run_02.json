@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-01_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to establish a comprehensive procurement and delivery workflow that coordinates vendor assessment, augments customer purchases with enriched data, validates regulatory requirements, and manages incoming stock alongside staff and resource allocation. The process should also track milestone progression and delivery status throughout the entire cycle, including the ability to handle customer grievances and reconcile any disagreements that arise during fulfillment. Can you design this end-to-end supply chain orchestration to ensure seamless coordination across all these interconnected operations?",
+    "n_resources": 273,
+    "user_msg_chars": 54262
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:agent:OpportunityToOrderAutomationEngine:v1\"\n}\n```\n\n**Rationale:**\n\nThis end-to-end supply chain orchestration requires a comprehensive resource that coordinates:\n\n1. **Vendor Assessment** \u2192 Procurement matching and vendor qualification\n2. **Customer Purchase Augmentation** \u2192 Order enrichment with data\n3. **Regulatory Validation** \u2192 Compliance checking\n4. **Incoming Stock Management** \u2192 Material receipt and inventory\n5. **Staff & Resource Allocation** \u2192 Workforce capacity planning\n6. **Milestone & Delivery Tracking** \u2192 Order fulfillment status\n7. **Grievance & Dispute Resolution** \u2192 Customer dispute management\n\nThe **OpportunityToOrderAutomationEngine** serves as the orchestration hub because it:\n\n- Monitors and automates the complete order creation workflow from sales opportunities through fulfillment\n- Integrates with procurement, inventory, compliance, and workforce systems\n- Coordinates across multiple operational domains (sales, supply chain, manufacturing, HR)\n- Manages milestone progression and delivery status tracking\n- Can be configured to incorporate vendor assessment, regulatory validation, and resource allocation workflows\n- Supports dispute resolution through order lifecycle management\n\nThis agent acts as the central orchestrator that bridges sales opportunities to operational execution while maintaining coordination across all interconnected supply chain, compliance, and resource management functions.",
+    "picked_ordId": "sap.s4:agent:OpportunityToOrderAutomationEngine:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+    "sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13891,
+  "latency_s": 4.553,
+  "wall_s": 4.555,
+  "cached": false
+}

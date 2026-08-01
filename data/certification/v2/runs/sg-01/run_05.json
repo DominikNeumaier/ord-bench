@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-01_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to handle a product engineering change end to end \u2014 from assessing the production impact all the way through validating our materials are compliant with the new design.",
+    "n_resources": 273,
+    "user_msg_chars": 53831
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\nThis resource is the best match because:\n\n1. **End-to-end engineering change management**: The Change Automation Orchestrator is specifically designed to \"automate and coordinate engineering changes, material updates, and product item deployments\"\n\n2. **Production impact assessment**: It handles the full lifecycle from assessing impacts through deployment\n\n3. **Materials compliance validation**: It coordinates material updates as part of the change process, which encompasses compliance with new design requirements\n\n4. **Comprehensive orchestration**: As an orchestrator agent, it can coordinate with multiple systems (compliance APIs, change workflows, material management) to handle both the production impact and compliance validation aspects in a unified workflow\n\nThis is superior to the Change Request Approval Workflow API alone because it provides end-to-end orchestration across the entire activity, not just approval workflows.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13725,
+  "latency_s": 3.552,
+  "wall_s": 3.555,
+  "cached": false
+}

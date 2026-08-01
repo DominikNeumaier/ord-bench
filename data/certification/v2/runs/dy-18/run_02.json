@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-18_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to check the status of an order we placed last month and see if we can adjust the production schedule to move up the delivery date. Can you help me find where that information is tracked?",
+    "n_resources": 273,
+    "user_msg_chars": 53849
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:CustomerOrderAndAccountManagement:v1\"\n}\n```\n\n**Reasoning:**\n\nThe activity requires checking the status of an order placed last month and adjusting the production schedule to move up the delivery date. This requires:\n\n1. **Order status tracking** - Need to retrieve order details and current status\n2. **Production schedule management** - Need to access and modify production scheduling\n3. **Delivery date adjustment** - Need to coordinate delivery commitments\n\nThe `my.mes:apiResource:CustomerOrderAndAccountManagement:v1` (Customer Order and Account Management API) is the best match because it:\n- **Exposes customer accounts and orders** for production scheduling and fulfillment tracking\n- Directly handles the order information needed\n- Integrates with production scheduling operations\n- Is part of the Manufacturing Execution System (MES) which manages production schedules and delivery dates\n\nWhile `sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1` could retrieve order status, the MES resource is superior because production schedule adjustments and delivery date changes are core manufacturing operations that must be coordinated through the production execution system.",
+    "picked_ordId": "my.mes:apiResource:CustomerOrderAndAccountManagement:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13789,
+  "latency_s": 4.247,
+  "wall_s": 4.248,
+  "cached": false
+}

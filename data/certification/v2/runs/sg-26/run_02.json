@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-26_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "A product engineering change has been approved. Plan the manufacturing transition \u2014 operational impact, workforce scheduling, formal change registration, BOM compliance, and supply chain confirmation.",
+    "n_resources": 273,
+    "user_msg_chars": 53855
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires comprehensive manufacturing transition planning across multiple critical dimensions: operational impact, workforce scheduling, formal change registration, BOM compliance, and supply chain confirmation.\n\nThe **ChangeAutomationOrchestrator** is the best match because it:\n\n1. **Automates engineering changes** - Directly handles the approved product engineering change\n2. **Coordinates material updates** - Manages BOM compliance and material modifications\n3. **Product item deployments** - Handles the transition of product items through manufacturing\n4. **Orchestration capability** - Coordinates across multiple operational domains simultaneously\n\nWhile complementary resources exist (BOM validators, workforce schedulers, procurement APIs), the ChangeAutomationOrchestrator is positioned as the orchestration hub that coordinates all these concerns. It integrates with:\n- Change registration workflows\n- Material/BOM systems\n- Workforce scheduling coordination\n- Supply chain updates\n- Operational impact assessment\n\nThis agent-based resource provides the centralized automation and coordination needed to execute the complete manufacturing transition plan triggered by the approved engineering change.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13783,
+  "latency_s": 3.983,
+  "wall_s": 3.985,
+  "cached": false
+}

@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-17_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Our manufacturing operations need a full cycle \u2014 supplier qualification, production incident monitoring, inbound material inspections, and engineering change provisioning.",
+    "n_resources": 273,
+    "user_msg_chars": 53826
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:agent:SupplierQualityComplianceOrchestrator:v1\"\n}\n```\n\n**Reasoning:**\n\nThe activity requires a comprehensive manufacturing operations solution covering:\n1. **Supplier qualification** - vendor assessment and compliance\n2. **Production incident monitoring** - quality monitoring and incident tracking\n3. **Inbound material inspections** - receipt and inspection validation\n4. **Engineering change provisioning** - change coordination and material updates\n\nThe **Supplier Quality Compliance Orchestrator** agent is the best match because it:\n- Automates vendor performance monitoring and procurement compliance validation (supplier qualification)\n- Coordinates with production quality systems for incident detection\n- Manages material compliance across the procurement lifecycle (inbound inspections)\n- Integrates with engineering change workflows for material provisioning\n\nThis agent orchestrates the end-to-end quality and compliance cycle across supplier relationships, production monitoring, and engineering changes\u2014fulfilling all four operational requirements in a unified workflow.",
+    "picked_ordId": "my.mes:agent:SupplierQualityComplianceOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1"
+  ],
+  "solved": false,
+  "tokens": 13734,
+  "latency_s": 3.589,
+  "wall_s": 3.591,
+  "cached": false
+}

@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-30_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Can you pull up the current status of ticket #12847 and check who our top-performing sales representative is in the Northeast region so I can route this escalation appropriately, then also retrieve what products that employee is certified to sell?",
+    "n_resources": 273,
+    "user_msg_chars": 53902
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1\"\n}\n```\n\n**Reasoning:**\n\nThis activity requires three capabilities:\n1. **Ticket status lookup** - handled by ServiceTicketOrderManagementAPI\n2. **Top-performing sales rep in Northeast** - requires employee hierarchy and sales performance data\n3. **Product certifications for that employee** - requires sales capability directory\n\nThe `SalesEmployeeHierarchyAndCapabilityDirectory:v1` is the best single match because it:\n- Exposes employee organizational structure (to identify Northeast region team)\n- Includes sales capabilities and certifications (product certifications)\n- Integrates with CRM operations where sales performance tracking exists\n\nWhile `ServiceTicketOrderManagementAPI` handles the ticket lookup, the `SalesEmployeeHierarchyAndCapabilityDirectory` is the critical resource that uniquely addresses the sales rep identification and product certification requirements that cannot be found in other resources. This endpoint provides the foundational data needed to route the escalation appropriately.",
+    "picked_ordId": "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13783,
+  "latency_s": 3.757,
+  "wall_s": 3.759,
+  "cached": false
+}

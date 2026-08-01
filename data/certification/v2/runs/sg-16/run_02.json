@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-16_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are kicking off a product campaign \u2014 bring in the right vendors, get materials certified, run the compliance checks, and push through the purchase orders.",
+    "n_resources": 273,
+    "user_msg_chars": 53812
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1\"\n}\n```\n\n**Rationale:** A product campaign kickoff requires coordinating vendors, certifications, compliance, and purchase orders. The **Purchase Order Network API** is the central resource that directly manages the procurement workflow\u2014creating, updating, and monitoring purchase orders across supplier networks. This is the linchpin for pushing through purchase orders.\n\nSupporting resources would include:\n- `sap.ehs:apiResource:VendorSafetyComplianceOrders:v1` for vendor certification/compliance\n- `sap.ariba:agent:SupplierComplianceAndIncidentMonitor:v1` for compliance checks\n- `sap.ariba:agent:MaterialAndEngineeringChangeCoordinator:v1` for material coordination\n\nHowever, the **Purchase Order Network API** is the single best resource as it encompasses the primary transaction flow for campaign execution.",
+    "picked_ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13737,
+  "latency_s": 3.79,
+  "wall_s": 3.791,
+  "cached": false
+}

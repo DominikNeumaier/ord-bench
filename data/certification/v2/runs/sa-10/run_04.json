@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-10_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to streamline our complete purchasing workflow to examine incoming client requests, evaluate buyer participation levels and regulatory standards, vet potential vendors, and give the green light for transaction completion with appropriate authorizations. As orders move through each phase, we also need to track their progression through various completion checkpoints and monitor delivery timelines. Additionally, include functionality to handle any customer grievances or billing disagreements that may arise during the transaction lifecycle, ensuring we can document claims and work through resolutions efficiently within our existing business platform.",
+    "n_resources": 273,
+    "user_msg_chars": 54318
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity describes a complete purchasing workflow with the following key requirements:\n\n1. **Examine incoming client requests** - Process purchase requisitions\n2. **Evaluate buyer participation levels and regulatory standards** - Compliance and authorization checks\n3. **Vet potential vendors** - Vendor evaluation and qualification\n4. **Give green light for transaction completion with authorizations** - Purchase order approval and execution\n5. **Track progression through completion checkpoints** - Order status and milestone tracking\n6. **Monitor delivery timelines** - Delivery tracking\n7. **Handle customer grievances/billing disagreements** - Dispute resolution and claims documentation\n\nThe **Purchase Order Network API** is the best match because it:\n- Directly manages the complete purchase order lifecycle (creation, updating, monitoring)\n- Operates across supplier networks for vendor vetting\n- Provides authorization and approval workflows\n- Tracks order progression and status\n- Integrates with the broader procurement ecosystem\n\nWhile `sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1` could handle billing disputes and `sap.crm:apiResource:CustomerAccountDisputeManagement:v1` could handle grievances, the Purchase Order Network API is the foundational resource that orchestrates the entire purchasing workflow described.",
+    "picked_ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+    "sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13906,
+  "latency_s": 4.552,
+  "wall_s": 4.554,
+  "cached": false
+}

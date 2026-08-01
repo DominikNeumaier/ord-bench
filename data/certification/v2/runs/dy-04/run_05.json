@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-04_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Our engineering team keeps pushing through design changes that require updates to our IT infrastructure, but we're struggling to keep pace with manual coordination across multiple systems. Right now, when a new component specification comes through, we have to manually track which servers need reconfiguration, which licenses need reallocation, and which hardware needs to be deployed\u2014and it's creating delays and tracking errors. We need a way to automate this entire workflow so that when engineering changes are approved, all the downstream IT infrastructure changes happen consistently and in the right sequence.",
+    "n_resources": 273,
+    "user_msg_chars": 54272
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity describes a critical need to automate the entire workflow when engineering changes are approved, ensuring that downstream IT infrastructure changes (server reconfiguration, license reallocation, hardware deployment) happen consistently and in the right sequence.\n\nThe **ChangeAutomationOrchestrator** is the best match because it:\n\n1. **Directly addresses the core problem**: It \"Automates and coordinates engineering changes, material updates, and product item deployments\"\n2. **Handles sequential orchestration**: It manages the end-to-end workflow ensuring changes flow through multiple systems in the correct order\n3. **Eliminates manual coordination**: It automates what is currently a manual, error-prone process across multiple systems\n4. **Integrates with approval workflows**: Works with change request approvals to trigger automated downstream actions\n5. **Manages infrastructure consistency**: Ensures all dependent infrastructure updates happen together, preventing tracking errors and delays\n\nWhile other resources like `AssetProvisioningOrchestrator` and `ChangeRequestApprovalWorkflow` are relevant, the `ChangeAutomationOrchestrator` is purpose-built for exactly this use case: automating the complete workflow from approved engineering changes through all downstream IT infrastructure updates.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+  ],
+  "solved": false,
+  "tokens": 13897,
+  "latency_s": 4.591,
+  "wall_s": 4.594,
+  "cached": false
+}

@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-03_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are launching a new product line \u2014 coordinate everything from receiving materials through engineering readiness, documentation, and operational safety before production starts.",
+    "n_resources": 273,
+    "user_msg_chars": 53834
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:** \n\nThe activity requires coordinating a complete product line launch from material receiving through engineering readiness, documentation, and operational safety before production starts. This is fundamentally a **change management and orchestration challenge**.\n\nThe **ChangeAutomationOrchestrator** is explicitly designed to:\n- Automate and coordinate engineering changes\n- Manage material updates and product item deployments\n- Handle the end-to-end change lifecycle\n\nThis agent serves as the orchestration hub that would:\n1. **Receive materials** - Coordinate with procurement and inventory systems\n2. **Engineering readiness** - Manage engineering changes and product configurations\n3. **Documentation** - Track and coordinate change documentation workflows\n4. **Operational safety** - Integrate with safety compliance as changes flow through the system\n5. **Production readiness** - Ensure all prerequisites are validated before production launch\n\nWhile other resources (like safety compliance APIs, procurement APIs, and engineering change management tools) would be *supporting* resources, the ChangeAutomationOrchestrator is the primary orchestrator that binds all these activities together into a cohesive product launch workflow.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13793,
+  "latency_s": 4.866,
+  "wall_s": 4.868,
+  "cached": false
+}

@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-39_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to simultaneously pull together our current spending commitments with a specific vendor and cross-reference that against our latest payroll records to reconcile Q4 budget allocations and ensure our procurement expenses align with employee compensation costs for audit purposes.",
+    "n_resources": 273,
+    "user_msg_chars": 53939
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1\"\n}\n```\n\n**Rationale:** This activity requires simultaneously accessing vendor spending commitments and cross-referencing payroll records for Q4 budget reconciliation and audit purposes. The **Invoice and Material Procurement Analytics** data product is the best match because it:\n\n1. **Aggregates invoice and material procurement metrics** - captures vendor spending commitments and procurement expenses\n2. **Provides spend analysis** - enables reconciliation of procurement costs against budget allocations\n3. **Supports financial reconciliation** - designed for spend analysis that can be cross-referenced with compensation data\n4. **Audit-ready** - data products are aggregated analytics specifically designed for compliance and audit scenarios\n\nWhile this resource focuses on procurement spending, it should be complemented with payroll data access (e.g., `sap.s4:apiResource:EmployeePayrollDataAPI:v1` or similar), but as a single \"best match\" resource for the core activity of reconciling vendor spending commitments against budget allocations for audit purposes, the Invoice and Material Procurement Analytics data product is optimal.",
+    "picked_ordId": "sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:VendorProcurementOrderAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13800,
+  "latency_s": 4.195,
+  "wall_s": 4.197,
+  "cached": false
+}

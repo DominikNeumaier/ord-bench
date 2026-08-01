@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-04_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Our engineering team keeps pushing through design changes that require updates to our IT infrastructure, but we're struggling to keep pace with manual coordination across multiple systems. Right now, when a new component specification comes through, we have to manually track which servers need reconfiguration, which licenses need reallocation, and which hardware needs to be deployed\u2014and it's creating delays and tracking errors. We need a way to automate this entire workflow so that when engineering changes are approved, all the downstream IT infrastructure changes happen consistently and in the right sequence.",
+    "n_resources": 273,
+    "user_msg_chars": 54272
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity describes a need to automate downstream IT infrastructure changes triggered by engineering design approvals. The key requirements are:\n\n1. **Automation of workflow coordination** - When engineering changes are approved, automatically trigger IT infrastructure updates\n2. **Consistent sequencing** - Ensure changes happen in the right order across multiple systems\n3. **Multi-system coordination** - Server reconfiguration, license reallocation, hardware deployment\n\nThe **ChangeAutomationOrchestrator** is the best match because it:\n- Explicitly automates and coordinates engineering changes across systems\n- Handles material updates and product item deployments\n- Orchestrates the downstream impacts of engineering changes\n- Ensures consistent, sequenced execution across the IT infrastructure landscape\n\nWhile other resources like `AssetProvisioningOrchestrator` and `ChangeRequestApprovalWorkflow` are relevant for specific aspects, the `ChangeAutomationOrchestrator` is purpose-built for exactly this use case: taking approved engineering changes and automatically coordinating all downstream infrastructure and deployment changes in a consistent sequence.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+  ],
+  "solved": false,
+  "tokens": 13864,
+  "latency_s": 4.316,
+  "wall_s": 4.321,
+  "cached": false
+}

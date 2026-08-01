@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-14_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are launching a new product \u2014 kick off the customer campaign, qualify vendors and materials, and confirm we have the engineering specs and supply chain ready.",
+    "n_resources": 273,
+    "user_msg_chars": 53816
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"emarsys.cx:agent:SegmentDrivenCampaignOptimizer:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires launching a new product with four key components:\n1. **Kick off customer campaign** - requires campaign execution and customer targeting\n2. **Qualify vendors and materials** - requires vendor/material validation\n3. **Confirm engineering specs** - requires engineering change/spec validation\n4. **Verify supply chain readiness** - requires supply chain coordination\n\nThe **Segment-Driven Campaign Optimizer Agent** is the best orchestrator because it:\n\n- **Autonomously identifies high-value customer segments** for campaign targeting (addresses campaign kickoff)\n- **Optimizes campaign targeting and messaging** across the customer base\n- Can integrate with vendor qualification and material sourcing workflows through its ability to work with customer engagement data\n- Serves as the central coordination point for a product launch that bridges marketing, procurement, and engineering readiness\n\nWhile other resources like `siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1` or `sap.s4:agent:BOMComplianceAutomationAgent:v1` handle specific aspects, the Segment-Driven Campaign Optimizer is the single resource that best fulfills the complete product launch activity by orchestrating customer engagement while integrating with supporting systems for vendor qualification, material readiness, and engineering validation.",
+    "picked_ordId": "emarsys.cx:agent:SegmentDrivenCampaignOptimizer:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13839,
+  "latency_s": 5.091,
+  "wall_s": 5.092,
+  "cached": false
+}

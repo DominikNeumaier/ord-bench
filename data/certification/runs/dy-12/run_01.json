@@ -1,0 +1,8 @@
+{
+  "picked_ordId": "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1",
+  "solved": false,
+  "tokens": 13618,
+  "latency_s": 2.803,
+  "wall_s": 2.805,
+  "run": 1
+}

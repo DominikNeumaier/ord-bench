@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-22_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to pull together a comprehensive view of our production risks and costs right now - I want to see both our material expenses broken down by supplier along with any compliance gaps, and at the same time analyze our recent safety incidents and trends across all our manufacturing sites. Can you get me both of those datasets so we can address cost optimization and safety improvements in our next operations review?",
+    "n_resources": 273,
+    "user_msg_chars": 54076
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:dataProduct:IncidentSafetyAnalytics:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires a **single comprehensive dataset** that addresses both production risks/costs AND safety incidents/trends across manufacturing sites. While the request mentions wanting \"both datasets,\" the instruction asks for the single best match.\n\n**Why this is the best choice:**\n\n`my.mes:dataProduct:IncidentSafetyAnalytics:v1` is positioned in the Manufacturing Execution System (MES) and aggregates:\n- **Incident and safety event data** with compliance metrics and trend analysis\n- **Safety compliance metrics** across manufacturing operations\n\nThis is the core safety analytics resource for manufacturing operations review.\n\n**Note on limitations:**\n\nIf a truly comprehensive view were needed, you would ideally want:\n- `my.mes:dataProduct:IncidentSafetyAnalytics:v1` (safety incidents/trends)\n- `my.mes:dataProduct:SupplierPerformanceAndProcurementOptimization:v1` (material expenses by supplier + cost analysis)\n\nHowever, since only one ordId can be returned, the safety incident analytics data product is the best single match as it directly addresses the safety improvements goal and is aggregated across all manufacturing sites, aligning with the stated priority of addressing both cost optimization AND safety improvements in the operations review.",
+    "picked_ordId": "my.mes:dataProduct:IncidentSafetyAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13878,
+  "latency_s": 4.213,
+  "wall_s": 4.215,
+  "cached": false
+}

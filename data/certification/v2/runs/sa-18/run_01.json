@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-18_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to manage a comprehensive transition of our manufacturing operations whenever we implement engineering changes to our products. The process should coordinate impact assessment across all affected areas, handle workforce planning requirements, and validate compliance with all relevant regulations. As part of this transition, we also need to ensure that our supplier materials and component specifications are validated and qualified for the new product design. Additionally, we'll need to coordinate all equipment modifications, maintenance adjustments, and necessary service updates required to support the new production specifications. Can you help us set up a workflow that handles all these interconnected aspects of the changeover?",
+    "n_resources": 273,
+    "user_msg_chars": 54401
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires a comprehensive workflow to manage manufacturing operations transitions during engineering changes, coordinating multiple interconnected aspects:\n\n1. **Impact Assessment & Coordination** - The ChangeAutomationOrchestrator automates and coordinates engineering changes, material updates, and product item deployments\n2. **Workforce Planning** - Works with change request workflows to handle workforce allocation and capacity\n3. **Regulatory Compliance Validation** - Integrates with compliance systems to ensure all changes meet regulatory requirements\n4. **Supplier Material & Component Qualification** - Coordinates material updates and supplier validation as part of engineering change processes\n5. **Equipment Modifications & Service Updates** - Manages equipment-related change coordination and service updates required for new production specifications\n\nWhile other resources exist for specific functions (e.g., `BOMComplianceValidator`, `AssetProvisioningOrchestrator`, `ChangeRequestApprovalWorkflow`), the **ChangeAutomationOrchestrator** is the best single match because it's specifically designed to automate and orchestrate the entire interconnected changeover process across engineering changes, materials, and product items\u2014making it the optimal orchestration point for a comprehensive manufacturing transition workflow.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:agent:BillOfMaterialsComplianceValidator:v1",
+    "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13901,
+  "latency_s": 4.668,
+  "wall_s": 4.67,
+  "cached": false
+}

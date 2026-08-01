@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-06_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "A customer order has arrived. Run the full fulfilment process \u2014 validate it, check compliance requirements, and get the right service provider assigned.",
+    "n_resources": 273,
+    "user_msg_chars": 53807
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1\"\n}\n```\n\n**Rationale:** \n\nThe activity requires running a \"full fulfilment process\" for a customer order that involves:\n1. **Validate** the order\n2. **Check compliance requirements**\n3. **Get service provider assigned**\n\nThe **ServiceTicketOrderManagementAPI** is the best match because it:\n- Explicitly manages **customer service tickets and orders** with **status tracking**\n- Handles order retrieval and management operations\n- Integrates with ITSM workflows for validation and fulfillment tracking\n- Provides the core order management capabilities needed for the fulfillment process\n\nWhile other resources like `CustomerProvisioningOrderAPI` or `CampaignCustomerProvisioningAPI` exist, the ServiceTicketOrderManagementAPI is most directly aligned with comprehensive order fulfillment including validation and status management. Compliance checking and provider assignment would then layer on top of this foundational order management capability through workflow orchestration.",
+    "picked_ordId": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:CustomerOrderManagementAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13755,
+  "latency_s": 4.39,
+  "wall_s": 4.39,
+  "cached": false
+}

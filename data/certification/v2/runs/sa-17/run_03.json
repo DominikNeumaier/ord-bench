@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-17_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to conduct a comprehensive review of our current compensation structure and analyze our total workforce costs across the organization. This should include validating our organizational structure to ensure accuracy, processing our benefits enrollment data, and coordinating with our procurement team on vendor costs. As part of this analysis, we also need to understand our employee hierarchy and their respective capability levels to ensure compensation aligns with roles and responsibilities. Additionally, we'll need to review our salary bands and grade levels to confirm they're being applied consistently across the company.",
+    "n_resources": 273,
+    "user_msg_chars": 54291
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"workday.hcm:apiResource:CompensationStructureDataExposure:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires a comprehensive compensation structure review including:\n- Salary bands and grade levels validation\n- Organizational structure validation\n- Employee hierarchy and capability levels\n- Compensation alignment with roles\n\nWhile the activity mentions multiple components (benefits enrollment, vendor costs, org structure), the **primary and most critical resource** needed is one that exposes compensation structures, salary bands, and pay grades.\n\n**workday.hcm:apiResource:CompensationStructureDataExposure:v1** directly addresses this core need by retrieving and managing compensation grade levels, salary bands, and pay structures\u2014essential for validating that compensation bands are being applied consistently across the company.\n\n**Secondary resources** that could support this analysis:\n- `sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1` (org structure)\n- `workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1` (benefits enrollment)\n- `sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1` (hierarchy & capabilities)\n\nHowever, given the constraint of selecting a **single** resource that best fulfills the activity, the compensation structure data exposure is the most direct match for conducting a comprehensive compensation structure review.",
+    "picked_ordId": "workday.hcm:apiResource:CompensationStructureDataExposure:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1",
+    "workday.hcm:apiResource:CompensationStructureDataExposure:v1"
+  ],
+  "solved": true,
+  "tokens": 13918,
+  "latency_s": 4.3,
+  "wall_s": 4.302,
+  "cached": false
+}

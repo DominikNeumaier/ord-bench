@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-03_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to prepare for launching our new product revision and ensure everything is ready for manufacturing. This includes validating that all our materials and components meet regulatory requirements and that our suppliers are properly verified. We also need to make sure our production team is properly staffed and compensated according to our updated labor requirements for this new revision. Can you orchestrate the complete preparation phase, including workforce readiness assessment and ensuring our financial structures align with the production needs?",
+    "n_resources": 273,
+    "user_msg_chars": 54213
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:agent:ProductionChangeOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires orchestrating a complete preparation phase for new product revision launch, encompassing:\n\n1. **Materials & Components Validation** - ensuring regulatory compliance\n2. **Supplier Verification** - validating supplier qualifications\n3. **Workforce Readiness** - staffing assessment and compensation alignment\n4. **Production Readiness** - aligning financial structures with production needs\n\nThe **Production Change Orchestrator** from the MES (Manufacturing Execution System) domain is the best fit because it:\n\n- **Automates engineering changes coordination** across production materials and items (directly addresses product revision launch)\n- **Integrates with supplier validation workflows** through related BOM compliance validators\n- **Coordinates across production teams** ensuring readiness for material and process changes\n- **Works within the manufacturing execution context** where all these elements converge\n\nWhile other resources address specific sub-domains (EHS for hazmat compliance, SAP Ariba for vendor management, SAP SF for compensation), the Production Change Orchestrator serves as the orchestration hub that would trigger and coordinate all necessary downstream validations across regulatory compliance, supplier verification, workforce planning, and financial alignment for the complete production launch preparation.",
+    "picked_ordId": "my.mes:agent:ProductionChangeOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:apiResource:CompensationAndSalaryManagement:v1",
+    "sap.s4:agent:BOMComplianceAutomationAgent:v1"
+  ],
+  "solved": false,
+  "tokens": 13865,
+  "latency_s": 4.501,
+  "wall_s": 4.507,
+  "cached": false
+}

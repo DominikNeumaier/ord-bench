@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-03_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to set up automated safety checks for our engineering change orders and material updates before they go to production. We've been manually validating everything against our compliance requirements, but it's slowing down our releases. Can you help me automate this validation process?",
+    "n_resources": 273,
+    "user_msg_chars": 53945
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1\"\n}\n```\n\nThis agent is the best match because it:\n\n1. **Directly addresses the core need**: Automates safety validation across engineering changes, materials, and product items - exactly what you need for pre-production compliance checks\n2. **Handles compliance requirements**: Specifically designed to validate against safety and compliance standards before items go to production\n3. **Covers your use case scope**: Works with engineering change orders and material updates, the two key artifacts you mentioned\n4. **Eliminates manual bottlenecks**: Automates the validation process you're currently doing manually, accelerating your release cycle\n5. **Integrates with compliance data**: Can connect with hazardous substance compliance APIs and other regulatory frameworks to perform comprehensive validation\n\nThis agent will systematically validate engineering changes and material updates against your compliance requirements before they proceed to production, enabling the automation you're seeking.",
+    "picked_ordId": "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1"
+  ],
+  "solved": true,
+  "tokens": 13756,
+  "latency_s": 3.812,
+  "wall_s": 3.814,
+  "cached": false
+}

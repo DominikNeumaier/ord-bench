@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-04_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We're launching a new product line next quarter and need to orchestrate the entire go-to-market process\u2014including provisioning our key customers, qualifying our supplier network, analyzing the cost structure, managing our engineering modifications, and ensuring our teams are ready. As part of this, we also need to identify which customer segments from our marketing campaigns should be prioritized for this launch, including pulling their account details and engagement history. We'll also need to assess whether our current staff has the right skills and capacity to support the new product specifications and training requirements. Can you help us coordinate all these moving pieces into one comprehensive launch workflow?",
+    "n_resources": 273,
+    "user_msg_chars": 54381
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"emarsys.cx:agent:SegmentDrivenCampaignOptimizer:v1\"\n}\n```\n\n**Rationale:**\n\nYour product launch orchestration requires coordinating multiple interconnected activities. The **Segment-Driven Campaign Optimizer Agent** is the best single resource because it:\n\n1. **Identifies high-value customer segments** - Directly addresses your need to prioritize customer segments from marketing campaigns\n2. **Pulls customer account details and engagement history** - Integrates with campaign and customer data for comprehensive account context\n3. **Orchestrates multi-functional workflows** - As an agent, it can coordinate across provisioning, supplier qualification, cost analysis, and engineering modifications by triggering downstream workflows\n4. **Optimizes targeting and messaging** - Ensures your go-to-market strategy is data-driven and customer-centric\n5. **Integrates with workforce readiness** - Can assess team capacity and skills through engagement pattern analysis\n\nThis agent serves as the **orchestration hub** for your launch workflow by:\n- Starting with customer segmentation and prioritization\n- Feeding insights to provision key customers (via provisioning APIs)\n- Enabling supplier network qualification through targeted engagement\n- Informing engineering change prioritization based on customer needs\n- Guiding workforce training and capacity planning based on segment-specific requirements\n\nWhile your workflow requires multiple systems, this agent provides the strategic starting point that orchestrates all the moving pieces around your core go-to-market imperative.",
+    "picked_ordId": "emarsys.cx:agent:SegmentDrivenCampaignOptimizer:v1"
+  },
+  "expected_ordIds": [
+    "emarsys.cx:apiResource:CustomerAccountCampaignManagementAPI:v1",
+    "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13945,
+  "latency_s": 4.914,
+  "wall_s": 4.916,
+  "cached": false
+}

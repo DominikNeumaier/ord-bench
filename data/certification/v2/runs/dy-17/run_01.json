@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-17_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to get approval for some design modifications we're making to our product line, and then make sure the updated materials are ordered and tracked through our supply chain. Can you help me coordinate the engineering paperwork and inventory adjustments all in one place?",
+    "n_resources": 273,
+    "user_msg_chars": 53929
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Reasoning:**\n\nYour activity requires:\n1. **Design modification approvals** - Engineering paperwork coordination\n2. **Updated materials ordering** - Supply chain material management\n3. **Tracking through supply chain** - Inventory adjustments and monitoring\n4. **Coordinate all in one place** - Unified orchestration\n\nThe **ChangeAutomationOrchestrator** is the best match because it:\n- Automates and coordinates **engineering changes** (design modifications)\n- Manages **material updates** (updated materials)\n- Handles **product item deployments** (inventory tracking)\n- Provides end-to-end orchestration across the entire change lifecycle\n\nWhile other resources like `EngineeringChangeManagementAPI` or `VendorProcurementOrderAPI` handle specific aspects, the orchestrator agent consolidates all these functions into a single coordinated workflow, which directly aligns with your requirement to \"coordinate...all in one place.\"",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+  ],
+  "solved": false,
+  "tokens": 13779,
+  "latency_s": 3.405,
+  "wall_s": 3.407,
+  "cached": false
+}

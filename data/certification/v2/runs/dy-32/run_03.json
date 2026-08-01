@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-32_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together our current inventory specifications alongside the vendor details we have on file, and simultaneously check on the status of our pending maintenance requests and any open change orders we've submitted to understand our full operational picture.",
+    "n_resources": 273,
+    "user_msg_chars": 53923
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:MaterialAndVendorMasterData:v1\"\n}\n```\n\n**Reasoning:**\n\nThis activity requires pulling together inventory specifications, vendor details, maintenance request status, and open change orders. The **Material and Vendor Master Data API** is the best single match because it:\n\n1. **Retrieves material specifications** - directly addresses inventory specifications need\n2. **Manages vendor information** - provides vendor details on file\n3. **Integrates with maintenance and change workflows** - the MES (Manufacturing Execution System) context indicates it connects to service management and change orders\n\nWhile other resources could address individual components (e.g., `my.mes:apiResource:EquipmentChangeAndServiceManagement:v1` for maintenance, or `my.mes:apiResource:EquipmentChangeAndServiceIntegration:v1` for changes), the Material and Vendor Master Data API provides the most comprehensive operational picture by consolidating the core inventory and vendor data that contextualizes the other operational elements.",
+    "picked_ordId": "my.mes:apiResource:MaterialAndVendorMasterData:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13762,
+  "latency_s": 3.427,
+  "wall_s": 3.428,
+  "cached": false
+}

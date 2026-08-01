@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-10_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to streamline our complete purchasing workflow to examine incoming client requests, evaluate buyer participation levels and regulatory standards, vet potential vendors, and give the green light for transaction completion with appropriate authorizations. As orders move through each phase, we also need to track their progression through various completion checkpoints and monitor delivery timelines. Additionally, include functionality to handle any customer grievances or billing disagreements that may arise during the transaction lifecycle, ensuring we can document claims and work through resolutions efficiently within our existing business platform.",
+    "n_resources": 273,
+    "user_msg_chars": 54318
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1\"\n}\n```\n\n**Rationale:** This activity describes a comprehensive purchasing workflow that requires:\n- Examining incoming client requests and evaluating buyer participation & regulatory standards\n- Vetting potential vendors\n- Authorizing transaction completion\n- Tracking order progression through completion checkpoints\n- Monitoring delivery timelines\n- Handling customer grievances, billing disagreements, and claims documentation\n\nThe **Purchase Order Network API** is the best match because it directly manages the complete purchase order lifecycle across supplier networks, including creation, updates, and monitoring\u2014which forms the core of the purchasing workflow described. It integrates with the vendor vetting and authorization processes needed.\n\nWhile other resources like `sap.crm:apiResource:CustomerAccountDisputeManagement:v1` could handle disputes and `sap.s4:apiResource:CustomerOrderManagementAPI:v1` could track orders, the Purchase Order Network API is the single resource that best encompasses the complete purchasing workflow from request through delivery and vendor management that is central to the activity's requirements.",
+    "picked_ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+    "sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13840,
+  "latency_s": 4.608,
+  "wall_s": 4.611,
+  "cached": false
+}

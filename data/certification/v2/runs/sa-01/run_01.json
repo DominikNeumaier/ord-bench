@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-01_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to establish a comprehensive procurement and delivery workflow that coordinates vendor assessment, augments customer purchases with enriched data, validates regulatory requirements, and manages incoming stock alongside staff and resource allocation. The process should also track milestone progression and delivery status throughout the entire cycle, including the ability to handle customer grievances and reconcile any disagreements that arise during fulfillment. Can you design this end-to-end supply chain orchestration to ensure seamless coordination across all these interconnected operations?",
+    "n_resources": 273,
+    "user_msg_chars": 54262
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:agent:OpportunityToOrderAutomationEngine:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires an end-to-end supply chain orchestration system that coordinates vendor assessment, procurement, delivery, customer data enrichment, regulatory compliance, inventory management, staff allocation, milestone tracking, and dispute resolution.\n\n**sap.s4:agent:OpportunityToOrderAutomationEngine:v1** is the best match because it:\n\n1. **Orchestrates the complete procurement-to-fulfillment cycle** - monitoring and automating order creation workflows across the entire supply chain lifecycle\n2. **Integrates with core supply chain systems** - SAP S/4HANA provides comprehensive access to:\n   - Material receipt and inbound logistics (MaterialReceiptInboundAPI)\n   - Production execution and scheduling (ProductionExecutionAPI, ProductionOrderAndMachineScheduling)\n   - Workforce capacity management (WorkforceCapacityAndTimeOffManagement)\n   - Hazardous substance compliance (HazardousSubstanceComplianceAPI)\n   - Engineering changes and product data (EngineeringChangeProductDataAPI)\n   - Customer order management (CustomerOrderManagementAPI)\n   - Financial tracking (CustomerAccountFinancialAPI)\n\n3. **Supports coordinated operations** - Combined with complementary S/4HANA agents:\n   - ProcurementMatchingAgent (vendor assessment)\n   - BOMComplianceAutomationAgent (regulatory validation)\n   - IncidentRootCauseAutomationEngine (dispute resolution)\n\n4. **Enables seamless data flow** - SAP S/4HANA's integrated architecture ensures synchronized vendor selection, order fulfillment tracking, inventory management, and milestone progression across all interconnected operations.",
+    "picked_ordId": "sap.s4:agent:OpportunityToOrderAutomationEngine:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+    "sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 14003,
+  "latency_s": 5.4,
+  "wall_s": 5.402,
+  "cached": false
+}

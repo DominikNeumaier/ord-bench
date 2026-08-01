@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-12_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to coordinate our vendor compliance checks with our occupational safety programs and production change rollout.",
+    "n_resources": 273,
+    "user_msg_chars": 53774
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:VendorContractComplianceOrchestrator:v1\"\n}\n```\n\n**Rationale:** This agent best fulfills the activity by automating vendor compliance monitoring across the procurement lifecycle, which directly addresses vendor compliance checks. It can be orchestrated alongside:\n- `my.mes:agent:HazmatIncidentComplianceMonitor:v1` for occupational safety program coordination (hazardous substance monitoring)\n- `corp.itsm:agent:ChangeAutomationOrchestrator:v1` for production change rollout coordination\n\nThe VendorContractComplianceOrchestrator is the primary resource that directly manages vendor compliance verification and can integrate with safety and change management workflows.",
+    "picked_ordId": "corp.itsm:agent:VendorContractComplianceOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13678,
+  "latency_s": 3.336,
+  "wall_s": 3.339,
+  "cached": false
+}

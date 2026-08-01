@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-01_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to handle a product engineering change end to end \u2014 from assessing the production impact all the way through validating our materials are compliant with the new design.",
+    "n_resources": 273,
+    "user_msg_chars": 53831
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Reasoning:**\n\nThe activity requires handling a product engineering change end-to-end, specifically:\n1. **Assessing production impact** - evaluating how the change affects manufacturing\n2. **Validating material compliance** - ensuring new design materials meet regulatory requirements\n\nThe **ChangeAutomationOrchestrator** is explicitly designed to \"automate and coordinate engineering changes, material updates, and product item deployments\" - which directly addresses both the change management and material validation aspects of this activity.\n\nWhile other resources like `siemens.plm:agent:EngineeringChangeAndComplianceOrchestrator:v1` or `sap.s4:agent:EngineeringChangeOrchestrator:v1` could support portions of this work, the ITSM-based orchestrator is the best single resource as it provides comprehensive end-to-end orchestration specifically for engineering changes with integrated material updates and deployment coordination.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13758,
+  "latency_s": 3.917,
+  "wall_s": 3.919,
+  "cached": false
+}

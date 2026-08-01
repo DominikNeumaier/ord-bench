@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-10_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Our procurement team needs a full compensation review \u2014 payroll baseline, organizational hierarchy, benefits status, and workforce cost analysis.",
+    "n_resources": 273,
+    "user_msg_chars": 53800
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.sf:dataProduct:SalesCompensationAndEmployeeMetricsAnalytics:v1\"\n}\n```\n\n**Rationale:** The activity requires a comprehensive compensation review covering payroll baseline, organizational hierarchy, benefits status, and workforce cost analysis. While multiple resources touch on compensation, `SalesCompensationAndEmployeeMetricsAnalytics` is the best match as it explicitly aggregates pay structures, workforce productivity data, and provides consolidated earnings and compensation intelligence. It directly addresses the payroll and organizational metrics needed for a full compensation review.\n\nAlternative strong candidates would be `sap.sf:apiResource:EmployeeCompensationManagement:v1` or `workday.hcm:dataProduct:CompensationTrendAnalytics:v1`, but the selected data product best fulfills the stated need for comprehensive analysis across multiple compensation dimensions.",
+    "picked_ordId": "sap.sf:dataProduct:SalesCompensationAndEmployeeMetricsAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:EmployeePayrollDataAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13708,
+  "latency_s": 3.765,
+  "wall_s": 3.767,
+  "cached": false
+}

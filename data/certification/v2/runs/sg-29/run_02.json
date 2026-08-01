@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-29_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We had a safety incident at one of our sites. Run the full response \u2014 hazard monitoring, exposure evaluation, equipment impact analysis, customer compliance check, and payroll review.",
+    "n_resources": 273,
+    "user_msg_chars": 53838
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1\"\n}\n```\n\n**Rationale:** The Occupational Safety Incident Coordinator agent is purpose-built to handle comprehensive safety incident response workflows. It directly addresses all five required components:\n\n1. **Hazard monitoring** - Monitors and detects safety incidents with hazardous substance involvement\n2. **Exposure evaluation** - Coordinates safety response workflows including exposure assessment\n3. **Equipment impact analysis** - Integrated with hazardous substance and equipment tracking systems\n4. **Customer compliance check** - Works with safety compliance data for regulatory adherence\n5. **Payroll review** - Coordinates incident workflows that feed into compensation and safety risk correlation analytics (via linked data products like Employee Compensation and Safety Risk Correlation Analytics)\n\nThis agent orchestrates the full incident response lifecycle across ITSM and can interface with hazardous substance compliance APIs, safety compliance systems, and incident documentation\u2014making it the single best match for executing a complete safety incident response protocol.",
+    "picked_ordId": "corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13759,
+  "latency_s": 3.939,
+  "wall_s": 3.941,
+  "cached": false
+}

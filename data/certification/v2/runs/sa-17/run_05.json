@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-17_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to conduct a comprehensive review of our current compensation structure and analyze our total workforce costs across the organization. This should include validating our organizational structure to ensure accuracy, processing our benefits enrollment data, and coordinating with our procurement team on vendor costs. As part of this analysis, we also need to understand our employee hierarchy and their respective capability levels to ensure compensation aligns with roles and responsibilities. Additionally, we'll need to review our salary bands and grade levels to confirm they're being applied consistently across the company.",
+    "n_resources": 273,
+    "user_msg_chars": 54291
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"workday.hcm:dataProduct:CompensationTrendAnalytics:v1\"\n}\n```\n\n**Rationale:** This activity requires a comprehensive analysis of compensation structure, workforce costs, organizational hierarchy, and salary bands across the organization. The **Compensation Trend Analytics** data product is the best match because it:\n\n1. **Aggregates compensation metrics** across employee populations - directly supporting the salary band and grade level review\n2. **Provides trending analysis** - enabling validation of consistent application of compensation across the company\n3. **Integrates organizational data** - supporting the review of employee hierarchy and their respective compensation alignment\n4. **Enables cost analysis** - facilitating the total workforce cost assessment across the organization\n\nWhile other resources like `sap.sf:dataProduct:SalesCompensationAndEmployeeMetricsAnalytics:v1` or various compensation management APIs exist, the Workday Compensation Trend Analytics data product is specifically designed for comprehensive compensation structure review and trend analysis across the full workforce.",
+    "picked_ordId": "workday.hcm:dataProduct:CompensationTrendAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1",
+    "workday.hcm:apiResource:CompensationStructureDataExposure:v1"
+  ],
+  "solved": false,
+  "tokens": 13819,
+  "latency_s": 3.639,
+  "wall_s": 3.642,
+  "cached": false
+}

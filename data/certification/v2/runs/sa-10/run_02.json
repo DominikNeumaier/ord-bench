@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-10_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to streamline our complete purchasing workflow to examine incoming client requests, evaluate buyer participation levels and regulatory standards, vet potential vendors, and give the green light for transaction completion with appropriate authorizations. As orders move through each phase, we also need to track their progression through various completion checkpoints and monitor delivery timelines. Additionally, include functionality to handle any customer grievances or billing disagreements that may arise during the transaction lifecycle, ensuring we can document claims and work through resolutions efficiently within our existing business platform.",
+    "n_resources": 273,
+    "user_msg_chars": 54318
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1\"\n}\n```\n\n**Rationale:**\n\nThe business activity describes a complete **purchasing workflow** that encompasses:\n\n1. **Examining incoming client requests** \u2192 Purchase order creation and management\n2. **Evaluating buyer participation and regulatory standards** \u2192 Compliance validation\n3. **Vetting potential vendors** \u2192 Vendor management and qualification\n4. **Authorizing transaction completion** \u2192 Approval workflows\n5. **Tracking order progression through checkpoints** \u2192 Order status tracking\n6. **Monitoring delivery timelines** \u2192 Fulfillment tracking\n7. **Handling customer grievances and billing disputes** \u2192 Dispute resolution and invoice reconciliation\n\n**PurchaseOrderNetworkAPI:v1** is the single best-fit resource because it:\n- Explicitly manages **creating, updating, and monitoring purchase orders** across supplier networks\n- Integrates with the broader procurement ecosystem for vendor management and compliance\n- Provides order lifecycle tracking capabilities\n- Serves as the foundational system for the complete purchasing workflow described\n\nWhile complementary resources exist (like `VendorInvoiceReconciliationAutomation` for disputes, or `Material and Vendor Master Data APIs` for vendor vetting), the Purchase Order Network API is the core orchestration point that addresses the primary purchasing workflow requirement.",
+    "picked_ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+    "sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13896,
+  "latency_s": 5.279,
+  "wall_s": 5.286,
+  "cached": false
+}

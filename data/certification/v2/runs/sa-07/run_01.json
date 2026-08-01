@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-07_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to orchestrate a comprehensive transition of our product line by first evaluating whether our organization is ready for this change, then validating that we meet all regulatory compliance requirements before moving forward. The process should also manage how this impacts our procurement operations and reconfigure our production workflows accordingly. As part of this transition, we'll need to ensure we're tracking any hazardous materials in our new product specifications and managing the cost implications including how this affects our workforce compensation structures.",
+    "n_resources": 273,
+    "user_msg_chars": 54238
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity describes a comprehensive product line transition requiring:\n\n1. **Change Readiness Assessment** - Evaluating organizational readiness\n2. **Regulatory Compliance Validation** - Meeting compliance requirements\n3. **Procurement Impact Management** - Managing procurement operations\n4. **Production Workflow Reconfiguration** - Adjusting production workflows\n5. **Hazardous Materials Tracking** - Managing hazardous substance specifications\n6. **Cost & Compensation Management** - Handling workforce compensation impacts\n\nThe **ChangeAutomationOrchestrator** is the best match because it:\n- Automates and coordinates engineering changes, material updates, and product item deployments\n- Serves as the central orchestration point for comprehensive change coordination\n- Integrates with other specialized systems (compliance, procurement, production, hazmat, workforce) to manage the complete transition workflow\n- Handles the holistic change management process that encompasses readiness, validation, impact assessment, and reconfiguration across multiple operational domains\n\nWhile other agents could support specific aspects (e.g., hazmat compliance, procurement, workforce compensation), the ChangeAutomationOrchestrator provides the primary orchestration capability needed to manage this comprehensive product line transition as an integrated process.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1",
+    "workday.hcm:apiResource:PayrollProcessingDataManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13886,
+  "latency_s": 4.143,
+  "wall_s": 4.146,
+  "cached": false
+}

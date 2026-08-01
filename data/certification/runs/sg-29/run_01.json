@@ -1,0 +1,8 @@
+{
+  "picked_ordId": "corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1",
+  "solved": false,
+  "tokens": 13751,
+  "latency_s": 4.22,
+  "wall_s": 4.221,
+  "run": 1
+}

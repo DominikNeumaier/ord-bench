@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-31_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together our current safety performance metrics across all reported events while simultaneously ensuring our chemical inventory documentation stays current with regulatory standards\u2014can I get both of those data sets integrated into one dashboard view?",
+    "n_resources": 273,
+    "user_msg_chars": 53921
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:dataProduct:SafetyIncidentMetricsAggregate:v1\"\n}\n```\n\n**Rationale:** This data product is the best match because it:\n\n1. **Safety Performance Metrics**: Aggregates safety incidents across sites and time periods, providing the safety performance metrics you need\n2. **Chemical Inventory Compliance**: While this data product focuses on incidents, it should be paired with `sap.ehs:apiResource:ChemicalInventoryCompliance:v1` or `sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1` for the regulatory documentation\n\nHowever, if you need a **single integrated solution**, `sap.ehs:dataProduct:SafetyIncidentMetricsAggregate:v1` is the primary dashboard foundation for safety events. For the complete chemical inventory documentation integration, you would supplement this with the chemical compliance APIs from SAP EHS, which provide the regulatory data synchronization needed alongside the incident metrics in a unified dashboard view.",
+    "picked_ordId": "sap.ehs:dataProduct:SafetyIncidentMetricsAggregate:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13765,
+  "latency_s": 3.689,
+  "wall_s": 3.69,
+  "cached": false
+}

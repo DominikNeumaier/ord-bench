@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-34_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together compensation figures and tax withholdings for our quarterly reconciliation, and at the same time I'd like to grant our marketing team access to manage client engagement initiatives across our accounts. Can you help me set this up efficiently in a single request?",
+    "n_resources": 273,
+    "user_msg_chars": 53941
+  },
+  "output": {
+    "raw_text": "Looking at this activity, you need to handle two distinct requests:\n\n1. **Compensation figures and tax withholdings for quarterly reconciliation** - This requires payroll and compensation data\n2. **Grant marketing team access to manage client engagement initiatives** - This requires campaign access management\n\nHowever, the instruction states you must return a **single ordId** that \"best fulfils the activity.\"\n\nThese are fundamentally different capabilities:\n- Payroll/compensation data comes from HR/financial systems\n- Campaign access management comes from marketing/CX systems\n\nAnalyzing the resources, the most appropriate single choice would be the one that enables the marketing team access capability, since the compensation/tax data would typically flow through separate financial reconciliation processes that aren't campaign-related.\n\nThe best match is the resource specifically designed for granting marketing team access to manage campaigns across customer accounts:\n\n```json\n{\"ordId\": \"corp.itsm:apiResource:CampaignAccessManagementAPI:v1\"}\n```\n\n**Note:** While this resource addresses the campaign access portion, you should ideally use **two separate resources** for this activity:\n- `workday.hcm:apiResource:PayrollDataExposure:v1` for compensation and tax withholding data\n- `corp.itsm:apiResource:CampaignAccessManagementAPI:v1` for marketing team access provisioning",
+    "picked_ordId": "corp.itsm:apiResource:CampaignAccessManagementAPI:v1"
+  },
+  "expected_ordIds": [
+    "workday.hcm:apiResource:PayrollProcessingDataManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13839,
+  "latency_s": 4.335,
+  "wall_s": 4.338,
+  "cached": false
+}

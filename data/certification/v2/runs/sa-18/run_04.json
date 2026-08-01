@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-18_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to manage a comprehensive transition of our manufacturing operations whenever we implement engineering changes to our products. The process should coordinate impact assessment across all affected areas, handle workforce planning requirements, and validate compliance with all relevant regulations. As part of this transition, we also need to ensure that our supplier materials and component specifications are validated and qualified for the new product design. Additionally, we'll need to coordinate all equipment modifications, maintenance adjustments, and necessary service updates required to support the new production specifications. Can you help us set up a workflow that handles all these interconnected aspects of the changeover?",
+    "n_resources": 273,
+    "user_msg_chars": 54401
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity describes a comprehensive manufacturing operations transition workflow that requires coordinating:\n- Engineering change impact assessment\n- Workforce planning and coordination\n- Regulatory compliance validation\n- Supplier material and component qualification\n- Equipment modifications and maintenance adjustments\n- Service updates for new production specifications\n\nThe **ChangeAutomationOrchestrator** is explicitly designed to \"automate and coordinate engineering changes, material updates, and product item deployments\" - making it the best match for orchestrating all interconnected aspects of this changeover workflow.\n\nWhile other agents like `BOMComplianceValidator`, `SupplierQualityComplianceOrchestrator`, and `AssetProvisioningOrchestrator` handle specific sub-domains, the ChangeAutomationOrchestrator is the primary orchestration engine that coordinates across all these interconnected transition aspects comprehensively.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:agent:BillOfMaterialsComplianceValidator:v1",
+    "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13829,
+  "latency_s": 4.111,
+  "wall_s": 4.114,
+  "cached": false
+}

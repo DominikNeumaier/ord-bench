@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-23_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Our production schedule needs to be adjusted. Handle the change request, run the hazardous material and safety checks, and formally document the engineering change.",
+    "n_resources": 273,
+    "user_msg_chars": 53819
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1\"\n}\n```\n\n**Rationale**: The activity requires three interconnected tasks for production schedule adjustment:\n\n1. **Handle the change request** - The Change Request Approval Workflow API directly manages change request approvals, scheduling, and impact assessment\n2. **Run hazardous material and safety checks** - While this API focuses on change management, it integrates with impact assessment that would flag safety concerns. For comprehensive hazmat checks, the workflow would coordinate with safety systems\n3. **Formally document the engineering change** - The Change Request Approval Workflow API provides formal documentation and tracking of engineering changes\n\nThis is the primary orchestration point for production schedule changes. It provides the workflow management infrastructure needed to handle, approve, assess impact, and formally document the change request. Supporting agents like `corp.itsm:agent:ChangeAutomationOrchestrator:v1` and `my.mes:agent:ProductionChangeOrchestrator:v1` would work in conjunction, but the API resource itself is the foundational tool for this business activity.",
+    "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:apiResource:CompensationAndSalaryManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13769,
+  "latency_s": 4.012,
+  "wall_s": 4.014,
+  "cached": false
+}

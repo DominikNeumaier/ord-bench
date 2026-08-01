@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-14_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to launch a new product campaign that coordinates with our vendors, validates compliance requirements, and ensures production is ready to fulfill orders. We're provisioning new customers across multiple regions, so we'll need to qualify vendors and manage the entire supply chain orchestration. As part of this rollout, we also need to track any product modifications we're making and manage the associated equipment and service requests that come with the deployment. Can you help us coordinate all of these moving parts together so nothing falls through the cracks?",
+    "n_resources": 273,
+    "user_msg_chars": 54229
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeReleaseCoordinator:v1\"\n}\n```\n\n**Rationale:**\n\nThe **Change Release Coordinator** agent is the best match for orchestrating all the moving parts of your product campaign launch because it:\n\n1. **Coordinates product releases** - Directly manages engineering changes and product item deployments across your organization\n2. **Manages inventory synchronization** - Ensures production readiness and fulfillment capability\n3. **Integrates multiple workflows** - Automates coordination between:\n   - Vendor qualification and supply chain management\n   - Compliance validation (via integrated change approval processes)\n   - Equipment and service requests\n   - Customer provisioning across regions\n   - Product modifications tracking\n\n4. **Prevents gaps** - The orchestration focus ensures nothing falls through the cracks by automating handoffs between compliance, production, vendor, and customer provisioning workflows\n\nWhile other resources handle specific domains (vendor management APIs, compliance APIs, customer provisioning), the **ChangeReleaseCoordinator** agent is purpose-built to choreograph these components together as an integrated campaign launch.",
+    "picked_ordId": "corp.itsm:agent:ChangeReleaseCoordinator:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1",
+    "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13843,
+  "latency_s": 4.398,
+  "wall_s": 4.405,
+  "cached": false
+}

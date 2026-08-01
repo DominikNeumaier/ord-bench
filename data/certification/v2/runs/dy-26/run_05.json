@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-26_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together our current payroll structure and benefit allocations for the upcoming fiscal review, and at the same time, I need to log and track some equipment upgrades we're rolling out across departments to stay audit-ready. Can you help me access both of those workflows in a single request?",
+    "n_resources": 273,
+    "user_msg_chars": 53960
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.sf:apiResource:EmployeeCompensationManagement:v1\"\n}\n```\n\n**Rationale:** Your activity requires accessing two distinct workflows:\n\n1. **Payroll structure and benefit allocations** - `sap.sf:apiResource:EmployeeCompensationManagement:v1` directly exposes employee compensation, salary structures, and manages the payroll data needed for fiscal review planning.\n\n2. **Equipment upgrades tracking and logging** - While this resource doesn't directly handle equipment, the single best match must address the primary business need. However, if you need to handle both simultaneously, you would ideally need two resources: this one for payroll/benefits PLUS `corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1` or `my.mes:apiResource:EquipmentChangeAndServiceManagement:v1` for equipment change tracking.\n\nSince you requested a **single ordId**, the compensation management API is the higher-priority match for the fiscal review's payroll and benefit allocation focus. For the equipment upgrades workflow, you would need a separate request using a change/asset management resource.",
+    "picked_ordId": "sap.sf:apiResource:EmployeeCompensationManagement:v1"
+  },
+  "expected_ordIds": [
+    "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13809,
+  "latency_s": 4.162,
+  "wall_s": 4.163,
+  "cached": false
+}

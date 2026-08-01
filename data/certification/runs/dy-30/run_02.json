@@ -1,0 +1,8 @@
+{
+  "picked_ordId": "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1",
+  "solved": true,
+  "tokens": 13744,
+  "latency_s": 0.0,
+  "wall_s": 0.0,
+  "run": 2
+}

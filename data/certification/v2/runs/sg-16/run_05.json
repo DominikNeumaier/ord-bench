@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-16_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are kicking off a product campaign \u2014 bring in the right vendors, get materials certified, run the compliance checks, and push through the purchase orders.",
+    "n_resources": 273,
+    "user_msg_chars": 53812
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1\"\n}\n```\n\n**Rationale:** This activity requires orchestrating a complete product campaign lifecycle including vendor management, material certification, compliance checks, and purchase orders. The **Purchase Order Network API** is the core resource that directly manages purchase order creation, updates, and monitoring across supplier networks\u2014essential for pushing through POs. \n\nWhile this is a complex, multi-step activity that would benefit from complementary resources (like `sap.ehs:apiResource:MaterialHazardDataExchange:v1` for certifications and compliance, or `sap.ariba:agent:SupplierComplianceAndIncidentMonitor:v1` for vendor compliance), the PurchaseOrderNetworkAPI is the single best match as the primary execution mechanism for materializing the campaign's vendor orders and PO workflow.",
+    "picked_ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13719,
+  "latency_s": 3.791,
+  "wall_s": 3.793,
+  "cached": false
+}

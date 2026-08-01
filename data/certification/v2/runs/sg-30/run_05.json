@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-30_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to push an engineering change through to completion \u2014 formal request, material and compliance validation, workforce readiness, approvals, and final vendor data retrieval.",
+    "n_resources": 273,
+    "user_msg_chars": 53833
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:** The `ChangeAutomationOrchestrator` agent is purpose-built to \"automate and coordinate engineering changes, material updates, and product item deployments.\" This single resource directly addresses all phases of the engineering change lifecycle mentioned in the activity:\n\n- **Formal request**: Change request initiation and coordination\n- **Material and compliance validation**: Material updates and product item handling with compliance oversight\n- **Workforce readiness**: Product deployment coordination with workforce considerations\n- **Approvals**: Change coordination workflows (managed through orchestration)\n- **Final vendor data retrieval**: Material and product item data handling\n\nWhile complementary resources exist (e.g., `ChangeRequestApprovalWorkflow` for approvals, `EngineeringChangeProductIntegration` for material validation), the orchestrator agent consolidates and automates the end-to-end process, making it the optimal single selection for pushing an engineering change \"through to completion.\"",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+  ],
+  "solved": false,
+  "tokens": 13756,
+  "latency_s": 4.321,
+  "wall_s": 4.323,
+  "cached": false
+}

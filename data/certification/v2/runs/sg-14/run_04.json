@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-14_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are launching a new product \u2014 kick off the customer campaign, qualify vendors and materials, and confirm we have the engineering specs and supply chain ready.",
+    "n_resources": 273,
+    "user_msg_chars": 53816
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"emarsys.cx:agent:SegmentDrivenCampaignOptimizer:v1\"\n}\n```\n\n**Reasoning:** This activity requires orchestrating a product launch campaign with multiple interconnected components:\n\n1. **Kick off customer campaign** \u2192 The Segment-Driven Campaign Optimizer autonomously identifies high-value customer segments and optimizes campaign targeting and messaging, which is core to campaign launch initiation.\n\n2. **Qualify vendors and materials** \u2192 While this agent specializes in campaign optimization, the ecosystem provides complementary resources (like `sap.ariba:agent:MaterialAndEngineeringChangeCoordinator` and `siemens.plm:agent:SupplierQualificationAndMaterialCoordinator`), but the primary orchestration point for a product launch campaign belongs with the campaign optimizer.\n\n3. **Confirm engineering specs and supply chain ready** \u2192 The agent works within an integrated data ecosystem that includes engineering change resources, material specs, and vendor/procurement data needed for readiness validation.\n\nThis agent serves as the best single starting point because it orchestrates the customer-facing campaign launch while having access to the broader supply chain, vendor, and engineering data needed to validate readiness across all dimensions of the product launch.",
+    "picked_ordId": "emarsys.cx:agent:SegmentDrivenCampaignOptimizer:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13796,
+  "latency_s": 4.537,
+  "wall_s": 4.538,
+  "cached": false
+}

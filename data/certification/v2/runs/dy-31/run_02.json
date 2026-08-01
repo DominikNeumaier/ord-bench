@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-31_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together our current safety performance metrics across all reported events while simultaneously ensuring our chemical inventory documentation stays current with regulatory standards\u2014can I get both of those data sets integrated into one dashboard view?",
+    "n_resources": 273,
+    "user_msg_chars": 53921
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:dataProduct:SafetyIncidentMetricsAggregate:v1\"\n}\n```\n\n**Rationale:** This data product directly aggregates safety incident metrics and compliance tracking data. While it doesn't natively include chemical inventory, it's the best single match for safety performance metrics. However, for a truly integrated dashboard covering both safety performance AND chemical inventory compliance, you would ideally need to combine this with `sap.ehs:apiResource:ChemicalInventoryCompliance:v1` or `sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1`. Since the question asks for a single ordId, the data product is the better choice as it provides the aggregated metrics view needed for dashboarding, though it would require supplementation with inventory data sources.",
+    "picked_ordId": "sap.ehs:dataProduct:SafetyIncidentMetricsAggregate:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13716,
+  "latency_s": 3.081,
+  "wall_s": 3.083,
+  "cached": false
+}

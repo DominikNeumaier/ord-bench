@@ -1,0 +1,8 @@
+{
+  "picked_ordId": "sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1",
+  "solved": false,
+  "tokens": 13714,
+  "latency_s": 3.114,
+  "wall_s": 3.115,
+  "run": 1
+}

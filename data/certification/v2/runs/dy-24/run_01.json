@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-24_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to verify that our current component sourcing meets all regulatory requirements while simultaneously checking our real-time inventory levels to ensure we have adequate stock from our qualified suppliers before we proceed with the next production run.",
+    "n_resources": 273,
+    "user_msg_chars": 53913
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:MaterialAndVendorInventoryManagement:v1\"\n}\n```\n\n**Rationale:** This activity requires two simultaneous checks:\n\n1. **Regulatory compliance verification** for component sourcing\n2. **Real-time inventory levels** from qualified suppliers\n\nThe `MaterialAndVendorInventoryManagement` API is the best match because it:\n- Retrieves and manages **material stock levels** (real-time inventory)\n- Accesses **vendor supply chain data** (qualified suppliers)\n- Integrates with production planning workflows\n- Provides the dual capability to verify both inventory adequacy AND supplier qualification status before production execution\n\nWhile `SupplierProcurementOrderManagement` handles procurement orders and `HazardousSubstanceComplianceManagement` addresses regulatory requirements separately, the `MaterialAndVendorInventoryManagement` API uniquely consolidates material availability with vendor qualification data needed for this pre-production verification activity.",
+    "picked_ordId": "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:agent:BOMComplianceValidator:v1"
+  ],
+  "solved": false,
+  "tokens": 13751,
+  "latency_s": 3.546,
+  "wall_s": 3.547,
+  "cached": false
+}

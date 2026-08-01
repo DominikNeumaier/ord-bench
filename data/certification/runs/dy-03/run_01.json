@@ -1,0 +1,8 @@
+{
+  "picked_ordId": "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1",
+  "solved": true,
+  "tokens": 13764,
+  "latency_s": 3.713,
+  "wall_s": 3.714,
+  "run": 1
+}

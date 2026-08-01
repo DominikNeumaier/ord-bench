@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-29_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to pull our current production queue status and see which items are scheduled for the next shift, while simultaneously checking our active campaign outreach to identify which contacts have engaged with our latest messaging so we can coordinate our manufacturing timeline with customer communication touchpoints.",
+    "n_resources": 273,
+    "user_msg_chars": 53974
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:CampaignAndCustomerOrderManagement:v1\"\n}\n```\n\n**Rationale:** This resource best fulfills the activity because it:\n\n1. **Production Queue Status**: Manages production campaigns and customer account orders within manufacturing execution workflows, allowing you to pull current production queue status and scheduled items for the next shift.\n\n2. **Campaign Engagement Coordination**: Simultaneously manages the linkage between campaigns and customer orders, enabling you to check active campaign outreach and identify which contacts have engaged with messaging.\n\n3. **Timeline Coordination**: The dual focus on both manufacturing execution and customer engagement enables the coordination of manufacturing timelines with customer communication touchpoints as requested.\n\nWhile other resources like `my.mes:apiResource:EquipmentOEEAnalytics:v1` or `emarsys.cx:apiResource:CampaignContactEngagementAPI:v1` address individual aspects, the **CampaignAndCustomerOrderManagement API** uniquely bridges both the production and campaign engagement domains needed to fulfill this integrated activity.",
+    "picked_ordId": "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:apiResource:MachineProductionOrderIntegration:v1"
+  ],
+  "solved": false,
+  "tokens": 13779,
+  "latency_s": 3.859,
+  "wall_s": 3.86,
+  "cached": false
+}

@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-29_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We had a safety incident at one of our sites. Run the full response \u2014 hazard monitoring, exposure evaluation, equipment impact analysis, customer compliance check, and payroll review.",
+    "n_resources": 273,
+    "user_msg_chars": 53838
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1\"\n}\n```\n\n**Rationale**: The Occupational Safety Incident Coordinator agent is specifically designed to \"monitor and coordinate safety incidents with hazardous substance involvement for compliance.\" This single resource directly addresses all five required response components:\n\n1. **Hazard monitoring** - Monitors safety incidents\n2. **Exposure evaluation** - Tracks hazardous substance involvement\n3. **Equipment impact analysis** - Coordinates response workflows across ITSM (which manages asset/equipment data)\n4. **Customer compliance check** - Ensures compliance tracking integration\n5. **Payroll review** - Accessible through coordinated ITSM workflows for incident documentation that feeds into compensation systems\n\nThis agent orchestrates the full incident response lifecycle and integrates with supporting resources (hazardous substance APIs, compliance data products, and payroll systems) to deliver comprehensive safety incident management.",
+    "picked_ordId": "corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13740,
+  "latency_s": 3.408,
+  "wall_s": 3.41,
+  "cached": false
+}

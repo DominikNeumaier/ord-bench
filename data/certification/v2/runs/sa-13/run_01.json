@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-13_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to process an engineering change request for one of our key products that involves design modifications and supply chain validation. The change impacts multiple departments, so we'll need to coordinate the assessment across product design, manufacturing, and procurement to evaluate resource requirements and timeline implications. As part of this, we also need to identify which customer accounts are affected by this change so we can incorporate them into our communication strategy and any related marketing outreach. Can you help us orchestrate this entire workflow from initial change submission through cross-functional impact analysis and stakeholder notification?",
+    "n_resources": 273,
+    "user_msg_chars": 54334
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe `ChangeAutomationOrchestrator` is the best match because it:\n\n1. **Orchestrates the entire workflow** - Specifically automates and coordinates engineering changes, which is the core activity\n2. **Handles cross-functional coordination** - Designed to manage engineering changes across multiple domains (design, manufacturing, procurement)\n3. **Integrates impact assessment** - Coordinates material updates and product item deployments with multi-department evaluation\n4. **Manages change lifecycle** - From initial submission through approval and implementation\n5. **Supports stakeholder coordination** - Orchestrates workflows that naturally include communication and notification requirements\n\nWhile other resources address specific aspects (customer identification, procurement validation, etc.), the `ChangeAutomationOrchestrator` is positioned as the primary orchestration engine that would coordinate the entire workflow and integrate with supporting systems for customer impact analysis and cross-functional assessment. It can trigger subsidiary workflows through APIs and agents for specific departmental validations while maintaining overall workflow governance.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1",
+    "emarsys.cx:apiResource:CustomerAccountCampaignManagementAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13850,
+  "latency_s": 3.816,
+  "wall_s": 3.822,
+  "cached": false
+}

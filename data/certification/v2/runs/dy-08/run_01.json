@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-08_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together all our hazardous material inventory data to verify we're compliant with the latest regulations, and I'm not sure if I should be querying the system that gives me the actual substance records or the one that validates them against requirements. Can you help me figure out which endpoint I should be hitting to get the master list of substances we're tracking?",
+    "n_resources": 273,
+    "user_msg_chars": 54038
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:apiResource:HazardousSubstanceInventoryAPI:v1\"\n}\n```\n\n**Rationale:** You need the master list of hazardous substance records you're actually tracking in your system. The **HazardousSubstanceInventoryAPI** is explicitly designed to \"Manage chemical substance records and regulatory documentation across manufacturing and procurement operations,\" which provides the authoritative inventory data you need.\n\nWhile other systems like `sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1` can retrieve inventory data, the S4 resource is the primary master data system for your actual substance records. The EHS system is better for validation against regulatory requirements (which you mention as a secondary concern), but for pulling together your complete inventory to verify compliance, you want the source-of-truth inventory API.",
+    "picked_ordId": "sap.s4:apiResource:HazardousSubstanceInventoryAPI:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13756,
+  "latency_s": 4.042,
+  "wall_s": 4.044,
+  "cached": false
+}

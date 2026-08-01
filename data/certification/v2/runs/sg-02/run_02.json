@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-02_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "A material update is coming and we need to check whether our product line stays compliant \u2014 run the full compliance and workforce impact assessment before we proceed.",
+    "n_resources": 273,
+    "user_msg_chars": 53821
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:** The activity requires a comprehensive compliance and workforce impact assessment for a material update before proceeding. The **ChangeAutomationOrchestrator** is the best match because it:\n\n1. **Automates engineering changes and material updates** - directly addresses the material update scenario\n2. **Coordinates product item deployments** - handles the product line compliance aspect\n3. **Orchestrates change workflows** - enables the full assessment process before proceeding\n\nWhile other resources could supplement this (e.g., hazardous substance compliance APIs, safety compliance agents, workforce analytics), the ChangeAutomationOrchestrator is the primary orchestration resource designed to manage the complete change lifecycle including impact assessments before deployment approval.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13704,
+  "latency_s": 4.299,
+  "wall_s": 4.3,
+  "cached": false
+}

@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-28_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to verify that all the materials we're sourcing from our new suppliers meet current environmental and safety regulations, and simultaneously pull their complete specifications and vendor details so our procurement team can process these orders efficiently.",
+    "n_resources": 273,
+    "user_msg_chars": 53919
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:apiResource:MaterialVendorHazardousSubstanceCompliance:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires two key capabilities:\n1. **Verify environmental and safety regulations compliance** - Need to check that sourced materials meet current standards\n2. **Pull complete specifications and vendor details** - Need material specs and vendor information for procurement processing\n\nThe `MaterialVendorHazardousSubstanceCompliance:v1` API is the best match because it:\n- **Exposes hazardous material classifications** - directly addresses regulatory verification needs\n- **Provides vendor safety certifications** - ensures vendors meet environmental/safety standards\n- **Includes material specifications** - delivers the material data needed for procurement\n- **Integrates vendor details** - supplies the vendor information required for order processing\n\nWhile other resources like `sap.ariba:apiResource:MaterialSafetyAndVendorComplianceData:v1` or `sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1` address compliance aspects, the EHS-specific material-vendor compliance API is purpose-built for simultaneous verification of both material safety standards AND vendor compliance credentials\u2014exactly matching the dual need to verify regulations while retrieving vendor/specification data for efficient procurement processing.",
+    "picked_ordId": "sap.ehs:apiResource:MaterialVendorHazardousSubstanceCompliance:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1"
+  ],
+  "solved": false,
+  "tokens": 13830,
+  "latency_s": 4.324,
+  "wall_s": 4.325,
+  "cached": false
+}

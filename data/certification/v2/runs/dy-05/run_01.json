@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-05_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to track some updates we're making to meet regulatory requirements, including the equipment changes and related service work orders. Can you help us log this through the right system?",
+    "n_resources": 273,
+    "user_msg_chars": 53846
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1\"\n}\n```\n\n**Rationale:** The activity requires tracking updates to meet regulatory requirements, including equipment changes and related service work orders. The **Change Request Approval Workflow API** is the best match because it:\n\n1. **Manages change requests** - Directly handles the equipment changes mentioned\n2. **Tracks approvals and scheduling** - Provides the logging and tracking capability needed\n3. **Assesses impact** - The impact assessment feature helps document regulatory compliance implications\n4. **Integrates with service work** - Works in conjunction with service ticket management for related work orders\n\nWhile other resources like `AssetChangeLifecycleAPI` or `ServiceTicketOrderManagementAPI` could support specific aspects, the Change Request Approval Workflow is the primary system designed to log and track the complete change management process with regulatory oversight.",
+    "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1"
+  ],
+  "solved": false,
+  "tokens": 13729,
+  "latency_s": 3.602,
+  "wall_s": 3.607,
+  "cached": false
+}

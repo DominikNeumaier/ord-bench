@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-28_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to verify that all the materials we're sourcing from our new suppliers meet current environmental and safety regulations, and simultaneously pull their complete specifications and vendor details so our procurement team can process these orders efficiently.",
+    "n_resources": 273,
+    "user_msg_chars": 53919
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:apiResource:MaterialVendorHazardousSubstanceCompliance:v1\"\n}\n```\n\n**Rationale:** This resource best fulfills the activity because it directly addresses both core requirements:\n\n1. **Environmental & Safety Compliance Verification**: The \"Material and Vendor Hazardous Substance Compliance API\" exposes hazardous material classifications and vendor safety certifications specifically for regulatory compliance, enabling verification that sourced materials meet current environmental and safety regulations.\n\n2. **Vendor Details & Specifications**: It provides vendor safety certifications alongside material classifications, supporting the procurement team's need for complete vendor and material specification data for order processing.\n\nWhile other resources like `sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1` or `my.mes:apiResource:MaterialAndVendorMasterData:v1` offer vendor and material master data, the EHS-specific resource is superior because it combines the compliance verification requirement with vendor details in a single integrated resource, making it the most efficient choice for the stated business activity.",
+    "picked_ordId": "sap.ehs:apiResource:MaterialVendorHazardousSubstanceCompliance:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1"
+  ],
+  "solved": false,
+  "tokens": 13773,
+  "latency_s": 3.802,
+  "wall_s": 3.803,
+  "cached": false
+}

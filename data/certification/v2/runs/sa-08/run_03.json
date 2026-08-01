@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-08_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We're launching a new product line next quarter and need to orchestrate our entire organization's preparedness across departments. Can you help us establish a workflow that identifies promising market opportunities, categorizes our customer base for targeted outreach, and confirms our manufacturing and logistics infrastructure can handle the volume? We'll also need to validate that all component specifications and vendor partnerships meet our compliance standards throughout the supply chain. Additionally, as we scale up staffing to support this launch, we need to ensure our financial records\u2014including compensation structures, benefit deductions, and withholding obligations\u2014are properly documented and accessible to our HR and finance teams.",
+    "n_resources": 273,
+    "user_msg_chars": 54404
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:agent:AssetLifecycleChangeOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nYour product launch requires orchestrating multiple organizational dimensions\u2014market opportunities, customer segmentation, manufacturing/logistics validation, supply chain compliance, and workforce staffing with financial documentation. The **Asset Lifecycle Change Orchestrator** is the optimal single resource because it:\n\n1. **Coordinates Engineering Changes** across materials and product items\u2014essential for validating component specifications and vendor partnerships\n2. **Automates Asset Provisioning**\u2014directly supports manufacturing and logistics infrastructure readiness validation\n3. **Manages Lifecycle Transitions**\u2014handles the coordination complexity needed to simultaneously scale operations across departments\n4. **Integrates with Compliance Validation**\u2014connects to vendor and material compliance standards throughout the supply chain\n5. **Bridges to Workforce Systems**\u2014coordinates with HR/finance systems for compensation, benefits, and withholding documentation through automated asset and resource allocation workflows\n\nWhile specialized resources exist for customer segmentation (emarsys agents), compliance (sap.ehs agents), and compensation (sap.sf agents), the **Asset Lifecycle Change Orchestrator** uniquely provides the cross-functional orchestration backbone needed to synchronize all these moving parts during a major product launch initiative. It acts as the central coordinator that can trigger downstream workflows across marketing, manufacturing, procurement, and HR systems.",
+    "picked_ordId": "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+    "workday.hcm:apiResource:PayrollDataExposure:v1"
+  ],
+  "solved": false,
+  "tokens": 13924,
+  "latency_s": 5.009,
+  "wall_s": 5.011,
+  "cached": false
+}

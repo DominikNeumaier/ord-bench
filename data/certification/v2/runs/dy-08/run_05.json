@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-08_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together all our hazardous material inventory data to verify we're compliant with the latest regulations, and I'm not sure if I should be querying the system that gives me the actual substance records or the one that validates them against requirements. Can you help me figure out which endpoint I should be hitting to get the master list of substances we're tracking?",
+    "n_resources": 273,
+    "user_msg_chars": 54038
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1\"\n}\n```\n\n**Reasoning:** \n\nYou need the **master list of actual hazardous substance records** for your inventory verification, not a validation endpoint. \n\nThe `HazardousSubstanceInventoryExchange:v1` API is specifically designed to \"retrieve and manage hazardous substance inventory data for compliance tracking\" \u2014 this gives you the authoritative substance records themselves.\n\nWhile there are other hazardous substance APIs in the landscape (like `HazardousSubstanceRegulatoryValidation:v1`), that one is for *validating* substances against requirements, not for retrieving the core inventory data you need to verify compliance. The Inventory Exchange API is the source of truth for the actual substances you're tracking.",
+    "picked_ordId": "sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13754,
+  "latency_s": 3.379,
+  "wall_s": 3.381,
+  "cached": false
+}

@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-12_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to submit a new infrastructure update request that will impact multiple departments, and I need the system to automatically assess whether this change requires executive approval based on the business scope. Can you walk me through the entire process from when I submit the request through final implementation, including tracking any related equipment modifications and service dependencies? I also need documentation of all regulatory requirements that apply to this change, as well as any existing maintenance schedules we should coordinate with during rollout.",
+    "n_resources": 273,
+    "user_msg_chars": 54226
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1\"\n}\n```\n\n**Rationale:**\n\nYour activity requires a comprehensive change management solution that handles:\n1. **Change request submission** with multi-department impact assessment\n2. **Automatic executive approval determination** based on business scope\n3. **End-to-end process tracking** from submission through implementation\n4. **Equipment modification tracking** and service dependency management\n5. **Regulatory requirement documentation**\n6. **Maintenance schedule coordination**\n\nThe **ChangeRequestApprovalWorkflow API** is specifically designed to manage change request approvals, scheduling, and impact assessment\u2014making it the core system for your infrastructure update workflow.\n\n**Complementary resources** you should coordinate with:\n- `corp.itsm:apiResource:AssetProvisioningIntegrationAPI:v1` - for equipment modifications\n- `corp.itsm:agent:ChangeAutomationOrchestrator:v1` - to automate the coordination\n- `sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1` - for regulatory requirements\n- `sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1` - for compliance documentation\n\nHowever, the **ChangeRequestApprovalWorkflow** is your primary entry point for the entire process orchestration.",
+    "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1",
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13903,
+  "latency_s": 4.406,
+  "wall_s": 4.411,
+  "cached": false
+}

@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-37_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull current production schedules and equipment status to finalize our procurement forecast for next quarter, and simultaneously submit a maintenance request for our assembly line since we're seeing performance degradation that needs urgent attention from our service team.",
+    "n_resources": 273,
+    "user_msg_chars": 53938
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:ServiceTicketChangeRequestManagement:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires two simultaneous capabilities:\n\n1. **Pull current production schedules and equipment status** \u2192 Production scheduling and equipment status data\n2. **Submit a maintenance request for assembly line** \u2192 Maintenance request submission with urgent priority\n\nThe `ServiceTicketChangeRequestManagement:v1` API from the MES (Manufacturing Execution System) is the best match because it:\n\n- **Manages service tickets** - for submitting the urgent maintenance request for the assembly line\n- **Manages change requests** - for coordinating any necessary equipment modifications\n- **Retrieves equipment maintenance records** - for accessing current equipment status and performance degradation data\n- **Integrates production operations** - positioned in the MES domain where production schedules and equipment status information is available\n\nWhile other resources like `EquipmentOEEAnalytics` provide equipment metrics and `EquipmentChangeAndServiceManagement` handles service requests, the `ServiceTicketChangeRequestManagement` API is the most comprehensive single resource that handles both the data retrieval aspect (current status) and the operational action (maintenance request submission) required for this activity.",
+    "picked_ordId": "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1"
+  ],
+  "solved": false,
+  "tokens": 13810,
+  "latency_s": 4.073,
+  "wall_s": 4.076,
+  "cached": false
+}

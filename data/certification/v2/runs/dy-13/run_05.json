@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-13_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to track a equipment modification we're rolling out next month and manage the related service requests from our field teams. Can you help me set up the workflow to document this change and keep everyone updated on the status?",
+    "n_resources": 273,
+    "user_msg_chars": 53888
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1\"\n}\n```\n\n**Rationale:** The activity requires tracking an equipment modification rollout and managing related service requests with workflow documentation and status updates. The **Change Request Approval Workflow API** is purpose-built for this use case as it:\n\n1. Manages change request approvals and scheduling\n2. Handles impact assessment for modifications\n3. Provides workflow orchestration for coordinating approvals\n4. Tracks status throughout the change lifecycle\n\nThis is the most direct match for documenting the equipment modification change and keeping field teams updated on approval and implementation status.",
+    "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13677,
+  "latency_s": 3.077,
+  "wall_s": 3.079,
+  "cached": false
+}

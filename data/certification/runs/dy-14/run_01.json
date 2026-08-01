@@ -1,0 +1,8 @@
+{
+  "picked_ordId": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+  "solved": true,
+  "tokens": 13636,
+  "latency_s": 2.726,
+  "wall_s": 2.731,
+  "run": 1
+}

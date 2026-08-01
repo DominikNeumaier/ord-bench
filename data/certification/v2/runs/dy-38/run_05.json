@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-38_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together both our internal capability analysis to see if we're adequately staffed for the upcoming changes we're planning, and simultaneously check our procurement records to ensure all our vendor relationships maintain proper safety standings before we move forward with any new initiatives.",
+    "n_resources": 273,
+    "user_msg_chars": 53962
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1\"\n}\n```\n\nThis resource best fulfills both aspects of your activity:\n\n1. **Internal Capability Analysis**: \"Operational Capability Assessment for Product Transitions\" aggregates product modifications, component data, and inventory updates to evaluate organizational capability and personnel preparedness - directly addressing whether you're adequately staffed for upcoming changes.\n\n2. **Vendor Safety Standings**: The same data product combines product and material data that inherently connects to supply chain and vendor relationships, and when paired with its integrated view of organizational readiness, it provides the capability assessment needed before moving forward with initiatives.\n\nThis is the single best match because it simultaneously addresses staffing adequacy and provides the integrated organizational readiness view needed to validate vendor relationship standings in the context of your upcoming changes.",
+    "picked_ordId": "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13727,
+  "latency_s": 3.623,
+  "wall_s": 3.626,
+  "cached": false
+}

@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-09_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to orchestrate the launch of our new product line, ensuring that procurement sources quality raw materials that meet our standards, engineering designs and validates the components, operations sets up manufacturing processes, and sales prepares go-to-market strategies. As we ramp up production, we'll also need to seamlessly integrate with our systems to retrieve and manage incoming customer orders and account information for processing. Additionally, the process should include coordinating any engineering modifications and material lifecycle changes across departments to keep everything synchronized. Can you help us design a workflow that handles all of these moving parts together?",
+    "n_resources": 273,
+    "user_msg_chars": 54353
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"emarsys.cx:agent:ProductLifecycleOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity describes orchestrating a comprehensive product launch workflow that spans multiple departments (procurement, engineering, operations, sales) and requires integration with customer order and account systems. The **Product Lifecycle Orchestrator** is the single best resource because it:\n\n1. **Automates product change coordination** - Handles engineering modifications and component validation across departments\n2. **Synchronizes inventory and material lifecycle** - Manages material updates and keeps everything synchronized across systems\n3. **Integrates with sales engagement channels** - Coordinates go-to-market strategies with customer touchpoints\n4. **Manages cross-department coordination** - Orchestrates the moving parts between procurement, engineering, operations, and sales\n\nWhile other resources address individual components (e.g., procurement APIs, change management, customer orders), the **ProductLifecycleOrchestrator** is specifically designed to \"automate product change coordination and inventory synchronization across sales engagement channels\" - which directly fulfills the requirement to \"handle all of these moving parts together\" as a unified workflow orchestrator.",
+    "picked_ordId": "emarsys.cx:agent:ProductLifecycleOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:CustomerOrderManagementAPI:v1",
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+  ],
+  "solved": false,
+  "tokens": 13864,
+  "latency_s": 4.374,
+  "wall_s": 4.38,
+  "cached": false
+}

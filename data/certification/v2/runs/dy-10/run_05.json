@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-10_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to understand which of our products are driving the most cost and why\u2014like breaking down material expenses, design complexity, and whether we're overpaying certain suppliers compared to our benchmarks. Can you show me which items in our portfolio have the most expensive components and where our supply chain dependencies might be creating risk?",
+    "n_resources": 273,
+    "user_msg_chars": 54007
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1\"\n}\n```\n\n**Rationale:** This data product directly addresses your need to understand product cost drivers and supply chain dependencies. It aggregates material expenditures, regulatory adherence, and engineering modification impacts on bill-of-materials structures\u2014providing exactly the breakdown of material expenses, design complexity, and supplier cost benchmarking you require. It also enables identification of expensive components and supply chain risk exposure across your portfolio.",
+    "picked_ordId": "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13668,
+  "latency_s": 2.793,
+  "wall_s": 2.796,
+  "cached": false
+}

@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-24_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to run our end-to-end hazardous substance and employee safety workflow \u2014 substance identification, exposure assessment, equipment planning, vendor ordering, and any required staff time off.",
+    "n_resources": 273,
+    "user_msg_chars": 53852
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:apiResource:ChemicalInventoryCompliance:v1\"\n}\n```\n\n**Rationale:** The activity requires an end-to-end hazardous substance and employee safety workflow covering:\n1. **Substance identification** \u2192 ChemicalInventoryCompliance handles hazardous substance inventory management\n2. **Exposure assessment** \u2192 Integrated with safety compliance tracking\n3. **Equipment planning** \u2192 Links to safety governance and change management\n4. **Vendor ordering** \u2192 Connects to vendor safety compliance purchase orders\n5. **Staff time off** \u2192 Can be coordinated with safety incident response workflows\n\nWhile this is the core resource for hazardous substance compliance, a complete implementation would orchestrate it with complementary resources like `sap.ehs:agent:IncidentResponseCoordinator:v1`, `sap.s4:apiResource:WorkforceCapacityAndTimeOffManagement:v1`, and `sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1`. However, ChemicalInventoryCompliance is the single best foundational match as it directly addresses the primary activity driver: hazardous substance management and regulatory compliance.",
+    "picked_ordId": "sap.ehs:apiResource:ChemicalInventoryCompliance:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:apiResource:HazardousSubstanceComplianceManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13794,
+  "latency_s": 4.218,
+  "wall_s": 4.22,
+  "cached": false
+}

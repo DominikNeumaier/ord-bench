@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-17_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to get approval for some design modifications we're making to our product line, and then make sure the updated materials are ordered and tracked through our supply chain. Can you help me coordinate the engineering paperwork and inventory adjustments all in one place?",
+    "n_resources": 273,
+    "user_msg_chars": 53929
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Reasoning:** The activity requires coordinating design modification approvals, material ordering, and supply chain tracking in one integrated workflow. The **ChangeAutomationOrchestrator** is specifically designed to \"automate and coordinate engineering changes, material updates, and product item deployments\" - which directly addresses all three requirements: approving design modifications, managing updated materials, and coordinating across the supply chain. This agent orchestrates the complete engineering change lifecycle, making it the best single resource for this coordinated activity.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+  ],
+  "solved": false,
+  "tokens": 13675,
+  "latency_s": 2.834,
+  "wall_s": 2.839,
+  "cached": false
+}

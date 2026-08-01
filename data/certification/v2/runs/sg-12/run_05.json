@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-12_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to coordinate our vendor compliance checks with our occupational safety programs and production change rollout.",
+    "n_resources": 273,
+    "user_msg_chars": 53774
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:VendorContractComplianceOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires coordinating three interconnected elements:\n1. **Vendor compliance checks** - validating vendor adherence to requirements\n2. **Occupational safety programs** - ensuring worker safety protocols\n3. **Production change rollout** - managing engineering/production changes\n\nThe **VendorContractComplianceOrchestrator** is the optimal match because it:\n- Automates vendor compliance monitoring across the procurement lifecycle\n- Can be integrated with safety compliance workflows through its orchestration capabilities\n- Coordinates with change management processes during production rollouts\n\nWhile other resources address individual aspects (e.g., `ChangeRequestApprovalWorkflow` for changes, `OccupationalSafetyIncidentCoordinator` for safety, `ProcurementVendorManagementAPI` for vendors), the Vendor Contract Compliance Orchestrator agent is specifically designed to automate and coordinate vendor accountability across multiple dimensions, making it the single best resource for this integrated compliance coordination activity.",
+    "picked_ordId": "corp.itsm:agent:VendorContractComplianceOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13761,
+  "latency_s": 4.071,
+  "wall_s": 4.072,
+  "cached": false
+}

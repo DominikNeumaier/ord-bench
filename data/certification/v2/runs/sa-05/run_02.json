@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-05_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to orchestrate our complete manufacturing workflow from securing materials with our suppliers through final production execution and ensuring all our compliance documentation is properly filed. As part of this end-to-end process, we also need to track and reconcile all the financial documents coming in from our vendors that are tied to our material orders. Additionally, please include monitoring our production line performance metrics so we can evaluate how efficiently our equipment is running and identify any bottlenecks in our output. Make sure quality validation checkpoints are integrated throughout to catch any issues early, and we'll need comprehensive reporting at each stage to maintain our regulatory compliance standards.",
+    "n_resources": 273,
+    "user_msg_chars": 54401
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:agent:ProductionQualityMonitor:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires orchestrating a complete manufacturing workflow with end-to-end process management from materials procurement through production execution, financial reconciliation, compliance documentation, production performance monitoring, and quality validation.\n\nWhile multiple resources could contribute pieces of this puzzle, **my.mes:agent:ProductionQualityMonitor:v1** is the best single selection because:\n\n1. **Core Manufacturing Orchestration**: It's specifically designed to autonomously monitor production workflows and trigger coordinated actions across the manufacturing execution system.\n\n2. **Quality Integration**: It integrates quality inspection checkpoints throughout the production process\u2014a critical requirement mentioned for catching issues early.\n\n3. **Cross-functional Coordination**: As an agent (not just an API), it can coordinate with:\n   - Supplier/vendor management systems (for material procurement)\n   - Production line performance tracking (via Equipment OEE Analytics and Production Performance APIs)\n   - Compliance and regulatory documentation workflows\n   - Financial/invoice reconciliation processes\n\n4. **Comprehensive Visibility**: MES agents typically have visibility across:\n   - Production order status and execution\n   - Equipment performance and bottlenecks\n   - Quality metrics and defect tracking\n   - Regulatory compliance requirements\n\n5. **Corrective Action Capability**: The agent can trigger corrective actions when performance or quality issues are detected, enabling the closed-loop workflow orchestration needed for end-to-end process management.\n\nThis agent serves as the central orchestration point for the complete manufacturing workflow described in your activity.",
+    "picked_ordId": "my.mes:agent:ProductionQualityMonitor:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+    "sap.s4:apiResource:ProductionPerformanceAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13971,
+  "latency_s": 4.856,
+  "wall_s": 4.861,
+  "cached": false
+}

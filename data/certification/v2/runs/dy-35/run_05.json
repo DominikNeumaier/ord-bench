@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-35_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together a comprehensive view of our current operational health by analyzing both our recent campaign safety incidents and engagement issues alongside our product economics to understand cost drivers and supplier dependencies\u2014so I can brief leadership on where we're experiencing the most friction across both customer-facing and manufacturing operations.",
+    "n_resources": 273,
+    "user_msg_chars": 54025
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1\"\n}\n```\n\n**Rationale:**\n\nThis data product is the single best resource for your comprehensive operational health briefing because it directly aggregates:\n\n1. **Campaign Safety Incidents** - Provides regulatory adherence metrics tied to material and product specifications\n2. **Engagement Issues** - Tracks material expenditures and engineering modification impacts that affect customer-facing operations\n3. **Product Economics** - Delivers material cost evaluation and bill-of-materials financial analysis\n4. **Cost Drivers** - Explicitly analyzes expenditures and cost impact of engineering changes\n5. **Supplier Dependencies** - Assesses regulatory impact and supplier dependencies through compliance evaluation\n\nThis single resource uniquely bridges customer-facing operational friction (safety/engagement) with manufacturing operations (product economics, BOM structure, supplier compliance) in a format suitable for leadership briefing. While other resources address individual aspects (safety analytics, spend analytics, quality metrics), this data product is specifically designed to correlate material economics with regulatory requirements\u2014providing the integrated view you need to communicate friction points across both domains.",
+    "picked_ordId": "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1"
+  ],
+  "solved": false,
+  "tokens": 13801,
+  "latency_s": 4.271,
+  "wall_s": 4.273,
+  "cached": false
+}

@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-17_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Our manufacturing operations need a full cycle \u2014 supplier qualification, production incident monitoring, inbound material inspections, and engineering change provisioning.",
+    "n_resources": 273,
+    "user_msg_chars": 53826
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:agent:SupplierQualityComplianceOrchestrator:v1\"\n}\n```\n\n**Reasoning:**\n\nThe manufacturing activity requires a full cycle covering:\n1. **Supplier qualification** - \u2713 Covered by \"Supplier Quality Compliance Orchestrator\"\n2. **Production incident monitoring** - \u2713 Covered by incident/quality monitoring capabilities\n3. **Inbound material inspections** - \u2713 Covered by quality compliance validation\n4. **Engineering change provisioning** - \u2713 Covered by orchestrator's change coordination\n\nThe `SupplierQualityComplianceOrchestrator` agent is purpose-built for manufacturing operations and explicitly \"Automates vendor performance monitoring and procurement compliance validation\" across the production lifecycle. It integrates with material handling, supplier assessments, and quality processes\u2014exactly matching the stated needs for a complete manufacturing cycle from supplier through production to engineering changes.\n\nWhile alternatives like `my.mes:agent:ProductionChangeOrchestrator` or `sap.s4:agent:BOMComplianceAutomationAgent` handle specific aspects, the Supplier Quality Compliance Orchestrator is the best single resource that orchestrates all four required activities holistically.",
+    "picked_ordId": "my.mes:agent:SupplierQualityComplianceOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1"
+  ],
+  "solved": false,
+  "tokens": 13798,
+  "latency_s": 3.817,
+  "wall_s": 3.818,
+  "cached": false
+}

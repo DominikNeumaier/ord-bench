@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-09_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull up a customer's recent purchases and modify one of their orders before it ships out. Can you help me access their account information and make those changes?",
+    "n_resources": 273,
+    "user_msg_chars": 53827
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1\"\n}\n```\n\n**Rationale:** The activity requires accessing customer account information and modifying orders before shipment. The **Customer Order Fulfillment Tracking API** is the best match as it:\n\n1. **Retrieves customer order status** - Provides access to customer orders and fulfillment milestones\n2. **Manages order data** - Explicitly handles customer order management and status updates\n3. **Tracks delivery stages** - Monitors fulfillment progression, allowing intervention before shipment\n4. **Integrates customer accounts** - Links orders to customer account information for comprehensive view\n\nWhile `corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1` also manages orders, the CRM resource is better suited for direct customer-facing order modifications and account access in a commercial context.",
+    "picked_ordId": "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:CustomerOrderManagementAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13727,
+  "latency_s": 3.449,
+  "wall_s": 3.452,
+  "cached": false
+}

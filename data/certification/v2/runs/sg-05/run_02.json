@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-05_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We have an engineering change to process. Take it from the initial request through material and compliance validation, workforce checks, and getting the right vendor data locked in.",
+    "n_resources": 273,
+    "user_msg_chars": 53836
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires managing an engineering change through multiple validation and approval stages:\n- Initial request processing\n- Material and compliance validation\n- Workforce checks\n- Vendor data coordination\n\nThe **ChangeAutomationOrchestrator** is purpose-built to \"automate and coordinate engineering changes, material updates, and product item deployments.\" This agent directly addresses the complete workflow described, orchestrating all required stages in sequence.\n\nWhile other resources support individual components (e.g., `ChangeRequestApprovalWorkflow` for approvals, `VendorProcurementOrderAPI` for vendor data), the orchestrator agent provides the integrated end-to-end coordination needed to take the change from initial request through all validation gates to vendor lockdown.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+  ],
+  "solved": false,
+  "tokens": 13715,
+  "latency_s": 3.605,
+  "wall_s": 3.606,
+  "cached": false
+}

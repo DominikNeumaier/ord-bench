@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-07_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to ensure our supply chain partners can deliver the materials we need on time and at the right cost. Our goal is to have complete visibility into what we've committed to buy from each supplier and be confident that those commitments will be fulfilled according to our specifications.",
+    "n_resources": 273,
+    "user_msg_chars": 53946
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1\"\n}\n```\n\n**Rationale:** The business activity requires visibility into supplier commitments and material delivery fulfillment. The **Purchase Order Network API** is the best match because it:\n\n1. **Manages purchase orders** - Creates, updates, and monitors POs across supplier networks, providing the complete visibility into committed buys\n2. **Tracks supplier commitments** - Enables monitoring of what has been committed to buy from each supplier\n3. **Ensures specification compliance** - Manages order details and specifications to validate fulfillment according to requirements\n4. **Provides delivery confidence** - Monitors PO status and delivery performance across the supplier network\n\nWhile other resources like `sap.ariba:dataProduct:ProcurementSpendAnalytics:v1` and `my.mes:apiResource:SupplierProcurementOrderManagement:v1` provide complementary analytics and execution data, the Purchase Order Network API is the primary operational resource for the core activity of managing and tracking supplier commitments and fulfillment visibility.",
+    "picked_ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:VendorProcurementOrderAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13793,
+  "latency_s": 4.089,
+  "wall_s": 4.091,
+  "cached": false
+}

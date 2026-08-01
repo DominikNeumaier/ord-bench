@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-39_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to simultaneously pull together our current spending commitments with a specific vendor and cross-reference that against our latest payroll records to reconcile Q4 budget allocations and ensure our procurement expenses align with employee compensation costs for audit purposes.",
+    "n_resources": 273,
+    "user_msg_chars": 53939
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1\"\n}\n```\n\n**Rationale:**\n\nThis activity requires reconciling vendor spending commitments against payroll records for Q4 budget audit purposes. The best match is **Invoice and Material Procurement Analytics** because it:\n\n1. **Aggregates vendor invoice and material procurement metrics** - directly addresses \"current spending commitments with a specific vendor\"\n2. **Supports financial reconciliation** - provides spend analysis needed for budget allocation review\n3. **Enables cross-reference capabilities** - aggregates multiple data dimensions (invoices, materials, procurement) that can be correlated with payroll records\n4. **Audit-ready analytics** - designed specifically for spend analysis and compliance purposes\n\nWhile other resources like `sap.s4:dataProduct:ProcurementMetricsHub` or `workday.hcm:dataProduct:CompensationTrendAnalytics` address individual aspects, **InvoiceAndMaterialProcurementAnalytics** is the single best resource for simultaneously pulling vendor spending commitments and material data required for cross-referencing against payroll for Q4 reconciliation and audit purposes.",
+    "picked_ordId": "sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:VendorProcurementOrderAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13811,
+  "latency_s": 3.801,
+  "wall_s": 3.803,
+  "cached": false
+}

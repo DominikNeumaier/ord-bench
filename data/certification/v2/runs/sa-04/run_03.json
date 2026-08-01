@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-04_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We're launching a new product line next quarter and need to orchestrate the entire go-to-market process\u2014including provisioning our key customers, qualifying our supplier network, analyzing the cost structure, managing our engineering modifications, and ensuring our teams are ready. As part of this, we also need to identify which customer segments from our marketing campaigns should be prioritized for this launch, including pulling their account details and engagement history. We'll also need to assess whether our current staff has the right skills and capacity to support the new product specifications and training requirements. Can you help us coordinate all these moving pieces into one comprehensive launch workflow?",
+    "n_resources": 273,
+    "user_msg_chars": 54381
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"emarsys.cx:agent:SegmentDrivenCampaignOptimizer:v1\"\n}\n```\n\n**Rationale:**\n\nYour comprehensive go-to-market orchestration requires a **single orchestrator that can coordinate multiple moving pieces** across customer segmentation, engagement prioritization, and cross-functional readiness. The **Segment-Driven Campaign Optimizer Agent** is the best match because it:\n\n1. **Identifies high-value customer segments** - directly addresses your need to \"identify which customer segments from marketing campaigns should be prioritized\"\n\n2. **Pulls customer account details & engagement history** - integrates with campaign and customer data APIs to retrieve the intelligence you need for prioritization\n\n3. **Coordinates multi-stakeholder workflows** - as an autonomous orchestrator, it can trigger downstream processes across:\n   - Customer provisioning (via CampaignCustomerProvisioningAPI)\n   - Supplier qualification (coordinating with procurement systems)\n   - Engineering modifications (via product lifecycle data)\n   - Workforce readiness (accessing capacity and skills data)\n\n4. **Central hub for launch coordination** - optimizes targeting and messaging while serving as the orchestration point that can invoke other specialized agents and resources for provisioning, supplier management, engineering changes, and staff capacity assessment\n\nThis agent acts as your launch command center, starting with customer segmentation and engagement optimization, then propagating priorities through your operational systems for provisioning, supply chain, engineering, and workforce readiness workflows.",
+    "picked_ordId": "emarsys.cx:agent:SegmentDrivenCampaignOptimizer:v1"
+  },
+  "expected_ordIds": [
+    "emarsys.cx:apiResource:CustomerAccountCampaignManagementAPI:v1",
+    "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13944,
+  "latency_s": 4.607,
+  "wall_s": 4.613,
+  "cached": false
+}

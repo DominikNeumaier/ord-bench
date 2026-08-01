@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-04_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "There was a workplace hazard event. Run through our complete safety and compliance workflow \u2014 exposure assessment, equipment checks, and verify our compliance status is intact.",
+    "n_resources": 273,
+    "user_msg_chars": 53831
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1\"\n}\n```\n\n**Rationale:** The activity requests a complete safety and compliance workflow following a workplace hazard event, including exposure assessment, equipment checks, and compliance verification. The **Occupational Safety Incident Coordinator** agent is purpose-built to:\n\n1. **Monitor and coordinate safety incidents** with hazardous substance involvement\n2. **Execute complete safety workflows** across exposure assessment and compliance tracking\n3. **Integrate with compliance systems** for verification of compliance status\n\nThis agent directly addresses all three requirements (exposure assessment, equipment checks, compliance verification) and is the most specialized resource for orchestrating workplace hazard event workflows in an integrated ITSM environment.",
+    "picked_ordId": "corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13690,
+  "latency_s": 3.432,
+  "wall_s": 3.434,
+  "cached": false
+}

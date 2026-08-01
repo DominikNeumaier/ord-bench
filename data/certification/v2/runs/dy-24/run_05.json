@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-24_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to verify that our current component sourcing meets all regulatory requirements while simultaneously checking our real-time inventory levels to ensure we have adequate stock from our qualified suppliers before we proceed with the next production run.",
+    "n_resources": 273,
+    "user_msg_chars": 53913
+  },
+  "output": {
+    "raw_text": "```json\n{\"ordId\": \"my.mes:apiResource:MaterialAndVendorInventoryManagement:v1\"}\n```\n\nThis resource best fulfills the activity because it:\n\n1. **Verifies component sourcing compliance** - It manages material stock levels and vendor supply chain data, allowing you to check that sourced components meet regulatory requirements through qualified suppliers.\n\n2. **Checks real-time inventory levels** - It retrieves and manages material stock levels in real-time, ensuring adequate inventory before production runs.\n\n3. **Qualified supplier validation** - By managing vendor supply chain data, it enables verification that materials come from approved/qualified suppliers.\n\nThis single API provides the dual capability needed to both validate regulatory compliance of component sourcing AND monitor real-time inventory availability from qualified suppliers before proceeding with the next production run.",
+    "picked_ordId": "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:agent:BOMComplianceValidator:v1"
+  ],
+  "solved": false,
+  "tokens": 13702,
+  "latency_s": 3.239,
+  "wall_s": 3.24,
+  "cached": false
+}

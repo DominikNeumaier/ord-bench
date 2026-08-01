@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-20_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "A new product introduction needs full engineering change management \u2014 from the initial change request through BOM compliance, hazardous substance assessment, and supply chain confirmation.",
+    "n_resources": 273,
+    "user_msg_chars": 53843
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires \"full engineering change management \u2014 from the initial change request through BOM compliance, hazardous substance assessment, and supply chain confirmation.\"\n\nThe **ChangeAutomationOrchestrator** is the best match because it:\n\n1. **Automates engineering changes** - Core to the activity requirement\n2. **Coordinates material updates** - Necessary for BOM compliance\n3. **Manages product item deployments** - Integrates product changes across the lifecycle\n\nThis agent orchestrates the complete change workflow. It should be paired with complementary APIs and agents for the specific compliance domains:\n- `corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1` for hazmat assessment\n- `corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1` for initial approvals\n- Supporting agents like `sap.s4:agent:BOMComplianceAutomationAgent:v1` for BOM validation\n- `sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1` for hazmat compliance\n- `sap.ariba:agent:MaterialAndEngineeringChangeCoordinator:v1` for supply chain confirmation\n\nHowever, as the **single best resource** to orchestrate this entire change management workflow, the **ChangeAutomationOrchestrator** is the optimal selection.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:agent:ProductionChangeOrchestrator:v1"
+  ],
+  "solved": false,
+  "tokens": 13869,
+  "latency_s": 4.853,
+  "wall_s": 4.856,
+  "cached": false
+}

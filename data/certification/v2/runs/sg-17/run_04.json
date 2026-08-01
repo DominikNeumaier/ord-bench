@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-17_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Our manufacturing operations need a full cycle \u2014 supplier qualification, production incident monitoring, inbound material inspections, and engineering change provisioning.",
+    "n_resources": 273,
+    "user_msg_chars": 53826
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:agent:SupplierQualityComplianceOrchestrator:v1\"\n}\n```\n\n**Rationale:** The Supplier Quality Compliance Orchestrator is the best match because it directly addresses all four required activities:\n\n1. **Supplier Qualification** - Automates vendor performance monitoring and procurement compliance validation\n2. **Production Incident Monitoring** - Works with quality inspection results and production compliance\n3. **Inbound Material Inspections** - Validates supplier deliverables and material quality assessment\n4. **Engineering Change Provisioning** - Integrates with procurement compliance validation across material and component updates\n\nThis agent orchestrates the complete supplier-to-production lifecycle needed for manufacturing operations full cycle management.",
+    "picked_ordId": "my.mes:agent:SupplierQualityComplianceOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1"
+  ],
+  "solved": false,
+  "tokens": 13681,
+  "latency_s": 3.249,
+  "wall_s": 3.255,
+  "cached": false
+}

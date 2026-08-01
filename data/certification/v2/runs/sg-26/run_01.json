@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-26_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "A product engineering change has been approved. Plan the manufacturing transition \u2014 operational impact, workforce scheduling, formal change registration, BOM compliance, and supply chain confirmation.",
+    "n_resources": 273,
+    "user_msg_chars": 53855
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires planning a comprehensive manufacturing transition across multiple dimensions: operational impact, workforce scheduling, formal change registration, BOM compliance, and supply chain confirmation.\n\nThe **ChangeAutomationOrchestrator** is the best match because it:\n\n1. **Automates engineering changes** - Directly addresses the approved product engineering change that needs to be managed\n2. **Coordinates material updates** - Handles BOM compliance through material updates\n3. **Manages product item deployments** - Ensures proper deployment across the manufacturing system\n4. **Orchestrates across systems** - Can coordinate the multiple operational domains (operations, workforce, supply chain) required for the transition\n\nWhile other resources address specific aspects (e.g., `BOMComplianceValidator` for BOM compliance, `WorkforceScheduleAndAbsenceManagement` for workforce scheduling), the ChangeAutomationOrchestrator is the orchestration agent designed to coordinate all these elements together as an integrated manufacturing transition plan, which is what the activity requires.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13776,
+  "latency_s": 4.052,
+  "wall_s": 4.056,
+  "cached": false
+}

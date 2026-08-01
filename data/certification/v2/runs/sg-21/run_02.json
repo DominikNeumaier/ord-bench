@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-21_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "A piece of equipment has raised a service request \u2014 log it, work out the engineering and material implications, assess the production impact, and get the right team assigned.",
+    "n_resources": 273,
+    "user_msg_chars": 53829
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Reasoning:**\n\nThe activity requires: logging a service request, working out engineering and material implications, assessing production impact, and assigning the right team.\n\nThe **Change Automation Orchestrator** is the best match because it:\n\n1. **Logs and manages the request** - Automates engineering changes and coordinates them across systems\n2. **Works out engineering implications** - Specifically handles engineering changes and material updates\n3. **Assesses production impact** - Coordinates product item deployments which directly impact production\n4. **Assigns the right team** - Orchestrates across multiple stakeholders and workflows\n\nWhile other resources could support specific aspects (e.g., `my.mes:apiResource:ServiceTicketChangeRequestManagement:v1` for ticket logging, `siemens.plm:agent:EngineeringChangeAndComplianceOrchestrator:v1` for engineering changes), the Change Automation Orchestrator is the primary orchestrator agent designed to handle the complete end-to-end workflow of coordinating engineering changes, material implications, and team assignments\u2014exactly what this equipment service request requires.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13794,
+  "latency_s": 4.108,
+  "wall_s": 4.11,
+  "cached": false
+}

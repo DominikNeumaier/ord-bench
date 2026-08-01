@@ -1,0 +1,41 @@
+{
+  "total_cases": 90,
+  "robust_certified": 83,
+  "borderline": 0,
+  "too_easy": 7,
+  "pct_robust": 92.2,
+  "avg_difficulty": 0.9378,
+  "threshold_robust": 0.8,
+  "threshold_borderline": 0.6,
+  "extra_runs": 4,
+  "by_mode": {
+    "skill_guided": {
+      "total": 30,
+      "robust": 28,
+      "borderline": 0,
+      "too_easy": 2
+    },
+    "skill_adjusted": {
+      "total": 20,
+      "robust": 20,
+      "borderline": 0,
+      "too_easy": 0
+    },
+    "dynamic": {
+      "total": 40,
+      "robust": 35,
+      "borderline": 0,
+      "too_easy": 5
+    }
+  },
+  "borderline_cases": [],
+  "too_easy_cases": [
+    "sg-11",
+    "sg-14",
+    "dy-01",
+    "dy-03",
+    "dy-14",
+    "dy-30",
+    "dy-24"
+  ]
+}

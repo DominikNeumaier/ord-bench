@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-16_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to understand how our upcoming engineering changes will affect our team's capacity and skill levels across the plant. Can you pull together an analysis that shows us the workforce impact from all the material and product modifications we have planned?",
+    "n_resources": 273,
+    "user_msg_chars": 53914
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1\"\n}\n```\n\nThis data product directly addresses your need by combining engineering modifications, supply chain items, and manufacturing configurations to evaluate organizational capability for product transitions. It specifically analyzes workforce readiness impact from engineering changes and material modifications across the plant.\n\nAlternative strong matches would be:\n- `my.mes:dataProduct:EngineeringChangeImpactAnalytics:v1` - Aggregates cost, complexity, and supplier impact metrics from engineering changes\n- `sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1` - Evaluates organizational capability and personnel preparedness for product transitions\n\nHowever, the primary recommendation is optimal because it explicitly combines engineering modifications with workforce readiness assessment.",
+    "picked_ordId": "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13720,
+  "latency_s": 3.311,
+  "wall_s": 3.313,
+  "cached": false
+}

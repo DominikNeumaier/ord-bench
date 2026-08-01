@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-08_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are transitioning to a new product line. Assess our organizational and hazardous substance readiness, handle the material and procurement impacts, and reconfigure production accordingly.",
+    "n_resources": 273,
+    "user_msg_chars": 53844
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:agent:EngineeringChangeOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires a comprehensive, orchestrated approach to product line transition covering four key areas:\n\n1. **Organizational & Hazardous Substance Readiness** - Assessment of compliance and safety requirements\n2. **Material & Procurement Impacts** - Managing supply chain and vendor coordination\n3. **Production Reconfiguration** - Adjusting manufacturing processes and equipment\n\nThe **Engineering Change Orchestrator** is the optimal single resource because it:\n\n- **Automates engineering changes** across materials and product items (core to product line transition)\n- **Coordinates across multiple domains** - integrates material updates, product specifications, and production workflows\n- **Manages change orchestration** - handles the cross-functional coordination needed for organizational readiness\n- **Works with procurement systems** - interfaces with material and vendor data for procurement impact assessment\n- **Integrates with compliance** - connects with hazardous substance and regulatory validation requirements\n- **Supports production reconfiguration** - coordinates with manufacturing execution systems for production adjustments\n\nWhile other resources address individual components (hazmat compliance APIs, procurement APIs, workforce management), the **EngineeringChangeOrchestrator agent** is the unified orchestration point that ties all these elements together for a complete product line transition, making it the best single resource match for this complex, multi-faceted activity.",
+    "picked_ordId": "sap.s4:agent:EngineeringChangeOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1"
+  ],
+  "solved": false,
+  "tokens": 13844,
+  "latency_s": 4.865,
+  "wall_s": 4.866,
+  "cached": false
+}

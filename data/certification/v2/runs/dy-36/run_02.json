@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-36_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to pull together workforce compensation figures alongside our current stock levels and product spec changes so we can model how our transition impacts both our labor costs and operational readiness before we commit to the new setup.",
+    "n_resources": 273,
+    "user_msg_chars": 53895
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:dataProduct:ProductionLaborProductivityMetrics:v1\"\n}\n```\n\n**Rationale:** This data product directly aggregates employee compensation and performance data to analyze production labor efficiency. It provides the workforce compensation figures needed for the activity. Combined with references to:\n- `my.mes:apiResource:MaterialAndVendorInventoryManagement:v1` (for stock levels)\n- `my.mes:apiResource:EngineeringChangeProductIntegration:v1` (for product spec changes)\n- `my.mes:apiResource:WorkforceAvailabilityAndCapacity:v1` (for operational readiness assessment)\n\nThis single data product best fulfills the core requirement of modeling labor cost impact alongside operational readiness during transition planning.",
+    "picked_ordId": "my.mes:dataProduct:ProductionLaborProductivityMetrics:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13707,
+  "latency_s": 3.054,
+  "wall_s": 3.057,
+  "cached": false
+}

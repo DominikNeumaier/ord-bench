@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-08_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are transitioning to a new product line. Assess our organizational and hazardous substance readiness, handle the material and procurement impacts, and reconfigure production accordingly.",
+    "n_resources": 273,
+    "user_msg_chars": 53844
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:agent:EngineeringChangeOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires coordinating a product line transition across four dimensions:\n1. **Organizational & hazardous substance readiness** \u2013 assessing compliance\n2. **Material and procurement impacts** \u2013 managing sourcing changes\n3. **Production reconfiguration** \u2013 adjusting manufacturing processes\n\nThe **Engineering Change Orchestrator** is the best match because it:\n- Automates and coordinates engineering changes across materials and product items (directly handles product line transition)\n- Orchestrates cross-functional impacts (organizational, procurement, production)\n- Integrates with hazardous substance compliance and material sourcing workflows\n- Manages the complete lifecycle of product modifications and their cascading effects on operations\n\nWhile other agents like `ChangeAutomationOrchestrator` or `ProductionChangeOrchestrator` address subsets of this activity, the Engineering Change Orchestrator provides the most comprehensive orchestration of all four required dimensions within a single coordinated workflow.",
+    "picked_ordId": "sap.s4:agent:EngineeringChangeOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1"
+  ],
+  "solved": false,
+  "tokens": 13761,
+  "latency_s": 4.339,
+  "wall_s": 4.339,
+  "cached": false
+}

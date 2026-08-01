@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-09_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to orchestrate the launch of our new product line, ensuring that procurement sources quality raw materials that meet our standards, engineering designs and validates the components, operations sets up manufacturing processes, and sales prepares go-to-market strategies. As we ramp up production, we'll also need to seamlessly integrate with our systems to retrieve and manage incoming customer orders and account information for processing. Additionally, the process should include coordinating any engineering modifications and material lifecycle changes across departments to keep everything synchronized. Can you help us design a workflow that handles all of these moving parts together?",
+    "n_resources": 273,
+    "user_msg_chars": 54353
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"emarsys.cx:agent:ProductLifecycleOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe `ProductLifecycleOrchestrator` agent is the best single match because it directly addresses the core orchestration need described in your activity:\n\n1. **Automates product change coordination** - Handles engineering modifications across departments\n2. **Inventory synchronization** - Keeps material lifecycle changes synchronized across systems\n3. **Sales engagement integration** - Coordinates go-to-market strategies with product changes\n4. **Cross-departmental alignment** - Ensures procurement, engineering, operations, and sales work together\n\nWhile your activity involves multiple moving parts (procurement, engineering, operations, sales, order management), the **ProductLifecycleOrchestrator** serves as the orchestration backbone that:\n- Coordinates engineering changes and product items\n- Integrates with inventory and material systems\n- Aligns sales engagement channels with product lifecycle events\n- Manages the synchronization of material/component changes across all departments\n\nThis agent is specifically designed to \"automate product change coordination and inventory synchronization across sales engagement channels,\" which is the central workflow hub needed to tie together all your procurement, engineering, manufacturing, and sales operations during product launch and ramp-up phases.",
+    "picked_ordId": "emarsys.cx:agent:ProductLifecycleOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:CustomerOrderManagementAPI:v1",
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+  ],
+  "solved": false,
+  "tokens": 13892,
+  "latency_s": 4.237,
+  "wall_s": 4.241,
+  "cached": false
+}

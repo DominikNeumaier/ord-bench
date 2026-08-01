@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-05_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to track some updates we're making to meet regulatory requirements, including the equipment changes and related service work orders. Can you help us log this through the right system?",
+    "n_resources": 273,
+    "user_msg_chars": 53846
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1\"\n}\n```\n\n**Rationale:** The activity requires logging updates for regulatory compliance that include equipment changes and related service work orders. The **Service Ticket and Order Management API** is the best match because it:\n\n1. Explicitly manages **service tickets and orders** with status tracking\n2. Handles the work order logging component directly\n3. Integrates with ITSM systems designed for regulatory and compliance tracking\n4. Provides the operational logging capability needed to document both equipment changes and service work\n\nWhile other resources like the Change Request Approval Workflow API or Asset Change Lifecycle API address specific aspects, the Service Ticket Order Management API is the primary system designed to consolidate and track both the service work orders and their status through completion.",
+    "picked_ordId": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1"
+  ],
+  "solved": false,
+  "tokens": 13706,
+  "latency_s": 4.026,
+  "wall_s": 4.028,
+  "cached": false
+}

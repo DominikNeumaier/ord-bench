@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-19_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to set up a comprehensive monitoring system for our workplace safety incidents and regulatory compliance across all our facilities. This should track hazardous events as they occur, evaluate our exposure to violations, and coordinate the necessary corrective actions. As we implement this, we also need to ensure our safety team can engage with relevant stakeholders in real-time across different communication channels to coordinate responses. Additionally, we'll need to make sure all hazardous materials data is properly managed and accessible so our sales and compliance teams can verify we're meeting all regulatory requirements when working with customers. Can you help us establish this integrated approach to safety management and compliance?",
+    "n_resources": 273,
+    "user_msg_chars": 54413
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:agent:IncidentResponseCoordinator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires establishing a comprehensive workplace safety incident monitoring and compliance management system with real-time stakeholder coordination and hazardous materials data management. \n\n**sap.ehs:IncidentResponseCoordinator:v1** is the optimal resource because it:\n\n1. **Incident Tracking & Detection**: Coordinates safety incident workflows and automates emergency response actions\u2014directly addressing the need to \"track hazardous events as they occur\"\n\n2. **Compliance & Corrective Actions**: Orchestrates the necessary corrective actions required for regulatory compliance across facilities\n\n3. **Real-time Stakeholder Coordination**: Manages incident response workflows which inherently involve coordinating with relevant stakeholders across communication channels\n\n4. **Hazardous Materials Integration**: Works within the broader SAP EHS ecosystem that includes:\n   - Chemical inventory and compliance APIs\n   - Hazardous substance regulatory validation\n   - Vendor safety compliance management\n   - Employee safety incident reporting\n\n5. **Integrated Approach**: As an agent, it can orchestrate across multiple touchpoints (incident detection, evaluation, corrective action coordination, and stakeholder engagement)\n\nThis agent serves as the central orchestration point for safety management while connecting to complementary SAP EHS resources for hazardous materials data accessibility needed by sales and compliance teams.",
+    "picked_ordId": "sap.ehs:agent:IncidentResponseCoordinator:v1"
+  },
+  "expected_ordIds": [
+    "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1",
+    "emarsys.cx:apiResource:HazardousSubstanceComplianceManagementAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13933,
+  "latency_s": 4.905,
+  "wall_s": 4.907,
+  "cached": false
+}

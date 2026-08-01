@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-22_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to pull together a comprehensive view of our production risks and costs right now - I want to see both our material expenses broken down by supplier along with any compliance gaps, and at the same time analyze our recent safety incidents and trends across all our manufacturing sites. Can you get me both of those datasets so we can address cost optimization and safety improvements in our next operations review?",
+    "n_resources": 273,
+    "user_msg_chars": 54076
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:dataProduct:IncidentSafetyAnalytics:v1\"\n}\n```\n\n**Rationale:**\n\nYour activity requires two integrated datasets:\n1. **Material expenses by supplier + compliance gaps** \u2192 Cost optimization\n2. **Safety incidents and trends across manufacturing sites** \u2192 Safety improvements\n\nThe `my.mes:dataProduct:IncidentSafetyAnalytics:v1` is the single best match because it:\n\n- **Aggregates safety incidents with compliance tracking** across all manufacturing sites (addresses your safety incident analysis need)\n- As a MES (Manufacturing Execution System) data product, it integrates with material and procurement data ecosystems, providing the operational context needed to correlate safety with production costs and supplier performance\n- Serves manufacturing operations directly, where both material cost breakdowns and safety risks are tracked in an integrated operational context\n\n**Alternative consideration:** If you need to split this into two resources, `sap.s4:dataProduct:IncidentSafetyAnalyticsHub:v1` combined with `my.mes:dataProduct:SupplierPerformanceAndProcurementOptimization:v1` would provide the complete picture. However, since you requested a single ordId, the MES safety analytics product best serves an integrated production operations review addressing both cost and safety simultaneously.",
+    "picked_ordId": "my.mes:dataProduct:IncidentSafetyAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1"
+  ],
+  "solved": false,
+  "tokens": 13863,
+  "latency_s": 4.486,
+  "wall_s": 4.489,
+  "cached": false
+}

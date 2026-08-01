@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-13_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to process an engineering change request for one of our key products that involves design modifications and supply chain validation. The change impacts multiple departments, so we'll need to coordinate the assessment across product design, manufacturing, and procurement to evaluate resource requirements and timeline implications. As part of this, we also need to identify which customer accounts are affected by this change so we can incorporate them into our communication strategy and any related marketing outreach. Can you help us orchestrate this entire workflow from initial change submission through cross-functional impact analysis and stakeholder notification?",
+    "n_resources": 273,
+    "user_msg_chars": 54334
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires orchestrating an engineering change request workflow that involves:\n1. **Cross-functional impact analysis** across product design, manufacturing, and procurement\n2. **Assessment coordination** for resource requirements and timeline implications\n3. **Identification of affected customer accounts** for communication and marketing outreach\n4. **End-to-end workflow orchestration** from submission through stakeholder notification\n\nThe **Change Automation Orchestrator** is the optimal resource because it:\n- Automates and coordinates engineering changes, material updates, and product item deployments\n- Handles the complete change lifecycle management required for this complex, multi-department workflow\n- Integrates with design, manufacturing, and procurement domains through its orchestration capabilities\n- Supports the cross-functional impact assessment needs\n\nWhile other resources address specific aspects (e.g., `ChangeRequestApprovalWorkflow` for approvals, customer account APIs for stakeholder identification), the Change Automation Orchestrator provides the comprehensive orchestration capability needed to coordinate the entire workflow across all departments and integrate stakeholder communication requirements.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1",
+    "emarsys.cx:apiResource:CustomerAccountCampaignManagementAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13860,
+  "latency_s": 4.011,
+  "wall_s": 4.014,
+  "cached": false
+}

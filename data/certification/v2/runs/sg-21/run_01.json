@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-21_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "A piece of equipment has raised a service request \u2014 log it, work out the engineering and material implications, assess the production impact, and get the right team assigned.",
+    "n_resources": 273,
+    "user_msg_chars": 53829
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1\"\n}\n```\n\n**Reasoning:**\n\nThe activity requires:\n1. **Log the service request** \u2192 Service Ticket and Order Management API can create and track service tickets\n2. **Work out engineering and material implications** \u2192 This API manages service tickets with status tracking; paired with engineering change resources\n3. **Assess production impact** \u2192 The API integrates with order management for production impact assessment\n4. **Get the right team assigned** \u2192 Service ticket management includes assignment workflows\n\nWhile other resources like `ChangeRequestApprovalWorkflow`, `AssetChangeLifecycleAPI`, or `ChangeAutomationOrchestrator` could support specific aspects, the **ServiceTicketOrderManagementAPI** is the foundational resource that directly addresses logging the service request and initiates the complete workflow chain for engineering analysis, material assessment, production impact review, and team assignment.",
+    "picked_ordId": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13734,
+  "latency_s": 3.699,
+  "wall_s": 3.702,
+  "cached": false
+}

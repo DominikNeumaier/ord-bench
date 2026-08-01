@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-09_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are going through a product and material transition triggered by an engineering change. Assess the impact, check our operational capability, and validate vendor readiness before we commit.",
+    "n_resources": 273,
+    "user_msg_chars": 53846
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:** \n\nThe activity requires assessing impact, checking operational capability, and validating vendor readiness for a product and material transition triggered by an engineering change. The **ChangeAutomationOrchestrator** is purpose-built to:\n\n1. **Assess Impact** - Automates and coordinates engineering changes across materials and product items\n2. **Check Operational Capability** - Coordinates with asset provisioning and workforce resources through its orchestration workflows\n3. **Validate Vendor Readiness** - Works in conjunction with change approval workflows and procurement validation processes\n\nWhile other resources like `sap.s4:agent:EngineeringChangeOrchestrator:v1` or `siemens.plm:agent:EngineeringChangeAndComplianceOrchestrator:v1` are capable alternatives, the ITSM orchestrator is the most directly aligned orchestration agent for managing the complete change lifecycle including impact assessment and readiness validation across operational systems.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+  ],
+  "solved": false,
+  "tokens": 13767,
+  "latency_s": 3.809,
+  "wall_s": 3.812,
+  "cached": false
+}

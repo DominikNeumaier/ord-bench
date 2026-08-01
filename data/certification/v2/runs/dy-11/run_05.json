@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_dy-11_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to submit a maintenance request for our server infrastructure and track its progress through approval. Can you help me get this logged in the system and see what the current status is?",
+    "n_resources": 273,
+    "user_msg_chars": 53846
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1\"\n}\n```\n\n**Rationale:** The Service Ticket and Order Management API is the best match for this activity because it:\n\n1. **Handles maintenance request logging** - Explicitly designed to manage service tickets, which are the standard mechanism for submitting maintenance requests\n2. **Provides status tracking** - Includes status tracking functionality to monitor progress through the approval workflow\n3. **Directly aligned with IT infrastructure** - Focused on ITSM (IT Service Management) operations where server infrastructure maintenance requests would be processed\n4. **Supports approval workflows** - Integrated with the broader ITSM ecosystem that includes approval workflows\n\nWhile the Change Request Approval Workflow API also handles approvals, the Service Ticket Order Management API is more directly suited for the complete lifecycle of submitting a maintenance request and tracking its status through the system.",
+    "picked_ordId": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13729,
+  "latency_s": 3.741,
+  "wall_s": 3.743,
+  "cached": false
+}

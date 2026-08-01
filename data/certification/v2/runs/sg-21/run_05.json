@@ -1,0 +1,21 @@
+{
+  "nonce": "v2_cert_sg-21_run_5",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "A piece of equipment has raised a service request \u2014 log it, work out the engineering and material implications, assess the production impact, and get the right team assigned.",
+    "n_resources": 273,
+    "user_msg_chars": 53829
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:** The `ChangeAutomationOrchestrator` agent is specifically designed to \"automate and coordinate engineering changes, material updates, and product item deployments\" \u2014 which directly addresses all the activity requirements:\n\n1. **Log the service request** \u2014 Manages service tickets and change requests\n2. **Work out engineering and material implications** \u2014 Handles engineering changes and material updates\n3. **Assess production impact** \u2014 Coordinates across product item deployments and changes\n4. **Get the right team assigned** \u2014 Orchestrates the workflow with appropriate resource allocation\n\nThis agent consolidates all four requirements into a single coordinated workflow, making it the optimal choice over fragmented APIs or other agents with narrower scopes.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13707,
+  "latency_s": 3.357,
+  "wall_s": 3.359,
+  "cached": false
+}

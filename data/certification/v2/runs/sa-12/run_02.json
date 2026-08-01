@@ -1,0 +1,22 @@
+{
+  "nonce": "v2_cert_sa-12_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to submit a new infrastructure update request that will impact multiple departments, and I need the system to automatically assess whether this change requires executive approval based on the business scope. Can you walk me through the entire process from when I submit the request through final implementation, including tracking any related equipment modifications and service dependencies? I also need documentation of all regulatory requirements that apply to this change, as well as any existing maintenance schedules we should coordinate with during rollout.",
+    "n_resources": 273,
+    "user_msg_chars": 54226
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1\"\n}\n```\n\n**Rationale:** The Change Request Approval Workflow API is the best match because it directly addresses your core need: submitting infrastructure update requests with automatic assessment for executive approval based on business scope. This resource provides the complete end-to-end change management process you require, including:\n\n- Change request submission and approval workflows\n- Impact assessment capabilities\n- Approval routing based on business scope\n- Scheduling and coordination support\n\nWhile other resources in the catalog address related concerns (equipment modifications via AssetProvisioningIntegrationAPI, regulatory requirements via HazardousSubstanceComplianceAPI, maintenance coordination via ServiceTicketChangeRequestManagementAPI in MES), the ChangeRequestApprovalWorkflow is the primary orchestrator for the infrastructure change process you described. It would integrate with these complementary resources as needed to handle dependencies, compliance documentation, and maintenance scheduling coordination.",
+    "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1",
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  ],
+  "solved": false,
+  "tokens": 13798,
+  "latency_s": 3.89,
+  "wall_s": 3.893,
+  "cached": false
+}

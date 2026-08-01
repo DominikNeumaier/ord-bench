@@ -1,0 +1,45 @@
+{
+  "version": "v2",
+  "n_runs_per_case": 5,
+  "total_cases": 90,
+  "robust_certified": 82,
+  "borderline": 2,
+  "too_easy": 6,
+  "pct_robust": 91.1,
+  "avg_difficulty": 0.9378,
+  "by_mode": {
+    "skill_guided": {
+      "total": 30,
+      "robust": 30,
+      "borderline": 0,
+      "too_easy": 0
+    },
+    "skill_adjusted": {
+      "total": 20,
+      "robust": 18,
+      "borderline": 0,
+      "too_easy": 2
+    },
+    "dynamic": {
+      "total": 40,
+      "robust": 34,
+      "borderline": 2,
+      "too_easy": 4
+    }
+  },
+  "robust_definition": "solved in 0 of N runs (strict)",
+  "borderline_definition": "solved in exactly 1 of N runs",
+  "too_easy_definition": "solved in 2 or more of N runs",
+  "borderline_cases": [
+    "dy-20",
+    "dy-40"
+  ],
+  "too_easy_cases": [
+    "sa-03",
+    "sa-17",
+    "dy-01",
+    "dy-03",
+    "dy-14",
+    "dy-15"
+  ]
+}
