@@ -135,7 +135,7 @@ Consequently, the influence of structured descriptions and additional semantic i
 
 Existing benchmarks address important aspects of agentic resource selection, including scalability and general-purpose API coverage \citep{gonzalez_gorilla_2024,qin_toolllm_nodate,shi_retrieval_2025,lu_toolsandbox_2025}, but none satisfies these requirements together. Following the Design Science Research paradigm of Österle et al.\ \citep{osterle2010}, this work addresses that gap; its central research question is: \textit{How can a benchmark for enterprise resources be constructed that makes the influence of structured and semantically enriched descriptions on resource distinguishability measurable?}
 
-\textbf{ORD-Bench} addresses this gap. It contributes: (1)~a typed enterprise resource landscape of 273 resources across ten systems, represented natively in ORD; (2)~a field-based ambiguity metric combined with an adversarial construction loop that generates controlled ambiguity rather than relying purely on benchmark size; (3)~30 enterprise process models with derived skill artefacts that provide additional semantic resource context while preserving the underlying resource set, enabling controlled comparison of different resource description conditions; and (4)~350 test cases across these conditions as a reusable substrate for future LLM-based resource retrieval and selection studies.\footnote{\url{https://github.tools.sap/I750252/MasterThesis}}
+\textbf{ORD-Bench} addresses this gap. It contributes: (1)~a typed enterprise resource landscape of 273 resources across ten systems, represented natively in ORD; (2)~a field-based ambiguity metric combined with an adversarial construction loop that generates controlled ambiguity rather than relying purely on benchmark size; (3)~30 enterprise process models with derived skill artefacts that provide additional semantic resource context while preserving the underlying resource set, enabling controlled comparison of different resource description conditions; and (4)~350 test cases across these conditions as a reusable substrate for future LLM-based resource retrieval and selection studies.\footnote{\url{https://github.com/I750252/ord-bench}}
 
 This work focuses on benchmark construction and validation rather than evaluating individual resource retrieval strategies. As an initial validation, it demonstrates how additional contextual information affects measurable ambiguity within a fixed enterprise resource landscape. The resulting benchmark enables future studies on how retrieval systems and LLM-based agents exploit resource descriptions. Construction artefacts are provided in the appendix and repository.
 
@@ -785,7 +785,7 @@ Together these contributions directly answer the research question: ORD-Bench ma
 
 % ─────────────────────────────────────────────────────────────────────────────
 \bibliographystyle{IEEEtran}
-\bibliography{../../References/references}
+\bibliography{../references}
 % ─────────────────────────────────────────────────────────────────────────────
 
 % ─────────────────────────────────────────────────────────────────────────────
