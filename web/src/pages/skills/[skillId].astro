@@ -1,0 +1,97 @@
+---
+import Base from "../../layouts/Base.astro";
+import { loadSkills, loadProcesses, loadSystems, ordIdToSlug } from "../../lib/data";
+
+export async function getStaticPaths() {
+  return loadSkills().map((s) => ({
+    params: { skillId: s.skillId },
+    props: { skill: s },
+  }));
+}
+
+const { skill } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const procTitles = new Map(loadProcesses().map((p) => [p.name, p.title]));
+const processTitle = procTitles.get(skill.skillId) ?? skill.name;
+
+const ordIndex = new Map<string, { namespace: string; slug: string; title: string; type: string }>();
+for (const sys of loadSystems()) {
+  for (const r of sys.resources) {
+    ordIndex.set(r.ordId, { namespace: sys.namespace, slug: r.slug, title: r.title, type: r.type });
+  }
+}
+
+const gtStepCount = skill.steps.filter((s) => s.ordConfirmed.length > 0).length;
+---
+
+<Base
+  title={processTitle}
+  subtitle={`${skill.processType.toUpperCase()} skill · ${gtStepCount} GT steps pinned · ${skill.steps.length} total`}
+>
+  <div class="font-mono text-xs text-ink-subtle mb-6 flex flex-wrap items-center gap-2">
+    <a href={`${base}skills/`} class="hover:text-ink underline-offset-2 hover:underline">Skills</a>
+    <span>·</span>
+    <span class="text-ink">{processTitle}</span>
+    <span class="font-mono text-[10px] ml-auto text-ink-subtle">{skill.skillId}</span>
+  </div>
+
+  {skill.description && (
+    <p class="text-sm text-ink-muted mb-6 max-w-3xl leading-relaxed border-l-2 border-accent/30 pl-4">
+      {skill.description}
+    </p>
+  )}
+
+  <a
+    href={`${base}processes/${skill.skillId}/`}
+    class="inline-flex items-center gap-1.5 mb-8 text-xs font-mono px-3 py-1.5 rounded border border-rule bg-rule hover:bg-rule/70 transition text-ink-muted hover:text-ink"
+  >
+    ↗ view process model
+  </a>
+
+  <ol class="divide-y divide-rule border-y border-rule">
+    {skill.steps.map((st) => {
+      const isGt = st.ordConfirmed.length > 0;
+      return (
+        <li class={`py-4 ${isGt ? "" : "opacity-60"}`}>
+          <div class="flex items-start gap-4">
+            <span class="font-mono text-xs text-ink-subtle w-6 shrink-0 pt-0.5">
+              {String(st.index).padStart(2, "0")}
+            </span>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-2">
+                <span class={`w-2 h-2 rounded-full shrink-0 ${isGt ? "bg-green-500" : "bg-ink-subtle/40"}`}></span>
+                <span class="font-medium">{st.name}</span>
+              </div>
+              {isGt ? (
+                <ul class="mt-2 ml-4 space-y-1">
+                  {st.ordConfirmed.map((oid) => {
+                    const r = ordIndex.get(oid);
+                    return r ? (
+                      <li>
+                        <a
+                          href={`${base}landscape/${r.namespace}/${r.slug}/`}
+                          class="inline-flex items-center gap-1.5 font-mono text-xs px-2 py-1 rounded bg-green-50 border border-green-200 text-green-700 hover:bg-green-100 transition"
+                        >
+                          <span class="text-[9px] uppercase tracking-wide text-green-600">{r.type}</span>
+                          <span>{r.title}</span>
+                          <span class="text-[9px] text-green-500">{r.namespace}</span>
+                        </a>
+                      </li>
+                    ) : (
+                      <li class="font-mono text-xs text-ink-subtle">✓ {oid}</li>
+                    );
+                  })}
+                </ul>
+              ) : (
+                <div class="mt-1.5 ml-4 font-mono text-xs text-ink-subtle italic">
+                  non-GT step — no pinned resource
+                </div>
+              )}
+            </div>
+          </div>
+        </li>
+      );
+    })}
+  </ol>
+</Base>

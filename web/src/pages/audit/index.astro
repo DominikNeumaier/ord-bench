@@ -1,0 +1,711 @@
+---
+import Base from "../../layouts/Base.astro";
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT  = path.resolve(process.cwd(), "..");  // cwd() = web/, ROOT = ord-bench/
+const base  = import.meta.env.BASE_URL;
+
+function loadJson(p: string): any[] {
+  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, "utf8")) : [];
+}
+function loadText(p: string): string {
+  return fs.existsSync(p) ? fs.readFileSync(p, "utf8") : "";
+}
+function extractTriple(text: string, varname: string): string {
+  const m = text.match(new RegExp(`${varname}\\s*=\\s*"""([\\s\\S]*?)"""`, 's'));
+  return m ? m[1].trim() : '';
+}
+
+// System prompts from generation scripts
+const seedsTxt   = loadText(path.join(ROOT, "data", "landscape", "generation", "generate_seeds.py"));
+const iterTxt    = loadText(path.join(ROOT, "data", "landscape", "generation", "generate_iterative.py"));
+const procsTxt   = loadText(path.join(ROOT, "data", "test_cases", "design_time", "generation", "generate_processes.py"));
+const sgTxt      = loadText(path.join(ROOT, "data", "test_cases", "runtime", "generation", "generate_skill_guided.py"));
+const dyTxt      = loadText(path.join(ROOT, "data", "test_cases", "runtime", "generation", "generate_dynamic.py"));
+const oosTxt     = loadText(path.join(ROOT, "data", "test_cases", "runtime", "generation", "generate_out_of_scope.py"));
+
+const prompts = {
+  seed_gen:    extractTriple(seedsTxt,  '_SEED_SYS'),
+  seed_judge:  extractTriple(seedsTxt,  '_JUDGE_SYS'),
+  iter_gen:    extractTriple(iterTxt,   '_GEN_SYS'),
+  iter_judge:  extractTriple(iterTxt,   '_JUDGE_SYS'),
+  proc_judge:  (() => { const m = procsTxt.match(/sys_prompt\s*=\s*\(\s*\n?\s*"(You are[^"]+)"/s); return m?.[1].trim()??''; })(),
+  sg_judge:    (() => { const m = sgTxt.match(/sys_p\s*=\s*\(\s*\n?\s*"(You are[^"]+)"/s); return m?.[1].trim()??''; })(),
+  dy_judge:    (() => { const m = dyTxt.match(/sys_p\s*=\s*\(\s*\n?\s*"(You are[^"]+)"/s); return m?.[1].trim()??''; })(),
+  oos_judge:   (() => { const m = oosTxt.match(/sys_p\s*=\s*"(You are[^"]+)"/s); return m?.[1].trim()??''; })(),
+};
+
+function count(arr: any[], key: string, val: string) {
+  return arr.filter((e: any) => e[key] === val).length;
+}
+
+// ── Load logs ─────────────────────────────────────────────────────────────────
+const lsLog  = loadJson(path.join(ROOT, "data", "landscape", "logs", "enrichment_log.json"));
+const procLog = loadJson(path.join(ROOT, "data", "test_cases", "design_time", "logs", "process_construction_log.json"));
+const skillLog = loadJson(path.join(ROOT, "data", "test_cases", "design_time", "logs", "skill_construction_log.json"));
+
+// ── Derived iteration stats ───────────────────────────────────────────────────
+// Landscape
+const lsAcceptanceRate = lsLog.length > 0
+  ? Math.round((lsLog.filter((e: any) => e.outcome === "accepted").length / lsLog.filter((e: any) => e.outcome !== "no_profile").length) * 100)
+  : 0;
+const lsPhases: Record<string, number> = {};
+for (const e of lsLog) { const p = e.phase ?? "?"; lsPhases[p] = (lsPhases[p] ?? 0) + 1; }
+
+// Design-Time process construction
+const procAttemptsByProcess: Record<string, number> = {};
+for (const e of procLog) { procAttemptsByProcess[e.process_id] = (procAttemptsByProcess[e.process_id] ?? 0) + 1; }
+const procMultiAttempt = Object.values(procAttemptsByProcess).filter((n) => n > 1).length;
+const procMaxAttempts = Math.max(...Object.values(procAttemptsByProcess) as number[], 1);
+const dtEnrich = loadJson(path.join(ROOT, "data", "test_cases", "design_time", "logs", "enrichment_log.json"));
+
+const provDir = path.join(ROOT, "data", "test_cases", "runtime", "logs", "provenance");
+const provFiles = fs.existsSync(provDir) ? fs.readdirSync(provDir).filter((f: string) => f.endsWith(".json")) : [];
+const provCases = provFiles.map((f: string) => JSON.parse(fs.readFileSync(path.join(provDir, f), "utf8")) as any);
+
+const dtResults: any[] = loadJson(path.join(ROOT, "results", "design-time", "summary.json"));
+const rtResults: any[] = loadJson(path.join(ROOT, "results", "runtime", "summary.json"));
+
+// ── Sample data for trace examples ───────────────────────────────────────────
+const procAccepted  = procLog.filter((e: any) => e.outcome === "ACCEPTED")[0];
+const procFailed    = procLog.filter((e: any) => e.outcome === "VALIDATOR_FAIL")[0];
+const multiIterCase = provCases.find((c: any) => (c.evolution_log?.length ?? 0) > 1);
+const oneIterCase   = provCases.find((c: any) => (c.evolution_log?.length ?? 0) === 1 && c.mode === "skill_guided");
+---
+
+<Base title="Audit" subtitle="Benchmark construction provenance and evaluation results">
+  <div class="font-mono text-xs text-ink-subtle mb-6 flex items-center gap-2">
+    <a href={`${base}`} class="hover:text-ink underline-offset-2 hover:underline">ORD-Bench</a>
+    <span>·</span><span class="text-ink">Audit</span>
+  </div>
+
+  <!-- Tabs -->
+  <div class="flex gap-0 mb-8 border-b border-rule">
+    {[
+      { id: "landscape", label: "Landscape" },
+      { id: "design-time", label: "Design-Time" },
+      { id: "runtime", label: "Run-Time" },
+    ].map((t) => (
+      <button data-tab={t.id} class="audit-tab px-5 py-2.5 text-sm font-medium border-b-2 -mb-px transition-colors">
+        {t.label}
+      </button>
+    ))}
+  </div>
+
+  <!-- ══ LANDSCAPE ══════════════════════════════════════════════════════════════ -->
+  <div data-panel="landscape" class="audit-panel">
+
+    <!-- Pipeline flow diagram -->
+    <div class="mb-8 p-4 rounded-lg bg-rule/30 border border-rule">
+      <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-4">Generation Pipeline</div>
+      <div class="space-y-2">
+        {[
+          { step: "1", name: "generate_seeds.py", desc: "30 seeds — 3 per system (1 agent + 1 API + 1 dataProduct)", color: "bg-blue-50 border-blue-200", gen: prompts.seed_gen, judge: prompts.seed_judge, genLabel: "Generator: ORD resource JSON from system+type", judgeLabel: "Judge: C2 domain fit · C3 no duplicate · C4 ET justified · C5 description ok" },
+          { step: "2", name: "generate_iterative.py", desc: "Round-based expansion — HIGH gaps first, MEDIUM second. Pre-check before LLM call.", color: "bg-purple-50 border-purple-200", gen: prompts.iter_gen, judge: prompts.iter_judge, genLabel: "Generator: resource matching structural profile", judgeLabel: "Judge: C2–C5 with cross-domain tolerance" },
+          { step: "3", name: "reduce_near_dups.py", desc: "Rewrite or remove pairs with full_sim ≥ 0.75 → 273 final", color: "bg-green-50 border-green-200", gen: null, judge: null, genLabel: null, judgeLabel: null },
+        ].map((s) => (
+          <div class={`rounded-lg border ${s.color} p-3`}>
+            <div class="flex items-start gap-3">
+              <span class="font-mono text-xs font-bold text-ink w-5 shrink-0">{s.step}</span>
+              <div class="flex-1 min-w-0">
+                <div class="font-mono text-xs font-semibold text-ink">{s.name}</div>
+                <div class="text-[11px] text-ink-muted mt-0.5">{s.desc}</div>
+                {(s.gen || s.judge) && (
+                  <div class="mt-2 space-y-1">
+                    {s.gen && (
+                      <details class="group">
+                        <summary class="cursor-pointer font-mono text-[10px] text-ink-subtle hover:text-ink list-none flex items-center gap-1">
+                          <span class="group-open:rotate-90 transition-transform inline-block">▸</span>
+                          {s.genLabel}
+                        </summary>
+                        <pre class="mt-1 p-2 bg-white/70 rounded text-[9px] font-mono text-ink-muted overflow-x-auto leading-relaxed whitespace-pre-wrap max-h-40">{s.gen}</pre>
+                      </details>
+                    )}
+                    {s.judge && (
+                      <details class="group">
+                        <summary class="cursor-pointer font-mono text-[10px] text-ink-subtle hover:text-ink list-none flex items-center gap-1">
+                          <span class="group-open:rotate-90 transition-transform inline-block">▸</span>
+                          {s.judgeLabel}
+                        </summary>
+                        <pre class="mt-1 p-2 bg-white/70 rounded text-[9px] font-mono text-ink-muted overflow-x-auto leading-relaxed whitespace-pre-wrap max-h-40">{s.judge}</pre>
+                      </details>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-3">Outcome summary</div>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-4">
+      {[
+        { label: "Total log entries", v: lsLog.length.toLocaleString() },
+        { label: "Accepted", v: count(lsLog, "outcome", "accepted"), cls: "text-green-700" },
+        { label: "Rejected (judge)", v: count(lsLog, "outcome", "rejected_judge") },
+        { label: "Wrong tier", v: count(lsLog, "outcome", "wrong_tier") },
+        { label: "Removed (dedup)", v: count(lsLog, "outcome", "removed") },
+      ].map((s) => (
+        <div class="border border-rule rounded-lg p-3 text-center bg-white">
+          <div class={`font-serif text-xl font-semibold ${s.cls ?? "text-accent"}`}>{s.v}</div>
+          <div class="text-[10px] text-ink-muted mt-0.5">{s.label}</div>
+        </div>
+      ))}
+    </div>
+    <div class="flex flex-wrap gap-4 mb-10 text-xs font-mono text-ink-subtle">
+      <span>Acceptance rate (excl. no_profile): <strong class="text-green-700">{lsAcceptanceRate}%</strong></span>
+      {Object.entries(lsPhases).map(([phase, n]) => (
+        <span>{phase}: <strong class="text-ink">{(n as number).toLocaleString()}</strong> entries</span>
+      ))}
+    </div>
+
+    <!-- Traces -->
+    <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-3">Example traces</div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+      {(() => {
+        const seedEx = lsLog.find((e: any) => e.phase === "seed" && e.outcome === "accepted");
+        const v = seedEx?.judge_verdict as any;
+        return seedEx ? (
+          <div class="border border-green-200 rounded-lg p-4 bg-green-50 text-xs font-mono space-y-2">
+            <div class="font-semibold text-green-800 text-[10px] uppercase">Step 1 — Seed accepted</div>
+            <a href={`${base}landscape/${seedEx.namespace}/${(seedEx.ordId??'').replace(/[:.]/g,"-")}/`} class="text-accent-ink hover:underline text-[10px] block truncate">{seedEx.ordId}</a>
+            <div class="flex gap-1 flex-wrap">
+              {v && Object.entries(v).filter(([k]) => k.startsWith("c") && typeof (v as any)[k] === "boolean").map(([k, val]) => (
+                <span class={`px-1 rounded text-[9px] ${val ? "bg-green-100 text-green-700" : "bg-red-100 text-red-600"}`}>{k}:{String(val)}</span>
+              ))}
+            </div>
+            {v?.c2_reason && <div class="text-ink-muted italic text-[9px] leading-snug">"{v.c2_reason.substring(0,120)}"</div>}
+          </div>
+        ) : null;
+      })()}
+      {(() => {
+        const iterEx = lsLog.find((e: any) => e.phase === "iterative" && e.outcome === "accepted");
+        const v = iterEx?.judge_verdict as any;
+        return iterEx ? (
+          <div class="border border-blue-200 rounded-lg p-4 bg-blue-50 text-xs font-mono space-y-2">
+            <div class="font-semibold text-blue-800 text-[10px] uppercase">Step 2 — Iterative accepted</div>
+            <a href={`${base}landscape/${iterEx.namespace}/${(iterEx.ordId??'').replace(/[:.]/g,"-")}/`} class="text-accent-ink hover:underline text-[10px] block truncate">{iterEx.ordId}</a>
+            <div class="text-[9px] text-ink-subtle">Round {(iterEx as any).round} · {(iterEx as any).tier_target} tier · sim={((iterEx as any).achieved_sim??0).toFixed(3)}</div>
+            {(iterEx as any).target_resource && (
+              <div class="text-[9px] text-ink-subtle border-l-2 border-blue-300 pl-2">
+                Ausgangspunkt (target): <a href={`${base}landscape/${(iterEx as any).target_resource?.split(":")[0]}/${((iterEx as any).target_resource??'').replace(/[:.]/g,"-")}/`} class="text-accent-ink hover:underline">{(iterEx as any).target_resource}</a>
+              </div>
+            )}
+            <div class="flex gap-1 flex-wrap">
+              {v && Object.entries(v).filter(([k]) => k.startsWith("c") && typeof (v as any)[k] === "boolean").map(([k, val]) => (
+                <span class={`px-1 rounded text-[9px] ${val ? "bg-green-100 text-green-700" : "bg-red-100 text-red-600"}`}>{k}:{String(val)}</span>
+              ))}
+            </div>
+            {v?.c2_reason && <div class="text-ink-muted italic text-[9px] leading-snug">"{v.c2_reason.substring(0,120)}"</div>}
+          </div>
+        ) : null;
+      })()}
+      {(() => {
+        const rejEx = lsLog.find((e: any) => e.outcome === "rejected_judge");
+        const v = rejEx?.judge_verdict as any;
+        return rejEx ? (
+          <div class="border border-red-200 rounded-lg p-4 bg-red-50 text-xs font-mono space-y-2">
+            <div class="font-semibold text-red-800 text-[10px] uppercase">Judge rejection</div>
+            <div class="text-[9px] text-ink-subtle truncate">{rejEx.target_resource ?? rejEx.ordId}</div>
+            <div class="text-[9px] text-ink-subtle">Profile ns: {(rejEx as any).profile?.namespace}</div>
+            <div class="flex gap-1 flex-wrap">
+              {v && Object.entries(v).filter(([k]) => k.startsWith("c") && typeof (v as any)[k] === "boolean").map(([k, val]) => (
+                <span class={`px-1 rounded text-[9px] ${val ? "bg-green-100 text-green-700" : "bg-red-100 text-red-600"}`}>{k}:{String(val)}</span>
+              ))}
+            </div>
+            {v?.reject_reason && <div class="text-red-700 text-[9px] leading-snug">✗ {v.reject_reason.substring(0,150)}</div>}
+          </div>
+        ) : null;
+      })()}
+    </div>
+
+    <!-- Sample tables side by side -->
+    <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-3">Sample log entries</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Accepted -->
+      <div>
+        <div class="text-[10px] font-mono text-green-700 mb-2">✓ Accepted (sample of {count(lsLog,"outcome","accepted")})</div>
+        <table class="w-full text-xs font-mono border-collapse">
+          <thead>
+            <tr class="border-b border-rule text-[9px] uppercase tracking-wider text-ink-subtle">
+              <th class="text-left py-1.5 pr-3">ordId</th>
+              <th class="text-left py-1.5 pr-2">Phase</th>
+              <th class="text-right py-1.5">Tokens</th>
+            </tr>
+          </thead>
+          <tbody>
+            {lsLog.filter((e: any) => e.outcome === "accepted").slice(0, 8).map((e: any) => (
+              <tr class="border-b border-rule/30 hover:bg-rule/20">
+                <td class="py-1 pr-3 truncate max-w-[180px]">
+                  <a href={`${base}landscape/${e.namespace}/${(e.ordId??'').replace(/[:.]/g,"-")}/`} class="text-accent-ink hover:underline text-[10px]">{e.ordId?.split(":")[2]}</a>
+                  <span class="text-[9px] text-ink-subtle ml-1">{e.namespace}</span>
+                </td>
+                <td class="py-1 pr-2 text-ink-subtle text-[9px]">{e.phase}</td>
+                <td class="py-1 text-right text-ink-subtle text-[9px]">{(e.generator_tokens??0)+(e.judge_tokens??0)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <!-- Rejected -->
+      <div>
+        <div class="text-[10px] font-mono text-red-600 mb-2">✗ Rejected (sample of {count(lsLog,"outcome","rejected_judge")})</div>
+        <table class="w-full text-xs font-mono border-collapse">
+          <thead>
+            <tr class="border-b border-rule text-[9px] uppercase tracking-wider text-ink-subtle">
+              <th class="text-left py-1.5 pr-3">Resource</th>
+              <th class="text-left py-1.5">Reason (truncated)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {lsLog.filter((e: any) => e.outcome === "rejected_judge").slice(0, 8).map((e: any) => {
+              const v = e.judge_verdict as any;
+              return (
+                <tr class="border-b border-rule/30 hover:bg-rule/20">
+                  <td class="py-1 pr-3 text-[9px] text-ink-subtle truncate max-w-[120px]">{(e.target_resource??e.ordId??'').split(":")[2]}</td>
+                  <td class="py-1 text-[9px] text-ink-muted truncate max-w-[200px]">{v?.reject_reason?.substring(0,80) ?? "—"}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ DESIGN-TIME ════════════════════════════════════════════════════════════ -->
+  <div data-panel="design-time" class="audit-panel">
+    <div class="space-y-3 mb-6">
+      <!-- Pipeline flow -->
+      <div class="p-4 rounded-lg bg-rule/30 border border-rule">
+        <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-4">Generation Pipeline</div>
+        <div class="space-y-2">
+          {[
+            { step: "1", name: "generate_processes.py", desc: "30 BPMN/CMMN process models (15+15) — adversarial: Resource Selection → Generator → Validator (V1–V6) → Judge (J1–J6)", color: "bg-blue-50 border-blue-200", judge: prompts.proc_judge, judgeLabel: "Judge system prompt (J1–J6 checks)" },
+            { step: "2", name: "generate_skills.py", desc: "30 SKILL.md files — one per process, Validator S1–S4 (script only, no LLM judge)", color: "bg-purple-50 border-purple-200", judge: null, judgeLabel: null },
+            { step: "3", name: "enrich_from_processes.py", desc: "Write ord_enriched.json — capabilities, useCases, processNext, partOfGroups for all 70 GT resources", color: "bg-green-50 border-green-200", judge: null, judgeLabel: null },
+            { step: "4", name: "extract_cases.py", desc: "Extract 240 design-time cases — 1 per step, deterministic, no LLM", color: "bg-yellow-50 border-yellow-200", judge: null, judgeLabel: null },
+          ].map((s) => (
+            <div class={`rounded-lg border ${s.color} p-3`}>
+              <div class="flex items-start gap-3">
+                <span class="font-mono text-xs font-bold text-ink w-5 shrink-0">{s.step}</span>
+                <div class="flex-1 min-w-0">
+                  <div class="font-mono text-xs font-semibold text-ink">{s.name}</div>
+                  <div class="text-[11px] text-ink-muted mt-0.5">{s.desc}</div>
+                  {s.judge && (
+                    <details class="group mt-2">
+                      <summary class="cursor-pointer font-mono text-[10px] text-ink-subtle hover:text-ink list-none flex items-center gap-1">
+                        <span class="group-open:rotate-90 transition-transform inline-block">▸</span>
+                        {s.judgeLabel}
+                      </summary>
+                      <pre class="mt-1 p-2 bg-white/70 rounded text-[9px] font-mono text-ink-muted overflow-x-auto leading-relaxed whitespace-pre-wrap max-h-40">{s.judge}</pre>
+                    </details>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="p-3 rounded bg-rule/20 border border-rule text-xs space-y-1">
+        <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-2">Validator checks (deterministic script — zero LLM cost on failure)</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1 font-mono text-[10px]">
+          <div><span class="text-accent font-bold">V1</span> — All step ordIds exist in the 273-resource landscape</div>
+          <div><span class="text-accent font-bold">V2</span> — No ordId appears twice in the same process</div>
+          <div><span class="text-accent font-bold">V3</span> — Exactly 4 GT-eligible + 4 non-GT resources</div>
+          <div><span class="text-accent font-bold">V4</span> — Steps span ≥3 different namespaces</div>
+          <div><span class="text-accent font-bold">V5</span> — At least 1 agent + 1 apiResource present</div>
+          <div><span class="text-accent font-bold">V6</span> — Exactly 8 steps</div>
+        </div>
+        <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mt-3 mb-2">Judge checks (LLM — only if validator passes)</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1 font-mono text-[10px]">
+          <div><span class="text-accent font-bold">J1</span> — Process type correct (BPMN=sequential, CMMN=case-driven)</div>
+          <div><span class="text-accent font-bold">J2</span> — Activity labels are business activities, not technical descriptions</div>
+          <div><span class="text-accent font-bold">J3</span> — Descriptions state business need, not resource name/type</div>
+          <div><span class="text-accent font-bold">J4</span> — Each resource is semantically correct for its assigned activity</div>
+          <div><span class="text-accent font-bold">J5</span> — Process tells a coherent enterprise story</div>
+          <div><span class="text-accent font-bold">J6</span> — Enrichment fields semantically correct (capabilities, useCases, processNext)</div>
+        </div>
+        <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mt-3 mb-2">Skill.md validator checks (S1–S4, script only — no LLM judge for skills)</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1 font-mono text-[10px]">
+          <div><span class="text-accent font-bold">S1</span> — Every step has exactly one ord_confirmed ordId</div>
+          <div><span class="text-accent font-bold">S2</span> — All ord_confirmed ordIds exist in the 273-resource landscape</div>
+          <div><span class="text-accent font-bold">S3</span> — No ordId appears in ord_confirmed more than once</div>
+          <div><span class="text-accent font-bold">S4</span> — Step descriptions mention business activity, NOT resource name or ordId</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8">
+      {[
+        { label: "Process attempts", v: procLog.length },
+        { label: "Accepted", v: count(procLog, "outcome", "ACCEPTED"), cls: "text-green-700" },
+        { label: "Validator fail", v: count(procLog, "outcome", "VALIDATOR_FAIL") },
+        { label: "Judge fail", v: count(procLog, "outcome", "JUDGE_FAIL") },
+        { label: "Gave up", v: count(procLog, "outcome", "GAVE_UP"), cls: "text-red-600" },
+      ].map((s) => (
+        <div class="border border-rule rounded-lg p-3 text-center bg-white">
+          <div class={`font-serif text-xl font-semibold ${s.cls ?? "text-accent"}`}>{s.v}</div>
+          <div class="text-[10px] text-ink-muted mt-0.5">{s.label}</div>
+        </div>
+      ))}
+    </div>
+    <div class="flex flex-wrap gap-4 mb-8 text-xs font-mono text-ink-subtle">
+      <span>1-shot acceptance: <strong class="text-green-700">{procLog.length > 0 ? Math.round((count(procLog,"outcome","ACCEPTED") / Object.keys(procLog.reduce((a: any, e: any) => ({...a, [e.process_id]: 1}), {})).length) * 100) : 0}%</strong> of processes accepted on first attempt</span>
+      <span>Processes needing retry: <strong class="text-ink">{procMultiAttempt}</strong></span>
+      <span>Max attempts for one process: <strong class="text-ink">{procMaxAttempts}</strong></span>
+    </div>
+
+    <!-- Accepted trace -->
+    {procAccepted && (
+      <div class="mb-8">
+        <h3 class="font-mono text-xs uppercase tracking-wider text-ink-subtle mb-3">
+          Trace: accepted process — <a href={`${base}processes/${procAccepted.process_id}/`} class="text-accent-ink hover:underline">{procAccepted.process_id}</a>
+        </h3>
+        <div class="border border-green-200 rounded-lg p-4 bg-green-50 text-xs font-mono space-y-2">
+          <div><span class="text-ink-subtle">Attempt:</span> {procAccepted.attempt} · <span class="text-ink-subtle">Type:</span> {procAccepted.process_type?.toUpperCase()}</div>
+          <div class="flex flex-wrap gap-1">
+            {Object.entries(procAccepted.validator_results ?? {}).map(([k, v]) => (
+              <span class={`px-1.5 py-0.5 rounded text-[10px] ${v === true ? "bg-green-100 text-green-700" : v === "skipped" ? "bg-rule text-ink-subtle" : "bg-red-100 text-red-600"}`}>{k}: {String(v)}</span>
+            ))}
+          </div>
+          <div class="flex flex-wrap gap-1">
+            {Object.entries(procAccepted.judge_results ?? {}).map(([k, v]) => (
+              <span class={`px-1.5 py-0.5 rounded text-[10px] ${v === true ? "bg-green-100 text-green-700" : "bg-red-100 text-red-600"}`}>{k}: {String(v)}</span>
+            ))}
+          </div>
+          <div class="text-ink-subtle text-[10px]">GT resources: {procAccepted.resource_pool?.gt?.join(" · ")}</div>
+        </div>
+      </div>
+    )}
+
+    <!-- Rejected trace -->
+    {procFailed && (
+      <div class="mb-8">
+        <h3 class="font-mono text-xs uppercase tracking-wider text-ink-subtle mb-3">
+          Trace: validator failure — {procFailed.process_id}
+        </h3>
+        <div class="border border-red-200 rounded-lg p-4 bg-red-50 text-xs font-mono space-y-2">
+          <div><span class="text-ink-subtle">Attempt:</span> {procFailed.attempt} · <span class="text-ink-subtle">Type:</span> {procFailed.process_type?.toUpperCase()}</div>
+          <div class="text-red-600">✗ {procFailed.validator_failure}</div>
+          <div class="flex flex-wrap gap-1">
+            {Object.entries(procFailed.validator_results ?? {}).map(([k, v]) => (
+              <span class={`px-1.5 py-0.5 rounded text-[10px] ${v === true ? "bg-green-100 text-green-700" : v === "skipped" ? "bg-rule text-ink-subtle" : "bg-red-100 text-red-600"}`}>{k}: {String(v)}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    )}
+
+    <!-- Full process log -->
+    <h3 class="font-mono text-xs uppercase tracking-wider text-ink-subtle mb-3">Full process construction log ({procLog.length} entries)</h3>
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-xs font-mono border-collapse">
+        <thead>
+          <tr class="border-b-2 border-rule text-[10px] uppercase tracking-wider text-ink-subtle">
+            <th class="text-left py-2 pr-3">Process</th>
+            <th class="text-left py-2 pr-3">Type</th>
+            <th class="text-right py-2 pr-3">Attempt</th>
+            <th class="text-left py-2 pr-3">Outcome</th>
+            <th class="text-left py-2">Failure / Response</th>
+          </tr>
+        </thead>
+        <tbody>
+          {procLog.map((e: any) => (
+            <tr class="border-b border-rule/50 hover:bg-rule/20">
+              <td class="py-1.5 pr-3">
+                {e.outcome === "ACCEPTED"
+                  ? <a href={`${base}processes/${e.process_id}/`} class="text-accent-ink hover:underline">{e.process_id}</a>
+                  : <span>{e.process_id}</span>}
+              </td>
+              <td class="py-1.5 pr-3 text-ink-subtle uppercase text-[10px]">{e.process_type}</td>
+              <td class="py-1.5 pr-3 text-right">{e.attempt}</td>
+              <td class={`py-1.5 pr-3 text-[10px] ${e.outcome === "ACCEPTED" ? "text-green-700" : e.outcome === "GAVE_UP" ? "text-red-600" : "text-ink-subtle"}`}>
+                {e.outcome}
+              </td>
+              <td class="py-1.5 text-ink-muted text-[10px] truncate max-w-xs">
+                {e.validator_failure ?? (e.judge_response ? e.judge_response.replace(/```json|```/g,"").substring(0,80) : "—")}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Enrichment stats -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+      {[
+        { label: "GT resources enriched", v: dtEnrich.length, cls: "text-green-700" },
+        { label: "Skills accepted", v: count(skillLog, "outcome", "ACCEPTED"), cls: "text-green-700" },
+        { label: "Design-Time cases", v: 240 },
+      ].map((s) => (
+        <div class="border border-rule rounded-lg p-3 text-center bg-white">
+          <div class={`font-serif text-xl font-semibold ${s.cls ?? "text-accent"}`}>{s.v}</div>
+          <div class="text-[10px] text-ink-muted mt-0.5">{s.label}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Evaluation Results -->
+    {dtResults.length > 0 && (
+      <div class="mt-10 pt-8 border-t border-rule">
+        <div class="flex items-center gap-2 mb-4">
+          <h3 class="font-serif text-base font-semibold">Evaluation Results</h3>
+          {dtResults[0]?.cases < 50 && (
+            <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-yellow-100 text-yellow-700">smoke test only ({dtResults[0]?.cases} cases) — run full benchmark for complete results</span>
+          )}
+        </div>
+        <table class="w-full text-xs font-mono border-collapse">
+          <thead>
+            <tr class="border-b-2 border-rule text-[10px] uppercase tracking-wider text-ink-subtle">
+              <th class="text-left py-2 pr-6">Method</th>
+              <th class="text-right py-2 pr-4">Cases</th>
+              <th class="text-right py-2 pr-4">P@1</th>
+              <th class="text-right py-2 pr-4">R@5</th>
+              <th class="text-right py-2 pr-4">MRR</th>
+              <th class="text-right py-2">Tokens/case</th>
+            </tr>
+          </thead>
+          <tbody>
+            {dtResults.map((r: any) => (
+              <tr class="border-b border-rule/50 hover:bg-rule/20">
+                <td class="py-2 pr-6 font-semibold">{r.method}</td>
+                <td class="py-2 pr-4 text-right text-ink-subtle">{r.cases}</td>
+                <td class="py-2 pr-4 text-right">{r["P@1"] != null ? r["P@1"].toFixed(3) : "—"}</td>
+                <td class="py-2 pr-4 text-right">{r["R@5"] != null ? r["R@5"].toFixed(3) : "—"}</td>
+                <td class="py-2 pr-4 text-right">{r["MRR"] != null ? r["MRR"].toFixed(3) : "—"}</td>
+                <td class="py-2 text-right text-ink-subtle">{r.avg_tokens_per_case != null ? Math.round(r.avg_tokens_per_case).toLocaleString() : "—"}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+  </div>
+
+  <!-- ══ RUNTIME ════════════════════════════════════════════════════════════════ -->
+  <div data-panel="runtime" class="audit-panel">
+    <div class="space-y-3 mb-6">
+      <!-- Pipeline flow -->
+      <div class="p-4 rounded-lg bg-rule/30 border border-rule">
+        <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-4">Adversarial Pipeline: Generator → Solver@273-clean → Validator → Judge</div>
+        <div class="space-y-2">
+          {[
+            { name: "generate_skill_guided.py", desc: "30 SG cases — Solver gate on initial generation; final prompts shortened post-gate to clean up routing-eval noise (commit 6429a4cac). Validator V1–V3 (script) → Judge C1–C5 (LLM).", color: "bg-green-50 border-green-200", judge: prompts.sg_judge, judgeLabel: "Judge system prompt (C1–C5)" },
+            { name: "generate_skill_adjusted.py", desc: "20 SA cases — skill + 1–2 implicit gap resources. Validator V1–V4 → Solver gate on gap_ids → Judge C1–C3.", color: "bg-yellow-50 border-yellow-200", judge: null, judgeLabel: null },
+            { name: "generate_dynamic.py", desc: "40 DY cases — Single-Intent (P1/P2/P3) + Multi-Intent. Solver gate active for all cases on gt_ids[:1]. Validator → Judge C1–C3.", color: "bg-blue-50 border-blue-200", judge: prompts.dy_judge, judgeLabel: "Judge system prompt (Dynamic)" },
+            { name: "generate_out_of_scope.py", desc: "20 OOS cases — capabilities absent from landscape. Validator C1 programmatic (text_sim check). No Solver gate.", color: "bg-red-50 border-red-200", judge: prompts.oos_judge, judgeLabel: "Judge system prompt (OOS)" },
+          ].map((s) => (
+            <div class={`rounded-lg border ${s.color} p-3`}>
+              <div class="flex items-start gap-3">
+                <div class="flex-1 min-w-0">
+                  <div class="font-mono text-xs font-semibold text-ink">{s.name}</div>
+                  <div class="text-[11px] text-ink-muted mt-0.5">{s.desc}</div>
+                  {s.judge && (
+                    <details class="group mt-2">
+                      <summary class="cursor-pointer font-mono text-[10px] text-ink-subtle hover:text-ink list-none flex items-center gap-1">
+                        <span class="group-open:rotate-90 transition-transform inline-block">▸</span>
+                        {s.judgeLabel}
+                      </summary>
+                      <pre class="mt-1 p-2 bg-white/70 rounded text-[9px] font-mono text-ink-muted overflow-x-auto leading-relaxed whitespace-pre-wrap max-h-32">{s.judge}</pre>
+                    </details>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="p-3 rounded bg-rule/20 border border-rule text-xs space-y-1">
+        <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-2">Adversarial three-party game: Generator → Solver@273-clean → Judge</div>
+        <div class="font-mono text-[10px] text-ink-subtle mb-1">Validator (script, all modes)</div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-1 font-mono text-[10px] mb-3">
+          <div><span class="text-accent font-bold">V1</span> — All ordIds exist in landscape</div>
+          <div><span class="text-accent font-bold">V2</span> — Prompt ≥20 chars</div>
+          <div><span class="text-accent font-bold">V3</span> — No ordId literal in prompt</div>
+          <div><span class="text-accent font-bold">V4 (SA)</span> — Gap ordIds NOT in skill ord_confirmed</div>
+        </div>
+        <div class="font-mono text-[10px] text-ink-subtle mb-1">Judge checks (LLM — Skill-Guided)</div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-1 font-mono text-[10px] mb-3">
+          <div><span class="text-accent font-bold">C1</span> — Sounds like real enterprise request</div>
+          <div><span class="text-accent font-bold">C2</span> — Coherent with process scenario</div>
+          <div><span class="text-accent font-bold">C3</span> — No resource names in prompt</div>
+          <div><span class="text-accent font-bold">C4</span> — Prompt coherent with process</div>
+          <div><span class="text-accent font-bold">C5</span> — Skill covers request end-to-end</div>
+        </div>
+        <div class="font-mono text-[10px] text-ink-subtle mb-1">Judge checks (LLM — Dynamic)</div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-1 font-mono text-[10px]">
+          <div><span class="text-accent font-bold">C1</span> — GT ordIds exist, are GT-eligible</div>
+          <div><span class="text-accent font-bold">C2</span> — Prompt sounds realistic</div>
+          <div><span class="text-accent font-bold">C3</span> — P-label plausibly verifiable</div>
+        </div>
+      </div>
+    </div>
+
+    {(() => {
+      const totalIters = provCases.reduce((s: number, c: any) => s + (c.evolution_log?.length ?? 1), 0);
+      const tooEasy = provCases.reduce((s: number, c: any) =>
+        s + (c.evolution_log ?? []).filter((e: any) => e.outcome === "TOO_EASY").length, 0);
+      const judgeFail = provCases.reduce((s: number, c: any) =>
+        s + (c.evolution_log ?? []).filter((e: any) => e.outcome === "JUDGE_FAIL").length, 0);
+      const oneShot = provCases.filter((c: any) => (c.evolution_log?.length ?? 1) === 1).length;
+      const acceptRate = Math.round((oneShot / provCases.length) * 100);
+      return (
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8">
+          {[
+            { label: "Total cases", v: provCases.length },
+            { label: "1-shot (first try)", v: `${oneShot} (${acceptRate}%)`, cls: "text-green-700" },
+            { label: "Retried (2nd iter)", v: provCases.length - oneShot },
+            { label: "TOO_EASY → rejected", v: tooEasy, cls: tooEasy > 0 ? "text-yellow-600" : undefined },
+            { label: "JUDGE_FAIL → retried", v: judgeFail },
+          ].map((s) => (
+            <div class="border border-rule rounded-lg p-3 text-center bg-white">
+              <div class={`font-serif text-xl font-semibold ${s.cls ?? "text-accent"}`}>{s.v}</div>
+              <div class="text-[10px] text-ink-muted mt-0.5">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      );
+    })()}
+
+    <!-- 1-shot trace -->
+    {oneIterCase && (
+      <div class="mb-8">
+        <h3 class="font-mono text-xs uppercase tracking-wider text-ink-subtle mb-3">
+          Trace: 1-shot accepted — {oneIterCase.case_id} ({oneIterCase.mode?.replace(/_/g,"-")})
+        </h3>
+        <div class="border border-green-200 rounded-lg p-4 bg-green-50 text-xs font-mono space-y-2">
+          {oneIterCase.skill_id && <div><span class="text-ink-subtle">Skill:</span> <a href={`${base}skills/${oneIterCase.skill_id}/`} class="text-accent-ink hover:underline">{oneIterCase.skill_id}</a></div>}
+          <div class="text-ink font-medium">"{oneIterCase.accepted_case?.user_prompt?.substring(0,200)}…"</div>
+          {oneIterCase.evolution_log?.map((ev: any) => (
+            <div class="border-l-2 border-green-300 pl-3">
+              <div><span class="text-ink-subtle">Iter {ev.iteration}:</span> <span class="text-green-700">{ev.outcome}</span></div>
+              {ev.solver_output && <div class="text-[10px] text-ink-subtle">Solver: {ev.solver_output.predicted || "—"} ({ev.solver_output.correct ? "✓ correct" : "✗ wrong"})</div>}
+              {ev.judge_results && <div class="flex gap-1 flex-wrap mt-1">{Object.entries(ev.judge_results).map(([k,v]) => <span class={`px-1 rounded text-[9px] ${v ? "bg-green-100 text-green-700" : "bg-red-100 text-red-600"}`}>{k}</span>)}</div>}
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Multi-iter trace -->
+    {multiIterCase && (
+      <div class="mb-8">
+        <h3 class="font-mono text-xs uppercase tracking-wider text-ink-subtle mb-3">
+          Trace: retried case — {multiIterCase.case_id} ({multiIterCase.evolution_log?.length} iterations)
+        </h3>
+        <div class="border border-yellow-200 rounded-lg p-4 bg-yellow-50 text-xs font-mono space-y-3">
+          <div class="text-ink font-medium">"{multiIterCase.accepted_case?.user_prompt?.substring(0,200)}…"</div>
+          {multiIterCase.evolution_log?.map((ev: any) => (
+            <div class={`border-l-2 pl-3 ${ev.outcome === "ACCEPTED" ? "border-green-400" : "border-red-300"}`}>
+              <div><span class="text-ink-subtle">Iter {ev.iteration}:</span> <span class={ev.outcome === "ACCEPTED" ? "text-green-700" : "text-red-600"}>{ev.outcome}</span></div>
+              {ev.judge_results && <div class="flex gap-1 flex-wrap mt-1">{Object.entries(ev.judge_results).map(([k,v]) => <span class={`px-1 rounded text-[9px] ${v ? "bg-green-100 text-green-700" : "bg-red-100 text-red-600"}`}>{k}</span>)}</div>}
+              {ev.judge_response && <div class="text-ink-muted italic text-[9px] mt-1">"{ev.judge_response.replace(/```json|```/g,"").trim().substring(0,150)}"</div>}
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Full provenance table -->
+    <h3 class="font-mono text-xs uppercase tracking-wider text-ink-subtle mb-3">All cases ({provCases.length})</h3>
+    <div class="overflow-x-auto">
+      <table class="w-full text-xs font-mono border-collapse">
+        <thead>
+          <tr class="border-b-2 border-rule text-[10px] uppercase tracking-wider text-ink-subtle">
+            <th class="text-left py-2 pr-3">Case</th>
+            <th class="text-left py-2 pr-3">Mode</th>
+            <th class="text-right py-2 pr-3">Iters</th>
+            <th class="text-left py-2 pr-3">Skill / Resource</th>
+            <th class="text-left py-2">Prompt</th>
+          </tr>
+        </thead>
+        <tbody>
+          {provCases.map((c: any) => {
+            const skillId = c.skill_id ?? c.accepted_case?.expected_skill_id;
+            const iters = c.evolution_log?.length ?? 1;
+            const prompt = c.accepted_case?.user_prompt ?? "";
+            return (
+              <tr class="border-b border-rule/50 hover:bg-rule/20">
+                <td class="py-1.5 pr-3 font-semibold">{c.case_id}</td>
+                <td class="py-1.5 pr-3 text-ink-subtle">{c.mode?.replace(/_/g,"-")}</td>
+                <td class={`py-1.5 pr-3 text-right ${iters > 1 ? "text-yellow-600 font-semibold" : ""}`}>{iters}</td>
+                <td class="py-1.5 pr-3">
+                  {skillId
+                    ? <a href={`${base}skills/${skillId}/`} class="text-accent-ink hover:underline text-[10px]">{skillId}</a>
+                    : <span class="text-ink-subtle text-[10px]">{(c.selected_resources?.[0]??"").split(":")[2]??"—"}</span>}
+                </td>
+                <td class="py-1.5 text-ink-muted truncate max-w-sm">{prompt.substring(0,80)}{prompt.length>80?"…":""}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+
+    {rtResults.length > 0 && (
+      <div class="mt-10 pt-8 border-t border-rule">
+        <div class="flex items-center gap-2 mb-3">
+          <h3 class="font-serif text-base font-semibold">Evaluation Results</h3>
+          <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-yellow-100 text-yellow-700">⚠ stale — run on old landscape, for reference only</span>
+        </div>
+        <table class="w-full text-xs font-mono border-collapse">
+          <thead>
+            <tr class="border-b-2 border-rule text-[10px] uppercase tracking-wider text-ink-subtle">
+              <th class="text-left py-2 pr-4">Method</th>
+              <th class="text-left py-2 pr-4">State</th>
+              <th class="text-right py-2 pr-4">Cases</th>
+              <th class="text-right py-2 pr-4">Top-1</th>
+              <th class="text-right py-2 pr-4">Routing</th>
+              <th class="text-right py-2 pr-4">Cand-Recall</th>
+              <th class="text-right py-2">Tokens/case</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rtResults.map((r: any) => {
+              const tokPerCase = r.total_tokens && r.cases ? Math.round(r.total_tokens / r.cases) : null;
+              const isBest = r["Top-1"] === Math.max(...rtResults.map((x: any) => x["Top-1"] ?? 0));
+              return (
+                <tr class="border-b border-rule/50 hover:bg-rule/20">
+                  <td class="py-2 pr-4 font-semibold">{r.method}</td>
+                  <td class="py-2 pr-4 text-ink-subtle text-[10px]">{r.state}</td>
+                  <td class="py-2 pr-4 text-right text-ink-subtle">{r.cases}</td>
+                  <td class={`py-2 pr-4 text-right ${isBest ? "text-green-700 font-bold" : ""}`}>
+                    {r["Top-1"] != null ? r["Top-1"].toFixed(3) : "—"}
+                  </td>
+                  <td class="py-2 pr-4 text-right">{r["Routing-Acc"] != null ? r["Routing-Acc"].toFixed(3) : "—"}</td>
+                  <td class="py-2 pr-4 text-right">{r["Cand-Recall"] != null ? r["Cand-Recall"].toFixed(3) : "—"}</td>
+                  <td class="py-2 text-right text-ink-subtle">{tokPerCase != null ? tokPerCase.toLocaleString() : "—"}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+        <p class="text-[10px] font-mono text-ink-subtle mt-2">Top-1 = first candidate correct. Routing = correct mode classification. Cand-Recall = GT anywhere in candidate set.</p>
+      </div>
+    )}
+  </div>
+</Base>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>(".audit-tab");
+  const panels = document.querySelectorAll<HTMLElement>(".audit-panel");
+  function activate(id: string) {
+    tabs.forEach((t) => {
+      const on = t.dataset.tab === id;
+      t.classList.toggle("border-accent", on);
+      t.classList.toggle("text-ink", on);
+      t.classList.toggle("border-transparent", !on);
+      t.classList.toggle("text-ink-subtle", !on);
+    });
+    panels.forEach((p) => { p.style.display = p.dataset.panel === id ? "" : "none"; });
+    sessionStorage.setItem("audit-tab", id);
+  }
+  panels.forEach((p) => { p.style.display = "none"; });
+  activate(sessionStorage.getItem("audit-tab") ?? "landscape");
+  tabs.forEach((t) => t.addEventListener("click", () => activate(t.dataset.tab!)));
+</script>

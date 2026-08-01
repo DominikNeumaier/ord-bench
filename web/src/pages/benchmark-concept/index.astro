@@ -1,0 +1,135 @@
+---
+import Base from "../../layouts/Base.astro";
+import fs from "node:fs";
+import path from "node:path";
+
+const ROOT  = path.resolve(process.cwd(), "..");
+const base  = import.meta.env.BASE_URL;
+
+const mdPath = path.join(ROOT, "docs", "BENCHMARK.md");
+const rawMd  = fs.existsSync(mdPath) ? fs.readFileSync(mdPath, "utf8") : "File not found.";
+
+const SKIP_HEADINGS = new Set(["Steps", "Overview"]);
+const headings = [...rawMd.matchAll(/^## (.+)$/gm)]
+  .filter((m) => !SKIP_HEADINGS.has(m[1]))
+  .map((m, i) => ({ title: m[1], id: `s${i}` }));
+
+function escape(s: string) {
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+function renderMd(md: string): string {
+  // 1. Extract fenced code blocks (preserve content exactly)
+  const blocks: string[] = [];
+  md = md.replace(/```([\w]*)\n([\s\S]*?)```/g, (_, lang, code) => {
+    blocks.push(`<pre class="my-3 p-3 rounded-md bg-rule/40 border border-rule overflow-x-auto font-mono text-[11px] text-ink leading-relaxed whitespace-pre">${escape(code)}</pre>`);
+    return `\x00BLOCK${blocks.length-1}\x00`;
+  });
+
+  // 2. Inline code
+  const inlines: string[] = [];
+  md = md.replace(/`([^`\n]+)`/g, (_, c) => {
+    inlines.push(`<code class="font-mono text-[11px] bg-rule px-1 py-0.5 rounded text-ink">${escape(c)}</code>`);
+    return `\x00INLINE${inlines.length-1}\x00`;
+  });
+
+  // 3. Block-level transforms
+  const lines = md.split("\n");
+  const out: string[] = [];
+  let inList = false;
+
+  for (const line of lines) {
+    const tr = line.trimEnd();
+
+    if (tr.startsWith("#### ")) {
+      if (inList) { out.push("</ul>"); inList = false; }
+      out.push(`<h4 class="font-serif text-sm font-semibold text-ink mt-5 mb-1">${tr.slice(5)}</h4>`);
+    } else if (tr.startsWith("### ")) {
+      if (inList) { out.push("</ul>"); inList = false; }
+      out.push(`<h3 class="font-serif text-base font-semibold text-ink mt-7 mb-2 pb-1 border-b border-rule">${tr.slice(4)}</h3>`);
+    } else if (tr.startsWith("## ")) {
+      if (inList) { out.push("</ul>"); inList = false; }
+      out.push(`<h2 class="font-serif text-xl font-semibold text-ink mt-10 mb-3">${tr.slice(3)}</h2>`);
+    } else if (tr.startsWith("# ")) {
+      if (inList) { out.push("</ul>"); inList = false; }
+      out.push(`<h1 class="font-serif text-2xl font-semibold text-ink mb-4">${tr.slice(2)}</h1>`);
+    } else if (tr === "---") {
+      if (inList) { out.push("</ul>"); inList = false; }
+      out.push('<hr class="border-rule my-6"/>');
+    } else if (tr.startsWith("> ")) {
+      if (inList) { out.push("</ul>"); inList = false; }
+      const inner = tr.slice(2).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+      out.push(`<div class="border-l-4 border-accent/30 pl-4 my-1 text-sm text-ink-muted">${inner}</div>`);
+    } else if (/^  - /.test(tr)) {
+      if (!inList) { out.push('<ul class="my-2 space-y-0.5">'); inList = true; }
+      out.push(`<li class="ml-8 list-disc text-sm text-ink-muted">${tr.slice(4)}</li>`);
+    } else if (/^- /.test(tr)) {
+      if (!inList) { out.push('<ul class="my-2 space-y-0.5">'); inList = true; }
+      out.push(`<li class="ml-4 list-disc text-sm text-ink-muted">${tr.slice(2)}</li>`);
+    } else if (/^\|/.test(tr)) {
+      if (inList) { out.push("</ul>"); inList = false; }
+      // table row — handled below in post-processing
+      out.push(`__TR__${tr}`);
+    } else if (tr === "") {
+      if (inList) { out.push("</ul>"); inList = false; }
+      out.push('<div class="h-2"></div>');
+    } else {
+      if (inList) { out.push("</ul>"); inList = false; }
+      const inline = tr.replace(/\*\*(.+?)\*\*/g, '<strong class="text-ink font-semibold">$1</strong>');
+      out.push(`<p class="text-sm text-ink-muted leading-relaxed">${inline}</p>`);
+    }
+  }
+  if (inList) out.push("</ul>");
+
+  // 4. Merge table rows
+  let html = out.join("\n");
+  html = html.replace(/((?:__TR__\|.+\n?)+)/g, (tableBlock) => {
+    const rows = tableBlock.trim().split("\n").map(r => r.replace("__TR__",""));
+    const header = rows[0].split("|").filter(Boolean).map(c =>
+      `<th class="text-left py-1.5 pr-4 text-[10px] uppercase tracking-wider font-medium text-ink">${c.trim()}</th>`).join("");
+    const body = rows.slice(2).map(r =>
+      "<tr class=\"border-b border-rule/40 hover:bg-rule/20\">" +
+      r.split("|").filter(Boolean).map(c =>
+        `<td class="py-1.5 pr-4 text-sm text-ink-muted">${c.trim()}</td>`).join("") +
+      "</tr>").join("");
+    return `<div class="overflow-x-auto my-4"><table class="w-full text-xs border-collapse"><thead><tr class="border-b-2 border-rule">${header}</tr></thead><tbody>${body}</tbody></table></div>`;
+  });
+
+  // 5. Restore code blocks and inlines
+  html = html.replace(/\x00BLOCK(\d+)\x00/g, (_, i) => blocks[Number(i)]);
+  html = html.replace(/\x00INLINE(\d+)\x00/g, (_, i) => inlines[Number(i)]);
+
+  return html;
+}
+
+const rendered = renderMd(rawMd);
+---
+
+<Base title="Benchmark Construction" subtitle="Full specification — docs/BENCHMARK.md">
+  <div class="font-mono text-xs text-ink-subtle mb-6 flex items-center gap-2">
+    <a href={`${base}`} class="hover:text-ink underline-offset-2 hover:underline">ORD-Bench</a>
+    <span>·</span>
+    <span class="text-ink">Benchmark Concept</span>
+  </div>
+
+  <!-- Quick nav -->
+  <div class="flex flex-wrap gap-2 mb-8 p-4 rounded-lg bg-rule/30 border border-rule">
+    <span class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle self-center mr-2">Jump to:</span>
+    {headings.map((h) => (
+      <a href={`#${h.id}`}
+         class="font-mono text-[10px] px-2 py-1 rounded bg-white border border-rule text-ink-muted hover:border-accent hover:text-ink transition">
+        {h.title}
+      </a>
+    ))}
+  </div>
+
+  <!-- Add anchor ids to h2 headings via JS -->
+  <div class="max-w-4xl" id="concept-body" set:html={rendered} />
+</Base>
+
+<script>
+  // Add anchor ids matching the nav links
+  document.querySelectorAll('#concept-body h2').forEach((el, i) => {
+    el.id = `s${i}`;
+  });
+</script>

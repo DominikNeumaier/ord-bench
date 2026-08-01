@@ -1,0 +1,241 @@
+---
+import Base from "../../../layouts/Base.astro";
+import { loadDtAnnotations, loadProcesses, loadSystems } from "../../../lib/data";
+
+const cases = loadDtAnnotations();
+const base = import.meta.env.BASE_URL;
+
+const procTitles = new Map(loadProcesses().map((p) => [p.name, p.title]));
+const procTypes  = new Map(loadProcesses().map((p) => [p.name, p.kind]));
+
+const ordIndex = new Map<string, { namespace: string; slug: string; title: string; shortDescription: string; type: string }>();
+for (const sys of loadSystems()) {
+  for (const r of sys.resources) {
+    ordIndex.set(r.ordId, { namespace: sys.namespace, slug: r.slug, title: r.title, shortDescription: r.shortDescription, type: r.type });
+  }
+}
+
+// group by process
+const byProcess = new Map<string, typeof cases>();
+for (const c of cases) {
+  if (!byProcess.has(c.processName)) byProcess.set(c.processName, []);
+  byProcess.get(c.processName)!.push(c);
+}
+const groups = Array.from(byProcess.entries()).sort(([a], [b]) => a.localeCompare(b));
+const bpmnGroups = groups.filter(([p]) => procTypes.get(p) === "bpmn");
+const cmmnGroups = groups.filter(([p]) => procTypes.get(p) === "cmmn");
+const gtTotal = cases.filter((c) => c.isGt).length;
+---
+
+<Base
+  title="Design-Time Cases"
+  subtitle={`${cases.length} cases across ${groups.length} processes · ${gtTotal} GT-eligible`}
+>
+  <div class="font-mono text-xs text-ink-subtle mb-6 flex items-center gap-2">
+    <a href={`${base}test-cases/`} class="hover:text-ink underline-offset-2 hover:underline">Test Cases</a>
+    <span>·</span>
+    <span class="text-ink">Design-Time</span>
+  </div>
+
+  <!-- Tabs -->
+  <div class="flex gap-0 mb-8 border-b border-rule">
+    {[
+      { id: "bpmn", label: "BPMN", count: bpmnGroups.length },
+      { id: "cmmn", label: "CMMN", count: cmmnGroups.length },
+    ].map((tab) => (
+      <button data-tab={tab.id} class="dt-tab px-5 py-2.5 text-sm font-medium border-b-2 -mb-px transition-colors">
+        {tab.label}
+        <span class="ml-1.5 font-mono text-xs text-ink-subtle">{tab.count}</span>
+      </button>
+    ))}
+  </div>
+
+  {[{ id: "bpmn", list: bpmnGroups }, { id: "cmmn", list: cmmnGroups }].map(({ id, list }) => (
+    <div data-panel={id} class="dt-panel">
+      {list.map(([procName, procCases]) => {
+        const title = procTitles.get(procName) ?? procName;
+        const gtCount = procCases.filter((c) => c.isGt).length;
+        return (
+          <section class="mb-10">
+            <header class="mb-3 flex items-center justify-between gap-4">
+              <div>
+                <a href={`${base}processes/${procName}/`}
+                   class="font-serif text-base font-semibold hover:underline underline-offset-2">
+                  {title}
+                </a>
+              </div>
+              <div class="font-mono text-[10px] text-ink-subtle shrink-0">
+                {procCases.length} steps · {gtCount} GT
+              </div>
+            </header>
+            <table class="w-full text-xs border-collapse">
+              <thead>
+                <tr class="border-b-2 border-rule text-[10px] font-mono uppercase tracking-wider text-ink-subtle">
+                  <th class="text-left py-1.5 pr-3 w-5">#</th>
+                  <th class="text-left py-1.5 pr-3">Activity</th>
+                  <th class="text-left py-1.5 pr-3 w-14">GT</th>
+                  <th class="text-left py-1.5 pr-2">Expected Resource</th>
+                  <th class="text-left py-1.5 hidden md:table-cell">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {procCases.map((c) => {
+                  const oid = c.expectedOrdIds[0];
+                  const r = oid ? ordIndex.get(oid) : undefined;
+                  return (
+                    <tr class={`border-b border-rule/50 hover:bg-rule/20 align-top ${!c.isGt ? "opacity-60" : ""}`}>
+                      <td class="py-2 pr-3 font-mono text-ink-subtle">{c.caseId.split("_s")[1] ?? "—"}</td>
+                      <td class="py-2 pr-3 max-w-xs">
+                        <div class="text-ink leading-snug">{c.label}</div>
+                        {c.capability && (
+                          <span class="font-mono text-[9px] mt-0.5 inline-block px-1 py-0.5 rounded bg-rule text-ink-subtle">
+                            {c.capability}
+                          </span>
+                        )}
+                      </td>
+                      <td class="py-2 pr-3">
+                        {c.isGt ? (
+                          <span class="inline-flex items-center gap-1 font-mono text-[10px] text-green-700">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>GT
+                          </span>
+                        ) : (
+                          <span class="font-mono text-[10px] text-ink-subtle">—</span>
+                        )}
+                      </td>
+                      <td class="py-2 pr-2">
+                        {r ? (
+                          <a href={`${base}landscape/${r.namespace}/${r.slug}/`}
+                             class="font-mono text-[10px] text-accent-ink hover:underline underline-offset-2 leading-snug block">
+                            {r.title}
+                            <span class="text-[9px] text-ink-subtle ml-1">{r.namespace}</span>
+                          </a>
+                        ) : oid ? (
+                          <span class="font-mono text-[10px] text-ink-subtle">{oid.split(":")[2]}</span>
+                        ) : (
+                          <span class="font-mono text-[10px] text-ink-subtle italic">—</span>
+                        )}
+                      </td>
+                      <td class="py-2 hidden md:table-cell text-ink-muted leading-snug max-w-sm">
+                        {r?.shortDescription ?? ""}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </section>
+        );
+      })}
+    </div>
+  ))}
+</Base>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>(".dt-tab");
+  const panels = document.querySelectorAll<HTMLElement>(".dt-panel");
+  function activate(id: string) {
+    tabs.forEach((t) => {
+      const on = t.dataset.tab === id;
+      t.classList.toggle("border-accent", on);
+      t.classList.toggle("text-ink", on);
+      t.classList.toggle("border-transparent", !on);
+      t.classList.toggle("text-ink-subtle", !on);
+    });
+    panels.forEach((p) => { p.style.display = p.dataset.panel === id ? "" : "none"; });
+    sessionStorage.setItem("dt-tab", id);
+  }
+  activate(sessionStorage.getItem("dt-tab") ?? "bpmn");
+  tabs.forEach((t) => t.addEventListener("click", () => activate(t.dataset.tab!)));
+</script>
+
+
+<Base
+  title="Design-Time Cases"
+  subtitle={`${cases.length} cases across ${groups.length} processes · ${gtTotal} GT-eligible`}
+>
+  <div class="font-mono text-xs text-ink-subtle mb-6 flex items-center gap-2">
+    <a href={`${base}test-cases/`} class="hover:text-ink underline-offset-2 hover:underline">Test Cases</a>
+    <span>·</span>
+    <span class="text-ink">Design-Time</span>
+  </div>
+
+  {groups.map(([procName, list]) => {
+    const title = procTitles.get(procName) ?? procName;
+    const kind = procTypes.get(procName) ?? "bpmn";
+    const gtCount = list.filter((c) => c.isGt).length;
+    return (
+      <section class="mb-10">
+        <header class="mb-3 flex items-center justify-between gap-4">
+          <div>
+            <a href={`${base}processes/${procName}/`}
+               class="font-serif text-base font-semibold hover:underline underline-offset-2">
+              {title}
+            </a>
+            <span class="ml-2 font-mono text-[10px] px-1.5 py-0.5 rounded bg-rule text-ink-subtle uppercase">
+              {kind}
+            </span>
+          </div>
+          <div class="font-mono text-[10px] text-ink-subtle shrink-0">
+            {list.length} steps · {gtCount} GT
+          </div>
+        </header>
+
+        <table class="w-full text-xs border-collapse">
+          <thead>
+            <tr class="border-b-2 border-rule text-[10px] font-mono uppercase tracking-wider text-ink-subtle">
+              <th class="text-left py-1.5 pr-3 w-5">#</th>
+              <th class="text-left py-1.5 pr-3">Activity</th>
+              <th class="text-left py-1.5 pr-3 w-16">GT</th>
+              <th class="text-left py-1.5 pr-2">Expected Resource</th>
+              <th class="text-left py-1.5 hidden md:table-cell">Resource Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {list.map((c) => {
+              const oid = c.expectedOrdIds[0];
+              const r = oid ? ordIndex.get(oid) : undefined;
+              return (
+                <tr class={`border-b border-rule/50 hover:bg-rule/20 align-top ${!c.isGt ? "opacity-60" : ""}`}>
+                  <td class="py-2 pr-3 font-mono text-ink-subtle">{c.caseId.split("_s")[1] ?? "—"}</td>
+                  <td class="py-2 pr-3 max-w-xs">
+                    <div class="text-ink leading-snug">{c.label}</div>
+                    {c.capability && (
+                      <span class="font-mono text-[9px] mt-0.5 inline-block px-1 py-0.5 rounded bg-rule text-ink-subtle">
+                        {c.capability}
+                      </span>
+                    )}
+                  </td>
+                  <td class="py-2 pr-3">
+                    {c.isGt ? (
+                      <span class="inline-flex items-center gap-1 font-mono text-[10px] text-green-700">
+                        <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>GT
+                      </span>
+                    ) : (
+                      <span class="font-mono text-[10px] text-ink-subtle">—</span>
+                    )}
+                  </td>
+                  <td class="py-2 pr-2">
+                    {r ? (
+                      <a href={`${base}landscape/${r.namespace}/${r.slug}/`}
+                         class="font-mono text-[10px] text-accent-ink hover:underline underline-offset-2 leading-snug block">
+                        {r.title}
+                        <span class="text-[9px] text-ink-subtle ml-1">{r.namespace}</span>
+                      </a>
+                    ) : oid ? (
+                      <span class="font-mono text-[10px] text-ink-subtle">{oid.split(":")[2]}</span>
+                    ) : (
+                      <span class="font-mono text-[10px] text-ink-subtle italic">—</span>
+                    )}
+                  </td>
+                  <td class="py-2 hidden md:table-cell text-ink-muted leading-snug max-w-sm">
+                    {r?.shortDescription ?? ""}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </section>
+    );
+  })}
+</Base>

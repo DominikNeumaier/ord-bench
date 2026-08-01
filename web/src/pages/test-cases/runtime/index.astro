@@ -1,0 +1,90 @@
+---
+import Base from "../../../layouts/Base.astro";
+import { loadRuntimeCases, groupByMode } from "../../../lib/data";
+
+const cases = loadRuntimeCases();
+const grouped = groupByMode(cases);
+const base = import.meta.env.BASE_URL;
+
+const sgBpmn = grouped.skill_guided.filter((c) => c.query_class === "explicit_multi_step").length;
+const sgCmmn = grouped.skill_guided.filter((c) => c.query_class === "conditional_multi_step").length;
+const dySingle = grouped.dynamic.filter((c) => c.query_class === "single_intent").length;
+const dyMulti = grouped.dynamic.filter((c) => c.query_class === "multi_intent").length;
+
+const modes = [
+  {
+    label: "Skill-Guided",
+    sub: "Explicit + Conditional Multi-Step",
+    count: grouped.skill_guided.length,
+    countDetail: `${sgBpmn} BPMN · ${sgCmmn} CMMN`,
+    href: `${base}test-cases/skill-guided/`,
+    description: "The request describes a multi-step enterprise scenario that maps to a registered skill. Correct answer: route to the right skill (which carries the ORD resource ordIds).",
+    pill: "Skill Registry",
+    color: "bg-green-50",
+  },
+  {
+    label: "Skill-Adjusted",
+    sub: "Implicit Multi-Step",
+    count: grouped.skill_adjusted.length,
+    countDetail: "skill + 1–2 gap resources",
+    href: `${base}test-cases/skill-adjusted/`,
+    description: "Request matches a skill but implicitly requires additional resources not in the skill. The orchestrator must use the skill for the core flow and retrieve gap resources separately.",
+    pill: "Gap inference",
+    color: "bg-yellow-50",
+  },
+  {
+    label: "Dynamic",
+    sub: "Single-Intent + Multi-Intent",
+    count: grouped.dynamic.length,
+    countDetail: `${dySingle} single · ${dyMulti} multi`,
+    href: `${base}test-cases/dynamic/`,
+    description: "Ad-hoc retrieval — no matching skill. Single-intent: 1 resource with a HIGH-tier distractor (P1/P2/P3). Multi-intent: 2–3 independent resources needed.",
+    pill: "P1 · P2 · P3",
+    color: "bg-blue-50",
+  },
+  {
+    label: "Out-of-Scope",
+    sub: "Refusal",
+    count: grouped.out_of_scope.length,
+    countDetail: "no GT resource",
+    href: `${base}test-cases/out-of-scope/`,
+    description: "Capabilities not covered by the benchmark landscape. Correct answer: refuse. Tests whether methods can correctly identify the absence of a matching resource.",
+    pill: "Refusal rate",
+    color: "bg-red-50",
+  },
+];
+---
+
+<Base
+  title="Run-Time Cases"
+  subtitle={`${cases.length} cases across 4 orchestration modes`}
+>
+  <div class="font-mono text-xs text-ink-subtle mb-6 flex items-center gap-2">
+    <a href={`${base}test-cases/`} class="hover:text-ink underline-offset-2 hover:underline">Test Cases</a>
+    <span>·</span>
+    <span class="text-ink">Run-Time</span>
+  </div>
+
+  <div class="space-y-3">
+    {modes.map((m) => (
+      <a
+        href={m.href}
+        class={`group flex items-start justify-between gap-6 rounded-lg border border-rule p-5 hover:border-accent/50 hover:shadow-sm transition ${m.color}`}
+      >
+        <div class="min-w-0 flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="font-semibold text-ink group-hover:underline underline-offset-2">{m.label}</span>
+            <span class="font-mono text-[10px] text-ink-subtle">{m.sub}</span>
+            <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-white/70 border border-rule text-ink-subtle">{m.pill}</span>
+          </div>
+          <p class="text-xs text-ink-muted leading-relaxed max-w-2xl">{m.description}</p>
+        </div>
+        <div class="shrink-0 text-right">
+          <div class="font-serif text-xl font-semibold text-ink">{m.count}</div>
+          <div class="font-mono text-[10px] text-ink-subtle">{m.countDetail}</div>
+          <div class="text-xs text-accent-ink mt-1 group-hover:underline">browse →</div>
+        </div>
+      </a>
+    ))}
+  </div>
+</Base>

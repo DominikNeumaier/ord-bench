@@ -1,0 +1,104 @@
+---
+import Base from "../../layouts/Base.astro";
+import { loadProcesses, loadSystems, ordIdToSlug } from "../../lib/data";
+
+export async function getStaticPaths() {
+  return loadProcesses().map((p) => ({
+    params: { name: p.name },
+    props: { process: p },
+  }));
+}
+
+const { process } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const ordIndex = new Map<string, { namespace: string; slug: string; title: string; type: string }>();
+for (const sys of loadSystems()) {
+  for (const r of sys.resources) {
+    ordIndex.set(r.ordId, { namespace: sys.namespace, slug: r.slug, title: r.title, type: r.type });
+  }
+}
+
+const gtCount = process.activities.filter((a) => a.isGt).length;
+const nonGtCount = process.activities.length - gtCount;
+---
+
+<Base
+  title={process.title}
+  subtitle={`${process.kind.toUpperCase()} · ${process.activities.length} steps · ${gtCount} GT-eligible · ${nonGtCount} non-GT`}
+>
+  <div class="font-mono text-xs text-ink-subtle mb-6 flex flex-wrap items-center gap-2">
+    <a href={`${base}processes/`} class="hover:text-ink underline-offset-2 hover:underline">Processes</a>
+    <span>·</span>
+    <span class="text-ink">{process.title}</span>
+    <span class="ml-auto font-mono text-[10px] text-ink-subtle">{process.file}</span>
+  </div>
+
+  {process.description && (
+    <p class="text-sm text-ink-muted mb-8 max-w-3xl leading-relaxed border-l-2 border-accent/30 pl-4">
+      {process.description}
+    </p>
+  )}
+
+  <div class="flex gap-4 mb-6 text-xs font-mono">
+    <span class="flex items-center gap-1.5">
+      <span class="w-2 h-2 rounded-full bg-green-500"></span>
+      <span class="text-green-700">{gtCount} GT-eligible (have HIGH-tier distractors)</span>
+    </span>
+    <span class="flex items-center gap-1.5">
+      <span class="w-2 h-2 rounded-full bg-ink-subtle/40"></span>
+      <span class="text-ink-subtle">{nonGtCount} non-GT (supporting steps)</span>
+    </span>
+  </div>
+
+  <ol class="divide-y divide-rule border-y border-rule">
+    {process.activities.map((a, i) => {
+      const oid = a.expectedOrdIds[0];
+      const r = oid ? ordIndex.get(oid) : undefined;
+      return (
+        <li class={`py-4 ${a.isGt ? "" : "opacity-70"}`}>
+          <div class="flex items-start gap-4">
+            <span class="font-mono text-xs text-ink-subtle w-6 shrink-0 pt-0.5">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-2">
+                <span class={`w-2 h-2 rounded-full shrink-0 ${a.isGt ? "bg-green-500" : "bg-ink-subtle/40"}`}></span>
+                <span class="font-medium">{a.label}</span>
+                {a.capability && (
+                  <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-rule text-ink-subtle">
+                    {a.capability}
+                  </span>
+                )}
+              </div>
+              {a.description && (
+                <p class="text-xs text-ink-muted mt-1 ml-4 leading-relaxed">{a.description}</p>
+              )}
+              {a.useCase && a.isGt && (
+                <p class="text-xs text-ink-subtle mt-1 ml-4 italic leading-relaxed">"{a.useCase}"</p>
+              )}
+              <div class="mt-2 ml-4">
+                {r ? (
+                  <a
+                    href={`${base}landscape/${r.namespace}/${r.slug}/`}
+                    class={`inline-flex items-center gap-1.5 font-mono text-xs px-2 py-1 rounded border transition ${
+                      a.isGt
+                        ? "bg-green-50 border-green-200 text-green-700 hover:bg-green-100"
+                        : "bg-rule border-rule text-ink-subtle hover:bg-rule/70"
+                    }`}
+                  >
+                    <span class="text-[9px] uppercase tracking-wide">{r.type}</span>
+                    <span>{r.title}</span>
+                    <span class="text-[9px] text-ink-subtle">{r.namespace}</span>
+                  </a>
+                ) : oid ? (
+                  <span class="font-mono text-xs text-ink-subtle">{oid}</span>
+                ) : null}
+              </div>
+            </div>
+          </div>
+        </li>
+      );
+    })}
+  </ol>
+</Base>

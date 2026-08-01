@@ -1,0 +1,703 @@
+---
+import Base from "../../../layouts/Base.astro";
+import { loadSystems, loadAgentCalls, loadAmbiguity, ordIdToSlug } from "../../../lib/data";
+
+export async function getStaticPaths() {
+  const systems = loadSystems();
+  const paths: { params: { namespace: string; slug: string }; props: any }[] =
+    [];
+  for (const s of systems) {
+    for (const r of s.resources) {
+      paths.push({
+        params: { namespace: s.namespace, slug: r.slug },
+        props: { resource: r, system: s },
+      });
+    }
+  }
+  return paths;
+}
+
+const { resource, system } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const agentCalls = resource.type === "agent" ? loadAgentCalls() : null;
+const outgoingCalls: string[] =
+  resource.type === "agent" ? (agentCalls?.get(resource.ordId) ?? []) : [];
+
+const allSystems = loadSystems();
+const allResourcesByOrdId = new Map<string, any>();
+for (const sys of allSystems) {
+  for (const r of sys.resources) {
+    allResourcesByOrdId.set(r.ordId, { ...r, namespace: sys.namespace });
+  }
+}
+
+function resolveTarget(ordId: string) {
+  const r = allResourcesByOrdId.get(ordId);
+  if (r) {
+    return { ordId, slug: r.slug, namespace: r.namespace, title: r.title, kind: r.type, known: true };
+  }
+  return {
+    ordId, slug: ordIdToSlug(ordId),
+    namespace: ordId.split(":")[0] ?? "",
+    title: ordId.split(":")[2] ?? ordId,
+    kind: ordId.split(":")[1] ?? "resource", known: false,
+  };
+}
+
+const typeLabel: Record<string, string> = {
+  agent: "Agent", apiResource: "API Resource",
+  dataProduct: "Data Product", entityType: "Entity Type", event: "Event",
+};
+
+const rawJson = JSON.stringify(resource.raw, null, 2);
+
+// ── Enrichment data ─────────────────────────────────────────────────────────
+// Load enriched version of this resource from systems_enriched/ if available
+const enrichedSystems = loadSystems("enriched");
+const enrichedSys = enrichedSystems.find((s) => s.namespace === resource.namespace);
+const enrichedRes = enrichedSys?.resources.find((r) => r.ordId === resource.ordId);
+const enrichedFields = enrichedRes ? {
+  capabilities: enrichedRes.capabilities ?? [],
+  useCases: enrichedRes.useCases ?? [],
+  processNext: enrichedRes.processNext ?? [],
+  partOfGroups: enrichedRes.partOfGroups ?? [],
+} : null;
+const isEnriched = enrichedFields && (
+  enrichedFields.capabilities.length > 0 ||
+  enrichedFields.useCases.length > 0 ||
+  enrichedFields.processNext.length > 0 ||
+  enrichedFields.partOfGroups.length > 0
+);
+
+// ── Ambiguity data ──────────────────────────────────────────────────────────
+const ambiguityMap = loadAmbiguity();
+const amb = ambiguityMap.get(resource.ordId);
+const top5 = amb?.top_neighbors ?? [];
+const allNeighbors = (amb?.all_neighbors ?? []).slice().sort((a: any, b: any) => b.sim - a.sim);
+
+const bandColor: Record<string, string> = {
+  easy: "text-green-600",
+  medium: "text-yellow-600",
+  hard: "text-orange-600",
+  very_hard: "text-red-600",
+};
+
+function fmtBreakdown(bd: any): string {
+  const parts = [];
+  if (bd?.text != null)            parts.push(`text=${bd.text.toFixed(3)}`);
+  if (bd?.entityTypes != null)     parts.push(`ET=${bd.entityTypes.toFixed(3)}`);
+  if (bd?.lineOfBusiness != null)  parts.push(`LoB=${bd.lineOfBusiness.toFixed(3)}`);
+  if (bd?.tags != null)            parts.push(`tags=${bd.tags.toFixed(3)}`);
+  if (bd?.localId != null)         parts.push(`id=${bd.localId.toFixed(3)}`);
+  if (bd?.cross_namespace_bonus_applied) parts.push(`+P1`);
+  if (bd?.type_penalty_applied)   parts.push(`×0.5`);
+  return parts.join("  ");
+}
+---
+
+<Base title={resource.title} subtitle={resource.shortDescription}>
+  <div class="font-mono text-xs text-ink-subtle mb-6 flex flex-wrap items-center gap-2">
+    <a
+      href={`${base}landscape/`}
+      class="hover:text-ink underline-offset-2 hover:underline"
+    >
+      landscape
+    </a>
+    <span>·</span>
+    <a
+      href={`${base}landscape/${system.namespace}/`}
+      class="hover:text-ink underline-offset-2 hover:underline"
+    >
+      {system.namespace}
+    </a>
+    <span>·</span>
+    <span class="text-ink">{resource.ordId.split(":").slice(2, 3).join("")}</span>
+  </div>
+
+  <!-- Type + tags chip row -->
+  <div class="flex flex-wrap items-center gap-2 mb-8">
+    <span class="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-accent-soft text-accent-ink font-mono text-[11px] font-medium">
+      {typeLabel[resource.type] ?? resource.type}
+    </span>
+    {resource.packageTitle && (
+      <span class="font-mono text-[11px] text-ink-subtle">
+        in {resource.packageTitle}
+      </span>
+    )}
+    {resource.lineOfBusiness.length > 0 && (
+      <span class="font-mono text-[11px] text-ink-subtle">
+        · {resource.lineOfBusiness.join(" / ")}
+      </span>
+    )}
+  </div>
+
+  <!-- View toggle -->
+  <div class="border-b border-rule mb-8 flex gap-6 text-sm">
+    <button
+      data-view-toggle="structured"
+      class="view-tab pb-3 border-b-2 border-accent text-ink font-medium"
+      type="button"
+    >
+      Structured
+    </button>
+    <button
+      data-view-toggle="similarity"
+      class="view-tab pb-3 border-b-2 border-transparent text-ink-muted hover:text-ink"
+      type="button"
+    >
+      Similar Resources
+    </button>
+    <button
+      data-view-toggle="json"
+      class="view-tab pb-3 border-b-2 border-transparent text-ink-muted hover:text-ink"
+      type="button"
+    >
+      Raw ORD JSON
+    </button>
+    {isEnriched && (
+      <button
+        data-view-toggle="enriched"
+        class="view-tab pb-3 border-b-2 border-transparent text-ink-muted hover:text-ink"
+        type="button"
+      >
+        Enriched ORD
+      </button>
+    )}
+  </div>
+
+  <!-- STRUCTURED VIEW -->
+  <section data-view-pane="structured">
+    {resource.description && (
+      <section class="mb-10">
+        <h2 class="font-serif text-base font-semibold text-ink mb-2">
+          Description
+        </h2>
+        <p class="text-sm text-ink-muted leading-relaxed">
+          {resource.description}
+        </p>
+      </section>
+    )}
+
+    {resource.useCases.length > 0 && (
+      <section class="mb-10">
+        <h2 class="font-serif text-base font-semibold text-ink mb-3">
+          Use cases
+        </h2>
+        <ul class="space-y-1.5 text-sm text-ink-muted">
+          {resource.useCases.map((u) => (
+            <li class="flex gap-2">
+              <span class="text-accent">›</span>
+              <span>{u}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {resource.type === "agent" && outgoingCalls.length > 0 && (
+      <section class="mb-10">
+        <div class="flex items-baseline justify-between mb-3">
+          <h2 class="font-serif text-base font-semibold text-ink">
+            Calls
+          </h2>
+          <span class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle">
+            from integrationDependencies (ORD-native)
+          </span>
+        </div>
+        <p class="text-sm text-ink-muted mb-4 max-w-3xl">
+          Resources this agent invokes to do its job. Each entry is derived
+          from an <code class="font-mono text-xs">integrationDependency</code>
+          declared by the agent's system.
+        </p>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {outgoingCalls.map((cid) => {
+            const t = resolveTarget(cid);
+            return (
+              <li>
+                {t.known ? (
+                  <a
+                    href={`${base}landscape/${t.namespace}/${t.slug}/`}
+                    class="group block border border-rule rounded p-3 hover:border-accent hover:shadow-sm transition"
+                  >
+                    <div class="flex items-baseline justify-between gap-3">
+                      <div class="min-w-0">
+                        <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle">
+                          {t.kind} · {t.namespace}
+                        </div>
+                        <div class="font-medium text-sm mt-0.5 group-hover:text-accent-ink truncate">
+                          {t.title}
+                        </div>
+                      </div>
+                      <span class="font-mono text-xs text-accent opacity-0 group-hover:opacity-100 transition">
+                        →
+                      </span>
+                    </div>
+                  </a>
+                ) : (
+                  <div class="border border-rule rounded p-3 bg-rule/30">
+                    <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle">
+                      {t.kind} · {t.namespace}
+                      <span class="text-ink-subtle italic ml-1">(unresolved)</span>
+                    </div>
+                    <div class="font-mono text-xs text-ink-muted mt-0.5 break-all">
+                      {t.ordId}
+                    </div>
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    )}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 mb-10">
+      {resource.capabilities.length > 0 && (
+        <section>
+          <h3 class="font-mono text-[11px] uppercase tracking-wider text-ink-subtle mb-2">
+            Capabilities
+          </h3>
+          <ul class="flex flex-wrap gap-1.5">
+            {resource.capabilities.map((c) => (
+              <li class="font-mono text-[11px] px-2 py-1 rounded bg-rule text-ink-muted">
+                {c}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {resource.tags.length > 0 && (
+        <section>
+          <h3 class="font-mono text-[11px] uppercase tracking-wider text-ink-subtle mb-2">
+            Tags
+          </h3>
+          <ul class="flex flex-wrap gap-1.5">
+            {resource.tags.map((t) => (
+              <li class="font-mono text-[11px] px-2 py-1 rounded bg-rule text-ink-muted">
+                {t}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {resource.entityTypes.length > 0 && (
+        <section class="md:col-span-2">
+          <h3 class="font-mono text-[11px] uppercase tracking-wider text-ink-subtle mb-2">
+            Entity types
+          </h3>
+          <ul class="space-y-1">
+            {resource.entityTypes.map((et) => (
+              <li class="font-mono text-xs text-ink-muted break-all">
+                <span class="text-accent">↳</span> {et}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {resource.partOfGroups.length > 0 && (
+        <section class="md:col-span-2">
+          <h3 class="font-mono text-[11px] uppercase tracking-wider text-ink-subtle mb-2">
+            Business processes
+            <span class="text-ink-subtle font-normal normal-case ml-1">
+              (partOfGroups, from enriched ORD)
+            </span>
+          </h3>
+          <ul class="space-y-1">
+            {resource.partOfGroups.map((g) => (
+              <li class="font-mono text-xs text-ink-muted break-all">
+                <span class="text-accent">↳</span> {g.groupId}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {resource.processNext.length > 0 && (
+        <section class="md:col-span-2">
+          <h3 class="font-mono text-[11px] uppercase tracking-wider text-ink-subtle mb-2">
+            Process succession
+            <span class="text-ink-subtle font-normal normal-case ml-1">
+              (processNext, from enriched ORD)
+            </span>
+          </h3>
+          <ul class="space-y-1">
+            {resource.processNext.map((nx) => (
+              <li class="font-mono text-xs text-ink-muted break-all">
+                <span class="text-accent">→</span> {nx}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </div>
+
+    <!-- Identifier footer -->
+    <section class="border-t border-rule pt-6 mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div>
+        <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-1">ORD ID</div>
+        <code class="font-mono text-xs text-ink break-all">{resource.ordId}</code>
+      </div>
+      <div>
+        <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-1">Namespace</div>
+        <code class="font-mono text-xs text-ink">{resource.namespace}</code>
+      </div>
+      <div>
+        <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-1">Package</div>
+        <code class="font-mono text-xs text-ink break-all">{resource.partOfPackage || "—"}</code>
+      </div>
+    </section>
+
+    {top5.length > 0 && (
+      <section class="border-t border-rule pt-6 mt-6">
+        <div class="flex items-baseline justify-between mb-3">
+          <h2 class="font-serif text-base font-semibold text-ink">
+            Most similar resources
+          </h2>
+          <button
+            data-view-toggle="similarity"
+            class="view-tab font-mono text-[11px] text-accent hover:underline"
+            type="button"
+          >
+            See full similarity table →
+          </button>
+        </div>
+        {amb?.coverage_gap && (
+          <p class="text-xs text-yellow-600 font-medium mb-4">⚠ Coverage gap — no confusable neighbors above 0.25.</p>
+        )}
+        <ul class="space-y-2">
+          {top5.map((nb) => {
+            const t = resolveTarget(nb.ordId);
+            return (
+              <li class="flex items-center gap-3 group">
+                <span class="font-mono text-sm font-semibold text-ink w-14 shrink-0 text-right">
+                  {nb.sim.toFixed(4)}
+                </span>
+                <div class="flex-1 min-w-0">
+                  {t.known ? (
+                    <a
+                      href={`${base}landscape/${t.namespace}/${t.slug}/`}
+                      class="text-sm text-ink hover:text-accent-ink group-hover:underline underline-offset-2 truncate block"
+                    >
+                      {nb.title}
+                    </a>
+                  ) : (
+                    <span class="text-sm text-ink-muted truncate block">{nb.title}</span>
+                  )}
+                  <span class="font-mono text-[10px] text-ink-subtle">{fmtBreakdown(nb.breakdown)}</span>
+                </div>
+                <div class="flex gap-1 shrink-0">
+                  {(nb.problems ?? []).map((p) => (
+                    <span class="font-mono text-[9px] px-1.5 py-0.5 rounded bg-rule text-ink-subtle">{p}</span>
+                  ))}
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    )}
+  </section>
+
+  <!-- ENRICHED ORD TAB -->
+  {isEnriched && enrichedFields && (
+    <section data-view-pane="enriched" class="hidden">
+      <p class="text-xs text-ink-muted mb-6 max-w-2xl">
+        These fields were added during the design-time enrichment flow — derived from process model steps
+        in which this resource appears as a GT-eligible step.
+      </p>
+
+      {enrichedFields.capabilities.length > 0 && (
+        <div class="mb-6">
+          <h3 class="font-mono text-xs text-ink-subtle uppercase tracking-wider mb-2">capabilities</h3>
+          <div class="flex flex-wrap gap-1.5">
+            {enrichedFields.capabilities.map((c: string) => (
+              <span class="font-mono text-xs px-2 py-1 rounded bg-accent/10 text-accent-ink border border-accent/20">
+                {c}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {enrichedFields.useCases.length > 0 && (
+        <div class="mb-6">
+          <h3 class="font-mono text-xs text-ink-subtle uppercase tracking-wider mb-2">useCases</h3>
+          <ul class="space-y-2">
+            {enrichedFields.useCases.map((u: string) => (
+              <li class="text-sm text-ink-muted pl-3 border-l-2 border-rule leading-relaxed">
+                {u}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {enrichedFields.processNext.length > 0 && (
+        <div class="mb-6">
+          <h3 class="font-mono text-xs text-ink-subtle uppercase tracking-wider mb-2">processNext</h3>
+          <ul class="space-y-1">
+            {enrichedFields.processNext.map((oid: string) => {
+              const r = allResourcesByOrdId.get(oid);
+              return r ? (
+                <li>
+                  <a
+                    href={`${base}landscape/${r.namespace}/${r.slug}/`}
+                    class="inline-flex items-center gap-1.5 font-mono text-xs px-2 py-1 rounded bg-rule border border-rule hover:border-accent transition text-ink-muted hover:text-ink"
+                  >
+                    → {r.title} <span class="text-[9px] text-ink-subtle">{r.namespace}</span>
+                  </a>
+                </li>
+              ) : (
+                <li class="font-mono text-xs text-ink-subtle">→ {oid}</li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+
+      {enrichedFields.partOfGroups.length > 0 && (
+        <div class="mb-6">
+          <h3 class="font-mono text-xs text-ink-subtle uppercase tracking-wider mb-2">partOfGroups</h3>
+          <ul class="space-y-1">
+            {enrichedFields.partOfGroups.map((g: any) => (
+              <li class="flex items-center gap-2">
+                <a
+                  href={`${base}processes/${g.groupId}/`}
+                  class="font-mono text-xs px-2 py-1 rounded bg-rule hover:bg-rule/70 border border-rule text-ink-muted hover:text-ink transition"
+                >
+                  {g.groupId}
+                </a>
+                <span class="font-mono text-[10px] text-ink-subtle uppercase">{g.groupTypeId}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- SIMILARITY TAB -->
+  <section data-view-pane="similarity" class="hidden">
+    <div class="mb-6">
+      <h2 class="font-serif text-base font-semibold text-ink mb-1">Ambiguity profile</h2>
+      {amb ? (
+        <div class="text-sm text-ink-muted space-y-1">
+          {amb.ground_truth_eligible && <span class="inline-block px-1.5 py-0.5 rounded bg-green-100 text-green-700 text-[10px] font-semibold font-mono">GROUND-TRUTH ELIGIBLE</span>}
+          <p class="font-mono text-xs">
+            HIGH (0.50–0.75): <span class="font-semibold text-ink">{amb.high_neighbors ?? 0}</span>
+            &nbsp;·&nbsp;
+            MEDIUM (0.25–0.50): <span class="font-semibold text-ink">{amb.medium_neighbors ?? 0}</span>
+            &nbsp;·&nbsp;
+            LOW (0.10–0.25): <span class="font-semibold text-ink">{amb.low_neighbors ?? 0}</span>
+            &nbsp;·&nbsp;
+            <span class="text-ink-subtle">Targets: H≥3 · M≥5 · L≥5</span>
+          </p>
+          {amb.coverage_gap && <p class="text-yellow-600 font-medium">⚠ Coverage gap — no confusable neighbors above 0.25.</p>}
+          <p class="text-xs text-ink-subtle pt-1">Dimensions (equal weight ×1): text (TF-IDF cosine) · entityTypes (IDF-Jaccard) · lineOfBusiness · tags · localId · industry. Plus cross-namespace +0.5 bonus and type penalty ×0.5.</p>
+        </div>
+      ) : (
+        <p class="text-sm text-ink-muted">No ambiguity data available. Run <code class="font-mono text-xs">python3 run_ambiguity.py</code> to generate it.</p>
+      )}
+    </div>
+
+    {allNeighbors.length > 0 && (
+      <div>
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <span class="font-mono text-[11px] uppercase tracking-wider text-ink-subtle">{allNeighbors.length} similar resources · sorted by similarity</span>
+          <div class="flex items-center gap-2 text-xs font-mono">
+            <span class="text-ink-subtle">Filter:</span>
+            <label class="flex items-center gap-1 cursor-pointer">
+              <input type="checkbox" id="filter-high" class="accent-accent w-3 h-3" />
+              <span class="text-orange-600">HIGH ≥0.50</span>
+            </label>
+            <label class="flex items-center gap-1 cursor-pointer">
+              <input type="checkbox" id="filter-medium" class="accent-accent w-3 h-3" />
+              <span class="text-yellow-600">MEDIUM</span>
+            </label>
+            <label class="flex items-center gap-1 cursor-pointer">
+              <input type="checkbox" id="filter-low" class="accent-accent w-3 h-3" />
+              <span class="text-ink-subtle">LOW</span>
+            </label>
+            <span class="text-ink-subtle ml-2">click headers to sort</span>
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table id="similarity-table" class="w-full text-xs font-mono border-collapse">
+            <thead>
+              <tr class="border-b border-rule text-ink-subtle text-[10px] uppercase tracking-wider">
+                <th class="text-right pr-3 py-2 cursor-pointer hover:text-ink select-none" data-col="sim">Score ↓</th>
+                <th class="text-left py-2 cursor-pointer hover:text-ink select-none" data-col="title">Resource</th>
+                <th class="text-left py-2 hidden md:table-cell cursor-pointer hover:text-ink select-none" data-col="text">Text</th>
+                <th class="text-left py-2 hidden md:table-cell cursor-pointer hover:text-ink select-none" data-col="et">ET</th>
+                <th class="text-left py-2 hidden md:table-cell cursor-pointer hover:text-ink select-none" data-col="lob">LoB</th>
+                <th class="text-left py-2 hidden lg:table-cell cursor-pointer hover:text-ink select-none" data-col="tags">Tags</th>
+                <th class="text-left py-2" data-col="problems">Flags</th>
+              </tr>
+            </thead>
+            <tbody id="similarity-tbody">
+              {allNeighbors.map((nb) => {
+                const t = resolveTarget(nb.ordId);
+                const bd = nb.breakdown;
+                const tier = nb.sim >= 0.50 ? "high" : nb.sim >= 0.25 ? "medium" : "low";
+                const tierColor = tier === "high" ? "text-orange-600" : tier === "medium" ? "text-yellow-600" : "text-ink-subtle";
+                return (
+                  <tr class="border-b border-rule/50 hover:bg-rule/30 transition-colors"
+                    data-tier={tier}
+                    data-sim={nb.sim}
+                    data-text={bd?.text ?? 0}
+                    data-et={bd?.entityTypes ?? 0}
+                    data-lob={bd?.lineOfBusiness ?? 0}
+                    data-tags={bd?.tags ?? 0}>
+                    <td class="text-right pr-3 py-1.5 font-semibold">
+                      <span class={tierColor}>{nb.sim.toFixed(4)}</span>
+                    </td>
+                    <td class="py-1.5 max-w-xs">
+                      {t.known ? (
+                        <a href={`${base}landscape/${t.namespace}/${t.slug}/`}
+                           class="text-accent-ink hover:underline underline-offset-2 truncate block">
+                          {nb.title}
+                        </a>
+                      ) : (
+                        <span class="text-ink-muted truncate block">{nb.title}</span>
+                      )}
+                      <span class="text-[9px] text-ink-subtle">{nb.type} · {nb.namespace}</span>
+                      {bd?.type_penalty_applied && <span class="ml-1 text-[9px] text-orange-500">×0.5 type</span>}
+                    </td>
+                    <td class="py-1.5 hidden md:table-cell text-ink-muted">{typeof bd?.text === 'number' ? bd.text.toFixed(3) : "—"}</td>
+                    <td class="py-1.5 hidden md:table-cell text-ink-muted">{typeof bd?.entityTypes === 'number' ? bd.entityTypes.toFixed(3) : "—"}</td>
+                    <td class="py-1.5 hidden md:table-cell text-ink-muted">{typeof bd?.lineOfBusiness === 'number' ? bd.lineOfBusiness.toFixed(3) : "—"}</td>
+                    <td class="py-1.5 hidden lg:table-cell text-ink-muted">{typeof bd?.tags === 'number' ? bd.tags.toFixed(3) : "—"}</td>
+                    <td class="py-1.5">
+                      <div class="flex gap-1 flex-wrap">
+                        {nb.problems?.map((p) => (
+                          <span class="px-1 py-0.5 rounded bg-rule text-ink-subtle text-[9px]">{p}</span>
+                        ))}
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    )}
+  </section>
+
+  <!-- RAW JSON VIEW -->
+  <section data-view-pane="json" class="hidden">
+    <div class="flex items-center justify-between mb-3">
+      <p class="text-sm text-ink-muted">
+        Raw entry from
+        <code class="font-mono text-xs text-ink">
+          landscape/{system.namespace}/ord_enriched.json
+        </code>
+      </p>
+      <button
+        id="copy-json"
+        class="font-mono text-xs px-3 py-1.5 rounded border border-rule hover:border-accent hover:text-accent transition"
+        type="button"
+      >
+        copy
+      </button>
+    </div>
+    <pre
+      id="raw-json"
+      class="bg-ink text-paper rounded-md p-5 overflow-x-auto font-mono text-xs leading-relaxed"
+    ><code>{rawJson}</code></pre>
+  </section>
+
+  <script>
+    // Tab switching
+    const tabs = document.querySelectorAll<HTMLButtonElement>("[data-view-toggle]");
+    const panes = document.querySelectorAll<HTMLElement>("[data-view-pane]");
+    function switchTab(target: string) {
+      tabs.forEach((t) => {
+        const active = t.dataset.viewToggle === target;
+        t.classList.toggle("border-accent", active);
+        t.classList.toggle("text-ink", active);
+        t.classList.toggle("font-medium", active);
+        t.classList.toggle("border-transparent", !active);
+        t.classList.toggle("text-ink-muted", !active);
+      });
+      panes.forEach((p) => {
+        p.classList.toggle("hidden", p.dataset.viewPane !== target);
+      });
+    }
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => switchTab(tab.dataset.viewToggle!));
+    });
+
+    // Copy JSON
+    const copyBtn = document.getElementById("copy-json");
+    const rawEl = document.getElementById("raw-json");
+    if (copyBtn && rawEl) {
+      copyBtn.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(rawEl.textContent ?? "");
+        const original = copyBtn.textContent;
+        copyBtn.textContent = "copied";
+        setTimeout(() => { copyBtn.textContent = original; }, 1200);
+      });
+    }
+
+    // Sortable similarity table
+    const tbody = document.getElementById("similarity-tbody");
+    const headers = document.querySelectorAll<HTMLElement>("[data-col]");
+    let sortCol = "sim";
+    let sortAsc = false;
+
+    function sortTable(col: string) {
+      if (sortCol === col) { sortAsc = !sortAsc; } else { sortCol = col; sortAsc = false; }
+      const rows = Array.from(tbody?.querySelectorAll("tr") ?? []);
+      rows.sort((a, b) => {
+        let va: string | number = 0, vb: string | number = 0;
+        if (col === "title") {
+          va = a.querySelector("td:nth-child(2)")?.textContent?.trim() ?? "";
+          vb = b.querySelector("td:nth-child(2)")?.textContent?.trim() ?? "";
+          return sortAsc ? va.localeCompare(vb as string) : (vb as string).localeCompare(va as string);
+        }
+        const dataMap: Record<string, string> = {
+          sim: "sim", usecase: "usecase", et: "et", caps: "caps", tags: "tags", lob: "lob"
+        };
+        const attr = dataMap[col] ?? col;
+        va = parseFloat(a.dataset[attr] ?? "0") || 0;
+        vb = parseFloat(b.dataset[attr] ?? "0") || 0;
+        return sortAsc ? (va as number) - (vb as number) : (vb as number) - (va as number);
+      });
+      rows.forEach((r) => tbody?.appendChild(r));
+    }
+
+    headers.forEach((h) => {
+      h.addEventListener("click", () => sortTable(h.dataset.col!));
+    });
+
+    // Tier filter checkboxes
+    const filterHigh   = document.getElementById("filter-high")   as HTMLInputElement | null;
+    const filterMedium = document.getElementById("filter-medium") as HTMLInputElement | null;
+    const filterLow    = document.getElementById("filter-low")    as HTMLInputElement | null;
+    const simRows      = document.querySelectorAll<HTMLTableRowElement>("#similarity-tbody tr");
+
+    function applyTierFilter() {
+      const onlyHigh   = filterHigh?.checked;
+      const onlyMedium = filterMedium?.checked;
+      const onlyLow    = filterLow?.checked;
+      const anyActive  = onlyHigh || onlyMedium || onlyLow;
+      simRows.forEach((row) => {
+        const tier = row.dataset.tier;
+        const show = !anyActive ||
+          (onlyHigh   && tier === "high")   ||
+          (onlyMedium && tier === "medium") ||
+          (onlyLow    && tier === "low");
+        row.style.display = show ? "" : "none";
+      });
+    }
+
+    filterHigh?.addEventListener("change", applyTierFilter);
+    filterMedium?.addEventListener("change", applyTierFilter);
+    filterLow?.addEventListener("change", applyTierFilter);
+  </script>
+</Base>

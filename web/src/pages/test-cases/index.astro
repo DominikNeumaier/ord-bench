@@ -1,0 +1,67 @@
+---
+import Base from "../../layouts/Base.astro";
+import { loadRuntimeCases, groupByMode, loadDtAnnotations } from "../../lib/data";
+
+const rtCases = loadRuntimeCases();
+const grouped = groupByMode(rtCases);
+const dtCases = loadDtAnnotations();
+const base = import.meta.env.BASE_URL;
+const dtGt = dtCases.filter((c) => c.isGt).length;
+---
+
+<Base
+  title="Test Cases"
+  subtitle={`${dtCases.length} design-time + ${rtCases.length} run-time = ${dtCases.length + rtCases.length} total cases`}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+    <!-- Design-Time -->
+    <a
+      href={`${base}test-cases/design-time/`}
+      class="group flex flex-col justify-between rounded-lg border border-rule p-6 bg-rule/20 hover:border-accent/50 hover:shadow-sm transition"
+    >
+      <div>
+        <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-2">Design-Time</div>
+        <h2 class="font-serif text-xl font-semibold mb-2 group-hover:underline underline-offset-2">
+          Activity → Resource
+        </h2>
+        <p class="text-sm text-ink-muted leading-relaxed">
+          One case per process model step. Input: activity label. Output: expected ORD resource.
+          Evaluated on Clean-ORD only — the controlled baseline for enrichment impact.
+        </p>
+      </div>
+      <div class="mt-6 flex items-end justify-between">
+        <div>
+          <div class="font-serif text-3xl font-semibold text-ink">{dtCases.length}</div>
+          <div class="font-mono text-[10px] text-ink-subtle mt-0.5">{dtGt} GT · {dtCases.length - dtGt} non-GT</div>
+        </div>
+        <span class="text-xs text-accent-ink group-hover:underline">browse →</span>
+      </div>
+    </a>
+
+    <!-- Run-Time -->
+    <a
+      href={`${base}test-cases/runtime/`}
+      class="group flex flex-col justify-between rounded-lg border border-rule p-6 bg-rule/20 hover:border-accent/50 hover:shadow-sm transition"
+    >
+      <div>
+        <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-2">Run-Time</div>
+        <h2 class="font-serif text-xl font-semibold mb-2 group-hover:underline underline-offset-2">
+          Query → Resources
+        </h2>
+        <p class="text-sm text-ink-muted leading-relaxed">
+          Natural-language requests across 4 orchestration modes. Evaluated on Clean-ORD vs.
+          Enriched-ORD — the delta measures enrichment value.
+        </p>
+      </div>
+      <div class="mt-6 flex items-end justify-between">
+        <div>
+          <div class="font-serif text-3xl font-semibold text-ink">{rtCases.length}</div>
+          <div class="font-mono text-[10px] text-ink-subtle mt-0.5">
+            SG({grouped.skill_guided.length}) · SA({grouped.skill_adjusted.length}) · DY({grouped.dynamic.length}) · OOS({grouped.out_of_scope.length})
+          </div>
+        </div>
+        <span class="text-xs text-accent-ink group-hover:underline">browse →</span>
+      </div>
+    </a>
+  </div>
+</Base>

@@ -1,0 +1,512 @@
+---
+import Base from "../../layouts/Base.astro";
+import { buildLandscapeGraph } from "../../lib/data";
+
+const graph = buildLandscapeGraph();
+const base = import.meta.env.BASE_URL;
+
+// Serialise once at build time so the client only has to parse JSON.
+const graphJson = JSON.stringify(graph);
+
+const totals = graph.nodes.reduce(
+  (acc, n) => {
+    acc[n.kind] = (acc[n.kind] || 0) + 1;
+    return acc;
+  },
+  {} as Record<string, number>,
+);
+const edgeTotals = graph.edges.reduce(
+  (acc, e) => {
+    acc[e.kind] = (acc[e.kind] || 0) + 1;
+    return acc;
+  },
+  {} as Record<string, number>,
+);
+---
+
+<Base
+  title="Landscape graph"
+  subtitle={`Interactive view of the ORD landscape: ${totals.system ?? 0} systems, ${totals.agent ?? 0} agents, ${totals.apiResource ?? 0} APIs, ${totals.dataProduct ?? 0} data products and ${totals.entityType ?? 0} entity types. Entity types act as shared hubs that pull resources from different systems together.`}
+>
+  <div class="font-mono text-xs text-ink-subtle mb-6">
+    <a
+      href={`${base}landscape/`}
+      class="hover:text-ink underline-offset-2 hover:underline"
+    >
+      ← landscape list
+    </a>
+  </div>
+
+  <!-- Legend -->
+  <div class="mb-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs">
+    <span class="font-mono uppercase tracking-wider text-ink-subtle">Nodes:</span>
+    <span class="flex items-center gap-1.5"><span class="inline-block w-3 h-3 rounded-sm" style="background:#0f766e"></span>System</span>
+    <span class="flex items-center gap-1.5"><span class="inline-block w-3 h-3 rounded-full" style="background:#7c3aed"></span>Agent</span>
+    <span class="flex items-center gap-1.5"><span class="inline-block w-3 h-3 rounded-sm" style="background:#1d4ed8"></span>API</span>
+    <span class="flex items-center gap-1.5"><span class="inline-block w-3 h-3 rounded-sm" style="background:#0891b2"></span>Data product</span>
+    <span class="flex items-center gap-1.5"><span class="inline-block w-3 h-3 rounded-full" style="background:#f59e0b"></span>Business Object (sap.odm)</span>
+    <span class="flex items-center gap-1.5"><span class="inline-block w-3 h-3 rotate-45" style="background:#dc2626"></span>Process</span>
+    <span class="ml-4 font-mono uppercase tracking-wider text-ink-subtle">Edges:</span>
+    <span class="flex items-center gap-1.5"><span class="inline-block w-6 h-0.5" style="background:#9ca3af"></span>hosts</span>
+    <span class="flex items-center gap-1.5"><span class="inline-block w-6 h-0.5" style="background:#f59e0b"></span>entities</span>
+    <span class="flex items-center gap-1.5"><span class="inline-block w-6 h-0.5" style="background:#7c3aed"></span>calls</span>
+    <span class="flex items-center gap-1.5 text-ink-subtle"><span class="inline-block w-6 h-0.5" style="background:#0f766e"></span>processNext</span>
+    <span class="flex items-center gap-1.5 text-ink-subtle"><span class="inline-block w-6 h-0.5" style="background:#dc2626"></span>partOfGroups</span>
+  </div>
+
+  <!-- Controls -->
+  <div class="mb-3 flex flex-wrap gap-3 text-xs">
+    <button id="g-fit" class="px-3 py-1.5 rounded border border-rule hover:border-accent hover:text-accent">fit</button>
+    <button id="g-relayout" class="px-3 py-1.5 rounded border border-rule hover:border-accent hover:text-accent">relayout</button>
+    <span class="text-ink-subtle font-mono uppercase tracking-wider self-center pl-2">Nodes:</span>
+    {[
+      { kind: "system",      label: "Systems",      checked: true },
+      { kind: "agent",       label: "Agents",       checked: true },
+      { kind: "apiResource", label: "APIs",         checked: true },
+      { kind: "dataProduct", label: "Data Products",checked: true },
+      { kind: "entityType",  label: "Entities",     checked: true },
+      { kind: "process",     label: "Processes",    checked: false },
+    ].map((t) => (
+      <label class="flex items-center gap-1.5 px-3 py-1.5 rounded border border-rule cursor-pointer">
+        <input type="checkbox" data-node-kind={t.kind} checked={t.checked || undefined} class="node-toggle accent-accent" />
+        {t.label}
+      </label>
+    ))}
+    <span class="text-ink-subtle font-mono uppercase tracking-wider self-center pl-2">Edges:</span>
+    {[
+      { kind: "entities",    label: "entities",    checked: true,  filter: false },
+      { kind: "calls",       label: "calls",       checked: true,  filter: false },
+      { kind: "processNext", label: "processNext", checked: false, filter: true  },
+      { kind: "partOfGroups",label: "partOfGroups",checked: false, filter: true  },
+    ].map((t) => (
+      <label class="flex items-center gap-1.5 px-3 py-1.5 rounded border border-rule cursor-pointer" title={t.filter ? "when checked: only show resources with this field" : ""}>
+        <input type="checkbox" data-edge-kind={t.kind} data-edge-filter={t.filter ? "true" : undefined} checked={t.checked || undefined} class="edge-toggle accent-accent" />
+        {t.label}{t.filter && <span class="text-ink-subtle text-[9px] ml-0.5">*</span>}
+      </label>
+    ))}
+    <span class="text-ink-subtle text-[10px] self-center italic">* filters to nodes with this field</span>
+  </div>
+
+  <!-- Graph container -->
+  <div class="relative border border-rule rounded-md bg-white overflow-hidden">
+    <div id="cy" class="w-full" style="height: 900px;"></div>
+
+    <!-- Floating selection panel -->
+    <div
+      id="g-panel"
+      class="hidden absolute right-4 top-4 w-80 bg-white border border-rule rounded-md shadow-lg p-4 text-sm"
+    >
+      <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-1" id="g-panel-kind">node</div>
+      <div class="font-medium mb-1" id="g-panel-title">—</div>
+      <div class="font-mono text-[11px] text-ink-subtle mb-3 break-all" id="g-panel-ordid"></div>
+      <div class="text-xs text-ink-muted mb-3" id="g-panel-neighbors">—</div>
+      <a id="g-panel-link" class="hidden font-mono text-xs text-accent hover:underline" href="#">open detail page →</a>
+      <button id="g-panel-close" class="absolute top-2 right-3 text-ink-subtle hover:text-ink text-base leading-none">×</button>
+    </div>
+  </div>
+
+  <p class="mt-4 text-xs text-ink-muted">
+    Click a node to focus its neighbourhood. Resource nodes (Agent / API /
+    Data product) link to their detail page. Drag nodes to rearrange the
+    layout. Entity-type hubs with high connectivity show cross-system
+    semantic overlap — those are the bridges the runtime exploits.
+  </p>
+
+  <script type="application/json" id="graph-data" data-base={base} set:html={graphJson}></script>
+
+  <script>
+    import cytoscape from "cytoscape";
+    // @ts-ignore — fcose ships its own types but Astro's strict resolver misses them
+    import fcose from "cytoscape-fcose";
+    cytoscape.use(fcose);
+
+    const graphDataEl = document.getElementById("graph-data") as HTMLScriptElement;
+    const payload = JSON.parse(graphDataEl.textContent || "{}");
+    // Astro injects its configured base path (e.g. "/" or "/repo/") into the
+    // data-base attribute. Use that to build absolute links instead of
+    // document.baseURI, which would be the current page URL — and that
+    // would double-prefix when navigating from /landscape/graph/.
+    const baseUrl = graphDataEl.dataset.base || "/";
+
+    // Shared layout configuration. Tuned so labels don't overlap:
+    //   - nodeRepulsion high enough that small clusters don't collapse
+    //   - idealEdgeLength generous so resources sit clearly away from systems
+    //   - nodeSeparation pushes node bounding boxes apart
+    //   - nodeDimensionsIncludeLabels makes fcose treat the text box as part
+    //     of the node — without it, two long titles can sit on top of each
+    //     other even though their circles are technically clear.
+    //   - quality high for better global packing; numIter raised to converge
+    //   - packComponents true keeps disconnected sub-graphs side by side
+    //     instead of stacking them.
+    const LAYOUT_OPTS = {
+      name: "fcose",
+      animate: false,
+      randomize: true,
+      quality: "proof",
+      nodeRepulsion: 12000,
+      idealEdgeLength: 160,
+      edgeElasticity: 0.3,
+      gravity: 0.15,
+      gravityRangeCompound: 1.5,
+      numIter: 4500,
+      tile: true,
+      tilingPaddingVertical: 25,
+      tilingPaddingHorizontal: 25,
+      nodeSeparation: 90,
+      nodeDimensionsIncludeLabels: true,
+      packComponents: true,
+      uniformNodeDimensions: false,
+    };
+
+    const elements = [
+      ...payload.nodes.map((n: any) => ({
+        group: "nodes" as const,
+        data: { ...n },
+      })),
+      ...payload.edges.map((e: any) => ({
+        group: "edges" as const,
+        data: { ...e },
+        classes: e.kind,
+      })),
+    ];
+
+    const cy = cytoscape({
+      container: document.getElementById("cy"),
+      elements,
+      wheelSensitivity: 0.2,
+      minZoom: 0.15,
+      maxZoom: 3,
+      style: [
+        // ── base node styles ──────────────────────────────────────────
+        {
+          selector: "node",
+          style: {
+            "label": "data(label)",
+            "font-family": "Inter, system-ui, sans-serif",
+            "font-size": 11,
+            "color": "#111",
+            "text-valign": "bottom",
+            "text-margin-y": 4,
+            "text-wrap": "wrap",
+            "text-max-width": 90,
+            "text-background-color": "#fafafa",
+            "text-background-opacity": 0.85,
+            "text-background-padding": 2,
+            "text-background-shape": "roundrectangle",
+            "border-width": 1,
+            "border-color": "#fff",
+            "transition-property": "opacity, border-width, border-color",
+            "transition-duration": 150,
+          },
+        },
+        {
+          selector: 'node[kind = "system"]',
+          style: {
+            "background-color": "#0f766e",
+            "shape": "round-rectangle",
+            "width": "mapData(degree, 1, 25, 60, 110)",
+            "height": "mapData(degree, 1, 25, 38, 66)",
+            "font-size": 13,
+            "font-weight": 600,
+            "color": "#fff",
+            "text-valign": "center",
+            "text-margin-y": 0,
+            "text-outline-width": 0,
+            "text-background-opacity": 0,
+          },
+        },
+        {
+          selector: 'node[kind = "agent"]',
+          style: {
+            "background-color": "#7c3aed",
+            "shape": "ellipse",
+            "width": "mapData(degree, 1, 10, 24, 42)",
+            "height": "mapData(degree, 1, 10, 24, 42)",
+          },
+        },
+        {
+          selector: 'node[kind = "apiResource"]',
+          style: {
+            "background-color": "#1d4ed8",
+            "shape": "round-rectangle",
+            "width": "mapData(degree, 1, 10, 26, 44)",
+            "height": "mapData(degree, 1, 10, 20, 30)",
+          },
+        },
+        {
+          selector: 'node[kind = "dataProduct"]',
+          style: {
+            "background-color": "#0891b2",
+            "shape": "round-diamond",
+            "width": "mapData(degree, 1, 10, 24, 40)",
+            "height": "mapData(degree, 1, 10, 24, 40)",
+          },
+        },
+        // All entity types come from the shared sap.odm catalogue —
+        // resources map directly to ODM types, no per-system duplication.
+        {
+          selector: 'node[kind = "entityType"]',
+          style: {
+            "background-color": "#f59e0b",
+            "color": "#7c2d12",
+            "shape": "ellipse",
+            "width": "mapData(degree, 1, 12, 18, 56)",
+            "height": "mapData(degree, 1, 12, 18, 56)",
+            "font-size": 10,
+          },
+        },
+        {
+          selector: 'node[kind = "process"]',
+          style: {
+            "background-color": "#dc2626",
+            "color": "#7f1d1d",
+            "shape": "diamond",
+            "width": 20,
+            "height": 20,
+            "font-size": 8,
+          },
+        },
+        // ── edge styles ───────────────────────────────────────────────
+        {
+          selector: "edge",
+          style: {
+            "width": 1,
+            "curve-style": "bezier",
+            "opacity": 0.6,
+            "line-color": "#9ca3af",
+            "target-arrow-color": "#9ca3af",
+            "transition-property": "opacity, line-color, width",
+            "transition-duration": 150,
+          },
+        },
+        {
+          selector: "edge.hosts",
+          style: { "line-color": "#9ca3af", "opacity": 0.45 },
+        },
+        {
+          selector: "edge.entities",
+          style: { "line-color": "#f59e0b", "opacity": 0.55 },
+        },
+        {
+          selector: "edge.calls",
+          style: {
+            "line-color": "#7c3aed",
+            "target-arrow-shape": "triangle",
+            "target-arrow-color": "#7c3aed",
+            "width": 1.6,
+            "opacity": 0.75,
+          },
+        },
+        {
+          selector: "edge.processNext",
+          style: {
+            "line-color": "#0f766e",
+            "target-arrow-shape": "triangle",
+            "target-arrow-color": "#0f766e",
+            "width": 1.4,
+            "opacity": 0.55,
+            "line-style": "dashed",
+          },
+        },
+        {
+          selector: "edge.partOfGroups",
+          style: {
+            "line-color": "#dc2626",
+            "target-arrow-shape": "triangle",
+            "target-arrow-color": "#dc2626",
+            "width": 1.2,
+            "opacity": 0.5,
+            "line-style": "dotted",
+          },
+        },
+        // ── highlight states ──────────────────────────────────────────
+        {
+          selector: ".dim",
+          style: { "opacity": 0.08 },
+        },
+        {
+          selector: "node.focus",
+          style: {
+            "border-width": 3,
+            "border-color": "#0f766e",
+          },
+        },
+        {
+          selector: "node.neighbour",
+          style: {
+            "border-width": 2,
+            "border-color": "#0f766e",
+          },
+        },
+        {
+          selector: "edge.incident",
+          style: {
+            "opacity": 1,
+            "width": 2.5,
+          },
+        },
+      ],
+      layout: LAYOUT_OPTS as any,
+    });
+
+    // ── interactions ─────────────────────────────────────────────────────
+    function clearHighlight() {
+      cy.elements().removeClass("dim focus neighbour incident");
+    }
+
+    function highlight(node: cytoscape.NodeSingular) {
+      const nbrs = node.closedNeighborhood();
+      cy.elements().not(nbrs).addClass("dim");
+      node.addClass("focus");
+      nbrs.nodes().not(node).addClass("neighbour");
+      nbrs.edges().addClass("incident");
+    }
+
+    const panel = document.getElementById("g-panel")!;
+    const panelKind = document.getElementById("g-panel-kind")!;
+    const panelTitle = document.getElementById("g-panel-title")!;
+    const panelOrd = document.getElementById("g-panel-ordid")!;
+    const panelNb = document.getElementById("g-panel-neighbors")!;
+    const panelLink = document.getElementById("g-panel-link") as HTMLAnchorElement;
+
+    function showPanel(node: cytoscape.NodeSingular) {
+      const d = node.data();
+      panel.classList.remove("hidden");
+      panelKind.textContent = d.kind;
+      panelTitle.textContent = d.label;
+      panelOrd.textContent = d.ordId || "";
+
+      const nb = node.openNeighborhood("node");
+      panelNb.textContent = `${nb.length} connection${nb.length === 1 ? "" : "s"}`;
+
+      // Decide link target based on kind
+      panelLink.classList.add("hidden");
+      if (d.kind === "system" && d.namespace) {
+        panelLink.href = `${baseUrl}landscape/${d.namespace}/`;
+        panelLink.textContent = `open ${d.namespace} →`;
+        panelLink.classList.remove("hidden");
+      } else if (
+        (d.kind === "agent" || d.kind === "apiResource" || d.kind === "dataProduct") &&
+        d.namespace &&
+        d.slug
+      ) {
+        panelLink.href = `${baseUrl}landscape/${d.namespace}/${d.slug}/`;
+        panelLink.textContent = "open detail page →";
+        panelLink.classList.remove("hidden");
+      } else if (d.kind === "entityType" && d.slug) {
+        panelLink.href = `${baseUrl}entities/${d.slug}/`;
+        panelLink.textContent = "open entity type →";
+        panelLink.classList.remove("hidden");
+      } else if (d.kind === "process" && d.ordId) {
+        panelLink.href = `${baseUrl}processes/${d.ordId}/`;
+        panelLink.textContent = "open process model →";
+        panelLink.classList.remove("hidden");
+      }
+    }
+
+    cy.on("tap", "node", (evt) => {
+      clearHighlight();
+      const node = evt.target as cytoscape.NodeSingular;
+      highlight(node);
+      showPanel(node);
+    });
+
+    cy.on("tap", (evt) => {
+      if (evt.target === cy) {
+        clearHighlight();
+        panel.classList.add("hidden");
+      }
+    });
+
+    document.getElementById("g-panel-close")?.addEventListener("click", () => {
+      panel.classList.add("hidden");
+      clearHighlight();
+    });
+
+    document.getElementById("g-fit")?.addEventListener("click", () => {
+      cy.fit(undefined, 30);
+    });
+    document.getElementById("g-relayout")?.addEventListener("click", () => {
+      cy.layout({ ...LAYOUT_OPTS, animate: true } as any).run();
+    });
+
+    function toggleEdgeKind(kind: string, on: boolean, filterNodes: boolean) {
+      cy.edges(`.${kind}`).style("display", on ? "element" : "none");
+      if (filterNodes) {
+        // When a filter edge is turned ON: hide resource nodes that have no such edge
+        // When turned OFF: restore all resource nodes (re-apply node toggles)
+        applyNodeVisibility();
+      }
+    }
+
+    // Track which kinds are currently visible via node toggles
+    const nodeKindVisible: Record<string, boolean> = {
+      system: true, agent: true, apiResource: true, dataProduct: true, entityType: true, process: false,
+    };
+
+    function applyNodeVisibility() {
+      // Collect which filter-edges are active
+      const activeFilters: string[] = [];
+      document.querySelectorAll<HTMLInputElement>(".edge-toggle[data-edge-filter]").forEach((cb) => {
+        if (cb.checked) activeFilters.push(cb.dataset.edgeKind!);
+      });
+
+      cy.nodes().forEach((node) => {
+        const kind = node.data("kind") as string;
+        // Start with node-kind visibility
+        let show = nodeKindVisible[kind] ?? true;
+        // If any filter-edges are active, resource nodes must have at least one such edge visible
+        if (show && activeFilters.length > 0) {
+          const resourceKinds = ["agent", "apiResource", "dataProduct"];
+          if (resourceKinds.includes(kind)) {
+            const hasEdge = activeFilters.some((f) =>
+              node.connectedEdges(`.${f}`).length > 0
+            );
+            if (!hasEdge) show = false;
+          }
+        }
+        node.style("display", show ? "element" : "none");
+      });
+
+      // Hide edges connected to hidden nodes
+      cy.edges().forEach((e) => {
+        const srcHidden = e.source().style("display") === "none";
+        const tgtHidden = e.target().style("display") === "none";
+        if (srcHidden || tgtHidden) {
+          e.style("display", "none");
+        } else {
+          // Restore based on edge-kind toggle state
+          const kind = e.classes().filter((c: string) =>
+            ["hosts","entities","calls","processNext","partOfGroups"].includes(c)
+          )[0];
+          const cb = document.querySelector<HTMLInputElement>(`.edge-toggle[data-edge-kind="${kind}"]`);
+          e.style("display", (!cb || cb.checked) ? "element" : "none");
+        }
+      });
+    }
+
+    function toggleNodeKind(kind: string, on: boolean) {
+      nodeKindVisible[kind] = on;
+      applyNodeVisibility();
+    }
+
+    // Edge toggles
+    document.querySelectorAll<HTMLInputElement>(".edge-toggle").forEach((cb) => {
+      cb.addEventListener("change", () =>
+        toggleEdgeKind(cb.dataset.edgeKind!, cb.checked, cb.dataset.edgeFilter === "true")
+      );
+    });
+    // Node toggles
+    document.querySelectorAll<HTMLInputElement>(".node-toggle").forEach((cb) => {
+      cb.addEventListener("change", () => {
+        nodeKindVisible[cb.dataset.nodeKind!] = cb.checked;
+        applyNodeVisibility();
+      });
+    });
+
+    // Defaults: extension fields off, process nodes off
+    toggleEdgeKind("processNext", false, false);
+    toggleEdgeKind("partOfGroups", false, false);
+    toggleNodeKind("process", false);
+  </script>
+</Base>

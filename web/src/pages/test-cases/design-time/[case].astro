@@ -1,0 +1,164 @@
+---
+import Base from "../../../layouts/Base.astro";
+import { loadDtAnnotations, loadSystems, ordIdToSlug } from "../../../lib/data";
+
+export async function getStaticPaths() {
+  const cases = loadDtAnnotations();
+  return cases.map((c) => ({
+    params: { case: c.slug },
+    props: { dtCase: c },
+  }));
+}
+
+const { dtCase } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+// Build a small reverse index ORD-ID → {namespace, slug, title, type}
+// so we can render the expected IDs as clickable cards.
+const ordIndex = new Map<
+  string,
+  { namespace: string; slug: string; title: string; type: string }
+>();
+for (const sys of loadSystems()) {
+  for (const r of sys.resources) {
+    ordIndex.set(r.ordId, {
+      namespace: sys.namespace,
+      slug: r.slug,
+      title: r.title,
+      type: r.type,
+    });
+  }
+}
+
+function resolveOrd(ordId: string) {
+  const r = ordIndex.get(ordId);
+  if (r) return { ...r, known: true as const, ordId };
+  // Fall back to slug derived from the ord id so the link still makes
+  // sense for entity types or resources we don't index here.
+  return {
+    known: false as const,
+    ordId,
+    namespace: ordId.split(":")[0] ?? "",
+    slug: ordIdToSlug(ordId),
+    title: ordId.split(":")[2] ?? ordId,
+    type: ordId.split(":")[1] ?? "resource",
+  };
+}
+
+const typeLabel: Record<string, string> = {
+  agent: "Agent",
+  apiResource: "API",
+  dataProduct: "Data product",
+  entityType: "Entity type",
+  event: "Event",
+};
+
+const expected = dtCase.expectedOrdIds.map(resolveOrd);
+---
+
+<Base title={dtCase.label} subtitle={`Design-time test case · ${dtCase.processName}`}>
+  <div class="font-mono text-xs text-ink-subtle mb-6 flex flex-wrap items-center gap-2">
+    <a href={`${base}test-cases/`} class="hover:text-ink underline-offset-2 hover:underline">
+      test cases
+    </a>
+    <span>·</span>
+    <a
+      href={`${base}test-cases/design-time/`}
+      class="hover:text-ink underline-offset-2 hover:underline"
+    >
+      design-time
+    </a>
+    <span>·</span>
+    <span class="text-ink">{dtCase.taskId}</span>
+  </div>
+
+  <!-- Header block -->
+  <section class="mb-10 border-b border-rule pb-8">
+    <div class="font-mono text-[11px] uppercase tracking-wider text-ink-subtle mb-1">
+      activity label
+    </div>
+    <h1 class="font-serif text-2xl font-semibold leading-tight mb-3">
+      {dtCase.label}
+    </h1>
+    <div class="font-mono text-[11px] text-ink-subtle">
+      {dtCase.caseId}
+    </div>
+  </section>
+
+  <!-- Expected ORD IDs -->
+  <section class="mb-10">
+    <div class="flex items-baseline justify-between mb-3">
+      <h2 class="font-serif text-base font-semibold">Expected ORD IDs</h2>
+      <span class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle">
+        human-validated ground truth
+      </span>
+    </div>
+
+    {expected.length === 0 ? (
+      <div class="border border-dashed border-rule rounded-md p-4 text-sm text-ink-muted">
+        No annotation in
+        <code class="font-mono text-xs">bpmn.json</code> /
+        <code class="font-mono text-xs">cmmn.json</code> for this activity.
+        The case still exists in the design-time suite, either as an
+        intentional out-of-scope test (counterfactual, H5) or because
+        no expected ID has been validated yet.</code>
+      </div>
+    ) : (
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {expected.map((r) => (
+          <li>
+            <a
+              href={
+                r.known
+                  ? `${base}landscape/${r.namespace}/${r.slug}/`
+                  : `${base}landscape/`
+              }
+              class="group block border border-rule rounded p-3 hover:border-accent hover:shadow-sm transition"
+            >
+              <div class="flex items-baseline justify-between gap-3">
+                <div class="min-w-0">
+                  <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle">
+                    {typeLabel[r.type] ?? r.type} · {r.namespace}
+                  </div>
+                  <div class="font-medium text-sm mt-0.5 group-hover:text-accent-ink truncate">
+                    {r.title}
+                  </div>
+                  <div class="font-mono text-[10px] text-ink-subtle mt-1 truncate">
+                    {r.ordId}
+                  </div>
+                </div>
+                <span class="font-mono text-xs text-accent opacity-0 group-hover:opacity-100 transition">
+                  →
+                </span>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+
+  <!-- Source process -->
+  <section class="mb-10">
+    <h2 class="font-serif text-base font-semibold mb-3">Source</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-1">
+          Process
+        </div>
+        <a
+          href={`${base}processes/${dtCase.processName}/`}
+          class="font-mono text-xs text-ink hover:text-accent hover:underline"
+        >
+          {dtCase.process}
+        </a>
+      </div>
+      <div>
+        <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-1">
+          BPMN/CMMN task id
+        </div>
+        <code class="font-mono text-xs text-ink">{dtCase.taskId}</code>
+      </div>
+    </div>
+  </section>
+</Base>

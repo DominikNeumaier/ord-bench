@@ -1,0 +1,85 @@
+---
+import Base from "../../layouts/Base.astro";
+import { loadEntityTypes, loadEntityUsages } from "../../lib/data";
+
+const ets = loadEntityTypes();
+const usages = loadEntityUsages();
+const base = import.meta.env.BASE_URL;
+
+const byNamespace = new Map<string, typeof ets>();
+for (const et of ets) {
+  if (!byNamespace.has(et.namespace)) byNamespace.set(et.namespace, []);
+  byNamespace.get(et.namespace)!.push(et);
+}
+
+const NS_INFO: Record<string, { title: string; blurb: string }> = {
+  "sap.odm": {
+    title: "SAP One Domain Model (ODM)",
+    blurb:
+      "The aligned cross-LoB taxonomy. Every system in the landscape references these entity-type ORD IDs when it exposes business objects.",
+  },
+};
+
+function usageCount(ordId: string) {
+  return usages.get(ordId)?.length ?? 0;
+}
+---
+
+<Base
+  title="Entities"
+  subtitle={`${ets.length} entity types across ${byNamespace.size} shared taxonomies. Entity types are the conceptual hubs the landscape revolves around — any API, agent, or data product can declare that it operates on one of them.`}
+>
+  {
+    Array.from(byNamespace.entries()).map(([ns, list]) => (
+      <section class="mb-12" id={ns}>
+        <header class="mb-4 scroll-mt-24">
+          <div class="font-mono text-xs text-ink-subtle">{ns}</div>
+          <h2 class="font-serif text-xl font-semibold mt-1">
+            {NS_INFO[ns]?.title ?? ns}
+          </h2>
+          <p class="text-sm text-ink-muted mt-1 max-w-3xl">
+            {NS_INFO[ns]?.blurb ?? ""}
+          </p>
+        </header>
+
+        <ul class="divide-y divide-rule border-y border-rule">
+          {list
+            .slice()
+            .sort((a, b) => a.localId.localeCompare(b.localId))
+            .map((et) => {
+              const n = usageCount(et.ordId);
+              const rel = et.relatedEntityTypeIds.length;
+              return (
+                <li>
+                  <a
+                    href={`${base}entities/${et.slug}/`}
+                    class="group flex items-baseline justify-between gap-6 py-4 px-2 -mx-2 rounded hover:bg-accent-soft/40 transition"
+                  >
+                    <div class="min-w-0">
+                      <div class="font-mono text-xs text-ink-subtle break-all">
+                        {et.ordId}
+                      </div>
+                      <div class="mt-1 font-medium group-hover:text-accent-ink">
+                        {et.title}
+                      </div>
+                      <p class="mt-1 text-sm text-ink-muted line-clamp-2 max-w-2xl">
+                        {et.shortDescription}
+                      </p>
+                    </div>
+                    <div class="shrink-0 text-right text-xs font-mono text-ink-subtle">
+                      <div>
+                        {n} resource{n === 1 ? "" : "s"}
+                      </div>
+                      <div>
+                        {rel} related
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              );
+            })}
+        </ul>
+      </section>
+    ))
+  }
+</Base>

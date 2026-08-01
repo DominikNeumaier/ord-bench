@@ -1,0 +1,97 @@
+---
+import Base from "../../../layouts/Base.astro";
+import { loadSystems } from "../../../lib/data";
+
+export async function getStaticPaths() {
+  const systems = loadSystems();
+  return systems.map((s) => ({
+    params: { namespace: s.namespace },
+    props: { system: s },
+  }));
+}
+
+const { system } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const typeOrder = ["agent", "apiResource", "dataProduct", "entityType", "event"];
+const byType = new Map<string, typeof system.resources>();
+for (const r of system.resources) {
+  if (!byType.has(r.type)) byType.set(r.type, []);
+  byType.get(r.type)!.push(r);
+}
+
+const typeLabel: Record<string, string> = {
+  agent: "Agents",
+  apiResource: "APIs",
+  dataProduct: "Data Products",
+  entityType: "Entity Types",
+  event: "Events",
+};
+---
+
+<Base
+  title={system.packages[0]?.title ?? system.namespace}
+  subtitle={system.description}
+>
+  <div class="font-mono text-xs text-ink-subtle mb-8">
+    <a href={`${base}landscape/`} class="hover:text-ink underline-offset-2 hover:underline">
+      ← all systems
+    </a>
+    &nbsp;·&nbsp; {system.namespace}
+  </div>
+
+  {
+    typeOrder
+      .filter((t) => byType.has(t))
+      .map((t) => (
+        <section class="mb-12">
+          <h2 class="font-serif text-xl font-semibold mb-4">
+            {typeLabel[t]}{" "}
+            <span class="font-mono text-xs text-ink-subtle font-normal">
+              · {byType.get(t)!.length}
+            </span>
+          </h2>
+          <ul class="divide-y divide-rule border-y border-rule">
+            {byType.get(t)!.map((r) => (
+              <li>
+                <a
+                  href={`${base}landscape/${system.namespace}/${r.slug}/`}
+                  class="group block py-4 px-2 -mx-2 rounded hover:bg-accent-soft/40 transition"
+                >
+                  <div class="flex items-baseline justify-between gap-4">
+                    <div class="min-w-0">
+                      <div class="font-mono text-xs text-ink-subtle break-all">
+                        {r.ordId}
+                      </div>
+                      <div class="mt-1 font-medium group-hover:text-accent-ink transition">
+                        {r.title}
+                      </div>
+                      <p class="mt-1 text-sm text-ink-muted">
+                        {r.shortDescription}
+                      </p>
+                      {r.entityTypes.length > 0 && (
+                        <div class="mt-2 flex flex-wrap gap-1">
+                          {r.entityTypes.map((et) => {
+                            const last =
+                              et.split(":").slice(-2, -1)[0] ?? et;
+                            return (
+                              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-rule text-ink-muted">
+                                {last}
+                              </span>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                    <div class="shrink-0 font-mono text-xs text-accent opacity-0 group-hover:opacity-100 transition">
+                      view →
+                    </div>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+  }
+</Base>

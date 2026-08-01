@@ -1,0 +1,210 @@
+---
+import Base from "../../layouts/Base.astro";
+import { loadAmbiguity, loadSystems, ordIdToSlug } from "../../lib/data";
+
+const ambiguity = loadAmbiguity();
+const allSystems = loadSystems();
+const allResourcesByOrdId = new Map<string, any>();
+for (const sys of allSystems) {
+  for (const r of sys.resources) {
+    allResourcesByOrdId.set(r.ordId, { ...r, namespace: sys.namespace });
+  }
+}
+
+// All scoreable resources — ground_truth_eligible is the new filter
+const all = Array.from(ambiguity.values())
+  .filter((r) => r.can_be_ground_truth)
+  .sort((a, b) => b.ambiguity_score - a.ambiguity_score);
+
+const gtEligible = all.filter((r) => r.ground_truth_eligible);
+const maxScore = all[0]?.ambiguity_score ?? 1;
+const hardCount = all.filter((r) => r.difficulty_band === "hard" || r.difficulty_band === "very_hard").length;
+const gapCount = all.filter((r) => r.coverage_gap).length;
+
+const base = import.meta.env.BASE_URL;
+
+const bandColor: Record<string, string> = {
+  easy: "text-green-600 bg-green-50",
+  medium: "text-yellow-700 bg-yellow-50",
+  hard: "text-orange-600 bg-orange-50",
+  very_hard: "text-red-600 bg-red-50",
+};
+
+function resourceUrl(ordId: string): string {
+  const r = allResourcesByOrdId.get(ordId);
+  if (!r) return "#";
+  return `${base}landscape/${r.namespace}/${ordIdToSlug(ordId)}/`;
+}
+
+function resourceTitle(ordId: string): string {
+  return allResourcesByOrdId.get(ordId)?.title ?? ordId.split(":")[2] ?? ordId;
+}
+---
+
+<Base title="Ambiguity Analysis" subtitle="Structural similarity scores across all ORD resources">
+  <!-- Breadcrumb -->
+  <div class="font-mono text-xs text-ink-subtle mb-6 flex flex-wrap items-center gap-2">
+    <a href={`${base}`} class="hover:text-ink underline-offset-2 hover:underline">ORD-Bench</a>
+    <span>·</span>
+    <span class="text-ink">Ambiguity Analysis</span>
+  </div>
+
+  <!-- How it's computed -->
+  <section class="mb-10 border border-rule rounded-lg p-6 bg-white">
+    <h2 class="font-serif text-base font-semibold text-ink mb-3">How scores are computed</h2>
+    <p class="text-sm text-ink-muted mb-4 leading-relaxed">
+      Each resource's <strong>ambiguity score</strong> is the mean similarity to its 5 nearest neighbors,
+      computed deterministically from ORD fields — no LLM, no embeddings, fully reproducible.
+    </p>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-xs font-mono mb-4">
+      {[
+        { field: "text", method: "TF-IDF cosine", weight: "×1", note: "title + shortDescription + description" },
+        { field: "entityTypes", method: "IDF-Jaccard", weight: "×1", note: "rare types weighted higher" },
+        { field: "lineOfBusiness", method: "Jaccard", weight: "×1", note: "functional domain" },
+        { field: "tags", method: "Jaccard", weight: "×1", note: "developer-assigned keywords" },
+        { field: "localId", method: "Jaccard (tokens)", weight: "×1", note: "CamelCase segment of ordId" },
+        { field: "cross-namespace", method: "bonus", weight: "+0.5", note: "P1: same domain, diff vendor" },
+      ].map((d) => (
+        <div class="border border-rule rounded p-2">
+          <div class="text-ink font-semibold">{d.field} <span class="text-accent">{d.weight}</span></div>
+          <div class="text-ink-subtle">{d.method}</div>
+          <div class="text-ink-subtle text-[10px] mt-0.5">{d.note}</div>
+        </div>
+      ))}
+    </div>
+    <p class="text-xs text-ink-subtle">
+      A <strong>type penalty ×0.5</strong> applies when resource types differ (e.g. agent vs. dataProduct).
+      Score = (sum of 6 equal-weight dimensions + cross-ns bonus) / 6, then × type penalty.
+      <strong>Ground-truth eligible</strong>: satisfies HIGH≥3 · MEDIUM≥5 · LOW≥5 neighbors (full TF-IDF similarity).
+    </p>
+  </section>
+
+  <!-- Summary stats -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+    {[
+      { label: "Total resources", value: all.length.toString() },
+      { label: "Ground-truth eligible", value: gtEligible.length.toString(), sub: "H≥3 · M≥5 · L≥5" },
+      { label: "Have ≥3 HIGH neighbors", value: all.filter(r => (r.high_neighbors ?? 0) >= 3).length.toString(), sub: "genuine distractors exist" },
+      { label: "Coverage gaps", value: gapCount.toString(), sub: "no neighbors ≥ 0.25" },
+    ].map((s) => (
+      <div class="border border-rule rounded-lg p-4 bg-white text-center">
+        <div class="font-serif text-2xl font-semibold text-accent">{s.value}</div>
+        <div class="text-xs text-ink-muted mt-1">{s.label}</div>
+        {s.sub && <div class="text-[10px] font-mono text-ink-subtle mt-0.5">{s.sub}</div>}
+      </div>
+    ))}
+  </div>
+
+  <!-- Filter toggle -->
+  <div class="flex flex-wrap items-center gap-4 mb-4">
+    <div class="flex items-center gap-2">
+      <span class="text-xs text-ink-subtle font-mono">Filter:</span>
+      <label class="flex items-center gap-1.5 cursor-pointer select-none text-xs font-mono">
+        <input type="checkbox" id="filter-gt" class="accent-accent w-3.5 h-3.5" />
+        <span>Ground-truth eligible only ({gtEligible.length})</span>
+      </label>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="text-xs text-ink-subtle font-mono">Type:</span>
+      {[
+        { type: "apiResource", label: "API", count: all.filter(r => allResourcesByOrdId.get(r.ordId)?.type === "apiResource").length },
+        { type: "agent",       label: "Agent", count: all.filter(r => allResourcesByOrdId.get(r.ordId)?.type === "agent").length },
+        { type: "dataProduct", label: "Data Product", count: all.filter(r => allResourcesByOrdId.get(r.ordId)?.type === "dataProduct").length },
+      ].map((t) => (
+        <label class="flex items-center gap-1 cursor-pointer select-none text-xs font-mono">
+          <input type="checkbox" data-type-filter={t.type} class="type-filter accent-accent w-3 h-3" />
+          <span class="text-ink">{t.label}</span>
+          <span class="text-ink-subtle">({t.count})</span>
+        </label>
+      ))}
+    </div>
+  </div>
+
+  <!-- Main table -->
+  <div class="overflow-x-auto">
+    <table id="amb-table" class="w-full text-xs font-mono border-collapse">
+      <thead>
+        <tr class="border-b-2 border-rule text-ink-subtle text-[10px] uppercase tracking-wider">
+          <th class="text-left py-2 pr-4 w-8">#</th>
+          <th class="text-left py-2 pr-4">Resource</th>
+          <th class="text-left py-2 pr-2 w-24">Tier coverage</th>
+          <th class="text-left py-2 w-full">Top similar resources (by full sim score)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {all.map((r, i) => {
+          const top20 = r.top_neighbors.slice(0, 20);
+          const resInfo = allResourcesByOrdId.get(r.ordId);
+          const rtype = resInfo?.type ?? r.type ?? "";
+          const h = r.high_neighbors ?? 0;
+          const m = r.medium_neighbors ?? 0;
+          const l = r.low_neighbors ?? 0;
+          const hOk = h >= 3, mOk = m >= 5, lOk = l >= 5;
+          return (
+            <tr data-gt={r.ground_truth_eligible ? "1" : "0"}
+                data-gt={r.ground_truth_eligible ? "1" : "0"}
+                data-type={rtype}
+                class={`border-b border-rule/50 hover:bg-rule/20 transition-colors align-top ${r.coverage_gap ? "opacity-50" : ""}`}>
+              <td class="py-2 pr-4 text-ink-subtle">{i + 1}</td>
+              <td class="py-2 pr-4 max-w-xs">
+                <a href={`${base}landscape/${resInfo?.namespace ?? ""}/${ordIdToSlug(r.ordId)}/`}
+                   class="text-accent-ink hover:underline underline-offset-2 block truncate font-medium">
+                  {resInfo?.title ?? r.ordId.split(":")[2]}
+                </a>
+                <span class="text-[9px] text-ink-subtle">{r.ordId.split(":")[1]} · {r.ordId.split(":")[0]}</span>
+                {r.ground_truth_eligible && (
+                  <span class="ml-1 px-1 py-0.5 rounded bg-green-100 text-green-700 text-[9px] font-semibold">GT</span>
+                )}
+                {r.coverage_gap && <span class="ml-1 text-yellow-600 text-[9px]">⚠ gap</span>}
+              </td>
+              <td class="py-2 pr-2 text-[9px] font-mono leading-relaxed">
+                <span class={hOk ? "text-green-600 font-semibold" : "text-ink-subtle"}>H:{h}/3</span>
+                {" · "}
+                <span class={mOk ? "text-green-600 font-semibold" : "text-ink-subtle"}>M:{m}/5</span>
+                {" · "}
+                <span class={lOk ? "text-green-600 font-semibold" : "text-ink-subtle"}>L:{l}/5</span>
+              </td>
+              <td class="py-2">
+                <div class="flex flex-wrap gap-1.5">
+                  {top20.map((nb) => (
+                    <a href={resourceUrl(nb.ordId)}
+                       class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-rule hover:bg-rule/70 hover:text-accent-ink transition text-[9px]">
+                      <span class="font-semibold text-ink">{nb.sim.toFixed(3)}</span>
+                      <span class="text-ink-subtle truncate max-w-[120px]">{resourceTitle(nb.ordId)}</span>
+                    </a>
+                  ))}
+                </div>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+</Base>
+
+<script>
+  const gtCheckbox = document.getElementById("filter-gt") as HTMLInputElement;
+  const typeCheckboxes = document.querySelectorAll<HTMLInputElement>(".type-filter");
+  const rows = document.querySelectorAll<HTMLTableRowElement>("#amb-table tbody tr");
+
+  function applyFilters() {
+    const onlyGT = gtCheckbox?.checked;
+    const activeTypes = new Set(
+      Array.from(typeCheckboxes)
+        .filter((cb) => cb.checked)
+        .map((cb) => cb.dataset.typeFilter)
+    );
+
+    rows.forEach((row) => {
+      const isGT = row.dataset.gt === "1";
+      const rtype = row.dataset.type ?? "";
+      const passGT = !onlyGT || isGT;
+      const passType = activeTypes.size === 0 || activeTypes.has(rtype);
+      row.style.display = passGT && passType ? "" : "none";
+    });
+  }
+
+  gtCheckbox?.addEventListener("change", applyFilters);
+  typeCheckboxes.forEach((cb) => cb.addEventListener("change", applyFilters));
+</script>

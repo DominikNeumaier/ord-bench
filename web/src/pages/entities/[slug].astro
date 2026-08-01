@@ -1,0 +1,336 @@
+---
+import Base from "../../layouts/Base.astro";
+import { loadEntityTypes, loadEntityUsages, ordIdToSlug } from "../../lib/data";
+
+export async function getStaticPaths() {
+  const ets = loadEntityTypes();
+  return ets.map((et) => ({
+    params: { slug: et.slug },
+    props: { entity: et },
+  }));
+}
+
+const { entity } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const allEts = loadEntityTypes();
+const byOrdId = new Map(allEts.map((e) => [e.ordId, e]));
+const usages = loadEntityUsages();
+const usingResources = usages.get(entity.ordId) ?? [];
+
+// Reverse relations: which other entity types declare a relation pointing
+// back to this one? Useful so a sub-entity also sees its parent listed.
+const incoming = allEts.filter((e) =>
+  e.relatedEntityTypeIds.includes(entity.ordId) && e.ordId !== entity.ordId,
+);
+
+// Split outgoing relations by catalogue (within-ODM vs cross to VDM SoT).
+const outgoing = entity.relatedEntityTypeIds
+  .map((id) => byOrdId.get(id))
+  .filter((e): e is NonNullable<typeof e> => Boolean(e));
+
+const sameCatalogue = outgoing.filter((e) => e.namespace === entity.namespace);
+const otherCatalogue = outgoing.filter((e) => e.namespace !== entity.namespace);
+
+// Group using resources by namespace for cross-system visibility.
+const usingByNamespace = new Map<string, typeof usingResources>();
+for (const u of usingResources) {
+  if (!usingByNamespace.has(u.namespace)) usingByNamespace.set(u.namespace, []);
+  usingByNamespace.get(u.namespace)!.push(u);
+}
+const usingNamespacesSorted = Array.from(usingByNamespace.entries()).sort(
+  (a, b) => a[0].localeCompare(b[0]),
+);
+
+const rawJson = JSON.stringify(entity.raw, null, 2);
+
+const KIND_LABEL: Record<string, string> = {
+  agent: "Agent",
+  apiResource: "API",
+  dataProduct: "Data Product",
+  entityType: "Entity Type",
+  event: "Event",
+};
+---
+
+<Base title={entity.title} subtitle={entity.shortDescription}>
+  <div class="font-mono text-xs text-ink-subtle mb-6 flex flex-wrap items-center gap-2">
+    <a href={`${base}entities/`} class="hover:text-ink underline-offset-2 hover:underline">
+      entities
+    </a>
+    <span>·</span>
+    <span>{entity.namespace}</span>
+    <span>·</span>
+    <span class="text-ink">{entity.localId}</span>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-2 mb-8">
+    <span class="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-accent-soft text-accent-ink font-mono text-[11px] font-medium">
+      Entity Type
+    </span>
+    <span class="font-mono text-[11px] text-ink-subtle">level: {entity.level}</span>
+    {entity.releaseStatus && (
+      <span class="font-mono text-[11px] text-ink-subtle">
+        · {entity.releaseStatus}
+      </span>
+    )}
+    {entity.packageTitle && (
+      <span class="font-mono text-[11px] text-ink-subtle">
+        · in {entity.packageTitle}
+      </span>
+    )}
+  </div>
+
+  <!-- View toggle -->
+  <div class="border-b border-rule mb-8 flex gap-6 text-sm">
+    <button
+      data-view-toggle="structured"
+      class="view-tab pb-3 border-b-2 border-accent text-ink font-medium"
+      type="button"
+    >
+      Structured
+    </button>
+    <button
+      data-view-toggle="json"
+      class="view-tab pb-3 border-b-2 border-transparent text-ink-muted hover:text-ink"
+      type="button"
+    >
+      Raw ORD JSON
+    </button>
+  </div>
+
+  <!-- STRUCTURED VIEW -->
+  <section data-view-pane="structured">
+    {entity.description && (
+      <section class="mb-10">
+        <h2 class="font-serif text-base font-semibold text-ink mb-2">
+          Description
+        </h2>
+        <p class="text-sm text-ink-muted leading-relaxed max-w-3xl">
+          {entity.description}
+        </p>
+      </section>
+    )}
+
+    <!-- Relations -->
+    {(sameCatalogue.length > 0 || otherCatalogue.length > 0 || incoming.length > 0) && (
+      <section class="mb-10">
+        <h2 class="font-serif text-base font-semibold text-ink mb-4">
+          Related entity types
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {sameCatalogue.length > 0 && (
+            <div>
+              <h3 class="font-mono text-[11px] uppercase tracking-wider text-ink-subtle mb-2">
+                within {entity.namespace}
+              </h3>
+              <ul class="space-y-1.5">
+                {sameCatalogue.map((e) => (
+                  <li>
+                    <a
+                      href={`${base}entities/${e.slug}/`}
+                      class="group flex items-baseline gap-2 text-sm hover:text-accent-ink"
+                    >
+                      <span class="text-accent">↳</span>
+                      <span>
+                        <span class="group-hover:underline">{e.title}</span>
+                        <span class="block font-mono text-[10px] text-ink-subtle">
+                          {e.localId}
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {otherCatalogue.length > 0 && (
+            <div>
+              <h3 class="font-mono text-[11px] uppercase tracking-wider text-ink-subtle mb-2">
+                cross-taxonomy mapping
+              </h3>
+              <ul class="space-y-1.5">
+                {otherCatalogue.map((e) => (
+                  <li>
+                    <a
+                      href={`${base}entities/${e.slug}/`}
+                      class="group flex items-baseline gap-2 text-sm hover:text-accent-ink"
+                    >
+                      <span class="text-accent">⇄</span>
+                      <span>
+                        <span class="group-hover:underline">{e.title}</span>
+                        <span class="block font-mono text-[10px] text-ink-subtle">
+                          {e.namespace} · {e.localId}
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {incoming.length > 0 && (
+            <div>
+              <h3 class="font-mono text-[11px] uppercase tracking-wider text-ink-subtle mb-2">
+                referenced by
+              </h3>
+              <ul class="space-y-1.5">
+                {incoming.map((e) => (
+                  <li>
+                    <a
+                      href={`${base}entities/${e.slug}/`}
+                      class="group flex items-baseline gap-2 text-sm hover:text-accent-ink"
+                    >
+                      <span class="text-accent">←</span>
+                      <span>
+                        <span class="group-hover:underline">{e.title}</span>
+                        <span class="block font-mono text-[10px] text-ink-subtle">
+                          {e.namespace !== entity.namespace ? `${e.namespace} · ` : ""}
+                          {e.localId}
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </section>
+    )}
+
+    <!-- Used by Resources -->
+    {usingResources.length > 0 && (
+      <section class="mb-10">
+        <div class="flex items-baseline justify-between mb-4">
+          <h2 class="font-serif text-base font-semibold text-ink">
+            Used by resources
+          </h2>
+          <span class="font-mono text-xs text-ink-subtle">
+            {usingResources.length} resource{usingResources.length === 1 ? "" : "s"}
+            {usingNamespacesSorted.length > 1
+              ? ` · across ${usingNamespacesSorted.length} systems`
+              : ""}
+          </span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {usingNamespacesSorted.map(([ns, items]) => (
+            <div class="border border-rule rounded-md p-4">
+              <div class="font-mono text-[11px] text-ink-subtle mb-2">{ns}</div>
+              <ul class="space-y-1.5">
+                {items.map((u) => (
+                  <li class="flex items-start gap-2">
+                    <span class="font-mono text-[10px] text-accent uppercase mt-0.5 w-10 shrink-0">
+                      {KIND_LABEL[u.kind] ?? u.kind}
+                    </span>
+                    <a
+                      href={`${base}landscape/${u.namespace}/${u.slug}/`}
+                      class="text-sm text-ink-muted hover:text-accent-ink hover:underline"
+                    >
+                      {u.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {usingResources.length === 0 && incoming.length === 0 && sameCatalogue.length === 0 && otherCatalogue.length === 0 && (
+      <p class="text-sm text-ink-subtle italic">
+        This entity type is defined in the catalogue but no resource in the
+        current landscape declares an exposure to it. It still serves as a
+        taxonomy anchor.
+      </p>
+    )}
+
+    <!-- Identifier footer -->
+    <section class="border-t border-rule pt-6 mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div>
+        <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-1">
+          ORD ID
+        </div>
+        <code class="font-mono text-xs text-ink break-all">
+          {entity.ordId}
+        </code>
+      </div>
+      <div>
+        <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-1">
+          Namespace
+        </div>
+        <code class="font-mono text-xs text-ink">
+          {entity.namespace}
+        </code>
+      </div>
+      <div>
+        <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-1">
+          Level
+        </div>
+        <code class="font-mono text-xs text-ink">
+          {entity.level}
+        </code>
+      </div>
+    </section>
+  </section>
+
+  <!-- RAW JSON VIEW -->
+  <section data-view-pane="json" class="hidden">
+    <div class="flex items-center justify-between mb-3">
+      <p class="text-sm text-ink-muted">
+        Raw entry from
+        <code class="font-mono text-xs text-ink">
+          landscape/{entity.namespace}/ord.json
+        </code>
+      </p>
+      <button
+        id="copy-json"
+        class="font-mono text-xs px-3 py-1.5 rounded border border-rule hover:border-accent hover:text-accent transition"
+        type="button"
+      >
+        copy
+      </button>
+    </div>
+    <pre
+      id="raw-json"
+      class="bg-ink text-paper rounded-md p-5 overflow-x-auto font-mono text-xs leading-relaxed"
+    ><code>{rawJson}</code></pre>
+  </section>
+
+  <script>
+    const tabs = document.querySelectorAll<HTMLButtonElement>("[data-view-toggle]");
+    const panes = document.querySelectorAll<HTMLElement>("[data-view-pane]");
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const target = tab.dataset.viewToggle!;
+        tabs.forEach((t) => {
+          const active = t.dataset.viewToggle === target;
+          t.classList.toggle("border-accent", active);
+          t.classList.toggle("text-ink", active);
+          t.classList.toggle("font-medium", active);
+          t.classList.toggle("border-transparent", !active);
+          t.classList.toggle("text-ink-muted", !active);
+        });
+        panes.forEach((p) => {
+          p.classList.toggle("hidden", p.dataset.viewPane !== target);
+        });
+      });
+    });
+
+    const copyBtn = document.getElementById("copy-json");
+    const rawEl = document.getElementById("raw-json");
+    if (copyBtn && rawEl) {
+      copyBtn.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(rawEl.textContent ?? "");
+        const original = copyBtn.textContent;
+        copyBtn.textContent = "copied";
+        setTimeout(() => {
+          copyBtn.textContent = original;
+        }, 1200);
+      });
+    }
+  </script>
+</Base>

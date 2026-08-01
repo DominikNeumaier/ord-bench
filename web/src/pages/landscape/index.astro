@@ -1,0 +1,215 @@
+---
+import Base from "../../layouts/Base.astro";
+import { loadSystems, loadEntityTypes, loadEntityUsages, loadAmbiguity } from "../../lib/data";
+
+const systems = loadSystems().filter(
+  (s) => s.namespace !== "sap.odm",
+);
+const entityTypes = loadEntityTypes();
+const entityUsages = loadEntityUsages();
+const ambiguity = loadAmbiguity();
+const gtEligibleCount = Array.from(ambiguity.values()).filter((r) => r.ground_truth_eligible).length;
+
+const base = import.meta.env.BASE_URL;
+
+const totalResources = systems.reduce((n, s) => n + s.resources.length, 0);
+
+function countByType(s: typeof systems[number]) {
+  const c: Record<string, number> = {};
+  for (const r of s.resources) c[r.type] = (c[r.type] ?? 0) + 1;
+  return c;
+}
+
+// Group entity types by their owning catalogue and rank by usage count
+// so the most-shared ones bubble to the top of the catalogue card.
+const ENTITY_NS = ["sap.odm"] as const;
+const NS_TITLE: Record<string, string> = {
+  "sap.odm": "SAP One Domain Model",
+};
+const catalogues = ENTITY_NS.map((ns) => {
+  const list = entityTypes
+    .filter((e) => e.namespace === ns)
+    .map((e) => ({
+      ...e,
+      usage: entityUsages.get(e.ordId)?.length ?? 0,
+    }))
+    .sort((a, b) =>
+      b.usage - a.usage || a.localId.localeCompare(b.localId),
+    );
+  return { ns, title: NS_TITLE[ns] ?? ns, list };
+});
+---
+
+<Base
+  title="Landscape"
+  subtitle={`${systems.length} systems · ${totalResources} ORD resources · ${entityTypes.length} shared entity types in the sap.odm catalogue.`}
+>
+  <!-- ── Interactive graph banner ────────────────────────────────────── -->
+  <a
+    href={`${base}landscape/graph/`}
+    class="group block mb-6 border border-rule rounded-md p-5 bg-accent-soft/30 hover:border-accent hover:shadow-sm transition"
+  >
+    <div class="flex items-center justify-between gap-4">
+      <div>
+        <div class="font-mono text-[11px] uppercase tracking-wider text-accent-ink mb-1">
+          interactive view
+        </div>
+        <div class="font-serif text-lg font-semibold group-hover:text-accent-ink">
+          Landscape as Graph
+        </div>
+        <p class="text-sm text-ink-muted mt-1 max-w-2xl">
+          See systems, resources, and entity types as a network. Entity-type
+          hubs reveal where resources from different systems share the same
+          semantics.
+        </p>
+      </div>
+      <span class="font-mono text-sm text-accent group-hover:translate-x-1 transition">
+        view →
+      </span>
+    </div>
+  </a>
+
+  <!-- ── Ambiguity Analysis banner ────────────────────────────────────── -->
+  <a
+    href={`${base}ambiguity/`}
+    class="group block mb-12 border border-rule rounded-md p-5 bg-accent-soft/30 hover:border-accent hover:shadow-sm transition"
+  >
+    <div class="flex items-center justify-between gap-4">
+      <div>
+        <div class="font-mono text-[11px] uppercase tracking-wider text-accent-ink mb-1">
+          similarity analysis
+        </div>
+        <div class="font-serif text-lg font-semibold group-hover:text-accent-ink">
+          Ambiguity Analysis
+        </div>
+        <p class="text-sm text-ink-muted mt-1 max-w-2xl">
+          Structural similarity scores for all resources — HIGH / MEDIUM / LOW tier coverage,
+          ground-truth eligible resources, and nearest-neighbor breakdown.
+          <span class="font-mono text-accent font-semibold ml-1">{gtEligibleCount} ground-truth eligible</span>
+        </p>
+      </div>
+      <span class="font-mono text-sm text-accent group-hover:translate-x-1 transition shrink-0">
+        view →
+      </span>
+    </div>
+  </a>
+
+  <!-- ── Shared entity catalogues (the semantic backbone) ──────────── -->
+  <section class="mb-14">
+    <header class="mb-5 flex items-baseline gap-3 border-b border-accent pb-3">
+      <h2 class="font-serif text-2xl font-semibold text-accent-ink">
+        Shared entity-type catalogues
+      </h2>
+      <span class="font-mono text-xs text-ink-subtle">
+        {entityTypes.length} types across {catalogues.length} catalogues
+      </span>
+    </header>
+    <p class="text-sm text-ink-muted mb-6 max-w-3xl">
+      Before the systems publish their APIs and agents, they agree on a shared
+      vocabulary of business objects. These catalogues define that vocabulary
+      and every system in the landscape below references it via
+      <code class="font-mono text-xs">entityTypeMappings</code> /
+      <code class="font-mono text-xs">relatedEntityTypes</code>.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        catalogues.map((cat) => (
+          <article class="border border-rule rounded-md p-5 bg-white">
+            <header class="mb-3 flex items-baseline justify-between gap-3">
+              <div>
+                <div class="font-mono text-[11px] uppercase tracking-wider text-ink-subtle">
+                  {cat.ns}
+                </div>
+                <h3 class="font-serif text-lg font-semibold mt-0.5">
+                  {cat.title}
+                </h3>
+              </div>
+              <div class="text-xs font-mono text-ink-subtle">
+                {cat.list.length} types
+              </div>
+            </header>
+            <ul class="flex flex-wrap gap-1.5 mb-4">
+              {cat.list.slice(0, 12).map((e) => (
+                <li>
+                  <a
+                    href={`${base}entities/${e.slug}/`}
+                    class="inline-block font-mono text-[11px] px-2 py-1 rounded bg-accent-soft/60 hover:bg-accent hover:text-white transition"
+                    title={e.shortDescription}
+                  >
+                    {e.localId}
+                    {e.usage > 0 && (
+                      <span class="ml-1 text-[9px] opacity-70">·{e.usage}</span>
+                    )}
+                  </a>
+                </li>
+              ))}
+              {cat.list.length > 12 && (
+                <li class="font-mono text-[11px] text-ink-subtle px-2 py-1">
+                  +{cat.list.length - 12} more
+                </li>
+              )}
+            </ul>
+            <a
+              href={`${base}entities/#${cat.ns}`}
+              class="font-mono text-xs text-accent hover:underline"
+            >
+              browse all {cat.list.length} →
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ── Systems list ─────────────────────────────────────────────────── -->
+  <section>
+    <header class="mb-5 border-b border-rule pb-3">
+      <h2 class="font-serif text-2xl font-semibold">
+        Systems
+        <span class="font-mono text-xs text-ink-subtle font-normal ml-2">
+          {systems.length} systems · {totalResources} resources
+        </span>
+      </h2>
+      <p class="text-sm text-ink-muted mt-1 max-w-3xl">
+        The applications that publish APIs, agents, and data products into the
+        landscape. Click a system to drill into its resources.
+      </p>
+    </header>
+
+    <ol class="divide-y divide-rule border-y border-rule">
+      {
+        systems.map((s) => {
+          const counts = countByType(s);
+          return (
+            <li class="py-5">
+              <a
+                href={`${base}landscape/${s.namespace}/`}
+                class="group flex items-baseline justify-between gap-6"
+              >
+                <div class="min-w-0">
+                  <div class="font-mono text-sm text-ink-muted">
+                    {s.namespace}
+                  </div>
+                  <div class="mt-1 font-serif text-lg font-semibold group-hover:underline">
+                    {s.packages[0]?.title ?? s.namespace}
+                  </div>
+                  <p class="mt-1 text-sm text-ink-muted line-clamp-2 max-w-2xl">
+                    {s.description}
+                  </p>
+                </div>
+                <div class="shrink-0 text-right text-xs font-mono text-ink-subtle">
+                  {Object.entries(counts).map(([k, v]) => (
+                    <div>
+                      {v} {k}
+                    </div>
+                  ))}
+                </div>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ol>
+  </section>
+</Base>
