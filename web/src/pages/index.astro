@@ -70,12 +70,11 @@ const sections = [
     countLabel: "phases",
     subtitle: "Landscape · Design-Time · Run-Time",
     blurb: "Full construction provenance — generation logs, validator outcomes, and judge responses.",
-    group: "audit",
+    group: "dataset",
   },
 ];
 
 const dataset = sections.filter((s) => s.group === "dataset");
-const audit   = sections.filter((s) => s.group === "audit");
 ---
 
 <Base
@@ -109,29 +108,5 @@ const audit   = sections.filter((s) => s.group === "audit");
         <div class="mt-5 text-xs font-mono text-accent opacity-0 group-hover:opacity-100 transition">browse →</div>
       </a>
     ))}
-  </div>
-
-  <!-- Audit -->
-  <div class="rounded-xl border border-rule bg-accent-soft/20 p-5 mt-8">
-    <div class="font-mono text-[10px] uppercase tracking-wider text-ink-subtle mb-4">Construction Audit</div>
-    <div class="grid grid-cols-1 gap-4">
-      {audit.map((s) => (
-        <a
-          href={`${base}${s.href}/`}
-          class="group block border border-rule rounded-lg p-6 bg-white/80 hover:border-accent hover:shadow-sm hover:-translate-y-0.5 transition"
-        >
-          <div class="flex items-baseline justify-between mb-3">
-            <h2 class="font-serif text-xl font-semibold group-hover:text-accent-ink transition">{s.title}</h2>
-            <div class="text-right">
-              <div class="font-serif text-2xl font-semibold text-accent leading-none">{s.count}</div>
-              <div class="text-[10px] uppercase tracking-wider text-ink-subtle font-mono mt-1">{s.countLabel}</div>
-            </div>
-          </div>
-          <div class="text-xs text-ink-subtle font-mono mb-2">{s.subtitle}</div>
-          <p class="text-sm text-ink-muted leading-relaxed">{s.blurb}</p>
-          <div class="mt-4 text-xs font-mono text-accent opacity-0 group-hover:opacity-100 transition">browse →</div>
-        </a>
-      ))}
-    </div>
   </div>
 </Base>
