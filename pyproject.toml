@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "ord-bench"
+version = "0.1.0"
+description = "ORD-Bench: An adversarially constructed benchmark for enterprise resource selection"
+requires-python = ">=3.10"
+
+[project.optional-dependencies]
+embeddings = ["openai>=1.0"]
+dev = ["pytest", "black", "ruff"]
