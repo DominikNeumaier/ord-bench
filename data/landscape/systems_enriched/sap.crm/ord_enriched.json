@@ -1,0 +1,1080 @@
+{
+  "openResourceDiscovery": "1.16",
+  "perspective": "system-instance",
+  "packages": [
+    {
+      "ordId": "sap.crm:package:Core:v1",
+      "title": "sap.crm Core Package",
+      "shortDescription": "Core resources for the sap.crm system in the benchmark landscape.",
+      "version": "1.0.0",
+      "vendor": "sap:vendor:SAP:"
+    }
+  ],
+  "agents": [
+    {
+      "ordId": "sap.crm:agent:OpportunityQualificationAdvisor:v1",
+      "title": "Opportunity Qualification Advisor",
+      "shortDescription": "Autonomously evaluates sales opportunities against qualification criteria and recommends actions.",
+      "description": "This AI agent analyzes incoming SalesOpportunity records by examining customer account characteristics, deal value, customer history, and engagement patterns. It automatically qualifies or disqualifies opportunities based on configurable enterprise rules, prioritizes high-value prospects, and recommends next-best-actions to sales representatives. The agent reduces manual qualification overhead and ensures consistent lead scoring across the sales organization.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:SalesOpportunity:v1",
+        "sap.odm:entityType:CustomerAccount:v1"
+      ],
+      "lineOfBusiness": [
+        "Sales and Customer Management"
+      ],
+      "tags": [
+        "opportunity-management",
+        "lead-scoring",
+        "sales-automation",
+        "ai-agent"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:agent:SalesProductChangeCoordinator:v1",
+      "title": "Sales Product Change Coordinator",
+      "shortDescription": "Automates product change impact assessment and sales opportunity alignment.",
+      "description": "Monitors engineering changes and material updates to coordinate sales strategy adjustments. Processes product item modifications and automates notification workflows to affected customer accounts and sales opportunities. Coordinates cross-functional communication between product management and sales teams to ensure opportunity relevance during product transitions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "lineOfBusiness": [
+        "Sales"
+      ],
+      "tags": [
+        "product-lifecycle",
+        "sales-coordination",
+        "change-management"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:agent:VendorMaterialProcurementCoordinator:v1",
+      "title": "Vendor Material Procurement Coordinator",
+      "shortDescription": "Automates vendor selection and material sourcing aligned with sales opportunities.",
+      "description": "This agent monitors incoming sales opportunities and automatically coordinates with vendors to secure critical materials for fulfillment. It processes vendor availability data, negotiates lead times, and orchestrates material allocation across competing sales demands to optimize procurement efficiency and customer delivery timelines.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:Vendor:v1"
+      ],
+      "lineOfBusiness": [
+        "sales"
+      ],
+      "tags": [
+        "procurement",
+        "vendor-management",
+        "supply-chain"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:agent:SalesCompensationOrchestrator:v1",
+      "title": "Sales Compensation Orchestrator",
+      "shortDescription": "Automates compensation calculations and dispute resolution for sales teams.",
+      "description": "Monitors sales performance metrics and employee compensation eligibility to automate calculation workflows. Coordinates dispute resolution processes by processing compensation claims against established policies and employee records. Orchestrates compensation payouts and adjustments based on real-time opportunity closure and quota attainment data.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Compensation:v1",
+        "sap.odm:entityType:Employee:v1"
+      ],
+      "lineOfBusiness": [
+        "Sales"
+      ],
+      "tags": [
+        "compensation-management",
+        "sales-automation",
+        "dispute-resolution"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:agent:CampaignAudienceOptimizationCoordinator:v1",
+      "title": "Campaign Audience Optimization Coordinator",
+      "shortDescription": "Monitors and optimizes campaign performance across customer segments in real time.",
+      "description": "Automatically coordinates campaign execution by monitoring audience engagement patterns across customer segments and accounts. Processes segmentation criteria to identify high-value targets and dynamically adjusts campaign strategies based on performance metrics. Orchestrates real-time audience refinement to maximize campaign ROI and ensures optimal resource allocation across marketing initiatives.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Campaign:v1",
+        "sap.odm:entityType:CustomerAccount:v1",
+        "sap.odm:entityType:CustomerSegment:v1"
+      ],
+      "lineOfBusiness": [
+        "Marketing and CX"
+      ],
+      "tags": [
+        "campaign-optimization",
+        "audience-targeting",
+        "ai-driven",
+        "segmentation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:agent:CampaignAudienceOptimizationAgent:v1",
+      "title": "Campaign Audience Optimization Agent",
+      "shortDescription": "Autonomously optimizes campaign targeting by analyzing customer segments and account characteristics.",
+      "description": "This agent monitors campaign performance across customer segments and automatically refines audience targeting strategies based on real-time engagement metrics. It coordinates segmentation updates, evaluates account-level campaign receptiveness, and processes customer behavioral patterns to continuously enhance campaign ROI and relevance. The agent leverages AI-driven analysis to recommend and execute audience refinements that align campaigns with high-value customer accounts.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Campaign:v1",
+        "sap.odm:entityType:CustomerAccount:v1",
+        "sap.odm:entityType:CustomerSegment:v1"
+      ],
+      "lineOfBusiness": [
+        "Marketing and CX"
+      ],
+      "tags": [
+        "campaign-optimization",
+        "audience-targeting",
+        "ai-driven",
+        "segmentation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:agent:ProductChangeCompensationCoordinator:v1",
+      "title": "Product Change Compensation Coordinator",
+      "shortDescription": "Automates compensation adjustments when engineering changes affect sales roles and product portfolios.",
+      "description": "This agent monitors engineering changes, material updates, and product item modifications to automatically coordinate compensation recalculations across affected sales teams. It processes organizational changes triggered by product modifications, automating payroll integration updates and ensuring sales compensation reflects current product portfolio structures. The agent coordinates real-time notifications to human-capital-management systems when product changes necessitate compensation plan adjustments.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "lineOfBusiness": [
+        "human-capital-management"
+      ],
+      "tags": [
+        "compensation-automation",
+        "organizational-change-management",
+        "payroll-integration"
+      ],
+      "industry": []
+    }
+  ],
+  "apiResources": [
+    {
+      "ordId": "sap.crm:apiResource:CustomerAccountDisputeManagement:v1",
+      "title": "Customer Account Dispute Management API",
+      "shortDescription": "REST API for managing customer disputes, claims, and resolution workflows in CRM.",
+      "description": "This API enables creation, tracking, and resolution of customer disputes linked to accounts and orders. It supports dispute lifecycle management including escalation rules, SLA tracking, and resolution documentation. Essential for customer service teams to maintain account health and resolve disputes efficiently.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/customer-disputes-openapi.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerOrder:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Sales and Customer"
+      ],
+      "tags": [
+        "dispute-resolution",
+        "customer-service",
+        "account-management",
+        "crm"
+      ],
+      "industry": [],
+      "capabilities": [
+        "retrieve-customer-orders",
+        "load-account-context"
+      ],
+      "useCases": [
+        "Identify customers and orders subject to material change impact assessment",
+        "Establish baseline customer scope for compliance workflows"
+      ],
+      "processNext": [
+        "siemens.plm:agent:BOMComplianceValidator:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_compliance_workforce_v1",
+          "groupTypeId": "bpmn",
+          "sequencePosition": 1
+        }
+      ]
+    },
+    {
+      "ordId": "sap.crm:apiResource:CampaignContactStateOrchestration:v1",
+      "title": "Customer Interaction Journey API",
+      "shortDescription": "Retrieves and synchronizes customer touchpoint data across marketing campaigns and multi-channel communications.",
+      "description": "Exposes customer interaction records and engagement metadata from campaigns to support dynamic orchestration of personalized marketing experiences. Enables access to contact journey progression, historical engagement patterns, and account attributes for real-time routing decisions across marketing channels. Facilitates unified view of customer communications to drive consistent omnichannel messaging and campaign performance optimization.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/campaign-contact-state-orchestration.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Marketing and Customer Experience"
+      ],
+      "tags": [
+        "campaign-orchestration",
+        "customer-interactions",
+        "multi-channel-marketing",
+        "engagement-routing"
+      ],
+      "industry": [],
+      "namespace": "sap.crm"
+    },
+    {
+      "ordId": "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+      "title": "Customer Order Fulfillment Tracking API",
+      "shortDescription": "Retrieves and manages customer order status, fulfillment milestones, and delivery tracking data.",
+      "description": "This API exposes real-time customer order fulfillment data, enabling applications to retrieve order details, track shipment progress, and manage delivery status updates. It provides access to comprehensive order lifecycle information across customer accounts, supporting both order status queries and fulfillment event management for seamless customer service operations.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/customer-order-fulfillment.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Sales and Customer"
+      ],
+      "tags": [
+        "dispute-resolution",
+        "customer-service",
+        "account-management",
+        "crm"
+      ],
+      "industry": [],
+      "capabilities": [
+        "validate-order",
+        "track-fulfillment",
+        "retrieve-customer-account"
+      ],
+      "useCases": [
+        "Sales team receives a new customer order and confirms it can be fulfilled based on account standing and delivery capability.",
+        "Order fulfillment process begins by validating customer eligibility and order specifications."
+      ],
+      "processNext": [
+        "corp.itsm:dataProduct:VendorSpendIntelligence:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_order_to_production_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    {
+      "ordId": "sap.crm:apiResource:CampaignCustomerAccountEngagementBridge:v1",
+      "title": "Campaign Customer Account Engagement Bridge",
+      "shortDescription": "Retrieves and manages customer account interactions tied to marketing campaigns.",
+      "description": "Exposes unified customer account and campaign data to enable targeted engagement strategies and real-time contact state management across omnichannel touchpoints. Provides access to campaign performance metrics correlated with customer account lifecycle events, supporting journey orchestration and personalized outreach workflows.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/campaign-customer-account-engagement.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Marketing and Customer Experience"
+      ],
+      "tags": [
+        "journey-orchestration",
+        "contact-state",
+        "real-time-engagement",
+        "omnichannel"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:apiResource:CampaignCustomerAccountSegmentationService:v1",
+      "title": "Campaign Customer Account Segmentation Service",
+      "shortDescription": "Retrieves and manages targeted customer segments for campaign execution and account planning.",
+      "description": "Exposes segmentation capabilities that retrieve customer account profiles and campaign targeting criteria to enable precise audience definition. Manages the association between campaigns and customer accounts, providing access to demographic, behavioral, and engagement data required for campaign strategy optimization. Facilitates real-time querying of account attributes and campaign eligibility rules to support sales planning initiatives.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/campaign-customer-account-segmentation.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "it-service-management"
+      ],
+      "tags": [
+        "access-provisioning",
+        "campaign-management",
+        "customer-accounts"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:apiResource:SalesTeamAvailabilityAndCapacityService:v1",
+      "title": "Sales Team Availability and Capacity Service",
+      "shortDescription": "Retrieves employee availability and time-off schedules for sales capacity planning.",
+      "description": "This API resource exposes employee availability data and time-off records to manage sales team capacity and workload distribution. It provides access to real-time scheduling information, enabling sales managers to optimize resource allocation and plan territory assignments. The service manages both active employee calendars and approved leave periods to support accurate sales forecasting and opportunity assignment.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:TimeOff:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/sales-team-availability.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Sales"
+      ],
+      "tags": [
+        "capacity-planning",
+        "workforce-management",
+        "sales-operations"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:apiResource:ProductionOrderAndMachineAllocationService:v1",
+      "title": "Production Order and Machine Allocation Service",
+      "shortDescription": "Manages production order assignments and machine resource availability for sales fulfillment.",
+      "description": "This API resource exposes production order scheduling and machine allocation capabilities to support sales opportunity fulfillment planning. It retrieves real-time machine availability and production order status to enable accurate sales commitments and delivery timeline management. The service provides access to cross-system production scheduling data, integrating manufacturing resource constraints with customer sales requirements.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Machine:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductionOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/production-order-machine-allocation.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Sales"
+      ],
+      "tags": [
+        "production-planning",
+        "resource-allocation",
+        "fulfillment"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1",
+      "title": "Sales Employee Hierarchy and Capability Directory API",
+      "shortDescription": "Exposes employee organizational structure and sales capabilities for CRM operations.",
+      "description": "This API provides access to employee hierarchical relationships and workforce capabilities within the sales organization. It retrieves detailed employee profiles, reporting structures, and skill inventories to support sales team composition and resource allocation. The service manages workforce person records and organizational mappings essential for sales planning and opportunity assignment.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:WorkforcePerson:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/sales-employee-hierarchy.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Capital Management"
+      ],
+      "tags": [
+        "workforce-management",
+        "organizational-structure",
+        "employee-hierarchy"
+      ],
+      "industry": [],
+      "capabilities": [
+        "align-sales-capability",
+        "map-employee-hierarchy",
+        "assess-workforce-readiness"
+      ],
+      "useCases": [
+        "Sales leadership identifies top performers and their direct reports for customer engagement and territorial assignments.",
+        "Human capital manager aligns workforce skills with product launch requirements and customer segments.",
+        "Regional manager assigns sales representatives based on expertise and territory coverage."
+      ],
+      "processNext": [
+        "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_qa_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    {
+      "ordId": "sap.crm:apiResource:MachineProductionOrderIntegration:v1",
+      "title": "Machine and Production Order Integration API",
+      "shortDescription": "Exposes machine assets and production orders for sales planning and opportunity management.",
+      "description": "This API retrieves and manages machine asset data and production order information to support customer account management and sales planning workflows. It provides access to machine configurations, production order details, and their relationships with customer opportunities. The resource enables sales teams to coordinate equipment-based opportunities and track production capacity constraints affecting customer commitments.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Machine:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductionOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/machine-production-order-integration.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Sales"
+      ],
+      "tags": [
+        "machine-assets",
+        "production-capacity",
+        "sales-planning"
+      ],
+      "industry": [],
+      "capabilities": [
+        "manage-production-orders",
+        "allocate-machines",
+        "sequence-orders"
+      ],
+      "useCases": [
+        "Production planners adjust machine allocation and order sequencing to meet revised delivery commitments.",
+        "Manufacturing control systems retrieve current machine state and production order dependencies."
+      ],
+      "processNext": [
+        "siemens.plm:apiResource:HazardousSubstanceComplianceAndTrackingManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ManufacturingChangeCompliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    {
+      "ordId": "sap.crm:apiResource:ProductionOrderMachineInventoryService:v1",
+      "title": "Production Order Machine Inventory Service",
+      "shortDescription": "Retrieves machine and production order data for sales planning.",
+      "description": "Exposes real-time machine availability and production order status information to support sales opportunity planning and resource allocation. Provides access to machine utilization metrics and production order timelines, enabling sales teams to coordinate delivery commitments with manufacturing capacity. Manages bidirectional data synchronization between sales planning processes and production scheduling systems.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Machine:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductionOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/production-order-machine-inventory.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Sales"
+      ],
+      "tags": [
+        "production-planning",
+        "machine-inventory",
+        "sales-coordination"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:apiResource:ProcurementVendorOrderManagement:v1",
+      "title": "Procurement Vendor and Purchase Order Management API",
+      "shortDescription": "Retrieves and manages vendor details and purchase order data for procurement operations.",
+      "description": "This API resource exposes vendor master information and purchase order records, enabling CRM systems to access and manage procurement data in real-time. It provides endpoints to retrieve vendor profiles, purchase order history, and order status updates, facilitating seamless integration between sales planning and procurement workflows.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:PurchaseOrder:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/procurement-vendor-order-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "vendor-management",
+        "purchase-orders",
+        "procurement"
+      ],
+      "industry": [],
+      "capabilities": [
+        "coordinate-delivery-schedules",
+        "manage-vendor-contracts",
+        "manage-purchase-orders",
+        "track-order-fulfillment",
+        "execute-purchase-orders",
+        "track-vendor-performance"
+      ],
+      "useCases": [
+        "Finance tracks vendor payment terms and contract compliance obligations.",
+        "Create and monitor purchase orders for approved engineering changes",
+        "Procurement specialists issue purchase orders and manage vendor commitments.",
+        "Procure materials from qualified vendors while tracking cost, delivery, and quality metrics"
+      ],
+      "processNext": [
+        "corp.itsm:dataProduct:IncidentEngagementReliability:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductLifecycleCompliance_v1",
+          "groupTypeId": "bpmn"
+        },
+        {
+          "groupId": "proc_EngChangeAndProcurement_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    }
+  ],
+  "dataProducts": [
+    {
+      "ordId": "sap.crm:dataProduct:SalesOpportunityPipelineAnalytics:v1",
+      "title": "Sales Opportunity Pipeline Analytics",
+      "shortDescription": "Aggregated pipeline metrics tracking opportunity stage progression and revenue forecasting.",
+      "description": "Delivers real-time analytical views of sales opportunities across pipeline stages, enabling sales leaders to track conversion rates, forecast accuracy, and stage velocity. Aggregates opportunity volume, weighted revenue, probability-adjusted forecasts, and stage duration metrics to support pipeline management, quota planning, and deal health assessment.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "type": "derived",
+      "category": "analytical",
+      "outputPorts": [
+        {
+          "ordId": "sap.crm:apiResource:PipelineAnalyticsQuery:v1"
+        }
+      ],
+      "entityTypes": [
+        "sap.odm:entityType:SalesOpportunity:v1",
+        "sap.odm:entityType:CustomerAccount:v1"
+      ],
+      "lineOfBusiness": [
+        "Sales and Customer"
+      ],
+      "tags": [
+        "pipeline-analytics",
+        "forecasting",
+        "sales-metrics",
+        "opportunity-tracking"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:dataProduct:IncidentResolutionMetrics:v1",
+      "title": "Incident Resolution Metrics",
+      "shortDescription": "Aggregates and analyzes incident and safety incident resolution performance data.",
+      "description": "This data product aggregates resolution timelines, escalation patterns, and safety incident metrics across customer disputes and service incidents. It provides comprehensive analytics on incident handling efficiency, root cause trends, and compliance status to support continuous improvement in customer service operations.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.crm:apiResource:IncidentAnalyticsReporting:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "customer-service"
+      ],
+      "tags": [
+        "incident-analytics",
+        "resolution-metrics",
+        "compliance-tracking"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:dataProduct:ProductChangeImpactAnalytics:v1",
+      "title": "Product Change Impact Analytics",
+      "shortDescription": "Aggregates engineering changes and material impacts on sales inventory and customer offerings.",
+      "description": "This data product synthesizes engineering change orders, material specifications, and product item configurations to provide comprehensive metrics on how product modifications influence sales opportunities and customer account strategies. It summarizes the ripple effects of engineering changes across the product portfolio, enabling sales teams to proactively communicate product updates and adjust pricing strategies.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.crm:apiResource:ProductChangeMetricsExposure:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Sales"
+      ],
+      "tags": [
+        "product-management",
+        "impact-analysis",
+        "sales-intelligence"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:dataProduct:SalesCompensationPerformanceAnalytics:v1",
+      "title": "Sales Compensation Performance Analytics",
+      "shortDescription": "Aggregates employee compensation and sales performance metrics for compensation planning.",
+      "description": "Summarizes compensation structures and employee performance data to provide metrics on sales team productivity, incentive alignment, and compensation effectiveness. Enables data-driven insights for sales planning and compensation strategy optimization across the organization.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Compensation:v1",
+        "sap.odm:entityType:Employee:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.crm:apiResource:CompensationPerformanceDataExport:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "sales"
+      ],
+      "tags": [
+        "compensation-analytics",
+        "sales-performance",
+        "employee-metrics"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1",
+      "title": "Bill of Materials Cost and Compliance Analytics",
+      "shortDescription": "Aggregates material costs, supplier impact, and compliance metrics across engineering changes.",
+      "description": "Synthesizes engineering change records, material master data, and product item configurations to aggregate supply chain costs, bill of materials complexity, and regulatory compliance exposure. Provides metrics on supplier dependencies, cost variance trends, and compliance risk implications for product portfolio decisions in sales planning.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.crm:apiResource:BillOfMaterialsComplianceExposureService:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Product Lifecycle Management"
+      ],
+      "tags": [
+        "cost-analysis",
+        "bom-complexity",
+        "supplier-impact",
+        "compliance-metrics"
+      ],
+      "industry": [],
+      "capabilities": [
+        "validate-bom-compliance",
+        "audit-material-standards",
+        "verify-cost-targets"
+      ],
+      "useCases": [
+        "Compliance teams verify BOMs meet regulatory material restrictions before manufacturing.",
+        "Finance validates BOMs against approved cost budgets for product variants."
+      ],
+      "processNext": [
+        "sap.ariba:apiResource:EngineeringChangeAndProductItemManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductLifecycleCompliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    {
+      "ordId": "sap.crm:dataProduct:CampaignSegmentationAndROIAnalytics:v1",
+      "title": "Campaign Segmentation and ROI Analytics",
+      "shortDescription": "Aggregates campaign performance, customer segmentation, and account-level ROI metrics.",
+      "description": "This data product synthesizes campaign execution data, customer account hierarchies, and segment-level behavioral metrics to provide comprehensive ROI tracking and attribution analysis. It summarizes key performance indicators across campaigns, customer segments, and account relationships to enable data-driven marketing optimization and segment profitability assessment. The product delivers actionable insights on campaign effectiveness, segment engagement patterns, and return metrics by customer account.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Campaign:v1",
+        "sap.odm:entityType:CustomerAccount:v1",
+        "sap.odm:entityType:CustomerSegment:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.crm:apiResource:CampaignPerformanceMetricsService:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Marketing and CX"
+      ],
+      "tags": [
+        "campaign-analytics",
+        "performance-metrics",
+        "segment-attribution",
+        "roi-tracking"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:dataProduct:EmployeePerformanceTrendingAndInsights:v1",
+      "title": "Employee Performance Trending and Insights",
+      "shortDescription": "Aggregates employee performance reviews to provide workforce talent and capability metrics.",
+      "description": "This data product synthesizes employee performance review data to summarize key talent trends, capability gaps, and performance patterns across the sales organization. It delivers actionable insights on workforce development, engagement trajectories, and high-potential employee identification to support strategic people analytics and succession planning initiatives.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Employee:v1",
+        "sap.odm:entityType:PerformanceReview:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.crm:apiResource:EmployeePerformanceTrendingService:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Resources",
+        "People Analytics"
+      ],
+      "tags": [
+        "performance-management",
+        "workforce-analytics",
+        "talent-insights",
+        "trending"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:dataProduct:CustomerInvoiceMaterialRevenueAnalytics:v1",
+      "title": "Customer Invoice and Material Revenue Analytics",
+      "shortDescription": "Aggregates invoice and material transaction data to measure customer monetization and revenue performance.",
+      "description": "This data product synthesizes invoice transactions and material consumption patterns to provide comprehensive revenue insights across customer segments. It summarizes customer lifetime value, material-driven profitability trends, and campaign-driven purchase behavior to optimize sales strategies and financial performance tracking. The analytics enable organizations to correlate customer engagement investments with tangible invoice outcomes and material sales attribution.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Invoice:v1",
+        "sap.odm:entityType:Material:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.crm:apiResource:CustomerInvoiceMaterialRevenueExportService:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Finance"
+      ],
+      "tags": [
+        "campaign-roi",
+        "financial-analytics",
+        "customer-monetization"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1",
+      "title": "Material Change Readiness and Workforce Impact Analytics",
+      "shortDescription": "Aggregates engineering changes, materials, and product items to assess workforce readiness impact.",
+      "description": "This data product aggregates engineering changes, material specifications, and product item configurations to provide comprehensive metrics on workforce readiness and change adoption across the organization. It summarizes the correlation between product lifecycle modifications and employee competency requirements, enabling proactive workforce planning and training interventions. The analytics deliver actionable insights on change velocity, skill gap identification, and organizational readiness to support product transitions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.crm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.crm:apiResource:MaterialChangeReadinessMetricsAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "human-resources"
+      ],
+      "tags": [
+        "product-lifecycle-management",
+        "workforce-readiness",
+        "change-analytics"
+      ],
+      "industry": [],
+      "capabilities": [
+        "assess-workforce-readiness",
+        "forecast-workforce-impact",
+        "analyze-change-readiness",
+        "identify-training-needs"
+      ],
+      "useCases": [
+        "Human Resources determines which employees require training and when skill gaps must be addressed before production ramp-up.",
+        "Manufacturing operations identifies workforce redeployment strategies to support material transition.",
+        "Provide HR leadership with staffing and training impact projections for material changes",
+        "Evaluate organizational readiness and required workforce adjustments for engineering changes"
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_compliance_workforce_v1",
+          "groupTypeId": "bpmn",
+          "sequencePosition": 4
+        },
+        {
+          "groupId": "proc_product_launch_workforce_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    }
+  ]
+}

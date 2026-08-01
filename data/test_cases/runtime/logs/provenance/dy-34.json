@@ -1,0 +1,62 @@
+{
+  "case_id": "dy-34",
+  "mode": "dynamic",
+  "query_class": "multi_intent",
+  "selected_resources": [
+    "workday.hcm:apiResource:PayrollProcessingDataManagement:v1",
+    "corp.itsm:apiResource:CampaignAccessManagementAPI:v1"
+  ],
+  "timestamp": "2026-06-08T13:24:31.386189+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "I need to set up access for our new marketing team members to manage customer campaign accounts while also ensuring our finance department can pull accurate earnings and deductions reports for this month's compensation cycle."
+      },
+      "generator_tokens": 164,
+      "solver_output": {
+        "predicted": "workday.hcm:apiResource:PayrollDataExposure:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": false,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": false,\n  \"C3\": true,\n  \"accepted\": false,\n  \"reason\": \"C2 failed: prompt explicitly mentions system names ('marketing team', 'finance department', 'customer campaign accounts', 'compensation cycle') and resource contexts that violate the no-resource-name requirement.\"",
+      "judge_tokens": 312,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "I need to pull together compensation figures and tax withholdings for our quarterly reconciliation, and at the same time I'd like to grant our marketing team access to manage client engagement initiatives across our accounts. Can you help me set this up efficiently in a single request?"
+      },
+      "generator_tokens": 192,
+      "solver_output": {
+        "predicted": "sap.sf:apiResource:EmployeeCompensationManagement:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```",
+      "judge_tokens": 284,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-34",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "I need to pull together compensation figures and tax withholdings for our quarterly reconciliation, and at the same time I'd like to grant our marketing team access to manage client engagement initiatives across our accounts. Can you help me set this up efficiently in a single request?",
+    "expected_ordIds": [
+      "workday.hcm:apiResource:PayrollProcessingDataManagement:v1",
+      "corp.itsm:apiResource:CampaignAccessManagementAPI:v1"
+    ],
+    "distractor_ordId": null
+  }
+}

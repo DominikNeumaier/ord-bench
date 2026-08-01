@@ -1,0 +1,94 @@
+{
+  "process_id": "proc_018",
+  "process_type": "bpmn",
+  "gt_ordIds": [
+    "sap.s4:apiResource:EmployeePayrollDataAPI:v1",
+    "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1",
+    "workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1",
+    "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1"
+  ],
+  "enrichment": {
+    "sap.s4:apiResource:EmployeePayrollDataAPI:v1": {
+      "capabilities": [
+        "retrieve-payroll",
+        "validate-compensation",
+        "extract-earnings"
+      ],
+      "useCases": [
+        "Establish baseline payroll records for quarterly compensation reviews",
+        "Extract current compensation data for benefits-to-pay reconciliation",
+        "Validate payroll adjustments before final compensation certification"
+      ],
+      "processNext": [
+        "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_workforce_comp_benefits_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1": {
+      "capabilities": [
+        "validate-hierarchy",
+        "confirm-reporting-structure",
+        "map-organizational-units"
+      ],
+      "useCases": [
+        "Ensure compensation decisions align with correct organizational structure",
+        "Validate manager approval chains for compensation changes",
+        "Map compensation budgets to organizational cost centers"
+      ],
+      "processNext": [
+        "workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_workforce_comp_benefits_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1": {
+      "capabilities": [
+        "assess-benefits",
+        "reconcile-enrollment",
+        "calculate-benefit-liability"
+      ],
+      "useCases": [
+        "Reconcile benefits enrollment data with compensation budgets",
+        "Calculate total cost of employment including benefit obligations",
+        "Validate benefit-related compensation adjustments for open enrollment"
+      ],
+      "processNext": [
+        "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_workforce_comp_benefits_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1": {
+      "capabilities": [
+        "analyze-workforce-spend",
+        "align-vendor-compensation",
+        "optimize-contingent-labor"
+      ],
+      "useCases": [
+        "Align workforce compensation with vendor management and contingent labor budgets",
+        "Identify cost optimization opportunities in compensation structures",
+        "Correlate procurement expenses with workforce allocation decisions"
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_workforce_comp_benefits_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "case_id": "dy-08",
+  "mode": "dynamic",
+  "query_class": "single_intent",
+  "problem_type": "P1",
+  "selected_resources": [
+    "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1"
+  ],
+  "distractor": "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1",
+  "timestamp": "2026-06-08T13:19:36.050595+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "I need to pull together all our hazardous material inventory data to verify we're compliant with the latest regulations, and I'm not sure if I should be querying the system that gives me the actual substance records or the one that validates them against requirements. Can you help me figure out which endpoint I should be hitting to get the master list of substances we're tracking?"
+      },
+      "generator_tokens": 212,
+      "solver_output": {
+        "predicted": "sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1",
+        "top1_correct": false,
+        "top5": [
+          "sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1",
+          "sap.s4:apiResource:HazardousSubstanceInventoryAPI:v1",
+          "my.mes:apiResource:HazardousSubstanceInventoryManagement:v1",
+          "sap.ehs:apiResource:MaterialHazardDataExchange:v1",
+          "sap.ehs:apiResource:ChemicalInventoryCompliance:v1"
+        ],
+        "note": "retro_certified"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 328,
+      "outcome": "ACCEPTED",
+      "_retro_verdict": "HARD"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-08",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to pull together all our hazardous material inventory data to verify we're compliant with the latest regulations, and I'm not sure if I should be querying the system that gives me the actual substance records or the one that validates them against requirements. Can you help me figure out which endpoint I should be hitting to get the master list of substances we're tracking?",
+    "expected_ordIds": [
+      "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1"
+    ],
+    "distractor_ordId": "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "case_id": "sa-03",
+  "mode": "skill_adjusted",
+  "skill_id": "proc_029",
+  "gap_resources": [
+    "sap.sf:apiResource:CompensationAndSalaryManagement:v1",
+    "sap.s4:agent:BOMComplianceAutomationAgent:v1"
+  ],
+  "timestamp": "2026-06-08T12:49:17.181032+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to prepare for launching our new product revision and ensure everything is ready for manufacturing. This includes validating that all our materials and components meet regulatory requirements and that our suppliers are properly verified. We also need to make sure our production team is properly staffed and compensated according to our updated labor requirements for this new revision. Can you orchestrate the complete preparation phase, including workforce readiness assessment and ensuring our financial structures align with the production needs?",
+        "variant": 0
+      },
+      "generator_tokens": 297,
+      "solver_output": {
+        "predicted": "my.mes:agent:ProductionChangeOrchestrator:v1",
+        "correct": false
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 367,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "sa-03",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to prepare for launching our new product revision and ensure everything is ready for manufacturing. This includes validating that all our materials and components meet regulatory requirements and that our suppliers are properly verified. We also need to make sure our production team is properly staffed and compensated according to our updated labor requirements for this new revision. Can you orchestrate the complete preparation phase, including workforce readiness assessment and ensuring our financial structures align with the production needs?",
+    "expected_skill_id": "proc_029",
+    "expected_gap_ordIds": [
+      "sap.sf:apiResource:CompensationAndSalaryManagement:v1",
+      "sap.s4:agent:BOMComplianceAutomationAgent:v1"
+    ]
+  }
+}

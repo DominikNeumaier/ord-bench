@@ -1,0 +1,1154 @@
+{
+  "openResourceDiscovery": "1.16",
+  "perspective": "system-instance",
+  "packages": [
+    {
+      "ordId": "sap.ehs:package:Core:v1",
+      "title": "sap.ehs Core Package",
+      "shortDescription": "Core resources for the sap.ehs system in the benchmark landscape.",
+      "version": "1.0.0",
+      "vendor": "sap:vendor:SAP:"
+    }
+  ],
+  "agents": [
+    {
+      "ordId": "sap.ehs:agent:IncidentRootCauseAnalyzer:v1",
+      "title": "Incident Root Cause Analysis Agent",
+      "shortDescription": "Autonomously analyzes safety incidents to identify root causes and recommend corrective actions.",
+      "description": "This AI agent automatically processes reported SafetyIncidents by analyzing incident data, environmental factors, and historical patterns to determine underlying root causes. It generates structured root cause analysis reports with recommended corrective and preventive actions, prioritized by risk severity and regulatory impact. The agent accelerates investigation workflows and ensures consistent, evidence-based analysis across the enterprise.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:SafetyIncident:v1",
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:HazardousSubstance:v1"
+      ],
+      "lineOfBusiness": [
+        "Safety and Environment"
+      ],
+      "tags": [
+        "incident-analysis",
+        "root-cause",
+        "automation",
+        "corrective-action"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:agent:VendorComplianceAutomationOrchestrator:v1",
+      "title": "Vendor Compliance Automation Orchestrator",
+      "shortDescription": "Automates vendor safety compliance verification across purchase orders and contracts.",
+      "description": "Coordinates automated validation of vendor safety certifications and compliance status during purchase order creation and contract execution. Monitors vendor contract adherence to EHS requirements and processes compliance exceptions through escalation workflows. Automates reconciliation between vendor safety profiles, contract terms, and procurement activities to ensure continuous compliance alignment.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Contract:v1",
+        "sap.odm:entityType:PurchaseOrder:v1",
+        "sap.odm:entityType:Vendor:v1"
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "invoice-management",
+        "three-way-matching",
+        "vendor-reconciliation",
+        "automation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:agent:IncidentResponseCoordinator:v1",
+      "title": "Incident Response Coordinator",
+      "shortDescription": "Coordinates safety incident workflows and automates emergency response actions.",
+      "description": "Monitors incoming safety incidents and environmental events, automatically initiating coordinated response procedures across change management and IT infrastructure. Processes incident severity assessments, routes service tickets to appropriate response teams, and tracks equipment status during emergency situations to ensure compliance with regulatory reporting timelines.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:ChangeRequest:v1",
+        "sap.odm:entityType:ITEquipment:v1",
+        "sap.odm:entityType:ServiceTicket:v1"
+      ],
+      "lineOfBusiness": [
+        "Safety and Environment"
+      ],
+      "tags": [
+        "incident-management",
+        "emergency-response",
+        "workflow-automation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:agent:VendorComplianceInvoiceAutomation:v1",
+      "title": "Safety Procurement Invoice Validator",
+      "shortDescription": "Verifies incoming supplier invoices against contractual commitments and purchase documentation, identifying anomalies for compliance review.",
+      "description": "Systematically validates supplier invoices by cross-referencing purchase orders and contractual terms using multi-point verification. Detects irregularities including billing overages, repeated submissions, and non-compliance issues; escalates flagged items to authorized personnel for determination. Streamlines payment authorization workflows, enhances vendor accountability, and mitigates procurement risk.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Contract:v1",
+        "sap.odm:entityType:PurchaseOrder:v1",
+        "sap.odm:entityType:Vendor:v1"
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "procurement-validation",
+        "supplier-management",
+        "invoice-verification",
+        "compliance-automation"
+      ],
+      "industry": [],
+      "namespace": "sap.ehs"
+    },
+    {
+      "ordId": "sap.ehs:agent:ComplianceCampaignOrchestrator:v1",
+      "title": "Compliance Campaign Orchestrator",
+      "shortDescription": "Automates safety compliance campaigns across customer segments and accounts.",
+      "description": "Coordinates regulatory compliance initiatives by monitoring campaign effectiveness across customer segments and accounts. Automates safety inspection scheduling, processes compliance status updates, and manages escalation workflows for identified safety gaps. Orchestrates targeted safety interventions based on customer account risk profiles and segment-level compliance trends.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Campaign:v1",
+        "sap.odm:entityType:CustomerAccount:v1",
+        "sap.odm:entityType:CustomerSegment:v1"
+      ],
+      "lineOfBusiness": [
+        "safety-environment-health"
+      ],
+      "tags": [
+        "compliance-automation",
+        "incident-prevention",
+        "regulatory-enforcement"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1",
+      "title": "Safety Compliance Automation Coordinator",
+      "shortDescription": "Automates safety validation across engineering changes, materials, and product items.",
+      "description": "Monitors and processes engineering changes, materials, and product items to enforce safety compliance requirements and automate BOM validation workflows. Coordinates supplier qualification assessments and initiates compliance remediation actions when safety risks or regulatory gaps are detected. Automates incident prevention through continuous validation of product configurations against safety standards.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "lineOfBusiness": [
+        "Product Lifecycle Management"
+      ],
+      "tags": [
+        "compliance",
+        "bom-validation",
+        "supplier-qualification",
+        "automation"
+      ],
+      "industry": [],
+      "capabilities": [
+        "assess-material-safety",
+        "automate-safety-assessments",
+        "automate-compliance-checks",
+        "coordinate-compliance-workflow",
+        "validate-engineering-changes",
+        "orchestrate-compliance-checks",
+        "coordinate-safety-compliance"
+      ],
+      "useCases": [
+        "Safety officers ensure all engineering changes trigger integrated compliance assessments across the organization.",
+        "EHS team automates review of engineering changes to ensure material and product modifications meet safety and regulatory requirements before production",
+        "Compliance automation prevents unsafe or non-compliant product items from advancing to manufacturing",
+        "Compliance teams automate material and process safety validation to reduce manual review time.",
+        "Operations leadership maintains consistent safety standards across all product variants and manufacturing locations."
+      ],
+      "processNext": [
+        "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductComplianceManufacturing_v1",
+          "groupTypeId": "bpmn"
+        },
+        {
+          "groupId": "proc_talent_compliance_ops_v1",
+          "groupTypeId": "cmmn",
+          "role": "compliance-gatekeeper"
+        }
+      ]
+    }
+  ],
+  "apiResources": [
+    {
+      "ordId": "sap.ehs:apiResource:ChemicalInventoryCompliance:v1",
+      "title": "Chemical Inventory and Compliance API",
+      "shortDescription": "REST API for managing hazardous substance inventory and regulatory compliance tracking",
+      "description": "Exposes chemical inventory data, safety data sheet (SDS) linkages, and regulatory compliance status for hazardous substances across facilities. Enables real-time queries of substance quantities, storage locations, exposure limits, and compliance violations to support chemical management workflows and regulatory reporting requirements.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/chemical-inventory-compliance.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:HazardousSubstance:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Safety and Environment"
+      ],
+      "tags": [
+        "chemical-compliance",
+        "hazmat-management",
+        "regulatory-reporting",
+        "substance-inventory"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:apiResource:VendorSafetyComplianceOrders:v1",
+      "title": "Vendor Safety Compliance Purchase Orders API",
+      "shortDescription": "Retrieves and manages purchase orders linked to vendor safety certifications and compliance status.",
+      "description": "This API exposes purchase order and vendor data to enforce safety compliance requirements in procurement workflows. It manages access to vendor safety credentials, certifications, and compliance history associated with purchase orders. The resource provides real-time visibility into supplier qualification status and enables automated order routing based on safety compliance thresholds.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:PurchaseOrder:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/vendor-safety-compliance-orders.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "purchase-orders",
+        "supplier-collaboration",
+        "order-management",
+        "procurement-automation"
+      ],
+      "industry": [],
+      "capabilities": [
+        "procure-safety-materials",
+        "qualify-vendors",
+        "verify-compliance-certifications"
+      ],
+      "useCases": [
+        "Procurement departments must source safety equipment from approved vendors to ensure hazardous substance controls meet regulatory standards"
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_SafetyComplianceWorkforce_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    {
+      "ordId": "sap.ehs:apiResource:MaterialHazardDataExchange:v1",
+      "title": "Chemical Substance & Supplier Safety Registry API",
+      "shortDescription": "Retrieves hazardous chemical inventory records and supplier safety certifications for regulatory and operational needs.",
+      "description": "Provides comprehensive access to chemical inventory data, regulatory hazard classifications, and supplier safety documentation for environmental health and safety operations. Integrates chemical-supplier relationships with compliance tracking and incident prevention workflows. Enables real-time lookups of substance characteristics and supplier safety credentials to support regulatory reporting, environmental monitoring, and procurement risk assessments.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Material:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/material-hazard-data.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Environment, Health and Safety"
+      ],
+      "tags": [
+        "chemical-inventory",
+        "supplier-certification",
+        "regulatory-hazard-data"
+      ],
+      "industry": [],
+      "namespace": "sap.ehs"
+    },
+    {
+      "ordId": "sap.ehs:apiResource:SafetyInspectionCampaignManagement:v1",
+      "title": "Safety Inspection Campaign Management API",
+      "shortDescription": "Manages and retrieves safety inspection campaigns linked to customer accounts.",
+      "description": "Exposes safety inspection campaign data and customer account relationships to coordinate scheduled inspections, track compliance status across customer sites, and provide access to inspection results and remediation tracking. Enables seamless integration of inspection workflows with customer account management systems for comprehensive EHS oversight.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/safety-inspection-campaigns.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Environment, Health & Safety"
+      ],
+      "tags": [
+        "safety-inspection",
+        "compliance-tracking",
+        "customer-engagement"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1",
+      "title": "Hazardous Substance Regulatory Validation API",
+      "shortDescription": "Validates hazardous substances against regulatory requirements and compliance standards.",
+      "description": "Exposes hazardous substance data for real-time regulatory validation against global compliance frameworks. Retrieves substance classifications, regulatory thresholds, and restriction status to ensure materials meet current safety and environmental standards. Manages substance compliance attestation and provides access to regulatory change notifications.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:HazardousSubstance:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/hazardous-substance-regulatory-validation.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "marketing-compliance"
+      ],
+      "tags": [
+        "compliance",
+        "hazard-management",
+        "regulatory-validation"
+      ],
+      "industry": [],
+      "capabilities": [
+        "validate-regulatory-compliance",
+        "audit-substance-safety",
+        "verify-jurisdictional-standards"
+      ],
+      "useCases": [
+        "Compliance ensures new product materials meet global safety regulations before manufacturing",
+        "EHS teams confirm regulatory alignment across all supply chain materials"
+      ],
+      "processNext": [
+        "sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductTransitionCompliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    {
+      "ordId": "sap.ehs:apiResource:HazardousSubstanceStorageTracking:v1",
+      "title": "Hazardous Substance Storage Tracking API",
+      "shortDescription": "Manages and retrieves hazardous substance storage locations and inventory status.",
+      "description": "Exposes real-time hazardous substance storage data including location tracking, quantity monitoring, and container condition status. Retrieves comprehensive storage facility information and provides access to geospatial mapping of hazardous material warehouses. Manages storage compliance validations across multiple facilities and environmental zones.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:HazardousSubstance:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/hazardous-substance-storage.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Environment, Health & Safety"
+      ],
+      "tags": [
+        "hazardous-materials",
+        "storage-management",
+        "environmental-compliance"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1",
+      "title": "Hazardous Substance Inventory Exchange API",
+      "shortDescription": "Retrieves and manages hazardous substance inventory data for compliance tracking.",
+      "description": "Exposes comprehensive hazardous substance inventory records including chemical properties, quantities, storage locations, and usage patterns. Manages real-time updates to substance catalogs and provides access to historical inventory changes for audit trails. Enables integration with regulatory reporting systems and third-party compliance platforms for seamless data exchange.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:HazardousSubstance:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/hazardous-substance-inventory.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Safety and Environment"
+      ],
+      "tags": [
+        "chemical-compliance",
+        "hazmat-management",
+        "regulatory-reporting",
+        "substance-inventory"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:apiResource:EmployeeSafetyTrainingComplianceManagement:v1",
+      "title": "Employee Safety Training Compliance Management",
+      "shortDescription": "Manages and retrieves employee safety training records and compliance status.",
+      "description": "Exposes employee and workforce person safety training history, certification status, and compliance requirements. Provides access to training completion records, expiration dates, and regulatory qualification documentation. Manages employee safety competency validation and training mandate tracking.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:WorkforcePerson:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/employee-safety-training-compliance.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Resources"
+      ],
+      "tags": [
+        "safety-training",
+        "compliance-management",
+        "workforce-certification"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:apiResource:EmployeeSafetyIncidentReporting:v1",
+      "title": "Employee Safety Incident Reporting API",
+      "shortDescription": "Manages and retrieves employee incident reports and safety event documentation.",
+      "description": "Exposes endpoints to capture, retrieve, and manage safety incidents reported by employees and workforce personnel. Provides access to incident details, injury classifications, and corrective action tracking. Enables integration with incident investigation workflows and regulatory compliance documentation.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:WorkforcePerson:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/employee-safety-incidents.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Health, Safety, and Environment"
+      ],
+      "tags": [
+        "incident-management",
+        "employee-safety",
+        "compliance-reporting"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:apiResource:SafetyChangeGovernanceManagement:v1",
+      "title": "Safety Change Governance Management API",
+      "shortDescription": "Manages and retrieves change requests, equipment assets, and service tickets for safety compliance governance.",
+      "description": "Exposes change request workflows, IT equipment inventories, and service ticket lifecycles to enforce safety governance controls. Provides access to approval workflows and risk assessments for infrastructure changes that impact environmental and occupational safety. Retrieves integrated data on equipment maintenance status and incident-related service tickets to support regulatory compliance tracking.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:ChangeRequest:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ITEquipment:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ServiceTicket:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "https://api.sap.ehs/v1/safety-change-governance.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "IT Service Management"
+      ],
+      "tags": [
+        "change-management",
+        "approval-workflow",
+        "governance",
+        "risk-assessment"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:apiResource:ProductSafetyComplianceChangeManagement:v1",
+      "title": "Product Safety Compliance Change Management API",
+      "shortDescription": "Manages product safety changes and compliance requirements across manufacturing items.",
+      "description": "Provides access to engineering change notifications and product item safety compliance data for manufacturing environments. Exposes safety-related modifications to product specifications and enables retrieval of compliance requirements tied to engineering changes. Manages the integration of product safety assessments with engineering change workflows to ensure regulatory adherence throughout the product lifecycle.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:EngineeringChange:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductItem:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/product-safety-compliance-changes.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Manufacturing"
+      ],
+      "tags": [
+        "product-safety",
+        "compliance-management",
+        "engineering-changes"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:apiResource:MaterialVendorHazardousSubstanceCompliance:v1",
+      "title": "Material and Vendor Hazardous Substance Compliance API",
+      "shortDescription": "Exposes hazardous material classifications and vendor safety certifications for regulatory compliance.",
+      "description": "This API retrieves material hazard data and vendor safety compliance records, enabling real-time access to substance classifications, safety data sheets, and vendor certifications. It manages material-vendor relationships with respect to chemical safety requirements and regulatory restrictions, supporting incident prevention and environmental compliance workflows.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Material:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/material-vendor-hazard-compliance.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Product Lifecycle Management"
+      ],
+      "tags": [
+        "material-master",
+        "vendor-management",
+        "supply-chain"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:apiResource:PurchaseOrderVendorSafetyCompliance:v1",
+      "title": "Purchase Order Vendor Safety Compliance API",
+      "shortDescription": "Retrieves and manages vendor safety compliance data linked to purchase orders.",
+      "description": "Exposes purchase order and vendor safety compliance information, enabling retrieval of vendor qualifications, certifications, and safety performance metrics associated with procurement activities. Manages access to vendor risk assessments and compliance status to support safe supplier selection and contract management within the EHS ecosystem.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:PurchaseOrder:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/purchase-order-vendor-safety-compliance.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Safety and Environment"
+      ],
+      "tags": [
+        "vendor-compliance",
+        "purchase-order",
+        "safety-screening"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:apiResource:SafetyIncidentOrderManagement:v1",
+      "title": "Safety Incident Order Management API",
+      "shortDescription": "Exposes safety incident records linked to customer orders and accounts for compliance tracking.",
+      "description": "This API retrieves and manages safety incident data associated with customer accounts and orders, enabling integration of incident records with order fulfillment workflows. It provides access to incident classifications, risk assessments, and regulatory compliance status tied to specific customer transactions. The resource supports service management operations by exposing incident-to-order relationships for ticket lifecycle tracking and incident investigation coordination.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/safety-incident-order-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "itsm-operations"
+      ],
+      "tags": [
+        "service-management",
+        "order-fulfillment",
+        "ticket-lifecycle"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1",
+      "title": "Compliance Change and Service Integration API",
+      "shortDescription": "Manages change requests, equipment tracking, and service tickets for regulatory compliance.",
+      "description": "Exposes change request workflows, IT equipment compliance status, and service ticket lifecycle data to support safety process orchestration. Retrieves real-time equipment maintenance history and service incident correlations for integrated compliance tracking. Provides access to change impact assessments and equipment audit trails essential for regulatory reporting and incident investigation.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:ChangeRequest:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ITEquipment:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ServiceTicket:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/compliance-change-service-integration.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "product-lifecycle-management"
+      ],
+      "tags": [
+        "change-management",
+        "service-operations",
+        "compliance-tracking"
+      ],
+      "industry": [],
+      "capabilities": [
+        "register-compliance-incidents",
+        "track-change-requests",
+        "manage-service-tickets"
+      ],
+      "useCases": [
+        "Operations teams document production changes and equipment modifications for audit trails",
+        "Compliance officers track IT equipment and service incidents for regulatory verification"
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_supply_production_compliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    }
+  ],
+  "dataProducts": [
+    {
+      "ordId": "sap.ehs:dataProduct:SafetyIncidentMetricsAggregate:v1",
+      "title": "Safety Incident Metrics Aggregate",
+      "shortDescription": "Aggregated KPIs and trends for safety incidents across sites and time periods.",
+      "description": "Provides pre-calculated safety performance metrics including incident frequency rates, severity distributions, trend analysis, and root cause categorization. Enables safety managers and executives to monitor compliance trends, identify high-risk areas, and benchmark performance against regulatory thresholds and industry standards.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "type": "derived",
+      "category": "analytical",
+      "outputPorts": [
+        {
+          "ordId": "sap.ehs:apiResource:SafetyMetricsReporting:v1"
+        }
+      ],
+      "entityTypes": [
+        "sap.odm:entityType:SafetyIncident:v1",
+        "sap.odm:entityType:Incident:v1"
+      ],
+      "lineOfBusiness": [
+        "Safety and Environment"
+      ],
+      "tags": [
+        "incident-analytics",
+        "kpi-reporting",
+        "safety-metrics",
+        "compliance-monitoring"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:dataProduct:MaintenanceImpactSafetyAnalytics:v1",
+      "title": "Maintenance Impact Safety Analytics",
+      "shortDescription": "Aggregates maintenance changes, equipment status, and service interventions to assess safety risk exposure.",
+      "description": "Summarizes change requests, IT equipment lifecycle events, and service tickets to provide metrics on maintenance-driven safety impacts and compliance drift. Enables organizations to correlate equipment modifications with environmental and occupational safety exposure, facilitating proactive hazard identification and regulatory oversight during maintenance operations.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:ChangeRequest:v1",
+        "sap.odm:entityType:ITEquipment:v1",
+        "sap.odm:entityType:ServiceTicket:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.ehs:apiResource:MaintenanceChangeImpactExposure:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Health, Safety & Environment"
+      ],
+      "tags": [
+        "maintenance-safety",
+        "risk-analytics",
+        "equipment-compliance"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:dataProduct:MaterialInvoiceComplianceCostAnalytics:v1",
+      "title": "Material Invoice Compliance Cost Analytics",
+      "shortDescription": "Aggregates material procurement and invoicing data against safety compliance requirements.",
+      "description": "Synthesizes invoice transactions and material master data to provide comprehensive cost analytics on safety-compliant procurement. Summarizes financial impact of hazardous material sourcing, regulatory compliance costs, and vendor safety performance metrics. Delivers insights on spending patterns correlated with environmental and chemical compliance obligations across the supply chain.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Invoice:v1",
+        "sap.odm:entityType:Material:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.ehs:apiResource:ComplianceCostReportingInterface:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Finance"
+      ],
+      "tags": [
+        "procurement-analytics",
+        "compliance-costs",
+        "material-safety"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:dataProduct:EmployeeCompensationSafetyRiskAnalytics:v1",
+      "title": "Occupational Hazard Financial Impact Assessment",
+      "shortDescription": "Links workplace incident frequency to compensation expenditures and identifies financial risk drivers across roles.",
+      "description": "Combines safety incident tracking with payroll and benefits data to quantify the financial burden of occupational injuries and near-misses. Provides organizational stakeholders with visibility into incident-driven cost escalation, workforce vulnerability mapping, and role-based risk stratification to support data-driven safety program investment decisions and organizational resilience planning.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Compensation:v1",
+        "sap.odm:entityType:Employee:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.ehs:apiResource:EmployeeSafetyIncidentReporting:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Health, Safety & Environment"
+      ],
+      "tags": [
+        "workplace-injury-costs",
+        "financial-risk-exposure",
+        "hazard-identification"
+      ],
+      "industry": [],
+      "namespace": "sap.ehs"
+    },
+    {
+      "ordId": "sap.ehs:dataProduct:EmployeeSafetyPerformanceTrendingAnalytics:v1",
+      "title": "Safety Compliance and Risk Profile Analytics",
+      "shortDescription": "Consolidates occupational safety data and incident patterns to assess employee risk exposure and safety culture maturity.",
+      "description": "This data product consolidates safety compliance records, incident history, and behavioral risk indicators to evaluate workforce safety posture and organizational hazard mitigation effectiveness. Delivers metrics on safety incident clustering, compliance adherence trajectories, and high-risk employee segments to inform occupational health strategies, preventive interventions, and regulatory compliance initiatives across the enterprise.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Employee:v1",
+        "sap.odm:entityType:PerformanceReview:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.ehs:apiResource:EmployeeSafetyPerformanceTrendingInsights:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Resources",
+        "People Analytics"
+      ],
+      "tags": [
+        "occupational-safety",
+        "risk-analytics",
+        "compliance-monitoring",
+        "incident-intelligence"
+      ],
+      "industry": [],
+      "namespace": "sap.ehs"
+    },
+    {
+      "ordId": "sap.ehs:dataProduct:VendorComplianceContractAnalytics:v1",
+      "title": "Vendor Compliance and Contract Analytics",
+      "shortDescription": "Aggregates vendor safety records, contract terms, and purchase compliance metrics.",
+      "description": "Aggregates and summarizes vendor compliance performance, safety certifications, and contractual obligations across purchase orders and supplier agreements. Provides metrics on vendor risk ratings, compliance adherence, and contract-linked safety requirements to support procurement and EHS governance decisions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Contract:v1",
+        "sap.odm:entityType:PurchaseOrder:v1",
+        "sap.odm:entityType:Vendor:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.ehs:apiResource:VendorComplianceMetricsExposure:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Environment, Health and Safety"
+      ],
+      "tags": [
+        "vendor-management",
+        "compliance-analytics",
+        "procurement-safety"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:dataProduct:IncidentRiskExposureAnalytics:v1",
+      "title": "Incident Risk Exposure Analytics",
+      "shortDescription": "Aggregates incident and safety incident data to quantify organizational risk exposure.",
+      "description": "This data product consolidates incident and safety incident records to summarize risk patterns, exposure trends, and incident frequency distributions. It provides metrics on incident severity, root cause clustering, and risk concentration across operational areas to support proactive safety governance.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.ehs:apiResource:IncidentRiskExposureMetrics:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "customer-experience"
+      ],
+      "tags": [
+        "incident-analytics",
+        "engagement-reliability",
+        "compliance-monitoring"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ehs:dataProduct:IncidentComplianceEngagementAnalytics:v1",
+      "title": "Safety Event Performance Dashboard",
+      "shortDescription": "Consolidates incident and safety occurrence data to track organizational compliance posture and operational stability indicators.",
+      "description": "Consolidates Incident and SafetyIncident entity data to deliver operational stability metrics and regulatory adherence tracking. Analyzes safety event patterns to identify resolution efficiency benchmarks, compliance trend trajectories, and stakeholder communication outcomes. Enables data-driven safety program enhancements and supports regulatory accountability through detailed performance trend analysis.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.ehs:apiResource:IncidentComplianceMetricsExposure:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "customer-experience"
+      ],
+      "tags": [
+        "safety-performance",
+        "compliance-tracking",
+        "incident-reporting"
+      ],
+      "industry": [],
+      "namespace": "sap.ehs"
+    },
+    {
+      "ordId": "sap.ehs:dataProduct:ProductionQualityWorkforcePerformanceAnalytics:v1",
+      "title": "Production Quality and Workforce Performance Analytics",
+      "shortDescription": "Aggregates production order and quality inspection metrics to analyze workforce safety and quality performance.",
+      "description": "This data product aggregates production order execution data with quality inspection results to provide comprehensive insights into workforce performance, safety compliance during production activities, and quality assurance effectiveness. It summarizes key performance indicators across production cycles and inspection outcomes to enable data-driven workforce safety and quality management decisions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ehs:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:ProductionOrder:v1",
+        "sap.odm:entityType:QualityInspection:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.ehs:apiResource:ProductionQualityWorkforceMetricsAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Resources and Talent Management"
+      ],
+      "tags": [
+        "workforce-quality",
+        "production-analytics",
+        "performance-metrics"
+      ],
+      "industry": []
+    }
+  ]
+}

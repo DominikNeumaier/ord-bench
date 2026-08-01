@@ -1,0 +1,255 @@
+{
+  "case_id": "dy-14",
+  "mode": "dynamic",
+  "query_class": "single_intent",
+  "problem_type": "P1",
+  "selected_resources": [
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+  ],
+  "distractor": "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+  "timestamp": "2026-06-08T13:19:49.611788+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to record incoming shipments from our suppliers into the system, but I'm not sure if we should be using the invoicing module or if there's a different process for just logging what physically arrived at our warehouse before we even get the bills."
+      },
+      "generator_tokens": 177,
+      "solver_output": {
+        "predicted": "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+        "top1_correct": false
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 296,
+      "outcome": "ACCEPTED"
+    },
+    {
+      "iteration": 2,
+      "angle": "situation",
+      "generator_output": {
+        "user_prompt": "Our procurement team is struggling to reconcile what we've physically received in the warehouse against our outstanding purchase orders. Right now, we're manually logging each delivery into spreadsheets, which creates delays and frequent discrepancies between what purchasing says we ordered and what warehouse staff actually have in inventory. We need a way to quickly record incoming shipments and tie them directly to our existing orders so we can get accurate visibility into stock levels and clear these reconciliation bottlenecks."
+      },
+      "generator_tokens": 267,
+      "solver_output": {
+        "predicted": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 3,
+      "angle": "outcome",
+      "generator_output": {
+        "user_prompt": "We need to ensure that when our suppliers deliver goods against our purchase orders, we have an accurate record of what arrived so we can reconcile it with our inventory and invoices. Right now there's confusion between what we ordered, what showed up at the dock, and what we're being billed for. We want a single source of truth that confirms goods have physically been received before we approve any payments."
+      },
+      "generator_tokens": 261,
+      "solver_output": {
+        "predicted": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 4,
+      "angle": "pain-point",
+      "generator_output": {
+        "user_prompt": "We're struggling with the manual reconciliation process every time our warehouse receives shipments from suppliers. Our team keeps running into delays because they're having to manually verify quantities, update inventory records across multiple systems, and match everything against our purchase orders\u2014it's error-prone and takes hours each day. We need a way to automate the capture and processing of incoming goods so we can get accurate inventory visibility faster and reduce the administrative burden on our warehouse staff."
+      },
+      "generator_tokens": 273,
+      "solver_output": {
+        "predicted": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 5,
+      "angle": "role-based",
+      "generator_output": {
+        "user_prompt": "As a plant supervisor, I need to quickly log incoming shipments from our suppliers and confirm they match our purchase orders so my warehouse team can move items to storage. Right now, we're manually checking off deliveries in spreadsheets, which is causing delays and inventory discrepancies. I need a way to record these transactions directly against our orders to keep everything in sync."
+      },
+      "generator_tokens": 252,
+      "solver_output": {
+        "predicted": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 6,
+      "angle": "indirect",
+      "generator_output": {
+        "user_prompt": "We need to record the physical arrival and inspection of items that we ordered from our suppliers. Our warehouse team has confirmed that the shipment has been received at the dock, the boxes have been counted and verified against the packing slip, and quality control has signed off. Now we need to document this in our system so that our finance team can reconcile the invoice when it arrives and our inventory can be updated for stock availability."
+      },
+      "generator_tokens": 256,
+      "solver_output": {
+        "predicted": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 7,
+      "angle": "situation",
+      "generator_output": {
+        "user_prompt": "Our procurement team is struggling to reconcile what we've physically received in the warehouse against our outstanding purchase orders. Right now, we're manually logging each delivery into spreadsheets, which creates delays and frequent discrepancies between what purchasing says we ordered and what warehouse staff actually have in inventory. We need a way to quickly record incoming shipments and tie them directly to our existing orders so we can get accurate visibility into stock levels and clear these reconciliation bottlenecks."
+      },
+      "generator_tokens": 267,
+      "solver_output": {
+        "predicted": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 8,
+      "angle": "outcome",
+      "generator_output": {
+        "user_prompt": "We need to ensure that when our suppliers deliver goods against our purchase orders, we have an accurate record of what arrived so we can reconcile it with our inventory and invoices. Right now there's confusion between what we ordered, what showed up at the dock, and what we're being billed for. We want a single source of truth that confirms goods have physically been received before we approve any payments."
+      },
+      "generator_tokens": 261,
+      "solver_output": {
+        "predicted": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 9,
+      "angle": "pain-point",
+      "generator_output": {
+        "user_prompt": "We're struggling with the manual reconciliation process every time our warehouse receives shipments from suppliers. Our team keeps running into delays because they're having to manually verify quantities, update inventory records across multiple systems, and match everything against our purchase orders\u2014it's error-prone and takes hours each day. We need a way to automate the capture and processing of incoming goods so we can get accurate inventory visibility faster and reduce the administrative burden on our warehouse staff."
+      },
+      "generator_tokens": 273,
+      "solver_output": {
+        "predicted": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 10,
+      "angle": "role-based",
+      "generator_output": {
+        "user_prompt": "As a plant supervisor, I need to quickly log incoming shipments from our suppliers and confirm they match our purchase orders so my warehouse team can move items to storage. Right now, we're manually checking off deliveries in spreadsheets, which is causing delays and inventory discrepancies. I need a way to record these transactions directly against our orders to keep everything in sync."
+      },
+      "generator_tokens": 252,
+      "solver_output": {
+        "predicted": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 11,
+      "angle": "indirect",
+      "generator_output": {
+        "user_prompt": "We need to record the physical arrival and inspection of items that we ordered from our suppliers. Our warehouse team has confirmed that the shipment has been received at the dock, the boxes have been counted and verified against the packing slip, and quality control has signed off. Now we need to document this in our system so that our finance team can reconcile the invoice when it arrives and our inventory can be updated for stock availability."
+      },
+      "generator_tokens": 256,
+      "solver_output": {
+        "predicted": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 12,
+      "angle": "situation",
+      "generator_output": {
+        "user_prompt": "Our procurement team is struggling to reconcile what we've physically received in the warehouse against our outstanding purchase orders. Right now, we're manually logging each delivery into spreadsheets, which creates delays and frequent discrepancies between what purchasing says we ordered and what warehouse staff actually have in inventory. We need a way to quickly record incoming shipments and tie them directly to our existing orders so we can get accurate visibility into stock levels and clear these reconciliation bottlenecks."
+      },
+      "generator_tokens": 267,
+      "solver_output": {
+        "predicted": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 13,
+      "angle": "outcome",
+      "generator_output": {
+        "user_prompt": "We need to ensure that when our suppliers deliver goods against our purchase orders, we have an accurate record of what arrived so we can reconcile it with our inventory and invoices. Right now there's confusion between what we ordered, what showed up at the dock, and what we're being billed for. We want a single source of truth that confirms goods have physically been received before we approve any payments."
+      },
+      "generator_tokens": 261,
+      "solver_output": {
+        "predicted": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 14,
+      "angle": "pain-point",
+      "generator_output": {
+        "user_prompt": "We're struggling with the manual reconciliation process every time our warehouse receives shipments from suppliers. Our team keeps running into delays because they're having to manually verify quantities, update inventory records across multiple systems, and match everything against our purchase orders\u2014it's error-prone and takes hours each day. We need a way to automate the capture and processing of incoming goods so we can get accurate inventory visibility faster and reduce the administrative burden on our warehouse staff."
+      },
+      "generator_tokens": 273,
+      "solver_output": {
+        "predicted": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 15,
+      "angle": "role-based",
+      "generator_output": {
+        "user_prompt": "As a plant supervisor, I need to quickly log incoming shipments from our suppliers and confirm they match our purchase orders so my warehouse team can move items to storage. Right now, we're manually checking off deliveries in spreadsheets, which is causing delays and inventory discrepancies. I need a way to record these transactions directly against our orders to keep everything in sync."
+      },
+      "generator_tokens": 252,
+      "solver_output": {
+        "predicted": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 16,
+      "angle": "indirect",
+      "generator_output": {
+        "user_prompt": "We need to record the physical arrival and inspection of items that we ordered from our suppliers. Our warehouse team has confirmed that the shipment has been received at the dock, the boxes have been counted and verified against the packing slip, and quality control has signed off. Now we need to document this in our system so that our finance team can reconcile the invoice when it arrives and our inventory can be updated for stock availability."
+      },
+      "generator_tokens": 256,
+      "solver_output": {
+        "predicted": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-14",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "We need to record incoming shipments from our suppliers into the system, but I'm not sure if we should be using the invoicing module or if there's a different process for just logging what physically arrived at our warehouse before we even get the bills.",
+    "expected_ordIds": [
+      "sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+    ],
+    "distractor_ordId": "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1"
+  }
+}

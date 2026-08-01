@@ -1,0 +1,96 @@
+{
+  "case_id": "sg-03",
+  "mode": "skill_guided",
+  "skill_id": "proc_012",
+  "selected_resources": [
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+    "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1",
+    "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1",
+    "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1"
+  ],
+  "timestamp": "2026-06-08T13:00:08.739704+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to automate our order fulfillment process so that when we receive goods from our suppliers, the system automatically enriches the customer order information, verifies which sales team members have the right capabilities to handle the account, and coordinates any necessary product or material updates across our engineering teams. Can you help us set up a workflow that connects our receiving operations with our sales organization and product management to streamline this end-to-end?"
+      },
+      "generator_tokens": 325,
+      "solver_output": {
+        "predicted": "emarsys.cx:agent:OpportunityEngagementOrchestrator:v1",
+        "correct": false
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true,
+        "C4": true,
+        "C5": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"C4\": true,\n  \"C5\": true,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```",
+      "judge_tokens": 456,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "sg-03",
+    "mode": "skill_guided",
+    "query_class": "explicit_multi_step",
+    "skill_id": "proc_012",
+    "process_type": "bpmn",
+    "user_prompt": "We need to automate our order fulfillment process so that when we receive goods from our suppliers, the system automatically enriches the customer order information, verifies which sales team members have the right capabilities to handle the account, and coordinates any necessary product or material updates across our engineering teams. Can you help us set up a workflow that connects our receiving operations with our sales organization and product management to streamline this end-to-end?",
+    "expected_skill_id": "proc_012",
+    "expected_steps": [
+      {
+        "step_name": "step_1",
+        "expected_ordIds": [
+          "sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+        ]
+      },
+      {
+        "step_name": "step_2",
+        "expected_ordIds": [
+          "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1"
+        ]
+      },
+      {
+        "step_name": "step_3",
+        "expected_ordIds": [
+          "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1"
+        ]
+      },
+      {
+        "step_name": "step_4",
+        "expected_ordIds": [
+          "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1"
+        ]
+      }
+    ]
+  },
+  "post_gate_rewrite": {
+    "rewritten_after_gate": true,
+    "reason": "Original long enumerative prompts were classified as 'skill_adjusted' by the planner (Routing-Acc 0.700 on the eval_sg_routing pass), because each enumerated sub-activity looked like a separate step. The prompts were shortened to retain the same business intent (same skill, same expected ordIds) while making the single-skill routing intent unambiguous.",
+    "commit": "6429a4cac",
+    "preserved": [
+      "expected_ordIds",
+      "skill_id"
+    ],
+    "changed": [
+      "user_prompt"
+    ],
+    "original_user_prompt": "We need to automate our order fulfillment process so that when we receive goods from our suppliers, the system automatically enriches the customer order information, verifies which sales team members have the right capabilities to handle the account, and coordinates any necessary product or material updates across our engineering teams. Can you help us set up a workflow that connects our receiving operations with our sales organization and product management to streamline this end-to-end?",
+    "final_user_prompt": "We are launching a new product line \u2014 coordinate everything from receiving materials through engineering readiness, documentation, and operational safety before production starts.",
+    "original_chars": 493,
+    "final_chars": 179,
+    "solver_recertification": {
+      "n_runs": 5,
+      "solved_runs": 0,
+      "failed_runs": 5,
+      "difficulty": 1.0,
+      "robust": true,
+      "borderline": false,
+      "too_easy": false,
+      "method": "post-hoc 5-run Method-S re-evaluation on the final (rewritten) prompt with per-run nonce cache bypass; see benchmark/certification/v2/"
+    }
+  }
+}

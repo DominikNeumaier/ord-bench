@@ -1,0 +1,44 @@
+{
+  "case_id": "dy-22",
+  "mode": "dynamic",
+  "query_class": "multi_intent",
+  "selected_resources": [
+    "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1",
+    "sap.s4:dataProduct:IncidentSafetyAnalyticsHub:v1"
+  ],
+  "timestamp": "2026-06-08T13:20:43.356731+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to pull together a comprehensive view of our production risks and costs right now - I want to see both our material expenses broken down by supplier along with any compliance gaps, and at the same time analyze our recent safety incidents and trends across all our manufacturing sites. Can you get me both of those datasets so we can address cost optimization and safety improvements in our next operations review?"
+      },
+      "generator_tokens": 203,
+      "solver_output": {
+        "predicted": "my.mes:dataProduct:IncidentSafetyAnalytics:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 314,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-22",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "We need to pull together a comprehensive view of our production risks and costs right now - I want to see both our material expenses broken down by supplier along with any compliance gaps, and at the same time analyze our recent safety incidents and trends across all our manufacturing sites. Can you get me both of those datasets so we can address cost optimization and safety improvements in our next operations review?",
+    "expected_ordIds": [
+      "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1",
+      "sap.s4:dataProduct:IncidentSafetyAnalyticsHub:v1"
+    ],
+    "distractor_ordId": null
+  }
+}

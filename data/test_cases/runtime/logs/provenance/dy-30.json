@@ -1,0 +1,44 @@
+{
+  "case_id": "dy-30",
+  "mode": "dynamic",
+  "query_class": "multi_intent",
+  "selected_resources": [
+    "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+    "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1"
+  ],
+  "timestamp": "2026-06-08T13:23:31.499025+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "Can you pull up the current status of ticket #12847 and check who our top-performing sales representative is in the Northeast region so I can route this escalation appropriately, then also retrieve what products that employee is certified to sell?"
+      },
+      "generator_tokens": 179,
+      "solver_output": {
+        "predicted": "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```",
+      "judge_tokens": 283,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-30",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "Can you pull up the current status of ticket #12847 and check who our top-performing sales representative is in the Northeast region so I can route this escalation appropriately, then also retrieve what products that employee is certified to sell?",
+    "expected_ordIds": [
+      "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+      "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1"
+    ],
+    "distractor_ordId": null
+  }
+}

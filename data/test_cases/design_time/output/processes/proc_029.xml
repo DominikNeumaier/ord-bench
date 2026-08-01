@@ -1,0 +1,68 @@
+<process id="proc_ProductComplianceWorkforceSafety_v1" type="cmmn">
+  
+  <step id="s1" 
+        label="Validate bill of materials compliance"
+        description="Ensure all product components meet regulatory and engineering standards before manufacturing begins."
+        ordId="siemens.plm:agent:BOMComplianceValidator:v1"
+        capability="validate-bom"
+        useCase="Engineering team confirms new product revision has compliant materials and components."/>
+  
+  <step id="s2" 
+        label="Retrieve procurement and vendor specifications"
+        description="Obtain current material sourcing options and certified vendor data to support BOM validation outcomes."
+        ordId="sap.ariba:apiResource:MaterialAndVendorProcurementData:v1"
+        capability="retrieve-vendor-specs"
+        useCase="Procurement specialist accesses approved material suppliers and pricing for validated BOM items."/>
+  
+  <step id="s3" 
+        label="Monitor workplace hazards in production materials"
+        description="Identify any hazardous substances or safety risks associated with materials scheduled for production."
+        ordId="workday.hcm:agent:OccupationalSafetyIncidentMonitoring:v1"
+        capability="monitor-hazards"
+        useCase="Safety officer reviews hazard alerts for materials in the approved BOM before shop-floor release."/>
+  
+  <step id="s4" 
+        label="Orchestrate asset and resource provisioning"
+        description="Coordinate allocation of manufacturing equipment, tools, and infrastructure needed to execute the production plan with validated materials."
+        ordId="corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+        capability="orchestrate-provisioning"
+        useCase="Operations manager confirms machines and production orders are allocated and ready for the new product run."/>
+  
+  <step id="s5" 
+        label="Plan workforce capacity and skill allocation"
+        description="Determine staffing levels and assign personnel with appropriate skills and availability to execute production safely and efficiently."
+        ordId="sap.sf:apiResource:EmployeeProductivityAndCapacityPlanning:v1"
+        capability="plan-capacity"
+        useCase="HR planning team maps production order requirements to available machine operators and technicians."/>
+  
+  <step id="s6" 
+        label="Verify employee safety certifications and training"
+        description="Confirm that assigned production staff hold current safety certifications and have completed required material-handling training."
+        ordId="sap.sf:apiResource:EmployeeLifecycleAndPersonnelDataManagement:v1"
+        capability="verify-certifications"
+        useCase="Safety coordinator validates that each shift operator has active hazmat and equipment certifications."/>
+  
+  <step id="s7" 
+        label="Coordinate compensation adjustments for hazard duty"
+        description="Apply appropriate pay grades and hazard allowances for personnel assigned to handle restricted or dangerous materials."
+        ordId="sap.sf:apiResource:EmployeeCompensationManagement:v1"
+        capability="adjust-compensation"
+        useCase="Payroll specialist ensures workers on hazardous material production receive appropriate hazard pay premiums."/>
+  
+  <step id="s8" 
+        label="Analyze procurement and safety metrics for process improvement"
+        description="Review invoice, material cost, and incident data to identify cost-saving opportunities and safety trends across the production cycle."
+        ordId="sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1"
+        capability="analyze-metrics"
+        useCase="Finance and safety teams use procurement and incident analytics to optimize future production planning and vendor selection."/>
+  
+  <!-- Sequence flows defining the coherent business flow -->
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+  
+</process>

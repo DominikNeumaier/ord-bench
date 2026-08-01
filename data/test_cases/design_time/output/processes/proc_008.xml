@@ -1,0 +1,65 @@
+<process id="proc_order_compliance_fulfillment_v1" type="bpmn">
+  <step id="s1" 
+        label="Receive and validate customer order"
+        description="Capture incoming customer orders and validate order completeness against account eligibility criteria."
+        ordId="sap.s4:apiResource:CustomerOrderManagementAPI:v1"
+        capability="validate-order"
+        useCase="Sales team receives new customer order and confirms it meets account and product requirements"/>
+  
+  <step id="s2" 
+        label="Evaluate customer engagement state"
+        description="Check customer journey status and campaign participation to determine personalized fulfillment approach."
+        ordId="emarsys.cx:apiResource:JourneyContactStateAPI:v1"
+        capability="assess-engagement"
+        useCase="Marketing validates that customer is in appropriate engagement stage for order fulfillment communications"/>
+  
+  <step id="s3" 
+        label="Verify hazardous materials compliance"
+        description="Validate that ordered materials meet regulatory compliance requirements for hazardous substance handling."
+        ordId="emarsys.cx:apiResource:HazardousSubstanceComplianceManagementAPI:v1"
+        capability="verify-compliance"
+        useCase="Compliance officer confirms that materials in order are legally permissible for customer's geography and industry"/>
+  
+  <step id="s4" 
+        label="Qualify and assign service provider"
+        description="Identify and validate qualified suppliers or service partners for order fulfillment based on service level requirements."
+        ordId="siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1"
+        capability="qualify-supplier"
+        useCase="Procurement team matches order to certified vendors and creates service ticket for fulfillment"/>
+  
+  <step id="s5" 
+        label="Review safety and incident history"
+        description="Analyze supplier and fulfillment partner safety performance and incident records to mitigate delivery risk."
+        ordId="sap.sf:dataProduct:IncidentResolutionAndComplianceAnalytics:v1"
+        capability="assess-safety"
+        useCase="Operations team reviews vendor safety dashboard to ensure fulfillment partner meets organizational risk standards"/>
+  
+  <step id="s6" 
+        label="Orchestrate contract and purchase terms"
+        description="Activate vendor contract terms and generate purchase order with negotiated pricing and delivery conditions."
+        ordId="siemens.plm:agent:VendorContractLifecycleOrchestrator:v1"
+        capability="orchestrate-contract"
+        useCase="Procurement agent automatically applies standard contract terms and creates PO linked to customer order"/>
+  
+  <step id="s7" 
+        label="Calculate financial engagement impact"
+        description="Analyze order value, invoice timing, and material costs to assess financial health and customer lifetime value."
+        ordId="emarsys.cx:dataProduct:FinancialEngagementMetrics:v1"
+        capability="analyze-financials"
+        useCase="Finance team reviews order profitability and customer payment patterns to approve credit terms"/>
+  
+  <step id="s8" 
+        label="Approve fulfillment and schedule resource time"
+        description="Authorize order fulfillment and reserve employee capacity and time allocations for delivery execution."
+        ordId="workday.hcm:apiResource:TimeOffBalanceManagement:v1"
+        capability="schedule-resources"
+        useCase="HR/Operations team confirms delivery team availability and allocates absence coverage if needed for fulfillment date"/>
+  
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+</process>

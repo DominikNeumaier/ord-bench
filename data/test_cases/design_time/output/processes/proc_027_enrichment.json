@@ -1,0 +1,94 @@
+{
+  "process_id": "proc_027",
+  "process_type": "cmmn",
+  "gt_ordIds": [
+    "my.mes:agent:ProductionChangeOrchestrator:v1",
+    "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+    "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+    "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1"
+  ],
+  "enrichment": {
+    "my.mes:agent:ProductionChangeOrchestrator:v1": {
+      "capabilities": [
+        "orchestrate-production-change",
+        "validate-engineering-specifications",
+        "manage-material-updates"
+      ],
+      "useCases": [
+        "Operations manager submits engineering change order for new product variant with material updates",
+        "Production planner synchronizes material changes across manufacturing systems",
+        "Supply chain coordinator initiates bill-of-materials updates for product variants"
+      ],
+      "processNext": [
+        "siemens.plm:agent:DesignReviewAndComplianceCoordinator:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_compliance_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "sap.s4:agent:BOMComplianceAutomationAgent:v1": {
+      "capabilities": [
+        "automate-bom-compliance",
+        "validate-material-specifications",
+        "enforce-engineering-standards"
+      ],
+      "useCases": [
+        "Supply chain manager ensures all materials in product structure meet compliance rules before manufacturing",
+        "Quality engineer verifies product component specifications against approved catalogs",
+        "Procurement officer confirms supplier certifications for all bill-of-materials items"
+      ],
+      "processNext": [
+        "emarsys.cx:apiResource:ComplianceRiskAssessmentAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_compliance_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "corp.itsm:apiResource:CampaignAccessManagementAPI:v1": {
+      "capabilities": [
+        "authorize-campaign-access",
+        "grant-sales-permissions",
+        "control-launch-visibility"
+      ],
+      "useCases": [
+        "Marketing director activates go-live permissions for sales teams and campaign channels",
+        "Campaign manager enables customer segment targeting for new product promotion",
+        "Regional sales lead receives access to campaign materials and customer contact lists"
+      ],
+      "processNext": [
+        "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_compliance_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1": {
+      "capabilities": [
+        "enrich-customer-order",
+        "update-product-catalog",
+        "enable-order-processing"
+      ],
+      "useCases": [
+        "Sales enablement team publishes new product to customer accounts and processes initial orders",
+        "Customer service representative adds new product to account offerings and upsell recommendations",
+        "E-commerce manager updates order management system with new SKU pricing and availability"
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_compliance_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    }
+  }
+}

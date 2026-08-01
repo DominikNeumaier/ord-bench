@@ -1,0 +1,99 @@
+{
+  "process_id": "proc_021",
+  "process_type": "cmmn",
+  "gt_ordIds": [
+    "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1",
+    "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+  ],
+  "enrichment": {
+    "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1": {
+      "capabilities": [
+        "monitor-incidents",
+        "detect-anomalies",
+        "track-safety-metrics"
+      ],
+      "useCases": [
+        "Manufacturing supervisors detect real-time equipment failures to prevent production disruptions.",
+        "Safety officers track incident trends across facilities for compliance reporting.",
+        "Customer experience teams correlate production incidents with fulfillment delays."
+      ],
+      "processNext": [
+        "siemens.plm:apiResource:MaterialAndVendorQualificationManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_QualityDrivenMfgSupplyChain_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1": {
+      "capabilities": [
+        "receive-material",
+        "validate-shipments",
+        "update-inventory",
+        "verify-compliance"
+      ],
+      "useCases": [
+        "Warehouse teams confirm inbound material completeness and quality upon arrival.",
+        "Inventory planners trigger production scheduling only after material receipt validation.",
+        "Procurement audits material receipt traces for vendor performance assessment."
+      ],
+      "processNext": [
+        "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_QualityDrivenMfgSupplyChain_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1": {
+      "capabilities": [
+        "provision-materials",
+        "synchronize-engineering-changes",
+        "allocate-inventory",
+        "coordinate-bom-updates"
+      ],
+      "useCases": [
+        "Engineering teams release change orders and automatically trigger material provisioning workflows.",
+        "Production planners retrieve updated bills-of-material with real-time material availability.",
+        "Material handlers receive dynamic picking lists reflecting the latest design changes."
+      ],
+      "processNext": [
+        "sap.s4:apiResource:ProductionOrderAndMachineScheduling:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_QualityDrivenMfgSupplyChain_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "siemens.plm:apiResource:MachineProductionOrderIntegration:v1": {
+      "capabilities": [
+        "execute-production",
+        "monitor-work-orders",
+        "track-machine-status",
+        "optimize-order-sequencing"
+      ],
+      "useCases": [
+        "Plant floor operators send production orders directly to CNC and assembly machines with real-time feedback.",
+        "Production controllers monitor machine utilization and adjust order sequences to meet deadlines.",
+        "Maintenance teams receive predictive alerts when machine performance deviates from baselines."
+      ],
+      "processNext": [
+        "sap.s4:apiResource:SafetyComplianceCustomerEngagementAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_QualityDrivenMfgSupplyChain_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    }
+  }
+}

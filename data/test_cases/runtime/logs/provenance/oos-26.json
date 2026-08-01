@@ -1,0 +1,48 @@
+{
+  "case_id": "oos-26",
+  "mode": "out_of_scope",
+  "difficulty": "hard",
+  "topic": "Automated invoice matching with 3-way PO verification",
+  "timestamp": "2026-06-08T13:03:32.821008+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need a way to automatically flag invoices where the line-item description doesn't match our PO terms\u2014right now our AP team manually catches these discrepancies, but we're missing cases where vendors use different SKU formats or abbreviated product names that don't align with what we ordered, and it's creating payment delays and reconciliation issues."
+      },
+      "generator_tokens": 169,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"accepted\": false,\n  \"reason\": \"This requires predictive/matching logic to flag discrepancies based on SKU format variations and semantic similarity, which falls under forecasting/prediction capabilities outside the benchmark scope.\"\n}\n```",
+      "judge_tokens": 332,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "We need to automatically flag invoices where the line-item descriptions on the PO don't match what the vendor actually shipped and invoiced\u2014our current 3-way matching only catches quantity and price discrepancies, but we're losing thousands monthly to invoices for \"consulting services\" or \"materials\" that don't align with our original purchase orders, and our AP team has to manually investigate each one."
+      },
+      "generator_tokens": 195,
+      "judge_results": {
+        "C1": true,
+        "C2": false,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": false,\n  \"accepted\": true,\n  \"reason\": \"This is a core Procurement capability (PO matching and invoice reconciliation) within the standard ERP/Procurement domain.\"\n}\n```",
+      "judge_tokens": 336,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "oos-26",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "difficulty": "hard",
+    "topic": "Automated invoice matching with 3-way PO verification",
+    "user_prompt": "We need to automatically flag invoices where the line-item descriptions on the PO don't match what the vendor actually shipped and invoiced\u2014our current 3-way matching only catches quantity and price discrepancies, but we're losing thousands monthly to invoices for \"consulting services\" or \"materials\" that don't align with our original purchase orders, and our AP team has to manually investigate each one.",
+    "expected_ordIds": []
+  }
+}

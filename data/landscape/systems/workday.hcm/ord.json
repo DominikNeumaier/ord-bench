@@ -1,0 +1,921 @@
+{
+  "openResourceDiscovery": "1.16",
+  "perspective": "system-instance",
+  "packages": [
+    {
+      "ordId": "workday.hcm:package:Core:v1",
+      "title": "workday.hcm Core Package",
+      "shortDescription": "Core resources for the workday.hcm system in the benchmark landscape.",
+      "version": "1.0.0",
+      "vendor": "workday:vendor:Default:"
+    }
+  ],
+  "agents": [
+    {
+      "ordId": "workday.hcm:agent:CompensationAdjustmentAutomation:v1",
+      "title": "Compensation Adjustment Automation Agent",
+      "shortDescription": "Autonomously processes merit increases and compensation adjustments based on performance ratings and organizational policies.",
+      "description": "This agent monitors employee performance ratings and tenure milestones, then automatically generates and routes compensation adjustment proposals for manager review and approval. It ensures consistent application of compensation policies across the organization, reduces manual processing overhead, and maintains audit trails for compliance. The agent integrates with payroll cycles to implement approved adjustments on schedule.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Employee:v1",
+        "sap.odm:entityType:Compensation:v1"
+      ],
+      "lineOfBusiness": [
+        "Human Resources"
+      ],
+      "tags": [
+        "compensation",
+        "automation",
+        "payroll",
+        "policy-driven"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "workday.hcm:agent:OccupationalSafetyIncidentMonitoring:v1",
+      "title": "Workplace Hazard Event Orchestrator",
+      "shortDescription": "Tracks and manages employee exposure events involving dangerous materials and coordinates safety response protocols.",
+      "description": "Streamlines the identification and management of workplace hazard events where employees face exposure to hazardous materials. Integrates with HR systems to document exposure incidents, trigger safety alerts for affected personnel, and route remediation tasks to appropriate teams while maintaining complete event documentation for regulatory audits and organizational records.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:HazardousSubstance:v1",
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "lineOfBusiness": [
+        "Human Capital Management"
+      ],
+      "tags": [
+        "hazard-tracking",
+        "employee-safety",
+        "regulatory-reporting"
+      ],
+      "industry": [],
+      "namespace": "workday.hcm"
+    },
+    {
+      "ordId": "workday.hcm:agent:PerformanceReviewCoordination:v1",
+      "title": "Performance Review Coordination Agent",
+      "shortDescription": "Automates and coordinates performance review workflows across the organization.",
+      "description": "Coordinates performance review cycles by orchestrating review scheduling, automating stakeholder notifications, and monitoring review completion status across Employee and WorkforcePerson populations. Processes PerformanceReview data to ensure timely distribution of review forms, tracks reviewer assignments, and automates escalation alerts when reviews are overdue or incomplete.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Employee:v1",
+        "sap.odm:entityType:PerformanceReview:v1",
+        "sap.odm:entityType:WorkforcePerson:v1"
+      ],
+      "lineOfBusiness": [
+        "Human Resources and People"
+      ],
+      "tags": [
+        "performance-management",
+        "workflow-automation",
+        "review-coordination",
+        "talent-management"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "workday.hcm:agent:PerformanceReviewOrchestrator:v1",
+      "title": "Talent Assessment Cycle Manager",
+      "shortDescription": "Manages end-to-end evaluation processes and stakeholder participation across the employee population.",
+      "description": "Tracks employee development checkpoints and orchestrates collaborative assessment workflows involving supervisors, peer evaluators, and people operations teams. Handles timeline management, priority escalations, and comment distribution to drive appraisal completion. Aggregates 360-degree input streams and merges evaluations enterprise-wide.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Employee:v1",
+        "sap.odm:entityType:PerformanceReview:v1",
+        "sap.odm:entityType:WorkforcePerson:v1"
+      ],
+      "lineOfBusiness": [
+        "Human Resources and People"
+      ],
+      "tags": [
+        "talent-development",
+        "process-orchestration",
+        "assessment-coordination",
+        "workforce-management"
+      ],
+      "industry": [],
+      "namespace": "workday.hcm"
+    },
+    {
+      "ordId": "workday.hcm:agent:CompensationChangeProcessor:v1",
+      "title": "Compensation Change Processor",
+      "shortDescription": "Automates and coordinates compensation adjustments tied to organizational changes.",
+      "description": "Monitors engineering changes and material/product updates that impact compensation structures, then processes and coordinates corresponding salary adjustments across affected employee populations. Automates validation of compensation modifications against benefit eligibility and payroll processing timelines to ensure consistency.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "lineOfBusiness": [
+        "human-capital-management"
+      ],
+      "tags": [
+        "compensation-automation",
+        "organizational-change-management",
+        "payroll-integration"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "workday.hcm:agent:CompensationStructureAutomationEngine:v1",
+      "title": "Compensation Structure Automation Engine",
+      "shortDescription": "Automates compensation adjustments tied to organizational changes and material cost fluctuations.",
+      "description": "This agent monitors organizational structure changes, material cost indices, and product item classifications to automatically coordinate compensation plan updates. It processes engineering changes affecting job families and automates benefit structure recalibration based on material sourcing updates and product portfolio shifts, ensuring compensation competitiveness across the enterprise.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "lineOfBusiness": [
+        "Human Capital Management"
+      ],
+      "tags": [
+        "compensation-automation",
+        "organizational-change-management",
+        "cost-alignment"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "workday.hcm:agent:SafetyIncidentAutomationOrchestrator:v1",
+      "title": "Safety Incident Automation Orchestrator",
+      "shortDescription": "Automates safety incident processing, root-cause analysis, and corrective action coordination across hazardous substance events.",
+      "description": "Monitors incoming safety incidents and hazardous substance reports to automatically trigger investigation workflows and coordinate corrective actions. Processes incident data to identify patterns, automates root-cause analysis initiation, and orchestrates cross-functional response activities. Coordinates remediation efforts by linking incidents to preventive measures and tracking corrective action completion within HR and safety management systems.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:HazardousSubstance:v1",
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "lineOfBusiness": [
+        "Safety and Environment"
+      ],
+      "tags": [
+        "incident-analysis",
+        "root-cause",
+        "automation",
+        "corrective-action"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "workday.hcm:agent:CompensationPolicyEnforcementAutomation:v1",
+      "title": "Workforce Compensation Framework Processor",
+      "shortDescription": "Executes systematic wage determination and compensation adjustments according to enterprise guidelines and regulatory requirements.",
+      "description": "Orchestrates compensation data flows and validates salary structures against organizational frameworks and compliance mandates. Processes compensation modifications triggered by career progressions, evaluation cycles, and business-driven policy changes while maintaining audit trails and identifying policy exceptions. Synchronizes workforce compensation records with established pay structures and reconciles adjustments across employee populations.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Compensation:v1",
+        "sap.odm:entityType:Employee:v1"
+      ],
+      "lineOfBusiness": [
+        "Human Resources"
+      ],
+      "tags": [
+        "salary management",
+        "compliance orchestration",
+        "workforce administration",
+        "automated adjustment"
+      ],
+      "industry": [],
+      "namespace": "workday.hcm"
+    },
+    {
+      "ordId": "workday.hcm:agent:RecruitmentCampaignAutomationOrchestrator:v1",
+      "title": "Hiring Pipeline Orchestration Engine",
+      "shortDescription": "Streamlines talent sourcing operations and recruiter task allocation across multiple hiring channels.",
+      "description": "Manages end-to-end hiring workflows by tracking recruiter activities and automating candidate outreach across diverse sourcing channels. Aggregates hiring metrics to enhance throughput and intelligently routes recruiting tasks based on candidate qualifications and hiring priorities. Enables coordinated multi-touch engagement strategies to accelerate time-to-hire metrics.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Campaign:v1",
+        "sap.odm:entityType:CustomerAccount:v1",
+        "sap.odm:entityType:CustomerSegment:v1"
+      ],
+      "lineOfBusiness": [
+        "talent-acquisition"
+      ],
+      "tags": [
+        "talent-sourcing",
+        "recruiter-workflow",
+        "hiring-channel-coordination"
+      ],
+      "industry": [],
+      "namespace": "workday.hcm"
+    }
+  ],
+  "apiResources": [
+    {
+      "ordId": "workday.hcm:apiResource:TimeOffBalanceManagement:v1",
+      "title": "Employee Absence Entitlement API",
+      "shortDescription": "REST API for retrieving and administering employee paid time off entitlements, accrual mechanics, and absence policies.",
+      "description": "Provides programmatic access to employee absence entitlements including vacation days, sick time, and special leave categories. Enables applications to calculate entitlement accruals based on organizational policies, retrieve current entitlement positions, and apply entitlement adjustments. Supports integration with absence request workflows and compensation systems to ensure accurate absence accounting and regulatory compliance.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/timeoff-balance-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:TimeOff:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Resources"
+      ],
+      "tags": [
+        "absence-entitlements",
+        "pto-management",
+        "accrual-calculation",
+        "leave-policy"
+      ],
+      "industry": [],
+      "namespace": "workday.hcm"
+    },
+    {
+      "ordId": "workday.hcm:apiResource:PayrollDataExposure:v1",
+      "title": "Payroll Data Exposure API",
+      "shortDescription": "Exposes payroll records, earnings, deductions, and tax information for employees.",
+      "description": "This API retrieves and manages payroll-related data including earnings history, deduction details, tax withholdings, and compensation components for workforce members. It provides access to detailed payroll records that integrate with downstream HR and financial systems, enabling real-time payroll status queries and historical compensation data retrieval.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:WorkforcePerson:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/payroll-data-exposure.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Resources"
+      ],
+      "tags": [
+        "compensation",
+        "salary-management",
+        "payroll-integration",
+        "employee-lifecycle"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "workday.hcm:apiResource:CampaignAccountAccessManagement:v1",
+      "title": "Compensation Enrollment Permission API",
+      "shortDescription": "Orchestrates user authorization and enrollment permissions for benefit and compensation programs.",
+      "description": "Delivers endpoints for retrieving participant eligibility, managing role-based permissions, and synchronizing authorization states across HR benefit platforms. Enables workflow automation by exposing real-time enrollment participant relationships and access control matrices. Supports identity governance and regulatory reporting through comprehensive permission tracking.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "https://api.workday.com/v1/campaign-account-access.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "it-service-management"
+      ],
+      "tags": [
+        "enrollment-authorization",
+        "benefit-administration",
+        "permission-sync"
+      ],
+      "industry": [],
+      "namespace": "workday.hcm"
+    },
+    {
+      "ordId": "workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1",
+      "title": "Benefits Enrollment Data Management API",
+      "shortDescription": "Manages and retrieves employee benefits enrollment records and eligibility data.",
+      "description": "This API exposes comprehensive benefits enrollment information for employees and workforce persons, enabling external systems to retrieve current enrollment status, plan selections, and eligibility determinations. It provides access to historical enrollment decisions and allows querying of benefits coverage details tied to individual workforce members.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:WorkforcePerson:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/benefits-enrollment.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Finance"
+      ],
+      "tags": [
+        "payroll",
+        "workforce",
+        "compensation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "workday.hcm:apiResource:JobFamilyStructureManagement:v1",
+      "title": "Job Family Structure Management API",
+      "shortDescription": "Manages and retrieves job family hierarchies, role mappings, and organizational structure data.",
+      "description": "This API exposes job family configurations and organizational role hierarchies that map to product engineering changes and line items. It provides access to retrieve, update, and manage job family structures linked to compensation bands and career progression frameworks. The resource enables downstream systems to access standardized job classifications and role-to-responsibility mappings for workforce planning and payroll integration.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:EngineeringChange:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductItem:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/job-family-structure.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "human-resources"
+      ],
+      "tags": [
+        "organizational-structure",
+        "job-classification",
+        "workforce-planning"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "workday.hcm:apiResource:CompensationStructureDataExposure:v1",
+      "title": "Compensation Structure Data Exposure",
+      "shortDescription": "Retrieves and manages compensation grade levels, salary bands, and pay structures.",
+      "description": "Exposes compensation structure definitions including grade levels, salary bands, and pay grade hierarchies for Employee and WorkforcePerson entities. Provides access to compensation planning data and enables retrieval of compensation frameworks used across the organization for payroll and HR planning purposes.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:WorkforcePerson:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/compensation-structure.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Finance"
+      ],
+      "tags": [
+        "payroll",
+        "workforce",
+        "compensation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "workday.hcm:apiResource:EmployeeTimeOffAvailabilityExposure:v1",
+      "title": "Employee Time-Off Availability API",
+      "shortDescription": "Retrieves employee time-off balances and availability for workforce planning.",
+      "description": "Exposes real-time employee time-off accruals, pending requests, and approved absences to enable accurate labor capacity forecasting. Provides access to aggregated time-off data by employee and time period, supporting shift-management decisions and workforce-planning operations. Manages queries across employee records and their associated time-off transactions for manufacturing labor optimization.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:TimeOff:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/employee-timeoff-availability.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "manufacturing"
+      ],
+      "tags": [
+        "workforce-planning",
+        "shift-management",
+        "labor-capacity"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "workday.hcm:apiResource:PayrollProcessingDataManagement:v1",
+      "title": "Payroll Processing Data Management",
+      "shortDescription": "Manages and exposes payroll calculations, earnings, and deductions data.",
+      "description": "This API resource provides access to payroll processing data including employee earnings, tax withholdings, deductions, and gross-to-net calculations. It retrieves and manages payroll records for Employee and WorkforcePerson entities, enabling integration with downstream payroll systems and financial consolidation platforms. The resource exposes real-time payroll snapshots and historical payroll records for compliance and audit purposes.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:WorkforcePerson:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/payroll-processing.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Resources"
+      ],
+      "tags": [
+        "compensation",
+        "salary-management",
+        "payroll-integration",
+        "employee-lifecycle"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "workday.hcm:apiResource:EmployeeTimeOffRequestManagement:v1",
+      "title": "Employee Time-Off Request Management API",
+      "shortDescription": "Manages and retrieves employee time-off requests and approval workflows.",
+      "description": "This API exposes comprehensive time-off request data, enabling applications to retrieve, submit, and track employee leave requests across all time-off types. It provides access to real-time approval status, balance information, and historical time-off records for individual employees, supporting seamless integration with third-party absence management and scheduling systems.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:TimeOff:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/time-off-requests.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Capital Management"
+      ],
+      "tags": [
+        "time-off",
+        "leave-management",
+        "employee-absence"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "workday.hcm:apiResource:ServiceRequestOrderManagement:v1",
+      "title": "HR Service Request Fulfillment API",
+      "shortDescription": "Provisioning interface for employee service requests with progress monitoring and fulfillment coordination.",
+      "description": "Provides REST-based access to HR service request data including fulfillment status, request history, and associated employee profile information. Enables real-time tracking of HR requisition processes and coordinates service delivery across HR operations and request management workflows.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/service-request-orders.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "itsm-operations"
+      ],
+      "tags": [
+        "hr-operations",
+        "request-provisioning",
+        "fulfillment-tracking"
+      ],
+      "industry": [],
+      "namespace": "workday.hcm"
+    },
+    {
+      "ordId": "workday.hcm:apiResource:VendorMaterialSafetyComplianceExposure:v1",
+      "title": "Supplier Risk Assessment and Safety Documentation Service",
+      "shortDescription": "Provides access to supplier certifications, safety documentation, and regulatory compliance verification for procurement and risk management.",
+      "description": "Delivers supplier qualification assessments, regulatory compliance verification, and occupational safety documentation to support procurement decisions and organizational risk mitigation. Integrates supplier safety certifications and regulatory compliance records with vendor evaluation workflows. Enables real-time assessment of supplier compliance status and safety documentation for sourcing activities and vendor onboarding processes.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Material:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/vendor-material-safety-compliance.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Environment, Health and Safety"
+      ],
+      "tags": [
+        "supplier-qualification",
+        "regulatory-compliance",
+        "occupational-safety"
+      ],
+      "industry": [],
+      "namespace": "workday.hcm"
+    },
+    {
+      "ordId": "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1",
+      "title": "Workforce Compensation Data Management",
+      "shortDescription": "Retrieves and manages employee compensation structures, salary components, and pay adjustments.",
+      "description": "Exposes comprehensive compensation data for employees and workforce personnel, enabling retrieval of salary bands, bonus structures, and pay adjustments. Manages compensation plan assignments and provides access to historical compensation records for compliance and payroll processing.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:WorkforcePerson:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/compensation-data.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Capital Management"
+      ],
+      "tags": [
+        "workforce-management",
+        "organizational-structure",
+        "employee-hierarchy"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "workday.hcm:apiResource:TimeOffAndCapacityAllocationManagement:v1",
+      "title": "Employee Absence and Resource Utilization API",
+      "shortDescription": "Provides real-time access to staffing levels and leave schedules for sales team resource allocation.",
+      "description": "Exposes personnel leave records and staffing status information to support sales operations planning and team deployment. Delivers absence data and resource availability metrics that enable sales organizations to optimize scheduling and staffing decisions. Enables integration of leave management with sales workflow systems for dynamic workforce deployment and demand fulfillment.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:TimeOff:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/time-off-capacity-allocation.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Sales"
+      ],
+      "tags": [
+        "workforce-allocation",
+        "leave-management",
+        "sales-staffing"
+      ],
+      "industry": [],
+      "namespace": "workday.hcm"
+    }
+  ],
+  "dataProducts": [
+    {
+      "ordId": "workday.hcm:dataProduct:CompensationTrendAnalytics:v1",
+      "title": "Compensation Trend Analytics",
+      "shortDescription": "Aggregated compensation metrics and trends across employee populations and time periods.",
+      "description": "This analytical data product provides pre-aggregated views of compensation data including salary distributions, merit increase patterns, pay equity metrics, and compensation-to-performance ratios. It enables HR analytics teams to identify compensation trends, benchmark pay levels by job family and geography, and support data-driven compensation planning and equity analysis.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "type": "derived",
+      "category": "analytical",
+      "outputPorts": [
+        {
+          "ordId": "workday.hcm:apiResource:CompensationAnalyticsAPI:v1"
+        }
+      ],
+      "entityTypes": [
+        "sap.odm:entityType:Employee:v1",
+        "sap.odm:entityType:Compensation:v1"
+      ],
+      "lineOfBusiness": [
+        "Human Resources"
+      ],
+      "tags": [
+        "compensation",
+        "analytics",
+        "workforce-planning",
+        "pay-equity"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "workday.hcm:dataProduct:PerformanceMetricsAggregation:v1",
+      "title": "Performance Metrics Aggregation",
+      "shortDescription": "Aggregates employee performance review data to provide workforce talent insights and trending analysis.",
+      "description": "This data product aggregates performance review outcomes and employee competency assessments to summarize talent distribution, skill gaps, and career progression trends across the organization. It provides metrics on performance rating distributions, development potential, and identifies high-performing segments for succession planning and workforce analytics initiatives.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Employee:v1",
+        "sap.odm:entityType:PerformanceReview:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "workday.hcm:apiResource:PerformanceMetricsDataAccess:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Resources",
+        "People Analytics"
+      ],
+      "tags": [
+        "performance-management",
+        "workforce-analytics",
+        "talent-insights",
+        "trending"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "workday.hcm:dataProduct:IncidentSafetyMetricsAggregation:v1",
+      "title": "Incident & Safety Metrics Aggregation",
+      "shortDescription": "Aggregates and summarizes incident and safety incident data for compliance reporting.",
+      "description": "Aggregates incident and safety incident records across the HR system to provide comprehensive metrics on workplace safety trends, incident frequencies, and risk patterns. Summarizes critical safety data to enable proactive compliance monitoring and organizational safety performance analysis. Provides actionable insights on incident categories, severity levels, and resolution timelines for strategic workforce safety planning.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "workday.hcm:apiResource:IncidentSafetyReportingExposure:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Capital Management"
+      ],
+      "tags": [
+        "safety-analytics",
+        "incident-reporting",
+        "compliance-metrics"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1",
+      "title": "Organizational Readiness Assessment for Product Transitions",
+      "shortDescription": "Evaluates staffing capabilities and competency levels against product modifications and operational transitions.",
+      "description": "This data product combines product modification data, supply chain updates, and operational transition information to quantify the human capital implications of business changes. It identifies training gaps, resource constraints, and capability misalignments triggered by product and process evolution. The insights support HR business partners in developing targeted capability-building strategies and managing organizational change adoption.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "workday.hcm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "workday.hcm:apiResource:WorkforceChangeImpactDataExposure:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "human-resources"
+      ],
+      "tags": [
+        "change-management",
+        "capability-planning",
+        "organizational-readiness"
+      ],
+      "industry": [],
+      "namespace": "workday.hcm"
+    }
+  ]
+}

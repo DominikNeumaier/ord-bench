@@ -1,0 +1,68 @@
+<process id="proc_product_launch_workforce_v1" type="cmmn">
+  
+  <step id="s1" 
+        label="Initiate customer campaign provisioning"
+        description="Set up customer accounts and campaign parameters to begin the product launch initiative across target markets."
+        ordId="corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1"
+        capability="provision-customers"
+        useCase="Sales teams activate new customer relationships for the upcoming product release campaign."/>
+  
+  <step id="s2" 
+        label="Qualify materials and vendors"
+        description="Assess material specifications and vendor capabilities to ensure supply chain readiness for production transition."
+        ordId="siemens.plm:agent:MaterialAndVendorQualificationOrchestrator:v1"
+        capability="qualify-supply-chain"
+        useCase="Procurement confirms that all materials and vendors meet quality standards before manufacturing begins."/>
+  
+  <step id="s3" 
+        label="Analyze product cost and complexity"
+        description="Evaluate cost drivers and technical complexity of product items to optimize manufacturing and logistics strategy."
+        ordId="siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1"
+        capability="analyze-product-economics"
+        useCase="Finance and product teams understand cost implications and design complexity to inform pricing and production planning."/>
+  
+  <step id="s4" 
+        label="Retrieve engineering change specifications"
+        description="Obtain detailed engineering change orders and product item data to ensure manufacturing teams have current specifications."
+        ordId="sap.s4:apiResource:EngineeringChangeProductDataAPI:v1"
+        capability="retrieve-change-specs"
+        useCase="Manufacturing obtains the latest engineering changes needed to update production processes and equipment configurations."/>
+  
+  <step id="s5" 
+        label="Assess material change readiness and workforce impact"
+        description="Evaluate how material changes affect production workflows and identify workforce training and redeployment needs."
+        ordId="sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+        capability="assess-workforce-readiness"
+        useCase="Human Resources determines which employees require training and when skill gaps must be addressed before production ramp-up."/>
+  
+  <step id="s6" 
+        label="Evaluate production transition capability and skill requirements"
+        description="Analyze production capacity, skill gaps, and workforce readiness against engineering changes to validate launch feasibility."
+        ordId="sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+        capability="validate-launch-readiness"
+        useCase="Operations leadership confirms that the workforce has required skills and capacity to execute the manufacturing transition successfully."/>
+  
+  <step id="s7" 
+        label="Monitor employee performance against manufacturing standards"
+        description="Track production quality metrics and employee performance to ensure manufacturing execution meets launch targets."
+        ordId="sap.sf:dataProduct:WorkforceQualityAndProductionMetrics:v1"
+        capability="monitor-production-quality"
+        useCase="Quality and HR teams verify that employees are performing at required standards during production ramp-up."/>
+  
+  <step id="s8" 
+        label="Orchestrate sales compensation adjustments"
+        description="Calculate and apply compensation adjustments based on successful product launch performance and sales achievements."
+        ordId="sap.crm:agent:SalesCompensationOrchestrator:v1"
+        capability="orchestrate-compensation"
+        useCase="Sales leadership aligns employee compensation with successful product launch metrics and revenue targets."/>
+  
+  <!-- Sequence Flow: Linear progression through product launch lifecycle -->
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+  
+</process>

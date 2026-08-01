@@ -1,0 +1,92 @@
+{
+  "process_id": "proc_003",
+  "process_type": "bpmn",
+  "gt_ordIds": [
+    "sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1",
+    "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+    "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1",
+    "workday.hcm:apiResource:PayrollDataExposure:v1"
+  ],
+  "enrichment": {
+    "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1": {
+      "capabilities": [
+        "validate-order",
+        "track-fulfillment",
+        "retrieve-customer-account"
+      ],
+      "useCases": [
+        "Sales team receives a new customer order and confirms it can be fulfilled based on account standing and delivery capability.",
+        "Order fulfillment process begins by validating customer eligibility and order specifications."
+      ],
+      "processNext": [
+        "corp.itsm:dataProduct:VendorSpendIntelligence:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_order_to_production_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1": {
+      "capabilities": [
+        "source-materials",
+        "query-vendor-master",
+        "retrieve-material-specifications"
+      ],
+      "useCases": [
+        "Procurement officer creates and tracks purchase orders with preferred vendors to secure bill-of-materials components.",
+        "Material sourcing decisions are made by accessing vendor and material master data to ensure quality and compliance."
+      ],
+      "processNext": [
+        "corp.itsm:apiResource:ProcurementVendorManagementAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_order_to_production_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1": {
+      "capabilities": [
+        "plan-production",
+        "schedule-machines",
+        "create-work-orders"
+      ],
+      "useCases": [
+        "Production planner creates work orders and schedules machines to manufacture the ordered products.",
+        "Manufacturing execution begins by translating customer order into optimized machine scheduling and production sequences."
+      ],
+      "processNext": [
+        "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_order_to_production_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "workday.hcm:apiResource:PayrollDataExposure:v1": {
+      "capabilities": [
+        "allocate-workforce",
+        "track-labor-hours",
+        "calculate-production-labor-costs"
+      ],
+      "useCases": [
+        "HR manager ensures production team members are assigned and their labor hours are tracked for payroll and cost accounting.",
+        "Production workforce allocation and payroll integration ensures accurate labor cost attribution to customer orders."
+      ],
+      "processNext": [
+        "sap.ehs:agent:IncidentRootCauseAnalyzer:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_order_to_production_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    }
+  }
+}

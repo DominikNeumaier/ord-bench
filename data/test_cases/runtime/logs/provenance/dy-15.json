@@ -1,0 +1,76 @@
+{
+  "case_id": "dy-15",
+  "mode": "dynamic",
+  "query_class": "single_intent",
+  "problem_type": "P2",
+  "selected_resources": [
+    "sap.sf:apiResource:CompensationAndSalaryManagement:v1"
+  ],
+  "distractor": "sap.sf:apiResource:EmployeeCompensationManagement:v1",
+  "timestamp": "2026-06-08T13:19:51.761874+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to integrate our payroll system with a solution that can handle our employee compensation structures and salary data updates. Can you help us set up the proper integration for managing our compensation data?"
+      },
+      "generator_tokens": 163,
+      "solver_output": {
+        "predicted": "sap.sf:apiResource:CompensationAndSalaryManagement:v1",
+        "top1_correct": true,
+        "top5": [
+          "sap.sf:apiResource:CompensationAndSalaryManagement:v1",
+          "sap.s4:apiResource:EmployeePayrollDataAPI:v1",
+          "workday.hcm:apiResource:PayrollProcessingDataManagement:v1",
+          "workday.hcm:apiResource:CompensationStructureDataExposure:v1",
+          "sap.sf:apiResource:EmployeeCompensationManagement:v1"
+        ],
+        "note": "retro_certified"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```",
+      "judge_tokens": 281,
+      "outcome": "ACCEPTED",
+      "_retro_verdict": "TOO_EASY"
+    },
+    {
+      "iteration": 2,
+      "angle": "situation",
+      "generator_output": {
+        "user_prompt": "Our finance team is struggling to reconcile payroll data across multiple departments because we can't easily track how individual pay rates align with our established pay bands and job levels. We need to ensure our payment structures remain competitive and compliant with market rates, but right now we're manually cross-referencing spreadsheets which is error-prone and time-consuming. Can you help us integrate our payroll processes so we have a single source of truth for all employee earnings and payment configurations?"
+      },
+      "generator_tokens": 271,
+      "solver_output": {
+        "predicted": "workday.hcm:apiResource:CompensationStructureDataExposure:v1",
+        "top1_correct": false,
+        "note": "regen2_attempt"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 341,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-15",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P2"
+    ],
+    "user_prompt": "Our finance team is struggling to reconcile payroll data across multiple departments because we can't easily track how individual pay rates align with our established pay bands and job levels. We need to ensure our payment structures remain competitive and compliant with market rates, but right now we're manually cross-referencing spreadsheets which is error-prone and time-consuming. Can you help us integrate our payroll processes so we have a single source of truth for all employee earnings and payment configurations?",
+    "expected_ordIds": [
+      "sap.sf:apiResource:CompensationAndSalaryManagement:v1"
+    ],
+    "distractor_ordId": "sap.sf:apiResource:EmployeeCompensationManagement:v1"
+  },
+  "_regen2_note": "Prompt replaced in regen2 pass. angle=situation, attempt=1."
+}

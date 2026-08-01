@@ -1,0 +1,33 @@
+{
+  "case_id": "oos-01",
+  "mode": "out_of_scope",
+  "difficulty": "hard",
+  "topic": "Supplier risk scoring using external market data",
+  "timestamp": "2026-06-08T13:00:14.152487+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need a way to automatically flag suppliers whose credit ratings or financial health metrics have deteriorated in the past 90 days so we can proactively assess whether to reduce order volumes or increase payment terms before we hit a cash flow problem."
+      },
+      "generator_tokens": 143,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": false
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": false,\n  \"accepted\": true,\n  \"reason\": null\n}\n```\n\n**Rationale:**\n- **C1 (Real enterprise ask):** TRUE. Supplier financial health monitoring and proactive risk management are genuine procurement/finance concerns.\n- **C2 (Genuinely absent capability):** T",
+      "judge_tokens": 421,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "oos-01",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "difficulty": "hard",
+    "topic": "Supplier risk scoring using external market data",
+    "user_prompt": "We need a way to automatically flag suppliers whose credit ratings or financial health metrics have deteriorated in the past 90 days so we can proactively assess whether to reduce order volumes or increase payment terms before we hit a cash flow problem.",
+    "expected_ordIds": []
+  }
+}

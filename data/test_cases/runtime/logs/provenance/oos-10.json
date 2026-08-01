@@ -1,0 +1,48 @@
+{
+  "case_id": "oos-10",
+  "mode": "out_of_scope",
+  "difficulty": "hard",
+  "topic": "Knowledge management and internal wiki search",
+  "timestamp": "2026-06-08T13:00:32.568325+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "Our procurement team spends hours every week manually cross-referencing vendor contracts in our wiki with active POs in SAP to check for compliance with negotiated terms, and we need a way to automatically flag when a purchase order violates agreed-upon pricing tiers or payment terms without having to pull data from both systems separately."
+      },
+      "generator_tokens": 158,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": false
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": false,\n  \"accepted\": false,\n  \"reason\": \"Request is a legitimate cross-system integration/automation problem but falls under standard enterprise workflow automation (API/middleware layer) rather than a synthetic capability gap.\"\n}\n```",
+      "judge_tokens": 287,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "We need a way to automatically flag outdated information in our internal wiki when referenced policies or procedures are updated in our source systems\u2014right now our procurement team keeps making decisions based on old vendor qualification standards because the wiki doesn't sync with our master policy database."
+      },
+      "generator_tokens": 157,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": false
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": false,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```\n\n**Explanation:**\n\n- **C1 (True)**: This is a realistic enterprise problem. Real organizations struggle with wiki staleness and policy drift across distributed systems.\n\n- **C2 (True)**: The capability is g",
+      "judge_tokens": 465,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "oos-10",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "difficulty": "hard",
+    "topic": "Knowledge management and internal wiki search",
+    "user_prompt": "We need a way to automatically flag outdated information in our internal wiki when referenced policies or procedures are updated in our source systems\u2014right now our procurement team keeps making decisions based on old vendor qualification standards because the wiki doesn't sync with our master policy database.",
+    "expected_ordIds": []
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "case_id": "dy-07",
+  "mode": "dynamic",
+  "query_class": "single_intent",
+  "problem_type": "P1",
+  "selected_resources": [
+    "corp.itsm:apiResource:VendorProcurementOrderAPI:v1"
+  ],
+  "distractor": "sap.crm:apiResource:ProcurementVendorOrderManagement:v1",
+  "timestamp": "2026-06-08T13:19:34.463649+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to process a new order from our supplier for raw materials, but I'm not sure if I should submit this through our vendor management system or our purchasing platform. Can someone help me get this sourced and into our system so we can track it?"
+      },
+      "generator_tokens": 180,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:VendorProcurementOrderAPI:v1",
+        "top1_correct": true,
+        "top5": [
+          "corp.itsm:apiResource:VendorProcurementOrderAPI:v1",
+          "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+          "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+          "my.mes:apiResource:SupplierProcurementOrderManagement:v1",
+          "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1"
+        ],
+        "note": "retro_certified"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 299,
+      "outcome": "ACCEPTED",
+      "_retro_verdict": "TOO_EASY"
+    },
+    {
+      "iteration": 2,
+      "angle": "situation",
+      "generator_output": {
+        "user_prompt": "Our supply chain team is struggling to coordinate with multiple suppliers for raw materials, and we're losing track of which sourcing requests have been approved, which are pending fulfillment, and which have already been delivered. Right now we're managing everything through email and spreadsheets, which creates delays and visibility gaps across our operations. We need a centralized way to track the entire lifecycle of our supplier relationships and material requests from initial sourcing through final receipt."
+      },
+      "generator_tokens": 263,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:VendorProcurementOrderAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 3,
+      "angle": "outcome",
+      "generator_output": {
+        "user_prompt": "We need to ensure our supply chain partners can deliver the materials we need on time and at the right cost. Our goal is to have complete visibility into what we've committed to buy from each supplier and be confident that those commitments will be fulfilled according to our specifications."
+      },
+      "generator_tokens": 233,
+      "solver_output": {
+        "predicted": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+        "top1_correct": false,
+        "note": "regen2_attempt"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 301,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-07",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "We need to ensure our supply chain partners can deliver the materials we need on time and at the right cost. Our goal is to have complete visibility into what we've committed to buy from each supplier and be confident that those commitments will be fulfilled according to our specifications.",
+    "expected_ordIds": [
+      "corp.itsm:apiResource:VendorProcurementOrderAPI:v1"
+    ],
+    "distractor_ordId": "sap.crm:apiResource:ProcurementVendorOrderManagement:v1"
+  },
+  "_regen2_note": "Prompt replaced in regen2 pass. angle=outcome, attempt=2."
+}

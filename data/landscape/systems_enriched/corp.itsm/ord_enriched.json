@@ -1,0 +1,1261 @@
+{
+  "openResourceDiscovery": "1.16",
+  "perspective": "system-instance",
+  "packages": [
+    {
+      "ordId": "corp.itsm:package:Core:v1",
+      "title": "corp.itsm Core Package",
+      "shortDescription": "Core resources for the corp.itsm system in the benchmark landscape.",
+      "version": "1.0.0",
+      "vendor": "corp:vendor:Default:"
+    }
+  ],
+  "agents": [
+    {
+      "ordId": "corp.itsm:agent:IncidentRootCauseAnalyzer:v1",
+      "title": "Incident Root Cause Analysis Agent",
+      "shortDescription": "Autonomously analyzes service tickets to identify root causes and recommend preventive actions.",
+      "description": "This agent automatically processes high-priority service tickets to perform root cause analysis by correlating incident patterns, examining related IT equipment status, and linking to historical change requests. It generates diagnostic reports and suggests preventive measures to reduce ticket recurrence, enabling faster resolution and improved service quality.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:ServiceTicket:v1",
+        "sap.odm:entityType:ITEquipment:v1",
+        "sap.odm:entityType:ChangeRequest:v1"
+      ],
+      "lineOfBusiness": [
+        "IT Service Management"
+      ],
+      "tags": [
+        "incident-analysis",
+        "root-cause",
+        "automation",
+        "diagnostics"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:agent:AssetProvisioningOrchestrator:v1",
+      "title": "Asset Provisioning Orchestrator",
+      "shortDescription": "Automates and coordinates IT asset lifecycle provisioning across engineering changes.",
+      "description": "Monitors engineering change requests and automatically processes material requisitions and product item allocations. Coordinates asset provisioning workflows by orchestrating material movements, tracking product item assignments to change orders, and automating fulfillment notifications. Processes provisioning requests in real-time to ensure timely asset availability for organizational change initiatives.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "lineOfBusiness": [
+        "it-service-management"
+      ],
+      "tags": [
+        "asset-lifecycle",
+        "change-automation",
+        "provisioning-orchestration"
+      ],
+      "industry": [],
+      "capabilities": [
+        "assess-engineering-change",
+        "evaluate-material-impact",
+        "allocate-materials",
+        "coordinate-infrastructure",
+        "allocate-equipment",
+        "orchestrate-provisioning",
+        "coordinate-equipment-assignment",
+        "orchestrate-asset-provisioning"
+      ],
+      "useCases": [
+        "Supply chain teams ensure material availability aligned with change schedules.",
+        "Operations manager confirms machines and production orders are allocated and ready for the new product run.",
+        "Asset team provisions engineering change-related equipment and tools to production floor.",
+        "Inventory managers track asset allocation across multiple transition waves.",
+        "Operations directors automate coordination of physical assets for production transitions.",
+        "Manufacturing operations team understands how product redesigns affect asset provisioning workflows.",
+        "Supply chain validates material sourcing compatibility with engineering changes before production release."
+      ],
+      "processNext": [
+        "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductTransitionSafetyCoordination_v1",
+          "groupTypeId": "bpmn",
+          "stepId": "s1"
+        },
+        {
+          "groupId": "proc_ProductionTransitionWorkforce_v1",
+          "groupTypeId": "cmmn"
+        },
+        {
+          "groupId": "proc_ProductComplianceWorkforceSafety_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    {
+      "ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+      "title": "Change Automation Orchestrator",
+      "shortDescription": "Automates and coordinates engineering changes, material updates, and product item deployments.",
+      "description": "Monitors engineering change requests and coordinates their execution across material inventories and product item configurations. Automates provisioning workflows by processing change approvals and synchronizing updates to related materials and product items. Orchestrates multi-step change operations to ensure consistent delivery across the ITSM ecosystem.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "lineOfBusiness": [
+        "IT Service Management"
+      ],
+      "tags": [
+        "change-automation",
+        "orchestration",
+        "provisioning"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:agent:IncidentSafetyCoordinator:v1",
+      "title": "Incident Safety Coordinator",
+      "shortDescription": "Automates safety incident detection and coordinates response workflows across ITSM.",
+      "description": "Monitors incoming service tickets and hazardous substance reports to identify and escalate safety-related incidents. Coordinates automated workflows that route critical safety incidents to appropriate teams, tracks incident lifecycle through resolution, and processes compliance notifications. Ensures timely response and proper documentation of all safety-related events within the IT service management infrastructure.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:HazardousSubstance:v1",
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "lineOfBusiness": [
+        "IT_Operations"
+      ],
+      "tags": [
+        "incident-management",
+        "safety-automation",
+        "compliance-coordination"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1",
+      "title": "Occupational Safety Incident Coordinator",
+      "shortDescription": "Monitors and coordinates safety incidents with hazardous substance involvement for compliance.",
+      "description": "Automates the detection and escalation of occupational safety incidents involving hazardous substances, coordinating response workflows across ITSM ticketing systems. Processes incident classification, triggers compliance notifications, and coordinates remediation actions while maintaining audit trails for regulatory requirements.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:HazardousSubstance:v1",
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "lineOfBusiness": [
+        "Human Capital Management"
+      ],
+      "tags": [
+        "occupational-safety",
+        "incident-management",
+        "compliance-monitoring"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:agent:VendorContractComplianceOrchestrator:v1",
+      "title": "Vendor Contract Compliance Orchestrator",
+      "shortDescription": "Automates vendor contract and purchase order compliance monitoring across procurement lifecycle.",
+      "description": "Monitors active vendor contracts and purchase orders to enforce compliance requirements, automates renewal notifications and expiration alerts, and coordinates cross-functional approvals for contract modifications. Processes contract performance metrics against vendor SLAs and escalates non-compliance issues to procurement teams for remediation.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Contract:v1",
+        "sap.odm:entityType:PurchaseOrder:v1",
+        "sap.odm:entityType:Vendor:v1"
+      ],
+      "lineOfBusiness": [
+        "procurement"
+      ],
+      "tags": [
+        "vendor-management",
+        "contract-compliance",
+        "automation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:agent:ChangeReleaseCoordinator:v1",
+      "title": "Change Release Coordinator",
+      "shortDescription": "Automates and coordinates product releases across engineering changes and inventory.",
+      "description": "Monitors engineering changes and automatically coordinates product item releases with material inventory updates. Processes change approvals and orchestrates notifications to sales teams, ensuring product lifecycle transitions are synchronized across service management and procurement workflows.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "lineOfBusiness": [
+        "Sales"
+      ],
+      "tags": [
+        "product-lifecycle",
+        "sales-coordination",
+        "change-management"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:agent:AccessProvisioningOrchestrator:v1",
+      "title": "Access Provisioning Orchestrator",
+      "shortDescription": "Automates and coordinates access requests across organizational changes and asset allocations.",
+      "description": "Monitors access provisioning workflows triggered by engineering changes, material assignments, and product item deployments. Automates role-based access provisioning to ensure employees receive appropriate system permissions during organizational restructuring. Coordinates compensation system access integration with personnel changes to maintain payroll continuity.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "lineOfBusiness": [
+        "human-capital-management"
+      ],
+      "tags": [
+        "compensation-automation",
+        "organizational-change-management",
+        "payroll-integration"
+      ],
+      "industry": []
+    }
+  ],
+  "apiResources": [
+    {
+      "ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+      "title": "Change Request Approval Workflow API",
+      "shortDescription": "REST API for managing change request approvals, scheduling, and impact assessment.",
+      "description": "Exposes change request lifecycle management including approval routing, scheduling validation, and rollback planning. Enables IT governance teams to automate change controls and track approval chains across dependent service tickets and IT equipment impacts.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/change-requests/approvals.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:ChangeRequest:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ServiceTicket:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ITEquipment:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "IT Service Management"
+      ],
+      "tags": [
+        "change-management",
+        "approval-workflow",
+        "governance",
+        "risk-assessment"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+      "title": "Campaign Access Management API",
+      "shortDescription": "Manages provisioning and access control for campaign-related customer accounts.",
+      "description": "Exposes endpoints to retrieve and manage campaign assignments linked to customer accounts, enabling IT teams to provision access rights and synchronize account permissions across service requests. Provides real-time access to campaign-customer relationships for compliance and audit workflows.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/campaign-access-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "it-service-management"
+      ],
+      "tags": [
+        "access-provisioning",
+        "campaign-management",
+        "customer-accounts"
+      ],
+      "industry": [],
+      "capabilities": [
+        "grant-sales-permissions",
+        "manage-communication-channels",
+        "manage-campaign-access",
+        "capture-service-request",
+        "configure-audience-segmentation",
+        "validate-customer-account-permissions",
+        "control-launch-visibility",
+        "control-campaign-permissions",
+        "provision-campaign-access",
+        "authorize-campaign-access"
+      ],
+      "useCases": [
+        "Campaign administrators segment recruitment messaging by geographic region, skill level, and experience matching product change requirements",
+        "Link campaign initiatives to IT service requests.",
+        "Campaign manager enables customer segment targeting for new product promotion",
+        "Marketing operations grants HR recruiting team secure access to campaign management system for talent acquisition",
+        "IT service management enforces role-based access controls to ensure recruitment campaigns reach appropriate customer account segments",
+        "Log and track service requests related to campaign access and system provisioning.",
+        "Regional sales lead receives access to campaign materials and customer contact lists",
+        "Marketing director activates go-live permissions for sales teams and campaign channels"
+      ],
+      "processNext": [
+        "emarsys.cx:dataProduct:CampaignPerformanceAnalytics:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_integrated_service_change_mgmt_v1",
+          "groupTypeId": "bpmn"
+        },
+        {
+          "groupId": "proc_product_launch_compliance_v1",
+          "groupTypeId": "cmmn"
+        },
+        {
+          "groupId": "proc_ChangeTalentIntegration_v1",
+          "groupTypeId": "cmmn",
+          "stepPosition": 7,
+          "businessPhase": "campaign-execution"
+        }
+      ]
+    },
+    {
+      "ordId": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+      "title": "Service Ticket and Order Management API",
+      "shortDescription": "Retrieves and manages customer service tickets and orders with status tracking.",
+      "description": "Exposes service ticket and customer order data through a comprehensive REST interface. Manages ticket lifecycle, retrieves order details, and provides access to linked customer account information for integrated ITSM workflows.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "https://itsm.corp.local/api/v1/service-ticket-order-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "itsm-operations"
+      ],
+      "tags": [
+        "service-management",
+        "order-fulfillment",
+        "ticket-lifecycle"
+      ],
+      "industry": [],
+      "capabilities": [
+        "receive-log-orders",
+        "track-service-tickets",
+        "manage-customer-accounts"
+      ],
+      "useCases": [
+        "Service desk receives customer order for materials and logs it as a tracked service ticket.",
+        "Order status visibility across customer accounts and fulfillment teams.",
+        "Centralized repository for all service requests tied to customer relationships."
+      ],
+      "processNext": [
+        "emarsys.cx:apiResource:ComplianceRiskAssessmentAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_supplychain_risk_compliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    {
+      "ordId": "corp.itsm:apiResource:CustomerProvisioningOrderAPI:v1",
+      "title": "Customer Provisioning Order API",
+      "shortDescription": "Exposes and manages customer account orders for ITSM provisioning workflows.",
+      "description": "This API retrieves and manages customer account and order data to support IT service provisioning and access management operations. It provides endpoints to query customer orders, validate account eligibility, and track provisioning status throughout the service lifecycle. The resource enables seamless integration between corporate ITSM and customer data systems.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/customer-provisioning-order.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "it-service-management"
+      ],
+      "tags": [
+        "provisioning",
+        "customer-orders",
+        "account-management"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+      "title": "Hazardous Substance Compliance API",
+      "shortDescription": "Exposes hazardous substance inventory and regulatory compliance data for IT asset management.",
+      "description": "Provides access to hazardous substance records associated with IT assets and infrastructure components. Manages substance classifications, storage locations, and compliance documentation. Retrieves regulatory requirements and audit trails for environmental and occupational safety standards.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:HazardousSubstance:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/hazardous-substance-compliance.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "operations"
+      ],
+      "tags": [
+        "compliance",
+        "asset-management",
+        "environmental-safety"
+      ],
+      "industry": [],
+      "capabilities": [
+        "assess-material-safety",
+        "verify-substance-regulations",
+        "evaluate-hazardous-materials",
+        "validate-material-safety",
+        "evaluate-compliance",
+        "assess-regulatory-alignment"
+      ],
+      "useCases": [
+        "Validate that all substances in use meet occupational safety standards",
+        "Product teams verify materials comply with environmental and safety regulations before production begins.",
+        "Supply chain ensures all incoming materials meet corporate hazard thresholds.",
+        "Assess exposure risks and identify required remediation steps",
+        "Compliance officers confirm hazardous substance documentation is complete and accessible.",
+        "Determine hazardous material compliance status against environmental regulations"
+      ],
+      "processNext": [
+        "my.mes:agent:BillOfMaterialsComplianceValidator:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductComplianceManufacturing_v1",
+          "groupTypeId": "bpmn"
+        },
+        {
+          "groupId": "proc_SafetyComplianceOrchestration_v1",
+          "groupTypeId": "cmmn",
+          "stepId": "s2",
+          "sequencePosition": 2
+        }
+      ]
+    },
+    {
+      "ordId": "corp.itsm:apiResource:VendorCampaignAccountRetrievalAPI:v1",
+      "title": "Vendor Campaign Account Retrieval API",
+      "shortDescription": "Retrieves and manages vendor campaign data linked to customer accounts.",
+      "description": "This API exposes campaign sourcing information and customer account details for procurement workflows. It provides access to vendor campaign records, account provisioning status, and sourcing relationships to support vendor management and campaign tracking. Enables seamless integration with procurement systems for campaign-driven vendor account operations.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/vendor-campaign-accounts.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "sourcing",
+        "campaign-management",
+        "vendor-accounts"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:apiResource:CampaignCustomerAccountLifecycleAPI:v1",
+      "title": "Campaign Customer Account Lifecycle API",
+      "shortDescription": "Manages campaign-driven customer account provisioning and lifecycle operations.",
+      "description": "Exposes campaign and customer account entities to retrieve, provision, and manage customer relationships within IT service delivery workflows. Provides access to account lifecycle data including provisioning status, campaign associations, and account attribute modifications for integrated service management processes.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/campaign-customer-account-lifecycle.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "IT Service Management"
+      ],
+      "tags": [
+        "campaign-management",
+        "account-provisioning",
+        "service-lifecycle"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:apiResource:VendorProcurementOrderAPI:v1",
+      "title": "Vendor Procurement Order API",
+      "shortDescription": "Manages vendor sourcing and procurement order lifecycle operations.",
+      "description": "Provides access to vendor master data and purchase order management capabilities, enabling automated retrieval and creation of procurement orders. Exposes vendor relationship information and purchase order details to streamline IT asset acquisition and service contract vendor selection processes.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:PurchaseOrder:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/vendor-procurement-orders.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "vendor-management",
+        "purchase-orders",
+        "asset-sourcing"
+      ],
+      "industry": [],
+      "capabilities": [
+        "execute-procurement-orders",
+        "manage-vendor-orders",
+        "track-purchase-fulfillment"
+      ],
+      "useCases": [
+        "Procurement teams issue purchase orders to qualified vendors for campaign materials",
+        "Buyers maintain purchase order lifecycle from creation through delivery receipt"
+      ],
+      "processNext": [
+        "sap.ariba:apiResource:SourceingCampaignAndAccountManagementAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_supply_production_compliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    {
+      "ordId": "corp.itsm:apiResource:AssetChangeLifecycleAPI:v1",
+      "title": "Asset Change Lifecycle API",
+      "shortDescription": "Exposes engineering changes and product items for workforce asset management.",
+      "description": "This API retrieves and manages engineering change records and product item configurations tied to IT asset lifecycles. It provides access to change tracking and asset classification data essential for workforce planning and organizational structure alignment. The API enables downstream systems to query asset modifications and inventory status for HR-driven workforce provisioning workflows.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:EngineeringChange:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductItem:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/asset-change-lifecycle.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "human-resources"
+      ],
+      "tags": [
+        "organizational-structure",
+        "job-classification",
+        "workforce-planning"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:apiResource:EmployeeTimeOffProvisioningAPI:v1",
+      "title": "Employee Time Off Provisioning API",
+      "shortDescription": "Manages employee time-off requests and absence records for service continuity planning.",
+      "description": "Exposes employee time-off data and absence schedules to enable service teams to coordinate resource availability and manage staffing during planned absences. Retrieves current and historical time-off records to support incident response coordination and access provisioning workflows. Provides access to employee absence information for capacity planning and service level agreement management.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:TimeOff:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/employee-timeoff-provisioning.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Resources"
+      ],
+      "tags": [
+        "employee-management",
+        "absence-tracking",
+        "resource-planning"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1",
+      "title": "Campaign Customer Provisioning API",
+      "shortDescription": "Exposes campaign and customer account data for ITSM provisioning workflows.",
+      "description": "This API retrieves and manages campaign configurations and customer account records to support service provisioning and customer segmentation within IT service management operations. It provides access to campaign attributes and customer account details, enabling seamless integration between campaign management and provisioning systems.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/campaign-customer-provisioning.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "product-lifecycle-management"
+      ],
+      "tags": [
+        "product-configuration",
+        "campaign-management",
+        "customer-segmentation"
+      ],
+      "industry": [],
+      "capabilities": [
+        "activate-campaigns",
+        "activate-customer-accounts",
+        "provision-campaign-customers",
+        "manage-campaign-lifecycle",
+        "provision-customers"
+      ],
+      "useCases": [
+        "Sales operations launch new product campaigns with customer account provisioning",
+        "Marketing establishes customer segments for targeted product launch communications.",
+        "Sales teams activate new customer relationships for the upcoming product release campaign.",
+        "Marketing teams establish campaign engagement channels across customer segments"
+      ],
+      "processNext": [
+        "sap.ariba:apiResource:SourcedCampaignAndVendorManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_supply_production_compliance_v1",
+          "groupTypeId": "bpmn"
+        },
+        {
+          "groupId": "proc_product_launch_workforce_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    {
+      "ordId": "corp.itsm:apiResource:AssetProvisioningIntegrationAPI:v1",
+      "title": "Asset Provisioning Integration API",
+      "shortDescription": "Manages equipment provisioning requests linked to service tickets and change approvals.",
+      "description": "Exposes endpoints to retrieve and manage IT equipment provisioning workflows, integrating service ticket requirements with change request approvals. Provides access to asset allocation, vendor assignments, and provisioning status updates across the ITSM ecosystem.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:ChangeRequest:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ITEquipment:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ServiceTicket:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/asset-provisioning.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "procurement"
+      ],
+      "tags": [
+        "vendor-management",
+        "service-operations",
+        "equipment-provisioning"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:apiResource:ProcurementVendorManagementAPI:v1",
+      "title": "Procurement Vendor Management API",
+      "shortDescription": "Exposes purchase orders and vendor data for ITSM procurement workflows.",
+      "description": "Retrieves and manages purchase order records and vendor information to support service procurement operations. Provides access to vendor profiles, order status, and procurement lifecycle data for integration with external systems and dashboards. Enables real-time synchronization of purchase orders and vendor master data across enterprise service management platforms.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:PurchaseOrder:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/procurement-vendor-management-openapi.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Operations"
+      ],
+      "tags": [
+        "procurement",
+        "vendor-management",
+        "purchase-orders"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1",
+      "title": "Safety Compliance Customer Management API",
+      "shortDescription": "Manages customer accounts and safety campaigns with compliance tracking integration.",
+      "description": "Exposes customer account records and safety campaign data to retrieve compliance inspection status, manage customer engagement in safety programs, and provide access to historical campaign performance metrics. Integrates service tickets with customer-level safety requirements for coordinated incident response and regulatory reporting.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/safety-compliance-customer.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Environment, Health & Safety"
+      ],
+      "tags": [
+        "safety-inspection",
+        "compliance-tracking",
+        "customer-engagement"
+      ],
+      "industry": [],
+      "capabilities": [
+        "verify-customer-compliance",
+        "map-campaign-to-safety",
+        "assess-safety-compliance",
+        "evaluate-customer-safety-risk",
+        "validate-account-obligations",
+        "audit-campaign-safety",
+        "identify-compliance-gaps"
+      ],
+      "useCases": [
+        "Compliance teams validate campaign messaging against regulatory standards.",
+        "Validate campaign messaging alignment with customer safety requirements",
+        "Ensure customer contractual safety commitments are met before campaign execution",
+        "Risk managers assess environmental and health hazards in customer accounts.",
+        "Cross-reference customer account status against compliance risk assessments",
+        "Safety officers review compliance requirements for customer-facing campaigns."
+      ],
+      "processNext": [
+        "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProcurementSafetyCompliance_v1",
+          "groupTypeId": "cmmn",
+          "role": "evaluation_target"
+        },
+        {
+          "groupId": "proc_SafetyComplianceOrchestration_v1",
+          "groupTypeId": "cmmn",
+          "stepId": "s4",
+          "sequencePosition": 4
+        }
+      ]
+    }
+  ],
+  "dataProducts": [
+    {
+      "ordId": "corp.itsm:dataProduct:ServiceHealthMetrics:v1",
+      "title": "Service Health Metrics",
+      "shortDescription": "Aggregated ITSM performance analytics tracking ticket resolution times, equipment availability, and change success rates.",
+      "description": "This analytical data product aggregates key performance indicators across the ITSM domain, including mean time to resolution (MTTR) for service tickets, equipment uptime percentages, and change request success rates. It enables operations teams and service managers to monitor service quality trends, identify bottlenecks in request fulfillment, and optimize resource allocation for incident response and change management processes.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "type": "derived",
+      "category": "analytical",
+      "outputPorts": [
+        {
+          "ordId": "corp.itsm:apiResource:ServiceHealthMetricsAPI:v1"
+        }
+      ],
+      "entityTypes": [
+        "sap.odm:entityType:ServiceTicket:v1",
+        "sap.odm:entityType:ITEquipment:v1",
+        "sap.odm:entityType:ChangeRequest:v1"
+      ],
+      "lineOfBusiness": [
+        "IT Service Management"
+      ],
+      "tags": [
+        "performance-analytics",
+        "kpi-metrics",
+        "operational-intelligence",
+        "service-quality"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:dataProduct:IncidentComplianceAnalytics:v1",
+      "title": "Incident Compliance Analytics",
+      "shortDescription": "Aggregates incident and safety incident data for compliance reporting and trend analysis.",
+      "description": "Summarizes incident resolution metrics, safety incident patterns, and regulatory compliance metrics across the enterprise. Provides aggregated dashboards and trend analysis for incident management performance, enabling compliance tracking and resolution efficiency monitoring.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "corp.itsm:apiResource:IncidentAnalyticsReportingAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "customer-service"
+      ],
+      "tags": [
+        "incident-analytics",
+        "resolution-metrics",
+        "compliance-tracking"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:dataProduct:ProcurementOperationalMetrics:v1",
+      "title": "Procurement Operational Metrics",
+      "shortDescription": "Aggregates service tickets, change requests, and IT equipment data for procurement efficiency analysis.",
+      "description": "Aggregates and summarizes operational metrics across service tickets, change requests, and IT equipment lifecycle data to provide comprehensive procurement efficiency insights. Synthesizes performance analytics on request fulfillment cycles, asset provisioning timelines, and change approval workflows to enable data-driven procurement optimization and resource planning decisions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:ChangeRequest:v1",
+        "sap.odm:entityType:ITEquipment:v1",
+        "sap.odm:entityType:ServiceTicket:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "corp.itsm:apiResource:ProcurementMetricsReportingAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "procurement"
+      ],
+      "tags": [
+        "operational-metrics",
+        "performance-analytics",
+        "procurement-efficiency"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:dataProduct:IncidentEngagementReliability:v1",
+      "title": "Incident Engagement Reliability Analytics",
+      "shortDescription": "Aggregates incident and safety incident data to measure engagement reliability and compliance metrics.",
+      "description": "Summarizes operational patterns across Incident and SafetyIncident entities to provide metrics on service delivery reliability and customer engagement impact. Provides analytical insights into incident resolution trends, safety compliance adherence, and engagement outcomes to support continuous improvement and risk management initiatives.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "corp.itsm:apiResource:IncidentReliabilityMetricsAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "customer-experience"
+      ],
+      "tags": [
+        "incident-analytics",
+        "engagement-reliability",
+        "compliance-monitoring"
+      ],
+      "industry": [],
+      "capabilities": [
+        "monitor-vendor-incidents",
+        "track-safety-metrics",
+        "escalate-compliance-issues"
+      ],
+      "useCases": [
+        "Quality teams monitor supplier incidents during purchase order fulfillment.",
+        "Supply chain managers identify vendors with escalating safety or quality issues."
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductLifecycleCompliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    {
+      "ordId": "corp.itsm:dataProduct:SafetyIncidentMetrics:v1",
+      "title": "Safety Incident Metrics",
+      "shortDescription": "Aggregates and analyzes safety incidents with compliance tracking.",
+      "description": "Summarizes safety incident patterns and incident data to provide comprehensive metrics on organizational safety performance and regulatory compliance. Delivers real-time dashboards and historical trend analysis across all safety-related incidents and standard incident records.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "corp.itsm:apiResource:SafetyMetricsExportAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "product-lifecycle-management"
+      ],
+      "tags": [
+        "safety-analytics",
+        "incident-management",
+        "compliance-monitoring"
+      ],
+      "industry": [],
+      "capabilities": [
+        "collect-safety-metrics",
+        "aggregate-incident-data",
+        "establish-safety-baseline"
+      ],
+      "useCases": [
+        "Risk management team establishes pre-transition safety baseline to measure post-transition safety performance.",
+        "Compliance officer validates incident trending and determines if safety protocols require update for new materials."
+      ],
+      "processNext": [
+        "sap.ariba:apiResource:VendorServiceManagementAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductTransitionSafetyCoordination_v1",
+          "groupTypeId": "bpmn",
+          "stepId": "s4"
+        }
+      ]
+    },
+    {
+      "ordId": "corp.itsm:dataProduct:VendorSpendIntelligence:v1",
+      "title": "Vendor Spend Intelligence",
+      "shortDescription": "Aggregates contract, purchase order, and vendor performance data for procurement analytics.",
+      "description": "This data product synthesizes Contract, PurchaseOrder, and Vendor information to provide comprehensive spend visibility and vendor performance insights. It summarizes procurement metrics including contract utilization, order frequency, and vendor reliability trends to enable data-driven sourcing decisions and supplier relationship optimization.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Contract:v1",
+        "sap.odm:entityType:PurchaseOrder:v1",
+        "sap.odm:entityType:Vendor:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "corp.itsm:apiResource:VendorSpendAnalyticsAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "spend-analytics",
+        "vendor-performance",
+        "procurement-metrics",
+        "sourcing-intelligence"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "corp.itsm:dataProduct:CustomerEngagementServiceMetrics:v1",
+      "title": "Customer Engagement Service Metrics",
+      "shortDescription": "Aggregates service performance and engagement patterns across customer accounts and segments.",
+      "description": "This data product summarizes service ticket resolution metrics, customer satisfaction trends, and engagement reliability across all customer segments and accounts. It provides analytics on campaign-driven service requests, customer account utilization patterns, and segment-level performance indicators to enable data-driven service optimization and customer retention strategies.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "corp.itsm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Campaign:v1",
+        "sap.odm:entityType:CustomerAccount:v1",
+        "sap.odm:entityType:CustomerSegment:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "corp.itsm:apiResource:CustomerEngagementMetricsAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "service-management"
+      ],
+      "tags": [
+        "customer-analytics",
+        "service-performance",
+        "engagement-tracking"
+      ],
+      "industry": []
+    }
+  ]
+}

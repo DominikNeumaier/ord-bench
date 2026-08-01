@@ -1,0 +1,63 @@
+{
+  "case_id": "sa-06",
+  "mode": "skill_adjusted",
+  "skill_id": "proc_009",
+  "gap_resources": [
+    "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1",
+    "corp.itsm:dataProduct:SafetyIncidentMetrics:v1"
+  ],
+  "timestamp": "2026-06-08T12:49:52.817297+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to establish a comprehensive procurement and order fulfillment workflow that starts with capturing customer requests, then evaluates vendor and material compliance risks, sources suitable suppliers, and validates supply chain continuity to ensure we can meet delivery commitments. As part of this process, we also need to track how our procurement team's workload and performance metrics impact labor costs and compensation planning. Additionally, please include monitoring and analysis of any safety incidents that occur during the procurement and fulfillment operations, ensuring we maintain compliance with all safety regulations and can identify trends that might affect our supply chain partners.",
+        "variant": 0
+      },
+      "generator_tokens": 321,
+      "solver_output": {
+        "predicted": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+        "correct": false
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": false,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": false,\n  \"C3\": true,\n  \"accepted\": false,\n  \"reason\": \"Gap dependencies are explicitly stated in the user prompt rather than being implied, violating the Skill-Adjusted case definition.\"\n}\n```",
+      "judge_tokens": 425,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "We need to establish a complete acquisition and delivery system that starts with gathering customer orders, then assesses both supplier and product safety standards, identifies appropriate sourcing partners, and ensures our logistics network remains uninterrupted. The workflow should also track how this impacts our team's compensation structures given the increased procurement workload, and we'd like visibility into any workplace safety events that occur during the fulfillment process so we can maintain our compliance records. Can you design this entire sourcing-to-delivery journey with all these considerations built in?",
+        "variant": 1
+      },
+      "generator_tokens": 326,
+      "solver_output": {
+        "predicted": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+        "correct": false
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 391,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "sa-06",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to establish a complete acquisition and delivery system that starts with gathering customer orders, then assesses both supplier and product safety standards, identifies appropriate sourcing partners, and ensures our logistics network remains uninterrupted. The workflow should also track how this impacts our team's compensation structures given the increased procurement workload, and we'd like visibility into any workplace safety events that occur during the fulfillment process so we can maintain our compliance records. Can you design this entire sourcing-to-delivery journey with all these considerations built in?",
+    "expected_skill_id": "proc_009",
+    "expected_gap_ordIds": [
+      "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1",
+      "corp.itsm:dataProduct:SafetyIncidentMetrics:v1"
+    ]
+  }
+}

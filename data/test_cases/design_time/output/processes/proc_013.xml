@@ -1,0 +1,69 @@
+<process id="proc_ProductTransitionSafetyCoordination_v1" type="bpmn">
+  
+  <step id="s1" 
+        label="Assess Engineering Change Impact"
+        description="Evaluate material and product changes to determine safety and operational implications before transition execution."
+        ordId="corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+        capability="assess-engineering-change"
+        useCase="Manufacturing operations team needs to understand how product redesigns affect existing asset provisioning workflows and material sourcing."/>
+  
+  <step id="s2" 
+        label="Evaluate Operational Capability for Transition"
+        description="Analyze production capacity, material availability, and resource readiness to support the proposed product and material changes."
+        ordId="sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+        capability="analyze-transition-capability"
+        useCase="Operations planners require cross-functional impact data on engineering changes before committing manufacturing resources."/>
+  
+  <step id="s3" 
+        label="Coordinate Safety Risk Assessment"
+        description="Identify and classify safety hazards related to new materials or process changes triggered by the engineering transition."
+        ordId="corp.itsm:agent:IncidentSafetyCoordinator:v1"
+        capability="assess-safety-hazard"
+        useCase="Safety compliance officer must validate hazardous substance handling protocols and incident prevention measures for the new product configuration."/>
+  
+  <step id="s4" 
+        label="Collect Safety Performance Metrics"
+        description="Aggregate baseline safety incident data and metrics to establish pre-transition safety baseline for comparison."
+        ordId="corp.itsm:dataProduct:SafetyIncidentMetrics:v1"
+        capability="collect-safety-metrics"
+        useCase="Risk management team requires historical safety incident data to establish benchmarks and monitor for regression post-transition."/>
+  
+  <step id="s5" 
+        label="Validate Vendor Service Readiness"
+        description="Confirm that contracted vendors and external service providers can support the new IT equipment, change requests, and service tickets required for transition."
+        ordId="sap.ariba:apiResource:VendorServiceManagementAPI:v1"
+        capability="validate-vendor-service"
+        useCase="Procurement team needs to verify vendor SLAs and service capacity align with the transition timeline and equipment requirements."/>
+  
+  <step id="s6" 
+        label="Plan Sales Team Capacity and Availability"
+        description="Coordinate sales workforce time off and capacity allocation to ensure coverage during product transition announcement and customer communication phase."
+        ordId="emarsys.cx:apiResource:SalesCapacityAndTimeOffManagementAPI:v1"
+        capability="plan-sales-capacity"
+        useCase="Sales leadership must schedule employee availability and manage time-off requests to maintain customer contact coverage during transition period."/>
+  
+  <step id="s7" 
+        label="Project Sales Opportunity Impact"
+        description="Forecast revenue and opportunity pipeline changes resulting from the product transition using historical sales and customer data."
+        ordId="emarsys.cx:dataProduct:OpportunitySalesForecasting:v1"
+        capability="forecast-sales-impact"
+        useCase="Finance and sales leadership need demand forecasts to model revenue impact and adjust quarterly targets based on product transition."/>
+  
+  <step id="s8" 
+        label="Monitor Production Quality During Transition"
+        description="Establish quality inspection benchmarks and workforce performance targets to detect anomalies as manufacturing executes the product transition."
+        ordId="sap.ehs:dataProduct:ProductionQualityWorkforcePerformanceAnalytics:v1"
+        capability="monitor-production-quality"
+        useCase="Manufacturing quality team requires real-time production order and inspection data to validate that transition execution meets quality standards."/>
+  
+  <!-- Sequence Flows -->
+  <sequenceFlow from="s1" to="s2" label="Engineering changes identified"/>
+  <sequenceFlow from="s2" to="s3" label="Operational capability confirmed"/>
+  <sequenceFlow from="s3" to="s4" label="Safety risks classified"/>
+  <sequenceFlow from="s4" to="s5" label="Baseline metrics established"/>
+  <sequenceFlow from="s5" to="s6" label="Vendor readiness validated"/>
+  <sequenceFlow from="s6" to="s7" label="Workforce availability planned"/>
+  <sequenceFlow from="s7" to="s8" label="Sales impact forecasted"/>
+  <sequenceFlow from="s8" to="END" label="Quality monitoring activated"/>
+
+</process>

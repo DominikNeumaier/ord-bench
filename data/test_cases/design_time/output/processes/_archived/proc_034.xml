@@ -1,0 +1,68 @@
+<process id="proc_mfg_order_production_v1" type="bpmn">
+  
+  <step id="s1" 
+        label="Register and validate customer production order"
+        description="Capture new customer orders and verify account eligibility and order specifications for manufacturing fulfillment."
+        ordId="siemens.plm:apiResource:CustomerOrderAndAccountProvisioningManagement:v1"
+        capability="register-validate-order"
+        useCase="Customer places a manufacturing order that must be registered in the system and validated for business rules compliance before proceeding to production planning."/>
+  
+  <step id="s2" 
+        label="Verify material bill-of-materials compliance"
+        description="Validate that all materials specified in the production bill-of-materials meet engineering and regulatory compliance standards."
+        ordId="siemens.plm:agent:BOMComplianceValidator:v1"
+        capability="validate-bom-compliance"
+        useCase="Production engineering requires verification that selected materials and product components comply with engineering change notices and material specifications before manufacturing begins."/>
+  
+  <step id="s3" 
+        label="Coordinate product specification changes with sales"
+        description="Notify and coordinate with sales team regarding any engineering changes or material substitutions that impact customer delivery or contract terms."
+        ordId="sap.crm:agent:SalesProductChangeCoordinator:v1"
+        capability="coordinate-product-changes"
+        useCase="When engineering changes or material changes are identified, sales must be informed to manage customer expectations and contractual obligations."/>
+  
+  <step id="s4" 
+        label="Receive and process vendor material invoices"
+        description="Ingest vendor invoices for raw materials and components required to fulfill the production order."
+        ordId="sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1"
+        capability="ingest-process-invoices"
+        useCase="Vendors submit invoices for materials procured; these must be received, validated, and matched to purchase orders for accurate cost tracking and inventory updates."/>
+  
+  <step id="s5" 
+        label="Analyze material cost and compliance metrics"
+        description="Evaluate invoice compliance, material costs, and cost variances against budgeted manufacturing costs and compliance thresholds."
+        ordId="sap.ehs:dataProduct:MaterialInvoiceComplianceCostAnalytics:v1"
+        capability="analyze-cost-compliance"
+        useCase="Finance and procurement teams need visibility into material cost trends and compliance issues to optimize supplier performance and control manufacturing costs."/>
+  
+  <step id="s6" 
+        label="Schedule production orders and assign manufacturing equipment"
+        description="Create and schedule production orders on available manufacturing machines based on material availability, machine capacity, and delivery deadlines."
+        ordId="sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1"
+        capability="schedule-assign-production"
+        useCase="Production planners must allocate customer orders to available machines and create detailed production schedules that optimize equipment utilization and meet delivery dates."/>
+  
+  <step id="s7" 
+        label="Assign workforce and review compensation impact"
+        description="Allocate production workers to scheduled production orders and assess labor cost and compensation implications of the production schedule."
+        ordId="sap.s4:apiResource:WorkforceOrgStructureAPI:v1"
+        capability="assign-workforce"
+        useCase="Production requires human labor allocation; HR and operations must confirm workforce availability, skill matching, and review overtime or shift implications on compensation."/>
+  
+  <step id="s8" 
+        label="Review workforce compensation trends and finalize labor plan"
+        description="Analyze compensation trends for assigned workforce to ensure labor cost forecasting accuracy and alignment with operational budget before production authorization."
+        ordId="workday.hcm:dataProduct:CompensationTrendAnalytics:v1"
+        capability="analyze-compensation-trends"
+        useCase="HR analytics require visibility into compensation costs and trends to validate that the proposed labor allocation does not create unexpected payroll impacts and remains within workforce budget."/>
+  
+  <!-- Sequence Flow: Linear BPMN process -->
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+  
+</process>

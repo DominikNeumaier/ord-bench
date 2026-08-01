@@ -1,0 +1,54 @@
+{
+  "case_id": "dy-09",
+  "mode": "dynamic",
+  "query_class": "single_intent",
+  "problem_type": "P1",
+  "selected_resources": [
+    "sap.s4:apiResource:CustomerOrderManagementAPI:v1"
+  ],
+  "distractor": "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+  "timestamp": "2026-06-08T13:19:37.562043+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "I need to pull up a customer's recent purchases and modify one of their orders before it ships out. Can you help me access their account information and make those changes?"
+      },
+      "generator_tokens": 162,
+      "solver_output": {
+        "predicted": "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+        "top1_correct": false,
+        "top5": [
+          "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+          "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1",
+          "sap.s4:apiResource:CustomerOrderManagementAPI:v1",
+          "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+          "my.mes:apiResource:CustomerOrderAndAccountManagement:v1"
+        ],
+        "note": "retro_certified"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 276,
+      "outcome": "ACCEPTED",
+      "_retro_verdict": "HARD"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-09",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to pull up a customer's recent purchases and modify one of their orders before it ships out. Can you help me access their account information and make those changes?",
+    "expected_ordIds": [
+      "sap.s4:apiResource:CustomerOrderManagementAPI:v1"
+    ],
+    "distractor_ordId": "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1"
+  }
+}

@@ -1,0 +1,65 @@
+<process id="proc_EngChangeAndProcurement_v1" type="cmmn">
+  <step id="s1" 
+        label="Initiate Engineering Change Request"
+        description="Engineering team submits a change request to modify product design, materials, or manufacturing processes."
+        ordId="siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+        capability="initiate-engineering-change"
+        useCase="Product redesign or material substitution triggered by quality, cost, or compliance needs"/>
+  
+  <step id="s2" 
+        label="Validate Material and Compliance Requirements"
+        description="System verifies that proposed materials meet safety standards, environmental regulations, and vendor compliance obligations."
+        ordId="sap.ariba:apiResource:MaterialSafetyAndVendorComplianceData:v1"
+        capability="validate-material-compliance"
+        useCase="Ensure material changes do not violate EHS, regulatory, or supplier quality standards"/>
+  
+  <step id="s3" 
+        label="Check Production Workforce Readiness"
+        description="Confirm that manufacturing team has required skills and production capacity to support the engineering change without disruption."
+        ordId="sap.sf:dataProduct:WorkforceQualityAndProductionMetrics:v1"
+        capability="assess-production-readiness"
+        useCase="Validate workforce capability and production schedule alignment before material switchover"/>
+  
+  <step id="s4" 
+        label="Manage Employee Access and Approvals"
+        description="Orchestrate role-based access provisioning and approval workflows for engineers and procurement staff involved in the change."
+        ordId="corp.itsm:agent:AccessProvisioningOrchestrator:v1"
+        capability="orchestrate-access-provisioning"
+        useCase="Ensure appropriate personnel have system access to approve and execute the engineering change"/>
+  
+  <step id="s5" 
+        label="Retrieve Master Material and Vendor Data"
+        description="Query current material specifications, alternate suppliers, and vendor performance metrics to support procurement planning."
+        ordId="sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1"
+        capability="retrieve-material-vendor-master"
+        useCase="Identify qualified vendors and material alternatives for the approved engineering change"/>
+  
+  <step id="s6" 
+        label="Evaluate Supplier Qualification and Service Capability"
+        description="Assess candidate suppliers' technical qualification, service level agreements, and ability to support the new material or process change."
+        ordId="siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1"
+        capability="evaluate-supplier-qualification"
+        useCase="Confirm that selected vendors can meet delivery, quality, and support requirements for the change"/>
+  
+  <step id="s7" 
+        label="Create and Manage Purchase Orders"
+        description="Generate purchase orders with vendors for new materials, coordinate delivery schedules, and track procurement status."
+        ordId="sap.crm:apiResource:ProcurementVendorOrderManagement:v1"
+        capability="manage-purchase-orders"
+        useCase="Procure materials from qualified vendors while tracking cost, delivery, and quality metrics"/>
+  
+  <step id="s8" 
+        label="Monitor Employee Time-Off and Staffing Continuity"
+        description="Track planned absences and time-off balance to ensure sufficient staffing during material transition and production ramp-up."
+        ordId="workday.hcm:apiResource:TimeOffBalanceManagement:v1"
+        capability="monitor-staffing-continuity"
+        useCase="Prevent production disruptions by ensuring adequate workforce availability during engineering change implementation"/>
+  
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+</process>

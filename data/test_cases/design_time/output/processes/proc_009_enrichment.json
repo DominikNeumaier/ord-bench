@@ -1,0 +1,96 @@
+{
+  "process_id": "proc_009",
+  "process_type": "bpmn",
+  "gt_ordIds": [
+    "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+    "sap.s4:dataProduct:IncidentSafetyAnalyticsHub:v1",
+    "sap.ariba:apiResource:MaterialAndVendorProcurementData:v1",
+    "workday.hcm:apiResource:CompensationStructureDataExposure:v1"
+  ],
+  "enrichment": {
+    "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1": {
+      "capabilities": [
+        "receive-log-orders",
+        "track-service-tickets",
+        "manage-customer-accounts"
+      ],
+      "useCases": [
+        "Service desk receives customer order for materials and logs it as a tracked service ticket.",
+        "Order status visibility across customer accounts and fulfillment teams.",
+        "Centralized repository for all service requests tied to customer relationships."
+      ],
+      "processNext": [
+        "emarsys.cx:apiResource:ComplianceRiskAssessmentAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_supplychain_risk_compliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.ariba:apiResource:MaterialAndVendorProcurementData:v1": {
+      "capabilities": [
+        "identify-vendors-materials",
+        "query-procurement-database",
+        "match-demand-inventory"
+      ],
+      "useCases": [
+        "Procurement specialist queries approved vendors and materials inventory to match customer demand.",
+        "Access to material specifications and vendor qualifications for sourcing decisions.",
+        "Real-time material and vendor master data for procurement planning."
+      ],
+      "processNext": [
+        "emarsys.cx:apiResource:VendorMaterialSupplyChainAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_supplychain_risk_compliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.s4:dataProduct:IncidentSafetyAnalyticsHub:v1": {
+      "capabilities": [
+        "analyze-incidents-safety",
+        "review-safety-metrics",
+        "identify-operational-risks"
+      ],
+      "useCases": [
+        "Operations team examines incident patterns and safety metrics to mitigate production risks.",
+        "Historical safety analysis for vendor and material risk scoring.",
+        "Trend analysis of production incidents to inform sourcing decisions."
+      ],
+      "processNext": [
+        "sap.sf:apiResource:WorkforceProductionCapabilityManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_supplychain_risk_compliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "workday.hcm:apiResource:CompensationStructureDataExposure:v1": {
+      "capabilities": [
+        "review-labor-costs",
+        "validate-compensation-alignment",
+        "forecast-workforce-expenses"
+      ],
+      "useCases": [
+        "Finance team validates that employee compensation projections fit within procurement project budgets.",
+        "Labor cost impact analysis for procurement order execution.",
+        "Workforce compensation verification to ensure financial compliance with budget constraints."
+      ],
+      "processNext": [
+        ""
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_supplychain_risk_compliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    }
+  }
+}

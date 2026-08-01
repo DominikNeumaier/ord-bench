@@ -1,0 +1,68 @@
+<process id="proc_integrated_service_change_mgmt_v1" type="bpmn">
+  
+  <step id="s1" 
+        label="Receive and log service request"
+        description="Capture incoming service or change request from customers or internal stakeholders into the system."
+        ordId="corp.itsm:apiResource:CampaignAccessManagementAPI:v1"
+        capability="capture-service-request"
+        useCase="IT support team logs a new service ticket for campaign access provisioning."/>
+  
+  <step id="s2" 
+        label="Assess campaign performance impact"
+        description="Analyze historical campaign data and customer segmentation to determine if the request affects active marketing initiatives."
+        ordId="emarsys.cx:dataProduct:CampaignPerformanceAnalytics:v1"
+        capability="analyze-campaign-impact"
+        useCase="Marketing analytics dashboard shows that 3 active campaigns will be affected by the proposed system change."/>
+  
+  <step id="s3" 
+        label="Evaluate organizational approval requirements"
+        description="Determine the required approval chain based on employee hierarchy and workforce organizational structure."
+        ordId="sap.s4:apiResource:WorkforceOrgStructureAPI:v1"
+        capability="validate-approval-chain"
+        useCase="System identifies that IT Director and CFO must approve due to budget and access level implications."/>
+  
+  <step id="s4" 
+        label="Identify equipment and vendor dependencies"
+        description="Cross-reference materials, vendors, and procurement requirements needed to implement the change."
+        ordId="sap.ariba:apiResource:MaterialAndVendorProcurementAPI:v1"
+        capability="map-procurement-dependencies"
+        useCase="Procurement team discovers that network equipment from 2 vendors must be ordered and 3 materials are in backorder."/>
+  
+  <step id="s5" 
+        label="Log formal change request and engineering review"
+        description="Register the change formally in PLM system and route to engineering teams for technical feasibility assessment."
+        ordId="siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1"
+        capability="initiate-change-request"
+        useCase="Change advisory board documents the RFC with technical specifications and identified IT equipment affected."/>
+  
+  <step id="s6" 
+        label="Execute quality assurance and defect prevention checks"
+        description="Run automated quality gates and production order validation to ensure change will not degrade manufacturing or service operations."
+        ordId="siemens.plm:agent:QualityAssuranceAndDefectPrevention:v1"
+        capability="execute-qa-validation"
+        useCase="QA agent simulates the change in test environment and verifies that production order processing remains compliant."/>
+  
+  <step id="s7" 
+        label="Coordinate incident response and stakeholder notification"
+        description="Activate incident response protocols and notify all affected stakeholders of the planned change window and rollback procedures."
+        ordId="sap.ehs:agent:IncidentResponseCoordinator:v1"
+        capability="coordinate-incident-response"
+        useCase="Incident coordinator sends alert to 15 affected teams and ensures IT Equipment asset inventory is updated pre-change."/>
+  
+  <step id="s8" 
+        label="Process time-off approvals for change window coverage"
+        description="Ensure adequate staffing by processing employee time-off requests and confirming personnel availability during change implementation."
+        ordId="workday.hcm:apiResource:EmployeeTimeOffRequestManagement:v1"
+        capability="manage-resource-availability"
+        useCase="HR verifies that no critical on-call engineers have approved time-off during the 2-hour change window."/>
+
+  <!-- Sequence Flow -->
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+  
+</process>

@@ -1,0 +1,50 @@
+{
+  "case_id": "sa-10",
+  "mode": "skill_adjusted",
+  "skill_id": "proc_008",
+  "gap_resources": [
+    "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+    "sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+  ],
+  "timestamp": "2026-06-08T12:51:02.733306+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "outcome": "TOO_EASY",
+      "solver_output": {
+        "predicted": "sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+      }
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "We need to streamline our complete purchasing workflow to examine incoming client requests, evaluate buyer participation levels and regulatory standards, vet potential vendors, and give the green light for transaction completion with appropriate authorizations. As orders move through each phase, we also need to track their progression through various completion checkpoints and monitor delivery timelines. Additionally, include functionality to handle any customer grievances or billing disagreements that may arise during the transaction lifecycle, ensuring we can document claims and work through resolutions efficiently within our existing business platform.",
+        "variant": 1
+      },
+      "generator_tokens": 335,
+      "solver_output": {
+        "predicted": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+        "correct": false
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 385,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "sa-10",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to streamline our complete purchasing workflow to examine incoming client requests, evaluate buyer participation levels and regulatory standards, vet potential vendors, and give the green light for transaction completion with appropriate authorizations. As orders move through each phase, we also need to track their progression through various completion checkpoints and monitor delivery timelines. Additionally, include functionality to handle any customer grievances or billing disagreements that may arise during the transaction lifecycle, ensuring we can document claims and work through resolutions efficiently within our existing business platform.",
+    "expected_skill_id": "proc_008",
+    "expected_gap_ordIds": [
+      "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+      "sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+    ]
+  }
+}

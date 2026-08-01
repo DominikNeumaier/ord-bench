@@ -1,0 +1,96 @@
+{
+  "process_id": "proc_034",
+  "process_type": "bpmn",
+  "gt_ordIds": [
+    "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+    "siemens.plm:agent:BOMComplianceValidator:v1",
+    "sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1",
+    "sap.s4:apiResource:WorkforceOrgStructureAPI:v1"
+  ],
+  "enrichment": {
+    "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1": {
+      "capabilities": [
+        "ingest-process-invoices",
+        "validate-material-receipt",
+        "track-inventory-updates"
+      ],
+      "useCases": [
+        "Vendors submit invoices for procured materials that must be matched to purchase orders and production requirements.",
+        "Material receipts from invoices must be recorded in inventory management for production planning accuracy.",
+        "Invoice data feeds cost analytics and compliance monitoring for procurement optimization."
+      ],
+      "processNext": [
+        "sap.ehs:dataProduct:MaterialInvoiceComplianceCostAnalytics:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_mfg_order_production_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "siemens.plm:agent:BOMComplianceValidator:v1": {
+      "capabilities": [
+        "validate-bom-compliance",
+        "check-engineering-changes",
+        "verify-material-specifications"
+      ],
+      "useCases": [
+        "Production bill-of-materials must be validated against current engineering standards and material approvals.",
+        "Engineering change notices must be cross-referenced with material selections to ensure production uses approved revisions.",
+        "Material and component specifications must meet regulatory and quality compliance requirements before manufacturing."
+      ],
+      "processNext": [
+        "sap.crm:agent:SalesProductChangeCoordinator:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_mfg_order_production_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1": {
+      "capabilities": [
+        "schedule-assign-production",
+        "allocate-machine-capacity",
+        "create-production-orders"
+      ],
+      "useCases": [
+        "Production orders must be created and scheduled on available manufacturing machines based on capacity and delivery deadlines.",
+        "Machine availability and capability must be matched to production order requirements to optimize resource utilization.",
+        "Production scheduling must coordinate material availability with machine capacity and workforce availability."
+      ],
+      "processNext": [
+        "sap.s4:apiResource:WorkforceOrgStructureAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_mfg_order_production_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.s4:apiResource:WorkforceOrgStructureAPI:v1": {
+      "capabilities": [
+        "assign-workforce",
+        "allocate-labor-resources",
+        "match-worker-skills"
+      ],
+      "useCases": [
+        "Production workers must be allocated to scheduled production orders based on skill requirements and availability.",
+        "Workforce organization structure must be consulted to ensure labor assignments comply with organizational hierarchy and reporting relationships.",
+        "Labor allocation decisions feed compensation planning and workforce cost forecasting for budget validation."
+      ],
+      "processNext": [
+        "workday.hcm:dataProduct:CompensationTrendAnalytics:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_mfg_order_production_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    }
+  }
+}

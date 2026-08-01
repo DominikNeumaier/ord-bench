@@ -1,0 +1,1221 @@
+{
+  "openResourceDiscovery": "1.16",
+  "perspective": "system-instance",
+  "packages": [
+    {
+      "ordId": "emarsys.cx:package:Core:v1",
+      "title": "emarsys.cx Core Package",
+      "shortDescription": "Core resources for the emarsys.cx system in the benchmark landscape.",
+      "version": "1.0.0",
+      "vendor": "emarsys:vendor:Default:"
+    }
+  ],
+  "agents": [
+    {
+      "ordId": "emarsys.cx:agent:SegmentDrivenCampaignOptimizer:v1",
+      "title": "Segment-Driven Campaign Optimizer Agent",
+      "shortDescription": "AI agent that autonomously identifies high-value customer segments and optimizes campaign targeting and messaging.",
+      "description": "This agent continuously analyzes CustomerSegment performance data and engagement metrics to recommend real-time campaign optimizations. It evaluates segment characteristics against Campaign performance indicators, automatically adjusts audience targeting parameters, and generates personalized messaging recommendations. The agent reduces manual campaign tuning effort while improving conversion rates through data-driven segment-to-campaign alignment.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:CustomerSegment:v1",
+        "sap.odm:entityType:Campaign:v1",
+        "sap.odm:entityType:CustomerAccount:v1"
+      ],
+      "lineOfBusiness": [
+        "Marketing and CX"
+      ],
+      "tags": [
+        "campaign-optimization",
+        "audience-targeting",
+        "ai-driven",
+        "segmentation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:agent:VendorProcurementAutomationOrchestrator:v1",
+      "title": "Vendor Procurement Automation Orchestrator",
+      "shortDescription": "Automates vendor engagement and procurement workflows through targeted marketing communications.",
+      "description": "Orchestrates procurement-driven marketing campaigns that monitor vendor performance metrics and coordinate multi-channel engagement with supplier partners. Automates vendor communication workflows by processing purchase requisitions and material demand signals, enabling data-driven vendor selection and relationship management. Coordinates targeted procurement notifications to vendors while managing campaign execution and vendor engagement analytics.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:Vendor:v1"
+      ],
+      "lineOfBusiness": [
+        "Procurement",
+        "Finance",
+        "ERP"
+      ],
+      "tags": [
+        "procurement",
+        "vendor-management",
+        "purchasing",
+        "automation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:agent:OpportunityEngagementOrchestrator:v1",
+      "title": "Opportunity Engagement Orchestrator",
+      "shortDescription": "Automates personalized engagement workflows to accelerate opportunity progression and sales velocity.",
+      "description": "This agent monitors customer account interactions and sales opportunity signals to automatically orchestrate targeted engagement campaigns. It coordinates multi-channel outreach, lead scoring enrichment, and sales automation triggers based on real-time customer behavior and opportunity momentum. The agent processes engagement data to identify high-value prospect transitions and activates precision-timed interventions across the customer journey.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:CustomerAccount:v1",
+        "sap.odm:entityType:SalesOpportunity:v1"
+      ],
+      "lineOfBusiness": [
+        "Sales and Customer Management"
+      ],
+      "tags": [
+        "opportunity-management",
+        "lead-scoring",
+        "sales-automation",
+        "ai-agent"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:agent:IncidentComplianceOrchestrator:v1",
+      "title": "Risk Event Response Automation Engine",
+      "shortDescription": "Detects regulatory risks, orchestrates mitigation protocols, and validates adherence during customer engagement initiatives.",
+      "description": "Tracks adverse events and regulatory exposures within customer engagement programs, triggering automated compliance procedures and coordinating remediation efforts. Analyzes event information to satisfy regulatory mandates, integrates with control assessment frameworks, and schedules alerts to appropriate business units. Maintains real-time visibility into regulatory posture and resolution progress metrics to uphold required safety governance standards across the customer lifecycle.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:HazardousSubstance:v1",
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "lineOfBusiness": [
+        "Sales"
+      ],
+      "tags": [
+        "risk-governance",
+        "event-response-automation",
+        "regulatory-adherence"
+      ],
+      "industry": [],
+      "namespace": "emarsys.cx"
+    },
+    {
+      "ordId": "emarsys.cx:agent:VendorContractJourneyCoordinator:v1",
+      "title": "Vendor Contract Journey Coordinator",
+      "shortDescription": "Orchestrates vendor engagement journeys tied to contract and purchase order lifecycles.",
+      "description": "Monitors vendor contracts and purchase orders to automate personalized engagement journeys across marketing channels. Coordinates multi-touch campaigns based on contract milestones, renewal dates, and vendor performance metrics. Processes vendor relationship data to trigger timely communications and optimize vendor retention strategies.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Contract:v1",
+        "sap.odm:entityType:PurchaseOrder:v1",
+        "sap.odm:entityType:Vendor:v1"
+      ],
+      "lineOfBusiness": [
+        "marketing-and-cx"
+      ],
+      "tags": [
+        "vendor-management",
+        "journey-orchestration",
+        "contract-lifecycle"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:agent:ProductLifecycleOrchestrator:v1",
+      "title": "Product Lifecycle Orchestrator",
+      "shortDescription": "Automates product change coordination and inventory synchronization across sales engagement channels.",
+      "description": "Monitors engineering changes and material updates to automatically trigger coordinated customer engagement campaigns. Processes product item transitions through lifecycle stages while orchestrating targeted sales communications to affected customer segments. Coordinates real-time inventory alignment with active marketing journeys to ensure sales teams promote current product availability.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "lineOfBusiness": [
+        "Sales"
+      ],
+      "tags": [
+        "product-lifecycle",
+        "sales-coordination",
+        "change-management"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:agent:OpportunityScoringOrchestrator:v1",
+      "title": "Opportunity Scoring Orchestrator",
+      "shortDescription": "Automates lead qualification and opportunity prioritization using behavioral and account signals.",
+      "description": "Monitors customer account interactions and engagement patterns to continuously score and rank sales opportunities. Coordinates real-time opportunity classification based on propensity signals, account fit, and engagement velocity. Processes incoming customer signals to automatically prioritize high-value opportunities and trigger targeted sales actions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:CustomerAccount:v1",
+        "sap.odm:entityType:SalesOpportunity:v1"
+      ],
+      "lineOfBusiness": [
+        "Sales and Customer Management"
+      ],
+      "tags": [
+        "opportunity-management",
+        "lead-scoring",
+        "sales-automation",
+        "ai-agent"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:agent:OpportunityEnrichmentOrchestrator:v1",
+      "title": "Opportunity Enrichment Orchestrator",
+      "shortDescription": "Automates lead scoring and opportunity prioritization through intelligent customer data correlation.",
+      "description": "Monitors incoming customer accounts and coordinates real-time lead scoring across engagement channels. Processes opportunity signals by analyzing customer behavior patterns and automatically routes high-potential prospects to sales teams. Orchestrates cross-channel customer interactions to enrich opportunity context and accelerate sales cycle velocity.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:CustomerAccount:v1",
+        "sap.odm:entityType:SalesOpportunity:v1"
+      ],
+      "lineOfBusiness": [
+        "Sales and Customer Management"
+      ],
+      "tags": [
+        "opportunity-management",
+        "lead-scoring",
+        "sales-automation",
+        "ai-agent"
+      ],
+      "industry": []
+    }
+  ],
+  "apiResources": [
+    {
+      "ordId": "emarsys.cx:apiResource:JourneyContactStateAPI:v1",
+      "title": "Journey Contact State API",
+      "shortDescription": "REST API for querying and updating real-time contact engagement state within active customer journeys.",
+      "description": "Exposes real-time contact state data for customers currently enrolled in active journeys, including engagement metrics, journey step progress, and interaction history. Enables external systems to query contact journey status, update custom attributes mid-journey, and trigger journey state changes based on external events. Essential for omnichannel orchestration and real-time personalization decisions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/journey-contact-state-openapi.json",
+          "accessStrategies": [
+            {
+              "type": "oauth2",
+              "scopes": [
+                "journey:read",
+                "journey:write"
+              ]
+            }
+          ]
+        }
+      ],
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Marketing and Customer Experience"
+      ],
+      "tags": [
+        "journey-orchestration",
+        "contact-state",
+        "real-time-engagement",
+        "omnichannel"
+      ],
+      "industry": [],
+      "capabilities": [
+        "assess-engagement",
+        "update-contact-state",
+        "manage-compliance-communications",
+        "determine-communication-path",
+        "track-campaign-engagement",
+        "query-campaign-status"
+      ],
+      "useCases": [
+        "Maintain audit trail of customer communication for regulatory reporting",
+        "Ensure customers receive targeted safety compliance notifications at optimal touchpoints",
+        "Track customer engagement with mandatory safety training and awareness campaigns",
+        "Marketing validates that customer is in appropriate engagement stage for order fulfillment communications"
+      ],
+      "processNext": [
+        "emarsys.cx:apiResource:HazardousSubstanceComplianceManagementAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_order_compliance_fulfillment_v1",
+          "groupTypeId": "bpmn"
+        },
+        {
+          "groupId": "proc_SafetyComplianceOrchestration_v1",
+          "groupTypeId": "cmmn",
+          "stepId": "s7",
+          "sequencePosition": 7
+        }
+      ]
+    },
+    {
+      "ordId": "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1",
+      "title": "Customer Account Order Enrichment API",
+      "shortDescription": "Retrieves and manages integrated customer account and order data for engagement targeting.",
+      "description": "Exposes comprehensive customer account profiles and order history to enable precise segmentation and personalized journey orchestration. Provides access to real-time account attributes and transactional order data, allowing marketing systems to retrieve enriched customer context for campaign personalization and lifecycle engagement strategies.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/customer-account-order-enrichment.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Sales and Customer"
+      ],
+      "tags": [
+        "dispute-resolution",
+        "customer-service",
+        "account-management",
+        "crm"
+      ],
+      "industry": [],
+      "capabilities": [
+        "enable-order-processing",
+        "enrich-customer-order",
+        "enhance-order-fulfillment-data",
+        "enrich-customer-orders",
+        "validate-customer-context",
+        "populate-account-details",
+        "update-product-catalog",
+        "augment-account-history"
+      ],
+      "useCases": [
+        "Sales operations contextualize orders with prior purchase patterns and account status.",
+        "Customer service teams reduce fulfillment errors by confirming shipping addresses and preferences.",
+        "Revenue teams identify upsell opportunities within enriched order context.",
+        "Sales operations team ensures all customer systems reflect new product SKUs, pricing tiers, and promotional bundles.",
+        "Sales enablement team publishes new product to customer accounts and processes initial orders",
+        "E-commerce manager updates order management system with new SKU pricing and availability",
+        "Order management system validates customer orders against enriched product and pricing catalogs.",
+        "Customer success team enriches account records with product launch eligibility and cross-sell opportunities.",
+        "Customer service representative adds new product to account offerings and upsell recommendations"
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_qa_v1",
+          "groupTypeId": "bpmn"
+        },
+        {
+          "groupId": "proc_product_launch_compliance_v1",
+          "groupTypeId": "cmmn"
+        },
+        {
+          "groupId": "proc_procure_fulfill_v1",
+          "groupTypeId": "cmmn",
+          "stepId": "s2",
+          "position": 2
+        }
+      ]
+    },
+    {
+      "ordId": "emarsys.cx:apiResource:ComplianceRiskAssessmentAPI:v1",
+      "title": "Compliance Risk Assessment API",
+      "shortDescription": "Exposes hazard substance compliance data for campaign safety validation.",
+      "description": "Retrieves and manages hazardous substance compliance metadata to ensure marketing campaigns adhere to regulatory requirements across jurisdictions. Provides access to substance risk classifications, handling restrictions, and safety documentation needed for customer engagement validation. Manages real-time compliance status for campaign content and audience targeting.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:HazardousSubstance:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/compliance-risk-assessment.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "marketing-compliance"
+      ],
+      "tags": [
+        "compliance",
+        "hazard-management",
+        "regulatory-validation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1",
+      "title": "Campaign Contact Engagement API",
+      "shortDescription": "Manages real-time contact engagement states and campaign interactions across channels.",
+      "description": "Provides programmatic access to campaign contact engagement data, enabling retrieval and management of customer interaction states throughout omnichannel journey orchestration. Exposes contact engagement records linked to campaigns and customer accounts to support real-time personalization and journey state tracking across marketing touchpoints.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/campaign-contact-engagement.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Marketing and Customer Experience"
+      ],
+      "tags": [
+        "journey-orchestration",
+        "contact-state",
+        "real-time-engagement",
+        "omnichannel"
+      ],
+      "industry": [],
+      "capabilities": [
+        "map-customer-account-to-campaign",
+        "engage-campaign-contacts",
+        "deploy-targeted-communications",
+        "segment-customers-for-campaigns",
+        "activate-contact-engagement",
+        "segment-by-impact",
+        "manage-marketing-campaigns",
+        "activate-customer-communications",
+        "engage-customer-contacts"
+      ],
+      "useCases": [
+        "Campaign orchestration system delivers personalized messaging to qualified customer contacts at scale",
+        "Customer success managers proactively engage high-value accounts on transition impacts.",
+        "Marketing teams launch customer engagement campaigns to drive awareness and adoption among target account segments.",
+        "Customer experience managers coordinate promotional messaging and track campaign performance across sales channels.",
+        "Marketing team launches targeted multi-channel campaigns to segmented customer accounts based on engagement history and behavioral attributes",
+        "Marketing teams notify affected customers about production changes and timelines.",
+        "Operations teams communicate service availability changes to customer segments."
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductLaunchVendorCompliance_v1",
+          "groupTypeId": "bpmn",
+          "sequencePosition": 8
+        },
+        {
+          "groupId": "proc_talent_compliance_ops_v1",
+          "groupTypeId": "cmmn",
+          "role": "customer-engagement-activation"
+        },
+        {
+          "groupId": "proc_ProductionTransitionWorkforce_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    {
+      "ordId": "emarsys.cx:apiResource:SubstanceComplianceDataAPI:v1",
+      "title": "Substance Compliance Data API",
+      "shortDescription": "Retrieves and manages hazardous substance compliance data for campaign content validation.",
+      "description": "Exposes hazardous substance information and regulatory compliance classifications to enable content screening and risk assessment across marketing campaigns. Provides access to substance inventory, regulatory mappings, and compliance status updates for engagement safety verification. Manages real-time substance data lookups to prevent non-compliant messaging in customer journeys.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:HazardousSubstance:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/substance-compliance-data.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "marketing-compliance"
+      ],
+      "tags": [
+        "substance-compliance",
+        "regulatory-data",
+        "campaign-safety"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:apiResource:CampaignSegmentationDataAPI:v1",
+      "title": "Campaign Segmentation Data API",
+      "shortDescription": "Retrieves and manages customer segment definitions for targeted campaign execution.",
+      "description": "Exposes campaign segmentation logic and customer cohort definitions, enabling real-time segment retrieval and dynamic audience targeting. Manages segment membership rules and provides access to behavioral and demographic segmentation data for campaign personalization and orchestration workflows.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/campaign-segmentation.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "marketing-and-cx"
+      ],
+      "tags": [
+        "segmentation",
+        "audience-targeting",
+        "campaign-data"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:apiResource:ProcurementVendorEngagementAPI:v1",
+      "title": "Procurement Vendor Engagement API",
+      "shortDescription": "Manages vendor interactions and purchase order engagement data for campaign targeting.",
+      "description": "Exposes purchase order and vendor information to enable targeted procurement-focused marketing campaigns. Retrieves vendor engagement metrics and purchase patterns to support supplier relationship management initiatives. Provides access to vendor transaction data for personalized journey orchestration and segment-based outreach.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:PurchaseOrder:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/procurement-vendor-engagement.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "procurement"
+      ],
+      "tags": [
+        "vendor-management",
+        "purchase-orders",
+        "b2b-engagement"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:apiResource:CustomerAccountCampaignManagementAPI:v1",
+      "title": "Customer Account Campaign Management API",
+      "shortDescription": "Manages and retrieves customer accounts linked to marketing campaigns",
+      "description": "This API exposes customer account data and campaign associations, enabling seamless retrieval of account information for campaign targeting and personalization. It provides access to customer profile details and their engagement history with active campaigns, supporting real-time account management and campaign coordination across the platform.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/customer-account-campaigns.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "it-service-management"
+      ],
+      "tags": [
+        "access-provisioning",
+        "campaign-management",
+        "customer-accounts"
+      ],
+      "industry": [],
+      "capabilities": [
+        "segment-customers-manage-campaigns",
+        "configure-account-targeting",
+        "personalize-campaign-strategy"
+      ],
+      "useCases": [
+        "Marketing teams tailor product transition campaigns to specific customer segments and account tiers",
+        "CRM orchestrates multi-channel customer outreach for product line changes"
+      ],
+      "processNext": [
+        "sap.sf:apiResource:EmployeeCompensationManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductTransitionCompliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    {
+      "ordId": "emarsys.cx:apiResource:SalesCapacityAndTimeOffManagementAPI:v1",
+      "title": "Sales Capacity and Time Off Management API",
+      "shortDescription": "Retrieves employee availability and time-off data for sales capacity planning.",
+      "description": "Exposes employee workforce information and time-off schedules to manage sales team capacity and resource allocation. Provides access to employee profiles and time-off records for workforce planning and sales operations optimization. Manages real-time availability data to support accurate capacity forecasting and campaign staffing decisions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:TimeOff:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/sales-capacity-timeoff.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Sales"
+      ],
+      "tags": [
+        "capacity-planning",
+        "workforce-management",
+        "sales-operations"
+      ],
+      "industry": [],
+      "capabilities": [
+        "plan-sales-capacity",
+        "manage-time-off",
+        "block-availability",
+        "coordinate-employee-availability",
+        "schedule-capacity",
+        "manage-time-off-allocation"
+      ],
+      "useCases": [
+        "Sales leadership schedules workforce availability and manages time-off to maintain customer contact coverage during product transition.",
+        "HR coordinators prevent conflicting vacation requests during critical go-live periods.",
+        "Sales operations reserve team availability during high-stakes product launch windows.",
+        "Regional sales managers confirm team capacity meets customer communication workload for transition period."
+      ],
+      "processNext": [
+        "emarsys.cx:dataProduct:OpportunitySalesForecasting:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductTransitionSafetyCoordination_v1",
+          "groupTypeId": "bpmn",
+          "stepId": "s6"
+        },
+        {
+          "groupId": "proc_product_launch_transition_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    {
+      "ordId": "emarsys.cx:apiResource:HazardousSubstanceComplianceManagementAPI:v1",
+      "title": "Hazardous Substance Compliance Management API",
+      "shortDescription": "Manages and exposes hazardous substance data for regulatory compliance in sales operations.",
+      "description": "This API exposes hazardous substance information and regulatory requirements to support compliance tracking across customer segments and sales campaigns. It retrieves substance classifications, safety data, and regulatory restrictions to ensure marketing communications and engagement strategies adhere to hazmat regulations. The resource provides access to substance-level compliance metadata for integration with campaign management and customer engagement workflows.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:HazardousSubstance:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/hazardous-substance-compliance.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Sales"
+      ],
+      "tags": [
+        "compliance",
+        "hazmat",
+        "regulatory"
+      ],
+      "industry": [],
+      "capabilities": [
+        "verify-compliance",
+        "validate-substance-regulations",
+        "check-geographic-restrictions"
+      ],
+      "useCases": [
+        "Compliance officer confirms that materials in order are legally permissible for customer's geography and industry"
+      ],
+      "processNext": [
+        "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_order_compliance_fulfillment_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    {
+      "ordId": "emarsys.cx:apiResource:VendorMaterialSupplyChainAPI:v1",
+      "title": "Vendor Material Supply Chain API",
+      "shortDescription": "Manages vendor relationships and material sourcing for campaign execution.",
+      "description": "Exposes vendor and material master data to enable dynamic sourcing and procurement workflows within marketing campaigns. Retrieves vendor capabilities and material availability to optimize campaign resource allocation. Provides access to vendor performance metrics and material inventory levels for real-time engagement planning.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Material:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/vendor-material-supply-chain.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "marketing-operations"
+      ],
+      "tags": [
+        "vendor-management",
+        "supply-chain",
+        "procurement-integration"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:apiResource:CustomerEngagementProfileAPI:v1",
+      "title": "Customer Engagement Profile API",
+      "shortDescription": "Retrieves and manages customer account data and order history for engagement targeting.",
+      "description": "Exposes comprehensive customer account profiles and order transaction data to enable real-time segmentation and personalized journey orchestration. Provides access to customer attributes, purchase history, and engagement preferences for campaign decisioning and audience building.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/customer-engagement-profile.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "marketing-and-cx"
+      ],
+      "tags": [
+        "customer-data",
+        "journey-orchestration",
+        "audience-segmentation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:apiResource:OrderFulfillmentServiceAPI:v1",
+      "title": "Order Fulfillment Service API",
+      "shortDescription": "Manages order lifecycle and customer account service interactions for ticket resolution.",
+      "description": "Exposes order fulfillment status and customer account details to enable service teams to retrieve, manage, and track customer orders throughout their lifecycle. Provides access to order-related service tickets and account information, facilitating coordinated fulfillment operations and customer support workflows.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/order-fulfillment-service.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "itsm-operations"
+      ],
+      "tags": [
+        "service-management",
+        "order-fulfillment",
+        "ticket-lifecycle"
+      ],
+      "industry": [],
+      "capabilities": [
+        "fulfill-customer-orders",
+        "allocate-inventory",
+        "manage-customer-accounts"
+      ],
+      "useCases": [
+        "Sales fulfillment teams process initial customer orders for the new product while managing inventory and delivery commitments.",
+        "Customer account managers verify order accuracy and coordinate logistics for early-stage product shipments."
+      ],
+      "processNext": [
+        "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductLaunchVendorCompliance_v1",
+          "groupTypeId": "bpmn",
+          "sequencePosition": 7
+        }
+      ]
+    }
+  ],
+  "dataProducts": [
+    {
+      "ordId": "emarsys.cx:dataProduct:CampaignPerformanceAnalytics:v1",
+      "title": "Campaign Performance Analytics Data Product",
+      "shortDescription": "Aggregated campaign metrics across channels with segment performance breakdown.",
+      "description": "Provides unified analytics views combining campaign delivery metrics, engagement rates, and ROI across email, SMS, and push channels. Includes segment-level performance attribution and cohort analysis to enable data-driven optimization of marketing spend and campaign targeting strategies.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "type": "derived",
+      "category": "analytical",
+      "outputPorts": [
+        {
+          "ordId": "emarsys.cx:apiResource:CampaignAnalyticsQueryAPI:v1"
+        }
+      ],
+      "entityTypes": [
+        "sap.odm:entityType:Campaign:v1",
+        "sap.odm:entityType:CustomerSegment:v1",
+        "sap.odm:entityType:CustomerAccount:v1"
+      ],
+      "lineOfBusiness": [
+        "Marketing and CX"
+      ],
+      "tags": [
+        "campaign-analytics",
+        "performance-metrics",
+        "segment-attribution",
+        "roi-tracking"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1",
+      "title": "Engagement Incident Metrics",
+      "shortDescription": "Aggregates and analyzes campaign incidents and safety-related engagement issues.",
+      "description": "Summarizes incident patterns across customer journeys and engagement campaigns, providing metrics on safety incidents and campaign disruptions. Delivers actionable insights on incident frequency, impact on customer touchpoints, and remediation trends to optimize engagement reliability and compliance posture.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "emarsys.cx:apiResource:IncidentMetricsExposureAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "customer-experience"
+      ],
+      "tags": [
+        "incident-analytics",
+        "engagement-reliability",
+        "compliance-monitoring"
+      ],
+      "industry": [],
+      "capabilities": [
+        "monitor-incidents",
+        "track-engagement-metrics",
+        "detect-anomalies",
+        "identify-safety-issues",
+        "monitor-transition-incidents",
+        "track-safety-metrics"
+      ],
+      "useCases": [
+        "Manufacturing supervisors detect real-time equipment failures to prevent production disruptions.",
+        "Customer experience tracks engagement quality and incident correlation with new capabilities.",
+        "Safety officers track incident trends across facilities for compliance reporting.",
+        "Customer experience teams correlate production incidents with fulfillment delays.",
+        "Operations team monitors production incidents during transition for rapid issue resolution.",
+        "Safety compliance monitors for any safety-related incidents emerging during transition."
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductionTransitionMarketReadiness_v1",
+          "groupTypeId": "cmmn"
+        },
+        {
+          "groupId": "proc_QualityDrivenMfgSupplyChain_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    {
+      "ordId": "emarsys.cx:dataProduct:FinancialEngagementMetrics:v1",
+      "title": "Financial Engagement Metrics",
+      "shortDescription": "Aggregates invoice and material engagement data for campaign ROI analysis.",
+      "description": "Summarizes financial performance metrics across customer engagement journeys by correlating invoice transactions and material interactions. Provides comprehensive analytics on campaign-driven purchase patterns and material-level engagement ROI. Delivers actionable insights on customer lifetime value and material demand trends driven by marketing orchestration.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Invoice:v1",
+        "sap.odm:entityType:Material:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "emarsys.cx:apiResource:FinancialEngagementReportingAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Finance"
+      ],
+      "tags": [
+        "campaign-roi",
+        "financial-analytics",
+        "customer-monetization"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:dataProduct:ProductImpactSalesIntelligence:v1",
+      "title": "Product Impact Sales Intelligence",
+      "shortDescription": "Aggregates product changes and material insights to optimize sales strategies",
+      "description": "Summarizes engineering changes, material attributes, and product item performance to provide actionable sales intelligence. Provides metrics on product-level impact across customer segments, enabling data-driven sales decisions and targeted engagement campaigns. Correlates product modifications with sales outcomes to identify revenue opportunities and risk factors.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "emarsys.cx:apiResource:ProductSalesMetricsAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Sales"
+      ],
+      "tags": [
+        "product-management",
+        "impact-analysis",
+        "sales-intelligence"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:dataProduct:ProductChangeAndInventoryAnalytics:v1",
+      "title": "Product Change and Inventory Analytics",
+      "shortDescription": "Aggregates engineering changes, material updates, and product item metrics for campaign optimization.",
+      "description": "Summarizes and provides metrics on engineering changes, material specifications, and product item performance across marketing campaigns. Enables comprehensive analysis of product-related modifications and inventory impact on customer engagement strategies. Delivers actionable insights on product lifecycle changes influencing segmentation and journey orchestration decisions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "emarsys.cx:apiResource:ProductChangeMetricsDataAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "marketing-and-cx"
+      ],
+      "tags": [
+        "product-analytics",
+        "inventory-intelligence",
+        "campaign-optimization"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:dataProduct:SafetyIncidentComplianceAnalytics:v1",
+      "title": "Safety Incident Compliance Analytics",
+      "shortDescription": "Aggregates and analyzes incident data to provide safety compliance metrics and trends.",
+      "description": "This data product aggregates incident and safety incident records across the organization to summarize compliance performance, track incident patterns, and provide actionable metrics for risk mitigation. It enables stakeholders to monitor safety KPIs, identify recurring incident categories, and generate compliance reports required for regulatory oversight and continuous improvement initiatives.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "emarsys.cx:apiResource:SafetyIncidentComplianceReportingAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Capital Management"
+      ],
+      "tags": [
+        "safety-analytics",
+        "incident-reporting",
+        "compliance-metrics"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:dataProduct:OpportunitySalesForecasting:v1",
+      "title": "Opportunity Sales Forecasting Analytics",
+      "shortDescription": "Aggregates customer account and sales opportunity data to provide predictive pipeline metrics",
+      "description": "This data product aggregates customer account profiles and sales opportunity records to generate forward-looking sales forecasts and pipeline health indicators. It summarizes historical win rates, deal progression patterns, and customer engagement signals to deliver actionable opportunity-level metrics that drive sales planning and resource allocation decisions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:CustomerAccount:v1",
+        "sap.odm:entityType:SalesOpportunity:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "emarsys.cx:apiResource:OpportunitySalesForecastingAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Sales and Customer"
+      ],
+      "tags": [
+        "pipeline-analytics",
+        "forecasting",
+        "sales-metrics",
+        "opportunity-tracking"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "emarsys.cx:dataProduct:ServiceDeliveryOperationalInsights:v1",
+      "title": "Service Delivery Operational Insights",
+      "shortDescription": "Aggregates service tickets, infrastructure changes, and equipment metrics for operational intelligence.",
+      "description": "This data product summarizes service ticket resolution patterns, IT equipment utilization trends, and change request impact metrics to provide comprehensive operational visibility. It delivers actionable metrics on service delivery health, infrastructure change velocity, and equipment performance correlation with customer engagement outcomes, enabling data-driven optimization of CX infrastructure operations.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "emarsys.cx:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:ChangeRequest:v1",
+        "sap.odm:entityType:ITEquipment:v1",
+        "sap.odm:entityType:ServiceTicket:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "emarsys.cx:apiResource:ServiceOperationalMetricsAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "customer-experience-management"
+      ],
+      "tags": [
+        "operational-analytics",
+        "infrastructure-health",
+        "service-quality"
+      ],
+      "industry": []
+    }
+  ]
+}

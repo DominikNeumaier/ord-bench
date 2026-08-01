@@ -1,0 +1,57 @@
+<process id="proc_ProductLifecycleCompliance_v1" type="bpmn">
+  <step id="s1" label="Analyze product cost and complexity impact"
+        description="Evaluate newly proposed materials and product designs against cost and complexity benchmarks to identify optimization opportunities."
+        ordId="siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1"
+        capability="analyze-product-costs"
+        useCase="Product managers need to understand cost implications of design decisions before advancing to procurement."/>
+  
+  <step id="s2" label="Retrieve qualified materials and vendor catalogs"
+        description="Access the approved material and vendor qualification database to identify pre-vetted procurement sources."
+        ordId="sap.sf:apiResource:MaterialAndVendorProcurementIntegration:v1"
+        capability="retrieve-vendor-materials"
+        useCase="Procurement teams need rapid access to qualified materials and vendors to meet sourcing timelines."/>
+  
+  <step id="s3" label="Orchestrate material and vendor qualification workflow"
+        description="Coordinate multi-step vendor evaluation and material certification processes to ensure compliance and quality standards."
+        ordId="siemens.plm:agent:MaterialAndVendorQualificationOrchestrator:v1"
+        capability="orchestrate-qualification"
+        useCase="Supply chain managers need automated workflows to manage complex material qualification across multiple vendors and standards."/>
+  
+  <step id="s4" label="Validate bill of materials cost and compliance"
+        description="Audit the complete bill of materials against cost thresholds, regulatory requirements, and material compliance standards."
+        ordId="sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1"
+        capability="validate-bom-compliance"
+        useCase="Engineering and compliance teams must verify that BOMs meet both cost targets and regulatory obligations before purchase orders are issued."/>
+  
+  <step id="s5" label="Process engineering change requests and product updates"
+        description="Manage and route engineering change notices through approval workflows and update affected product configurations."
+        ordId="sap.ariba:apiResource:EngineeringChangeAndProductItemManagement:v1"
+        capability="manage-engineering-changes"
+        useCase="Engineering change coordinators need to track and implement design modifications without disrupting production schedules."/>
+  
+  <step id="s6" label="Create and approve purchase orders with vendor contracts"
+        description="Generate and transmit purchase orders to qualified vendors with negotiated terms, pricing, and delivery schedules."
+        ordId="sap.crm:apiResource:ProcurementVendorOrderManagement:v1"
+        capability="execute-purchase-orders"
+        useCase="Procurement specialists must issue purchase orders to vendors while maintaining audit trails and contract compliance."/>
+  
+  <step id="s7" label="Monitor incident and safety compliance during fulfillment"
+        description="Track supplier performance incidents and safety metrics to ensure vendor compliance and early issue resolution."
+        ordId="corp.itsm:dataProduct:IncidentEngagementReliability:v1"
+        capability="monitor-vendor-incidents"
+        useCase="Supply chain quality teams need real-time visibility into vendor performance issues to prevent delivery failures and safety risks."/>
+  
+  <step id="s8" label="Dashboard incident resolution and compliance performance"
+        description="Report on safety incident resolution times and vendor compliance performance to identify systemic procurement quality trends."
+        ordId="sap.sf:dataProduct:IncidentResolutionAndComplianceAnalytics:v1"
+        capability="report-compliance-performance"
+        useCase="Procurement leadership needs consolidated visibility into vendor safety and compliance metrics to drive continuous improvement."/>
+  
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+</process>

@@ -1,0 +1,81 @@
+{
+  "case_id": "dy-06",
+  "mode": "dynamic",
+  "query_class": "single_intent",
+  "problem_type": "P1",
+  "selected_resources": [
+    "my.mes:agent:ProductionChangeOrchestrator:v1"
+  ],
+  "distractor": "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1",
+  "timestamp": "2026-06-08T13:19:31.759408+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to orchestrate some changes we're rolling out across our production environment next week, but I'm not sure if we should be using the change management tool that handles our engineering updates or the one that tracks our asset modifications. Can you help us figure out which system we should submit this through?"
+      },
+      "generator_tokens": 186,
+      "solver_output": {
+        "predicted": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+        "top1_correct": false,
+        "top5": [
+          "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+          "corp.itsm:agent:ChangeReleaseCoordinator:v1",
+          "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+          "sap.s4:agent:EngineeringChangeOrchestrator:v1",
+          "siemens.plm:agent:EngineeringChangeAndComplianceOrchestrator:v1"
+        ],
+        "note": "retro_certified"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": false,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": false,\n  \"C3\": true,\n  \"accepted\": false,\n  \"reason\": \"C2 fails because the prompt explicitly mentions 'change management tool' and 'asset modifications' which are system/resource names that violate the P1 single_intent retrieval pattern requirement.\"\n}\n```",
+      "judge_tokens": 344,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "I need to schedule some updates to our manufacturing workflow next week and make sure all the dependent systems get notified at the right time. We have a few service components that need to be rolled out together, and I want to avoid any conflicts or downtime. Can you help me figure out what tool handles coordinating these kinds of synchronized deployments?"
+      },
+      "generator_tokens": 208,
+      "solver_output": {
+        "predicted": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+        "top1_correct": false,
+        "top5": [
+          "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+          "corp.itsm:agent:ChangeReleaseCoordinator:v1",
+          "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+          "sap.s4:agent:EngineeringChangeOrchestrator:v1",
+          "siemens.plm:agent:EngineeringChangeAndComplianceOrchestrator:v1"
+        ],
+        "note": "retro_certified"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 312,
+      "outcome": "ACCEPTED",
+      "_retro_verdict": "HARD"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-06",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to schedule some updates to our manufacturing workflow next week and make sure all the dependent systems get notified at the right time. We have a few service components that need to be rolled out together, and I want to avoid any conflicts or downtime. Can you help me figure out what tool handles coordinating these kinds of synchronized deployments?",
+    "expected_ordIds": [
+      "my.mes:agent:ProductionChangeOrchestrator:v1"
+    ],
+    "distractor_ordId": "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1"
+  }
+}

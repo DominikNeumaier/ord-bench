@@ -1,0 +1,48 @@
+{
+  "case_id": "oos-05",
+  "mode": "out_of_scope",
+  "difficulty": "hard",
+  "topic": "Intraday cash flow forecasting",
+  "timestamp": "2026-06-08T13:00:20.126210+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need visibility into which invoices we've issued to customers are actually going to get paid today versus tomorrow based on their historical payment patterns and current banking day calendars\u2014right now we're manually calling accounts receivable contacts to ask if checks cleared, and it's eating up two hours of our treasury team's time every morning."
+      },
+      "generator_tokens": 160,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": false
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": false,\n  \"accepted\": false,\n  \"reason\": \"Request is for predictive cash flow forecasting with payment timing intelligence, which is a legitimate treasury function but requires external banking data integration and ML-based prediction capabilities that ex",
+      "judge_tokens": 296,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "We need visibility into how our daily supplier payment obligations will impact our available cash balance hour-by-hour, so our treasury team can coordinate with our banks on same-day funding needs before we hit our minimum operating cash threshold\u2014right now we're manually pulling payment schedules from three different systems and it's causing us to request emergency credit lines that cost us fees."
+      },
+      "generator_tokens": 181,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```\n\n**Rationale:**\n\n- **C1 (Real enterprise ask):** TRUE \u2013 Treasury teams across mid-to-large enterprises genuinely need hourly cash position forecasting to optimize liquidity and avoid costly emergency borro",
+      "judge_tokens": 521,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "oos-05",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "difficulty": "hard",
+    "topic": "Intraday cash flow forecasting",
+    "user_prompt": "We need visibility into how our daily supplier payment obligations will impact our available cash balance hour-by-hour, so our treasury team can coordinate with our banks on same-day funding needs before we hit our minimum operating cash threshold\u2014right now we're manually pulling payment schedules from three different systems and it's causing us to request emergency credit lines that cost us fees.",
+    "expected_ordIds": []
+  }
+}

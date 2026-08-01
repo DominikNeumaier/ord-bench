@@ -1,0 +1,90 @@
+{
+  "process_id": "proc_016",
+  "process_type": "bpmn",
+  "gt_ordIds": [
+    "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1",
+    "sap.crm:apiResource:CustomerAccountDisputeManagement:v1",
+    "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1",
+    "siemens.plm:agent:BOMComplianceValidator:v1"
+  ],
+  "enrichment": {
+    "sap.crm:apiResource:CustomerAccountDisputeManagement:v1": {
+      "capabilities": [
+        "retrieve-customer-orders",
+        "load-account-context"
+      ],
+      "useCases": [
+        "Identify customers and orders subject to material change impact assessment",
+        "Establish baseline customer scope for compliance workflows"
+      ],
+      "processNext": [
+        "siemens.plm:agent:BOMComplianceValidator:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_compliance_workforce_v1",
+          "groupTypeId": "bpmn",
+          "sequencePosition": 1
+        }
+      ]
+    },
+    "siemens.plm:agent:BOMComplianceValidator:v1": {
+      "capabilities": [
+        "validate-bom-compliance",
+        "verify-component-standards"
+      ],
+      "useCases": [
+        "Confirm product specifications align with approved material lists before production",
+        "Verify all product components meet current regulatory and engineering standards"
+      ],
+      "processNext": [
+        "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_compliance_workforce_v1",
+          "groupTypeId": "bpmn",
+          "sequencePosition": 2
+        }
+      ]
+    },
+    "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1": {
+      "capabilities": [
+        "assess-hazardous-compliance",
+        "validate-substance-restrictions"
+      ],
+      "useCases": [
+        "Assure no restricted or regulated substances are present in customer orders",
+        "Confirm product materials comply with hazardous substance regulations and customer restrictions"
+      ],
+      "processNext": [
+        "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_compliance_workforce_v1",
+          "groupTypeId": "bpmn",
+          "sequencePosition": 3
+        }
+      ]
+    },
+    "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1": {
+      "capabilities": [
+        "analyze-change-readiness",
+        "forecast-workforce-impact"
+      ],
+      "useCases": [
+        "Provide HR leadership with staffing and training impact projections for material changes",
+        "Evaluate organizational readiness and required workforce adjustments for engineering changes"
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_compliance_workforce_v1",
+          "groupTypeId": "bpmn",
+          "sequencePosition": 4
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "case_id": "oos-15",
+  "mode": "out_of_scope",
+  "difficulty": "hard",
+  "topic": "Automated lease accounting under IFRS 16",
+  "timestamp": "2026-06-08T13:00:58.116272+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "Our lease portfolio spans multiple currencies and entities, but our current IFRS 16 system doesn't handle lease modifications (like term extensions or payment rate changes) that happen mid-period\u2014we're manually recalculating ROU assets and lease liabilities every time, which is error-prone and delays our monthly close by days."
+      },
+      "generator_tokens": 164,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": false
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": false,\n  \"accepted\": false,\n  \"reason\": \"While the lease modification workflow is real and complex, the core request (automated recalculation of ROU assets and lease liabilities) is within standard IFRS 16 accounting system scope, not clearly out-of-scop",
+      "judge_tokens": 307,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "Our finance team currently uses our lease accounting system to track IFRS 16 liabilities and right-of-use assets, but we have no automated way to reconcile the lease modification adjustments that our real estate and equipment procurement teams make throughout the year against what's been recorded in our general ledger\u2014we're manually reviewing dozens of modification notices each quarter and trying to match them to journal entries, which creates audit risk and delays our month-end close."
+      },
+      "generator_tokens": 204,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": false
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": false,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```\n\n**Rationale:**\n\n- **C1 (Real enterprise user):** \u2713 True. This is an authentic large enterprise finance problem\u2014IFRS 16 lease accounting with modification tracking is standard in organizations with material",
+      "judge_tokens": 553,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "oos-15",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "difficulty": "hard",
+    "topic": "Automated lease accounting under IFRS 16",
+    "user_prompt": "Our finance team currently uses our lease accounting system to track IFRS 16 liabilities and right-of-use assets, but we have no automated way to reconcile the lease modification adjustments that our real estate and equipment procurement teams make throughout the year against what's been recorded in our general ledger\u2014we're manually reviewing dozens of modification notices each quarter and trying to match them to journal entries, which creates audit risk and delays our month-end close.",
+    "expected_ordIds": []
+  }
+}

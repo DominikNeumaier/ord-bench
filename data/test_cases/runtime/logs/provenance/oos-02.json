@@ -1,0 +1,33 @@
+{
+  "case_id": "oos-02",
+  "mode": "out_of_scope",
+  "difficulty": "hard",
+  "topic": "Blockchain-based supply chain traceability",
+  "timestamp": "2026-06-08T13:00:20.109934+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need a way to automatically reconcile blockchain transaction records with our ERP system's accounts payable ledger so our finance team can match supplier payments to immutable delivery confirmations without manual data entry\u2014can your system flag discrepancies between what the ledger shows and what the supply chain records confirm?"
+      },
+      "generator_tokens": 156,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": false
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": false,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```\n\n**Justification:**\n\n- **C1 (Real enterprise ask)**: True. This is a legitimate finance operations request\u2014cross-system reconciliation between blockchain and ERP is a real pain point for enterprises using d",
+      "judge_tokens": 545,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "oos-02",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "difficulty": "hard",
+    "topic": "Blockchain-based supply chain traceability",
+    "user_prompt": "We need a way to automatically reconcile blockchain transaction records with our ERP system's accounts payable ledger so our finance team can match supplier payments to immutable delivery confirmations without manual data entry\u2014can your system flag discrepancies between what the ledger shows and what the supply chain records confirm?",
+    "expected_ordIds": []
+  }
+}

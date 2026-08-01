@@ -1,0 +1,48 @@
+{
+  "case_id": "oos-12",
+  "mode": "out_of_scope",
+  "difficulty": "hard",
+  "topic": "ESG / sustainability scoring and carbon footprint tracking",
+  "timestamp": "2026-06-08T13:00:41.510451+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to automatically calculate and track Scope 3 emissions from our supplier network so we can report accurate carbon footprint data in our annual sustainability report, but right now we're manually collecting spreadsheets from hundreds of vendors with inconsistent methodologies and it's creating audit risk."
+      },
+      "generator_tokens": 153,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": false
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": false,\n  \"accepted\": false,\n  \"reason\": \"Request is vague on which specific system/tool should provide this capability; appears to seek a complete supply chain emissions management platform rather than a feature from an identified product.\"\n}\n```",
+      "judge_tokens": 281,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "We need to automatically calculate and track Scope 3 emissions from our supplier network so we can report accurate supply chain carbon footprint to our investors and meet our 2030 net-zero commitments, but our current ESG platform only captures direct emissions from our own facilities."
+      },
+      "generator_tokens": 167,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```\n\n**Justification:**\n\n- **C1 (Real enterprise need):** TRUE \u2013 Large organizations with net-zero commitments genuinely need Scope 3 emissions tracking from supplier networks for investor reporting and regula",
+      "judge_tokens": 431,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "oos-12",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "difficulty": "hard",
+    "topic": "ESG / sustainability scoring and carbon footprint tracking",
+    "user_prompt": "We need to automatically calculate and track Scope 3 emissions from our supplier network so we can report accurate supply chain carbon footprint to our investors and meet our 2030 net-zero commitments, but our current ESG platform only captures direct emissions from our own facilities.",
+    "expected_ordIds": []
+  }
+}

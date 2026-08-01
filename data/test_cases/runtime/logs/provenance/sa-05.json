@@ -1,0 +1,43 @@
+{
+  "case_id": "sa-05",
+  "mode": "skill_adjusted",
+  "skill_id": "proc_021",
+  "gap_resources": [
+    "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+    "sap.s4:apiResource:ProductionPerformanceAPI:v1"
+  ],
+  "timestamp": "2026-06-08T12:49:34.542626+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to orchestrate our complete manufacturing workflow from securing materials with our suppliers through final production execution and ensuring all our compliance documentation is properly filed. As part of this end-to-end process, we also need to track and reconcile all the financial documents coming in from our vendors that are tied to our material orders. Additionally, please include monitoring our production line performance metrics so we can evaluate how efficiently our equipment is running and identify any bottlenecks in our output. Make sure quality validation checkpoints are integrated throughout to catch any issues early, and we'll need comprehensive reporting at each stage to maintain our regulatory compliance standards.",
+        "variant": 0
+      },
+      "generator_tokens": 327,
+      "solver_output": {
+        "predicted": "my.mes:agent:ProductionQualityMonitor:v1",
+        "correct": false
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```",
+      "judge_tokens": 401,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "sa-05",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to orchestrate our complete manufacturing workflow from securing materials with our suppliers through final production execution and ensuring all our compliance documentation is properly filed. As part of this end-to-end process, we also need to track and reconcile all the financial documents coming in from our vendors that are tied to our material orders. Additionally, please include monitoring our production line performance metrics so we can evaluate how efficiently our equipment is running and identify any bottlenecks in our output. Make sure quality validation checkpoints are integrated throughout to catch any issues early, and we'll need comprehensive reporting at each stage to maintain our regulatory compliance standards.",
+    "expected_skill_id": "proc_021",
+    "expected_gap_ordIds": [
+      "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+      "sap.s4:apiResource:ProductionPerformanceAPI:v1"
+    ]
+  }
+}

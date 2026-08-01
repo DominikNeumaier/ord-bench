@@ -1,0 +1,68 @@
+<process id="proc_SafetyComplianceOrchestration_v1" type="cmmn">
+  
+  <step id="s1" 
+        label="Monitor workplace hazard events"
+        description="Continuously detect and log occupational safety incidents across all facilities to establish incident baseline and trigger compliance workflows."
+        ordId="workday.hcm:agent:OccupationalSafetyIncidentMonitoring:v1"
+        capability="monitor-incidents"
+        useCase="Safety managers need real-time visibility into workplace hazards before they escalate into reportable incidents."/>
+  
+  <step id="s2" 
+        label="Evaluate hazardous substance exposure"
+        description="Assess chemical and material safety compliance status against regulatory standards to determine risk level and remediation requirements."
+        ordId="corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1"
+        capability="evaluate-compliance"
+        useCase="Operations teams must validate that all hazardous materials in use meet environmental and occupational safety regulations."/>
+  
+  <step id="s3" 
+        label="Analyze equipment maintenance impact"
+        description="Review maintenance schedules and change requests to identify equipment-related safety risks that could contribute to incidents or compliance violations."
+        ordId="my.mes:dataProduct:EquipmentMaintenanceAndChangeImpactAnalytics:v1"
+        capability="analyze-equipment-risk"
+        useCase="Maintenance planners need to understand how equipment changes or delays impact workplace safety compliance posture."/>
+  
+  <step id="s4" 
+        label="Verify customer safety compliance status"
+        description="Cross-reference customer accounts and campaigns against safety compliance records to ensure contractual safety obligations are met."
+        ordId="corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1"
+        capability="verify-customer-compliance"
+        useCase="Account managers must confirm that customer-facing safety commitments and campaign execution align with organizational compliance standards."/>
+  
+  <step id="s5" 
+        label="Review employee payroll and staffing impact"
+        description="Examine payroll records for affected employees to assess financial and staffing implications of safety incidents or compliance remediation activities."
+        ordId="workday.hcm:apiResource:PayrollDataExposure:v1"
+        capability="review-payroll-impact"
+        useCase="HR and finance teams need to understand incident-related costs (incident response, lost time, reassignment) on payroll and headcount planning."/>
+  
+  <step id="s6" 
+        label="Check employee absence and availability"
+        description="Validate employee time-off balances to ensure adequate staffing for safety remediation tasks and incident investigation activities."
+        ordId="workday.hcm:apiResource:TimeOffBalanceManagement:v1"
+        capability="check-availability"
+        useCase="Incident response coordinators must confirm that required safety personnel are available and not on approved leave before assignment."/>
+  
+  <step id="s7" 
+        label="Track customer engagement in compliance campaigns"
+        description="Update customer contact states and campaign journey status to reflect participation in safety compliance communications and training."
+        ordId="emarsys.cx:apiResource:JourneyContactStateAPI:v1"
+        capability="track-campaign-engagement"
+        useCase="Marketing and compliance teams must ensure customers receive timely safety alerts and compliance notifications through appropriate channels."/>
+  
+  <step id="s8" 
+        label="Reconcile safety costs and revenue impact"
+        description="Match remediation and incident costs against customer invoices and material usage to quantify financial impact of compliance activities."
+        ordId="sap.crm:dataProduct:CustomerInvoiceMaterialRevenueAnalytics:v1"
+        capability="reconcile-financials"
+        useCase="Finance and executive leadership need complete visibility into compliance program ROI and incident-related cost recovery from customers."/>
+  
+  <!-- CMMN Sequence Flow (logical enterprise order) -->
+  <sequenceFlow from="s1" to="s2" label="Incident detected"/>
+  <sequenceFlow from="s2" to="s3" label="Hazard level assessed"/>
+  <sequenceFlow from="s3" to="s4" label="Equipment risks identified"/>
+  <sequenceFlow from="s4" to="s5" label="Customer compliance confirmed"/>
+  <sequenceFlow from="s5" to="s6" label="Staffing impact calculated"/>
+  <sequenceFlow from="s6" to="s7" label="Resources allocated"/>
+  <sequenceFlow from="s7" to="s8" label="Engagement tracked"/>
+  
+</process>

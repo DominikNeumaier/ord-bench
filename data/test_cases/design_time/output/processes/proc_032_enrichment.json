@@ -1,0 +1,108 @@
+{
+  "process_id": "proc_032",
+  "process_type": "cmmn",
+  "gt_ordIds": [
+    "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1",
+    "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+    "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1"
+  ],
+  "enrichment": {
+    "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1": {
+      "capabilities": [
+        "assess-compensation-impact",
+        "evaluate-skill-requirements",
+        "project-workforce-costs",
+        "calculate-incentive-adjustments"
+      ],
+      "useCases": [
+        "HR determines if product engineering changes require compensation adjustments for affected workforce",
+        "Finance calculates incremental labor costs for new manufacturing processes introduced by engineering change",
+        "Talent planning identifies skill gaps created by product change and budgets for new hire compensation"
+      ],
+      "processNext": [
+        "sap.sf:agent:TalentAcquisitionCampaignOrchestrator:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ChangeTalentIntegration_v1",
+          "groupTypeId": "cmmn",
+          "stepPosition": 5,
+          "businessPhase": "workforce-planning"
+        }
+      ]
+    },
+    "corp.itsm:apiResource:CampaignAccessManagementAPI:v1": {
+      "capabilities": [
+        "manage-campaign-access",
+        "configure-audience-segmentation",
+        "control-campaign-permissions",
+        "manage-communication-channels"
+      ],
+      "useCases": [
+        "Marketing operations grants HR recruiting team secure access to campaign management system for talent acquisition",
+        "IT service management enforces role-based access controls to ensure recruitment campaigns reach appropriate customer account segments",
+        "Campaign administrators segment recruitment messaging by geographic region, skill level, and experience matching product change requirements"
+      ],
+      "processNext": [
+        "emarsys.cx:dataProduct:ServiceDeliveryOperationalInsights:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ChangeTalentIntegration_v1",
+          "groupTypeId": "cmmn",
+          "stepPosition": 7,
+          "businessPhase": "campaign-execution"
+        }
+      ]
+    },
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1": {
+      "capabilities": [
+        "validate-material-impact",
+        "verify-vendor-capacity",
+        "assess-inventory-requirements",
+        "confirm-delivery-timelines"
+      ],
+      "useCases": [
+        "Supply chain team confirms availability of new materials required by engineering change and validates vendor lead times",
+        "Procurement verifies that current inventory levels support transition period between old and new product specifications",
+        "Inbound logistics validates warehouse receipt processes can accommodate changed packaging or material dimensions"
+      ],
+      "processNext": [
+        "sap.crm:dataProduct:ProductChangeImpactAnalytics:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ChangeTalentIntegration_v1",
+          "groupTypeId": "cmmn",
+          "stepPosition": 2,
+          "businessPhase": "change-validation"
+        }
+      ]
+    },
+    "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1": {
+      "capabilities": [
+        "orchestrate-engineering-change",
+        "coordinate-change-workflow",
+        "manage-change-approvals",
+        "track-change-lifecycle"
+      ],
+      "useCases": [
+        "Engineering organization initiates formal product design change request with cross-functional workflow orchestration",
+        "Change control board uses agent-driven workflow to coordinate approvals from manufacturing, supply chain, HR, and finance teams",
+        "Asset lifecycle management tracks engineering change from inception through implementation and post-deployment monitoring"
+      ],
+      "processNext": [
+        "sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ChangeTalentIntegration_v1",
+          "groupTypeId": "cmmn",
+          "stepPosition": 1,
+          "businessPhase": "change-initiation"
+        }
+      ]
+    }
+  }
+}

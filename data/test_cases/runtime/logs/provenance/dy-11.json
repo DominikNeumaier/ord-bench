@@ -1,0 +1,54 @@
+{
+  "case_id": "dy-11",
+  "mode": "dynamic",
+  "query_class": "single_intent",
+  "problem_type": "P1",
+  "selected_resources": [
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  ],
+  "distractor": "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1",
+  "timestamp": "2026-06-08T13:19:43.516251+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "I need to submit a maintenance request for our server infrastructure and track its progress through approval. Can you help me get this logged in the system and see what the current status is?"
+      },
+      "generator_tokens": 171,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "top1_correct": false,
+        "top5": [
+          "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+          "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+          "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+          "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1",
+          "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1"
+        ],
+        "note": "retro_certified"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 281,
+      "outcome": "ACCEPTED",
+      "_retro_verdict": "HARD"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-11",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to submit a maintenance request for our server infrastructure and track its progress through approval. Can you help me get this logged in the system and see what the current status is?",
+    "expected_ordIds": [
+      "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+    ],
+    "distractor_ordId": "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1"
+  }
+}

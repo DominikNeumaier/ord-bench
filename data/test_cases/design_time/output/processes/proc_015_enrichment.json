@@ -1,0 +1,90 @@
+{
+  "process_id": "proc_015",
+  "process_type": "bpmn",
+  "gt_ordIds": [
+    "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1",
+    "corp.itsm:apiResource:VendorProcurementOrderAPI:v1",
+    "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1",
+    "siemens.plm:apiResource:MachineProductionOrderIntegration:v1"
+  ],
+  "enrichment": {
+    "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1": {
+      "capabilities": [
+        "provision-campaign-customers",
+        "manage-campaign-lifecycle",
+        "activate-customer-accounts"
+      ],
+      "useCases": [
+        "Sales operations launch new product campaigns with customer account provisioning",
+        "Marketing teams establish campaign engagement channels across customer segments"
+      ],
+      "processNext": [
+        "sap.ariba:apiResource:SourcedCampaignAndVendorManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_supply_production_compliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "corp.itsm:apiResource:VendorProcurementOrderAPI:v1": {
+      "capabilities": [
+        "execute-procurement-orders",
+        "manage-vendor-orders",
+        "track-purchase-fulfillment"
+      ],
+      "useCases": [
+        "Procurement teams issue purchase orders to qualified vendors for campaign materials",
+        "Buyers maintain purchase order lifecycle from creation through delivery receipt"
+      ],
+      "processNext": [
+        "sap.ariba:apiResource:SourceingCampaignAndAccountManagementAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_supply_production_compliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1": {
+      "capabilities": [
+        "register-compliance-incidents",
+        "track-change-requests",
+        "manage-service-tickets"
+      ],
+      "useCases": [
+        "Operations teams document production changes and equipment modifications for audit trails",
+        "Compliance officers track IT equipment and service incidents for regulatory verification"
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_supply_production_compliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "siemens.plm:apiResource:MachineProductionOrderIntegration:v1": {
+      "capabilities": [
+        "integrate-production-orders",
+        "schedule-manufacturing",
+        "track-work-orders"
+      ],
+      "useCases": [
+        "Production planners schedule machines and track work orders from campaign fulfillment",
+        "Manufacturing teams execute production orders translated from campaign demand"
+      ],
+      "processNext": [
+        "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_supply_production_compliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    }
+  }
+}

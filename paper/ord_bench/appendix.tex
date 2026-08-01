@@ -1,0 +1,921 @@
+\section{Open Resource Discovery}
+\label{appendix:ord}
+% ─────────────────────────────────────────────────────────────────────────────
+
+This appendix provides the background on ORD that the benchmark builds on: its role within the broader Apeiro Reference Architecture, and the concrete mechanisms of the protocol itself. The benchmark landscape (Appendix~\ref{appendix:landscape}) is a self-contained instantiation of the resource model described here.
+
+\subsection{Apeiro Reference Architecture}
+\label{appendix:ord-apeiro}
+
+ORD is one component of the Apeiro Reference Architecture contributed by SAP to the Important Project of Common European Interest on Next Generation Cloud Infrastructure and Services (IPCEI-CIS)~\cite{sap_se_apeiro_2026}. The Apeiro stack consists of four components that together form a Data Fabric for enterprise landscapes: Open Resource Discovery (ORD) as the metadata publication protocol, the Unified Customer Landscape (UCL) as the system-level aggregator, the Unified Metadata Service (UMS) as the central metadata service, and a Knowledge Graph as the AI-enriched semantic layer on top.
+
+\textbf{Open Resource Discovery (ORD).} ORD is a machine-readable metadata protocol that lets enterprise systems self-describe their exposed resources and capabilities. It does not replace existing specifications such as OpenAPI. Instead, it describes the broader context (shared high-level information, taxonomy, and cross-resource relations) and standardises how that context is published and discovered. Each participating system implements a read-only Service Provider Interface. A central aggregator crawls all providers and re-exposes the result as a connected, queryable landscape model. Beyond APIs and events, ORD covers higher-level concepts such as Entity Types (business objects), Data Products, Integration Dependencies, and Capabilities, grouped through Packages and Consumption Bundles and related to each other through typed links.
+
+\textbf{Unified Customer Landscape (UCL).} The Unified Customer Landscape (UCL) is SAP's ORD Aggregator for the customer system landscape~\cite{sap_se_apeiro_2026,linux_foundation_europe_open_nodate}. It automatically discovers and crawls ORD documents from all participating system instances and consolidates them into a unified, machine-readable graph-like landscape model. The model covers SAP, partner, and on-premise application tenants together with their API, event, and connectivity metadata. The aggregated model is re-exposed through industry-standard GraphQL and OData APIs, enabling other services and tools to query the full landscape without direct integration with each individual system. UCL thereby realises the ORD Aggregator role and provides the landscape view that UMS and the Knowledge Graph build on.
+
+\textbf{Unified Metadata Service (UMS).} The Unified Metadata Service (UMS) builds on the landscape model provided by UCL and exposes the aggregated ORD-based metadata as a centrally queryable service~\cite{sap_se_apeiro_2026}. UMS makes it possible for platforms and AI agents to query resource metadata across all participating providers through a single endpoint, without requiring direct integration with each individual system. Together with ORD, UMS removes the need for point-to-point wiring between services. UMS is not yet publicly available.
+
+\textbf{Knowledge Graph.} The Knowledge Graph builds on the metadata aggregated by UMS and constructs a connected network of semantic relationships across the service landscape~\cite{sap_se_apeiro_2026}. AI-assisted modelling further enriches the graph beyond what ORD and UMS expose structurally, so that the Knowledge Graph also captures inferred semantic connections between business objects across providers. The resulting graph serves as the basis for a semantic representation tailored for consumption by agentic AI, and is used in steps such as API discovery and query generation at runtime. The Knowledge Graph thereby extends the structural foundation of ORD with a layer of AI-derived semantics. It is not yet publicly available.
+
+\subsection{ORD Protocol}
+\label{appendix:ord-protocol}
+
+This section elaborates the concrete mechanisms of the ORD protocol. The main text introduces ORD through its typed and self-exposing nature and positions it against earlier description standards, but does not detail the concrete form of an ORD entry, the System Landscape Model, or how cross-resource references stay resolvable across systems and teams.
+
+Three roles structure the protocol. An \emph{ORD Provider} implements the Service Provider Interface and makes its metadata discoverable. An \emph{ORD Aggregator} crawls many providers, combines their output with central metadata sources, and re-exposes the result as a connected, queryable landscape model. An \emph{ORD Consumer} queries the aggregator rather than individual providers, obtaining a pre-aggregated view of the landscape. One system can hold several roles simultaneously.
+
+\textbf{Concrete entry format.} Listing~\ref{lst:ord-agent} shows a representative ORD document for a Dispute Resolution use case. The document root carries the protocol version, the applicable policy levels, and the \texttt{describedSystemInstance} that anchors all contained descriptions to a specific tenant. The document then contains four resource types whose interplay illustrates the key ORD concepts: an \texttt{agent} entry that declares the AI component, an \texttt{apiResource} for the A2A endpoint, an \texttt{integrationDependency} that names an upstream service, and a \texttt{package} that groups them under a single unit.
+
+\begin{lstlisting}[
+  label={lst:ord-agent},
+  caption={Representative ORD document for a Dispute Resolution use case (adapted from~\cite{linux_foundation_europe_open_nodate,sap_se_apeiro_2026}). The document root anchors descriptions to a system instance; agent, API resource, integration dependency, and package entries illustrate cross-resource referencing.},
+  language=json,
+  float=!t,
+  basicstyle=\scriptsize\ttfamily,
+  columns=fullflexible,
+  keepspaces=true,
+  xleftmargin=2pt,
+  resetmargins=true,
+]
+{
+  "openResourceDiscovery": "1.15",
+  "policyLevels": ["sap:core:v1", "sap:ai-agent:v1"],
+  "describedSystemInstance": {
+    "baseUrl": "https://tenant1.example-sap-system.com"
+  },
+  "agents": [{
+    "ordId": "sap.foo:agent:disputeAgent:v1",
+    "title": "Dispute Resolution Agent",
+    "shortDescription":
+      "AI agent specialized in financial dispute case resolution",
+    "version": "1.0.3",
+    "partOfPackage": "sap.foo:package:ord-reference-app:v1",
+    "relatedEntityTypes": [
+      "sap.foo:entityType:DisputeCase:v1",
+      "sap.foo:entityType:DisputeResolution:v1",
+      "sap.odm:entityType:Dispute:v1" ],
+    "exposedApiResources": [
+      {"ordId": "sap.foo:apiResource:DisputeResolutionAgent:v1"}],
+    "integrationDependencies": [
+      "sap.foo:integrationDependency:DisputeCaseManagement:v1"],
+    "partOfGroups": [
+      "sap.aicore:llmModel:sap.aicore:anthropic--claude-3.7-sonnet"],
+    "partOfGroups": ["sap.eab:process:sap.foo:DisputeResolutionProcess"],
+    "labels": {"foo.ai:interaction-mode":
+      ["conversational", "system-triggered"]},
+    "tags": ["finance", "dispute-resolution", "ai-agent"]
+  }],
+  "apiResources": [{
+    "ordId": "sap.foo:apiResource:DisputeResolutionAgent:v1",
+    "title": "Dispute Resolution Agent",
+    "apiProtocol": "a2a",
+    "partOfPackage": "sap.foo:package:ord-reference-app:v1",
+    "resourceDefinitions": [{
+      "type": "a2a-agent-card",
+      "mediaType": "application/json",
+      "url": "/definitions/DisputeResolutionAgentcard.json",
+      "accessStrategies": [{"type": "open"}]
+    }],
+    "partOfConsumptionBundles": [
+      {"ordId": "sap.joule:consumptionBundle:mTLS:v1"}],
+    "exposedEntityTypes": [
+      {"ordId": "sap.foo:entityType:DisputeCase:v1"},
+      {"ordId": "sap.odm:entityType:Dispute:v1"}]
+  }],
+  "integrationDependencies": [{
+    "ordId":
+      "sap.foo:integrationDependency:DisputeCaseManagement:v1",
+    "title": "Dispute Case Management Integration",
+    "mandatory": true,
+    "aspects": [{
+      "apiResources": [
+        {"ordId": "sap.bar:apiResource:DisputeResolutionAPI:v1"}]
+    }]
+  }],
+  "packages": [{
+    "ordId": "sap.foo:package:ord-reference-app:v1",
+    "title": "ORD Reference Application Package",
+    "version": "1.0.0",
+    "vendor": "sap:vendor:SAP:"
+  }]
+}
+\end{lstlisting}
+
+For the agent entry, six fields carry the semantic load. The \texttt{ordId} (\texttt{sap.foo:agent:disputeAgent:v1}) is the globally unique identifier under which every other resource references this agent. \texttt{relatedEntityTypes} pins it to business objects, including the cross-system ODM type \texttt{sap.odm:entityType:Dispute:v1} that expresses a shared semantic reference. \texttt{exposedApiResources} links to the concrete A2A endpoint, \texttt{integrationDependencies} declares upstream integrations, \texttt{partOfGroups} records both the LLM model backing the agent and its business-process group membership, and \texttt{labels}/\texttt{tags} carry free-form taxonomy. The same pattern reappears for every ORD resource type, enabling uniform retrieval without per-resource parsing.
+
+The \texttt{apiResource} entry adds two things the agent entry does not: \texttt{resourceDefinitions} points to the machine-readable A2A agent card, and \texttt{partOfConsumptionBundles} declares the authentication bundle (\texttt{sap.joule:consumptionBundle:mTLS:v1}) through which consumers may call the endpoint. The \texttt{integrationDependency} entry then references an API published by yet another system (\texttt{sap.bar}), showing how cross-system dependencies are expressed through governed ORD IDs rather than hard-wired URLs.
+
+\textbf{System Landscape Model.} ORD assumes the system landscape is known before description is harvested. The central concept is the \emph{System Instance}, which corresponds to one tenant and enforces resource isolation. In Listing~\ref{lst:ord-agent}, \texttt{describedSystemInstance.baseUrl} pins the document to a specific tenant. Each instance belongs to a \emph{System Type}, and resources are described relative to a system in the static perspective or a system instance in the dynamic one. This separation matters in two ways. First, identity is anchored in the ORD ID's namespace, so \texttt{sap.foo:agent:disputeAgent:v1} remains stable across tenants. Second, the distinction between a live tenant instance and a merely defined system-type capability is preserved, letting an aggregator restrict retrieval to live capabilities.
+
+\textbf{Namespace ownership and authority namespaces.} Every ORD identifier carries a namespace, and the namespace expresses ownership of the definition, not the location where it was found. In Listing~\ref{lst:ord-agent}, \texttt{sap.foo} is the \emph{own system namespace} (the publishing system owns its definitions), while \texttt{sap.odm}, \texttt{sap.aicore}, \texttt{sap.joule}, and \texttt{sap.bar} each belong to different teams or systems. Three ownership models matter here: an \emph{own system namespace} when a system publishes what it owns, \emph{another system's namespace} when a system re-exposes a contract governed elsewhere, and an \emph{authority namespace} (e.g.\ \texttt{sap.odm}) when a cross-system component governs a contract that multiple systems implement. Authority namespaces let the same governed definition be published from several systems under one identifier instead of being duplicated per publisher. This is critical for retrieval: methods see one resolvable reference regardless of how many publishers exist. The benchmark's shared \texttt{sap.odm} entity-type vocabulary (Appendix~\ref{appendix:landscape-systems}) is exactly such an authority namespace.
+
+\textbf{Shared taxonomy, resources and contracts.} ORD distinguishes \emph{shared} from \emph{abstract} resources. A shared ORD ID expresses identity: multiple publishers reference the same governed definition. In Listing~\ref{lst:ord-agent}, \texttt{sap.odm:entityType:Dispute:v1} appears in both the agent's \texttt{relatedEntityTypes} and the API resource's \texttt{exposedEntityTypes}, expressing that both operate on the same business object in the ODM namespace. An abstract resource, by contrast, expresses compatibility: one resource defines an interface-only contract, and concrete resources declare they are \texttt{compatibleWith} it. The shared-ID pattern is what makes cross-system references resolvable: the integration dependency in the listing points to one governed API contract regardless of which instance implements it. Combined with the System Landscape Model, this keeps cross-resource references (\texttt{integrationDependencies}, \texttt{exposedApiResources}, \texttt{partOfConsumptionBundles}, and entity-type links) resolvable as the landscape grows.
+
+
+\section{Resource Model}
+\label{appendix:landscape}
+% ─────────────────────────────────────────────────────────────────────────────
+
+This appendix details the ORD field schema every resource in ORD-Bench conforms to, an illustrative example of a resource in its clean and enriched state, and the system and entity-type vocabulary that structures the landscape.
+
+
+\begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:base_fields}, caption={Base required fields shared by all three resource types (agent, apiResource, dataProduct). \texttt{description} is optional per ORD v1.16 but always generated in this benchmark (273/273 resources).}]
+  ordId            string  namespace:type:PascalCaseName:v1
+  title            string  human-readable name
+  shortDescription string  one sentence, max 120 chars
+  description      string  2-3 sentences  (*optional in spec, always populated here)
+  version          string  "1.0.0"
+  partOfPackage    string  ordId of the containing package
+  visibility       enum    public | internal | private
+  releaseStatus    enum    active | beta | deprecated | sunset
+  \end{lstlisting}
+  
+  \begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:type_fields}, caption={Resource-specific required and semantic fields (Clean-ORD state). Semantic fields are optional in the ORD spec but always populated in the benchmark because they drive five of the six ambiguity-metric dimensions.}]
+    -- agent --
+    required:  (base set only)
+    semantic:  relatedEntityTypes  string[]  sap.odm entity type ordIds
+               lineOfBusiness      string[]
+               tags                string[]
+               industry            string[]
+    
+    -- apiResource --
+    required:  apiProtocol         enum    rest | odata-v4 | odata-v2 | ...
+               resourceDefinitions object  [{type, mediaType, url, accessStrategies}]
+    semantic:  exposedEntityTypes  object  [{ordId: "sap.odm:entityType:...:v1"}]
+               lineOfBusiness, tags, industry
+    
+    -- dataProduct --
+    required:  type                enum    primary | derived
+               category            enum    business-object | analytical | operational | other
+               outputPorts         object  [{ordId}]
+    semantic:  entityTypes         string[]  sap.odm entity type ordIds
+               lineOfBusiness, tags, industry
+    \end{lstlisting}
+
+\subsection{ORD Field Schema}
+\label{appendix:landscape-ord-schema}
+
+Before the landscape can be constructed, the schema each resource must conform to has to be defined. The schema decides which fields are available to retrieval methods at design-time and runtime. Each resource in the benchmark conforms to ORD~v1.16. Three listings below separate the fields by purpose: the base fields present in all Clean-ORD resources, the resource-specific required and semantic fields, and the enrichment fields that are written only for GT-eligible resources during the design-time flow and are therefore present in Enriched-ORD. Listing~\ref{lst:base_fields} shows the base fields shared by all three resource types. All 273 resources carry \texttt{description} even though it is optional in the spec.
+
+
+
+Listing~\ref{lst:type_fields} shows the resource-specific fields. The most important difference between the three types is how they reference business objects. All three carry an entity-type field, but under different names and structures: agents use \texttt{relatedEntityTypes} (a flat string array), apiResources use \texttt{exposedEntityTypes} (an object array with \texttt{ordId} keys), and dataProducts use \texttt{entityTypes} (a flat string array). This asymmetry is transparent to the ambiguity metric, which normalises all three to a flat ordId set before computing Jaccard similarity. Retrieval methods that traverse the raw ORD graph, however, interact with these fields directly, so any graph-walk entry-point logic must check all three field names when seeding traversal.
+
+
+
+Listing~\ref{lst:enriched_fields} shows the four enrichment fields added during the design-time flow. These fields are absent in Clean-ORD and only written for GT-eligible resources. The 203 non-GT resources remain at Clean-ORD level even in the enriched state. This is the experimental variable: the $\Delta$ (Enriched $-$ Clean) in the evaluation results measures exactly how much these four fields improve retrieval quality.
+
+\begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:enriched_fields}, caption={Enriched-ORD additional fields. Written by \texttt{enrich\_from\_processes.py} for GT-eligible resources only (70/273). Non-GT resources remain at Clean-ORD level.}]
+capabilities  string[]  verb-noun tokens from process step labels
+                        e.g. ["diagnose-equipment", "schedule-maintenance"]
+useCases      string[]  user-facing step descriptions (1 sentence each)
+                        e.g. ["Identify root cause of unplanned downtime"]
+processNext   string[]  ordIds of the next GT-eligible step's resource
+                        creates process-sequence edges for graph traversal
+partOfGroups  object[]  [{groupId: "proc_014", groupTypeId: "bpmn"|"cmmn"}]
+                        links the resource to its parent process model
+\end{lstlisting}
+
+
+\subsection{Example ORD Resource: Clean and Enriched State}
+\label{appendix:landscape-example}
+
+The listing below shows one benchmark resource (\texttt{my.mes:agent:ProductionChangeOrchestrator:v1}) in both states side by side. The left column is the Clean-ORD state as retrieved methods see it; the right column shows the four fields written by the design-time enrichment flow. The \texttt{entityTypes} field and all base fields are identical in both states --- enrichment only adds, never modifies.
+
+\begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:ord-example},
+  caption={Example resource in Clean-ORD and Enriched-ORD state. Fields absent in the clean state are marked \texttt{-- absent --}; the four added fields are written back from the design-time process-matching flow after validation.}]
+-- CLEAN (ord.json) --                   -- ENRICHED (ord_enriched.json) --
+
+"ordId":   "my.mes:agent:ProductionChangeOrchestrator:v1"
+"title":   "Production Change Orchestrator"
+"version": "1.0.0"
+"entityTypes": [                         (unchanged)
+  "sap.odm:entityType:EngineeringChange:v1",
+  "sap.odm:entityType:Material:v1",
+  "sap.odm:entityType:ProductItem:v1"
+]
+
+"capabilities": -- absent --            "capabilities": [
+                                           "manage-material-updates",
+                                           "validate-engineering-specs",
+                                           "sequence-work-orders", ...
+                                         ]
+
+"partOfGroups": -- absent --            "partOfGroups": [
+                                           {"groupId":
+                                            "proc_ManufacturingChange_v1",
+                                            "groupTypeId": "bpmn"}, ...
+                                         ]
+
+"processNext":  -- absent --            "processNext": [
+                                           "sap.sf:apiResource:
+                                            CompensationManagement:v1"
+                                         ]
+
+"useCases":     -- absent --            "useCases": [
+                                           "Operations manager submits
+                                            engineering change order ...",
+                                           ...  (8 total)
+                                         ]
+\end{lstlisting}
+
+\subsection{Systems and Entity Type Vocabulary}
+\label{appendix:landscape-systems}
+
+The landscape spans 10 enterprise systems from five vendors (SAP, Workday, Emarsys, Siemens, a generic corporate ITSM system), covering the domains most commonly encountered in enterprise orchestration scenarios. All systems share a single entity-type vocabulary of 50 business-object types derived from the SAP One Domain Model (\texttt{sap.odm}) --- these cross-domain connections had to be established explicitly during landscape construction, since real enterprise systems do not share a unified vocabulary by default. The shared vocabulary creates the cross-system similarity connections that make retrieval non-trivial: a Workday resource referencing \texttt{sap.odm:entityType:Employee:v1} is semantically linked to SAP SuccessFactors resources exposing the same type, making cross-namespace disambiguation a genuine retrieval challenge rather than a trivial namespace lookup.
+
+The 50 entity types used are (all prefixed \texttt{sap.odm:entityType:...:v1}):
+{\footnotesize\ttfamily
+Account, Approval, Asset, Benefit, Budget, Campaign, ChangeRequest, Compensation, Compliance, Contract,
+CostCenter, Customer, CustomerAccount, CustomerJourney, CustomerOrder, CustomerSegment, Document,
+Employee, EngineeringChange, ExpenseReport, HazardousSubstance, ITEquipment, Incident, Invoice,
+IoTSensorStream, Location, Machine, MaintenanceOrder, Material, Notification, Payroll,
+PerformanceReview, ProductItem, ProductionOrder, Project, PurchaseOrder, PurchaseRequisition,
+QualityInspection, Report, SafetyIncident, SalesOpportunity, ServiceTicket, SoftwareLicense,
+Substance, Supplier, Task, TimeOff, Vendor, WorkOrder, WorkforcePerson.
+}
+
+
+
+\section{Ambiguity Metric \& Resource Generation}
+\label{appendix:metric-generation}
+% ─────────────────────────────────────────────────────────────────────────────
+
+This appendix details how pairwise resource similarity is quantified and how the adversarial generation pipeline uses that metric to build the landscape.
+
+\subsection{Ambiguity Metric}
+\label{appendix:landscape-metric}
+
+Without a controlled similarity structure, a randomly generated landscape would consist mostly of structurally unrelated resources, and any retrieval method would identify the correct resource trivially. The ambiguity metric prevents trivial retrieval by quantifying how confusable any two resources are, so the generation pipeline can place genuine distractors next to every GT-eligible resource. The metric composition, formula, and scoring method per dimension are shown in Tab.~\ref{tab:ambiguity-metric} in the main text; the implementation is in \texttt{src/adversarial/preselect.py}.
+
+The six dimensions are weighted equally by design; differential weights would lack an empirical basis since no labelled confusion dataset exists for ORD resources. The cross-namespace bonus and type penalty are theoretically motivated. An embedding-based alternative was excluded because embedding-based retrieval methods evaluated on the benchmark rely on the same representation, and using it for construction would bias the difficulty structure towards them.
+
+The scores translate directly into similarity tiers that govern GT eligibility. The tier boundaries (HIGH $\geq$0.50, MEDIUM 0.25--0.49, LOW 0.10--0.24) were derived from pilot analysis on the 30 seed resources: a score above 0.50 corresponds to pairs that simultaneously share entity types, line of business, and tags --- the combination a human rater also flags as requiring system context to distinguish. Scores of 0.25--0.49 correspond to partial-field matches that require domain context, and 0.10--0.24 to resources sharing at most one or two fields. A resource qualifies as an evaluation target only if it has at least 3~HIGH, 5~MEDIUM, and 5~LOW neighbours, guaranteeing genuine distractors at every confusability level. Raising these thresholds reduces the eligible pool further but does not alter the tier definitions; lowering them admits resources with insufficiently dense neighbourhoods. Table~\ref{tab:tier-examples-full} shows one validated pair per tier with the full per-field decomposition.
+
+\begin{table*}[!t]
+  \renewcommand{\arraystretch}{1.2}
+  \caption{Similarity tier examples. One representative pair per tier from the benchmark landscape. HIGH pairs require system-context disambiguation; MEDIUM pairs require domain-context disambiguation; LOW pairs share only partial structural overlap. Scores decompose into \emph{text} (TF-IDF cosine), \emph{lid} (localId), \emph{ET} (entity types), \emph{LoB} (line of business), and \emph{tags}, plus a $+0.5$ cross-namespace bonus; \emph{industry} is 0 for all three pairs and omitted. The six dimensions are summed with the bonus and divided by 6 (see Tab.~\ref{tab:ambiguity-metric}). Only \emph{title} is shown per resource; the \emph{text} score is computed over the full \texttt{title + shortDescription + description} and \emph{tags} over the (unshown) tag sets, so those two components are not re-derivable from the displayed rows alone.}
+  \label{tab:tier-examples-full}
+  \centering\footnotesize
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabularx}{\textwidth}{@{} l l X X @{}}
+  \toprule
+  \textbf{Tier} & \textbf{Field} & \textbf{Resource A} & \textbf{Resource B} \\
+  \midrule
+  \multirow{6}{*}{\textbf{HIGH}}
+  & ordId          & \texttt{emarsys.cx:\allowbreak dataProduct:\allowbreak CampaignPerformanceAnalytics:\allowbreak v1} & \texttt{sap.crm:\allowbreak dataProduct:\allowbreak CampaignSegmentationAndROIAnalytics:\allowbreak v1} \\
+  & title          & Campaign Performance Analytics & Campaign Segmentation and ROI Analytics \\
+  & system         & emarsys.cx & sap.crm \\
+  & entityTypes    & Campaign, CustomerSegment, CustomerAccount & Campaign, CustomerAccount, CustomerSegment \\
+  & lineOfBusiness & Marketing and CX & Marketing and CX \\
+  & \multicolumn{3}{l}{\emph{Score:} text=0.44, lid=0.50, ET=1.00, LoB=1.00, tags=1.00, cross-ns$+$0.5 $\rightarrow$ \textbf{sim=0.74}} \\
+  \midrule
+  \multirow{6}{*}{\textbf{MEDIUM}}
+  & ordId          & \texttt{sap.crm:\allowbreak apiResource:\allowbreak SalesTeamAvailabilityAndCapacityService:\allowbreak v1} & \texttt{workday.hcm:\allowbreak apiResource:\allowbreak TimeOffAndCapacityAllocationManagement:\allowbreak v1} \\
+  & title          & Sales Team Availability and Capacity Service & Employee Absence and Resource Utilization API \\
+  & system         & sap.crm & workday.hcm \\
+  & entityTypes    & Employee, TimeOff & Employee, TimeOff \\
+  & lineOfBusiness & Sales & Sales \\
+  & \multicolumn{3}{l}{\emph{Score:} text=0.38, lid=0.11, ET=1.00, LoB=1.00, tags=0.00, cross-ns$+$0.5 $\rightarrow$ \textbf{sim=0.50}} \\
+  \midrule
+  \multirow{6}{*}{\textbf{LOW}}
+  & ordId          & \texttt{corp.itsm:\allowbreak apiResource:\allowbreak ProcurementVendorManagementAPI:\allowbreak v1} & \texttt{my.mes:\allowbreak apiResource:\allowbreak MaterialAndVendorMasterData:\allowbreak v1} \\
+  & title          & Procurement Vendor Management API & Material and Vendor Master Data API \\
+  & system         & corp.itsm & my.mes \\
+  & entityTypes    & PurchaseOrder, Vendor & Material, Vendor \\
+  & lineOfBusiness & Operations & Product Lifecycle Management \\
+  & \multicolumn{3}{l}{\emph{Score:} text=0.31, lid=0.17, ET=0.32, LoB=0.00, tags=0.20, cross-ns$+$0.5 $\rightarrow$ \textbf{sim=0.25}} \\
+  \bottomrule
+  \end{tabularx}
+\end{table*}
+
+The extended metric used in the disambiguation analysis (App.~\ref{appendix:disambiguation}) adds three semantic dimensions (\texttt{capabilities}, \texttt{partOfGroups}, \texttt{useCases}); a dimension is counted only when both resources carry it (Tab.~\ref{tab:extended-metric}). The implementation is in \texttt{experiments/disambiguation/extended\_metric.py}.
+
+
+\subsection{Generation Pipeline and Audit Trail}
+\label{appendix:landscape-audit}
+
+The previous sections defined what resources must look like (Sec.~\ref{appendix:landscape-ord-schema}), which systems and vocabulary they span (Sec.~\ref{appendix:landscape-systems}), and how similarity between them is measured (Sec.~\ref{appendix:landscape-metric}). This section describes how the landscape was built using those foundations. Resources were generated in three sequential steps: seed generation (\texttt{generate\_seeds.py}), iterative gap-filling (\texttt{generate\_iterative.py}), and near-duplicate reduction (\texttt{reduce\_near\_dups.py}). The iterative approach is key: each round adds resources targeted at the remaining similarity gaps of existing resources, so the landscape grows denser until every GT-eligible resource has its required neighbourhood. All LLM calls used \texttt{claude-haiku-4.5} at temperature 0.0, seed 42, via a local LiteLLM proxy; the file-based cache (keyed on \texttt{hash(model, system, prompt)}) makes every accepted output reproducible.
+
+\textbf{Quality gate (applied identically in Steps 1 and 2).} Every generated candidate passes a two-stage gate. The deterministic ORD~v1.16 spec validator (\texttt{validate\_ord.py}) runs first at zero LLM cost as criterion C1: it checks the required fields per resource type and the \texttt{ordId} pattern, and a failure returns immediately without an LLM call. Only structurally valid resources reach the LLM Judge (embedded in \texttt{generate\_seeds.py} and \texttt{generate\_iterative.py}), which evaluates four semantic criteria: C2 (coherent with the system domain), C3 (not a duplicate of an existing resource), C4 (entity-type references semantically justified), and C5 (description makes domain sense). Listing~\ref{lst:gen-seed-prompt} shows the Generator system prompt and Listing~\ref{lst:judge-seed-prompt} the Judge criteria.
+
+\medskip\noindent\textbf{Step 1 --- Seed generation (\texttt{generate\_seeds.py}).} 30 seed resources (3 per system) established the starting population. Entity types were assigned explicitly via \texttt{ENTITY\_TYPES\_BY\_DOMAIN}, ensuring all 50 \texttt{sap.odm} types were referenced by at least one seed. Each candidate was passed through the quality gate described above before being accepted into the landscape.
+
+\begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:gen-seed-prompt}, caption={Generator system prompt, used for both seed and iterative phases. The prompt enforces that all systems reference \texttt{sap.odm} entity types and that descriptions reflect resource type through verb choice rather than by naming the type explicitly.}]
+You are an ORD resource designer for enterprise software benchmarks.
+Generate ONE realistic ORD resource JSON for the given system and type.
+ALL systems use sap.odm:entityType:* IDs -- including non-SAP systems.
+Description must naturally reflect the entity types WITHOUT explicitly naming
+the resource type:
+  agent       -> action verbs (monitors, automates, coordinates, processes)
+  apiResource -> data verbs (exposes, retrieves, manages, provides access to)
+  dataProduct -> analytical verbs (aggregates, summarizes, provides metrics on)
+ALL semantic fields must be non-empty. Respond with ONLY valid JSON.
+\end{lstlisting}
+
+
+\begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:judge-seed-prompt}, caption={Judge system prompt from \texttt{generate\_iterative.py} (iterative phase). The seed phase (\texttt{generate\_seeds.py}) uses the same C2--C5 criteria with slightly different phrasing; the instruction to accept cross-domain entity types is present in both.}]
+You are a benchmark quality judge for ORD resources (synthetic ambiguity benchmark).
+Evaluate C2-C5. ALL systems use sap.odm:entityType:* IDs -- never reject for this.
+
+CRITICAL: This benchmark intentionally creates cross-domain resources to build
+ambiguity. Cross-domain entity types are CORRECT AND DESIRED.
+
+ACCEPT if the resource makes any reasonable sense for the system.
+ACCEPT cross-domain ET references if ANY connection exists
+  (e.g. HR+Compliance, ITSM+Project).
+REJECT only if: completely absurd for the system,
+  OR exact functional duplicate (same title+scope).
+Respond with ONLY a JSON object.
+\end{lstlisting}
+
+\medskip\noindent\textbf{Step 2 --- Iterative gap-filling (\texttt{generate\_iterative.py}).} Starting from the 30 seeds, new resources were generated round by round. Each round filled HIGH gaps before MEDIUM, because HIGH-fill resources sharing the same entity types, LoB, and a different namespace often satisfied MEDIUM slots for other resources at the same time, maximising shared coverage. Similarity was computed without TF-IDF during generation (\texttt{fast\_sim}: entityTypes, lineOfBusiness, tags, localId, all $O(1)$ Jaccard), making generation fast. Before each LLM call, a pre-check verified that a resource with the target structural profile (entity types, LoB, resource type) could at all land in the required tier. Concretely: the metric was computed between a dummy candidate carrying only the structural fields known before generation (\texttt{entityTypes}, \texttt{lineOfBusiness}, \texttt{tags}, \texttt{localId}; text fields set to empty) and the target resource. Because the only fields the LLM fills in are the free-text ones (\texttt{title}, \texttt{shortDescription}, \texttt{description}, and the resource name in the \texttt{ordId}) — all structural fields are pre-determined and fixed by the pre-check profile — a dummy score below the tier threshold means no LLM output could ever produce a valid distractor. The gap was therefore skipped without an LLM call, eliminating wrong-tier failures before they cost tokens.
+
+%\begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:iterative-algo}, caption={Per-round algorithm for iterative gap-filling (\texttt{generate\_iterative.py}). HIGH gaps are processed before MEDIUM in each round. The pre-check avoids LLM calls for structurally unreachable tier targets; the Solver verifies the accepted candidate's \texttt{fast\_sim} before forwarding to the Judge.}]
+%PERSISTENT tier_counts_map: {ordId -> {high, medium, low}}
+
+%EACH ROUND:
+%  1. Compute gaps: resources with high<3 or medium<5
+%     -> sorted HIGH-all-first, MEDIUM-all-second
+%  2. For each gap (target_ordId, tier):
+%       PRE-CHECK: build dummy profile, verify fast_sim in tier
+                  %-> skip without LLM call if not reachable
+%       GENERATOR: prompt includes system domain, rtype, confirmed ET IDs, LoB
+                  %ET + LoB enforced deterministically after LLM call
+%       SOLVER:    fast_sim(target, generated) in tier? -> proceed
+%       JUDGE:     deterministic spec check -> C2-C5 LLM
+%       ACCEPT  -> save, update tier_counts_map, log to enrichment_log.json
+%  3. Stop when 300 resources OR no gaps remain
+%  NOTE: LOW tier fills automatically (any resource scoring 0.10-0.25 counts)
+%\end{lstlisting}
+
+\medskip\noindent\textbf{Step 3 --- Near-duplicate reduction (\texttt{reduce\_near\_dups.py}).} After generation, a full TF-IDF scan identified all pairs with full\_sim $\geq 0.75$. For each pair, if one resource already had $H \geq 3$ neighbours, it was removed without loss. Otherwise the resource was rewritten via LLM to lower text similarity below 0.75. This step was necessary because LLM-generated descriptions for structurally similar resources tend to share vocabulary, pushing full\_sim above 0.75 even when \texttt{fast\_sim} was below during generation. The full generation log is at \texttt{benchmark/landscape/logs/enrichment\_log.json}. A representative entry is shown in Listing~\ref{lst:enrichment-log}.
+
+\begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:enrichment-log}, caption={Sample enrichment\_log.json entry. HIGH-tier resource accepted for \texttt{emarsys.cx}.}]
+{
+  "phase": "iterative", "round": 1, "action": "create", "outcome": "accepted",
+  "target_resource": "emarsys.cx:apiResource:JourneyContactStateAPI:v1",
+  "tier_target": "high", "tier_actual": "high", "achieved_sim": 0.5833,
+  "profile": {
+    "et_ids": ["sap.odm:entityType:Campaign:v1","sap.odm:entityType:CustomerAccount:v1"],
+    "lob": ["Marketing and Customer Experience"],
+    "tags": ["journey-orchestration","omnichannel","contact-state","real-time-engagement"],
+    "rtype": "apiResource", "namespace": "sap.crm"
+  },
+  "solver_breakdown": {
+    "text": 0.0, "localId": 0.0, "entityTypes": 1.0, "lineOfBusiness": 1.0,
+    "tags": 1.0, "industry": 0.0, "same_type": true, "cross_namespace": true,
+    "type_penalty_applied": false, "cross_namespace_bonus_applied": true
+  },
+  "judge_verdict": {"c2_coherent": true, "c3_not_duplicate": true,
+                    "c4_et_justified": true, "c5_description_ok": true,
+                    "accepted": true, "reject_reason": null},
+  "generator_tokens": 1231, "judge_tokens": 1087
+}
+\end{lstlisting}
+
+
+
+
+
+\section{Test Case Construction}
+\label{appendix:testcases}
+% ─────────────────────────────────────────────────────────────────────────────
+
+This appendix details the Generator--Judge pipelines and prompts used to produce the design-time and runtime test cases. 
+
+\subsection{Design-Time Cases}
+\label{appendix:dt-cases}
+
+\medskip\noindent\textbf{LLM setup.} Generation and judging in both C.3.1 and C.3.2 used the same shared LLM client (\texttt{src/core/llm.py}): model \texttt{claude-haiku-4.5}, temperature 0.0, seed 42, served via a local LiteLLM proxy. Temperature 0.0 makes generation deterministic. Combined with the file-based cache (keyed on \texttt{hash(model, system, prompt)}), every accepted output is reproducible. Embeddings used \texttt{text-embedding-3-large} via the same proxy.
+
+\medskip\noindent\textbf{Process model construction.} The script \path{benchmark/test_cases/design_time/generate_processes.py} builds the 30 process models. Resource selection is deterministic: each model uses exactly 4 GT-eligible and 4 non-GT resources, spanning at least 3 namespaces with at least one agent and one apiResource. GT resources are chosen with coverage awareness so that all 70 GT-eligible resources appear across the 30 models (30 $\times$ 4 = 120 slots $\geq$ 70). The 4/4 split is deliberate: GT steps face genuine HIGH-tier distractors that make retrieval non-trivial, while non-GT steps fill supporting roles. The Generator produces process XML and enrichment fields in a single call (Listing~\ref{lst:proc-gen-prompt}). A deterministic Validator (V1--V6, zero LLM cost) checks structural rules first; the LLM Judge (J1--J6) then verifies semantic coherence only for outputs that passed. The Judge accepts plausible processes even if imperfect and rejects only clear failures. J6 checks enrichment field quality but is not blocking (Listing~\ref{lst:proc-judge-prompt}). The 30 accepted models are a fixed input to the design-time evaluation flow.
+
+\begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:proc-gen-prompt}, caption={Process Generator prompt (\texttt{generate\_processes.py}). Model: \texttt{claude-haiku-4.5}, temp=0.0, seed=42.}]
+Create a coherent 8-step {BPMN|CMMN} enterprise process model using EXACTLY these resources.
+
+GT-ELIGIBLE RESOURCES (4 steps, evaluation targets):
+{gt_block}
+
+NON-GT RESOURCES (4 steps, supporting roles):
+{non_gt_block}
+
+Rules:
+- Exactly 8 steps, one step per resource, in logical enterprise order
+- Activity labels: business activities (e.g. "Diagnose equipment failure"), NOT resource names
+- Activity descriptions: describe the business need, NOT the resource type
+- The process must tell a coherent real enterprise scenario
+- For CMMN: use case-driven/conditional structure; for BPMN: sequential/structured
+
+Output TWO parts:
+PART 1 - Process XML:
+<process id="proc_[short_name]_v1" type="{process_type}">
+  <step id="s1" label="[activity label]"
+        description="[business need in 1 sentence]"
+        ordId="[ordId]"
+        capability="[verb-noun, e.g. diagnose-equipment]"
+        useCase="[1 sentence user-facing context]"/>
+  ...
+  <sequenceFlow from="s1" to="s2"/>
+</process>
+
+PART 2 - Enrichment (GT resources only, JSON):
+{
+  "[gt_ordId]": {
+    "capabilities": ["verb-noun"],
+    "useCases": ["1 sentence"],
+    "processNext": ["[ordId_of_next_gt_step]"],
+    "partOfGroups": [{"groupId": "proc_[name]_v1", "groupTypeId": "{process_type}"}]
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:proc-judge-prompt}, caption={Process Judge system + user prompt. J1--J5 must all pass; J6 (enrichment quality) is evaluated but not blocking.}]
+SYSTEM: You are a quality judge for a synthetic enterprise benchmark. Be pragmatic:
+accept processes that are plausible and well-structured, even if imperfect.
+Reject only clear failures. Answer ONLY with valid JSON.
+
+USER:
+Review this {BPMN|CMMN} process model for a retrieval benchmark.
+
+PROCESS XML: {xml_text[:4000]}
+ENRICHMENT:  {json.dumps(enrichment)[:1500]}
+
+Rate each criterion -- be generous, this is a synthetic benchmark:
+{
+  "J1": true/false,  // process type fits: BPMN=ordered steps, CMMN=adaptive
+  "J2": true/false,  // step labels describe business activities (not "call API X")
+  "J3": true/false,  // step descriptions state a business need (not "this agent does X")
+  "J4": true/false,  // resources are plausibly matched to their activities
+  "J5": true/false,  // steps together form a coherent enterprise scenario
+  "J6": true/false,  // enrichment fields are semantically correct
+  "accepted": true/false,  // true if J1+J2+J3+J4+J5 all pass (J6 optional)
+  "reason": "one sentence only if rejected"
+}
+\end{lstlisting}
+
+\medskip\noindent\textbf{SKILL.md construction.} The script \path{benchmark/test_cases/design_time/generate_skills.py} generates one SKILL.md per accepted process model from the same process XML. The Generator writes the SKILL.md in one pass (Listing~\ref{lst:skill-gen-prompt}), and a deterministic Validator (no LLM call) then enforces four structural rules: S1 requires exactly one \texttt{ord\_confirmed} ordId per step. S2 requires that every such ordId exists in the 273-resource landscape. S3 forbids duplicate ordIds within the same skill. S4 requires that step descriptions mention the business activity but not the resource name or ordId. A skill is accepted once S1--S4 pass. These deterministic structural checks proved sufficient for the SKILL.md format, so no LLM judging step is applied here. The \texttt{ord\_confirmed} annotation is an HTML comment that embeds the ordId confirmed at design time. Listing~\ref{lst:skill-example} shows the first four steps of \texttt{proc\_023} (CMMN), illustrating how the confirmed ordIds are embedded while step descriptions remain system-agnostic. The generated skills are stored once and not regenerated on each design-time run, keeping the ground truth consistent across methods.
+
+\begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:skill-example}, caption={Representative SKILL.md artefact (\texttt{proc\_023}, CMMN, first 4 of 8 steps). GT-eligible steps carry an \texttt{ord\_confirmed} comment pinning the verified ordId; non-GT steps do not.}]
+---
+name: proc_023
+description: >
+  This skill orchestrates production transitions triggered by engineering
+  changes, coordinating workforce readiness, equipment validation, asset
+  provisioning, and customer communications.
+metadata:
+  process-id: proc_023  process-type: cmmn
+  landscape-version: v2-benchmark-273
+---
+## Steps
+### Step 1: Analyze Engineering Change Impact and Workforce Readiness
+<!-- ord_confirmed: sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1 -->
+**Input:** Engineering change request, current workforce roster
+**Output:** Impact assessment report, workforce readiness scorecard
+**Capability:** analyze-change-impact
+Evaluate how the engineering change affects production operations and
+identify skill gaps. Plant managers use this to determine staffing
+adjustments before proceeding with the transition.
+
+### Step 2: Validate Material and Equipment Specifications
+**Input:** Engineering change specifications, current material definitions
+**Output:** Validated material list, compatibility report
+**Capability:** validate-specifications
+Retrieve and verify all material definitions and vendor specifications
+impacted by the engineering change.
+
+### Step 3: Assess Equipment Service Readiness and Dependencies
+<!-- ord_confirmed: my.mes:apiResource:EquipmentServiceAndChangeManagement:v1 -->
+**Input:** Equipment inventory, service history, dependency map
+**Output:** Equipment readiness assessment, service recommendations
+**Capability:** assess-equipment-readiness
+Evaluate equipment condition and service status, identifying cascading
+dependencies across the manufacturing line.
+
+### Step 4: Orchestrate Asset Provisioning for Transition
+<!-- ord_confirmed: corp.itsm:agent:AssetProvisioningOrchestrator:v1 -->
+**Input:** Asset requirement list, production transition schedule
+**Output:** Asset allocation plan, provisioning order
+**Capability:** orchestrate-asset-provisioning
+Coordinate allocation and provisioning of materials and equipment needed
+for the production transition.
+\end{lstlisting}
+
+\medskip\noindent\textbf{ORD enrichment.} The script \path{benchmark/test_cases/design_time/enrich_from_processes.py} extracts enrichment fields deterministically from the process XML without an LLM call. For each GT-eligible step it reads the \texttt{capability} and \texttt{useCase} attributes written by the Generator, derives \texttt{processNext} from the sequence flow, and writes \texttt{partOfGroups} from the process identity. These four fields are then written back into the ORD document of the corresponding GT-eligible resource, producing the Enriched-ORD state. Non-GT steps are skipped. Appendix~\ref{appendix:landscape-example} shows a resource in its clean and enriched states with the four added fields. Like the skills, the enriched ORD documents are generated once and reused unchanged across all evaluation runs.
+
+\medskip\noindent\textbf{Logs.} Every construction attempt is logged. Skill attempts (validator results, outcome, generator tokens) go to \path{benchmark/test_cases/design_time/logs/skill_construction_log.json}; process-model and enrichment attempts are logged alongside it in \texttt{process\_construction\_log.json} and \texttt{enrichment\_log.json}. Listing~\ref{lst:construction-logs} shows one entry from each.
+
+
+
+\begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:skill-gen-prompt}, caption={SKILL.md Generator prompt.}]
+Create a SKILL.md file for process '{process_id}' ({BPMN|CMMN}).
+
+Process steps: {steps_block}
+GT-eligible ordIds (use ONLY these for ord_confirmed): {gt_ids}
+
+Rules:
+- Include ALL steps; add <!-- ord_confirmed: <ordId> --> ONLY for GT-eligible steps
+- Step descriptions: user-facing business language
+- Do NOT mention resource names, ordIds, or system names in descriptions
+- Include realistic Input/Output and Capability per step
+
+Output the complete SKILL.md:
+---
+name: {process_id}
+description: > [2-3 sentence scenario description]
+metadata:
+  process-id: {process_id}  process-type: {ptype}
+  landscape-version: v2-benchmark-273
+---
+## Steps
+### Step 1: [label]
+<!-- ord_confirmed: [ordId] -->
+**Input:** ...  **Output:** ...  **Capability:** [verb-noun]
+[1-2 sentence user-facing description]
+\end{lstlisting}
+
+\begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:construction-logs}, caption={One representative entry from each of the three design-time construction logs. The skill and process logs record per-attempt validator results and acceptance outcome; the enrichment log records which fields were written per resource.}]
+-- process_construction_log.json --
+{ "process_id": "proc_001", "attempt": 1, "process_type": "bpmn",
+  "resource_pool": {"gt": [4 ordIds], "non_gt": [4 ordIds]},
+  "generator_tokens": 2604,
+  "validator_results": {"V1": true, ..., "V6": true},
+  "judge_results": {"J1": true, ..., "J6": true},
+  "outcome": "ACCEPTED" }
+
+-- skill_construction_log.json --
+{ "skill_id": "proc_010", "attempt": 1, "generator_tokens": 1955,
+  "validator_results": {"S1": true, "S2": true, "S3": true, "S4": true},
+  "validator_failure": null,
+  "outcome": "ACCEPTED" }
+
+-- enrichment_log.json --
+{ "ordId": "corp.itsm:agent:AssetProvisioningOrchestrator:v1",
+  "namespace": "corp.itsm",
+  "fields_added": ["capabilities","useCases","processNext","partOfGroups"] }
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+\subsection{Runtime Cases}
+\label{appendix:rt-cases}
+
+The 110 runtime cases span four orchestration modes: Skill-Guided ($n=30$), Skill-Adjusted ($n=20$), Dynamic ($n=40$, 20 single-intent and 20 multi-intent), and Out-of-Scope ($n=20$). All are built by the same three-party loop used for design-time cases (Generator $\to$ deterministic Validator $\to$ LLM Judge, \texttt{claude-haiku-4.5}, temp=0.0, seed=42). A single-call LLM Baseline-Solver acts as a difficulty gate, where a test case is regenerated (up to ten times) until the solver fails on it, so only hard cases are kept. The accepted cases are stored under \path{benchmark/test_cases/runtime/output/} as one JSON file per mode. The per-mode generation is detailed below.
+
+% \begin{table}[!t]
+% \small\centering
+%   \footnotesize
+% \caption{Adversarial loop design per runtime mode. The Solver gate meaningfully constrains only the retrieval-driven modes (Skill-Adjusted, Dynamic). For Skill-Guided it ran on the initial generation but is structurally irrelevant, as SG resolves from pinned annotations rather than retrieval; Out-of-Scope uses a programmatic absence check.}
+% \label{tab:adversarial-design}
+% \begin{tabularx}{\linewidth}{@{} l l X @{}}
+% \toprule
+% \textbf{Mode} & \textbf{Solver gate} & \textbf{Why / constraint} \\
+% \midrule
+% Skill-Guided  & Not effective  & Initial prompts were S-gated, but SG resolves steps from pinned \texttt{ord\_confirmed} annotations without retrieval, so an S-difficulty gate carries no meaning. Finals were shortened for routing analysis and not re-gated. Primary metric is routing accuracy. \\
+% Skill-Adjusted & Yes & S-gate certifies that the gap resources are not trivially recoverable from the prompt; iteration until S fails on \texttt{gap\_ids}. \\
+% Dynamic & Yes & S-gate certifies each accepted prompt requires structured retrieval; iteration until S fails on \texttt{gt\_ids[:1]} for both Single- and Multi-Intent. \\
+% Out-of-Scope & No & No GT to fail on; absence certified programmatically (text\_sim $< 0.7$ to all GT-capable resources). \\
+% \bottomrule
+% \end{tabularx}
+% \end{table}
+
+\medskip\noindent\textbf{Skill-Guided.} Generated by \path{benchmark/test_cases/runtime/generation/generate_skill_guided.py}. The Generator receives the GT-eligible resources of the matched skill and produces a user request describing the business scenario without naming any resource, system, or ordId. Five judge criteria (C1--C5) check that the prompt is realistic, coherent with the process type, and free of technical identifiers; all five must pass (Listing~\ref{lst:sg-prompts}).
+
+\begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:sg-prompts}, caption={SG Generator + Judge prompts.}]
+-- GENERATOR --
+Create a natural-language enterprise user request for a {BPMN|CMMN} skill.
+
+The skill covers these activities (DO NOT mention directly):
+{gt_block}
+
+Rules: Sound like a real enterprise user ("We need to...", "Help us...").
+Do NOT name any resource, system, ordId, or skill name.
+Make it specific enough to suggest a multi-step process. 2-4 sentences.
+Output ONLY the user prompt text.
+
+-- JUDGE SYSTEM --
+You are a quality judge for a synthetic enterprise benchmark.
+Be pragmatic -- accept prompts that are plausible and well-structured.
+Answer ONLY with valid JSON.
+
+-- JUDGE USER --
+Review this {BPMN|CMMN} skill-guided case.
+user_prompt: {prompt}
+expected GT ordIds: {expected_ord_ids}
+{
+  "C1": true/false,  // prompt sounds like real enterprise request
+  "C2": true/false,  // prompt coherent with a multi-step process scenario
+  "C3": true/false,  // no resource names or skill names in prompt
+  "C4": true/false,  // skill could plausibly cover request end-to-end
+  "C5": true/false,  // prompt has natural language complexity (not trivially obvious)
+  "accepted": true/false,  "reason": "one sentence if rejected"
+}
+\end{lstlisting}
+
+The SG prompts were later shortened: the initial verbose requests (avg.\ 470 characters) enumerated sub-activities that the planner misread as gap steps and routed to \texttt{skill\_adjusted}, so all 30 were rewritten to focused variants (avg.\ 168 characters), preserving \texttt{skill\_id} and \texttt{expected\_ordIds}. The original prompts remain in the provenance logs as \texttt{accepted\_case.user\_prompt}, the evaluated ones as \texttt{post\_gate\_rewrite.final\_user\_prompt}. Since the SG metric is routing accuracy rather than retrieval difficulty, the rewrite does not affect the evaluation.
+
+\medskip\noindent\textbf{Skill-Adjusted.} Generated by \path{benchmark/test_cases/runtime/generation/generate_skill_adjusted.py}. The Generator produces one coherent request where the matched skill covers the core flow but the gap resources are only implied, never named. Three judge criteria check that the skill covers the core (C1), the gaps are implied not stated (C2), and the scenario is coherent (C3). The solver gate (run over the gap resources) rejects an iteration as \textsc{too\_easy} when the solver already recovers a gap resource, and on each retry the Generator hint is strengthened to phrase the gap dependency more implicitly (Listing~\ref{lst:sa-prompts}).
+
+\begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:sa-prompts}, caption={SA Generator + Judge prompts. The mutation hint is strengthened on each retry (synonym vocabulary, then implicit references).}]
+-- GENERATOR --
+Create a user request covering a {BPMN|CMMN} skill scenario AND additional
+implicit steps.
+
+Skill scenario: {skill_description}
+Additional steps (DO NOT name directly):
+{gap_block}
+
+Rules: Main request should match the skill scenario. Additional steps implied
+by context ("and we also need to...", "including...", "as well as...").
+Do NOT name any resource, API, system, or ordId. 3-5 sentences total.
+{mutation_hint}
+Output ONLY the user prompt text.
+
+-- JUDGE --
+{
+  "C1": true/false,  // base skill covers the core request (not the gaps)
+  "C2": true/false,  // gap dependencies are implied, not stated explicitly
+  "C3": true/false,  // overall request sounds coherent as one enterprise scenario
+  "accepted": true/false,  "reason": "one sentence if rejected"
+}
+\end{lstlisting}
+
+\medskip\noindent\textbf{Dynamic.} Generated by \path{benchmark/test_cases/runtime/generation/generate_dynamic.py}. Each single-intent case exercises one of three problem types recorded in \texttt{problems\_exercised}: P1 (Agent Sprawl) pairs the ground-truth resource with a HIGH-tier distractor in a different namespace, P2 (Vocabulary Drift) with one sharing the same entity types, and P3 (Context Sensitivity) has no distractor and describes the need in terms that avoid the resource's own vocabulary. Multi-intent cases pass two to three functionally independent resources that one request must imply. The Solver gate runs on every case, regenerating with progressively more implicit variants until S fails to rank the ground truth first on \texttt{gt\_ids[:1]} (logged as \texttt{too\_easy} regenerations). Some ground-truth resources have no close match, so S always ranks them first no matter how the prompt is worded. For these, after ten tries the case is accepted anyway and the built-in HIGH-tier distractor is recorded as the resource a solver would most plausibly confuse them with. Three judge criteria verify realism (C1), absence of resource or system names (C2), and that the request matches its problem-type pattern (C3) (Listing~\ref{lst:dy-prompts}).
+
+\begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:dy-prompts}, caption={DY Generator + Judge prompts.}]
+-- GENERATOR --
+Create a {single|multi}-intent enterprise user request for these resources ({P-label}):
+{gt_block}
+{distractor_hint}
+Hint: {p_label_hint}
+Rules: Do NOT name any resource, API, system, or ordId.
+Sound like a real enterprise user. 2-3 sentences.
+{mutation}
+Output ONLY the user prompt text.
+
+-- JUDGE --
+{
+  "C1": true/false,  // prompt sounds like real enterprise request
+  "C2": true/false,  // no resource name or system name in prompt
+  "C3": true/false,  // request matches the {P-label} pattern plausibly
+  "accepted": true/false,  "reason": "one sentence if rejected"
+}
+\end{lstlisting}
+
+\medskip\noindent\textbf{Out-of-Scope.} Generated by \path{benchmark/test_cases/runtime/generation/generate_out_of_scope.py}. This mode has no ground-truth resource, so instead of a Solver gate an absence check runs on the generated prompt: it rejects the prompt if its token-overlap (Jaccard) similarity exceeds $0.85$ against any resource, which also spares the Judge call when the prompt is too close to the landscape. The Judge then checks that the request is realistic (C1) and that the capability is genuinely absent from the landscape systems (C2). For example, oos-01 requests supplier credit-rating monitoring, which no resource covers.
+
+\medskip\noindent\textbf{Logs.} Every case evolution is logged to \path{benchmark/test_cases/runtime/logs/provenance/<case_id>.json}, recording each iteration's Generator output, Solver verdict, and Judge response. Listing~\ref{lst:prov-dy32} shows an example.
+
+\begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:prov-dy32}, caption={Provenance log for dy-32 (multi-intent). The solver first recovers a ground-truth resource (too\_easy), so the prompt is regenerated until S is diverted to a sibling resource.}]
+{
+  "case_id": "dy-32", "mode": "dynamic",
+  "query_class": "multi_intent",
+  "selected_resources": [
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1",
+    "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1"
+  ],
+  "evolution_log": [
+    {
+      "iteration": 1, "outcome": "TOO_EASY",
+      "solver_output": {"predicted":
+        "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"}
+    },
+    {
+      "iteration": 2, "outcome": "ACCEPTED",
+      "generator_output": {"user_prompt": "I need to pull together our
+        current inventory specifications alongside the vendor details we
+        have on file, and simultaneously check on the status of our
+        pending maintenance requests and any open change orders..."},
+      "solver_output": {"predicted":
+        "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"},
+      "judge_results": {"C1": true, "C2": true, "C3": true}
+    }
+  ]
+}
+\end{lstlisting}
+
+%\begin{lstlisting}[float=!t, floatplacement=!t, basicstyle=\ttfamily\scriptsize, breaklines=true, frame=single, label={lst:prov-sa07}, caption={Provenance log for sa-07. Solver predicted wrong resource $\rightarrow$ difficulty certified $\rightarrow$ ACCEPTED.}]
+%{
+%  "case_id": "sa-07", "mode": "skill_adjusted", "skill_id": "proc_014",
+%  "gap_resources": [
+%    "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1",
+%    "workday.hcm:apiResource:PayrollProcessingDataManagement:v1"
+%  ],
+%  "evolution_log": [{
+%    "iteration": 1, "outcome": "ACCEPTED",
+%    "generator_output": {"user_prompt": "We need to orchestrate a
+%      comprehensive transition of our product line [...] tracking
+%      hazardous materials [...] managing the cost implications
+%      including workforce compensation structures."},
+%    "solver_output": {"predicted":
+%      "corp.itsm:agent:ChangeAutomationOrchestrator:v1", "correct": false},
+%    "judge_results": {"C1": true, "C2": true, "C3": true}
+%  }]
+%}
+%\end{lstlisting}
+
+% ─────────────────────────────────────────────────────────────────────────────
+
+\section{Results \& Disambiguation Analysis}
+\label{appendix:results-disambiguation}
+
+This appendix presents the landscape composition and post-hoc embedding validation (E.1), and the extended ambiguity analysis comparing clean and enriched resource descriptions (E.2).
+
+\subsection{Generation Results}
+\label{appendix:landscape-results}
+
+The construction pipeline yields the 273-resource landscape shown in Fig.~\ref{fig:landscape-graph}: ten enterprise systems whose resources cluster around the shared ODM entity types that bridge namespaces, producing exactly the confusable cross-system neighbourhoods retrieval must disambiguate. The resource type distribution (50\% apiResource, 25\% agent, 25\% dataProduct) reflects real enterprise API landscapes, which are dominated by REST APIs while agents and analytical data products are less common. Tab.~\ref{tab:landscape-systems} shows the final composition. GT-eligibility (26\% of resources) is not uniformly distributed: \texttt{sap.ehs} and \texttt{sap.sf} have fewer GT-eligible resources because their entity types (safety incidents, HR objects) are less cross-domain than, e.g., \texttt{corp.itsm} or \texttt{my.mes}, which share business objects (Vendor, Material, WorkOrder) with multiple other systems.
+
+\begin{figure*}[p]
+  \centering
+  \includegraphics[width=\textwidth]{figures/landscape.png}
+  \caption{The 273-resource landscape across 10 systems (green nodes). Resources are typed --- API resources (blue squares), agents (purple circles), data products (diamonds) --- and orange nodes are shared ODM entity types. Edges connect resources through shared entity types, process groups, and process-sequence links. Dense connectivity around shared entity types (e.g.\ \texttt{Material}, \texttt{Compensation}) creates the cross-namespace distractors the ambiguity metric quantifies and the generation pipeline deliberately amplifies.}
+  \label{fig:landscape-graph}
+\end{figure*}
+
+A design decision behind the ambiguity metric (Appendix~\ref{appendix:landscape}) was to score similarity from ORD fields alone rather than from embeddings, both to keep every tier assignment auditable and to avoid handing embedding-based retrieval a difficulty structure defined in its own representation. To validate this, each of the 273 resources was embedded with \texttt{text-embedding-3-large} using its \texttt{title}, \texttt{shortDescription}, and \texttt{description}, and the embedding cosine of all $\binom{273}{2}=37{,}128$ pairs was compared against the structural ambiguity score. Embeddings were computed after landscape construction and do not influence it. The analysis runs via \path{experiments/embedding_analysis/scripts/embedding_vs_metric.py} and \path{experiments/embedding_analysis/scripts/embedding_by_tier.py}; outputs are in \path{experiments/embedding_analysis/}.
+
+Fig.~\ref{fig:embedding-validation-full}(a) groups all 37{,}128 resource pairs by structural tier and shows a clear monotonic pattern: HIGH-tier pairs reach a median embedding cosine of $0.74$, MEDIUM $0.60$, LOW $0.48$, and unrelated (NONE) $0.35$. What the structural metric marks as confusable is also confusable to an embedding model. Across all pairs, the two similarity scores correlate at $r=0.63$ (Pearson, linear agreement) and $\rho=0.62$ (Spearman, rank agreement), where $1.0$ would mean perfect agreement and $0$ none. A value near $0.63$ means the two measures agree on the overall trend but are not interchangeable. This gap is intentional: the structural metric penalises cross-type pairs and rewards cross-namespace ones, which embedding cosine does not. The benchmark difficulty is therefore not simply a restatement of an embedding retriever's own signal, which keeps the comparison across methods fair.
+
+Projecting the 273 embeddings onto two dimensions with PCA shows two further properties. When coloured by system (Fig.~\ref{fig:embedding-validation-full}(b)), the ten namespaces are fully mixed: resources group by what they do, not by which system they belong to. When coloured by resource type (Fig.~\ref{fig:embedding-validation-full}(c)), a clear split appears, with \texttt{apiResource} in its own region apart from \texttt{agent} and \texttt{dataProduct}. This matches the metric's cross-type penalty. The two shown dimensions capture only about $16\%$ of the total variation, so the real separation is even stronger than the plot suggests.
+
+
+
+\definecolor{embHIGH}{HTML}{1C5CAB}
+\definecolor{embMED}{HTML}{2A78D6}
+\definecolor{embLOW}{HTML}{5598E7}
+\definecolor{embNONE}{HTML}{86B6EF}
+\definecolor{tpAgent}{HTML}{2A78D6}
+\definecolor{tpApi}{HTML}{EB6834}
+\definecolor{tpDp}{HTML}{008300}
+\definecolor{nsA}{HTML}{2A78D6}
+\definecolor{nsB}{HTML}{EB6834}
+\definecolor{nsC}{HTML}{008300}
+\definecolor{nsD}{HTML}{E34948}
+\definecolor{nsE}{HTML}{1BAF7A}
+\definecolor{nsF}{HTML}{EDA100}
+\definecolor{nsG}{HTML}{4A3AA7}
+\definecolor{nsH}{HTML}{E87BA4}
+\definecolor{nsI}{HTML}{9D755D}
+\definecolor{nsJ}{HTML}{9A9A92}
+\begin{figure*}[!t]
+  \centering
+  \captionsetup[subfigure]{position=top, skip=2pt}
+  \begin{subfigure}[t]{0.31\textwidth}
+  \centering
+  \caption{Cosine by structural tier.}
+  \label{fig:emb-tier}
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=\linewidth, height=5.6cm, boxplot/draw direction=y,
+      xtick={1,2,3,4}, xticklabels={HIGH\\{\tiny$\geq$0.50}\\{\tiny$n{=}237$}, MEDIUM\\{\tiny .25--.49}\\{\tiny$n{=}1499$}, LOW\\{\tiny .10--.24}\\{\tiny$n{=}6801$}, NONE\\{\tiny$<$.10}\\{\tiny$n{=}28591$}},
+      xticklabel style={font=\scriptsize, align=center},
+      ymin=0, ymax=1.02, ytick={0,0.2,0.4,0.6,0.8,1.0}, yticklabel style={font=\scriptsize},
+      ylabel={Embedding cosine}, ylabel style={font=\scriptsize},
+      ymajorgrids, grid style={draw=black!12},
+      axis y line*=left, axis x line*=bottom, tick align=outside,
+    ]
+      \addplot+[boxplot prepared={lower whisker=0.443, lower quartile=0.657, median=0.737, upper quartile=0.811, upper whisker=0.916, draw position=1, box extend=0.5},
+        solid, fill=embHIGH, fill opacity=0.9, draw=black!55, line width=0.6pt,
+        boxplot/every median/.style={white, line width=1.2pt}] coordinates {};
+      \node[font=\tiny\bfseries, white, anchor=south] at (axis cs:1,0.737) {0.74};
+      \addplot+[boxplot prepared={lower whisker=0.268, lower quartile=0.500, median=0.599, upper quartile=0.681, upper whisker=0.927, draw position=2, box extend=0.5},
+        solid, fill=embMED, fill opacity=0.9, draw=black!55, line width=0.6pt,
+        boxplot/every median/.style={white, line width=1.2pt}] coordinates {};
+      \node[font=\tiny\bfseries, white, anchor=south] at (axis cs:2,0.599) {0.60};
+      \addplot+[boxplot prepared={lower whisker=0.222, lower quartile=0.411, median=0.475, upper quartile=0.538, upper whisker=0.728, draw position=3, box extend=0.5},
+        solid, fill=embLOW, fill opacity=0.9, draw=black!55, line width=0.6pt,
+        boxplot/every median/.style={white, line width=1.2pt}] coordinates {};
+      \node[font=\tiny\bfseries, white, anchor=south] at (axis cs:3,0.475) {0.48};
+      \addplot+[boxplot prepared={lower whisker=0.108, lower quartile=0.289, median=0.346, upper quartile=0.410, upper whisker=0.593, draw position=4, box extend=0.5},
+        solid, fill=embNONE, fill opacity=0.9, draw=black!55, line width=0.6pt,
+        boxplot/every median/.style={white, line width=1.2pt}] coordinates {};
+      \node[font=\tiny\bfseries, white, anchor=south] at (axis cs:4,0.346) {0.35};
+    \end{axis}
+  \end{tikzpicture}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.31\textwidth}
+  \centering
+  \caption{By namespace (intermixed).}
+  \label{fig:emb-ns}
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=\linewidth, height=5.6cm,
+      xmin=-0.6, xmax=0.5, ymin=-0.52, ymax=0.56,
+      xtick=\empty, ytick=\empty,
+      xlabel={PC1 (9.2\%)}, xlabel style={font=\scriptsize},
+      ylabel={PC2 (7.0\%)}, ylabel style={font=\scriptsize},
+      axis line style={draw=black!45},
+      legend style={at={(0.5,-0.16)}, anchor=north, legend columns=2,
+        draw=none, font=\scriptsize, /tikz/every even column/.append style={column sep=3pt}},
+      legend image code/.code={\draw[#1,fill=#1] (0.06cm,0) circle (1.6pt);},
+    ]
+      \addplot[only marks, mark=*, mark size=1.15pt, draw=white, line width=0.15pt, fill=nsA, fill opacity=0.8] coordinates {(0.178,-0.013) (0.233,-0.236) (0.278,0.003) (0.378,-0.116) (0.095,0.383) (0.272,-0.096) (0.213,-0.287) (0.408,0.196) (0.216,0.002) (0.274,-0.229) (0.304,-0.210) (0.266,-0.002) (0.367,0.211) (0.089,0.062) (-0.313,-0.069) (0.104,-0.034) (0.010,-0.061) (-0.306,0.084) (-0.305,0.127) (-0.095,0.147) (-0.089,-0.009) (0.056,-0.172) (-0.308,0.003) (-0.512,0.111) (-0.204,0.093) (-0.292,0.129) (-0.320,0.242) (-0.167,0.192) (-0.235,-0.189)};
+      \addlegendentry{\texttt{corp.itsm}}
+      \addplot[only marks, mark=*, mark size=1.15pt, draw=white, line width=0.15pt, fill=nsB, fill opacity=0.8] coordinates {(0.168,-0.141) (0.250,-0.195) (-0.000,0.174) (0.141,-0.302) (0.041,0.191) (0.093,-0.319) (0.200,-0.002) (0.238,-0.308) (0.246,-0.303) (0.137,0.295) (0.287,0.193) (0.166,-0.277) (0.344,-0.117) (-0.249,-0.381) (-0.011,0.022) (-0.149,-0.399) (-0.266,-0.046) (-0.036,-0.080) (-0.030,-0.121) (-0.203,-0.298) (-0.175,-0.356) (-0.325,-0.286) (-0.267,-0.054) (-0.275,-0.151) (-0.306,-0.011) (-0.211,-0.044) (-0.506,0.170) (-0.285,-0.250) (-0.247,-0.075)};
+      \addlegendentry{\texttt{emarsys.cx}}
+      \addplot[only marks, mark=*, mark size=1.15pt, draw=white, line width=0.15pt, fill=nsC, fill opacity=0.8] coordinates {(0.007,-0.098) (0.181,0.120) (0.207,0.058) (0.159,0.305) (0.318,0.214) (0.277,-0.192) (0.207,0.263) (0.256,0.160) (0.295,-0.200) (0.108,0.372) (0.238,-0.271) (0.286,0.075) (0.189,0.043) (0.359,0.278) (0.357,-0.105) (-0.170,0.004) (-0.131,0.220) (0.108,0.026) (0.012,0.292) (-0.272,0.335) (-0.194,0.046) (-0.281,-0.137) (-0.263,0.124) (-0.496,0.129) (-0.229,0.031) (-0.162,-0.156) (-0.224,0.194) (-0.422,-0.063) (-0.224,0.104)};
+      \addlegendentry{\texttt{my.mes}}
+      \addplot[only marks, mark=*, mark size=1.15pt, draw=white, line width=0.15pt, fill=nsD, fill opacity=0.8] coordinates {(0.358,0.132) (0.291,-0.113) (0.223,-0.114) (0.280,0.164) (0.377,0.094) (0.398,0.311) (0.286,0.177) (0.314,0.336) (0.303,0.325) (0.203,0.150) (0.329,0.005) (0.142,0.462) (0.351,0.326) (-0.100,0.081) (-0.173,0.288) (-0.042,0.085) (-0.264,0.115) (-0.215,0.321) (-0.255,-0.092) (-0.162,0.217) (-0.276,-0.005) (-0.246,0.176) (-0.302,0.214)};
+      \addlegendentry{\texttt{sap.ariba}}
+      \addplot[only marks, mark=*, mark size=1.15pt, draw=white, line width=0.15pt, fill=nsE, fill opacity=0.8] coordinates {(0.242,-0.052) (0.107,-0.287) (0.314,-0.026) (0.019,-0.354) (0.011,-0.348) (0.218,-0.310) (0.323,-0.129) (0.243,-0.251) (0.343,-0.007) (0.180,-0.057) (0.392,0.198) (-0.193,-0.248) (-0.153,-0.081) (-0.012,0.085) (-0.198,-0.307) (-0.213,-0.432) (-0.215,-0.413) (-0.150,-0.190) (-0.285,-0.218) (-0.392,0.036) (-0.210,-0.008) (-0.359,-0.275) (-0.019,0.258) (-0.315,-0.296) (-0.323,-0.275) (-0.290,-0.021) (-0.091,-0.004)};
+      \addlegendentry{\texttt{sap.crm}}
+      \addplot[only marks, mark=*, mark size=1.15pt, draw=white, line width=0.15pt, fill=nsF, fill opacity=0.8] coordinates {(0.113,0.334) (0.297,0.289) (0.004,0.397) (0.097,-0.040) (0.062,0.367) (0.108,0.267) (0.105,0.313) (-0.109,0.096) (0.025,0.055) (0.078,0.187) (0.109,0.255) (0.097,0.468) (0.153,0.380) (0.094,0.099) (0.095,0.165) (-0.363,-0.002) (-0.105,0.257) (-0.293,0.001) (-0.138,0.308) (-0.203,-0.163) (-0.118,0.194) (-0.467,0.116) (-0.339,0.168) (-0.288,0.396) (-0.329,-0.001) (-0.440,0.131) (-0.294,0.367) (-0.430,0.057) (-0.391,0.093) (-0.296,0.007)};
+      \addlegendentry{\texttt{sap.ehs}}
+      \addplot[only marks, mark=*, mark size=1.15pt, draw=white, line width=0.15pt, fill=nsG, fill opacity=0.8] coordinates {(0.230,0.242) (0.157,-0.100) (0.243,-0.199) (0.175,0.179) (0.380,-0.091) (0.276,-0.120) (0.108,0.343) (0.284,-0.077) (0.233,-0.126) (0.245,0.123) (0.144,0.342) (-0.017,0.147) (0.228,-0.269) (0.371,-0.088) (-0.050,0.111) (0.026,0.243) (0.070,-0.006) (-0.036,-0.216) (-0.328,0.016) (-0.022,-0.013) (-0.188,0.185) (-0.111,0.258) (-0.298,0.181) (-0.224,0.098) (-0.251,0.014) (-0.325,0.173) (-0.248,0.030) (-0.011,-0.086)};
+      \addlegendentry{\texttt{sap.s4}}
+      \addplot[only marks, mark=*, mark size=1.15pt, draw=white, line width=0.15pt, fill=nsH, fill opacity=0.8] coordinates {(0.176,-0.177) (0.152,-0.190) (0.075,-0.282) (0.224,-0.215) (0.257,-0.206) (0.241,-0.247) (0.367,0.152) (0.164,-0.192) (0.235,-0.076) (0.293,-0.194) (0.235,0.066) (0.268,-0.151) (0.168,0.145) (0.071,-0.242) (-0.018,-0.002) (-0.178,-0.262) (-0.158,-0.282) (-0.126,-0.387) (-0.037,-0.187) (-0.126,-0.398) (-0.320,0.144) (-0.355,-0.252) (-0.374,0.064) (-0.183,-0.081) (-0.071,-0.062) (-0.261,-0.257)};
+      \addlegendentry{\texttt{sap.sf}}
+      \addplot[only marks, mark=*, mark size=1.15pt, draw=white, line width=0.15pt, fill=nsI, fill opacity=0.8] coordinates {(0.256,0.065) (0.211,0.211) (0.071,-0.030) (0.180,-0.015) (0.336,0.002) (0.217,0.076) (0.190,-0.245) (0.230,-0.014) (0.289,-0.101) (-0.007,0.395) (0.126,-0.204) (0.158,0.350) (0.089,0.352) (0.112,-0.166) (-0.011,0.256) (0.099,0.087) (-0.207,0.007) (-0.058,0.262) (-0.118,0.050) (-0.020,0.263) (-0.204,-0.002) (-0.018,0.077) (-0.083,0.141) (-0.352,0.176) (-0.248,-0.084) (-0.241,0.196)};
+      \addlegendentry{\texttt{siemens.plm}}
+      \addplot[only marks, mark=*, mark size=1.15pt, draw=white, line width=0.15pt, fill=nsJ, fill opacity=0.8] coordinates {(0.219,-0.246) (0.228,-0.164) (0.144,-0.213) (0.263,-0.126) (0.266,-0.184) (0.060,-0.137) (0.236,-0.270) (0.215,-0.184) (0.321,-0.223) (0.285,-0.109) (-0.125,0.391) (0.077,-0.121) (0.177,-0.238) (-0.199,-0.300) (-0.147,0.058) (-0.165,-0.250) (-0.126,-0.244) (-0.138,-0.180) (-0.154,-0.211) (-0.281,0.080) (-0.110,-0.246) (-0.102,-0.253) (-0.376,-0.248) (-0.340,-0.232) (-0.451,0.087) (-0.041,-0.039)};
+      \addlegendentry{\texttt{workday.hcm}}
+    \end{axis}
+  \end{tikzpicture}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.31\textwidth}
+  \centering
+  \caption{By resource type (separated).}
+  \label{fig:emb-type}
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=\linewidth, height=5.6cm,
+      xmin=-0.6, xmax=0.5, ymin=-0.52, ymax=0.56,
+      xtick=\empty, ytick=\empty,
+      xlabel={PC1 (9.2\%)}, xlabel style={font=\scriptsize},
+      ylabel={PC2 (7.0\%)}, ylabel style={font=\scriptsize},
+      axis line style={draw=black!45},
+      legend style={at={(0.5,-0.16)}, anchor=north, legend columns=1,
+        draw=none, font=\scriptsize, /tikz/every even column/.append style={column sep=3pt}},
+      legend image code/.code={\draw[#1,fill=#1] (0.06cm,0) circle (1.6pt);},
+    ]
+      \addplot[only marks, mark=*, mark size=1.15pt, draw=white, line width=0.15pt, fill=tpAgent, fill opacity=0.8] coordinates {(-0.313,-0.069) (0.104,-0.034) (0.010,-0.061) (-0.306,0.084) (-0.305,0.127) (-0.095,0.147) (-0.089,-0.009) (0.056,-0.172) (-0.249,-0.381) (-0.011,0.022) (-0.149,-0.399) (-0.266,-0.046) (-0.036,-0.080) (-0.030,-0.121) (-0.203,-0.298) (-0.175,-0.356) (-0.170,0.004) (-0.131,0.220) (0.108,0.026) (0.012,0.292) (-0.272,0.335) (-0.100,0.081) (-0.173,0.288) (-0.042,0.085) (-0.193,-0.248) (-0.153,-0.081) (-0.012,0.085) (-0.198,-0.307) (-0.213,-0.432) (-0.215,-0.413) (-0.150,-0.190) (-0.363,-0.002) (-0.105,0.257) (-0.293,0.001) (-0.138,0.308) (-0.203,-0.163) (-0.118,0.194) (-0.050,0.111) (0.026,0.243) (0.070,-0.006) (-0.036,-0.216) (-0.328,0.016) (-0.022,-0.013) (-0.178,-0.262) (-0.158,-0.282) (-0.126,-0.387) (-0.037,-0.187) (-0.126,-0.398) (-0.320,0.144) (-0.011,0.256) (0.099,0.087) (-0.207,0.007) (-0.058,0.262) (-0.118,0.050) (-0.020,0.263) (-0.204,-0.002) (-0.018,0.077) (-0.199,-0.300) (-0.147,0.058) (-0.165,-0.250) (-0.126,-0.244) (-0.138,-0.180) (-0.154,-0.211) (-0.281,0.080) (-0.110,-0.246) (-0.102,-0.253)};
+      \addlegendentry{\texttt{agent}}
+      \addplot[only marks, mark=*, mark size=1.15pt, draw=white, line width=0.15pt, fill=tpApi, fill opacity=0.8] coordinates {(0.178,-0.013) (0.233,-0.236) (0.278,0.003) (0.378,-0.116) (0.095,0.383) (0.272,-0.096) (0.213,-0.287) (0.408,0.196) (0.216,0.002) (0.274,-0.229) (0.304,-0.210) (0.266,-0.002) (0.367,0.211) (0.089,0.062) (0.168,-0.141) (0.250,-0.195) (-0.000,0.174) (0.141,-0.302) (0.041,0.191) (0.093,-0.319) (0.200,-0.002) (0.238,-0.308) (0.246,-0.303) (0.137,0.295) (0.287,0.193) (0.166,-0.277) (0.344,-0.117) (0.007,-0.098) (0.181,0.120) (0.207,0.058) (0.159,0.305) (0.318,0.214) (0.277,-0.192) (0.207,0.263) (0.256,0.160) (0.295,-0.200) (0.108,0.372) (0.238,-0.271) (0.286,0.075) (0.189,0.043) (0.359,0.278) (0.357,-0.105) (0.358,0.132) (0.291,-0.113) (0.223,-0.114) (0.280,0.164) (0.377,0.094) (0.398,0.311) (0.286,0.177) (0.314,0.336) (0.303,0.325) (0.203,0.150) (0.329,0.005) (0.142,0.462) (0.351,0.326) (0.242,-0.052) (0.107,-0.287) (0.314,-0.026) (0.019,-0.354) (0.011,-0.348) (0.218,-0.310) (0.323,-0.129) (0.243,-0.251) (0.343,-0.007) (0.180,-0.057) (0.392,0.198) (0.113,0.334) (0.297,0.289) (0.004,0.397) (0.097,-0.040) (0.062,0.367) (0.108,0.267) (0.105,0.313) (-0.109,0.096) (0.025,0.055) (0.078,0.187) (0.109,0.255) (0.097,0.468) (0.153,0.380) (0.094,0.099) (0.095,0.165) (0.230,0.242) (0.157,-0.100) (0.243,-0.199) (0.175,0.179) (0.380,-0.091) (0.276,-0.120) (0.108,0.343) (0.284,-0.077) (0.233,-0.126) (0.245,0.123) (0.144,0.342) (-0.017,0.147) (0.228,-0.269) (0.371,-0.088) (0.176,-0.177) (0.152,-0.190) (0.075,-0.282) (0.224,-0.215) (0.257,-0.206) (0.241,-0.247) (0.367,0.152) (0.164,-0.192) (0.235,-0.076) (0.293,-0.194) (0.235,0.066) (0.268,-0.151) (0.168,0.145) (0.071,-0.242) (-0.018,-0.002) (0.256,0.065) (0.211,0.211) (0.071,-0.030) (0.180,-0.015) (0.336,0.002) (0.217,0.076) (0.190,-0.245) (0.230,-0.014) (0.289,-0.101) (-0.007,0.395) (0.126,-0.204) (0.158,0.350) (0.089,0.352) (0.112,-0.166) (0.219,-0.246) (0.228,-0.164) (0.144,-0.213) (0.263,-0.126) (0.266,-0.184) (0.060,-0.137) (0.236,-0.270) (0.215,-0.184) (0.321,-0.223) (0.285,-0.109) (-0.125,0.391) (0.077,-0.121) (0.177,-0.238)};
+      \addlegendentry{\texttt{apiResource}}
+      \addplot[only marks, mark=*, mark size=1.15pt, draw=white, line width=0.15pt, fill=tpDp, fill opacity=0.8] coordinates {(-0.308,0.003) (-0.512,0.111) (-0.204,0.093) (-0.292,0.129) (-0.320,0.242) (-0.167,0.192) (-0.235,-0.189) (-0.325,-0.286) (-0.267,-0.054) (-0.275,-0.151) (-0.306,-0.011) (-0.211,-0.044) (-0.506,0.170) (-0.285,-0.250) (-0.247,-0.075) (-0.194,0.046) (-0.281,-0.137) (-0.263,0.124) (-0.496,0.129) (-0.229,0.031) (-0.162,-0.156) (-0.224,0.194) (-0.422,-0.063) (-0.224,0.104) (-0.264,0.115) (-0.215,0.321) (-0.255,-0.092) (-0.162,0.217) (-0.276,-0.005) (-0.246,0.176) (-0.302,0.214) (-0.285,-0.218) (-0.392,0.036) (-0.210,-0.008) (-0.359,-0.275) (-0.019,0.258) (-0.315,-0.296) (-0.323,-0.275) (-0.290,-0.021) (-0.091,-0.004) (-0.467,0.116) (-0.339,0.168) (-0.288,0.396) (-0.329,-0.001) (-0.440,0.131) (-0.294,0.367) (-0.430,0.057) (-0.391,0.093) (-0.296,0.007) (-0.188,0.185) (-0.111,0.258) (-0.298,0.181) (-0.224,0.098) (-0.251,0.014) (-0.325,0.173) (-0.248,0.030) (-0.011,-0.086) (-0.355,-0.252) (-0.374,0.064) (-0.183,-0.081) (-0.071,-0.062) (-0.261,-0.257) (-0.083,0.141) (-0.352,0.176) (-0.248,-0.084) (-0.241,0.196) (-0.376,-0.248) (-0.340,-0.232) (-0.451,0.087) (-0.041,-0.039)};
+      \addlegendentry{\texttt{dataProduct}}
+    \end{axis}
+  \end{tikzpicture}
+  \end{subfigure}
+  \caption{Post-hoc embedding validation on the 273-resource landscape. \textbf{(a)}~Embedding cosine rises monotonically with the structural ambiguity tier (median 0.74 / 0.60 / 0.48 / 0.35 for HIGH/MEDIUM/LOW/NONE): pairs the field-based metric marks as confusable are independently confusable to an embedding model. \textbf{(b)}~In PCA-projected embedding space the ten namespaces are thoroughly intermixed, with no system forming its own cluster. Resources from different systems sit close together when they serve the same business function. \textbf{(c)}~Resource types form distinct regions, consistent with the metric's cross-type penalty. PC1$+$PC2 capture only 16\% of variance (embeddings are 3072-dimensional), so the projection understates the separation.}
+  \label{fig:embedding-validation-full}\end{figure*}
+
+
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Disambiguation Analysis}
+\label{appendix:disambiguation}
+% ─────────────────────────────────────────────────────────────────────────────
+
+This appendix details how the semantic enrichment fields affect pairwise resource ambiguity and how that effect compares to embedding similarity. On the clean landscape, structural ambiguity metric and cosine similarity broadly agree ($r=0.63$, App.~\ref{appendix:landscape-results}, Fig.~\ref{fig:embedding-validation-full}). To evaluate whether enrichment reduces ambiguity between confusable resource pairs, the base metric is extended with the three semantic fields. The analysis in Sec.~\ref{sec:results} argues that ambiguity is a property of the representation, not of the resources; the results here confirm this: structural ambiguity falls while embedding cosine rises on the same pairs.
+
+\textbf{Extended ambiguity metric.} The benchmark's ambiguity metric (Sec.~\ref{sec:design}, App.~\ref{appendix:landscape}) scores each resource pair over six ORD fields (\texttt{text}, \texttt{localId}, \texttt{entityTypes}, \texttt{lineOfBusiness}, \texttt{tags}, \texttt{industry}). For this analysis it is extended with three design-time semantic fields: \texttt{capabilities} and \texttt{partOfGroups} scored by Jaccard overlap, and \texttt{useCases} scored by TF-IDF cosine. The field \texttt{processNext} is excluded because it encodes directed process ordering between resources rather than a property of a single resource. A semantic field enters the score only when both resources in a pair carry it, so the denominator grows from 6 to at most 9. This ensures a score can only fall when two resources actively describe different capabilities or use cases, not as an artefact of a larger denominator. Tab.~\ref{tab:extended-metric} lists all nine dimensions.
+
+\begin{table*}[!t]
+  \renewcommand{\arraystretch}{1.2}
+  \caption{Extended ambiguity metric: nine dimensions with scoring method, an excerpt of the actual field contents of each resource, and the resulting sub-score for the \texttt{AssetProvisioningOrchestrator} (A, \texttt{corp.itsm}) vs \texttt{AssetLifecycleChangeOrchestrator} (B, \texttt{sap.s4}) pair. Identical \texttt{tags} give 1.00, but the disjoint \texttt{capabilities} and \texttt{partOfGroups} give 0.00. The three semantic fields are added only when both resources carry them; the denominator grows from 6 to 9 only for those active dimensions. Structural ambiguity therefore falls from 0.75 to 0.53, while embedding cosine rises from 0.79 to 0.82.}
+  \label{tab:extended-metric}
+  \centering\scriptsize
+  \begin{tabularx}{\textwidth}{@{} l l X X r @{}}
+  \toprule
+  \textbf{Dimension} & \textbf{Scoring} & \textbf{Resource A (excerpt)} & \textbf{Resource B (excerpt)} & \textbf{Score} \\
+  \midrule
+  \multicolumn{5}{@{}l}{\textit{Original six fields}} \\
+  \texttt{text}            & TF-IDF cosine, title+desc & ``Asset Provisioning Orchestrator'' & ``Asset Lifecycle Change Orchestrator'' & 0.60 \\
+  \texttt{localId}         & Jaccard, CamelCase tokens & AssetProvisioning\-Orchestrator & AssetLifecycleChange\-Orchestrator & 0.40 \\
+  \texttt{entityTypes}     & IDF-weighted Jaccard & (none) & (none) & 1.00 \\
+  \texttt{lineOfBusiness}  & Jaccard & it-service-management & it-service-management & 1.00 \\
+  \texttt{tags}            & Jaccard & asset-lifecycle, change-automation, provisioning-orchestration & asset-lifecycle, change-automation, provisioning-orchestration & 1.00 \\
+  \texttt{industry}        & Jaccard & (none) & (none) & 0.00 \\
+  \multicolumn{5}{@{}l}{\textit{Semantic extension}} \\
+  \texttt{capabilities}    & Jaccard, verb-noun tokens & orchestrate-asset-provisioning, allocate-materials, \ldots & orchestrate-engineering-change, manage-change-approvals, \ldots & 0.00 \\
+  \texttt{partOfGroups}    & Jaccard, group IDs & ProductTransitionSafety\-Coordination, \ldots & product\_launch\_qa, ChangeTalentIntegration & 0.00 \\
+  \texttt{useCases}        & TF-IDF cosine & ``provisions change-related equipment to production floor'' & ``coordinate approvals from manufacturing, supply chain, HR'' & 0.29 \\
+  \midrule
+  Cross-ns bonus & $+0.5$ cross-namespace & \multicolumn{2}{l}{\texttt{corp.itsm} vs \texttt{sap.s4} (cross-namespace)} & $+0.5$ \\
+  Type penalty & $\times 0.5$ if types differ & \multicolumn{2}{l}{both \texttt{agent} (same type)} & $\times 1.0$ \\
+  \midrule
+  \multicolumn{4}{@{}l}{\textbf{Formula:} $\text{sim}^+(a,b) = (\sum_{d \in D \cup D^+_{ab}} s_d + 0.5_{\text{cross-ns}}) / (6 + |D^+_{ab}|)$} & \\
+  \multicolumn{4}{@{}l}{\phantom{\textbf{Formula:} }\textbf{Structural ambiguity:}\ Clean $(|D|{=}6)$ \textbf{0.75} $\rightarrow$ Enriched $(|D|{=}9)$ \textbf{0.53}} & \\
+  \multicolumn{4}{@{}l}{\phantom{\textbf{Formula:} }\textbf{Embedding cosine} (\texttt{text-embedding-3-large}):\ Clean \textbf{0.79} $\rightarrow$ Enriched \textbf{0.82}} & \\
+  \bottomrule
+  \end{tabularx}
+\end{table*}
+
+Tab.~\ref{tab:extended-metric} applies the extended metric to one HIGH-tier pair. \texttt{AssetProvisioningOrchestrator} and \texttt{AssetLifecycleChangeOrchestrator} share entity types, line of business, tags, and text, giving a clean structural score of 0.75. Their capabilities and process groups are disjoint, so adding semantic fields lowers the score to 0.53. The embedding moves in the opposite direction: cosine rises from 0.79 to 0.82 because the added text increases token overlap.
+
+\textbf{Populations and mean ambiguity.} The analysis runs on the 70 resources that carry all semantic fields, giving 2\,415 unordered pairs where both sides are enriched and the extended metric can act on both. Fig.~\ref{fig:disambiguation} reports the mean pairwise ambiguity under the original versus the extended metric for two groups: all 2\,415 enriched pairs (0.111~$\rightarrow$~0.084, $-24.5\%$) and the 85 of them that were HIGH-tier (sim~$\geq$~0.50) under the original metric (0.643~$\rightarrow$~0.461, $-28.3\%$). The HIGH-tier subset isolates the pairs that actually risk confusion and shows the larger relative drop: semantic enrichment reduces structural ambiguity most where it matters.
+
+\textbf{Embedding contrast on the same pairs.} Embedding cosine moves opposite to the structural drop. Embeddings are computed with \texttt{text-embedding-3-large}. The clean text concatenates \texttt{title}, \texttt{shortDescription}, and \texttt{description}, while the enriched text appends \texttt{partOfGroups}, \texttt{processNext}, \texttt{capabilities}, and \texttt{useCases} separated by the \texttt{|} character. Fig.~\ref{fig:disambiguation-embedding} reports cosine for three pair types. For all 2\,415 both-enriched pairs the mean cosine \emph{rises} from 0.392 to 0.501 ($+27.7\%$). For the 85 previously HIGH-tier pairs it rises from 0.720 to 0.761 ($+5.7\%$). For the 14\,210 mixed pairs where only one resource is enriched it rises from 0.368 to 0.388 ($+5.3\%$). The mixed case is the clearest one. The structural ambiguity metric leaves such a pair unchanged because the semantic dimensions need both sides, yet enriching one resource alone shifts its vector toward the shared topical region and raises cosine.
+
+
+\textbf{The two directions are not a contradiction.} A metric that lowers ambiguity and an embedding that raises similarity on the same pairs look contradictory at first, but they are not. Ambiguity is not an absolute property of two resources; it is a property of how a retrieval method represents them, and the two representations genuinely disagree about whether these pairs are easy to tell apart. They move in opposite directions for the same underlying reason. The structural metric compares each semantic field on its own, so two resources with disjoint capability sets score zero on that dimension and are pushed apart. The embedding instead compresses every field into one vector, so appending more topically related text moves both vectors toward the same region and raises cosine similarity in all three pair types above, including mixed pairs where only one resource gains fields. Enrichment therefore lowers ambiguity only for methods that read the typed fields as discrete signals (namespace, entity-type membership, graph edges, capability filters); a method that retrieves purely by embedding distance sees the opposite effect. This structural alignment between retrieval mechanism and enriched field type is the central qualification on the assumption that richer descriptions uniformly improve selection. The full computation is implemented in \texttt{experiments/disambiguation/}.

@@ -1,0 +1,104 @@
+{
+  "process_id": "proc_030",
+  "process_type": "cmmn",
+  "gt_ordIds": [
+    "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1",
+    "workday.hcm:apiResource:PayrollDataExposure:v1",
+    "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+    "emarsys.cx:apiResource:JourneyContactStateAPI:v1"
+  ],
+  "enrichment": {
+    "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1": {
+      "capabilities": [
+        "verify-customer-compliance",
+        "map-campaign-to-safety",
+        "validate-account-obligations"
+      ],
+      "useCases": [
+        "Ensure customer contractual safety commitments are met before campaign execution",
+        "Cross-reference customer account status against compliance risk assessments",
+        "Validate campaign messaging alignment with customer safety requirements"
+      ],
+      "processNext": [
+        "workday.hcm:apiResource:PayrollDataExposure:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_SafetyComplianceOrchestration_v1",
+          "groupTypeId": "cmmn",
+          "stepId": "s4",
+          "sequencePosition": 4
+        }
+      ]
+    },
+    "workday.hcm:apiResource:PayrollDataExposure:v1": {
+      "capabilities": [
+        "review-payroll-impact",
+        "assess-incident-costs",
+        "quantify-staffing-impact"
+      ],
+      "useCases": [
+        "Calculate financial burden of safety incidents on payroll and benefits",
+        "Assess cost implications of employee reassignment for incident investigation",
+        "Determine budget impact of compliance remediation on HR operations"
+      ],
+      "processNext": [
+        "workday.hcm:apiResource:TimeOffBalanceManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_SafetyComplianceOrchestration_v1",
+          "groupTypeId": "cmmn",
+          "stepId": "s5",
+          "sequencePosition": 5
+        }
+      ]
+    },
+    "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1": {
+      "capabilities": [
+        "evaluate-compliance",
+        "assess-regulatory-alignment",
+        "validate-material-safety"
+      ],
+      "useCases": [
+        "Determine hazardous material compliance status against environmental regulations",
+        "Assess exposure risks and identify required remediation steps",
+        "Validate that all substances in use meet occupational safety standards"
+      ],
+      "processNext": [
+        "my.mes:dataProduct:EquipmentMaintenanceAndChangeImpactAnalytics:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_SafetyComplianceOrchestration_v1",
+          "groupTypeId": "cmmn",
+          "stepId": "s2",
+          "sequencePosition": 2
+        }
+      ]
+    },
+    "emarsys.cx:apiResource:JourneyContactStateAPI:v1": {
+      "capabilities": [
+        "track-campaign-engagement",
+        "update-contact-state",
+        "manage-compliance-communications"
+      ],
+      "useCases": [
+        "Ensure customers receive targeted safety compliance notifications at optimal touchpoints",
+        "Track customer engagement with mandatory safety training and awareness campaigns",
+        "Maintain audit trail of customer communication for regulatory reporting"
+      ],
+      "processNext": [
+        "sap.crm:dataProduct:CustomerInvoiceMaterialRevenueAnalytics:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_SafetyComplianceOrchestration_v1",
+          "groupTypeId": "cmmn",
+          "stepId": "s7",
+          "sequencePosition": 7
+        }
+      ]
+    }
+  }
+}

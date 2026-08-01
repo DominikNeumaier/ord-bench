@@ -1,0 +1,86 @@
+{
+  "process_id": "proc_008",
+  "process_type": "bpmn",
+  "gt_ordIds": [
+    "sap.s4:apiResource:CustomerOrderManagementAPI:v1",
+    "emarsys.cx:apiResource:JourneyContactStateAPI:v1",
+    "emarsys.cx:apiResource:HazardousSubstanceComplianceManagementAPI:v1",
+    "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1"
+  ],
+  "enrichment": {
+    "sap.s4:apiResource:CustomerOrderManagementAPI:v1": {
+      "capabilities": [
+        "validate-order",
+        "retrieve-account-eligibility",
+        "verify-order-completeness"
+      ],
+      "useCases": [
+        "Sales team receives new customer order and confirms it meets account and product requirements"
+      ],
+      "processNext": [
+        "emarsys.cx:apiResource:JourneyContactStateAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_order_compliance_fulfillment_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "emarsys.cx:apiResource:JourneyContactStateAPI:v1": {
+      "capabilities": [
+        "assess-engagement",
+        "query-campaign-status",
+        "determine-communication-path"
+      ],
+      "useCases": [
+        "Marketing validates that customer is in appropriate engagement stage for order fulfillment communications"
+      ],
+      "processNext": [
+        "emarsys.cx:apiResource:HazardousSubstanceComplianceManagementAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_order_compliance_fulfillment_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "emarsys.cx:apiResource:HazardousSubstanceComplianceManagementAPI:v1": {
+      "capabilities": [
+        "verify-compliance",
+        "validate-substance-regulations",
+        "check-geographic-restrictions"
+      ],
+      "useCases": [
+        "Compliance officer confirms that materials in order are legally permissible for customer's geography and industry"
+      ],
+      "processNext": [
+        "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_order_compliance_fulfillment_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1": {
+      "capabilities": [
+        "qualify-supplier",
+        "match-service-requirements",
+        "create-service-ticket"
+      ],
+      "useCases": [
+        "Procurement team matches order to certified vendors and creates service ticket for fulfillment"
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_order_compliance_fulfillment_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    }
+  }
+}

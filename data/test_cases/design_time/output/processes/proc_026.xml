@@ -1,0 +1,68 @@
+<process id="proc_product_launch_transition_v1" type="cmmn">
+  
+  <step id="s1" 
+        label="Receive incoming material shipments"
+        description="Validate and log all inbound materials from vendors against purchase orders to establish baseline inventory for production launch."
+        ordId="sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+        capability="receive-material"
+        useCase="Production planners need real-time visibility into material arrivals to confirm launch readiness."/>
+  
+  <step id="s2" 
+        label="Match procured materials to vendor contracts"
+        description="Verify received materials align with procurement agreements and quality standards before warehouse acceptance."
+        ordId="sap.s4:agent:ProcurementMatchingAgent:v1"
+        capability="match-vendor-material"
+        useCase="Procurement officers must reconcile inbound shipments with negotiated contracts to prevent supply chain delays."/>
+  
+  <step id="s3" 
+        label="Screen hazardous substance compliance"
+        description="Inspect and track any hazardous materials in the shipment to ensure storage, handling, and regulatory compliance."
+        ordId="sap.ehs:apiResource:HazardousSubstanceStorageTracking:v1"
+        capability="track-hazmat"
+        useCase="Safety and compliance teams need confirmation that all received materials meet environmental and health regulations."/>
+  
+  <step id="s4" 
+        label="Assess engineering change impact on workforce"
+        description="Analyze product design changes and engineering modifications to identify required workforce skill gaps and retraining needs."
+        ordId="sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+        capability="assess-change-workforce"
+        useCase="HR and manufacturing leaders need data-driven insights on which employees require upskilling for the new production process."/>
+  
+  <step id="s5" 
+        label="Evaluate operational capability for product transition"
+        description="Measure current operational capacity against new product requirements to identify process bottlenecks and capability gaps."
+        ordId="sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+        capability="evaluate-operational-readiness"
+        useCase="Operations directors must determine if existing production lines can handle the new product specifications without infrastructure investment."/>
+  
+  <step id="s6" 
+        label="Correlate employee safety risk with transition plan"
+        description="Link safety risk assessments to employee roles and compensation tiers to ensure fair allocation of high-risk transition tasks."
+        ordId="my.mes:dataProduct:EmployeeCompensationAndSafetyRiskCorrelation:v1"
+        capability="correlate-safety-compensation"
+        useCase="HR business partners must balance fair compensation with safety protocols when assigning employees to new manufacturing roles."/>
+  
+  <step id="s7" 
+        label="Schedule employee capacity and time off adjustments"
+        description="Coordinate sales team availability and adjust time-off schedules to ensure adequate staffing during product launch go-live period."
+        ordId="emarsys.cx:apiResource:SalesCapacityAndTimeOffManagementAPI:v1"
+        capability="schedule-capacity"
+        useCase="Sales operations managers need to block vacation time and confirm team capacity to support customer inquiries during launch."/>
+  
+  <step id="s8" 
+        label="Execute safety inspection campaign for launch readiness"
+        description="Conduct comprehensive safety inspections across all production areas and supply chain touchpoints before commencing manufacturing."
+        ordId="sap.ehs:apiResource:SafetyInspectionCampaignManagement:v1"
+        capability="execute-safety-campaign"
+        useCase="EHS directors must certify that all facilities meet safety standards before authorizing production ramp-up."/>
+  
+  <!-- Sequence flows establishing logical enterprise order -->
+  <sequenceFlow from="s1" to="s2" label="Material received"/>
+  <sequenceFlow from="s2" to="s3" label="Materials verified"/>
+  <sequenceFlow from="s3" to="s4" label="Compliance cleared"/>
+  <sequenceFlow from="s4" to="s5" label="Workforce gaps identified"/>
+  <sequenceFlow from="s5" to="s6" label="Operational readiness assessed"/>
+  <sequenceFlow from="s6" to="s7" label="Safety-role alignment complete"/>
+  <sequenceFlow from="s7" to="s8" label="Staff scheduled"/>
+  
+</process>

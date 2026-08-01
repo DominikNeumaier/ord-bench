@@ -1,0 +1,94 @@
+{
+  "process_id": "proc_019",
+  "process_type": "cmmn",
+  "gt_ordIds": [
+    "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+    "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+    "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1",
+    "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+  ],
+  "enrichment": {
+    "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1": {
+      "capabilities": [
+        "assess-workforce-readiness",
+        "evaluate-skill-gaps",
+        "analyze-production-impact"
+      ],
+      "useCases": [
+        "Manufacturing planning team assesses skill requirements before implementing engineering changes.",
+        "HR identifies workforce capability gaps affecting transition readiness.",
+        "Plant operations validates human resource availability for production transition."
+      ],
+      "processNext": [
+        "my.mes:apiResource:EquipmentChangeAndServiceIntegration:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductionTransitionMarketReadiness_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1": {
+      "capabilities": [
+        "analyze-material-supply",
+        "validate-vendor-capacity",
+        "assess-inventory-impact"
+      ],
+      "useCases": [
+        "Supply chain team confirms material availability and vendor readiness for transition.",
+        "Procurement validates cost and timeline impact of material changes.",
+        "Manufacturing ensures component inventory supports new production requirements."
+      ],
+      "processNext": [
+        "sap.crm:agent:OpportunityQualificationAdvisor:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductionTransitionMarketReadiness_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1": {
+      "capabilities": [
+        "execute-campaign-orders",
+        "coordinate-customer-communication",
+        "manage-order-intake"
+      ],
+      "useCases": [
+        "Marketing launches coordinated customer campaigns announcing production transition.",
+        "Sales operations synchronize order management with transitioned product capabilities.",
+        "Customer service prepares for increased order volume during transition period."
+      ],
+      "processNext": [
+        "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductionTransitionMarketReadiness_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1": {
+      "capabilities": [
+        "monitor-transition-incidents",
+        "track-engagement-metrics",
+        "identify-safety-issues"
+      ],
+      "useCases": [
+        "Operations team monitors production incidents during transition for rapid issue resolution.",
+        "Customer experience tracks engagement quality and incident correlation with new capabilities.",
+        "Safety compliance monitors for any safety-related incidents emerging during transition."
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductionTransitionMarketReadiness_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    }
+  }
+}

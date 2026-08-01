@@ -1,0 +1,92 @@
+{
+  "process_id": "proc_029",
+  "process_type": "cmmn",
+  "gt_ordIds": [
+    "siemens.plm:agent:BOMComplianceValidator:v1",
+    "corp.itsm:agent:AssetProvisioningOrchestrator:v1",
+    "sap.ariba:apiResource:MaterialAndVendorProcurementData:v1",
+    "sap.sf:apiResource:EmployeeCompensationManagement:v1"
+  ],
+  "enrichment": {
+    "siemens.plm:agent:BOMComplianceValidator:v1": {
+      "capabilities": [
+        "validate-bom",
+        "assess-material-compliance",
+        "check-engineering-standards"
+      ],
+      "useCases": [
+        "Engineering team confirms new product revision has compliant materials and components.",
+        "Quality assurance validates material changes against regulatory requirements before release."
+      ],
+      "processNext": [
+        "sap.ariba:apiResource:MaterialAndVendorProcurementData:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductComplianceWorkforceSafety_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "sap.ariba:apiResource:MaterialAndVendorProcurementData:v1": {
+      "capabilities": [
+        "retrieve-vendor-specs",
+        "lookup-material-sourcing",
+        "fetch-certification-data"
+      ],
+      "useCases": [
+        "Procurement specialist accesses approved material suppliers and pricing for validated BOM items.",
+        "Supply chain team identifies alternative vendors for materials flagged in compliance review."
+      ],
+      "processNext": [
+        "workday.hcm:agent:OccupationalSafetyIncidentMonitoring:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductComplianceWorkforceSafety_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "corp.itsm:agent:AssetProvisioningOrchestrator:v1": {
+      "capabilities": [
+        "orchestrate-provisioning",
+        "allocate-equipment",
+        "coordinate-infrastructure"
+      ],
+      "useCases": [
+        "Operations manager confirms machines and production orders are allocated and ready for the new product run.",
+        "Asset team provisions engineering change-related equipment and tools to production floor."
+      ],
+      "processNext": [
+        "sap.sf:apiResource:EmployeeProductivityAndCapacityPlanning:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductComplianceWorkforceSafety_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "sap.sf:apiResource:EmployeeCompensationManagement:v1": {
+      "capabilities": [
+        "adjust-compensation",
+        "apply-hazard-allowances",
+        "manage-pay-adjustments"
+      ],
+      "useCases": [
+        "Payroll specialist ensures workers on hazardous material production receive appropriate hazard pay premiums.",
+        "Compensation team applies duty-based pay differentials for restricted material handling assignments."
+      ],
+      "processNext": [
+        "sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductComplianceWorkforceSafety_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    }
+  }
+}

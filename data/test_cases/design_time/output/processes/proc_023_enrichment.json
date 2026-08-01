@@ -1,0 +1,96 @@
+{
+  "process_id": "proc_023",
+  "process_type": "cmmn",
+  "gt_ordIds": [
+    "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+    "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1",
+    "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1",
+    "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+  ],
+  "enrichment": {
+    "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1": {
+      "capabilities": [
+        "analyze-change-impact",
+        "assess-skill-gaps",
+        "forecast-workforce-readiness"
+      ],
+      "useCases": [
+        "Plant managers evaluate workforce readiness before deploying engineering changes.",
+        "HR teams identify training needs for production transition activities.",
+        "Operations directors assess risk of change implementation based on available skills."
+      ],
+      "processNext": [
+        "my.mes:apiResource:MaterialAndVendorMasterData:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductionTransitionWorkforce_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1": {
+      "capabilities": [
+        "assess-equipment-readiness",
+        "map-change-dependencies",
+        "retrieve-service-tickets"
+      ],
+      "useCases": [
+        "Maintenance teams check equipment service status before authorizing changes.",
+        "Operations identify cascading equipment dependencies across production lines.",
+        "Change managers assess service impact of production transitions."
+      ],
+      "processNext": [
+        "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductionTransitionWorkforce_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "corp.itsm:agent:AssetProvisioningOrchestrator:v1": {
+      "capabilities": [
+        "orchestrate-asset-provisioning",
+        "allocate-materials",
+        "coordinate-equipment-assignment"
+      ],
+      "useCases": [
+        "Operations directors automate coordination of physical assets for production transitions.",
+        "Supply chain teams ensure material availability aligned with change schedules.",
+        "Inventory managers track asset allocation across multiple transition waves."
+      ],
+      "processNext": [
+        "corp.itsm:agent:AccessProvisioningOrchestrator:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductionTransitionWorkforce_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1": {
+      "capabilities": [
+        "engage-customer-contacts",
+        "segment-by-impact",
+        "deploy-targeted-communications"
+      ],
+      "useCases": [
+        "Marketing teams notify affected customers about production changes and timelines.",
+        "Customer success managers proactively engage high-value accounts on transition impacts.",
+        "Operations teams communicate service availability changes to customer segments."
+      ],
+      "processNext": [
+        "emarsys.cx:apiResource:CustomerEngagementProfileAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductionTransitionWorkforce_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    }
+  }
+}

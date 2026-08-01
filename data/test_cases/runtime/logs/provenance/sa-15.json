@@ -1,0 +1,43 @@
+{
+  "case_id": "sa-15",
+  "mode": "skill_adjusted",
+  "skill_id": "proc_019",
+  "gap_resources": [
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+    "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1"
+  ],
+  "timestamp": "2026-06-08T12:52:06.102620+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to set up a comprehensive engineering change management process that takes us from the initial impact assessment all the way through to production handoff. The process should coordinate with our workforce teams to ensure they're ready for the changes, validate that our supply chain can support the transition, and also verify that we have the right staffing levels and skills in place to execute effectively. Additionally, we need to make sure our operational teams can actually handle the product modifications we're planning, including updating our component data and inventory systems accordingly. Can you help us design a workflow that manages all of these interdependencies from start to finish?",
+        "variant": 0
+      },
+      "generator_tokens": 331,
+      "solver_output": {
+        "predicted": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+        "correct": false
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true\n}\n```",
+      "judge_tokens": 395,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "sa-15",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to set up a comprehensive engineering change management process that takes us from the initial impact assessment all the way through to production handoff. The process should coordinate with our workforce teams to ensure they're ready for the changes, validate that our supply chain can support the transition, and also verify that we have the right staffing levels and skills in place to execute effectively. Additionally, we need to make sure our operational teams can actually handle the product modifications we're planning, including updating our component data and inventory systems accordingly. Can you help us design a workflow that manages all of these interdependencies from start to finish?",
+    "expected_skill_id": "proc_019",
+    "expected_gap_ordIds": [
+      "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+      "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1"
+    ]
+  }
+}

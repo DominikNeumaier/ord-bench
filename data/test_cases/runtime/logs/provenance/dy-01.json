@@ -1,0 +1,248 @@
+{
+  "case_id": "dy-01",
+  "mode": "dynamic",
+  "query_class": "single_intent",
+  "problem_type": "P1",
+  "selected_resources": [
+    "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1"
+  ],
+  "distractor": "emarsys.cx:apiResource:OrderFulfillmentServiceAPI:v1",
+  "timestamp": "2026-06-08T13:19:09.913651+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "I need to pull up a recent issue that one of our customers reported last week so I can see what we promised to deliver and whether we're on track. Can you help me find that and check the current status?"
+      },
+      "generator_tokens": 174,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "top1_correct": true
+        },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 2,
+      "angle": "situation",
+      "generator_output": {
+        "user_prompt": "Our support team is overwhelmed trying to track customer complaints and purchases across multiple channels. We need visibility into where each customer issue stands\u2014whether it's being resolved, waiting for parts, or ready for delivery\u2014without having to manually check different systems. Right now we're losing track of which problems have been addressed and which orders are still in progress, which is causing frustrated customers and missed SLAs."
+      },
+      "generator_tokens": 256,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 3,
+      "angle": "outcome",
+      "generator_output": {
+        "user_prompt": "I need visibility into where my customer's recent purchase stands and what support issues are blocking their satisfaction so I can ensure they receive the resolution they're expecting within our agreed timeframe."
+      },
+      "generator_tokens": 219,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 4,
+      "angle": "pain-point",
+      "generator_output": {
+        "user_prompt": "We're struggling with visibility into what's happening with customer requests once they come through our system. Our team keeps running into situations where we can't quickly track the status of issues or purchases, leading to frustrated customers calling back asking for updates we should already have. We need a way to centrally retrieve and oversee everything so we can actually respond to customers with accurate information instead of hunting through multiple systems."
+      },
+      "generator_tokens": 266,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 5,
+      "angle": "role-based",
+      "generator_output": {
+        "user_prompt": "As a procurement manager, I need to quickly check the status of multiple vendor requests we've submitted and track when they'll be fulfilled. My team keeps asking me for updates throughout the day, but I'm spending too much time manually searching through different systems to find current progress. I need a single place where I can see all my pending requests with their current status and expected delivery dates in real time."
+      },
+      "generator_tokens": 260,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 6,
+      "angle": "indirect",
+      "generator_output": {
+        "user_prompt": "I need to track what happens after a customer calls in with a problem. When our support team documents the issue and assigns it to someone, I need visibility into how that gets routed, prioritized, and resolved. We're losing customers because we can't see the full lifecycle of what we promised to fix and when they'll receive their solution. Can you help me understand the status at each step?"
+      },
+      "generator_tokens": 255,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 7,
+      "angle": "situation",
+      "generator_output": {
+        "user_prompt": "Our support team is overwhelmed trying to track customer complaints and purchases across multiple channels. We need visibility into where each customer issue stands\u2014whether it's being resolved, waiting for parts, or ready for delivery\u2014without having to manually check different systems. Right now we're losing track of which problems have been addressed and which orders are still in progress, which is causing frustrated customers and missed SLAs."
+      },
+      "generator_tokens": 256,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 8,
+      "angle": "outcome",
+      "generator_output": {
+        "user_prompt": "I need visibility into where my customer's recent purchase stands and what support issues are blocking their satisfaction so I can ensure they receive the resolution they're expecting within our agreed timeframe."
+      },
+      "generator_tokens": 219,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 9,
+      "angle": "pain-point",
+      "generator_output": {
+        "user_prompt": "We're struggling with visibility into what's happening with customer requests once they come through our system. Our team keeps running into situations where we can't quickly track the status of issues or purchases, leading to frustrated customers calling back asking for updates we should already have. We need a way to centrally retrieve and oversee everything so we can actually respond to customers with accurate information instead of hunting through multiple systems."
+      },
+      "generator_tokens": 266,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 10,
+      "angle": "role-based",
+      "generator_output": {
+        "user_prompt": "As a procurement manager, I need to quickly check the status of multiple vendor requests we've submitted and track when they'll be fulfilled. My team keeps asking me for updates throughout the day, but I'm spending too much time manually searching through different systems to find current progress. I need a single place where I can see all my pending requests with their current status and expected delivery dates in real time."
+      },
+      "generator_tokens": 260,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 11,
+      "angle": "indirect",
+      "generator_output": {
+        "user_prompt": "I need to track what happens after a customer calls in with a problem. When our support team documents the issue and assigns it to someone, I need visibility into how that gets routed, prioritized, and resolved. We're losing customers because we can't see the full lifecycle of what we promised to fix and when they'll receive their solution. Can you help me understand the status at each step?"
+      },
+      "generator_tokens": 255,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 12,
+      "angle": "situation",
+      "generator_output": {
+        "user_prompt": "Our support team is overwhelmed trying to track customer complaints and purchases across multiple channels. We need visibility into where each customer issue stands\u2014whether it's being resolved, waiting for parts, or ready for delivery\u2014without having to manually check different systems. Right now we're losing track of which problems have been addressed and which orders are still in progress, which is causing frustrated customers and missed SLAs."
+      },
+      "generator_tokens": 256,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 13,
+      "angle": "outcome",
+      "generator_output": {
+        "user_prompt": "I need visibility into where my customer's recent purchase stands and what support issues are blocking their satisfaction so I can ensure they receive the resolution they're expecting within our agreed timeframe."
+      },
+      "generator_tokens": 219,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 14,
+      "angle": "pain-point",
+      "generator_output": {
+        "user_prompt": "We're struggling with visibility into what's happening with customer requests once they come through our system. Our team keeps running into situations where we can't quickly track the status of issues or purchases, leading to frustrated customers calling back asking for updates we should already have. We need a way to centrally retrieve and oversee everything so we can actually respond to customers with accurate information instead of hunting through multiple systems."
+      },
+      "generator_tokens": 266,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 15,
+      "angle": "role-based",
+      "generator_output": {
+        "user_prompt": "As a procurement manager, I need to quickly check the status of multiple vendor requests we've submitted and track when they'll be fulfilled. My team keeps asking me for updates throughout the day, but I'm spending too much time manually searching through different systems to find current progress. I need a single place where I can see all my pending requests with their current status and expected delivery dates in real time."
+      },
+      "generator_tokens": 260,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "top1_correct": true,
+        "note": "regen2_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 16,
+      "angle": "indirect",
+      "generator_output": {
+        "user_prompt": "I need to track what happens after a customer calls in with a problem. When our support team documents the issue and assigns it to someone, I need visibility into how that gets routed, prioritized, and resolved. We're losing customers because we can't see the full lifecycle of what we promised to fix and when they'll receive their solution. Can you help me understand the status at each step?"
+      },
+      "generator_tokens": 255,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "top1_correct": false,
+        "note": "regen2_attempt"
+      },
+      "outcome": false
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-01",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to pull up a recent issue that one of our customers reported last week so I can see what we promised to deliver and whether we're on track. Can you help me find that and check the current status?",
+    "expected_ordIds": [
+      "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1"
+    ],
+    "distractor_ordId": "emarsys.cx:apiResource:OrderFulfillmentServiceAPI:v1"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "case_id": "sa-01",
+  "mode": "skill_adjusted",
+  "skill_id": "proc_033",
+  "gap_resources": [
+    "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+    "sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+  ],
+  "timestamp": "2026-06-08T12:49:01.044264+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "outcome": "TOO_EASY",
+      "solver_output": {
+        "predicted": "sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+      }
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "We need to establish a comprehensive procurement and delivery workflow that coordinates vendor assessment, augments customer purchases with enriched data, validates regulatory requirements, and manages incoming stock alongside staff and resource allocation. The process should also track milestone progression and delivery status throughout the entire cycle, including the ability to handle customer grievances and reconcile any disagreements that arise during fulfillment. Can you design this end-to-end supply chain orchestration to ensure seamless coordination across all these interconnected operations?",
+        "variant": 1
+      },
+      "generator_tokens": 327,
+      "solver_output": {
+        "predicted": "sap.s4:agent:OpportunityToOrderAutomationEngine:v1",
+        "correct": false
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 377,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "sa-01",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to establish a comprehensive procurement and delivery workflow that coordinates vendor assessment, augments customer purchases with enriched data, validates regulatory requirements, and manages incoming stock alongside staff and resource allocation. The process should also track milestone progression and delivery status throughout the entire cycle, including the ability to handle customer grievances and reconcile any disagreements that arise during fulfillment. Can you design this end-to-end supply chain orchestration to ensure seamless coordination across all these interconnected operations?",
+    "expected_skill_id": "proc_033",
+    "expected_gap_ordIds": [
+      "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+      "sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+    ]
+  }
+}

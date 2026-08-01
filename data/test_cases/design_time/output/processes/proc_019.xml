@@ -1,0 +1,67 @@
+<process id="proc_ProductionTransitionMarketReadiness_v1" type="cmmn">
+  
+  <step id="s1" 
+        label="Assess Engineering Change Impact on Workforce"
+        description="Evaluate how proposed engineering changes affect production capability, workforce skills, and resource requirements across the organization."
+        ordId="sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+        capability="assess-workforce-readiness"
+        useCase="Manufacturing planning team needs to understand skill gaps before implementing an engineering change order."/>
+  
+  <step id="s2" 
+        label="Validate Equipment Modifications and Service Requirements"
+        description="Confirm that equipment changes align with existing infrastructure and identify required maintenance or integration work."
+        ordId="my.mes:apiResource:EquipmentChangeAndServiceIntegration:v1"
+        capability="validate-equipment-changes"
+        useCase="Plant operations must ensure equipment modifications are technically feasible before proceeding with the change."/>
+  
+  <step id="s3" 
+        label="Coordinate Workforce Performance and Capability Development"
+        description="Initiate performance review cycles and capability assessments for affected employees to close identified skill gaps."
+        ordId="sap.sf:agent:PerformanceReviewCycleCoordinator:v1"
+        capability="coordinate-performance-reviews"
+        useCase="HR department needs to align employee development plans with the new skill requirements identified in the change impact assessment."/>
+  
+  <step id="s4" 
+        label="Analyze Material and Supply Chain Impact"
+        description="Assess material specifications, inventory levels, and vendor capabilities required to support the transition."
+        ordId="my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+        capability="analyze-material-supply"
+        useCase="Supply chain team must confirm vendor availability and material readiness before production transition."/>
+  
+  <step id="s5" 
+        label="Qualif Sales Opportunities for Transition Announcement"
+        description="Evaluate and prioritize sales opportunities that align with the new product capabilities and transition timeline."
+        ordId="sap.crm:agent:OpportunityQualificationAdvisor:v1"
+        capability="qualify-sales-opportunities"
+        useCase="Sales leadership needs to identify which customer accounts should receive early notification about new production capabilities."/>
+  
+  <step id="s6" 
+        label="Validate Production Impact Analysis"
+        description="Cross-reference engineering change impacts with detailed production data to confirm transition feasibility."
+        ordId="my.mes:dataProduct:EngineeringChangeImpactAnalytics:v1"
+        capability="validate-production-impact"
+        useCase="Production engineering requires detailed analytics to finalize the transition plan and timeline."/>
+  
+  <step id="s7" 
+        label="Execute Campaign and Customer Order Coordination"
+        description="Launch coordinated customer communication campaigns and manage order intake for the transitioned product line."
+        ordId="my.mes:apiResource:CampaignAndCustomerOrderManagement:v1"
+        capability="execute-campaign-orders"
+        useCase="Marketing and sales operations teams need to synchronize customer announcements with order management systems during transition."/>
+  
+  <step id="s8" 
+        label="Monitor Transition Incident Metrics and Engagement"
+        description="Track operational incidents, safety issues, and customer engagement metrics during the production transition period."
+        ordId="emarsys.cx:dataProduct:EngagementIncidentMetrics:v1"
+        capability="monitor-transition-incidents"
+        useCase="Operations and customer experience teams must identify and resolve issues rapidly as the transition progresses."/>
+  
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+  
+</process>

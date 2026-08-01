@@ -1,0 +1,62 @@
+{
+  "case_id": "dy-38",
+  "mode": "dynamic",
+  "query_class": "multi_intent",
+  "selected_resources": [
+    "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1",
+    "sap.ehs:apiResource:VendorSafetyComplianceOrders:v1"
+  ],
+  "timestamp": "2026-06-08T13:25:46.904674+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to simultaneously pull our current team's readiness against the upcoming platform changes while also retrieving and validating all our active procurement documents tied to our vendor safety certifications to ensure we're compliant before next quarter's audit."
+      },
+      "generator_tokens": 179,
+      "solver_output": {
+        "predicted": "sap.ehs:apiResource:VendorSafetyComplianceOrders:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": false,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": false,\n  \"C3\": true,\n  \"accepted\": false,\n  \"reason\": \"C2 fails: prompt explicitly mentions 'Workday' (implied via HCM context) and 'SAP' (via EHS context), violating the resource/system name abstraction requirement.\"\n}\n```",
+      "judge_tokens": 328,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "I need to pull together both our internal capability analysis to see if we're adequately staffed for the upcoming changes we're planning, and simultaneously check our procurement records to ensure all our vendor relationships maintain proper safety standings before we move forward with any new initiatives."
+      },
+      "generator_tokens": 196,
+      "solver_output": {
+        "predicted": "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 288,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-38",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "I need to pull together both our internal capability analysis to see if we're adequately staffed for the upcoming changes we're planning, and simultaneously check our procurement records to ensure all our vendor relationships maintain proper safety standings before we move forward with any new initiatives.",
+    "expected_ordIds": [
+      "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1",
+      "sap.ehs:apiResource:VendorSafetyComplianceOrders:v1"
+    ],
+    "distractor_ordId": null
+  }
+}

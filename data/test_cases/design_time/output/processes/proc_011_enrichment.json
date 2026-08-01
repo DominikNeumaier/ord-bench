@@ -1,0 +1,94 @@
+{
+  "process_id": "proc_011",
+  "process_type": "bpmn",
+  "gt_ordIds": [
+    "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+    "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+    "my.mes:agent:BillOfMaterialsComplianceValidator:v1",
+    "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1"
+  ],
+  "enrichment": {
+    "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1": {
+      "capabilities": [
+        "evaluate-hazardous-materials",
+        "verify-substance-regulations",
+        "assess-material-safety"
+      ],
+      "useCases": [
+        "Product teams verify materials comply with environmental and safety regulations before production begins.",
+        "Compliance officers confirm hazardous substance documentation is complete and accessible.",
+        "Supply chain ensures all incoming materials meet corporate hazard thresholds."
+      ],
+      "processNext": [
+        "my.mes:agent:BillOfMaterialsComplianceValidator:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductComplianceManufacturing_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "my.mes:agent:BillOfMaterialsComplianceValidator:v1": {
+      "capabilities": [
+        "validate-bom-compliance",
+        "audit-component-materials",
+        "enforce-engineering-standards"
+      ],
+      "useCases": [
+        "Manufacturing confirms all components in the product structure meet material safety and engineering requirements.",
+        "Engineering change management ensures BOMs remain compliant when modifications occur.",
+        "Quality assurance validates material selections before production execution."
+      ],
+      "processNext": [
+        "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductComplianceManufacturing_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1": {
+      "capabilities": [
+        "coordinate-safety-compliance",
+        "automate-safety-assessments",
+        "orchestrate-compliance-checks"
+      ],
+      "useCases": [
+        "Safety officers ensure all engineering changes trigger integrated compliance assessments across the organization.",
+        "Compliance teams automate material and process safety validation to reduce manual review time.",
+        "Operations leadership maintains consistent safety standards across all product variants and manufacturing locations."
+      ],
+      "processNext": [
+        "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductComplianceManufacturing_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1": {
+      "capabilities": [
+        "coordinate-vendor-procurement",
+        "validate-purchase-orders",
+        "verify-vendor-compliance"
+      ],
+      "useCases": [
+        "Procurement teams confirm vendors can supply materials that meet all compliance requirements before issuing purchase orders.",
+        "Supply chain partners communicate material specifications and regulatory requirements through standardized purchase order network.",
+        "Vendor management validates that suppliers maintain certification and compliance credentials for regulated materials."
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductComplianceManufacturing_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    }
+  }
+}

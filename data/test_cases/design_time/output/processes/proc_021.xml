@@ -1,0 +1,68 @@
+<process id="proc_QualityDrivenMfgSupplyChain_v1" type="cmmn">
+  
+  <step id="s1" 
+        label="Monitor production incidents"
+        description="Detect and track equipment failures and safety incidents on the manufacturing floor to prevent disruptions."
+        ordId="emarsys.cx:dataProduct:EngagementIncidentMetrics:v1"
+        capability="monitor-incidents"
+        useCase="Manufacturing supervisors need real-time visibility into incident metrics affecting production quality."/>
+  
+  <step id="s2" 
+        label="Qualify and certify material suppliers"
+        description="Validate that incoming vendors meet material compliance standards and safety certifications before procurement."
+        ordId="siemens.plm:apiResource:MaterialAndVendorQualificationManagement:v1"
+        capability="qualify-vendors"
+        useCase="Procurement teams require pre-screened, certified suppliers to ensure material quality and regulatory compliance."/>
+  
+  <step id="s3" 
+        label="Assess supplier performance metrics"
+        description="Analyze vendor delivery performance, quality scores, and cost competitiveness to optimize procurement decisions."
+        ordId="sap.ariba:dataProduct:VendorPerformanceAndSegmentationAnalytics:v1"
+        capability="analyze-performance"
+        useCase="Strategic buyers use vendor analytics to segment suppliers and negotiate better contracts."/>
+  
+  <step id="s4" 
+        label="Receive and inspect material shipments"
+        description="Process inbound material receipts from qualified vendors and validate against purchase orders and quality standards."
+        ordId="sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+        capability="receive-material"
+        useCase="Warehouse and inventory teams need to confirm material arrives complete, undamaged, and compliant."/>
+  
+  <step id="s5" 
+        label="Provision materials for engineering changes"
+        description="Allocate materials and coordinate production item updates when engineering change orders are released."
+        ordId="siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+        capability="provision-materials"
+        useCase="Engineering and manufacturing planners must synchronize material availability with design modifications in real time."/>
+  
+  <step id="s6" 
+        label="Schedule production and assign machines"
+        description="Optimize production order sequencing and machine allocation to maximize utilization and meet delivery dates."
+        ordId="sap.s4:apiResource:ProductionOrderAndMachineScheduling:v1"
+        capability="schedule-production"
+        useCase="Production schedulers need intelligent machine-to-order assignment that respects capacity and lead times."/>
+  
+  <step id="s7" 
+        label="Execute production runs on integrated machines"
+        description="Coordinate machine production order execution and monitor real-time output against planned targets."
+        ordId="siemens.plm:apiResource:MachineProductionOrderIntegration:v1"
+        capability="execute-production"
+        useCase="Plant floor operators require live integration with machines to track work-in-progress and adjust orders dynamically."/>
+  
+  <step id="s8" 
+        label="Report safety and compliance status"
+        description="Document production safety incidents and regulatory compliance metrics for customer engagement and audit trails."
+        ordId="sap.s4:apiResource:SafetyComplianceCustomerEngagementAPI:v1"
+        capability="report-compliance"
+        useCase="Quality assurance and compliance officers must communicate safety performance to customers and regulators."/>
+  
+  <!-- Sequence Flow: Linear progression with conditional gating -->
+  <sequenceFlow from="s1" to="s2" condition="incident_severity &gt; threshold"/>
+  <sequenceFlow from="s2" to="s3" condition="vendor_qualification_approved"/>
+  <sequenceFlow from="s3" to="s4" condition="performance_score_acceptable"/>
+  <sequenceFlow from="s4" to="s5" condition="material_receipt_complete"/>
+  <sequenceFlow from="s5" to="s6" condition="engineering_change_provisioned"/>
+  <sequenceFlow from="s6" to="s7" condition="production_schedule_confirmed"/>
+  <sequenceFlow from="s7" to="s8" condition="production_execution_complete"/>
+  
+</process>

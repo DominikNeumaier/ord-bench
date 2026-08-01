@@ -1,0 +1,48 @@
+{
+  "case_id": "oos-06",
+  "mode": "out_of_scope",
+  "difficulty": "hard",
+  "topic": "Dynamic pricing optimization for sales orders",
+  "timestamp": "2026-06-08T13:00:20.204267+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need a way to automatically flag sales orders where the quoted price falls below our dynamic cost baseline for that product SKU in the current market condition, so our sales team can quickly decide whether to accept the margin hit or renegotiate before the order is confirmed in the system."
+      },
+      "generator_tokens": 148,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": false
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": false,\n  \"accepted\": false,\n  \"reason\": \"Request is ambiguous about scope: while price-baseline comparison is absent, the core need (margin alerts on orders) overlaps with achievable pricing/order workflows, making true out-of-scope status unclear withou",
+      "judge_tokens": 298,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "Our sales team is manually adjusting prices on large B2B orders based on competitor intel and customer volume history, but we need a way to automatically flag orders that fall outside our dynamic pricing bands\u2014especially when our reps are discounting beyond threshold for specific customer segments\u2014so we can audit whether deals are staying within our margin targets before they hit the accounting system."
+      },
+      "generator_tokens": 179,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": \"This is a legitimate out-of-scope case: real enterprise need (dynamic pricing audits), genuinely absent capability (cross-segment discount threshold enforcement with pre-accounting flagging), and specific enough sco",
+      "judge_tokens": 322,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "oos-06",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "difficulty": "hard",
+    "topic": "Dynamic pricing optimization for sales orders",
+    "user_prompt": "Our sales team is manually adjusting prices on large B2B orders based on competitor intel and customer volume history, but we need a way to automatically flag orders that fall outside our dynamic pricing bands\u2014especially when our reps are discounting beyond threshold for specific customer segments\u2014so we can audit whether deals are staying within our margin targets before they hit the accounting system.",
+    "expected_ordIds": []
+  }
+}

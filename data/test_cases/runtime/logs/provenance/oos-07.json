@@ -1,0 +1,33 @@
+{
+  "case_id": "oos-07",
+  "mode": "out_of_scope",
+  "difficulty": "hard",
+  "topic": "Employee travel expense policy enforcement",
+  "timestamp": "2026-06-08T13:00:22.904678+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need a way to automatically flag travel expense reports that violate our policy thresholds\u2014like when someone books a flight that's more than 15% above the lowest available option or books a hotel outside our preferred vendor list\u2014so our finance team can route those for manager pre-approval before they hit the approval workflow instead of catching violations after the fact."
+      },
+      "generator_tokens": 163,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 262,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "oos-07",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "difficulty": "hard",
+    "topic": "Employee travel expense policy enforcement",
+    "user_prompt": "We need a way to automatically flag travel expense reports that violate our policy thresholds\u2014like when someone books a flight that's more than 15% above the lowest available option or books a hotel outside our preferred vendor list\u2014so our finance team can route those for manager pre-approval before they hit the approval workflow instead of catching violations after the fact.",
+    "expected_ordIds": []
+  }
+}

@@ -1,0 +1,772 @@
+[
+  {
+    "ordId": "corp.itsm:agent:AssetProvisioningOrchestrator:v1",
+    "namespace": "corp.itsm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.183192+00:00"
+  },
+  {
+    "ordId": "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+    "namespace": "corp.itsm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.183505+00:00"
+  },
+  {
+    "ordId": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+    "namespace": "corp.itsm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.183507+00:00"
+  },
+  {
+    "ordId": "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+    "namespace": "corp.itsm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.183509+00:00"
+  },
+  {
+    "ordId": "corp.itsm:apiResource:VendorProcurementOrderAPI:v1",
+    "namespace": "corp.itsm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.183511+00:00"
+  },
+  {
+    "ordId": "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1",
+    "namespace": "corp.itsm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.183513+00:00"
+  },
+  {
+    "ordId": "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1",
+    "namespace": "corp.itsm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.183515+00:00"
+  },
+  {
+    "ordId": "corp.itsm:dataProduct:IncidentEngagementReliability:v1",
+    "namespace": "corp.itsm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.183517+00:00"
+  },
+  {
+    "ordId": "corp.itsm:dataProduct:SafetyIncidentMetrics:v1",
+    "namespace": "corp.itsm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.183519+00:00"
+  },
+  {
+    "ordId": "emarsys.cx:apiResource:JourneyContactStateAPI:v1",
+    "namespace": "emarsys.cx",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.189028+00:00"
+  },
+  {
+    "ordId": "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1",
+    "namespace": "emarsys.cx",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.189037+00:00"
+  },
+  {
+    "ordId": "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1",
+    "namespace": "emarsys.cx",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.189039+00:00"
+  },
+  {
+    "ordId": "emarsys.cx:apiResource:CustomerAccountCampaignManagementAPI:v1",
+    "namespace": "emarsys.cx",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.189040+00:00"
+  },
+  {
+    "ordId": "emarsys.cx:apiResource:SalesCapacityAndTimeOffManagementAPI:v1",
+    "namespace": "emarsys.cx",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.189042+00:00"
+  },
+  {
+    "ordId": "emarsys.cx:apiResource:HazardousSubstanceComplianceManagementAPI:v1",
+    "namespace": "emarsys.cx",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.189043+00:00"
+  },
+  {
+    "ordId": "emarsys.cx:apiResource:OrderFulfillmentServiceAPI:v1",
+    "namespace": "emarsys.cx",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.189045+00:00"
+  },
+  {
+    "ordId": "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1",
+    "namespace": "emarsys.cx",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.189046+00:00"
+  },
+  {
+    "ordId": "my.mes:agent:ProductionChangeOrchestrator:v1",
+    "namespace": "my.mes",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.193642+00:00"
+  },
+  {
+    "ordId": "my.mes:agent:BillOfMaterialsComplianceValidator:v1",
+    "namespace": "my.mes",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.193649+00:00"
+  },
+  {
+    "ordId": "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1",
+    "namespace": "my.mes",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.193652+00:00"
+  },
+  {
+    "ordId": "my.mes:apiResource:HazardousSubstanceComplianceManagement:v1",
+    "namespace": "my.mes",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.193653+00:00"
+  },
+  {
+    "ordId": "my.mes:apiResource:SupplierProcurementOrderManagement:v1",
+    "namespace": "my.mes",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.193655+00:00"
+  },
+  {
+    "ordId": "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1",
+    "namespace": "my.mes",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.193656+00:00"
+  },
+  {
+    "ordId": "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1",
+    "namespace": "my.mes",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.193658+00:00"
+  },
+  {
+    "ordId": "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+    "namespace": "my.mes",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.193659+00:00"
+  },
+  {
+    "ordId": "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1",
+    "namespace": "my.mes",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.193661+00:00"
+  },
+  {
+    "ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+    "namespace": "sap.ariba",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.198188+00:00"
+  },
+  {
+    "ordId": "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1",
+    "namespace": "sap.ariba",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.198196+00:00"
+  },
+  {
+    "ordId": "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1",
+    "namespace": "sap.ariba",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.198198+00:00"
+  },
+  {
+    "ordId": "sap.ariba:apiResource:MaterialAndVendorProcurementData:v1",
+    "namespace": "sap.ariba",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.198200+00:00"
+  },
+  {
+    "ordId": "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+    "namespace": "sap.ariba",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.198201+00:00"
+  },
+  {
+    "ordId": "sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1",
+    "namespace": "sap.ariba",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.198203+00:00"
+  },
+  {
+    "ordId": "sap.ariba:apiResource:MaterialAndVendorProcurementAPI:v1",
+    "namespace": "sap.ariba",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.198205+00:00"
+  },
+  {
+    "ordId": "sap.crm:apiResource:CustomerAccountDisputeManagement:v1",
+    "namespace": "sap.crm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.202837+00:00"
+  },
+  {
+    "ordId": "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+    "namespace": "sap.crm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.202844+00:00"
+  },
+  {
+    "ordId": "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1",
+    "namespace": "sap.crm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.202846+00:00"
+  },
+  {
+    "ordId": "sap.crm:apiResource:MachineProductionOrderIntegration:v1",
+    "namespace": "sap.crm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.202848+00:00"
+  },
+  {
+    "ordId": "sap.crm:apiResource:ProcurementVendorOrderManagement:v1",
+    "namespace": "sap.crm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.202850+00:00"
+  },
+  {
+    "ordId": "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1",
+    "namespace": "sap.crm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.202852+00:00"
+  },
+  {
+    "ordId": "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1",
+    "namespace": "sap.crm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.202854+00:00"
+  },
+  {
+    "ordId": "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1",
+    "namespace": "sap.ehs",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.207923+00:00"
+  },
+  {
+    "ordId": "sap.ehs:apiResource:VendorSafetyComplianceOrders:v1",
+    "namespace": "sap.ehs",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.207934+00:00"
+  },
+  {
+    "ordId": "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1",
+    "namespace": "sap.ehs",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.207937+00:00"
+  },
+  {
+    "ordId": "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1",
+    "namespace": "sap.ehs",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.207939+00:00"
+  },
+  {
+    "ordId": "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+    "namespace": "sap.s4",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.212881+00:00"
+  },
+  {
+    "ordId": "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1",
+    "namespace": "sap.s4",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.212890+00:00"
+  },
+  {
+    "ordId": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+    "namespace": "sap.s4",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.212893+00:00"
+  },
+  {
+    "ordId": "sap.s4:apiResource:ProductionPerformanceAPI:v1",
+    "namespace": "sap.s4",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.212895+00:00"
+  },
+  {
+    "ordId": "sap.s4:apiResource:EmployeePayrollDataAPI:v1",
+    "namespace": "sap.s4",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.212896+00:00"
+  },
+  {
+    "ordId": "sap.s4:apiResource:CustomerOrderManagementAPI:v1",
+    "namespace": "sap.s4",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.212899+00:00"
+  },
+  {
+    "ordId": "sap.s4:apiResource:WorkforceOrgStructureAPI:v1",
+    "namespace": "sap.s4",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.212901+00:00"
+  },
+  {
+    "ordId": "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1",
+    "namespace": "sap.s4",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.212903+00:00"
+  },
+  {
+    "ordId": "sap.s4:dataProduct:IncidentSafetyAnalyticsHub:v1",
+    "namespace": "sap.s4",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.212905+00:00"
+  },
+  {
+    "ordId": "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+    "namespace": "sap.s4",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.212908+00:00"
+  },
+  {
+    "ordId": "sap.sf:apiResource:EmployeeCompensationManagement:v1",
+    "namespace": "sap.sf",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.217734+00:00"
+  },
+  {
+    "ordId": "sap.sf:apiResource:CompensationAndSalaryManagement:v1",
+    "namespace": "sap.sf",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.217740+00:00"
+  },
+  {
+    "ordId": "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1",
+    "namespace": "sap.sf",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.217741+00:00"
+  },
+  {
+    "ordId": "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+    "namespace": "sap.sf",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.217744+00:00"
+  },
+  {
+    "ordId": "siemens.plm:agent:BOMComplianceValidator:v1",
+    "namespace": "siemens.plm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.222354+00:00"
+  },
+  {
+    "ordId": "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1",
+    "namespace": "siemens.plm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.222361+00:00"
+  },
+  {
+    "ordId": "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1",
+    "namespace": "siemens.plm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.222365+00:00"
+  },
+  {
+    "ordId": "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+    "namespace": "siemens.plm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.222366+00:00"
+  },
+  {
+    "ordId": "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1",
+    "namespace": "siemens.plm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.222368+00:00"
+  },
+  {
+    "ordId": "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1",
+    "namespace": "siemens.plm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.222371+00:00"
+  },
+  {
+    "ordId": "workday.hcm:apiResource:PayrollDataExposure:v1",
+    "namespace": "workday.hcm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.227030+00:00"
+  },
+  {
+    "ordId": "workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1",
+    "namespace": "workday.hcm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.227038+00:00"
+  },
+  {
+    "ordId": "workday.hcm:apiResource:CompensationStructureDataExposure:v1",
+    "namespace": "workday.hcm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.227040+00:00"
+  },
+  {
+    "ordId": "workday.hcm:apiResource:PayrollProcessingDataManagement:v1",
+    "namespace": "workday.hcm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.227042+00:00"
+  },
+  {
+    "ordId": "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1",
+    "namespace": "workday.hcm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.227044+00:00"
+  },
+  {
+    "ordId": "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1",
+    "namespace": "workday.hcm",
+    "fields_added": [
+      "capabilities",
+      "useCases",
+      "processNext",
+      "partOfGroups"
+    ],
+    "timestamp": "2026-06-08T11:34:35.227046+00:00"
+  }
+]

@@ -1,0 +1,940 @@
+{
+  "openResourceDiscovery": "1.16",
+  "perspective": "system-instance",
+  "packages": [
+    {
+      "ordId": "siemens.plm:package:Core:v1",
+      "title": "siemens.plm Core Package",
+      "shortDescription": "Core resources for the siemens.plm system in the benchmark landscape.",
+      "version": "1.0.0",
+      "vendor": "siemens:vendor:Default:"
+    }
+  ],
+  "agents": [
+    {
+      "ordId": "siemens.plm:agent:BOMComplianceValidator:v1",
+      "title": "BOM Compliance Validator Agent",
+      "shortDescription": "Autonomously validates bill of materials against regulatory and supplier qualification requirements.",
+      "description": "This agent automatically scans product bills of materials to verify compliance with regulatory standards, restricted substance directives, and active supplier qualifications. It flags non-compliant materials and components, recommends approved substitutes, and generates compliance documentation for product records. This reduces manual review cycles and ensures products meet market-specific requirements before engineering release.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:ProductItem:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:EngineeringChange:v1"
+      ],
+      "lineOfBusiness": [
+        "Product Lifecycle Management"
+      ],
+      "tags": [
+        "compliance",
+        "bom-validation",
+        "supplier-qualification",
+        "automation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1",
+      "title": "Engineering Change and Material Provisioning Agent",
+      "shortDescription": "Automates engineering change processing and material lifecycle coordination across product configurations.",
+      "description": "Coordinates engineering changes across product items and material specifications, automating approval workflows and synchronizing configuration updates. Monitors material lifecycle transitions and orchestrates provisioning tasks to ensure compliance documentation and cost estimation remain current throughout the product development cycle.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "lineOfBusiness": [
+        "it-service-management"
+      ],
+      "tags": [
+        "asset-lifecycle",
+        "change-automation",
+        "provisioning-orchestration"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "siemens.plm:agent:QualityAssuranceAndDefectPrevention:v1",
+      "title": "Quality Assurance and Defect Prevention Agent",
+      "shortDescription": "Monitors production quality, automates defect detection, and coordinates corrective actions across machines and orders.",
+      "description": "Continuously monitors machines and production orders to identify quality anomalies and coordinates real-time defect detection across the production floor. Automates quality inspection workflows by analyzing measurement data, triggering automated holds on non-conforming batches, and initiating corrective actions to prevent downstream quality issues. Processes quality inspection records to optimize production parameters and reduces scrap by coordinating machine recalibration and material rework decisions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Machine:v1",
+        "sap.odm:entityType:ProductionOrder:v1",
+        "sap.odm:entityType:QualityInspection:v1"
+      ],
+      "lineOfBusiness": [
+        "Manufacturing Execution"
+      ],
+      "tags": [
+        "quality-monitoring",
+        "autonomous-control",
+        "defect-detection",
+        "production-optimization"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "siemens.plm:agent:SupplierQualificationAndMaterialCoordinator:v1",
+      "title": "Supplier Qualification and Material Coordinator",
+      "shortDescription": "Automates vendor assessment and material qualification workflows",
+      "description": "Coordinates supplier qualification processes and material approval workflows across the product lifecycle. Monitors vendor compliance status, automates material validation against engineering specifications, and processes supplier performance metrics to ensure supply chain quality. Orchestrates qualification reviews and manages material-to-vendor mappings throughout the PLM ecosystem.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:Vendor:v1"
+      ],
+      "lineOfBusiness": [
+        "Product Lifecycle Management"
+      ],
+      "tags": [
+        "supplier-qualification",
+        "material-management",
+        "vendor-compliance"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "siemens.plm:agent:EngineeringChangeAndComplianceOrchestrator:v1",
+      "title": "Engineering Change and Compliance Orchestrator",
+      "shortDescription": "Automates change request workflows, equipment impact assessments, and compliance validation across product lifecycle.",
+      "description": "Monitors and coordinates engineering change requests through design review cycles, automatically assesses affected IT equipment and digital twin configurations, and processes compliance documentation requirements. Routes service tickets to appropriate teams based on change criticality and regulatory impact, ensuring supplier qualification updates and cost estimation workflows are triggered seamlessly throughout the product development lifecycle.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:ChangeRequest:v1",
+        "sap.odm:entityType:ITEquipment:v1",
+        "sap.odm:entityType:ServiceTicket:v1"
+      ],
+      "lineOfBusiness": [
+        "Product Lifecycle Management"
+      ],
+      "tags": [
+        "change-orchestration",
+        "compliance-automation",
+        "design-review-coordination"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "siemens.plm:agent:MaterialAndVendorQualificationOrchestrator:v1",
+      "title": "Material and Vendor Qualification Orchestrator",
+      "shortDescription": "Automates material sourcing validation and vendor compliance workflows",
+      "description": "Monitors material specifications and vendor qualifications throughout the product lifecycle, automating compliance checks and supplier performance assessments. Coordinates cross-functional approval processes for material substitutions and new vendor onboarding while processing qualification documentation against regulatory requirements. Orchestrates real-time material-to-vendor mapping updates to maintain bill of materials accuracy and supplier compliance status.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:Vendor:v1"
+      ],
+      "lineOfBusiness": [
+        "Product Lifecycle Management"
+      ],
+      "tags": [
+        "supplier-qualification",
+        "material-management",
+        "compliance-automation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "siemens.plm:agent:DesignReviewAndComplianceCoordinator:v1",
+      "title": "Design Review and Compliance Coordination Agent",
+      "shortDescription": "Orchestrates design reviews and monitors compliance documentation workflows across product lifecycle.",
+      "description": "This agent automates the coordination of design review cycles and compliance documentation processes by monitoring engineering change requests and performance metrics across the product development team. It processes design review assignments, tracks reviewer engagement, and coordinates compliance sign-offs by correlating workforce performance data with document completion status. The agent intelligently routes compliance tasks based on employee qualifications and historical review performance to ensure timely product certification.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Employee:v1",
+        "sap.odm:entityType:PerformanceReview:v1",
+        "sap.odm:entityType:WorkforcePerson:v1"
+      ],
+      "lineOfBusiness": [
+        "Product Lifecycle Management"
+      ],
+      "tags": [
+        "design-review",
+        "compliance-automation",
+        "engineering-coordination"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "siemens.plm:agent:VendorContractLifecycleOrchestrator:v1",
+      "title": "Vendor Contract Lifecycle Orchestrator",
+      "shortDescription": "Automates vendor engagement, contract negotiations, and purchase order workflows.",
+      "description": "Monitors vendor performance metrics and contract milestones to coordinate seamless procurement journeys. Automates contract lifecycle transitions, renewal triggers, and purchase order coordination across supplier networks. Processes vendor qualification events and manages compliance documentation workflows to optimize contract-to-order orchestration.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Contract:v1",
+        "sap.odm:entityType:PurchaseOrder:v1",
+        "sap.odm:entityType:Vendor:v1"
+      ],
+      "lineOfBusiness": [
+        "marketing-and-cx"
+      ],
+      "tags": [
+        "vendor-management",
+        "journey-orchestration",
+        "contract-lifecycle"
+      ],
+      "industry": []
+    }
+  ],
+  "apiResources": [
+    {
+      "ordId": "siemens.plm:apiResource:EngineringChangeManagement:v1",
+      "title": "Engineering Change Management API",
+      "shortDescription": "REST API for creating, approving, and tracking engineering changes across product designs.",
+      "description": "Exposes REST endpoints for managing engineering change orders (ECOs) throughout their lifecycle, including change request creation, stakeholder approval workflows, impact assessment on bill of materials, and compliance validation. Enables integration with downstream systems for synchronized product data updates and traceability.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/engineering-change-management-v1.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:EngineeringChange:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductItem:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Product Lifecycle Management"
+      ],
+      "tags": [
+        "engineering-change",
+        "change-management",
+        "product-design",
+        "workflow-approval"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1",
+      "title": "Supplier Qualification and Service Management API",
+      "shortDescription": "Manages supplier qualifications, service requests, and equipment compliance tracking.",
+      "description": "Exposes supplier qualification records, service ticket management, and IT equipment compliance data across the product lifecycle. Retrieves and manages supplier assessment history, service incident tracking, and equipment configuration changes. Provides access to qualification audit trails and service performance metrics for procurement and operations teams.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:ChangeRequest:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ITEquipment:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ServiceTicket:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/supplier-qualification-service.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "product-lifecycle-management"
+      ],
+      "tags": [
+        "supplier-management",
+        "service-operations",
+        "compliance-tracking"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "siemens.plm:apiResource:ProductionPerformanceMetrics:v1",
+      "title": "Manufacturing Output Analytics API",
+      "shortDescription": "Delivers equipment utilization and production order execution data for manufacturing performance analysis and throughput optimization.",
+      "description": "Supplies current and historical operational data on equipment productivity, production order status, and manufacturing KPIs. Facilitates access to consolidated equipment performance telemetry and production metrics, enabling downstream systems to query aggregated efficiency information for production intelligence, benchmarking, and operational enhancement programs.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Machine:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductionOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/production-performance-metrics.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Manufacturing Execution"
+      ],
+      "tags": [
+        "equipment-utilization",
+        "production-analytics",
+        "throughput-metrics",
+        "manufacturing-optimization"
+      ],
+      "industry": [],
+      "namespace": "siemens.plm"
+    },
+    {
+      "ordId": "siemens.plm:apiResource:DigitalTwinAndConfigurationManagement:v1",
+      "title": "Digital Twin and Product Configuration API",
+      "shortDescription": "Manages digital twin instances, product configurations, and design review artifacts.",
+      "description": "Exposes endpoints to retrieve and manage digital twin data, product configurations, and design review documentation. Provides access to configuration hierarchies, design metadata, and change impact analysis across engineering and manufacturing domains. Manages relationships between ChangeRequests, ITEquipment assets, and ServiceTickets for coordinated product lifecycle updates.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:ChangeRequest:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ITEquipment:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ServiceTicket:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/digital-twin-configuration.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Product Lifecycle Management"
+      ],
+      "tags": [
+        "digital-twin",
+        "product-configuration",
+        "design-review"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+      "title": "Machine Production Order Integration API",
+      "shortDescription": "Retrieves and manages machine-production order relationships for execution tracking.",
+      "description": "Exposes real-time linkages between machines and their assigned production orders, enabling retrieval of execution status, resource allocation, and order-to-machine mapping. Manages bidirectional references to coordinate shop floor operations and track order fulfillment across equipment instances. Provides access to machine-order dependencies critical for production scheduling and capacity planning.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Machine:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductionOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/machine-production-order-integration.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Manufacturing Execution"
+      ],
+      "tags": [
+        "oee-monitoring",
+        "machine-analytics",
+        "performance-metrics",
+        "production-efficiency"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1",
+      "title": "Engineering Change and Service Management API",
+      "shortDescription": "Manages product changes, equipment tracking, and service request workflows.",
+      "description": "Exposes engineering change requests, IT equipment configurations, and service ticket management to coordinate product modifications across the PLM lifecycle. Retrieves change request status, equipment dependencies, and service ticket escalations to support compliance documentation and digital twin synchronization. Manages service ticket assignments and change approvals to enable real-time collaboration between engineering, quality, and supplier teams.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:ChangeRequest:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ITEquipment:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ServiceTicket:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/engineering-change-service-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "product-lifecycle-management"
+      ],
+      "tags": [
+        "change-management",
+        "service-operations",
+        "compliance-tracking"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "siemens.plm:apiResource:ProductConfigurationAndCustomerCampaignManagement:v1",
+      "title": "Product Configuration and Customer Campaign Management API",
+      "shortDescription": "Retrieves product configurations and manages customer campaigns for targeted offerings.",
+      "description": "Exposes product configuration data and customer campaign information to support targeted marketing initiatives and sales strategies. Manages customer account relationships with linked product configurations, enabling campaign personalization and cross-sell opportunities. Provides access to campaign performance metrics tied to customer account segments and product variant adoption.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/product-configuration-campaign-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "product-lifecycle-management"
+      ],
+      "tags": [
+        "product-configuration",
+        "campaign-management",
+        "customer-segmentation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "siemens.plm:apiResource:ProductionMachineAndOrderManagement:v1",
+      "title": "Manufacturing Asset and Workflow Orchestration API",
+      "shortDescription": "Coordinates industrial equipment and work item lifecycles for integrated production environments.",
+      "description": "Provides unified visibility into manufacturing equipment assets and associated work items throughout their execution lifecycle. Enables resource optimization by exposing equipment specifications, utilization metrics, and work item progression data. Supports cross-facility production workflow coordination through real-time asset availability and work sequencing capabilities.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Machine:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductionOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/production-machine-order-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Manufacturing"
+      ],
+      "tags": [
+        "equipment-management",
+        "work-order-orchestration",
+        "production-resource-optimization"
+      ],
+      "industry": [],
+      "namespace": "siemens.plm"
+    },
+    {
+      "ordId": "siemens.plm:apiResource:CustomerOrderAndAccountLifecycleManagement:v1",
+      "title": "Customer Order and Account Lifecycle Management API",
+      "shortDescription": "Manages customer accounts and order lifecycle throughout product engineering and fulfillment.",
+      "description": "Exposes comprehensive customer account and order data to manage account hierarchies, order creation, tracking, and fulfillment status across product lifecycle stages. Retrieves real-time customer order details including configuration history, delivery milestones, and account engagement metrics. Manages customer account relationships and order dependencies to support integrated engineering change coordination and supplier qualification workflows.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/customer-order-account-lifecycle.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "product-lifecycle-management"
+      ],
+      "tags": [
+        "customer-order-management",
+        "account-lifecycle",
+        "order-fulfillment"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "siemens.plm:apiResource:MaterialAndVendorQualificationManagement:v1",
+      "title": "Supplier Certification and Material Compliance Registry",
+      "shortDescription": "Accesses approved supplier credentials and material compliance documentation for procurement validation.",
+      "description": "Provides supplier certification records, material quality attributes, and regulatory compliance status to support vendor approval processes and sourcing decisions. Enables retrieval of supplier qualifications, material specification compliance, and quality assurance documentation. Supports procurement teams in validating supplier eligibility and confirming material regulatory adherence across sourcing operations.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Material:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/material-vendor-qualification.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "manufacturing"
+      ],
+      "tags": [
+        "supplier-qualification",
+        "compliance-management",
+        "procurement-governance"
+      ],
+      "industry": [],
+      "namespace": "siemens.plm"
+    },
+    {
+      "ordId": "siemens.plm:apiResource:CampaignAndCustomerSegmentationManagement:v1",
+      "title": "Product Lifecycle Campaign and Account Classification API",
+      "shortDescription": "Coordinates product campaign initiatives with account hierarchies to enable targeted PLM strategies.",
+      "description": "Provides programmatic access to campaign-account associations and audience classification schemes within product lifecycle workflows. Enables retrieval of segmentation hierarchies, campaign targeting metadata, and account-based product configurations to support strategic alignment between market initiatives and engineering activities across the PLM environment.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/campaign-customer-segmentation.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "product-lifecycle-management"
+      ],
+      "tags": [
+        "audience-classification",
+        "product-strategy",
+        "account-hierarchies"
+      ],
+      "industry": [],
+      "namespace": "siemens.plm"
+    },
+    {
+      "ordId": "siemens.plm:apiResource:MaterialInventoryAndSupplierCatalogManagement:v1",
+      "title": "Material Inventory and Supplier Catalog Management",
+      "shortDescription": "Retrieves and manages material specifications, inventory levels, and supplier catalog data.",
+      "description": "Exposes comprehensive material and vendor information including part specifications, stock availability, supplier capabilities, and procurement catalogs. Provides access to real-time material inventory status, supplier performance metrics, and sourcing alternatives. Manages relationships between materials and qualified vendors to support procurement planning and supply chain optimization.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Material:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/material-inventory-supplier-catalog.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "manufacturing"
+      ],
+      "tags": [
+        "inventory-management",
+        "supply-chain",
+        "material-planning"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "siemens.plm:apiResource:HazardousSubstanceComplianceAndTrackingManagement:v1",
+      "title": "Regulated Material Declaration and Certification API",
+      "shortDescription": "Provides access to regulated material declarations, certifications, and safety attribute data throughout product development and manufacturing.",
+      "description": "Exposes regulated material declarations, safety certifications, and compliance validation records integrated with bill of materials and engineering change workflows. Enables retrieval of substance certifications, regulatory requirement cross-references, and safety attribute documentation. Supports material usage tracking, compliance status verification, and hazmat documentation linking across product lifecycle processes.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:HazardousSubstance:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/hazardous-substance-compliance.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "manufacturing"
+      ],
+      "tags": [
+        "regulated-materials",
+        "certification-management",
+        "product-safety"
+      ],
+      "industry": [],
+      "namespace": "siemens.plm"
+    },
+    {
+      "ordId": "siemens.plm:apiResource:CustomerOrderAndAccountProvisioningManagement:v1",
+      "title": "Account Fulfillment and Order Operations Interface",
+      "shortDescription": "Orchestrates account setup and order fulfillment operations across product lifecycle systems.",
+      "description": "Supplies account hierarchy, entitlement, and order specification data to drive automated fulfillment processes within PLM environments. Enables retrieval of customer configuration parameters, order-to-delivery tracking, and account qualification details necessary for seamless order execution. Facilitates coordination between account management and order processing systems throughout the complete product delivery cycle.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/customer-order-account-provisioning.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "it-service-management"
+      ],
+      "tags": [
+        "order-fulfillment",
+        "account-setup",
+        "lifecycle-operations"
+      ],
+      "industry": [],
+      "namespace": "siemens.plm"
+    }
+  ],
+  "dataProducts": [
+    {
+      "ordId": "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1",
+      "title": "Product Cost and Complexity Analytics",
+      "shortDescription": "Aggregated metrics on product cost drivers, BOM complexity, and supplier impact analysis.",
+      "description": "This analytical data product delivers aggregated cost and complexity metrics across product portfolios, integrating bill of materials depth, material sourcing patterns, and engineering change frequency. It enables procurement and engineering teams to identify high-cost drivers, optimize supplier qualification strategies, and track compliance documentation effectiveness across the product lifecycle.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "type": "derived",
+      "category": "analytical",
+      "outputPorts": [
+        {
+          "ordId": "siemens.plm:apiResource:CostComplexityMetricsAPI:v1"
+        }
+      ],
+      "entityTypes": [
+        "sap.odm:entityType:ProductItem:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:EngineeringChange:v1"
+      ],
+      "lineOfBusiness": [
+        "Product Lifecycle Management"
+      ],
+      "tags": [
+        "cost-analysis",
+        "bom-complexity",
+        "supplier-impact",
+        "compliance-metrics"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "siemens.plm:dataProduct:IncidentAndSafetyAnalytics:v1",
+      "title": "Safety Event Intelligence Platform",
+      "shortDescription": "Consolidates occupational health and incident event data for product lifecycle environments to deliver risk assessment and regulatory adherence tracking.",
+      "description": "This data product consolidates occupational health events and safety-related records generated throughout the product development and manufacturing lifecycle. It synthesizes quantitative measures on hazard frequency, compliance gaps, and safety performance to facilitate preventive action planning and regulatory oversight. Delivers predictive insights on event causation, vulnerability assessment, and organizational safety posture to support continuous operational improvements.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "siemens.plm:apiResource:IncidentSafetyReporting:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "product-lifecycle-management"
+      ],
+      "tags": [
+        "occupational-health",
+        "event-analytics",
+        "risk-assessment",
+        "regulatory-adherence"
+      ],
+      "industry": [],
+      "namespace": "siemens.plm"
+    },
+    {
+      "ordId": "siemens.plm:dataProduct:CustomerOpportunityCostAndQualificationAnalytics:v1",
+      "title": "Customer Opportunity Cost and Qualification Analytics",
+      "shortDescription": "Aggregates cost metrics and supplier qualification data across customer accounts and sales opportunities.",
+      "description": "This data product summarizes product cost estimates, bill of materials complexity, and supplier qualification status across customer accounts and their associated sales opportunities. It provides metrics on cost-to-serve, qualification readiness, and compliance documentation completeness to support sales and account management decisions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:CustomerAccount:v1",
+        "sap.odm:entityType:SalesOpportunity:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1"
+        },
+        {
+          "ordId": "siemens.plm:apiResource:MaterialAndVendorMasterData:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "product-lifecycle-management"
+      ],
+      "tags": [
+        "cost-analysis",
+        "supplier-qualification",
+        "customer-opportunity",
+        "compliance-readiness"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "siemens.plm:dataProduct:MaterialInvoiceFinancialMetrics:v1",
+      "title": "Material Invoice Financial Metrics",
+      "shortDescription": "Aggregates invoice and material data to provide financial performance insights.",
+      "description": "Summarizes invoice transactions and material costs across the product lifecycle to deliver comprehensive financial analytics. Provides metrics on supplier spend, material cost variance, and invoicing trends to support procurement and financial planning decisions. Enables stakeholders to analyze cost drivers and optimize material sourcing strategies through integrated financial reporting.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "siemens.plm:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Invoice:v1",
+        "sap.odm:entityType:Material:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "siemens.plm:apiResource:FinancialReportingAndAnalyticsExport:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Finance"
+      ],
+      "tags": [
+        "campaign-roi",
+        "financial-analytics",
+        "customer-monetization"
+      ],
+      "industry": []
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "case_id": "dy-12",
+  "mode": "dynamic",
+  "query_class": "single_intent",
+  "problem_type": "P1",
+  "selected_resources": [
+    "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1"
+  ],
+  "distractor": "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1",
+  "timestamp": "2026-06-08T13:19:44.851607+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to pull together our material spend across all engine suppliers and see which components are driving costs up, plus make sure everything meets our compliance requirements. Can you help us get a comprehensive view of our BOM spending and any risk areas we should know about?"
+      },
+      "generator_tokens": 182,
+      "solver_output": {
+        "predicted": "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1",
+        "top1_correct": false,
+        "top5": [
+          "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1",
+          "sap.ariba:dataProduct:ProcurementSpendAnalytics:v1",
+          "my.mes:dataProduct:MaterialCostAndInvoiceReconciliationAnalytics:v1",
+          "sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1",
+          "sap.ehs:dataProduct:MaterialInvoiceComplianceCostAnalytics:v1"
+        ],
+        "note": "retro_certified"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```",
+      "judge_tokens": 305,
+      "outcome": "ACCEPTED",
+      "_retro_verdict": "HARD"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-12",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "We need to pull together our material spend across all engine suppliers and see which components are driving costs up, plus make sure everything meets our compliance requirements. Can you help us get a comprehensive view of our BOM spending and any risk areas we should know about?",
+    "expected_ordIds": [
+      "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1"
+    ],
+    "distractor_ordId": "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1"
+  }
+}

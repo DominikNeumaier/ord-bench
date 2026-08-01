@@ -1,0 +1,68 @@
+<process id="proc_order_to_production_v1" type="bpmn">
+  
+  <step id="s1" 
+        label="Receive and validate customer order"
+        description="Capture incoming customer order and verify fulfillment eligibility against customer master data and order history."
+        ordId="sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1"
+        capability="validate-order"
+        useCase="Sales team receives a new customer order and confirms it can be fulfilled based on account standing and delivery capability."/>
+  
+  <step id="s2" 
+        label="Analyze vendor spend and procurement strategy"
+        description="Review historical spend patterns and vendor performance to optimize material sourcing decisions for the order."
+        ordId="corp.itsm:dataProduct:VendorSpendIntelligence:v1"
+        capability="analyze-spend"
+        useCase="Procurement analyst evaluates which vendors offer the best cost and quality for required materials."/>
+  
+  <step id="s3" 
+        label="Procure required materials from vendors"
+        description="Execute purchase orders with selected vendors and manage vendor relationships to ensure material availability."
+        ordId="sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1"
+        capability="source-materials"
+        useCase="Procurement officer creates and tracks purchase orders with preferred vendors to secure bill-of-materials components."/>
+  
+  <step id="s4" 
+        label="Coordinate vendor delivery and inventory intake"
+        description="Manage purchase order fulfillment and vendor communication to ensure materials arrive on schedule for production."
+        ordId="corp.itsm:apiResource:ProcurementVendorManagementAPI:v1"
+        capability="manage-vendor-delivery"
+        useCase="Inventory manager coordinates with vendors to confirm delivery dates and updates warehouse receipt systems."/>
+  
+  <step id="s5" 
+        label="Release production order to manufacturing"
+        description="Translate customer order into production order and allocate machines and resources to begin manufacturing."
+        ordId="sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1"
+        capability="plan-production"
+        useCase="Production planner creates work orders and schedules machines to manufacture the ordered products."/>
+  
+  <step id="s6" 
+        label="Execute engineering change management"
+        description="Assess and apply any material or design modifications required during production to align with customer specifications or standards."
+        ordId="corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+        capability="orchestrate-changes"
+        useCase="Engineering team automates material substitutions or design revisions needed mid-production run."/>
+  
+  <step id="s7" 
+        label="Allocate workforce and manage payroll impact"
+        description="Assign production staff to manufacturing tasks and calculate labor costs to support accurate order costing and payroll processing."
+        ordId="workday.hcm:apiResource:PayrollDataExposure:v1"
+        capability="allocate-workforce"
+        useCase="HR manager ensures production team members are assigned and their labor hours are tracked for payroll and cost accounting."/>
+  
+  <step id="s8" 
+        label="Investigate production incidents and root causes"
+        description="Identify and resolve safety or operational issues that arise during manufacturing to maintain schedule and prevent recurrence."
+        ordId="sap.ehs:agent:IncidentRootCauseAnalyzer:v1"
+        capability="analyze-incidents"
+        useCase="Safety coordinator addresses equipment failure or process anomaly detected on production floor and documents corrective actions."/>
+  
+  <!-- Sequence Flow: Linear process from order to completion -->
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+  
+</process>

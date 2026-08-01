@@ -1,0 +1,91 @@
+{
+  "process_id": "proc_001",
+  "process_type": "bpmn",
+  "gt_ordIds": [
+    "sap.sf:apiResource:CompensationAndSalaryManagement:v1",
+    "sap.crm:apiResource:MachineProductionOrderIntegration:v1",
+    "my.mes:apiResource:SupplierProcurementOrderManagement:v1",
+    "my.mes:agent:ProductionChangeOrchestrator:v1"
+  ],
+  "enrichment": {
+    "sap.crm:apiResource:MachineProductionOrderIntegration:v1": {
+      "capabilities": [
+        "manage-production-orders",
+        "allocate-machines",
+        "sequence-orders"
+      ],
+      "useCases": [
+        "Production planners adjust machine allocation and order sequencing to meet revised delivery commitments.",
+        "Manufacturing control systems retrieve current machine state and production order dependencies."
+      ],
+      "processNext": [
+        "siemens.plm:apiResource:HazardousSubstanceComplianceAndTrackingManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ManufacturingChangeCompliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.sf:apiResource:CompensationAndSalaryManagement:v1": {
+      "capabilities": [
+        "recalculate-compensation",
+        "manage-employee-incentives",
+        "adjust-salary-bands"
+      ],
+      "useCases": [
+        "Payroll and HR systems update employee earnings to reflect overtime, new role classifications, or performance adjustments tied to production change success.",
+        "Workforce planners align compensation structures with modified labor requirements in manufacturing operations."
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ManufacturingChangeCompliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "my.mes:apiResource:SupplierProcurementOrderManagement:v1": {
+      "capabilities": [
+        "manage-supplier-orders",
+        "update-purchase-orders",
+        "coordinate-vendor-schedules"
+      ],
+      "useCases": [
+        "Procurement specialists revise PO quantities and dates with vendors to synchronize material availability with the new production schedule.",
+        "Supply chain controllers ensure vendor-supplied materials align with modified production timelines and specifications."
+      ],
+      "processNext": [
+        "my.mes:agent:ProductionChangeOrchestrator:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ManufacturingChangeCompliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "my.mes:agent:ProductionChangeOrchestrator:v1": {
+      "capabilities": [
+        "orchestrate-production-execution",
+        "coordinate-material-flow",
+        "schedule-machines",
+        "sequence-work-orders"
+      ],
+      "useCases": [
+        "Production agent orchestrates real-time scheduling of machines, material kits, and work orders to implement the change without line disruption.",
+        "Manufacturing execution system automates handoff between engineering changes and shop-floor implementation."
+      ],
+      "processNext": [
+        "sap.sf:apiResource:CompensationAndSalaryManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ManufacturingChangeCompliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    }
+  }
+}

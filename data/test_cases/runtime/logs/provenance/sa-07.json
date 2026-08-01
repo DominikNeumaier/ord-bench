@@ -1,0 +1,43 @@
+{
+  "case_id": "sa-07",
+  "mode": "skill_adjusted",
+  "skill_id": "proc_014",
+  "gap_resources": [
+    "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1",
+    "workday.hcm:apiResource:PayrollProcessingDataManagement:v1"
+  ],
+  "timestamp": "2026-06-08T12:50:00.294977+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to orchestrate a comprehensive transition of our product line by first evaluating whether our organization is ready for this change, then validating that we meet all regulatory compliance requirements before moving forward. The process should also manage how this impacts our procurement operations and reconfigure our production workflows accordingly. As part of this transition, we'll need to ensure we're tracking any hazardous materials in our new product specifications and managing the cost implications including how this affects our workforce compensation structures.",
+        "variant": 0
+      },
+      "generator_tokens": 302,
+      "solver_output": {
+        "predicted": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+        "correct": false
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true\n}\n```",
+      "judge_tokens": 366,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "sa-07",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to orchestrate a comprehensive transition of our product line by first evaluating whether our organization is ready for this change, then validating that we meet all regulatory compliance requirements before moving forward. The process should also manage how this impacts our procurement operations and reconfigure our production workflows accordingly. As part of this transition, we'll need to ensure we're tracking any hazardous materials in our new product specifications and managing the cost implications including how this affects our workforce compensation structures.",
+    "expected_skill_id": "proc_014",
+    "expected_gap_ordIds": [
+      "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1",
+      "workday.hcm:apiResource:PayrollProcessingDataManagement:v1"
+    ]
+  }
+}

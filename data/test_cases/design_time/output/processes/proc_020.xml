@@ -1,0 +1,60 @@
+<process id="proc_talent_compliance_ops_v1" type="cmmn">
+  
+  <step id="s1" label="Qualify sales opportunities for targeted engagement"
+        description="Sales team needs to identify high-potential customer accounts and opportunities before initiating outreach campaigns."
+        ordId="sap.crm:agent:OpportunityQualificationAdvisor:v1"
+        capability="qualify-opportunities"
+        useCase="CRM advisor scores sales opportunities against customer account fit and readiness criteria"/>
+  
+  <step id="s2" label="Segment customers for personalized marketing campaigns"
+        description="Marketing department requires precise customer targeting to launch tailored engagement campaigns based on account profiles and historical engagement."
+        ordId="emarsys.cx:apiResource:CampaignContactEngagementAPI:v1"
+        capability="segment-customers-for-campaigns"
+        useCase="Campaign API enables marketing to activate targeted contact lists tied to specific customer account segments and campaign objectives"/>
+  
+  <step id="s3" label="Verify supply chain readiness for product launches"
+        description="Product management and procurement need confidence that materials, vendors, and supply chain processes support planned product changes and engineering modifications."
+        ordId="sap.ariba:dataProduct:SupplyChainProductIntelligence:v1"
+        capability="assess-supply-chain-readiness"
+        useCase="Supply Chain Intelligence provides real-time material and engineering change impact analysis across the vendor network"/>
+  
+  <step id="s4" label="Automate safety compliance reviews for engineering changes"
+        description="Operations and EHS teams must ensure all product and material modifications meet safety and regulatory standards before production deployment."
+        ordId="sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1"
+        capability="automate-compliance-checks"
+        useCase="Safety Compliance Coordinator agent validates engineering changes, materials, and product items against enterprise safety and compliance rules"/>
+  
+  <step id="s5" label="Inspect and validate manufacturing quality metrics"
+        description="Quality assurance and manufacturing operations require real-time visibility into production order quality and inspection results to prevent defects and ensure consistency."
+        ordId="sap.s4:dataProduct:ManufacturingQualityMetricsHub:v1"
+        capability="monitor-quality-metrics"
+        useCase="Quality Metrics Hub aggregates production order and inspection data to track conformance and identify process improvement opportunities"/>
+  
+  <step id="s6" label="Evaluate procurement compliance and vendor performance"
+        description="Procurement leadership needs assurance that purchase orders, contracts, and vendor relationships comply with policy and deliver expected performance."
+        ordId="sap.ariba:dataProduct:ContractAndProcurementComplianceAnalytics:v1"
+        capability="audit-procurement-compliance"
+        useCase="Procurement Compliance Analytics evaluates contracts, purchase orders, and vendor performance against organizational compliance standards"/>
+  
+  <step id="s7" label="Reconcile workforce compensation structures across entities"
+        description="Finance and compensation teams require consolidated visibility into employee compensation data across multiple business entities to ensure equity, governance, and budget accuracy."
+        ordId="workday.hcm:apiResource:CompensationStructureDataExposure:v1"
+        capability="expose-compensation-data"
+        useCase="Compensation Structure API surfaces employee and workforce person compensation hierarchies for finance governance and audit purposes"/>
+  
+  <step id="s8" label="Process payroll and validate employee payment data"
+        description="HR and Finance must execute timely, accurate payroll processing with full control over employee and workforce person payment records to meet regulatory and organizational requirements."
+        ordId="workday.hcm:apiResource:PayrollProcessingDataManagement:v1"
+        capability="process-payroll"
+        useCase="Payroll Processing system manages employee compensation execution, validation, and payment distribution with audit controls"/>
+  
+  <!-- Sequence Flow: Linear enterprise workflow -->
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+
+</process>

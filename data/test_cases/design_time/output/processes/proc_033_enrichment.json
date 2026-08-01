@@ -1,0 +1,106 @@
+{
+  "process_id": "proc_033",
+  "process_type": "cmmn",
+  "gt_ordIds": [
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+    "workday.hcm:apiResource:CompensationStructureDataExposure:v1",
+    "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1",
+    "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1"
+  ],
+  "enrichment": {
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1": {
+      "capabilities": [
+        "receive-materials",
+        "validate-material-master",
+        "update-inventory-levels",
+        "register-vendor-delivery"
+      ],
+      "useCases": [
+        "Inventory teams record material receipt upon delivery with vendor validation.",
+        "Manufacturing plants update stock locations for just-in-time production.",
+        "Procurement tracks receipt confirmations against purchase orders."
+      ],
+      "processNext": [
+        "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_procure_fulfill_v1",
+          "groupTypeId": "cmmn",
+          "stepId": "s4",
+          "position": 4
+        }
+      ]
+    },
+    "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1": {
+      "capabilities": [
+        "enrich-customer-orders",
+        "augment-account-history",
+        "validate-customer-context",
+        "enhance-order-fulfillment-data"
+      ],
+      "useCases": [
+        "Sales operations contextualize orders with prior purchase patterns and account status.",
+        "Customer service teams reduce fulfillment errors by confirming shipping addresses and preferences.",
+        "Revenue teams identify upsell opportunities within enriched order context."
+      ],
+      "processNext": [
+        "sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_procure_fulfill_v1",
+          "groupTypeId": "cmmn",
+          "stepId": "s2",
+          "position": 2
+        }
+      ]
+    },
+    "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1": {
+      "capabilities": [
+        "manage-equipment-services",
+        "track-change-requests",
+        "schedule-maintenance",
+        "monitor-service-tickets"
+      ],
+      "useCases": [
+        "IT Service Management ensures production equipment remains operational during peak order fulfillment.",
+        "Manufacturing facilities schedule preventive maintenance to minimize unplanned downtime.",
+        "Operations teams prioritize critical equipment service requests affecting fulfillment SLAs."
+      ],
+      "processNext": [
+        "workday.hcm:apiResource:CompensationStructureDataExposure:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_procure_fulfill_v1",
+          "groupTypeId": "cmmn",
+          "stepId": "s7",
+          "position": 7
+        }
+      ]
+    },
+    "workday.hcm:apiResource:CompensationStructureDataExposure:v1": {
+      "capabilities": [
+        "align-workforce-compensation",
+        "model-labor-costs",
+        "forecast-staffing-needs",
+        "optimize-incentive-structures"
+      ],
+      "useCases": [
+        "Finance teams ensure compensation budgets align with forecasted fulfillment headcount.",
+        "HR business partners design incentive structures for peak seasonal order volumes.",
+        "Operations leaders validate workforce capacity against customer demand signals."
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_procure_fulfill_v1",
+          "groupTypeId": "cmmn",
+          "stepId": "s8",
+          "position": 8
+        }
+      ]
+    }
+  }
+}

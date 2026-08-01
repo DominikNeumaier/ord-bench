@@ -1,0 +1,68 @@
+<process id="proc_workforce_comp_benefits_v1" type="bpmn">
+  
+  <step id="s1" 
+        label="Retrieve employee payroll baseline"
+        description="Extract current payroll records and compensation data for all active employees to establish the baseline for compensation analysis."
+        ordId="sap.s4:apiResource:EmployeePayrollDataAPI:v1"
+        capability="retrieve-payroll"
+        useCase="Finance team needs current payroll data to begin the quarterly compensation review cycle."/>
+  
+  <step id="s2" 
+        label="Validate organizational hierarchy and reporting structure"
+        description="Confirm employee organizational placement, reporting lines, and departmental assignments to ensure compensation decisions align with organizational context."
+        ordId="sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1"
+        capability="validate-hierarchy"
+        useCase="HR needs to ensure compensation review respects the correct organizational structure and manager approval chains."/>
+  
+  <step id="s3" 
+        label="Assess current benefits enrollment status"
+        description="Review active benefits elections, coverage levels, and enrollment changes to understand current benefits liabilities and employee participation."
+        ordId="workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1"
+        capability="assess-benefits"
+        useCase="Benefits team must reconcile enrollment data with compensation budgets to calculate total cost of employment."/>
+  
+  <step id="s4" 
+        label="Analyze procurement workforce spend patterns"
+        description="Examine historical workforce-related procurement and contingent labor expenses to identify cost optimization opportunities in compensation structures."
+        ordId="sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1"
+        capability="analyze-workforce-spend"
+        useCase="Procurement and Finance collaborate to align workforce compensation with vendor management and contingent labor budgets."/>
+  
+  <step id="s5" 
+        label="Cross-reference invoice and material procurement costs"
+        description="Correlate current invoice and procurement expenses with workforce allocation to understand overhead absorption and job costing implications."
+        ordId="sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1"
+        capability="cross-reference-costs"
+        useCase="Controllers need to map labor costs against material procurement to refine product profitability and project margin analysis."/>
+  
+  <step id="s6" 
+        label="Evaluate manufacturing impact and engineering labor allocation"
+        description="Review engineering change orders and product development initiatives to assess labor utilization and compensation adjustments for technical staff."
+        ordId="sap.s4:apiResource:EngineeringChangeProductDataAPI:v1"
+        capability="evaluate-engineering-labor"
+        useCase="Manufacturing and Engineering leadership must align compensation for staff impacted by product changes and new initiatives."/>
+  
+  <step id="s7" 
+        label="Monitor workplace safety incidents affecting compensation"
+        description="Identify safety-related incidents and hazardous conditions that may trigger compensation adjustments, hazard pay, or benefit changes."
+        ordId="workday.hcm:agent:SafetyIncidentAutomationOrchestrator:v1"
+        capability="monitor-safety-incidents"
+        useCase="Safety and HR teams use incident data to adjust compensation for hazardous roles and validate workers' compensation eligibility."/>
+  
+  <step id="s8" 
+        label="Optimize production scheduling against workforce capacity"
+        description="Align production orders and machine scheduling with workforce availability and shift planning to ensure compensation accurately reflects actual labor deployment."
+        ordId="sap.s4:apiResource:ProductionOrderAndMachineScheduling:v1"
+        capability="optimize-capacity"
+        useCase="Operations and Payroll teams coordinate to ensure compensation reflects scheduled labor hours and production demands."/>
+  
+  <!-- Sequence Flow -->
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+  
+</process>

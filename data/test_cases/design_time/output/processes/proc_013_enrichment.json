@@ -1,0 +1,96 @@
+{
+  "process_id": "proc_013",
+  "process_type": "bpmn",
+  "gt_ordIds": [
+    "corp.itsm:agent:AssetProvisioningOrchestrator:v1",
+    "corp.itsm:dataProduct:SafetyIncidentMetrics:v1",
+    "emarsys.cx:apiResource:SalesCapacityAndTimeOffManagementAPI:v1",
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+  ],
+  "enrichment": {
+    "corp.itsm:agent:AssetProvisioningOrchestrator:v1": {
+      "capabilities": [
+        "assess-engineering-change",
+        "orchestrate-asset-provisioning",
+        "evaluate-material-impact"
+      ],
+      "useCases": [
+        "Manufacturing operations team understands how product redesigns affect asset provisioning workflows.",
+        "Supply chain validates material sourcing compatibility with engineering changes before production release."
+      ],
+      "processNext": [
+        "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductTransitionSafetyCoordination_v1",
+          "groupTypeId": "bpmn",
+          "stepId": "s1"
+        }
+      ]
+    },
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1": {
+      "capabilities": [
+        "analyze-transition-capability",
+        "assess-material-availability",
+        "evaluate-production-capacity"
+      ],
+      "useCases": [
+        "Operations planners obtain cross-functional impact analysis of engineering changes before committing manufacturing resources.",
+        "Executive leadership reviews operational readiness scorecard for product transition go/no-go decision."
+      ],
+      "processNext": [
+        "corp.itsm:agent:IncidentSafetyCoordinator:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductTransitionSafetyCoordination_v1",
+          "groupTypeId": "bpmn",
+          "stepId": "s2"
+        }
+      ]
+    },
+    "corp.itsm:dataProduct:SafetyIncidentMetrics:v1": {
+      "capabilities": [
+        "collect-safety-metrics",
+        "aggregate-incident-data",
+        "establish-safety-baseline"
+      ],
+      "useCases": [
+        "Risk management team establishes pre-transition safety baseline to measure post-transition safety performance.",
+        "Compliance officer validates incident trending and determines if safety protocols require update for new materials."
+      ],
+      "processNext": [
+        "sap.ariba:apiResource:VendorServiceManagementAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductTransitionSafetyCoordination_v1",
+          "groupTypeId": "bpmn",
+          "stepId": "s4"
+        }
+      ]
+    },
+    "emarsys.cx:apiResource:SalesCapacityAndTimeOffManagementAPI:v1": {
+      "capabilities": [
+        "plan-sales-capacity",
+        "coordinate-employee-availability",
+        "manage-time-off-allocation"
+      ],
+      "useCases": [
+        "Sales leadership schedules workforce availability and manages time-off to maintain customer contact coverage during product transition.",
+        "Regional sales managers confirm team capacity meets customer communication workload for transition period."
+      ],
+      "processNext": [
+        "emarsys.cx:dataProduct:OpportunitySalesForecasting:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductTransitionSafetyCoordination_v1",
+          "groupTypeId": "bpmn",
+          "stepId": "s6"
+        }
+      ]
+    }
+  }
+}

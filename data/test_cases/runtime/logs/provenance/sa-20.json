@@ -1,0 +1,43 @@
+{
+  "case_id": "sa-20",
+  "mode": "skill_adjusted",
+  "skill_id": "proc_004",
+  "gap_resources": [
+    "sap.crm:apiResource:ProcurementVendorOrderManagement:v1",
+    "sap.s4:apiResource:WorkforceOrgStructureAPI:v1"
+  ],
+  "timestamp": "2026-06-08T12:52:46.066570+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to set up a comprehensive process to manage hazardous substance compliance and employee safety across our manufacturing operations. This should identify all hazardous materials in our facilities, assess which departments and teams face exposure risks, and procure necessary safety equipment and protective gear. We also need to ensure that safety protocols and equipment are distributed based on our organizational structure so that each manager can track compliance for their direct reports. Additionally, the system should coordinate with our procurement team to track where safety supplies are sourced from and maintain records of all purchase orders for audit purposes. Can you help us establish a workflow that brings all these elements together?",
+        "variant": 0
+      },
+      "generator_tokens": 330,
+      "solver_output": {
+        "predicted": "sap.ehs:apiResource:ChemicalInventoryCompliance:v1",
+        "correct": false
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true\n}\n```",
+      "judge_tokens": 397,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "sa-20",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to set up a comprehensive process to manage hazardous substance compliance and employee safety across our manufacturing operations. This should identify all hazardous materials in our facilities, assess which departments and teams face exposure risks, and procure necessary safety equipment and protective gear. We also need to ensure that safety protocols and equipment are distributed based on our organizational structure so that each manager can track compliance for their direct reports. Additionally, the system should coordinate with our procurement team to track where safety supplies are sourced from and maintain records of all purchase orders for audit purposes. Can you help us establish a workflow that brings all these elements together?",
+    "expected_skill_id": "proc_004",
+    "expected_gap_ordIds": [
+      "sap.crm:apiResource:ProcurementVendorOrderManagement:v1",
+      "sap.s4:apiResource:WorkforceOrgStructureAPI:v1"
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "case_id": "dy-31",
+  "mode": "dynamic",
+  "query_class": "multi_intent",
+  "selected_resources": [
+    "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1",
+    "corp.itsm:dataProduct:IncidentEngagementReliability:v1"
+  ],
+  "timestamp": "2026-06-08T13:23:45.540736+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "I need to pull together our current hazardous material inventory and safety certifications for the Q4 audit, while simultaneously analyzing our incident response metrics and team engagement scores from the past six months to identify any reliability gaps in our safety protocols."
+      },
+      "generator_tokens": 178,
+      "solver_output": {
+        "predicted": "sap.ehs:apiResource:ChemicalInventoryCompliance:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": false,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": false,\n  \"C3\": true,\n  \"accepted\": false,\n  \"reason\": \"C2 failed: prompt contains explicit system identifiers ('Q4 audit', 'safety protocols', 'incident response metrics') that function as resource/system references, violating the no-resource-name constraint.\"\n}\n```",
+      "judge_tokens": 328,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "I need to pull together our current safety performance metrics across all reported events while simultaneously ensuring our chemical inventory documentation stays current with regulatory standards\u2014can I get both of those data sets integrated into one dashboard view?"
+      },
+      "generator_tokens": 182,
+      "solver_output": {
+        "predicted": "sap.ehs:dataProduct:SafetyIncidentMetricsAggregate:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 274,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-31",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "I need to pull together our current safety performance metrics across all reported events while simultaneously ensuring our chemical inventory documentation stays current with regulatory standards\u2014can I get both of those data sets integrated into one dashboard view?",
+    "expected_ordIds": [
+      "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1",
+      "corp.itsm:dataProduct:IncidentEngagementReliability:v1"
+    ],
+    "distractor_ordId": null
+  }
+}

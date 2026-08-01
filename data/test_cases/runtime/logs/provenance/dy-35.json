@@ -1,0 +1,44 @@
+{
+  "case_id": "dy-35",
+  "mode": "dynamic",
+  "query_class": "multi_intent",
+  "selected_resources": [
+    "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1",
+    "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1"
+  ],
+  "timestamp": "2026-06-08T13:24:39.571468+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "I need to pull together a comprehensive view of our current operational health by analyzing both our recent campaign safety incidents and engagement issues alongside our product economics to understand cost drivers and supplier dependencies\u2014so I can brief leadership on where we're experiencing the most friction across both customer-facing and manufacturing operations."
+      },
+      "generator_tokens": 188,
+      "solver_output": {
+        "predicted": "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 290,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-35",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "I need to pull together a comprehensive view of our current operational health by analyzing both our recent campaign safety incidents and engagement issues alongside our product economics to understand cost drivers and supplier dependencies\u2014so I can brief leadership on where we're experiencing the most friction across both customer-facing and manufacturing operations.",
+    "expected_ordIds": [
+      "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1",
+      "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1"
+    ],
+    "distractor_ordId": null
+  }
+}

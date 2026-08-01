@@ -1,0 +1,162 @@
+[
+  {
+    "case_id": "oos-01",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Supplier risk scoring using external market data",
+    "user_prompt": "We need a way to automatically flag suppliers whose credit ratings or financial health metrics have deteriorated in the past 90 days so we can proactively assess whether to reduce order volumes or increase payment terms before we hit a cash flow problem.",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-02",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Blockchain-based supply chain traceability",
+    "user_prompt": "We need a way to automatically reconcile blockchain transaction records with our ERP system's accounts payable ledger so our finance team can match supplier payments to immutable delivery confirmations without manual data entry\u2014can your system flag discrepancies between what the ledger shows and what the supply chain records confirm?",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-03",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Employee sentiment analysis and engagement scoring",
+    "user_prompt": "We need to automatically flag employees who are disengaging from Slack and email communications as early warning signals\u2014right now our managers only find out about retention risks after exit interviews, and we want to identify flight-risk patterns at least 60 days before someone actually leaves.",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-04",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Regulatory change monitoring and auto-compliance alerting",
+    "user_prompt": "We need a way to automatically flag when new regulations affecting our supply chain contracts go into effect\u2014right now our procurement team manually checks regulatory databases and emails everyone, but we keep missing updates that require contract amendments. Can we set up alerts that pull from official regulatory sources and automatically match relevant rules to our active vendor agreements?",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-05",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Intraday cash flow forecasting",
+    "user_prompt": "We need visibility into how our daily supplier payment obligations will impact our available cash balance hour-by-hour, so our treasury team can coordinate with our banks on same-day funding needs before we hit our minimum operating cash threshold\u2014right now we're manually pulling payment schedules from three different systems and it's causing us to request emergency credit lines that cost us fees.",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-06",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Dynamic pricing optimization for sales orders",
+    "user_prompt": "Our sales team is manually adjusting prices on large B2B orders based on competitor intel and customer volume history, but we need a way to automatically flag orders that fall outside our dynamic pricing bands\u2014especially when our reps are discounting beyond threshold for specific customer segments\u2014so we can audit whether deals are staying within our margin targets before they hit the accounting system.",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-07",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Employee travel expense policy enforcement",
+    "user_prompt": "We need a way to automatically flag travel expense reports that violate our policy thresholds\u2014like when someone books a flight that's more than 15% above the lowest available option or books a hotel outside our preferred vendor list\u2014so our finance team can route those for manager pre-approval before they hit the approval workflow instead of catching violations after the fact.",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-08",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Demand forecasting and inventory replenishment prediction",
+    "user_prompt": "We need to automatically flag SKUs that are approaching slow-moving or obsolete status based on turnover velocity trends, so we can initiate clearance protocols or adjust safety stock levels before excess inventory ties up working capital for another quarter.",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-09",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Supplier diversity tracking and compliance reporting",
+    "user_prompt": "We need to automatically flag when our spending with certified minority-owned and women-owned suppliers falls below our contractual diversity targets by business unit and fiscal quarter, then generate exception reports that our procurement team can use to adjust sourcing decisions before we breach our supplier diversity commitments to our major clients.",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-10",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Knowledge management and internal wiki search",
+    "user_prompt": "We need a way to automatically flag outdated information in our internal wiki when referenced policies or procedures are updated in our source systems\u2014right now our procurement team keeps making decisions based on old vendor qualification standards because the wiki doesn't sync with our master policy database.",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-11",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Real-time currency hedging and FX risk management",
+    "user_prompt": "Our multinational procurement team sources materials from 47 countries with payment terms ranging from 30-180 days, and we currently lack visibility into which of our outstanding purchase orders face material FX exposure\u2014we need a system that automatically flags POs with foreign currency commitments exceeding our 2% margin threshold and recommends hedging actions tied to our actual payment dates, not just spot rates today.",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-12",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "ESG / sustainability scoring and carbon footprint tracking",
+    "user_prompt": "We need to automatically calculate and track Scope 3 emissions from our supplier network so we can report accurate supply chain carbon footprint to our investors and meet our 2030 net-zero commitments, but our current ESG platform only captures direct emissions from our own facilities.",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-13",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Workforce skill gap analysis and training recommendation",
+    "user_prompt": "Our manufacturing plants are experiencing high turnover in specialized maintenance roles, and we need a way to automatically identify which of our current operators have transferable skills that could fill these gaps\u2014ideally something that can scan our existing employee training records and certifications to recommend internal candidates for upskilling programs before we resort to external hiring.",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-14",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Automated contract generation and clause negotiation",
+    "user_prompt": "Our procurement team needs a way to automatically extract and compare key commercial terms\u2014like payment terms, liability caps, and renewal dates\u2014across our existing vendor contracts so we can identify inconsistencies before we renew or consolidate suppliers, but our current contract management system only stores PDFs and doesn't surface this data.",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-15",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Automated lease accounting under IFRS 16",
+    "user_prompt": "Our finance team currently uses our lease accounting system to track IFRS 16 liabilities and right-of-use assets, but we have no automated way to reconcile the lease modification adjustments that our real estate and equipment procurement teams make throughout the year against what's been recorded in our general ledger\u2014we're manually reviewing dozens of modification notices each quarter and trying to match them to journal entries, which creates audit risk and delays our month-end close.",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-16",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Sustainability reporting (GRI/CSRD) data aggregation",
+    "user_prompt": "We need to automatically map and consolidate sustainability data from our disparate ERP, HR, and facility management systems into a single staging area so our sustainability team can validate completeness and consistency before submitting our annual GRI and CSRD reports\u2014right now they're manually pulling CSVs from five different systems and spending weeks reconciling conflicting numbers on energy use and headcount metrics.",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-17",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Restaurant reservation management",
+    "user_prompt": "We need to integrate our reservation system with our accounts payable workflow so that no-show fees are automatically flagged in our ERP and matched against vendor contracts to determine if we should dispute the charge or pay it based on our negotiated terms.",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-18",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Gaming leaderboard and achievement management",
+    "user_prompt": "We need to implement a system that automatically converts our employee wellness program participation data into a real-time, department-wide competitive leaderboard with achievement badges and monthly reward tier assignments, so we can gamify our workplace safety and fitness initiatives while ensuring compliance with our existing HR data governance policies.",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-19",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Ridesharing and employee transport coordination",
+    "user_prompt": "We need a way to automatically match employees who are commuting from the same neighborhoods during similar time windows so we can subsidize shared rides and reduce our transportation budget, and ideally the system would integrate with our payroll to track subsidy eligibility by department and cost center.",
+    "expected_ordIds": []
+  },
+  {
+    "case_id": "oos-20",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "topic": "Flight booking and travel itinerary management",
+    "user_prompt": "We need the ability to automatically split and rebook flights when a traveler's connecting flight is cancelled, prioritizing connections that minimize total trip delay and proactively notifying our finance team of any fare differences so we can recover refunds from our travel management company per our contract terms.",
+    "expected_ordIds": []
+  }
+]

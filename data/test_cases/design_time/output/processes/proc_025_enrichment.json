@@ -1,0 +1,92 @@
+{
+  "process_id": "proc_025",
+  "process_type": "cmmn",
+  "gt_ordIds": [
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1",
+    "sap.crm:apiResource:ProcurementVendorOrderManagement:v1",
+    "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1",
+    "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1"
+  ],
+  "enrichment": {
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1": {
+      "capabilities": [
+        "initiate-engineering-change",
+        "manage-material-provisioning",
+        "track-change-status"
+      ],
+      "useCases": [
+        "Product redesign or material substitution triggered by quality, cost, or compliance needs",
+        "Coordinate engineering changes across product lifecycle and supply chain"
+      ],
+      "processNext": [
+        "sap.ariba:apiResource:MaterialSafetyAndVendorComplianceData:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_EngChangeAndProcurement_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "sap.crm:apiResource:ProcurementVendorOrderManagement:v1": {
+      "capabilities": [
+        "manage-purchase-orders",
+        "track-vendor-performance",
+        "coordinate-delivery-schedules"
+      ],
+      "useCases": [
+        "Procure materials from qualified vendors while tracking cost, delivery, and quality metrics",
+        "Create and monitor purchase orders for approved engineering changes"
+      ],
+      "processNext": [
+        "workday.hcm:apiResource:TimeOffBalanceManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_EngChangeAndProcurement_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1": {
+      "capabilities": [
+        "retrieve-material-vendor-master",
+        "query-material-specifications",
+        "identify-alternate-suppliers"
+      ],
+      "useCases": [
+        "Identify qualified vendors and material alternatives for the approved engineering change",
+        "Access current material and vendor performance data for procurement planning"
+      ],
+      "processNext": [
+        "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_EngChangeAndProcurement_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1": {
+      "capabilities": [
+        "evaluate-supplier-qualification",
+        "assess-service-capability",
+        "verify-sla-compliance"
+      ],
+      "useCases": [
+        "Confirm that selected vendors can meet delivery, quality, and support requirements for the change",
+        "Evaluate supplier technical qualification and service agreements"
+      ],
+      "processNext": [
+        "sap.crm:apiResource:ProcurementVendorOrderManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_EngChangeAndProcurement_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    }
+  }
+}

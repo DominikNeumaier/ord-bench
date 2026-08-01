@@ -1,0 +1,870 @@
+{
+  "openResourceDiscovery": "1.16",
+  "perspective": "system-instance",
+  "packages": [
+    {
+      "ordId": "sap.ariba:package:Core:v1",
+      "title": "sap.ariba Core Package",
+      "shortDescription": "Core resources for the sap.ariba system in the benchmark landscape.",
+      "version": "1.0.0",
+      "vendor": "sap:vendor:SAP:"
+    }
+  ],
+  "agents": [
+    {
+      "ordId": "sap.ariba:agent:VendorInvoiceReconciliationAutomation:v1",
+      "title": "Vendor Invoice Reconciliation Agent",
+      "shortDescription": "Autonomously matches vendor invoices to POs and contracts, flags discrepancies for approval.",
+      "description": "This agent automatically reconciles incoming vendor invoices against purchase orders and master contracts using three-way matching logic. It validates line-item quantities, pricing, and terms; flags exceptions such as overbilling, duplicate invoices, or policy violations; and routes approved invoices for payment processing. This reduces manual touchpoints, accelerates cash flow, and minimizes payment disputes.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:PurchaseOrder:v1",
+        "sap.odm:entityType:Vendor:v1",
+        "sap.odm:entityType:Contract:v1"
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "invoice-management",
+        "three-way-matching",
+        "vendor-reconciliation",
+        "automation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ariba:agent:SupplierComplianceAndIncidentMonitor:v1",
+      "title": "Dangerous Goods Supply Chain Safety Agent",
+      "shortDescription": "Tracks hazardous material declarations from vendors and triggers response protocols for safety events.",
+      "description": "Automates oversight of hazardous material certifications within the supplier ecosystem and ingests real-time safety event notifications. Executes regulatory verification processes, identifies non-compliance signals, and routes urgent safety alerts to procurement teams for corrective intervention and risk mitigation across the supply chain.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:HazardousSubstance:v1",
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "hazardous-materials",
+        "vendor-risk-management",
+        "safety-event-tracking"
+      ],
+      "industry": [],
+      "namespace": "sap.ariba"
+    },
+    {
+      "ordId": "sap.ariba:agent:MaterialAndEngineeringChangeCoordinator:v1",
+      "title": "Material and Engineering Change Coordinator",
+      "shortDescription": "Automates coordination of material updates and engineering changes across procurement workflows.",
+      "description": "This agent monitors engineering changes and material modifications, automatically coordinating updates across related product items and purchase orders. It processes change requests, validates material specifications against compliance requirements, and ensures seamless propagation of updates through the procurement network to minimize disruptions and maintain data consistency.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "material-management",
+        "engineering-changes",
+        "supply-chain-automation"
+      ],
+      "industry": []
+    }
+  ],
+  "apiResources": [
+    {
+      "ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+      "title": "Purchase Order Network API",
+      "shortDescription": "REST API for creating, updating, and monitoring purchase orders across supplier networks.",
+      "description": "Enables programmatic access to purchase order lifecycle management including creation, approval workflows, and real-time status tracking. Supports bulk operations and integration with enterprise procurement systems to streamline order-to-cash processes and improve supplier collaboration.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/purchase-order-network-v1.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:PurchaseOrder:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "purchase-orders",
+        "supplier-collaboration",
+        "order-management",
+        "procurement-automation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ariba:apiResource:SourceingCampaignAndAccountManagementAPI:v1",
+      "title": "Sourcing Campaign and Account Management API",
+      "shortDescription": "Retrieves and manages sourcing campaigns and customer accounts in procurement workflows.",
+      "description": "This API exposes sourcing campaign and customer account data, enabling procurement teams to retrieve campaign details, manage account hierarchies, and access vendor relationship information. It provides endpoints to query active campaigns, update account attributes, and manage stakeholder assignments across the procurement network.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/sourcing-campaign-account-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "sourcing",
+        "campaign-management",
+        "vendor-accounts"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1",
+      "title": "Procurement Workforce Compensation API",
+      "shortDescription": "Manages employee compensation and payroll data for procurement personnel.",
+      "description": "Provides access to employee compensation records and workforce person details integrated within procurement workflows. Retrieves payroll information, compensation structures, and workforce assignments for personnel involved in sourcing and purchasing activities. Exposes compensation and employment data to enable accurate payroll processing and workforce resource allocation.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:WorkforcePerson:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/procurement-workforce-compensation.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Finance"
+      ],
+      "tags": [
+        "payroll",
+        "workforce",
+        "compensation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ariba:apiResource:VendorServiceManagementAPI:v1",
+      "title": "Vendor Service Management API",
+      "shortDescription": "Manages vendor service tickets, equipment requests, and change approvals.",
+      "description": "Exposes vendor-related service tickets and IT equipment provisioning workflows within the procurement ecosystem. Retrieves change request statuses and provides access to vendor onboarding service management data. Manages vendor service escalations and equipment lifecycle tracking integrated with sourcing operations.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:ChangeRequest:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ITEquipment:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ServiceTicket:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/vendor-service-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "procurement"
+      ],
+      "tags": [
+        "vendor-management",
+        "service-operations",
+        "equipment-provisioning"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ariba:apiResource:ProcurementOrderFulfillmentAPI:v1",
+      "title": "Procurement Order Fulfillment API",
+      "shortDescription": "Retrieves and manages production order status and equipment data for procurement operations.",
+      "description": "This API exposes real-time production order and equipment information to support procurement decision-making and vendor coordination. It provides access to machine availability, production order status, and fulfillment tracking data across the supply chain. The resource manages retrieval of asset and order details to streamline sourcing and purchase order workflows.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Machine:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductionOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/procurement-order-fulfillment.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "purchase-orders",
+        "production-planning",
+        "vendor-coordination"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1",
+      "title": "Material and Vendor Master Data API",
+      "shortDescription": "Retrieves and manages material specifications and vendor master records for procurement operations.",
+      "description": "This API exposes comprehensive material and vendor master data, enabling systems to retrieve standardized product information, vendor attributes, and procurement-relevant classifications. It provides access to material hierarchies, vendor certifications, compliance statuses, and sourcing preferences to support goods receipt workflows and inbound logistics processing.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Material:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/material-vendor-master.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement",
+        "Inventory Management",
+        "Manufacturing"
+      ],
+      "tags": [
+        "goods-receipt",
+        "inbound-logistics",
+        "material-management",
+        "procurement-integration"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ariba:apiResource:EngineeringChangeAndProductItemManagement:v1",
+      "title": "Engineering Change and Product Item Management API",
+      "shortDescription": "Manages engineering changes and product items across procurement workflows.",
+      "description": "Exposes engineering change orders and product item master data to enable real-time synchronization with sourcing and procurement systems. Retrieves change notifications and product specifications to support vendor onboarding and purchase order accuracy. Provides access to product item modifications and engineering change tracking for compliance and supply chain coordination.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:EngineeringChange:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductItem:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/engineering-change-product-item.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "engineering-change-management",
+        "product-master-data",
+        "procurement-integration"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ariba:apiResource:MaterialAndVendorProcurementData:v1",
+      "title": "Material and Vendor Procurement Data API",
+      "shortDescription": "Retrieves material specifications and vendor information for procurement workflows.",
+      "description": "Manages and provides access to material master data and vendor profiles across procurement operations. Exposes detailed material attributes and vendor capabilities to enable sourcing decisions and purchase order creation. Retrieves vendor performance indicators and material availability status for inventory planning.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Material:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/material-vendor-procurement.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "manufacturing"
+      ],
+      "tags": [
+        "inventory-management",
+        "supply-chain",
+        "material-planning"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+      "title": "Vendor Material Invoice Management API",
+      "shortDescription": "Retrieves and manages vendor invoices linked to materials and purchase orders.",
+      "description": "This API exposes real-time access to vendor invoice records, material receipt confirmations, and invoice-to-PO matching data. It manages invoice status updates, payment terms, and vendor-specific billing information while providing integration points for goods receipt workflows and inbound logistics processes.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Material:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/vendor-material-invoice-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement",
+        "Inventory Management",
+        "Manufacturing"
+      ],
+      "tags": [
+        "goods-receipt",
+        "inbound-logistics",
+        "material-management",
+        "procurement-integration"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ariba:apiResource:SourcedCampaignAndVendorManagement:v1",
+      "title": "Procurement Initiative Vendor Profile API",
+      "shortDescription": "Provides vendor profile and procurement initiative data for sourcing operations.",
+      "description": "This API delivers procurement initiative details and linked vendor profile information to support sourcing teams in vendor selection and account lifecycle management. It exposes active initiative records, vendor qualification status, and hierarchical relationships between vendors and procurement entities, facilitating vendor onboarding processes and strategic sourcing decision-making.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/sourced-campaigns-vendors.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "vendor-management",
+        "procurement-initiatives",
+        "account-relationships"
+      ],
+      "industry": [],
+      "namespace": "sap.ariba"
+    },
+    {
+      "ordId": "sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1",
+      "title": "Production Order and Machine Integration API",
+      "shortDescription": "Retrieves production order details and machine status for procurement planning.",
+      "description": "Exposes real-time production order and machine data to support procurement decision-making and supplier coordination. Manages access to machine utilization metrics and production order schedules for sourcing and purchase order optimization. Provides integration endpoints for vendors to retrieve production requirements and machine availability constraints.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Machine:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductionOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/production-order-machine-integration.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "manufacturing"
+      ],
+      "tags": [
+        "production-planning",
+        "shop-floor-control",
+        "machine-monitoring"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ariba:apiResource:MaterialSafetyAndVendorComplianceData:v1",
+      "title": "Material Safety and Vendor Compliance Data API",
+      "shortDescription": "Retrieves material hazard classifications and vendor safety compliance records.",
+      "description": "Exposes material safety data sheets, hazard classifications, and vendor compliance certifications for procurement workflows. Manages access to safety-related vendor documentation and material safety attributes integrated with purchase order processes. Provides real-time compliance verification and hazard classification data for sourcing and vendor onboarding decisions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Material:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/material-safety-vendor-compliance.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Environment, Health and Safety"
+      ],
+      "tags": [
+        "material-safety-data",
+        "hazard-classification",
+        "vendor-compliance"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ariba:apiResource:MaterialAndVendorProcurementAPI:v1",
+      "title": "Material and Vendor Procurement API",
+      "shortDescription": "Exposes material master data and vendor information for procurement operations.",
+      "description": "Retrieves and manages material specifications, vendor catalogs, and procurement-related attributes across the sourcing lifecycle. Provides access to material classifications, vendor performance indicators, and purchase-to-pay data required for procurement integration and inbound logistics workflows.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Material:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/material-vendor-procurement.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement",
+        "Inventory Management",
+        "Manufacturing"
+      ],
+      "tags": [
+        "goods-receipt",
+        "inbound-logistics",
+        "material-management",
+        "procurement-integration"
+      ],
+      "industry": []
+    }
+  ],
+  "dataProducts": [
+    {
+      "ordId": "sap.ariba:dataProduct:ProcurementSpendAnalytics:v1",
+      "title": "Procurement Spend Analytics",
+      "shortDescription": "Aggregated spend metrics and vendor performance trends across purchase orders and contracts.",
+      "description": "A derived analytical data product that consolidates procurement spend data across vendors, purchase orders, and active contracts. It provides pre-calculated KPIs including category spend distribution, vendor spend concentration, contract utilization rates, and period-over-period spend variance. This product enables procurement teams to identify optimization opportunities, monitor vendor performance, and support strategic sourcing decisions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "type": "derived",
+      "category": "analytical",
+      "outputPorts": [
+        {
+          "ordId": "sap.ariba:apiResource:SpendAnalyticsQueryAPI:v1"
+        }
+      ],
+      "entityTypes": [
+        "sap.odm:entityType:PurchaseOrder:v1",
+        "sap.odm:entityType:Vendor:v1",
+        "sap.odm:entityType:Contract:v1"
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "spend-analytics",
+        "vendor-performance",
+        "procurement-metrics",
+        "sourcing-intelligence"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ariba:dataProduct:ProductionQualityMetrics:v1",
+      "title": "Procurement Quality and Vendor Performance Dashboard",
+      "shortDescription": "Vendor compliance tracking and material quality assessment across sourced components and supplier deliverables.",
+      "description": "This analytical resource consolidates supplier quality performance data and incoming material inspection findings to support procurement decision-making and vendor management. It integrates compliance documentation, supplier ratings, and material acceptance records to identify vendor reliability patterns, track non-conformances, and support strategic sourcing initiatives. The platform enables cross-functional teams to monitor supply chain quality risks, benchmark vendor performance, and drive supplier improvement programs.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:ProductionOrder:v1",
+        "sap.odm:entityType:QualityInspection:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.ariba:apiResource:QualityMetricsExportAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Manufacturing Execution"
+      ],
+      "tags": [
+        "vendor-performance",
+        "supply-chain-quality",
+        "procurement-analytics",
+        "supplier-compliance"
+      ],
+      "industry": [],
+      "namespace": "sap.ariba"
+    },
+    {
+      "ordId": "sap.ariba:dataProduct:CustomerAndOpportunityInsights:v1",
+      "title": "Customer and Sales Opportunity Analytics",
+      "shortDescription": "Aggregates customer account and sales opportunity metrics for procurement insights.",
+      "description": "This data product summarizes customer account performance and sales opportunity trends across the procurement lifecycle. It provides metrics on customer engagement, opportunity pipeline health, and sourcing effectiveness by aggregating transactional data from vendor interactions and purchase opportunity management. Enables stakeholders to analyze customer value, opportunity conversion rates, and procurement strategy optimization.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:CustomerAccount:v1",
+        "sap.odm:entityType:SalesOpportunity:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.ariba:apiResource:SourceingCampaignAndAccountManagementAPI:v1"
+        },
+        {
+          "ordId": "sap.ariba:apiResource:VendorServiceManagementAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "customer-analytics",
+        "sourcing-opportunity",
+        "vendor-performance"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ariba:dataProduct:SupplyChainProductIntelligence:v1",
+      "title": "Supply Chain Product Intelligence",
+      "shortDescription": "Aggregates engineering changes, materials, and product data for procurement insights.",
+      "description": "This data product summarizes engineering change patterns, material sourcing trends, and product item performance across the procurement lifecycle. It provides metrics on change velocity, material availability, and product adoption rates to support strategic sourcing and vendor optimization decisions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.ariba:apiResource:SupplyChainProductIntelligenceAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "product-lifecycle",
+        "sourcing-optimization",
+        "material-management"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ariba:dataProduct:VendorPerformanceAndSegmentationAnalytics:v1",
+      "title": "Vendor Performance and Segmentation Analytics",
+      "shortDescription": "Aggregates vendor metrics and segments customers by engagement and spend patterns.",
+      "description": "This data product aggregates vendor performance indicators, campaign effectiveness, and customer account metrics to provide comprehensive segmentation analytics. It summarizes key procurement campaign outcomes, customer account profitability, and segment-level performance trends. The product delivers actionable insights on vendor relationships, customer segmentation quality, and strategic sourcing opportunities aligned with procurement objectives.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Campaign:v1",
+        "sap.odm:entityType:CustomerAccount:v1",
+        "sap.odm:entityType:CustomerSegment:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.ariba:apiResource:VendorSegmentationDataExposureAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "vendor-analytics",
+        "customer-segmentation",
+        "sourcing-intelligence"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1",
+      "title": "Invoice and Material Procurement Analytics",
+      "shortDescription": "Aggregates invoice and material procurement metrics for spend analysis.",
+      "description": "Summarizes invoice processing trends and material procurement patterns to provide actionable insights into procurement spend, invoice aging, and material cost dynamics. Delivers comprehensive metrics on invoice volumes, payment cycles, and material consumption patterns across the procurement lifecycle.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Invoice:v1",
+        "sap.odm:entityType:Material:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "spend-analytics",
+        "invoice-management",
+        "material-cost-analysis"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.ariba:dataProduct:ContractAndProcurementComplianceAnalytics:v1",
+      "title": "Contract and Procurement Compliance Analytics",
+      "shortDescription": "Aggregates contract terms, purchase order execution, and vendor compliance metrics.",
+      "description": "Aggregates contract lifecycle data, purchase order fulfillment patterns, and vendor adherence to compliance standards to provide comprehensive procurement governance insights. Summarizes contract performance indicators, PO-to-contract alignment metrics, and vendor regulatory compliance status. Provides metrics on procurement risk exposure, contract utilization rates, and vendor compliance trends across sourcing initiatives.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.ariba:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Contract:v1",
+        "sap.odm:entityType:PurchaseOrder:v1",
+        "sap.odm:entityType:Vendor:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.ariba:apiResource:ContractComplianceMetricsExposure:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement"
+      ],
+      "tags": [
+        "contract-management",
+        "compliance-monitoring",
+        "vendor-governance"
+      ],
+      "industry": []
+    }
+  ]
+}

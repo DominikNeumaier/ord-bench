@@ -1,0 +1,68 @@
+<process id="proc_product_launch_qa_v1" type="bpmn">
+  
+  <step id="s1" 
+        label="Receive and validate inbound materials"
+        description="Verify that raw materials and components from suppliers meet quality standards and inventory requirements before production."
+        ordId="sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+        capability="validate-material"
+        useCase="Procurement team confirms material receipts match purchase orders and specifications."/>
+  
+  <step id="s2" 
+        label="Assess product engineering changes"
+        description="Evaluate engineering change requests and their impact on material specifications and product item configurations for the new product line."
+        ordId="sap.s4:agent:AssetLifecycleChangeOrchestrator:v1"
+        capability="orchestrate-engineering-change"
+        useCase="Engineering team determines if material updates or product redesigns are needed before launch."/>
+  
+  <step id="s3" 
+        label="Manage engineering change documentation"
+        description="Create and maintain engineering change records and updated product item master data to reflect approved modifications."
+        ordId="sap.sf:apiResource:EngineeringChangeAndProductItemManagement:v1"
+        capability="manage-engineering-product"
+        useCase="Technical documentation team updates product specifications and change logs for compliance tracking."/>
+  
+  <step id="s4" 
+        label="Monitor service delivery operational readiness"
+        description="Track change requests and IT equipment readiness to ensure infrastructure and support systems are prepared for product launch."
+        ordId="emarsys.cx:dataProduct:ServiceDeliveryOperationalInsights:v1"
+        capability="monitor-service-readiness"
+        useCase="Operations team verifies that service ticket infrastructure and change management processes are operational."/>
+  
+  <step id="s5" 
+        label="Assess workplace safety for production"
+        description="Evaluate hazardous substance handling and potential safety incidents in the manufacturing environment before full production begins."
+        ordId="workday.hcm:agent:SafetyIncidentAutomationOrchestrator:v1"
+        capability="automate-safety-incident"
+        useCase="Safety manager ensures all hazardous materials are properly documented and incident protocols are in place."/>
+  
+  <step id="s6" 
+        label="Align sales team capabilities"
+        description="Identify and assign sales employees with appropriate skills and hierarchy positioning to support the product launch strategy."
+        ordId="sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1"
+        capability="align-sales-capability"
+        useCase="Sales leadership identifies top performers and their direct reports for customer engagement and territorial assignments."/>
+  
+  <step id="s7" 
+        label="Analyze sales compensation impact"
+        description="Review compensation structures and performance metrics for sales team to ensure incentive alignment with new product launch targets."
+        ordId="sap.crm:dataProduct:SalesCompensationPerformanceAnalytics:v1"
+        capability="analyze-compensation"
+        useCase="HR and sales finance teams model commission structures and forecast revenue impact on employee bonuses."/>
+  
+  <step id="s8" 
+        label="Enrich customer orders with launch details"
+        description="Populate customer accounts and orders with product launch information, pricing, and availability to enable seamless order processing."
+        ordId="emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1"
+        capability="enrich-customer-order"
+        useCase="Sales operations team ensures all customer systems reflect new product SKUs, pricing tiers, and promotional bundles."/>
+  
+  <!-- Sequence Flows -->
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+  
+</process>

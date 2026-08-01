@@ -1,0 +1,44 @@
+{
+  "case_id": "dy-39",
+  "mode": "dynamic",
+  "query_class": "multi_intent",
+  "selected_resources": [
+    "corp.itsm:apiResource:VendorProcurementOrderAPI:v1",
+    "workday.hcm:apiResource:PayrollDataExposure:v1"
+  ],
+  "timestamp": "2026-06-08T13:25:54.974113+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "I need to simultaneously pull together our current spending commitments with a specific vendor and cross-reference that against our latest payroll records to reconcile Q4 budget allocations and ensure our procurement expenses align with employee compensation costs for audit purposes."
+      },
+      "generator_tokens": 176,
+      "solver_output": {
+        "predicted": "sap.ariba:dataProduct:ProcurementSpendAnalytics:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 278,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-39",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "I need to simultaneously pull together our current spending commitments with a specific vendor and cross-reference that against our latest payroll records to reconcile Q4 budget allocations and ensure our procurement expenses align with employee compensation costs for audit purposes.",
+    "expected_ordIds": [
+      "corp.itsm:apiResource:VendorProcurementOrderAPI:v1",
+      "workday.hcm:apiResource:PayrollDataExposure:v1"
+    ],
+    "distractor_ordId": null
+  }
+}

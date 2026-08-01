@@ -1,0 +1,218 @@
+\relax 
+\providecommand\babel@aux[2]{}
+\@nameuse{bbl@beforestart}
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{xu_llm-based_2025,dumas_agentic_2026}
+\citation{tang_multi-field_2026}
+\citation{linux_foundation_europe_open_nodate}
+\citation{bu_announcing_nodate}
+\citation{gonzalez_gorilla_2024,qin_toolllm_nodate,shi_retrieval_2025,lu_toolsandbox_2025}
+\citation{osterle2010}
+\babel@aux{english}{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:introduction}{{1}{1}{Introduction}{section.1}{}}
+\citation{schick_toolformer_2023,openai_function_calling_2023}
+\citation{gonzalez_gorilla_2024}
+\citation{qin_toolllm_nodate}
+\citation{nizar_agent-as--graph_2026}
+\citation{shi_retrieval_2025}
+\citation{melzer_service-orientierte_2010,curbera_unraveling_2002}
+\citation{mcilraith_semantic_2001,feier_towards_2005}
+\citation{hepp_ontology_2007}
+\citation{pautasso_restful_2008,mazzara_microservices_2017,schwichtenberg_open_2017}
+\citation{noauthor_specification_nodate}
+\citation{hasan_model_2026}
+\citation{tang_multi-field_2026}
+\citation{lu_tools_2026}
+\citation{gao_simcse_2021}
+\citation{linux_foundation_europe_open_nodate}
+\citation{sap_se_apeiro_2026}
+\citation{the_open_semantic_interchange_authors_open_nodate}
+\citation{bu_announcing_nodate}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
+\newlabel{sec:related}{{2}{2}{Related Work}{section.2}{}}
+\citation{gonzalez_gorilla_2024}
+\citation{qin_toolllm_nodate}
+\citation{bansal_planning_2025}
+\citation{lumer_toollinked_2025}
+\citation{lu_toolsandbox_2025}
+\citation{moon_toolbank_2024}
+\citation{shi_retrieval_2025}
+\citation{gonzalez_gorilla_2024}
+\citation{qin_toolllm_nodate}
+\citation{shi_retrieval_2025}
+\citation{li_apibank_2023}
+\citation{lu_toolsandbox_2025}
+\citation{moon_toolbank_2024}
+\citation{bansal_planning_2025}
+\citation{lumer_toollinked_2025}
+\citation{karpukhin_dense_2020}
+\citation{xiong_ance_2021}
+\citation{thakur_beir_2021}
+\citation{muennighoff_mteb_2023}
+\citation{zheng_judging_2023}
+\citation{osterle2010}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of ORD-Bench with related tool-retrieval benchmarks. \text  {$\mathsurround \z@ \mathchar "458$}~= present, \texttimes ~= absent. Test-case counts follow each paper's reported total; ``--'' where no count is stated.}}{3}{table.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:benchmark-comparison}{{1}{3}{Comparison of ORD-Bench with related tool-retrieval benchmarks. \checkmark ~= present, \texttimes ~= absent. Test-case counts follow each paper's reported total; ``--'' where no count is stated}{table.caption.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Methodology}{3}{section.3}\protected@file@percent }
+\newlabel{sec:design}{{3}{3}{Methodology}{section.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Ambiguity metric: six equal-weight dimensions plus two structural adjustments.}}{4}{table.caption.2}\protected@file@percent }
+\newlabel{tab:ambiguity-metric}{{2}{4}{Ambiguity metric: six equal-weight dimensions plus two structural adjustments}{table.caption.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Similarity tier examples: one representative pair (A/B) per tier. \emph  {ET} = entity types. The score sums \emph  {text} (TF-IDF), \emph  {lid} (localId), \emph  {ET}, \emph  {LoB}, \emph  {tags}, and a $+0.5$ cross-namespace bonus.}}{4}{table.caption.3}\protected@file@percent }
+\newlabel{tab:tier-examples}{{3}{4}{Similarity tier examples: one representative pair (A/B) per tier. \emph {ET} = entity types. The score sums \emph {text} (TF-IDF), \emph {lid} (localId), \emph {ET}, \emph {LoB}, \emph {tags}, and a $+0.5$ cross-namespace bonus}{table.caption.3}{}}
+\citation{anthropic_skills_2025}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Benchmark construction pipelines. (a)~Landscape: seeds, expanded via pre-check, LLM generation, and Validator/Judge gate. (b)~Process model and enrichment: one accepted model yields Enriched-ORD fields, a SKILL.md, and design-time activity cases. (c)~Runtime cases: the single-LLM baseline-solver difficulty gate applies only to the retrieval-driven modes (Skill-Adjusted, Dynamic); Skill-Guided is scored by routing alone and Out-of-Scope uses a programmatic absence check, so both bypass the gate.}}{5}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:pipelines}{{1}{5}{Benchmark construction pipelines. (a)~Landscape: seeds, expanded via pre-check, LLM generation, and Validator/Judge gate. (b)~Process model and enrichment: one accepted model yields Enriched-ORD fields, a SKILL.md, and design-time activity cases. (c)~Runtime cases: the single-LLM baseline-solver difficulty gate applies only to the retrieval-driven modes (Skill-Adjusted, Dynamic); Skill-Guided is scored by routing alone and Out-of-Scope uses a programmatic absence check, so both bypass the gate}{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Process-driven semantic enrichment of ORD. A process model is mapped onto a Clean-ORD resource; the mapping deterministically derives four typed fields (\texttt  {capabilities}, \texttt  {useCases}, \texttt  {partOfGroups}, \texttt  {processNext}) written back into the resource, yielding its Enriched-ORD state. The resource identity is preserved.}}{6}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:enrichment}{{2}{6}{Process-driven semantic enrichment of ORD. A process model is mapped onto a Clean-ORD resource; the mapping deterministically derives four typed fields (\texttt {capabilities}, \texttt {useCases}, \texttt {partOfGroups}, \texttt {processNext}) written back into the resource, yielding its Enriched-ORD state. The resource identity is preserved}{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{6}{section.4}\protected@file@percent }
+\newlabel{sec:results}{{4}{6}{Results}{section.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Iterative generation convergence. Bars: candidates generated (grey) and accepted (white) per round. Circles: avg.\ HIGH-tier neighbours (sim\,$\geq $\,0.50) under the generation-time similarity (no TF-IDF text, for speed).}}{6}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:convergence}{{3}{6}{Iterative generation convergence. Bars: candidates generated (grey) and accepted (white) per round. Circles: avg.\ HIGH-tier neighbours (sim\,$\geq $\,0.50) under the generation-time similarity (no TF-IDF text, for speed)}{figure.caption.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces ORD-Bench landscape: 10 namespaces, 273 resources. GT = resources that satisfy the required neighbourhood (HIGH$\geq $3, MEDIUM$\geq $5, LOW$\geq $5).}}{7}{table.caption.7}\protected@file@percent }
+\newlabel{tab:landscape-systems}{{4}{7}{ORD-Bench landscape: 10 namespaces, 273 resources. GT = resources that satisfy the required neighbourhood (HIGH$\geq $3, MEDIUM$\geq $5, LOW$\geq $5)}{table.caption.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Disambiguation effect of the semantic enrichment. Each point is one of the 2\,415 pairs among the 70 enriched resources: six-field ambiguity (x) versus extended nine-dimension ambiguity (y). All 85 HIGH-tier pairs ($\geq $0.50, dark) drop below the diagonal, and drop most where original ambiguity was highest. Low-ambiguity pairs (light) mostly stay near the diagonal; a minority rise slightly. Overall, 2\,176 of the 2\,415 pairs move apart.}}{7}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:disambiguation}{{4}{7}{Disambiguation effect of the semantic enrichment. Each point is one of the 2\,415 pairs among the 70 enriched resources: six-field ambiguity (x) versus extended nine-dimension ambiguity (y). All 85 HIGH-tier pairs ($\geq $0.50, dark) drop below the diagonal, and drop most where original ambiguity was highest. Low-ambiguity pairs (light) mostly stay near the diagonal; a minority rise slightly. Overall, 2\,176 of the 2\,415 pairs move apart}{figure.caption.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces One test case per family. DT = design-time, SG = Skill-Guided, SA = Skill-Adjusted, DY = Dynamic, OOS = Out-of-Scope.}}{8}{table.caption.9}\protected@file@percent }
+\newlabel{tab:example-cases}{{5}{8}{One test case per family. DT = design-time, SG = Skill-Guided, SA = Skill-Adjusted, DY = Dynamic, OOS = Out-of-Scope}{table.caption.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{8}{section.5}\protected@file@percent }
+\newlabel{sec:discussion}{{5}{8}{Discussion}{section.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Embedding cosine grouped by structural tier (37\,128 pairs). Median cosine rises monotonically with the tier (NONE $\to $ HIGH), confirming the field-based metric captures a real difficulty signal independent of embeddings ($r{=}0.63$ with structural score).}}{8}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:embedding-validation}{{5}{8}{Embedding cosine grouped by structural tier (37\,128 pairs). Median cosine rises monotonically with the tier (NONE $\to $ HIGH), confirming the field-based metric captures a real difficulty signal independent of embeddings ($r{=}0.63$ with structural score)}{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Embedding cosine on the same pairs, clean text (grey) versus enriched text (white). Unlike the structural metric in Fig.~\ref {fig:disambiguation}, embedding cosine \emph  {rises} in every group once semantic text is added. The mixed group ($n{=}14\,210$) covers pairs where only one resource is enriched.}}{9}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:disambiguation-embedding}{{6}{9}{Embedding cosine on the same pairs, clean text (grey) versus enriched text (white). Unlike the structural metric in Fig.~\ref {fig:disambiguation}, embedding cosine \emph {rises} in every group once semantic text is added. The mixed group ($n{=}14\,210$) covers pairs where only one resource is enriched}{figure.caption.11}{}}
+\citation{hasan_model_2026}
+\citation{gonzalez_gorilla_2024}
+\citation{qin_toolllm_nodate}
+\bibstyle{IEEEtran}
+\bibdata{../../References/references}
+\bibcite{xu_llm-based_2025}{{1}{}{{}}{{}}}
+\bibcite{dumas_agentic_2026}{{2}{}{{}}{{}}}
+\bibcite{tang_multi-field_2026}{{3}{}{{}}{{}}}
+\bibcite{linux_foundation_europe_open_nodate}{{4}{}{{}}{{}}}
+\bibcite{bu_announcing_nodate}{{5}{}{{}}{{}}}
+\bibcite{gonzalez_gorilla_2024}{{6}{}{{}}{{}}}
+\bibcite{qin_toolllm_nodate}{{7}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{10}{section.6}\protected@file@percent }
+\newlabel{sec:conclusion}{{6}{10}{Conclusion}{section.6}{}}
+\bibcite{shi_retrieval_2025}{{8}{}{{}}{{}}}
+\bibcite{lu_toolsandbox_2025}{{9}{}{{}}{{}}}
+\bibcite{osterle2010}{{10}{}{{}}{{}}}
+\bibcite{schick_toolformer_2023}{{11}{}{{}}{{}}}
+\bibcite{openai_function_calling_2023}{{12}{}{{}}{{}}}
+\bibcite{nizar_agent-as--graph_2026}{{13}{}{{}}{{}}}
+\bibcite{melzer_service-orientierte_2010}{{14}{}{{}}{{}}}
+\bibcite{curbera_unraveling_2002}{{15}{}{{}}{{}}}
+\bibcite{mcilraith_semantic_2001}{{16}{}{{}}{{}}}
+\bibcite{feier_towards_2005}{{17}{}{{}}{{}}}
+\bibcite{hepp_ontology_2007}{{18}{}{{}}{{}}}
+\bibcite{pautasso_restful_2008}{{19}{}{{}}{{}}}
+\bibcite{mazzara_microservices_2017}{{20}{}{{}}{{}}}
+\bibcite{schwichtenberg_open_2017}{{21}{}{{}}{{}}}
+\bibcite{noauthor_specification_nodate}{{22}{}{{}}{{}}}
+\bibcite{hasan_model_2026}{{23}{}{{}}{{}}}
+\bibcite{lu_tools_2026}{{24}{}{{}}{{}}}
+\bibcite{gao_simcse_2021}{{25}{}{{}}{{}}}
+\bibcite{sap_se_apeiro_2026}{{26}{}{{}}{{}}}
+\bibcite{the_open_semantic_interchange_authors_open_nodate}{{27}{}{{}}{{}}}
+\bibcite{bansal_planning_2025}{{28}{}{{}}{{}}}
+\bibcite{lumer_toollinked_2025}{{29}{}{{}}{{}}}
+\bibcite{moon_toolbank_2024}{{30}{}{{}}{{}}}
+\bibcite{li_apibank_2023}{{31}{}{{}}{{}}}
+\bibcite{karpukhin_dense_2020}{{32}{}{{}}{{}}}
+\bibcite{xiong_ance_2021}{{33}{}{{}}{{}}}
+\bibcite{thakur_beir_2021}{{34}{}{{}}{{}}}
+\bibcite{muennighoff_mteb_2023}{{35}{}{{}}{{}}}
+\bibcite{zheng_judging_2023}{{36}{}{{}}{{}}}
+\bibcite{anthropic_skills_2025}{{37}{}{{}}{{}}}
+\citation{sap_se_apeiro_2026}
+\citation{sap_se_apeiro_2026,linux_foundation_europe_open_nodate}
+\citation{sap_se_apeiro_2026}
+\citation{sap_se_apeiro_2026}
+\citation{linux_foundation_europe_open_nodate,sap_se_apeiro_2026}
+\citation{linux_foundation_europe_open_nodate,sap_se_apeiro_2026}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Open Resource Discovery}{14}{appendix.A}\protected@file@percent }
+\newlabel{appendix:ord}{{A}{14}{Open Resource Discovery}{appendix.A}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Apeiro Reference Architecture}{14}{subsection.A.1}\protected@file@percent }
+\newlabel{appendix:ord-apeiro}{{A.1}{14}{Apeiro Reference Architecture}{subsection.A.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}ORD Protocol}{14}{subsection.A.2}\protected@file@percent }
+\newlabel{appendix:ord-protocol}{{A.2}{14}{ORD Protocol}{subsection.A.2}{}}
+\newlabel{lst:ord-agent}{{1}{15}{Representative ORD document for a Dispute Resolution use case (adapted from~\cite {linux_foundation_europe_open_nodate,sap_se_apeiro_2026}). The document root anchors descriptions to a system instance; agent, API resource, integration dependency, and package entries illustrate cross-resource referencing}{lstlisting.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}{\ignorespaces Representative ORD document for a Dispute Resolution use case (adapted from~\cite  {linux_foundation_europe_open_nodate,sap_se_apeiro_2026}). The document root anchors descriptions to a system instance; agent, API resource, integration dependency, and package entries illustrate cross-resource referencing.}}{15}{lstlisting.1}\protected@file@percent }
+\newlabel{lst:base_fields}{{2}{16}{Base required fields shared by all three resource types (agent, apiResource, dataProduct). \texttt {description} is optional per ORD v1.16 but always generated in this benchmark (273/273 resources)}{lstlisting.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}{\ignorespaces Base required fields shared by all three resource types (agent, apiResource, dataProduct). \texttt  {description} is optional per ORD v1.16 but always generated in this benchmark (273/273 resources).}}{16}{lstlisting.2}\protected@file@percent }
+\newlabel{lst:type_fields}{{3}{16}{Resource-specific required and semantic fields (Clean-ORD state). Semantic fields are optional in the ORD spec but always populated in the benchmark because they drive five of the six ambiguity-metric dimensions}{lstlisting.3}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3}{\ignorespaces Resource-specific required and semantic fields (Clean-ORD state). Semantic fields are optional in the ORD spec but always populated in the benchmark because they drive five of the six ambiguity-metric dimensions.}}{16}{lstlisting.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}Resource Model}{16}{appendix.B}\protected@file@percent }
+\newlabel{appendix:landscape}{{B}{16}{Resource Model}{appendix.B}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}ORD Field Schema}{16}{subsection.B.1}\protected@file@percent }
+\newlabel{appendix:landscape-ord-schema}{{B.1}{16}{ORD Field Schema}{subsection.B.1}{}}
+\newlabel{lst:enriched_fields}{{4}{17}{Enriched-ORD additional fields. Written by \texttt {enrich\_from\_processes.py} for GT-eligible resources only (70/273). Non-GT resources remain at Clean-ORD level}{lstlisting.4}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4}{\ignorespaces Enriched-ORD additional fields. Written by \texttt  {enrich\_from\_processes.py} for GT-eligible resources only (70/273). Non-GT resources remain at Clean-ORD level.}}{17}{lstlisting.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.2}Example ORD Resource: Clean and Enriched State}{17}{subsection.B.2}\protected@file@percent }
+\newlabel{appendix:landscape-example}{{B.2}{17}{Example ORD Resource: Clean and Enriched State}{subsection.B.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.3}Systems and Entity Type Vocabulary}{17}{subsection.B.3}\protected@file@percent }
+\newlabel{appendix:landscape-systems}{{B.3}{17}{Systems and Entity Type Vocabulary}{subsection.B.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Ambiguity Metric \& Resource Generation}{17}{appendix.C}\protected@file@percent }
+\newlabel{appendix:metric-generation}{{C}{17}{Ambiguity Metric \& Resource Generation}{appendix.C}{}}
+\newlabel{lst:ord-example}{{5}{18}{Example resource in Clean-ORD and Enriched-ORD state. Fields absent in the clean state are marked \texttt {-- absent --}; the four added fields are written back from the design-time process-matching flow after validation}{lstlisting.5}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5}{\ignorespaces Example resource in Clean-ORD and Enriched-ORD state. Fields absent in the clean state are marked \texttt  {-- absent --}; the four added fields are written back from the design-time process-matching flow after validation.}}{18}{lstlisting.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Ambiguity Metric}{18}{subsection.C.1}\protected@file@percent }
+\newlabel{appendix:landscape-metric}{{C.1}{18}{Ambiguity Metric}{subsection.C.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Generation Pipeline and Audit Trail}{18}{subsection.C.2}\protected@file@percent }
+\newlabel{appendix:landscape-audit}{{C.2}{18}{Generation Pipeline and Audit Trail}{subsection.C.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Similarity tier examples. One representative pair per tier from the benchmark landscape. HIGH pairs require system-context disambiguation; MEDIUM pairs require domain-context disambiguation; LOW pairs share only partial structural overlap. Scores decompose into \emph  {text} (TF-IDF cosine), \emph  {lid} (localId), \emph  {ET} (entity types), \emph  {LoB} (line of business), and \emph  {tags}, plus a $+0.5$ cross-namespace bonus; \emph  {industry} is 0 for all three pairs and omitted. The six dimensions are summed with the bonus and divided by 6 (see Tab.~\ref {tab:ambiguity-metric}). Only \emph  {title} is shown per resource; the \emph  {text} score is computed over the full \texttt  {title + shortDescription + description} and \emph  {tags} over the (unshown) tag sets, so those two components are not re-derivable from the displayed rows alone.}}{19}{table.caption.17}\protected@file@percent }
+\newlabel{tab:tier-examples-full}{{6}{19}{Similarity tier examples. One representative pair per tier from the benchmark landscape. HIGH pairs require system-context disambiguation; MEDIUM pairs require domain-context disambiguation; LOW pairs share only partial structural overlap. Scores decompose into \emph {text} (TF-IDF cosine), \emph {lid} (localId), \emph {ET} (entity types), \emph {LoB} (line of business), and \emph {tags}, plus a $+0.5$ cross-namespace bonus; \emph {industry} is 0 for all three pairs and omitted. The six dimensions are summed with the bonus and divided by 6 (see Tab.~\ref {tab:ambiguity-metric}). Only \emph {title} is shown per resource; the \emph {text} score is computed over the full \texttt {title + shortDescription + description} and \emph {tags} over the (unshown) tag sets, so those two components are not re-derivable from the displayed rows alone}{table.caption.17}{}}
+\newlabel{lst:gen-seed-prompt}{{6}{19}{Generator system prompt, used for both seed and iterative phases. The prompt enforces that all systems reference \texttt {sap.odm} entity types and that descriptions reflect resource type through verb choice rather than by naming the type explicitly}{lstlisting.6}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6}{\ignorespaces Generator system prompt, used for both seed and iterative phases. The prompt enforces that all systems reference \texttt  {sap.odm} entity types and that descriptions reflect resource type through verb choice rather than by naming the type explicitly.}}{19}{lstlisting.6}\protected@file@percent }
+\newlabel{lst:judge-seed-prompt}{{7}{20}{Judge system prompt from \texttt {generate\_iterative.py} (iterative phase). The seed phase (\texttt {generate\_seeds.py}) uses the same C2--C5 criteria with slightly different phrasing; the instruction to accept cross-domain entity types is present in both}{lstlisting.7}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7}{\ignorespaces Judge system prompt from \texttt  {generate\_iterative.py} (iterative phase). The seed phase (\texttt  {generate\_seeds.py}) uses the same C2--C5 criteria with slightly different phrasing; the instruction to accept cross-domain entity types is present in both.}}{20}{lstlisting.7}\protected@file@percent }
+\newlabel{lst:enrichment-log}{{8}{20}{Sample enrichment\_log.json entry. HIGH-tier resource accepted for \texttt {emarsys.cx}}{lstlisting.8}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8}{\ignorespaces Sample enrichment\_log.json entry. HIGH-tier resource accepted for \texttt  {emarsys.cx}.}}{20}{lstlisting.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {D}Test Case Construction}{20}{appendix.D}\protected@file@percent }
+\newlabel{appendix:testcases}{{D}{20}{Test Case Construction}{appendix.D}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D.1}Design-Time Cases}{20}{subsection.D.1}\protected@file@percent }
+\newlabel{appendix:dt-cases}{{D.1}{20}{Design-Time Cases}{subsection.D.1}{}}
+\newlabel{lst:proc-gen-prompt}{{9}{21}{Process Generator prompt (\texttt {generate\_processes.py}). Model: \texttt {claude-haiku-4.5}, temp=0.0, seed=42}{lstlisting.9}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {9}{\ignorespaces Process Generator prompt (\texttt  {generate\_processes.py}). Model: \texttt  {claude-haiku-4.5}, temp=0.0, seed=42.}}{21}{lstlisting.9}\protected@file@percent }
+\newlabel{lst:proc-judge-prompt}{{10}{21}{Process Judge system + user prompt. J1--J5 must all pass; J6 (enrichment quality) is evaluated but not blocking}{lstlisting.10}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {10}{\ignorespaces Process Judge system + user prompt. J1--J5 must all pass; J6 (enrichment quality) is evaluated but not blocking.}}{21}{lstlisting.10}\protected@file@percent }
+\newlabel{lst:skill-example}{{11}{22}{Representative SKILL.md artefact (\texttt {proc\_023}, CMMN, first 4 of 8 steps). GT-eligible steps carry an \texttt {ord\_confirmed} comment pinning the verified ordId; non-GT steps do not}{lstlisting.11}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {11}{\ignorespaces Representative SKILL.md artefact (\texttt  {proc\_023}, CMMN, first 4 of 8 steps). GT-eligible steps carry an \texttt  {ord\_confirmed} comment pinning the verified ordId; non-GT steps do not.}}{22}{lstlisting.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {D.2}Runtime Cases}{22}{subsection.D.2}\protected@file@percent }
+\newlabel{appendix:rt-cases}{{D.2}{22}{Runtime Cases}{subsection.D.2}{}}
+\newlabel{lst:skill-gen-prompt}{{12}{23}{SKILL.md Generator prompt}{lstlisting.12}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {12}{\ignorespaces SKILL.md Generator prompt.}}{23}{lstlisting.12}\protected@file@percent }
+\newlabel{lst:construction-logs}{{13}{23}{One representative entry from each of the three design-time construction logs. The skill and process logs record per-attempt validator results and acceptance outcome; the enrichment log records which fields were written per resource}{lstlisting.13}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {13}{\ignorespaces One representative entry from each of the three design-time construction logs. The skill and process logs record per-attempt validator results and acceptance outcome; the enrichment log records which fields were written per resource.}}{23}{lstlisting.13}\protected@file@percent }
+\newlabel{lst:sg-prompts}{{14}{24}{SG Generator + Judge prompts}{lstlisting.14}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {14}{\ignorespaces SG Generator + Judge prompts.}}{24}{lstlisting.14}\protected@file@percent }
+\newlabel{lst:sa-prompts}{{15}{24}{SA Generator + Judge prompts. The mutation hint is strengthened on each retry (synonym vocabulary, then implicit references)}{lstlisting.15}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {15}{\ignorespaces SA Generator + Judge prompts. The mutation hint is strengthened on each retry (synonym vocabulary, then implicit references).}}{24}{lstlisting.15}\protected@file@percent }
+\newlabel{lst:dy-prompts}{{16}{25}{DY Generator + Judge prompts}{lstlisting.16}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {16}{\ignorespaces DY Generator + Judge prompts.}}{25}{lstlisting.16}\protected@file@percent }
+\newlabel{lst:prov-dy32}{{17}{25}{Provenance log for dy-32 (multi-intent). The solver first recovers a ground-truth resource (too\_easy), so the prompt is regenerated until S is diverted to a sibling resource}{lstlisting.17}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {17}{\ignorespaces Provenance log for dy-32 (multi-intent). The solver first recovers a ground-truth resource (too\_easy), so the prompt is regenerated until S is diverted to a sibling resource.}}{25}{lstlisting.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {E}Results \& Disambiguation Analysis}{25}{appendix.E}\protected@file@percent }
+\newlabel{appendix:results-disambiguation}{{E}{25}{Results \& Disambiguation Analysis}{appendix.E}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E.1}Generation Results}{25}{subsection.E.1}\protected@file@percent }
+\newlabel{appendix:landscape-results}{{E.1}{25}{Generation Results}{subsection.E.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces The 273-resource landscape across 10 systems (green nodes). Resources are typed --- API resources (blue squares), agents (purple circles), data products (diamonds) --- and orange nodes are shared ODM entity types. Edges connect resources through shared entity types, process groups, and process-sequence links. Dense connectivity around shared entity types (e.g.\ \texttt  {Material}, \texttt  {Compensation}) creates the cross-namespace distractors the ambiguity metric quantifies and the generation pipeline deliberately amplifies.}}{26}{figure.caption.30}\protected@file@percent }
+\newlabel{fig:landscape-graph}{{7}{26}{The 273-resource landscape across 10 systems (green nodes). Resources are typed --- API resources (blue squares), agents (purple circles), data products (diamonds) --- and orange nodes are shared ODM entity types. Edges connect resources through shared entity types, process groups, and process-sequence links. Dense connectivity around shared entity types (e.g.\ \texttt {Material}, \texttt {Compensation}) creates the cross-namespace distractors the ambiguity metric quantifies and the generation pipeline deliberately amplifies}{figure.caption.30}{}}
+\newlabel{fig:emb-tier}{{8a}{27}{Cosine by structural tier}{figure.caption.31}{}}
+\newlabel{sub@fig:emb-tier}{{a}{27}{Cosine by structural tier}{figure.caption.31}{}}
+\newlabel{fig:emb-ns}{{8b}{27}{By namespace (intermixed)}{figure.caption.31}{}}
+\newlabel{sub@fig:emb-ns}{{b}{27}{By namespace (intermixed)}{figure.caption.31}{}}
+\newlabel{fig:emb-type}{{8c}{27}{By resource type (separated)}{figure.caption.31}{}}
+\newlabel{sub@fig:emb-type}{{c}{27}{By resource type (separated)}{figure.caption.31}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Post-hoc embedding validation on the 273-resource landscape. \textbf  {(a)}~Embedding cosine rises monotonically with the structural ambiguity tier (median 0.74 / 0.60 / 0.48 / 0.35 for HIGH/MEDIUM/LOW/NONE): pairs the field-based metric marks as confusable are independently confusable to an embedding model. \textbf  {(b)}~In PCA-projected embedding space the ten namespaces are thoroughly intermixed, with no system forming its own cluster. Resources from different systems sit close together when they serve the same business function. \textbf  {(c)}~Resource types form distinct regions, consistent with the metric's cross-type penalty. PC1$+$PC2 capture only 16\% of variance (embeddings are 3072-dimensional), so the projection understates the separation.}}{27}{figure.caption.31}\protected@file@percent }
+\newlabel{fig:embedding-validation-full}{{8}{27}{Post-hoc embedding validation on the 273-resource landscape. \textbf {(a)}~Embedding cosine rises monotonically with the structural ambiguity tier (median 0.74 / 0.60 / 0.48 / 0.35 for HIGH/MEDIUM/LOW/NONE): pairs the field-based metric marks as confusable are independently confusable to an embedding model. \textbf {(b)}~In PCA-projected embedding space the ten namespaces are thoroughly intermixed, with no system forming its own cluster. Resources from different systems sit close together when they serve the same business function. \textbf {(c)}~Resource types form distinct regions, consistent with the metric's cross-type penalty. PC1$+$PC2 capture only 16\% of variance (embeddings are 3072-dimensional), so the projection understates the separation}{figure.caption.31}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E.2}Disambiguation Analysis}{27}{subsection.E.2}\protected@file@percent }
+\newlabel{appendix:disambiguation}{{E.2}{27}{Disambiguation Analysis}{subsection.E.2}{}}
+\providecommand\NAT@force@numbers{}\NAT@force@numbers
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Extended ambiguity metric: nine dimensions with scoring method, an excerpt of the actual field contents of each resource, and the resulting sub-score for the \texttt  {AssetProvisioningOrchestrator} (A, \texttt  {corp.itsm}) vs \texttt  {AssetLifecycleChangeOrchestrator} (B, \texttt  {sap.s4}) pair. Identical \texttt  {tags} give 1.00, but the disjoint \texttt  {capabilities} and \texttt  {partOfGroups} give 0.00. The three semantic fields are added only when both resources carry them; the denominator grows from 6 to 9 only for those active dimensions. Structural ambiguity therefore falls from 0.75 to 0.53, while embedding cosine rises from 0.79 to 0.82.}}{28}{table.caption.32}\protected@file@percent }
+\newlabel{tab:extended-metric}{{7}{28}{Extended ambiguity metric: nine dimensions with scoring method, an excerpt of the actual field contents of each resource, and the resulting sub-score for the \texttt {AssetProvisioningOrchestrator} (A, \texttt {corp.itsm}) vs \texttt {AssetLifecycleChangeOrchestrator} (B, \texttt {sap.s4}) pair. Identical \texttt {tags} give 1.00, but the disjoint \texttt {capabilities} and \texttt {partOfGroups} give 0.00. The three semantic fields are added only when both resources carry them; the denominator grows from 6 to 9 only for those active dimensions. Structural ambiguity therefore falls from 0.75 to 0.53, while embedding cosine rises from 0.79 to 0.82}{table.caption.32}{}}
+\gdef \@abspage@last{28}

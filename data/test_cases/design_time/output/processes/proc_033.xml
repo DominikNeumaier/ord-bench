@@ -1,0 +1,68 @@
+<process id="proc_procure_fulfill_v1" type="cmmn">
+  
+  <step id="s1" 
+        label="Evaluate supplier and material sources"
+        description="Source optimal materials and vendors from the enterprise catalog to meet procurement requirements."
+        ordId="sap.sf:apiResource:MaterialAndVendorProcurementIntegration:v1"
+        capability="source-materials"
+        useCase="Procurement teams identify approved suppliers and component options before purchase orders."/>
+  
+  <step id="s2" 
+        label="Enrich customer order context"
+        description="Augment incoming customer orders with account history and order enrichment data to ensure fulfillment accuracy."
+        ordId="emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1"
+        capability="enrich-customer-orders"
+        useCase="Sales operations teams contextualize customer orders with account details to improve fulfillment speed."/>
+  
+  <step id="s3" 
+        label="Validate hazardous material compliance"
+        description="Check inbound materials against hazardous substance inventory to ensure safety and regulatory compliance."
+        ordId="sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1"
+        capability="validate-hazmat-compliance"
+        useCase="Safety teams prevent non-compliant hazardous materials from entering inventory."/>
+  
+  <step id="s4" 
+        label="Receive and register inbound materials"
+        description="Record material receipt in inventory management system with vendor and material master data validation."
+        ordId="sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+        capability="receive-materials"
+        useCase="Inventory teams update stock levels and material locations upon delivery verification."/>
+  
+  <step id="s5" 
+        label="Assess incident impact on fulfillment"
+        description="Review incident resolution metrics to identify service disruptions affecting order fulfillment operations."
+        ordId="sap.crm:dataProduct:IncidentResolutionMetrics:v1"
+        capability="assess-incident-impact"
+        useCase="Operations managers monitor unresolved incidents that may delay material or order processing."/>
+  
+  <step id="s6" 
+        label="Orchestrate engineering changes to resources"
+        description="Coordinate equipment modifications and process changes required to support new material specifications or customer requirements."
+        ordId="sap.s4:agent:EngineeringChangeOrchestrator:v1"
+        capability="orchestrate-engineering-changes"
+        useCase="Engineering teams implement material or process changes to maintain fulfillment capability."/>
+  
+  <step id="s7" 
+        label="Manage equipment and service requests"
+        description="Track equipment changes and maintenance service tickets to ensure production systems remain operational for fulfillment."
+        ordId="my.mes:apiResource:EquipmentChangeAndServiceManagement:v1"
+        capability="manage-equipment-services"
+        useCase="IT Service Management ensures manufacturing equipment stays operational for order fulfillment."/>
+  
+  <step id="s8" 
+        label="Align workforce compensation with fulfillment capacity"
+        description="Review employee compensation structures to ensure adequate staffing levels and incentives for fulfillment demand."
+        ordId="workday.hcm:apiResource:CompensationStructureDataExposure:v1"
+        capability="align-workforce-compensation"
+        useCase="Finance and HR teams ensure labor costs and staffing align with forecasted order fulfillment volumes."/>
+  
+  <!-- Sequence Flow: Linear progression through fulfillment lifecycle -->
+  <sequenceFlow from="s1" to="s2" label="Materials sourced → Order enrichment"/>
+  <sequenceFlow from="s2" to="s3" label="Order context gathered → Compliance check"/>
+  <sequenceFlow from="s3" to="s4" label="Materials approved → Receipt registration"/>
+  <sequenceFlow from="s4" to="s5" label="Materials received → Incident assessment"/>
+  <sequenceFlow from="s5" to="s6" label="Disruptions identified → Engineering remediation"/>
+  <sequenceFlow from="s6" to="s7" label="Changes orchestrated → Equipment verification"/>
+  <sequenceFlow from="s7" to="s8" label="Systems operational → Capacity planning"/>
+  
+</process>

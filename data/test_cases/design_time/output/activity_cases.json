@@ -1,0 +1,2162 @@
+[
+  {
+    "case_id": "proc_001_s01",
+    "process_id": "proc_001",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Request Production Schedule Adjustment \u2014 Initiate a change request to modify production orders based on demand forecasting or supply constraints.",
+    "expected_ordId": "sap.crm:apiResource:MachineProductionOrderIntegration:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_001_s02",
+    "process_id": "proc_001",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Assess Hazardous Material Impact \u2014 Evaluate whether the production change affects handling, storage, or declaration of regulated hazardous substances in the manufacturing process.",
+    "expected_ordId": "siemens.plm:apiResource:HazardousSubstanceComplianceAndTrackingManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_001_s03",
+    "process_id": "proc_001",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Verify Employee Safety Requirements \u2014 Confirm that affected manufacturing personnel meet updated occupational health and safety certifications required for the modified production process.",
+    "expected_ordId": "sap.sf:apiResource:SafetyComplianceCampaignAndCustomerEngagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_001_s04",
+    "process_id": "proc_001",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Orchestrate Engineering Change Order \u2014 Coordinate design and technical specifications for the production modification across engineering, manufacturing, and quality systems.",
+    "expected_ordId": "sap.s4:agent:EngineeringChangeOrchestrator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_001_s05",
+    "process_id": "proc_001",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Document Engineering Change Formally \u2014 Create and publish formal engineering change records to establish traceability and maintain product configuration management.",
+    "expected_ordId": "siemens.plm:apiResource:EngineringChangeManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_001_s06",
+    "process_id": "proc_001",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Coordinate Procurement and Supplier Adjustments \u2014 Update purchase orders and vendor commitments to align supplier delivery schedules and material specifications with the modified production plan.",
+    "expected_ordId": "my.mes:apiResource:SupplierProcurementOrderManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_001_s07",
+    "process_id": "proc_001",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Orchestrate Production Implementation \u2014 Coordinate material flow, machine configuration, and process sequencing to execute the approved engineering and procurement changes on the production line.",
+    "expected_ordId": "my.mes:agent:ProductionChangeOrchestrator:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_001_s08",
+    "process_id": "proc_001",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Adjust Compensation for Modified Workload \u2014 Recalculate employee compensation and incentives based on revised labor allocation, shift assignments, or skill premium requirements for the modified production roles.",
+    "expected_ordId": "sap.sf:apiResource:CompensationAndSalaryManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_002_s01",
+    "process_id": "proc_002",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Analyze product cost and complexity impact \u2014 Evaluate newly proposed materials and product designs against cost and complexity benchmarks to identify optimization opportunities.",
+    "expected_ordId": "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_002_s02",
+    "process_id": "proc_002",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Retrieve qualified materials and vendor catalogs \u2014 Access the approved material and vendor qualification database to identify pre-vetted procurement sources.",
+    "expected_ordId": "sap.sf:apiResource:MaterialAndVendorProcurementIntegration:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_002_s03",
+    "process_id": "proc_002",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Orchestrate material and vendor qualification workflow \u2014 Coordinate multi-step vendor evaluation and material certification processes to ensure compliance and quality standards.",
+    "expected_ordId": "siemens.plm:agent:MaterialAndVendorQualificationOrchestrator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_002_s04",
+    "process_id": "proc_002",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Validate bill of materials cost and compliance \u2014 Audit the complete bill of materials against cost thresholds, regulatory requirements, and material compliance standards.",
+    "expected_ordId": "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_002_s05",
+    "process_id": "proc_002",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Process engineering change requests and product updates \u2014 Manage and route engineering change notices through approval workflows and update affected product configurations.",
+    "expected_ordId": "sap.ariba:apiResource:EngineeringChangeAndProductItemManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_002_s06",
+    "process_id": "proc_002",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Create and approve purchase orders with vendor contracts \u2014 Generate and transmit purchase orders to qualified vendors with negotiated terms, pricing, and delivery schedules.",
+    "expected_ordId": "sap.crm:apiResource:ProcurementVendorOrderManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_002_s07",
+    "process_id": "proc_002",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Monitor incident and safety compliance during fulfillment \u2014 Track supplier performance incidents and safety metrics to ensure vendor compliance and early issue resolution.",
+    "expected_ordId": "corp.itsm:dataProduct:IncidentEngagementReliability:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_002_s08",
+    "process_id": "proc_002",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Dashboard incident resolution and compliance performance \u2014 Report on safety incident resolution times and vendor compliance performance to identify systemic procurement quality trends.",
+    "expected_ordId": "sap.sf:dataProduct:IncidentResolutionAndComplianceAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_003_s01",
+    "process_id": "proc_003",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Receive and validate customer order \u2014 Capture incoming customer order and verify fulfillment eligibility against customer master data and order history.",
+    "expected_ordId": "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_003_s02",
+    "process_id": "proc_003",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Analyze vendor spend and procurement strategy \u2014 Review historical spend patterns and vendor performance to optimize material sourcing decisions for the order.",
+    "expected_ordId": "corp.itsm:dataProduct:VendorSpendIntelligence:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_003_s03",
+    "process_id": "proc_003",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Procure required materials from vendors \u2014 Execute purchase orders with selected vendors and manage vendor relationships to ensure material availability.",
+    "expected_ordId": "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_003_s04",
+    "process_id": "proc_003",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Coordinate vendor delivery and inventory intake \u2014 Manage purchase order fulfillment and vendor communication to ensure materials arrive on schedule for production.",
+    "expected_ordId": "corp.itsm:apiResource:ProcurementVendorManagementAPI:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_003_s05",
+    "process_id": "proc_003",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Release production order to manufacturing \u2014 Translate customer order into production order and allocate machines and resources to begin manufacturing.",
+    "expected_ordId": "sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_003_s06",
+    "process_id": "proc_003",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Execute engineering change management \u2014 Assess and apply any material or design modifications required during production to align with customer specifications or standards.",
+    "expected_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_003_s07",
+    "process_id": "proc_003",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Allocate workforce and manage payroll impact \u2014 Assign production staff to manufacturing tasks and calculate labor costs to support accurate order costing and payroll processing.",
+    "expected_ordId": "workday.hcm:apiResource:PayrollDataExposure:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_003_s08",
+    "process_id": "proc_003",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Investigate production incidents and root causes \u2014 Identify and resolve safety or operational issues that arise during manufacturing to maintain schedule and prevent recurrence.",
+    "expected_ordId": "sap.ehs:agent:IncidentRootCauseAnalyzer:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_004_s01",
+    "process_id": "proc_004",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Identify hazardous substances in operations \u2014 Review and catalog all hazardous materials currently used in manufacturing and facility operations.",
+    "expected_ordId": "my.mes:apiResource:HazardousSubstanceComplianceManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_004_s02",
+    "process_id": "proc_004",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Assess employee safety exposure and compensation impact \u2014 Evaluate workforce members exposed to hazardous substances and determine if compensation adjustments or hazard pay is warranted.",
+    "expected_ordId": "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_004_s03",
+    "process_id": "proc_004",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Plan safety equipment maintenance and upgrades \u2014 Request changes and service tickets for protective equipment and engineering controls needed to mitigate hazardous substance exposure.",
+    "expected_ordId": "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_004_s04",
+    "process_id": "proc_004",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Order compliant safety materials from vendors \u2014 Create purchase orders with qualified vendors for safety equipment and supplies that meet regulatory compliance standards.",
+    "expected_ordId": "sap.ehs:apiResource:VendorSafetyComplianceOrders:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_004_s05",
+    "process_id": "proc_004",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Manage employee time-off for safety training and recovery \u2014 Process time-off requests and balance entitlements for employees attending mandatory safety training or recovering from hazard-related incidents.",
+    "expected_ordId": "workday.hcm:apiResource:TimeOffBalanceManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_004_s06",
+    "process_id": "proc_004",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Coordinate product and material changes for safety \u2014 Align engineering changes and material substitutions with safety requirements to eliminate or reduce hazardous substances in products.",
+    "expected_ordId": "sap.crm:agent:SalesProductChangeCoordinator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_004_s07",
+    "process_id": "proc_004",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Execute customer safety programs and regulatory reporting \u2014 Launch safety campaigns and prepare regulatory documentation communicating hazard controls and compliance status to customers and authorities.",
+    "expected_ordId": "sap.s4:apiResource:SafetyComplianceCustomerEngagementAPI:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_004_s08",
+    "process_id": "proc_004",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Review employee safety performance and competency \u2014 Evaluate employee performance against safety competencies and hazardous substance handling protocols as part of performance review cycles.",
+    "expected_ordId": "sap.sf:agent:PerformanceReviewCycleCoordinator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_005_s01",
+    "process_id": "proc_005",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Validate Bill of Materials Compliance \u2014 Ensure all product components meet engineering standards and regulatory requirements before manufacturing begins.",
+    "expected_ordId": "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_005_s02",
+    "process_id": "proc_005",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Evaluate Material Sourcing Options \u2014 Identify approved vendors and assess material availability for all components in the validated BOM.",
+    "expected_ordId": "sap.sf:apiResource:MaterialAndVendorProcurementIntegration:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_005_s03",
+    "process_id": "proc_005",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Calculate Material Cost Impact \u2014 Determine financial implications of material selections and invoice-based historical pricing metrics.",
+    "expected_ordId": "siemens.plm:dataProduct:MaterialInvoiceFinancialMetrics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_005_s04",
+    "process_id": "proc_005",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Negotiate and Finalize Vendor Contracts \u2014 Coordinate with selected vendors to establish purchase orders and contractual terms aligned with procurement strategy.",
+    "expected_ordId": "emarsys.cx:agent:VendorContractJourneyCoordinator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_005_s05",
+    "process_id": "proc_005",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Plan Manufacturing and Equipment Allocation \u2014 Verify manufacturing equipment readiness and schedule production capacity based on workforce availability and maintenance requirements.",
+    "expected_ordId": "sap.s4:apiResource:WorkforceCapacityAndTimeOffManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_005_s06",
+    "process_id": "proc_005",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Manage Manufacturing Equipment Readiness \u2014 Conduct equipment service reviews, document any change requests, and resolve outstanding maintenance or configuration issues.",
+    "expected_ordId": "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_005_s07",
+    "process_id": "proc_005",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Process Initial Customer Orders \u2014 Activate order fulfillment workflows for early adopter customers and validate inventory allocation.",
+    "expected_ordId": "emarsys.cx:apiResource:OrderFulfillmentServiceAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_005_s08",
+    "process_id": "proc_005",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Launch Product Marketing Campaign \u2014 Engage target customer accounts with campaign messaging and coordinate promotional activities across sales channels.",
+    "expected_ordId": "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_007_s01",
+    "process_id": "proc_007",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Receive and log service request \u2014 Capture incoming service or change request from customers or internal stakeholders into the system.",
+    "expected_ordId": "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_007_s02",
+    "process_id": "proc_007",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Assess campaign performance impact \u2014 Analyze historical campaign data and customer segmentation to determine if the request affects active marketing initiatives.",
+    "expected_ordId": "emarsys.cx:dataProduct:CampaignPerformanceAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_007_s03",
+    "process_id": "proc_007",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Evaluate organizational approval requirements \u2014 Determine the required approval chain based on employee hierarchy and workforce organizational structure.",
+    "expected_ordId": "sap.s4:apiResource:WorkforceOrgStructureAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_007_s04",
+    "process_id": "proc_007",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Identify equipment and vendor dependencies \u2014 Cross-reference materials, vendors, and procurement requirements needed to implement the change.",
+    "expected_ordId": "sap.ariba:apiResource:MaterialAndVendorProcurementAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_007_s05",
+    "process_id": "proc_007",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Log formal change request and engineering review \u2014 Register the change formally in PLM system and route to engineering teams for technical feasibility assessment.",
+    "expected_ordId": "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_007_s06",
+    "process_id": "proc_007",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Execute quality assurance and defect prevention checks \u2014 Run automated quality gates and production order validation to ensure change will not degrade manufacturing or service operations.",
+    "expected_ordId": "siemens.plm:agent:QualityAssuranceAndDefectPrevention:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_007_s07",
+    "process_id": "proc_007",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Coordinate incident response and stakeholder notification \u2014 Activate incident response protocols and notify all affected stakeholders of the planned change window and rollback procedures.",
+    "expected_ordId": "sap.ehs:agent:IncidentResponseCoordinator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_007_s08",
+    "process_id": "proc_007",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Process time-off approvals for change window coverage \u2014 Ensure adequate staffing by processing employee time-off requests and confirming personnel availability during change implementation.",
+    "expected_ordId": "workday.hcm:apiResource:EmployeeTimeOffRequestManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_008_s01",
+    "process_id": "proc_008",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Receive and validate customer order \u2014 Capture incoming customer orders and validate order completeness against account eligibility criteria.",
+    "expected_ordId": "sap.s4:apiResource:CustomerOrderManagementAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_008_s02",
+    "process_id": "proc_008",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Evaluate customer engagement state \u2014 Check customer journey status and campaign participation to determine personalized fulfillment approach.",
+    "expected_ordId": "emarsys.cx:apiResource:JourneyContactStateAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_008_s03",
+    "process_id": "proc_008",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Verify hazardous materials compliance \u2014 Validate that ordered materials meet regulatory compliance requirements for hazardous substance handling.",
+    "expected_ordId": "emarsys.cx:apiResource:HazardousSubstanceComplianceManagementAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_008_s04",
+    "process_id": "proc_008",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Qualify and assign service provider \u2014 Identify and validate qualified suppliers or service partners for order fulfillment based on service level requirements.",
+    "expected_ordId": "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_008_s05",
+    "process_id": "proc_008",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Review safety and incident history \u2014 Analyze supplier and fulfillment partner safety performance and incident records to mitigate delivery risk.",
+    "expected_ordId": "sap.sf:dataProduct:IncidentResolutionAndComplianceAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_008_s06",
+    "process_id": "proc_008",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Orchestrate contract and purchase terms \u2014 Activate vendor contract terms and generate purchase order with negotiated pricing and delivery conditions.",
+    "expected_ordId": "siemens.plm:agent:VendorContractLifecycleOrchestrator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_008_s07",
+    "process_id": "proc_008",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Calculate financial engagement impact \u2014 Analyze order value, invoice timing, and material costs to assess financial health and customer lifetime value.",
+    "expected_ordId": "emarsys.cx:dataProduct:FinancialEngagementMetrics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_008_s08",
+    "process_id": "proc_008",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Approve fulfillment and schedule resource time \u2014 Authorize order fulfillment and reserve employee capacity and time allocations for delivery execution.",
+    "expected_ordId": "workday.hcm:apiResource:TimeOffBalanceManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_009_s01",
+    "process_id": "proc_009",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Receive and Log Customer Service Request \u2014 Capture incoming customer orders and service tickets to initiate the supply chain workflow.",
+    "expected_ordId": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_009_s02",
+    "process_id": "proc_009",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Assess Vendor and Material Compliance Risk \u2014 Evaluate compliance and safety risks associated with requested materials and vendors before procurement.",
+    "expected_ordId": "emarsys.cx:apiResource:ComplianceRiskAssessmentAPI:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_009_s03",
+    "process_id": "proc_009",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Identify Suitable Vendors and Materials \u2014 Source compliant vendors and materials from the procurement database that meet operational and safety standards.",
+    "expected_ordId": "sap.ariba:apiResource:MaterialAndVendorProcurementData:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_009_s04",
+    "process_id": "proc_009",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Validate Supply Chain Continuity \u2014 Confirm vendor capacity, material availability, and supply chain resilience for the procurement request.",
+    "expected_ordId": "emarsys.cx:apiResource:VendorMaterialSupplyChainAPI:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_009_s05",
+    "process_id": "proc_009",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Analyze Production Incidents and Safety Records \u2014 Review historical incident and safety data for materials and vendors to identify operational risks.",
+    "expected_ordId": "sap.s4:dataProduct:IncidentSafetyAnalyticsHub:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_009_s06",
+    "process_id": "proc_009",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Assess Production Workforce and Capacity \u2014 Evaluate workforce capability, staffing levels, and production capacity to deliver the ordered materials on time.",
+    "expected_ordId": "sap.sf:apiResource:WorkforceProductionCapabilityManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_009_s07",
+    "process_id": "proc_009",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Review Employee Compensation and Labor Costs \u2014 Confirm workforce compensation structures are aligned with labor cost budgets for the procurement order execution.",
+    "expected_ordId": "workday.hcm:apiResource:CompensationStructureDataExposure:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_009_s08",
+    "process_id": "proc_009",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Provision Access and Execute Order \u2014 Grant system access permissions and orchestrate the final order fulfillment across all stakeholder systems.",
+    "expected_ordId": "corp.itsm:agent:AccessProvisioningOrchestrator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_010_s01",
+    "process_id": "proc_010",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Receive and Log Service Request \u2014 Capture incoming service tickets and change requests from customers or internal teams into a centralized management system.",
+    "expected_ordId": "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_010_s02",
+    "process_id": "proc_010",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Analyze Change Impact and Materials \u2014 Evaluate engineering changes required to resolve the service issue and identify materials needed for remediation.",
+    "expected_ordId": "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_010_s03",
+    "process_id": "proc_010",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Convert Service to Sales Opportunity \u2014 Transform the service request into a revenue-generating sales opportunity if additional products or services are needed.",
+    "expected_ordId": "sap.s4:agent:OpportunityToOrderAutomationEngine:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_010_s04",
+    "process_id": "proc_010",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Assess Equipment and Production Impact \u2014 Evaluate current machine status and production order schedules to understand operational impact and prioritize resolution urgency.",
+    "expected_ordId": "sap.s4:apiResource:ProductionPerformanceAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_010_s05",
+    "process_id": "proc_010",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Allocate Workforce and Schedule Resources \u2014 Identify available technicians and schedule them to address the service ticket based on urgency and resource availability.",
+    "expected_ordId": "workday.hcm:apiResource:PayrollProcessingDataManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_010_s06",
+    "process_id": "proc_010",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Adjust Compensation for Emergency Response \u2014 Apply bonus or overtime compensation rules for technicians assigned to high-priority urgent service requests.",
+    "expected_ordId": "workday.hcm:agent:CompensationAdjustmentAutomation:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_010_s07",
+    "process_id": "proc_010",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Validate Compensation Against Policy \u2014 Ensure all compensation adjustments comply with company compensation policies and regulatory requirements before finalization.",
+    "expected_ordId": "sap.sf:agent:CompensationPolicyAutomationEngine:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_010_s08",
+    "process_id": "proc_010",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Generate Analytics and Impact Report \u2014 Produce comprehensive analytics on service resolution, equipment maintenance patterns, and change impact for continuous improvement and decision-making.",
+    "expected_ordId": "my.mes:dataProduct:EquipmentMaintenanceAndChangeImpactAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_011_s01",
+    "process_id": "proc_011",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Evaluate hazardous substance compliance \u2014 Determine if product materials contain regulated hazardous substances that require documentation and mitigation strategies.",
+    "expected_ordId": "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_011_s02",
+    "process_id": "proc_011",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Validate bill of materials against engineering standards \u2014 Ensure all component materials in the product structure comply with engineering specifications and material safety requirements.",
+    "expected_ordId": "my.mes:agent:BillOfMaterialsComplianceValidator:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_011_s03",
+    "process_id": "proc_011",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Coordinate safety compliance automation \u2014 Execute automated safety assessments and coordinate compliance checks across all product engineering changes and material selections.",
+    "expected_ordId": "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_011_s04",
+    "process_id": "proc_011",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Analyze material economics and regulatory impact \u2014 Assess the cost implications and regulatory requirements associated with selected materials and engineering changes.",
+    "expected_ordId": "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_011_s05",
+    "process_id": "proc_011",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Coordinate purchase orders with vendor compliance \u2014 Verify that purchase orders align with vendor capabilities and material compliance requirements before procurement execution.",
+    "expected_ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_011_s06",
+    "process_id": "proc_011",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Schedule production and machine resources \u2014 Allocate production orders and machine capacity based on validated material compliance and manufacturing capability requirements.",
+    "expected_ordId": "sap.s4:apiResource:ProductionOrderAndMachineScheduling:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_011_s07",
+    "process_id": "proc_011",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Monitor safety incident trends and resolution \u2014 Track and analyze safety incidents related to material handling and production to identify systemic compliance risks.",
+    "expected_ordId": "sap.crm:dataProduct:IncidentResolutionMetrics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_011_s08",
+    "process_id": "proc_011",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Assess employee capability and performance \u2014 Evaluate whether production team members have the skills and training necessary to handle compliant materials and updated processes safely.",
+    "expected_ordId": "sap.sf:dataProduct:EmployeePerformanceTrendAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_012_s01",
+    "process_id": "proc_012",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Receive and validate inbound materials \u2014 Verify that raw materials and components from suppliers meet quality standards and inventory requirements before production.",
+    "expected_ordId": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_012_s02",
+    "process_id": "proc_012",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Assess product engineering changes \u2014 Evaluate engineering change requests and their impact on material specifications and product item configurations for the new product line.",
+    "expected_ordId": "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_012_s03",
+    "process_id": "proc_012",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Manage engineering change documentation \u2014 Create and maintain engineering change records and updated product item master data to reflect approved modifications.",
+    "expected_ordId": "sap.sf:apiResource:EngineeringChangeAndProductItemManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_012_s04",
+    "process_id": "proc_012",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Monitor service delivery operational readiness \u2014 Track change requests and IT equipment readiness to ensure infrastructure and support systems are prepared for product launch.",
+    "expected_ordId": "emarsys.cx:dataProduct:ServiceDeliveryOperationalInsights:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_012_s05",
+    "process_id": "proc_012",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Assess workplace safety for production \u2014 Evaluate hazardous substance handling and potential safety incidents in the manufacturing environment before full production begins.",
+    "expected_ordId": "workday.hcm:agent:SafetyIncidentAutomationOrchestrator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_012_s06",
+    "process_id": "proc_012",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Align sales team capabilities \u2014 Identify and assign sales employees with appropriate skills and hierarchy positioning to support the product launch strategy.",
+    "expected_ordId": "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_012_s07",
+    "process_id": "proc_012",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Analyze sales compensation impact \u2014 Review compensation structures and performance metrics for sales team to ensure incentive alignment with new product launch targets.",
+    "expected_ordId": "sap.crm:dataProduct:SalesCompensationPerformanceAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_012_s08",
+    "process_id": "proc_012",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Enrich customer orders with launch details \u2014 Populate customer accounts and orders with product launch information, pricing, and availability to enable seamless order processing.",
+    "expected_ordId": "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_013_s01",
+    "process_id": "proc_013",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Assess Engineering Change Impact \u2014 Evaluate material and product changes to determine safety and operational implications before transition execution.",
+    "expected_ordId": "corp.itsm:agent:AssetProvisioningOrchestrator:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_013_s02",
+    "process_id": "proc_013",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Evaluate Operational Capability for Transition \u2014 Analyze production capacity, material availability, and resource readiness to support the proposed product and material changes.",
+    "expected_ordId": "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_013_s03",
+    "process_id": "proc_013",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Coordinate Safety Risk Assessment \u2014 Identify and classify safety hazards related to new materials or process changes triggered by the engineering transition.",
+    "expected_ordId": "corp.itsm:agent:IncidentSafetyCoordinator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_013_s04",
+    "process_id": "proc_013",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Collect Safety Performance Metrics \u2014 Aggregate baseline safety incident data and metrics to establish pre-transition safety baseline for comparison.",
+    "expected_ordId": "corp.itsm:dataProduct:SafetyIncidentMetrics:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_013_s05",
+    "process_id": "proc_013",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Validate Vendor Service Readiness \u2014 Confirm that contracted vendors and external service providers can support the new IT equipment, change requests, and service tickets required for transition.",
+    "expected_ordId": "sap.ariba:apiResource:VendorServiceManagementAPI:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_013_s06",
+    "process_id": "proc_013",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Plan Sales Team Capacity and Availability \u2014 Coordinate sales workforce time off and capacity allocation to ensure coverage during product transition announcement and customer communication phase.",
+    "expected_ordId": "emarsys.cx:apiResource:SalesCapacityAndTimeOffManagementAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_013_s07",
+    "process_id": "proc_013",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Project Sales Opportunity Impact \u2014 Forecast revenue and opportunity pipeline changes resulting from the product transition using historical sales and customer data.",
+    "expected_ordId": "emarsys.cx:dataProduct:OpportunitySalesForecasting:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_013_s08",
+    "process_id": "proc_013",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Monitor Production Quality During Transition \u2014 Establish quality inspection benchmarks and workforce performance targets to detect anomalies as manufacturing executes the product transition.",
+    "expected_ordId": "sap.ehs:dataProduct:ProductionQualityWorkforcePerformanceAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_014_s01",
+    "process_id": "proc_014",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Assess organizational readiness for product transition \u2014 Evaluate workforce capability, skill gaps, and change management readiness across affected departments before initiating product line changes.",
+    "expected_ordId": "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_014_s02",
+    "process_id": "proc_014",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Validate hazardous substance compliance requirements \u2014 Confirm that all materials and substances in the new product formulation meet regulatory standards and safety guidelines across all jurisdictions.",
+    "expected_ordId": "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_014_s03",
+    "process_id": "proc_014",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Analyze material and procurement impact \u2014 Review sourcing costs, supplier availability, and invoice patterns for new materials required in the transitioned product.",
+    "expected_ordId": "sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_014_s04",
+    "process_id": "proc_014",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Execute production line reconfiguration \u2014 Initiate machine setup, production order scheduling, and manufacturing workflow adjustments on the factory floor.",
+    "expected_ordId": "sap.s4:apiResource:ProductionExecutionAPI:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_014_s05",
+    "process_id": "proc_014",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Orchestrate market compliance and customer campaign messaging \u2014 Coordinate regulatory-compliant marketing campaigns and customer communication to ensure consistent, safe product transition messaging across all channels.",
+    "expected_ordId": "sap.ehs:agent:ComplianceCampaignOrchestrator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_014_s06",
+    "process_id": "proc_014",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Segment customer accounts and target campaign cohorts \u2014 Identify and group customer segments most suited for the transitioned product, then configure personalized campaign strategies per account tier.",
+    "expected_ordId": "emarsys.cx:apiResource:CustomerAccountCampaignManagementAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_014_s07",
+    "process_id": "proc_014",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Automate compensation structure adjustments for new roles \u2014 Recalibrate employee salary bands, incentive structures, and benefits for workers transitioning to new product line responsibilities.",
+    "expected_ordId": "workday.hcm:agent:CompensationStructureAutomationEngine:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_014_s08",
+    "process_id": "proc_014",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Validate employee compensation alignment and labor cost forecasts \u2014 Confirm that adjusted compensation budgets remain within approved thresholds and that workforce labor costs are accurately reflected in the transition financial model.",
+    "expected_ordId": "sap.sf:apiResource:EmployeeCompensationManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_015_s01",
+    "process_id": "proc_015",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Initiate Campaign and Customer Engagement \u2014 Launch a new product campaign and provision customer accounts to establish market engagement baseline.",
+    "expected_ordId": "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_015_s02",
+    "process_id": "proc_015",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Identify and Evaluate Qualified Vendors \u2014 Search and profile approved vendors in the procurement network to support campaign fulfillment requirements.",
+    "expected_ordId": "sap.ariba:apiResource:SourcedCampaignAndVendorManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_015_s03",
+    "process_id": "proc_015",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Certify Materials and Regulatory Compliance \u2014 Validate hazardous substances and regulatory declarations for materials used in production.",
+    "expected_ordId": "siemens.plm:apiResource:HazardousSubstanceComplianceAndTrackingManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_015_s04",
+    "process_id": "proc_015",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Orchestrate Material and Vendor Qualification \u2014 Coordinate multi-criteria qualification of materials and vendors against campaign and compliance requirements.",
+    "expected_ordId": "siemens.plm:agent:MaterialAndVendorQualificationOrchestrator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_015_s05",
+    "process_id": "proc_015",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Execute Procurement Purchase Orders \u2014 Create and manage vendor purchase orders for campaign materials and production components.",
+    "expected_ordId": "corp.itsm:apiResource:VendorProcurementOrderAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_015_s06",
+    "process_id": "proc_015",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Manage Sourcing Campaign and Account Changes \u2014 Update sourcing strategies and account relationships as campaign scope and vendor performance evolve.",
+    "expected_ordId": "sap.ariba:apiResource:SourceingCampaignAndAccountManagementAPI:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_015_s07",
+    "process_id": "proc_015",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Request and Track Production Orders \u2014 Translate campaign demand into machine production orders and monitor manufacturing execution.",
+    "expected_ordId": "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_015_s08",
+    "process_id": "proc_015",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Register Change and Compliance Incidents \u2014 Log service tickets, change requests, and IT equipment modifications required by production compliance audit trail.",
+    "expected_ordId": "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_016_s01",
+    "process_id": "proc_016",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Retrieve Customer Account and Order Context \u2014 Load customer accounts and associated orders to establish the baseline scope for compliance evaluation.",
+    "expected_ordId": "sap.crm:apiResource:CustomerAccountDisputeManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_016_s02",
+    "process_id": "proc_016",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Validate Bill of Materials Compliance \u2014 Verify that all product components in the bill of materials meet current regulatory and engineering standards.",
+    "expected_ordId": "siemens.plm:agent:BOMComplianceValidator:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_016_s03",
+    "process_id": "proc_016",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Assess Hazardous Substance Restrictions \u2014 Confirm that product materials and components comply with hazardous substance regulations and customer-specific restrictions.",
+    "expected_ordId": "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_016_s04",
+    "process_id": "proc_016",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Analyze Material Change Readiness and Workforce Impact \u2014 Evaluate engineering changes and material modifications to determine organizational readiness and required workforce adjustments.",
+    "expected_ordId": "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_016_s05",
+    "process_id": "proc_016",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Assess Employee Safety Performance and Risk Profile \u2014 Review workforce safety trends and performance metrics to identify potential risks associated with production changes.",
+    "expected_ordId": "sap.ehs:dataProduct:EmployeeSafetyPerformanceTrendingAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_016_s06",
+    "process_id": "proc_016",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Coordinate Performance Review Cycle Adjustments \u2014 Align employee performance reviews with competency requirements for new products and process methodologies.",
+    "expected_ordId": "sap.sf:agent:PerformanceReviewCycleCoordinator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_016_s07",
+    "process_id": "proc_016",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Evaluate Production Quality and Yield Impact \u2014 Analyze historical quality and yield data to project production performance under new material and process conditions.",
+    "expected_ordId": "sap.s4:dataProduct:ProductionQualityYieldAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_016_s08",
+    "process_id": "proc_016",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Retrieve Vendor and Campaign Account Information \u2014 Consolidate vendor capabilities and campaign-linked customer accounts to finalize compliance and readiness approvals.",
+    "expected_ordId": "corp.itsm:apiResource:VendorCampaignAccountRetrievalAPI:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_018_s01",
+    "process_id": "proc_018",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Retrieve employee payroll baseline \u2014 Extract current payroll records and compensation data for all active employees to establish the baseline for compensation analysis.",
+    "expected_ordId": "sap.s4:apiResource:EmployeePayrollDataAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_018_s02",
+    "process_id": "proc_018",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Validate organizational hierarchy and reporting structure \u2014 Confirm employee organizational placement, reporting lines, and departmental assignments to ensure compensation decisions align with organizational context.",
+    "expected_ordId": "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_018_s03",
+    "process_id": "proc_018",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Assess current benefits enrollment status \u2014 Review active benefits elections, coverage levels, and enrollment changes to understand current benefits liabilities and employee participation.",
+    "expected_ordId": "workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_018_s04",
+    "process_id": "proc_018",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Analyze procurement workforce spend patterns \u2014 Examine historical workforce-related procurement and contingent labor expenses to identify cost optimization opportunities in compensation structures.",
+    "expected_ordId": "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_018_s05",
+    "process_id": "proc_018",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Cross-reference invoice and material procurement costs \u2014 Correlate current invoice and procurement expenses with workforce allocation to understand overhead absorption and job costing implications.",
+    "expected_ordId": "sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_018_s06",
+    "process_id": "proc_018",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Evaluate manufacturing impact and engineering labor allocation \u2014 Review engineering change orders and product development initiatives to assess labor utilization and compensation adjustments for technical staff.",
+    "expected_ordId": "sap.s4:apiResource:EngineeringChangeProductDataAPI:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_018_s07",
+    "process_id": "proc_018",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Monitor workplace safety incidents affecting compensation \u2014 Identify safety-related incidents and hazardous conditions that may trigger compensation adjustments, hazard pay, or benefit changes.",
+    "expected_ordId": "workday.hcm:agent:SafetyIncidentAutomationOrchestrator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_018_s08",
+    "process_id": "proc_018",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Optimize production scheduling against workforce capacity \u2014 Align production orders and machine scheduling with workforce availability and shift planning to ensure compensation accurately reflects actual labor deployment.",
+    "expected_ordId": "sap.s4:apiResource:ProductionOrderAndMachineScheduling:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_019_s01",
+    "process_id": "proc_019",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Assess Engineering Change Impact on Workforce \u2014 Evaluate how proposed engineering changes affect production capability, workforce skills, and resource requirements across the organization.",
+    "expected_ordId": "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_019_s02",
+    "process_id": "proc_019",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Validate Equipment Modifications and Service Requirements \u2014 Confirm that equipment changes align with existing infrastructure and identify required maintenance or integration work.",
+    "expected_ordId": "my.mes:apiResource:EquipmentChangeAndServiceIntegration:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_019_s03",
+    "process_id": "proc_019",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Coordinate Workforce Performance and Capability Development \u2014 Initiate performance review cycles and capability assessments for affected employees to close identified skill gaps.",
+    "expected_ordId": "sap.sf:agent:PerformanceReviewCycleCoordinator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_019_s04",
+    "process_id": "proc_019",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Analyze Material and Supply Chain Impact \u2014 Assess material specifications, inventory levels, and vendor capabilities required to support the transition.",
+    "expected_ordId": "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_019_s05",
+    "process_id": "proc_019",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Qualif Sales Opportunities for Transition Announcement \u2014 Evaluate and prioritize sales opportunities that align with the new product capabilities and transition timeline.",
+    "expected_ordId": "sap.crm:agent:OpportunityQualificationAdvisor:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_019_s06",
+    "process_id": "proc_019",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Validate Production Impact Analysis \u2014 Cross-reference engineering change impacts with detailed production data to confirm transition feasibility.",
+    "expected_ordId": "my.mes:dataProduct:EngineeringChangeImpactAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_019_s07",
+    "process_id": "proc_019",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Execute Campaign and Customer Order Coordination \u2014 Launch coordinated customer communication campaigns and manage order intake for the transitioned product line.",
+    "expected_ordId": "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_019_s08",
+    "process_id": "proc_019",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Monitor Transition Incident Metrics and Engagement \u2014 Track operational incidents, safety issues, and customer engagement metrics during the production transition period.",
+    "expected_ordId": "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_020_s01",
+    "process_id": "proc_020",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Qualify sales opportunities for targeted engagement \u2014 Sales team needs to identify high-potential customer accounts and opportunities before initiating outreach campaigns.",
+    "expected_ordId": "sap.crm:agent:OpportunityQualificationAdvisor:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_020_s02",
+    "process_id": "proc_020",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Segment customers for personalized marketing campaigns \u2014 Marketing department requires precise customer targeting to launch tailored engagement campaigns based on account profiles and historical engagement.",
+    "expected_ordId": "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_020_s03",
+    "process_id": "proc_020",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Verify supply chain readiness for product launches \u2014 Product management and procurement need confidence that materials, vendors, and supply chain processes support planned product changes and engineering modifications.",
+    "expected_ordId": "sap.ariba:dataProduct:SupplyChainProductIntelligence:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_020_s04",
+    "process_id": "proc_020",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Automate safety compliance reviews for engineering changes \u2014 Operations and EHS teams must ensure all product and material modifications meet safety and regulatory standards before production deployment.",
+    "expected_ordId": "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_020_s05",
+    "process_id": "proc_020",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Inspect and validate manufacturing quality metrics \u2014 Quality assurance and manufacturing operations require real-time visibility into production order quality and inspection results to prevent defects and ensure consistency.",
+    "expected_ordId": "sap.s4:dataProduct:ManufacturingQualityMetricsHub:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_020_s06",
+    "process_id": "proc_020",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Evaluate procurement compliance and vendor performance \u2014 Procurement leadership needs assurance that purchase orders, contracts, and vendor relationships comply with policy and deliver expected performance.",
+    "expected_ordId": "sap.ariba:dataProduct:ContractAndProcurementComplianceAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_020_s07",
+    "process_id": "proc_020",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Reconcile workforce compensation structures across entities \u2014 Finance and compensation teams require consolidated visibility into employee compensation data across multiple business entities to ensure equity, governance, and budget accuracy.",
+    "expected_ordId": "workday.hcm:apiResource:CompensationStructureDataExposure:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_020_s08",
+    "process_id": "proc_020",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Process payroll and validate employee payment data \u2014 HR and Finance must execute timely, accurate payroll processing with full control over employee and workforce person payment records to meet regulatory and organizational requirements.",
+    "expected_ordId": "workday.hcm:apiResource:PayrollProcessingDataManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_021_s01",
+    "process_id": "proc_021",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Monitor production incidents \u2014 Detect and track equipment failures and safety incidents on the manufacturing floor to prevent disruptions.",
+    "expected_ordId": "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_021_s02",
+    "process_id": "proc_021",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Qualify and certify material suppliers \u2014 Validate that incoming vendors meet material compliance standards and safety certifications before procurement.",
+    "expected_ordId": "siemens.plm:apiResource:MaterialAndVendorQualificationManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_021_s03",
+    "process_id": "proc_021",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Assess supplier performance metrics \u2014 Analyze vendor delivery performance, quality scores, and cost competitiveness to optimize procurement decisions.",
+    "expected_ordId": "sap.ariba:dataProduct:VendorPerformanceAndSegmentationAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_021_s04",
+    "process_id": "proc_021",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Receive and inspect material shipments \u2014 Process inbound material receipts from qualified vendors and validate against purchase orders and quality standards.",
+    "expected_ordId": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_021_s05",
+    "process_id": "proc_021",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Provision materials for engineering changes \u2014 Allocate materials and coordinate production item updates when engineering change orders are released.",
+    "expected_ordId": "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_021_s06",
+    "process_id": "proc_021",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Schedule production and assign machines \u2014 Optimize production order sequencing and machine allocation to maximize utilization and meet delivery dates.",
+    "expected_ordId": "sap.s4:apiResource:ProductionOrderAndMachineScheduling:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_021_s07",
+    "process_id": "proc_021",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Execute production runs on integrated machines \u2014 Coordinate machine production order execution and monitor real-time output against planned targets.",
+    "expected_ordId": "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_021_s08",
+    "process_id": "proc_021",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Report safety and compliance status \u2014 Document production safety incidents and regulatory compliance metrics for customer engagement and audit trails.",
+    "expected_ordId": "sap.s4:apiResource:SafetyComplianceCustomerEngagementAPI:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_022_s01",
+    "process_id": "proc_022",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Assess Operational Impact of Product Change \u2014 Evaluate how engineering changes affect production capabilities, workforce skills, and material requirements across the organization.",
+    "expected_ordId": "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_022_s02",
+    "process_id": "proc_022",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Plan Workforce Scheduling for Production Shift \u2014 Adjust employee schedules and manage time-off requests to ensure adequate staffing during the product changeover period.",
+    "expected_ordId": "my.mes:apiResource:WorkforceScheduleAndAbsenceManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_022_s03",
+    "process_id": "proc_022",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Register Engineering Change and Product Item Details \u2014 Formalize the engineering change with associated product item specifications and technical documentation in the system.",
+    "expected_ordId": "sap.sf:apiResource:EngineeringChangeAndProductItemManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_022_s04",
+    "process_id": "proc_022",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Validate BOM Compliance Against New Product Structure \u2014 Automate verification that bill-of-materials aligns with engineering specifications and detect compliance violations in material sourcing.",
+    "expected_ordId": "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_022_s05",
+    "process_id": "proc_022",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Assess Supply Chain Readiness for New Materials \u2014 Analyze supplier availability, lead times, and cost implications for new or modified bill-of-material items required by the product transition.",
+    "expected_ordId": "sap.ariba:dataProduct:SupplyChainProductIntelligence:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_022_s06",
+    "process_id": "proc_022",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Update Compensation and Role Alignment for Impacted Workforce \u2014 Adjust employee compensation levels and verify role classifications align with new skill requirements and responsibilities introduced by the product change.",
+    "expected_ordId": "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_022_s07",
+    "process_id": "proc_022",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Create Service and Change Request Tickets \u2014 Generate formal change requests and service tickets to track implementation tasks, approvals, and IT/operational dependencies for the transition.",
+    "expected_ordId": "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_022_s08",
+    "process_id": "proc_022",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Document Safety and Risk Assessment for Transition \u2014 Record potential safety incidents, environmental impacts, and operational risks associated with the engineering change and manufacturing transition.",
+    "expected_ordId": "sap.ehs:apiResource:SafetyIncidentOrderManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_023_s01",
+    "process_id": "proc_023",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Analyze Engineering Change Impact and Workforce Readiness \u2014 Evaluate production transition requirements and identify skill gaps needed for successful change implementation.",
+    "expected_ordId": "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_023_s02",
+    "process_id": "proc_023",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Validate Material and Equipment Specifications \u2014 Retrieve and verify material definitions and vendor specifications impacted by the engineering change.",
+    "expected_ordId": "my.mes:apiResource:MaterialAndVendorMasterData:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_023_s03",
+    "process_id": "proc_023",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Assess Equipment Service Readiness and Dependencies \u2014 Evaluate current equipment state, service requirements, and cascading change dependencies across the production line.",
+    "expected_ordId": "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_023_s04",
+    "process_id": "proc_023",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Orchestrate Asset Provisioning for Transition \u2014 Coordinate allocation and provisioning of materials, equipment, and product items needed to support the production transition.",
+    "expected_ordId": "corp.itsm:agent:AssetProvisioningOrchestrator:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_023_s05",
+    "process_id": "proc_023",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Grant Workforce Access Permissions and Credentials \u2014 Provision system access, security credentials, and role-based permissions for transitioned workforce members.",
+    "expected_ordId": "corp.itsm:agent:AccessProvisioningOrchestrator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_023_s06",
+    "process_id": "proc_023",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Automate Change Execution and Workflow Orchestration \u2014 Execute automated workflows and change procedures across systems to implement the production transition safely.",
+    "expected_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_023_s07",
+    "process_id": "proc_023",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Segment and Engage Customer Contacts on Transition Impact \u2014 Identify affected customer segments and deploy targeted communications about production changes and timeline impacts.",
+    "expected_ordId": "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_023_s08",
+    "process_id": "proc_023",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Update Customer Engagement Profiles with Transition Status \u2014 Record customer account profiles with current transition status, affected orders, and fulfillment timeline adjustments.",
+    "expected_ordId": "emarsys.cx:apiResource:CustomerEngagementProfileAPI:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_024_s01",
+    "process_id": "proc_024",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Evaluate vendor material compliance \u2014 Validate incoming vendor invoices and material specifications against procurement and inventory standards.",
+    "expected_ordId": "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_024_s02",
+    "process_id": "proc_024",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Assess customer safety campaign readiness \u2014 Review safety compliance requirements for customer accounts and associated campaigns to identify gaps.",
+    "expected_ordId": "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_024_s03",
+    "process_id": "proc_024",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Enroll workforce in safety programs \u2014 Identify and assign employees to occupational health and safety training based on organizational hierarchy and role requirements.",
+    "expected_ordId": "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_024_s04",
+    "process_id": "proc_024",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Orchestrate production changes for material updates \u2014 Coordinate engineering changes and material updates across production systems when new compliant materials are approved.",
+    "expected_ordId": "my.mes:agent:ProductionChangeOrchestrator:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_024_s05",
+    "process_id": "proc_024",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Execute occupational health campaign deployment \u2014 Deploy safety and health awareness campaigns to employees and customer accounts using coordinated engagement strategies.",
+    "expected_ordId": "sap.sf:apiResource:SafetyComplianceCampaignAndCustomerEngagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_024_s06",
+    "process_id": "proc_024",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Analyze safety performance metrics and compensation impact \u2014 Correlate employee safety compliance with performance data to inform compensation and incentive decisions.",
+    "expected_ordId": "sap.crm:dataProduct:SalesCompensationPerformanceAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_024_s07",
+    "process_id": "proc_024",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Coordinate vendor contract safety obligations \u2014 Manage vendor contracts and purchase orders to embed safety compliance clauses and material specifications.",
+    "expected_ordId": "emarsys.cx:agent:VendorContractJourneyCoordinator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_024_s08",
+    "process_id": "proc_024",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Optimize customer safety campaign targeting \u2014 Refine customer segmentation and campaign messaging to maximize safety awareness and compliance adoption.",
+    "expected_ordId": "sap.crm:agent:CampaignAudienceOptimizationAgent:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_025_s01",
+    "process_id": "proc_025",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Initiate Engineering Change Request \u2014 Engineering team submits a change request to modify product design, materials, or manufacturing processes.",
+    "expected_ordId": "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_025_s02",
+    "process_id": "proc_025",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Validate Material and Compliance Requirements \u2014 System verifies that proposed materials meet safety standards, environmental regulations, and vendor compliance obligations.",
+    "expected_ordId": "sap.ariba:apiResource:MaterialSafetyAndVendorComplianceData:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_025_s03",
+    "process_id": "proc_025",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Check Production Workforce Readiness \u2014 Confirm that manufacturing team has required skills and production capacity to support the engineering change without disruption.",
+    "expected_ordId": "sap.sf:dataProduct:WorkforceQualityAndProductionMetrics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_025_s04",
+    "process_id": "proc_025",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Manage Employee Access and Approvals \u2014 Orchestrate role-based access provisioning and approval workflows for engineers and procurement staff involved in the change.",
+    "expected_ordId": "corp.itsm:agent:AccessProvisioningOrchestrator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_025_s05",
+    "process_id": "proc_025",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Retrieve Master Material and Vendor Data \u2014 Query current material specifications, alternate suppliers, and vendor performance metrics to support procurement planning.",
+    "expected_ordId": "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_025_s06",
+    "process_id": "proc_025",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Evaluate Supplier Qualification and Service Capability \u2014 Assess candidate suppliers",
+    "expected_ordId": "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_025_s07",
+    "process_id": "proc_025",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Create and Manage Purchase Orders \u2014 Generate purchase orders with vendors for new materials, coordinate delivery schedules, and track procurement status.",
+    "expected_ordId": "sap.crm:apiResource:ProcurementVendorOrderManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_025_s08",
+    "process_id": "proc_025",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Monitor Employee Time-Off and Staffing Continuity \u2014 Track planned absences and time-off balance to ensure sufficient staffing during material transition and production ramp-up.",
+    "expected_ordId": "workday.hcm:apiResource:TimeOffBalanceManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_026_s01",
+    "process_id": "proc_026",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Receive incoming material shipments \u2014 Validate and log all inbound materials from vendors against purchase orders to establish baseline inventory for production launch.",
+    "expected_ordId": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_026_s02",
+    "process_id": "proc_026",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Match procured materials to vendor contracts \u2014 Verify received materials align with procurement agreements and quality standards before warehouse acceptance.",
+    "expected_ordId": "sap.s4:agent:ProcurementMatchingAgent:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_026_s03",
+    "process_id": "proc_026",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Screen hazardous substance compliance \u2014 Inspect and track any hazardous materials in the shipment to ensure storage, handling, and regulatory compliance.",
+    "expected_ordId": "sap.ehs:apiResource:HazardousSubstanceStorageTracking:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_026_s04",
+    "process_id": "proc_026",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Assess engineering change impact on workforce \u2014 Analyze product design changes and engineering modifications to identify required workforce skill gaps and retraining needs.",
+    "expected_ordId": "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_026_s05",
+    "process_id": "proc_026",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Evaluate operational capability for product transition \u2014 Measure current operational capacity against new product requirements to identify process bottlenecks and capability gaps.",
+    "expected_ordId": "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_026_s06",
+    "process_id": "proc_026",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Correlate employee safety risk with transition plan \u2014 Link safety risk assessments to employee roles and compensation tiers to ensure fair allocation of high-risk transition tasks.",
+    "expected_ordId": "my.mes:dataProduct:EmployeeCompensationAndSafetyRiskCorrelation:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_026_s07",
+    "process_id": "proc_026",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Schedule employee capacity and time off adjustments \u2014 Coordinate sales team availability and adjust time-off schedules to ensure adequate staffing during product launch go-live period.",
+    "expected_ordId": "emarsys.cx:apiResource:SalesCapacityAndTimeOffManagementAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_026_s08",
+    "process_id": "proc_026",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Execute safety inspection campaign for launch readiness \u2014 Conduct comprehensive safety inspections across all production areas and supply chain touchpoints before commencing manufacturing.",
+    "expected_ordId": "sap.ehs:apiResource:SafetyInspectionCampaignManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_027_s01",
+    "process_id": "proc_027",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Initiate engineering change request \u2014 Capture and validate new product specifications and engineering modifications for market introduction.",
+    "expected_ordId": "my.mes:agent:ProductionChangeOrchestrator:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_027_s02",
+    "process_id": "proc_027",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Coordinate design review and compliance gate \u2014 Conduct cross-functional design review to ensure compliance standards before proceeding to BOM validation.",
+    "expected_ordId": "siemens.plm:agent:DesignReviewAndComplianceCoordinator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_027_s03",
+    "process_id": "proc_027",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Validate bill of materials compliance \u2014 Verify that all product components and materials comply with approved specifications and regulatory requirements.",
+    "expected_ordId": "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_027_s04",
+    "process_id": "proc_027",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Assess hazardous substance risk \u2014 Evaluate potential safety and regulatory risks associated with materials and substances in the product.",
+    "expected_ordId": "emarsys.cx:apiResource:ComplianceRiskAssessmentAPI:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_027_s05",
+    "process_id": "proc_027",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Coordinate occupational safety incident protocols \u2014 Establish safety procedures and incident response protocols for manufacturing and handling identified hazards.",
+    "expected_ordId": "corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_027_s06",
+    "process_id": "proc_027",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Validate workforce capacity and availability \u2014 Confirm adequate staffing, skills, and production capacity to execute the product launch timeline.",
+    "expected_ordId": "my.mes:apiResource:WorkforceAvailabilityAndCapacity:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_027_s07",
+    "process_id": "proc_027",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Authorize campaign and customer access \u2014 Grant controlled access permissions for marketing campaign and customer account updates to enable product launch.",
+    "expected_ordId": "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_027_s08",
+    "process_id": "proc_027",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Enrich customer order and fulfill launch \u2014 Update customer account records with new product offerings and enable order acceptance for market release.",
+    "expected_ordId": "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_029_s01",
+    "process_id": "proc_029",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Validate bill of materials compliance \u2014 Ensure all product components meet regulatory and engineering standards before manufacturing begins.",
+    "expected_ordId": "siemens.plm:agent:BOMComplianceValidator:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_029_s02",
+    "process_id": "proc_029",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Retrieve procurement and vendor specifications \u2014 Obtain current material sourcing options and certified vendor data to support BOM validation outcomes.",
+    "expected_ordId": "sap.ariba:apiResource:MaterialAndVendorProcurementData:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_029_s03",
+    "process_id": "proc_029",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Monitor workplace hazards in production materials \u2014 Identify any hazardous substances or safety risks associated with materials scheduled for production.",
+    "expected_ordId": "workday.hcm:agent:OccupationalSafetyIncidentMonitoring:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_029_s04",
+    "process_id": "proc_029",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Orchestrate asset and resource provisioning \u2014 Coordinate allocation of manufacturing equipment, tools, and infrastructure needed to execute the production plan with validated materials.",
+    "expected_ordId": "corp.itsm:agent:AssetProvisioningOrchestrator:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_029_s05",
+    "process_id": "proc_029",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Plan workforce capacity and skill allocation \u2014 Determine staffing levels and assign personnel with appropriate skills and availability to execute production safely and efficiently.",
+    "expected_ordId": "sap.sf:apiResource:EmployeeProductivityAndCapacityPlanning:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_029_s06",
+    "process_id": "proc_029",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Verify employee safety certifications and training \u2014 Confirm that assigned production staff hold current safety certifications and have completed required material-handling training.",
+    "expected_ordId": "sap.sf:apiResource:EmployeeLifecycleAndPersonnelDataManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_029_s07",
+    "process_id": "proc_029",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Coordinate compensation adjustments for hazard duty \u2014 Apply appropriate pay grades and hazard allowances for personnel assigned to handle restricted or dangerous materials.",
+    "expected_ordId": "sap.sf:apiResource:EmployeeCompensationManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_029_s08",
+    "process_id": "proc_029",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Analyze procurement and safety metrics for process improvement \u2014 Review invoice, material cost, and incident data to identify cost-saving opportunities and safety trends across the production cycle.",
+    "expected_ordId": "sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_030_s01",
+    "process_id": "proc_030",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Monitor workplace hazard events \u2014 Continuously detect and log occupational safety incidents across all facilities to establish incident baseline and trigger compliance workflows.",
+    "expected_ordId": "workday.hcm:agent:OccupationalSafetyIncidentMonitoring:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_030_s02",
+    "process_id": "proc_030",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Evaluate hazardous substance exposure \u2014 Assess chemical and material safety compliance status against regulatory standards to determine risk level and remediation requirements.",
+    "expected_ordId": "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_030_s03",
+    "process_id": "proc_030",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Analyze equipment maintenance impact \u2014 Review maintenance schedules and change requests to identify equipment-related safety risks that could contribute to incidents or compliance violations.",
+    "expected_ordId": "my.mes:dataProduct:EquipmentMaintenanceAndChangeImpactAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_030_s04",
+    "process_id": "proc_030",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Verify customer safety compliance status \u2014 Cross-reference customer accounts and campaigns against safety compliance records to ensure contractual safety obligations are met.",
+    "expected_ordId": "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_030_s05",
+    "process_id": "proc_030",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Review employee payroll and staffing impact \u2014 Examine payroll records for affected employees to assess financial and staffing implications of safety incidents or compliance remediation activities.",
+    "expected_ordId": "workday.hcm:apiResource:PayrollDataExposure:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_030_s06",
+    "process_id": "proc_030",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Check employee absence and availability \u2014 Validate employee time-off balances to ensure adequate staffing for safety remediation tasks and incident investigation activities.",
+    "expected_ordId": "workday.hcm:apiResource:TimeOffBalanceManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_030_s07",
+    "process_id": "proc_030",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Track customer engagement in compliance campaigns \u2014 Update customer contact states and campaign journey status to reflect participation in safety compliance communications and training.",
+    "expected_ordId": "emarsys.cx:apiResource:JourneyContactStateAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_030_s08",
+    "process_id": "proc_030",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Reconcile safety costs and revenue impact \u2014 Match remediation and incident costs against customer invoices and material usage to quantify financial impact of compliance activities.",
+    "expected_ordId": "sap.crm:dataProduct:CustomerInvoiceMaterialRevenueAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_031_s01",
+    "process_id": "proc_031",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Initiate customer campaign provisioning \u2014 Set up customer accounts and campaign parameters to begin the product launch initiative across target markets.",
+    "expected_ordId": "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_031_s02",
+    "process_id": "proc_031",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Qualify materials and vendors \u2014 Assess material specifications and vendor capabilities to ensure supply chain readiness for production transition.",
+    "expected_ordId": "siemens.plm:agent:MaterialAndVendorQualificationOrchestrator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_031_s03",
+    "process_id": "proc_031",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Analyze product cost and complexity \u2014 Evaluate cost drivers and technical complexity of product items to optimize manufacturing and logistics strategy.",
+    "expected_ordId": "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_031_s04",
+    "process_id": "proc_031",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Retrieve engineering change specifications \u2014 Obtain detailed engineering change orders and product item data to ensure manufacturing teams have current specifications.",
+    "expected_ordId": "sap.s4:apiResource:EngineeringChangeProductDataAPI:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_031_s05",
+    "process_id": "proc_031",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Assess material change readiness and workforce impact \u2014 Evaluate how material changes affect production workflows and identify workforce training and redeployment needs.",
+    "expected_ordId": "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_031_s06",
+    "process_id": "proc_031",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Evaluate production transition capability and skill requirements \u2014 Analyze production capacity, skill gaps, and workforce readiness against engineering changes to validate launch feasibility.",
+    "expected_ordId": "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_031_s07",
+    "process_id": "proc_031",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Monitor employee performance against manufacturing standards \u2014 Track production quality metrics and employee performance to ensure manufacturing execution meets launch targets.",
+    "expected_ordId": "sap.sf:dataProduct:WorkforceQualityAndProductionMetrics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_031_s08",
+    "process_id": "proc_031",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Orchestrate sales compensation adjustments \u2014 Calculate and apply compensation adjustments based on successful product launch performance and sales achievements.",
+    "expected_ordId": "sap.crm:agent:SalesCompensationOrchestrator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_032_s01",
+    "process_id": "proc_032",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Initiate engineering change request \u2014 Engineering teams submit product design changes that require cross-functional impact assessment and resource allocation.",
+    "expected_ordId": "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_032_s02",
+    "process_id": "proc_032",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Validate material and product impact \u2014 Assess how proposed engineering changes affect bill of materials, product configurations, and inventory requirements.",
+    "expected_ordId": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_032_s03",
+    "process_id": "proc_032",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Analyze change business impact \u2014 Generate operational insights and impact projections across product portfolio to inform stakeholder decision-making.",
+    "expected_ordId": "sap.crm:dataProduct:ProductChangeImpactAnalytics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_032_s04",
+    "process_id": "proc_032",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Update product item specifications \u2014 Formalize engineering change documentation by updating product item master data and change control records.",
+    "expected_ordId": "sap.sf:apiResource:EngineeringChangeAndProductItemManagement:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_032_s05",
+    "process_id": "proc_032",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Evaluate workforce compensation impact \u2014 Determine if engineering changes trigger skill requirement shifts, incentive plan adjustments, or workforce redeployment needs.",
+    "expected_ordId": "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_032_s06",
+    "process_id": "proc_032",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Orchestrate talent acquisition campaign \u2014 Launch targeted recruitment campaigns to source specialized skills required by the product change initiative.",
+    "expected_ordId": "sap.sf:agent:TalentAcquisitionCampaignOrchestrator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_032_s07",
+    "process_id": "proc_032",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Manage campaign access and targeting \u2014 Configure campaign permissions, audience segmentation, and communication channels for recruitment campaign execution.",
+    "expected_ordId": "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_032_s08",
+    "process_id": "proc_032",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Monitor service delivery impact \u2014 Track operational performance metrics, service ticket trends, and IT equipment utilization against change implementation timeline.",
+    "expected_ordId": "emarsys.cx:dataProduct:ServiceDeliveryOperationalInsights:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_033_s01",
+    "process_id": "proc_033",
+    "step_index": 1,
+    "step_id": "s1",
+    "input": "Evaluate supplier and material sources \u2014 Source optimal materials and vendors from the enterprise catalog to meet procurement requirements.",
+    "expected_ordId": "sap.sf:apiResource:MaterialAndVendorProcurementIntegration:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_033_s02",
+    "process_id": "proc_033",
+    "step_index": 2,
+    "step_id": "s2",
+    "input": "Enrich customer order context \u2014 Augment incoming customer orders with account history and order enrichment data to ensure fulfillment accuracy.",
+    "expected_ordId": "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_033_s03",
+    "process_id": "proc_033",
+    "step_index": 3,
+    "step_id": "s3",
+    "input": "Validate hazardous material compliance \u2014 Check inbound materials against hazardous substance inventory to ensure safety and regulatory compliance.",
+    "expected_ordId": "sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_033_s04",
+    "process_id": "proc_033",
+    "step_index": 4,
+    "step_id": "s4",
+    "input": "Receive and register inbound materials \u2014 Record material receipt in inventory management system with vendor and material master data validation.",
+    "expected_ordId": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_033_s05",
+    "process_id": "proc_033",
+    "step_index": 5,
+    "step_id": "s5",
+    "input": "Assess incident impact on fulfillment \u2014 Review incident resolution metrics to identify service disruptions affecting order fulfillment operations.",
+    "expected_ordId": "sap.crm:dataProduct:IncidentResolutionMetrics:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_033_s06",
+    "process_id": "proc_033",
+    "step_index": 6,
+    "step_id": "s6",
+    "input": "Orchestrate engineering changes to resources \u2014 Coordinate equipment modifications and process changes required to support new material specifications or customer requirements.",
+    "expected_ordId": "sap.s4:agent:EngineeringChangeOrchestrator:v1",
+    "is_gt": false
+  },
+  {
+    "case_id": "proc_033_s07",
+    "process_id": "proc_033",
+    "step_index": 7,
+    "step_id": "s7",
+    "input": "Manage equipment and service requests \u2014 Track equipment changes and maintenance service tickets to ensure production systems remain operational for fulfillment.",
+    "expected_ordId": "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1",
+    "is_gt": true
+  },
+  {
+    "case_id": "proc_033_s08",
+    "process_id": "proc_033",
+    "step_index": 8,
+    "step_id": "s8",
+    "input": "Align workforce compensation with fulfillment capacity \u2014 Review employee compensation structures to ensure adequate staffing levels and incentives for fulfillment demand.",
+    "expected_ordId": "workday.hcm:apiResource:CompensationStructureDataExposure:v1",
+    "is_gt": true
+  }
+]

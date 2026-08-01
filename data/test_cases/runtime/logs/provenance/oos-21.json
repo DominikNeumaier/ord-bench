@@ -1,0 +1,48 @@
+{
+  "case_id": "oos-21",
+  "mode": "out_of_scope",
+  "difficulty": "easy",
+  "topic": "Weather forecasting and climate data retrieval",
+  "timestamp": "2026-06-08T13:00:58.232460+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to integrate real-time weather data and 70-year historical climate patterns into our supply chain planning system so our procurement team can automatically adjust inventory levels for our distribution centers based on seasonal demand forecasting tied to regional temperature and precipitation anomalies."
+      },
+      "generator_tokens": 140,
+      "judge_results": {
+        "C1": true,
+        "C2": false,
+        "C3": false
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": false,\n  \"C3\": false,\n  \"accepted\": false,\n  \"reason\": \"Real-time weather integration and historical climate data analysis are standard capabilities available through weather APIs, data services, and existing supply chain planning tools, making this in-scope rather th",
+      "judge_tokens": 280,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "We need to integrate real-time weather data and 14-day forecasts into our inventory management system so we can automatically adjust stocklevels for seasonal products like ice cream and heating oil based on predicted temperature ranges and precipitation in each of our 47 distribution regions."
+      },
+      "generator_tokens": 157,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 244,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "oos-21",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "difficulty": "easy",
+    "topic": "Weather forecasting and climate data retrieval",
+    "user_prompt": "We need to integrate real-time weather data and 14-day forecasts into our inventory management system so we can automatically adjust stocklevels for seasonal products like ice cream and heating oil based on predicted temperature ranges and precipitation in each of our 47 distribution regions.",
+    "expected_ordIds": []
+  }
+}

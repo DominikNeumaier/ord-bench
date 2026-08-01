@@ -1,0 +1,115 @@
+{
+  "case_id": "dy-18",
+  "mode": "dynamic",
+  "query_class": "single_intent",
+  "problem_type": "P1",
+  "selected_resources": [
+    "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1"
+  ],
+  "distractor": "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1",
+  "timestamp": "2026-06-08T13:19:58.139575+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "I need to pull a report on our Q4 production schedule and check the status of a large wholesale account's recent orders, but I'm not sure if I should be looking in the campaign management system or somewhere else for this information."
+      },
+      "generator_tokens": 173,
+      "solver_output": {
+        "predicted": "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+        "top1_correct": true,
+        "top5": [
+          "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+          "my.mes:apiResource:CustomerOrderAndAccountManagement:v1",
+          "sap.s4:apiResource:CustomerOrderManagementAPI:v1",
+          "my.mes:dataProduct:CustomerOrderFulfillmentAndOEECorrelation:v1",
+          "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1"
+        ],
+        "note": "retro_certified"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": false,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": false,\n  \"C3\": true,\n  \"accepted\": false,\n  \"reason\": \"C2 failed: prompt explicitly mentions 'campaign management system' and references 'wholesale account orders', violating the constraint that no resource/system names should appear in the user prompt.\"\n}\n```",
+      "judge_tokens": 333,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "We need to pull together everything related to our Q3 production initiatives and the associated account commitments we've locked in with our key clients. Can you help me get a consolidated view of what we're running this quarter and what orders are tied to those efforts?"
+      },
+      "generator_tokens": 190,
+      "solver_output": {
+        "predicted": "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+        "top1_correct": true,
+        "top5": [
+          "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+          "my.mes:apiResource:CustomerOrderAndAccountManagement:v1",
+          "sap.s4:apiResource:CustomerOrderManagementAPI:v1",
+          "my.mes:dataProduct:CustomerOrderFulfillmentAndOEECorrelation:v1",
+          "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1"
+        ],
+        "note": "retro_certified"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 299,
+      "outcome": "ACCEPTED",
+      "_retro_verdict": "TOO_EASY"
+    },
+    {
+      "iteration": 3,
+      "generator_output": {
+        "user_prompt": "I need to check the status of an order we placed last month and see if there are any production updates on our end. Can you help me figure out where that information lives in our systems?"
+      },
+      "generator_tokens": 180,
+      "solver_output": {
+        "predicted": "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+        "top1_correct": true,
+        "note": "regen_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 4,
+      "generator_output": {
+        "user_prompt": "I need to check the status of an order we placed last month and see if we can adjust the production schedule to move up the delivery date. Can you help me find where that information is tracked?"
+      },
+      "generator_tokens": 185,
+      "solver_output": {
+        "predicted": "my.mes:apiResource:CustomerOrderAndAccountManagement:v1",
+        "top1_correct": false,
+        "note": "regen_attempt"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```",
+      "judge_tokens": 286,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-18",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to check the status of an order we placed last month and see if we can adjust the production schedule to move up the delivery date. Can you help me find where that information is tracked?",
+    "expected_ordIds": [
+      "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1"
+    ],
+    "distractor_ordId": "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1"
+  },
+  "_regen_note": "Prompt replaced after retro solver check failed. Regen attempt 2."
+}

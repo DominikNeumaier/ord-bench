@@ -1,0 +1,73 @@
+<process id="proc_product_transition_compliance_v1" type="cmmn">
+  
+  <step id="s1" 
+        label="Assess Operational Impact of Product Change"
+        description="Evaluate how engineering changes affect production capabilities, workforce skills, and material requirements across the organization."
+        ordId="sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+        capability="assess-operational-impact"
+        useCase="Manufacturing leadership needs to understand staffing and capability gaps before approving product transitions."/>
+  
+  <step id="s2" 
+        label="Plan Workforce Scheduling for Production Shift"
+        description="Adjust employee schedules and manage time-off requests to ensure adequate staffing during the product changeover period."
+        ordId="my.mes:apiResource:WorkforceScheduleAndAbsenceManagement:v1"
+        capability="manage-workforce-scheduling"
+        useCase="Production planners must allocate trained personnel to support the engineering change implementation."/>
+  
+  <step id="s3" 
+        label="Register Engineering Change and Product Item Details"
+        description="Formalize the engineering change with associated product item specifications and technical documentation in the system."
+        ordId="sap.sf:apiResource:EngineeringChangeAndProductItemManagement:v1"
+        capability="register-engineering-change"
+        useCase="Engineering teams need a single source of truth for change specifications and product configuration during transition."/>
+  
+  <step id="s4" 
+        label="Validate BOM Compliance Against New Product Structure"
+        description="Automate verification that bill-of-materials aligns with engineering specifications and detect compliance violations in material sourcing."
+        ordId="sap.s4:agent:BOMComplianceAutomationAgent:v1"
+        capability="validate-bom-compliance"
+        useCase="Quality and PLM teams must ensure that manufacturing can execute the new product design without sourcing conflicts."/>
+  
+  <step id="s5" 
+        label="Assess Supply Chain Readiness for New Materials"
+        description="Analyze supplier availability, lead times, and cost implications for new or modified bill-of-material items required by the product transition."
+        ordId="sap.ariba:dataProduct:SupplyChainProductIntelligence:v1"
+        capability="assess-supply-chain-readiness"
+        useCase="Procurement teams need visibility into material availability and supplier capacity before committing to production schedules."/>
+  
+  <step id="s6" 
+        label="Update Compensation and Role Alignment for Impacted Workforce"
+        description="Adjust employee compensation levels and verify role classifications align with new skill requirements and responsibilities introduced by the product change."
+        ordId="workday.hcm:apiResource:WorkforceCompensationDataManagement:v1"
+        capability="update-workforce-compensation"
+        useCase="HR and Finance must ensure compensation structures reflect new competency levels required for the engineered product."/>
+  
+  <step id="s7" 
+        label="Create Service and Change Request Tickets"
+        description="Generate formal change requests and service tickets to track implementation tasks, approvals, and IT/operational dependencies for the transition."
+        ordId="my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+        capability="create-change-request-tickets"
+        useCase="Operations teams need traceable audit trail and status visibility for all tasks required to execute the product transition safely."/>
+  
+  <step id="s8" 
+        label="Document Safety and Risk Assessment for Transition"
+        description="Record potential safety incidents, environmental impacts, and operational risks associated with the engineering change and manufacturing transition."
+        ordId="sap.ehs:apiResource:SafetyIncidentOrderManagement:v1"
+        capability="document-safety-assessment"
+        useCase="EHS and operations leadership must identify and mitigate hazards before production changeover to protect workers and equipment."/>
+
+  <!-- Sequence Flow: Case-Driven Conditional Structure -->
+  <sequenceFlow from="s1" to="s2" label="Impact assessment complete"/>
+  <sequenceFlow from="s2" to="s3" label="Workforce plan approved"/>
+  <sequenceFlow from="s3" to="s4" label="Engineering change registered"/>
+  <sequenceFlow from="s4" to="s5" label="BOM validated"/>
+  <sequenceFlow from="s5" to="s6" label="Supply chain confirmed"/>
+  <sequenceFlow from="s6" to="s7" label="Compensation updated"/>
+  <sequenceFlow from="s7" to="s8" label="Change requests created"/>
+  
+  <!-- CMMN Conditional Branches (Case-Driven) -->
+  <conditionalFlow from="s4" to="s7" condition="BOM_COMPLIANCE_FAILED" label="Escalate non-compliance"/>
+  <conditionalFlow from="s5" to="s6" condition="SUPPLY_RISK_DETECTED" label="Adjust compensation for delay risk"/>
+  <conditionalFlow from="s8" to="s1" condition="SAFETY_BLOCKING_ISSUE" label="Re-assess operational impact"/>
+
+</process>

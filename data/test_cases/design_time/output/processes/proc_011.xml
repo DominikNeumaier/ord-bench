@@ -1,0 +1,68 @@
+<process id="proc_ProductComplianceManufacturing_v1" type="bpmn">
+  
+  <step id="s1" 
+        label="Evaluate hazardous substance compliance"
+        description="Determine if product materials contain regulated hazardous substances that require documentation and mitigation strategies."
+        ordId="corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1"
+        capability="evaluate-hazardous-materials"
+        useCase="Product engineering teams need to verify new materials meet environmental and safety regulations before production."/>
+  
+  <step id="s2" 
+        label="Validate bill of materials against engineering standards"
+        description="Ensure all component materials in the product structure comply with engineering specifications and material safety requirements."
+        ordId="my.mes:agent:BillOfMaterialsComplianceValidator:v1"
+        capability="validate-bom-compliance"
+        useCase="Manufacturing teams must confirm that engineering changes maintain material and component compliance before proceeding to production."/>
+  
+  <step id="s3" 
+        label="Coordinate safety compliance automation"
+        description="Execute automated safety assessments and coordinate compliance checks across all product engineering changes and material selections."
+        ordId="sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1"
+        capability="coordinate-safety-compliance"
+        useCase="Safety and compliance officers require integrated automation to ensure all engineering modifications meet corporate safety standards."/>
+  
+  <step id="s4" 
+        label="Analyze material economics and regulatory impact"
+        description="Assess the cost implications and regulatory requirements associated with selected materials and engineering changes."
+        ordId="sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1"
+        capability="analyze-cost-compliance"
+        useCase="Finance and product teams need transparent visibility into how material choices impact both budget and compliance obligations."/>
+  
+  <step id="s5" 
+        label="Coordinate purchase orders with vendor compliance"
+        description="Verify that purchase orders align with vendor capabilities and material compliance requirements before procurement execution."
+        ordId="sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1"
+        capability="coordinate-vendor-procurement"
+        useCase="Procurement specialists must ensure vendors can supply compliant materials and that purchase orders reflect all regulatory requirements."/>
+  
+  <step id="s6" 
+        label="Schedule production and machine resources"
+        description="Allocate production orders and machine capacity based on validated material compliance and manufacturing capability requirements."
+        ordId="sap.s4:apiResource:ProductionOrderAndMachineScheduling:v1"
+        capability="schedule-production-resources"
+        useCase="Production planners need to confirm machines and schedules accommodate the compliant materials and engineering specifications."/>
+  
+  <step id="s7" 
+        label="Monitor safety incident trends and resolution"
+        description="Track and analyze safety incidents related to material handling and production to identify systemic compliance risks."
+        ordId="sap.crm:dataProduct:IncidentResolutionMetrics:v1"
+        capability="monitor-safety-incidents"
+        useCase="Safety managers require incident data to validate that material and process changes reduce workplace safety risks."/>
+  
+  <step id="s8" 
+        label="Assess employee capability and performance"
+        description="Evaluate whether production team members have the skills and training necessary to handle compliant materials and updated processes safely."
+        ordId="sap.sf:dataProduct:EmployeePerformanceTrendAnalytics:v1"
+        capability="assess-team-readiness"
+        useCase="Human resources and manufacturing leaders need assurance that personnel are trained and capable of executing compliant production workflows."/>
+
+  <!-- Sequence Flows: Linear Process Flow -->
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+  
+</process>

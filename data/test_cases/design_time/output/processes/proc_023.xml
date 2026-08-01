@@ -1,0 +1,67 @@
+<process id="proc_ProductionTransitionWorkforce_v1" type="cmmn">
+  
+  <step id="s1" 
+        label="Analyze Engineering Change Impact and Workforce Readiness"
+        description="Evaluate production transition requirements and identify skill gaps needed for successful change implementation."
+        ordId="sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+        capability="analyze-change-impact"
+        useCase="Plant managers need to understand which workforce skills are required before deploying engineering changes to production."/>
+  
+  <step id="s2"
+        label="Validate Material and Equipment Specifications"
+        description="Retrieve and verify material definitions and vendor specifications impacted by the engineering change."
+        ordId="my.mes:apiResource:MaterialAndVendorMasterData:v1"
+        capability="retrieve-material-specifications"
+        useCase="Supply chain teams need confirmed material specs before authorizing equipment modifications."/>
+  
+  <step id="s3"
+        label="Assess Equipment Service Readiness and Dependencies"
+        description="Evaluate current equipment state, service requirements, and cascading change dependencies across the production line."
+        ordId="my.mes:apiResource:EquipmentServiceAndChangeManagement:v1"
+        capability="assess-equipment-readiness"
+        useCase="Maintenance teams need to know equipment service status and change dependencies before deployment."/>
+  
+  <step id="s4"
+        label="Orchestrate Asset Provisioning for Transition"
+        description="Coordinate allocation and provisioning of materials, equipment, and product items needed to support the production transition."
+        ordId="corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+        capability="orchestrate-asset-provisioning"
+        useCase="Operations directors need automated coordination of all physical assets required for the change rollout."/>
+  
+  <step id="s5"
+        label="Grant Workforce Access Permissions and Credentials"
+        description="Provision system access, security credentials, and role-based permissions for transitioned workforce members."
+        ordId="corp.itsm:agent:AccessProvisioningOrchestrator:v1"
+        capability="provision-workforce-access"
+        useCase="HR and IT teams need to ensure workers have proper system access before production handoff."/>
+  
+  <step id="s6"
+        label="Automate Change Execution and Workflow Orchestration"
+        description="Execute automated workflows and change procedures across systems to implement the production transition safely."
+        ordId="corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+        capability="automate-change-execution"
+        useCase="Operations teams need reliable, repeatable automation to minimize manual errors during complex transitions."/>
+  
+  <step id="s7"
+        label="Segment and Engage Customer Contacts on Transition Impact"
+        description="Identify affected customer segments and deploy targeted communications about production changes and timeline impacts."
+        ordId="emarsys.cx:apiResource:CampaignContactEngagementAPI:v1"
+        capability="engage-customer-contacts"
+        useCase="Marketing teams need to proactively inform customers about product or service availability changes."/>
+  
+  <step id="s8"
+        label="Update Customer Engagement Profiles with Transition Status"
+        description="Record customer account profiles with current transition status, affected orders, and fulfillment timeline adjustments."
+        ordId="emarsys.cx:apiResource:CustomerEngagementProfileAPI:v1"
+        capability="update-customer-profiles"
+        useCase="Customer success teams need real-time visibility into how each account is affected by production transitions."/>
+  
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+  
+</process>

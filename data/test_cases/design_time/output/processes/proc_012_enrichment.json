@@ -1,0 +1,94 @@
+{
+  "process_id": "proc_012",
+  "process_type": "bpmn",
+  "gt_ordIds": [
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+    "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1",
+    "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1",
+    "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1"
+  ],
+  "enrichment": {
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1": {
+      "capabilities": [
+        "validate-material",
+        "verify-vendor-compliance",
+        "track-inventory-receipt"
+      ],
+      "useCases": [
+        "Procurement team confirms material receipts match purchase orders and specifications.",
+        "Inventory manager validates inbound quantities against packing slips and purchase orders.",
+        "Manufacturing planner ensures raw materials are available for production scheduling."
+      ],
+      "processNext": [
+        "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_qa_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1": {
+      "capabilities": [
+        "orchestrate-engineering-change",
+        "assess-material-impact",
+        "manage-product-lifecycle"
+      ],
+      "useCases": [
+        "Engineering team determines if material updates or product redesigns are needed before launch.",
+        "Product manager evaluates change impact across bill-of-materials and supplier agreements.",
+        "Manufacturing engineer assesses production line adjustments required for engineering changes."
+      ],
+      "processNext": [
+        "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_qa_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1": {
+      "capabilities": [
+        "align-sales-capability",
+        "map-employee-hierarchy",
+        "assess-workforce-readiness"
+      ],
+      "useCases": [
+        "Sales leadership identifies top performers and their direct reports for customer engagement and territorial assignments.",
+        "Human capital manager aligns workforce skills with product launch requirements and customer segments.",
+        "Regional manager assigns sales representatives based on expertise and territory coverage."
+      ],
+      "processNext": [
+        "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_qa_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1": {
+      "capabilities": [
+        "enrich-customer-order",
+        "populate-account-details",
+        "enable-order-processing"
+      ],
+      "useCases": [
+        "Sales operations team ensures all customer systems reflect new product SKUs, pricing tiers, and promotional bundles.",
+        "Customer success team enriches account records with product launch eligibility and cross-sell opportunities.",
+        "Order management system validates customer orders against enriched product and pricing catalogs."
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_qa_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    }
+  }
+}

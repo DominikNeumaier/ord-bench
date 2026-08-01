@@ -1,0 +1,68 @@
+<process id="proc_supplychain_risk_compliance_v1" type="bpmn">
+  
+  <step id="s1" 
+        label="Receive and Log Customer Service Request"
+        description="Capture incoming customer orders and service tickets to initiate the supply chain workflow."
+        ordId="corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1"
+        capability="receive-log-orders"
+        useCase="Service desk receives customer order for materials and logs it as a tracked service ticket."/>
+  
+  <step id="s2" 
+        label="Assess Vendor and Material Compliance Risk"
+        description="Evaluate compliance and safety risks associated with requested materials and vendors before procurement."
+        ordId="emarsys.cx:apiResource:ComplianceRiskAssessmentAPI:v1"
+        capability="assess-compliance-risk"
+        useCase="Compliance team screens hazardous substances and vendor qualifications against regulatory requirements."/>
+  
+  <step id="s3" 
+        label="Identify Suitable Vendors and Materials"
+        description="Source compliant vendors and materials from the procurement database that meet operational and safety standards."
+        ordId="sap.ariba:apiResource:MaterialAndVendorProcurementData:v1"
+        capability="identify-vendors-materials"
+        useCase="Procurement specialist queries approved vendors and materials inventory to match customer demand."/>
+  
+  <step id="s4" 
+        label="Validate Supply Chain Continuity"
+        description="Confirm vendor capacity, material availability, and supply chain resilience for the procurement request."
+        ordId="emarsys.cx:apiResource:VendorMaterialSupplyChainAPI:v1"
+        capability="validate-supply-continuity"
+        useCase="Supply chain manager verifies vendor lead times and material stock levels to ensure order fulfillment."/>
+  
+  <step id="s5" 
+        label="Analyze Production Incidents and Safety Records"
+        description="Review historical incident and safety data for materials and vendors to identify operational risks."
+        ordId="sap.s4:dataProduct:IncidentSafetyAnalyticsHub:v1"
+        capability="analyze-incidents-safety"
+        useCase="Operations team examines incident patterns and safety metrics to mitigate production risks."/>
+  
+  <step id="s6" 
+        label="Assess Production Workforce and Capacity"
+        description="Evaluate workforce capability, staffing levels, and production capacity to deliver the ordered materials on time."
+        ordId="sap.sf:apiResource:WorkforceProductionCapabilityManagement:v1"
+        capability="assess-workforce-capacity"
+        useCase="Production manager validates machine availability and team capacity against the procurement timeline."/>
+  
+  <step id="s7" 
+        label="Review Employee Compensation and Labor Costs"
+        description="Confirm workforce compensation structures are aligned with labor cost budgets for the procurement order execution."
+        ordId="workday.hcm:apiResource:CompensationStructureDataExposure:v1"
+        capability="review-labor-costs"
+        useCase="Finance team validates that employee compensation projections fit within procurement project budgets."/>
+  
+  <step id="s8" 
+        label="Provision Access and Execute Order"
+        description="Grant system access permissions and orchestrate the final order fulfillment across all stakeholder systems."
+        ordId="corp.itsm:agent:AccessProvisioningOrchestrator:v1"
+        capability="provision-execute-order"
+        useCase="Systems administrator activates vendor accounts, material transfers, and order execution workflows."/>
+
+  <!-- Sequence Flows -->
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+  
+</process>

@@ -1,0 +1,57 @@
+<process id="proc_product_launch_compliance_v1" type="cmmn">
+  <step id="s1" label="Initiate engineering change request"
+        description="Capture and validate new product specifications and engineering modifications for market introduction."
+        ordId="my.mes:agent:ProductionChangeOrchestrator:v1"
+        capability="orchestrate-production-change"
+        useCase="Operations manager submits engineering change order for new product variant with material updates"/>
+  
+  <step id="s2" label="Coordinate design review and compliance gate"
+        description="Conduct cross-functional design review to ensure compliance standards before proceeding to BOM validation."
+        ordId="siemens.plm:agent:DesignReviewAndComplianceCoordinator:v1"
+        capability="coordinate-design-review"
+        useCase="PLM team reviews design against engineering standards and involves workforce for feasibility assessment"/>
+  
+  <step id="s3" label="Validate bill of materials compliance"
+        description="Verify that all product components and materials comply with approved specifications and regulatory requirements."
+        ordId="sap.s4:agent:BOMComplianceAutomationAgent:v1"
+        capability="automate-bom-compliance"
+        useCase="Supply chain manager ensures all materials in product structure meet compliance rules before manufacturing"/>
+  
+  <step id="s4" label="Assess hazardous substance risk"
+        description="Evaluate potential safety and regulatory risks associated with materials and substances in the product."
+        ordId="emarsys.cx:apiResource:ComplianceRiskAssessmentAPI:v1"
+        capability="assess-compliance-risk"
+        useCase="Safety officer identifies hazardous substance handling requirements and regulatory obligations"/>
+  
+  <step id="s5" label="Coordinate occupational safety incident protocols"
+        description="Establish safety procedures and incident response protocols for manufacturing and handling identified hazards."
+        ordId="corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1"
+        capability="coordinate-safety-protocol"
+        useCase="Safety manager documents incident prevention measures and worker notification procedures"/>
+  
+  <step id="s6" label="Validate workforce capacity and availability"
+        description="Confirm adequate staffing, skills, and production capacity to execute the product launch timeline."
+        ordId="my.mes:apiResource:WorkforceAvailabilityAndCapacity:v1"
+        capability="validate-workforce-capacity"
+        useCase="Production scheduler confirms team availability and training completion for new production line"/>
+  
+  <step id="s7" label="Authorize campaign and customer access"
+        description="Grant controlled access permissions for marketing campaign and customer account updates to enable product launch."
+        ordId="corp.itsm:apiResource:CampaignAccessManagementAPI:v1"
+        capability="authorize-campaign-access"
+        useCase="Marketing director activates go-live permissions for sales teams and campaign channels"/>
+  
+  <step id="s8" label="Enrich customer order and fulfill launch"
+        description="Update customer account records with new product offerings and enable order acceptance for market release."
+        ordId="emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1"
+        capability="enrich-customer-order"
+        useCase="Sales enablement team publishes new product to customer accounts and processes initial orders"/>
+  
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+</process>

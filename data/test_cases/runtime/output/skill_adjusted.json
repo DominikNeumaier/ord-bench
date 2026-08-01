@@ -1,0 +1,222 @@
+[
+  {
+    "case_id": "sa-01",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to establish a comprehensive procurement and delivery workflow that coordinates vendor assessment, augments customer purchases with enriched data, validates regulatory requirements, and manages incoming stock alongside staff and resource allocation. The process should also track milestone progression and delivery status throughout the entire cycle, including the ability to handle customer grievances and reconcile any disagreements that arise during fulfillment. Can you design this end-to-end supply chain orchestration to ensure seamless coordination across all these interconnected operations?",
+    "expected_skill_id": "proc_033",
+    "expected_gap_ordIds": [
+      "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+      "sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+    ]
+  },
+  {
+    "case_id": "sa-02",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to orchestrate a comprehensive readiness validation for our upcoming product launch that coordinates material receipt verification, workforce capability assessment, and operational readiness evaluation. As part of this process, we also need to ensure we can track and validate all the materials coming in from our suppliers, including verifying their specifications against our master records. Additionally, we'll need to reconcile all incoming supplier billing documentation with our purchase commitments to ensure financial accuracy before we greenlight the launch. Please design a workflow that brings all these validation streams together into a single orchestrated process.",
+    "expected_skill_id": "proc_026",
+    "expected_gap_ordIds": [
+      "sap.ariba:apiResource:MaterialAndVendorProcurementAPI:v1",
+      "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1"
+    ]
+  },
+  {
+    "case_id": "sa-03",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to prepare for launching our new product revision and ensure everything is ready for manufacturing. This includes validating that all our materials and components meet regulatory requirements and that our suppliers are properly verified. We also need to make sure our production team is properly staffed and compensated according to our updated labor requirements for this new revision. Can you orchestrate the complete preparation phase, including workforce readiness assessment and ensuring our financial structures align with the production needs?",
+    "expected_skill_id": "proc_029",
+    "expected_gap_ordIds": [
+      "sap.sf:apiResource:CompensationAndSalaryManagement:v1",
+      "sap.s4:agent:BOMComplianceAutomationAgent:v1"
+    ]
+  },
+  {
+    "case_id": "sa-04",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We're launching a new product line next quarter and need to orchestrate the entire go-to-market process\u2014including provisioning our key customers, qualifying our supplier network, analyzing the cost structure, managing our engineering modifications, and ensuring our teams are ready. As part of this, we also need to identify which customer segments from our marketing campaigns should be prioritized for this launch, including pulling their account details and engagement history. We'll also need to assess whether our current staff has the right skills and capacity to support the new product specifications and training requirements. Can you help us coordinate all these moving pieces into one comprehensive launch workflow?",
+    "expected_skill_id": "proc_031",
+    "expected_gap_ordIds": [
+      "emarsys.cx:apiResource:CustomerAccountCampaignManagementAPI:v1",
+      "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1"
+    ]
+  },
+  {
+    "case_id": "sa-05",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to orchestrate our complete manufacturing workflow from securing materials with our suppliers through final production execution and ensuring all our compliance documentation is properly filed. As part of this end-to-end process, we also need to track and reconcile all the financial documents coming in from our vendors that are tied to our material orders. Additionally, please include monitoring our production line performance metrics so we can evaluate how efficiently our equipment is running and identify any bottlenecks in our output. Make sure quality validation checkpoints are integrated throughout to catch any issues early, and we'll need comprehensive reporting at each stage to maintain our regulatory compliance standards.",
+    "expected_skill_id": "proc_021",
+    "expected_gap_ordIds": [
+      "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+      "sap.s4:apiResource:ProductionPerformanceAPI:v1"
+    ]
+  },
+  {
+    "case_id": "sa-06",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to establish a complete acquisition and delivery system that starts with gathering customer orders, then assesses both supplier and product safety standards, identifies appropriate sourcing partners, and ensures our logistics network remains uninterrupted. The workflow should also track how this impacts our team's compensation structures given the increased procurement workload, and we'd like visibility into any workplace safety events that occur during the fulfillment process so we can maintain our compliance records. Can you design this entire sourcing-to-delivery journey with all these considerations built in?",
+    "expected_skill_id": "proc_009",
+    "expected_gap_ordIds": [
+      "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1",
+      "corp.itsm:dataProduct:SafetyIncidentMetrics:v1"
+    ]
+  },
+  {
+    "case_id": "sa-07",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to orchestrate a comprehensive transition of our product line by first evaluating whether our organization is ready for this change, then validating that we meet all regulatory compliance requirements before moving forward. The process should also manage how this impacts our procurement operations and reconfigure our production workflows accordingly. As part of this transition, we'll need to ensure we're tracking any hazardous materials in our new product specifications and managing the cost implications including how this affects our workforce compensation structures.",
+    "expected_skill_id": "proc_014",
+    "expected_gap_ordIds": [
+      "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1",
+      "workday.hcm:apiResource:PayrollProcessingDataManagement:v1"
+    ]
+  },
+  {
+    "case_id": "sa-08",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We're launching a new product line next quarter and need to orchestrate our entire organization's preparedness across departments. Can you help us establish a workflow that identifies promising market opportunities, categorizes our customer base for targeted outreach, and confirms our manufacturing and logistics infrastructure can handle the volume? We'll also need to validate that all component specifications and vendor partnerships meet our compliance standards throughout the supply chain. Additionally, as we scale up staffing to support this launch, we need to ensure our financial records\u2014including compensation structures, benefit deductions, and withholding obligations\u2014are properly documented and accessible to our HR and finance teams.",
+    "expected_skill_id": "proc_020",
+    "expected_gap_ordIds": [
+      "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+      "workday.hcm:apiResource:PayrollDataExposure:v1"
+    ]
+  },
+  {
+    "case_id": "sa-09",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to orchestrate the launch of our new product line, ensuring that procurement sources quality raw materials that meet our standards, engineering designs and validates the components, operations sets up manufacturing processes, and sales prepares go-to-market strategies. As we ramp up production, we'll also need to seamlessly integrate with our systems to retrieve and manage incoming customer orders and account information for processing. Additionally, the process should include coordinating any engineering modifications and material lifecycle changes across departments to keep everything synchronized. Can you help us design a workflow that handles all of these moving parts together?",
+    "expected_skill_id": "proc_012",
+    "expected_gap_ordIds": [
+      "sap.s4:apiResource:CustomerOrderManagementAPI:v1",
+      "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+    ]
+  },
+  {
+    "case_id": "sa-10",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to streamline our complete purchasing workflow to examine incoming client requests, evaluate buyer participation levels and regulatory standards, vet potential vendors, and give the green light for transaction completion with appropriate authorizations. As orders move through each phase, we also need to track their progression through various completion checkpoints and monitor delivery timelines. Additionally, include functionality to handle any customer grievances or billing disagreements that may arise during the transaction lifecycle, ensuring we can document claims and work through resolutions efficiently within our existing business platform.",
+    "expected_skill_id": "proc_008",
+    "expected_gap_ordIds": [
+      "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+      "sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+    ]
+  },
+  {
+    "case_id": "sa-11",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to orchestrate a production transition that's been triggered by recent engineering changes to one of our product lines. This should coordinate assessments to ensure our workforce is ready for the transition, validate that all equipment meets the new specifications, provision the necessary assets, and communicate the changes to our affected customers. As part of this process, we'll also need to track how these product changes flow through our materials and components, including automated coordination across all related items. Can you help us manage this comprehensive transition while ensuring all service requests and equipment documentation are kept current throughout the changeover?",
+    "expected_skill_id": "proc_023",
+    "expected_gap_ordIds": [
+      "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1",
+      "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1"
+    ]
+  },
+  {
+    "case_id": "sa-12",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "I need to submit a new infrastructure update request that will impact multiple departments, and I need the system to automatically assess whether this change requires executive approval based on the business scope. Can you walk me through the entire process from when I submit the request through final implementation, including tracking any related equipment modifications and service dependencies? I also need documentation of all regulatory requirements that apply to this change, as well as any existing maintenance schedules we should coordinate with during rollout.",
+    "expected_skill_id": "proc_007",
+    "expected_gap_ordIds": [
+      "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1",
+      "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+    ]
+  },
+  {
+    "case_id": "sa-13",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to process an engineering change request for one of our key products that involves design modifications and supply chain validation. The change impacts multiple departments, so we'll need to coordinate the assessment across product design, manufacturing, and procurement to evaluate resource requirements and timeline implications. As part of this, we also need to identify which customer accounts are affected by this change so we can incorporate them into our communication strategy and any related marketing outreach. Can you help us orchestrate this entire workflow from initial change submission through cross-functional impact analysis and stakeholder notification?",
+    "expected_skill_id": "proc_032",
+    "expected_gap_ordIds": [
+      "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1",
+      "emarsys.cx:apiResource:CustomerAccountCampaignManagementAPI:v1"
+    ]
+  },
+  {
+    "case_id": "sa-14",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "I need to launch a new product campaign that coordinates with our vendors, validates compliance requirements, and ensures production is ready to fulfill orders. We're provisioning new customers across multiple regions, so we'll need to qualify vendors and manage the entire supply chain orchestration. As part of this rollout, we also need to track any product modifications we're making and manage the associated equipment and service requests that come with the deployment. Can you help us coordinate all of these moving parts together so nothing falls through the cracks?",
+    "expected_skill_id": "proc_015",
+    "expected_gap_ordIds": [
+      "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1",
+      "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1"
+    ]
+  },
+  {
+    "case_id": "sa-15",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to set up a comprehensive engineering change management process that takes us from the initial impact assessment all the way through to production handoff. The process should coordinate with our workforce teams to ensure they're ready for the changes, validate that our supply chain can support the transition, and also verify that we have the right staffing levels and skills in place to execute effectively. Additionally, we need to make sure our operational teams can actually handle the product modifications we're planning, including updating our component data and inventory systems accordingly. Can you help us design a workflow that manages all of these interdependencies from start to finish?",
+    "expected_skill_id": "proc_019",
+    "expected_gap_ordIds": [
+      "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+      "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1"
+    ]
+  },
+  {
+    "case_id": "sa-16",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to adjust our production schedule due to a significant surge in Q2 demand forecasting and some critical supply constraints we're facing with our primary vendors. This will require coordinating engineering changes across our product lines, verifying compliance requirements, updating our procurement orders, and adjusting our workforce capacity planning. As part of this broader initiative, we'll also need to ensure our team members are compensated fairly for any overtime or shift changes resulting from the schedule adjustments, including updating any applicable merit considerations. Can you help us orchestrate all these moving pieces together, including the financial and compensation updates that will flow from these workforce adjustments?",
+    "expected_skill_id": "proc_001",
+    "expected_gap_ordIds": [
+      "sap.sf:apiResource:EmployeeCompensationManagement:v1",
+      "workday.hcm:apiResource:PayrollProcessingDataManagement:v1"
+    ]
+  },
+  {
+    "case_id": "sa-17",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to conduct a comprehensive review of our current compensation structure and analyze our total workforce costs across the organization. This should include validating our organizational structure to ensure accuracy, processing our benefits enrollment data, and coordinating with our procurement team on vendor costs. As part of this analysis, we also need to understand our employee hierarchy and their respective capability levels to ensure compensation aligns with roles and responsibilities. Additionally, we'll need to review our salary bands and grade levels to confirm they're being applied consistently across the company.",
+    "expected_skill_id": "proc_018",
+    "expected_gap_ordIds": [
+      "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1",
+      "workday.hcm:apiResource:CompensationStructureDataExposure:v1"
+    ]
+  },
+  {
+    "case_id": "sa-18",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to manage a comprehensive transition of our manufacturing operations whenever we implement engineering changes to our products. The process should coordinate impact assessment across all affected areas, handle workforce planning requirements, and validate compliance with all relevant regulations. As part of this transition, we also need to ensure that our supplier materials and component specifications are validated and qualified for the new product design. Additionally, we'll need to coordinate all equipment modifications, maintenance adjustments, and necessary service updates required to support the new production specifications. Can you help us set up a workflow that handles all these interconnected aspects of the changeover?",
+    "expected_skill_id": "proc_022",
+    "expected_gap_ordIds": [
+      "my.mes:agent:BillOfMaterialsComplianceValidator:v1",
+      "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1"
+    ]
+  },
+  {
+    "case_id": "sa-19",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to set up a comprehensive monitoring system for our workplace safety incidents and regulatory compliance across all our facilities. This should track hazardous events as they occur, evaluate our exposure to violations, and coordinate the necessary corrective actions. As we implement this, we also need to ensure our safety team can engage with relevant stakeholders in real-time across different communication channels to coordinate responses. Additionally, we'll need to make sure all hazardous materials data is properly managed and accessible so our sales and compliance teams can verify we're meeting all regulatory requirements when working with customers. Can you help us establish this integrated approach to safety management and compliance?",
+    "expected_skill_id": "proc_030",
+    "expected_gap_ordIds": [
+      "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1",
+      "emarsys.cx:apiResource:HazardousSubstanceComplianceManagementAPI:v1"
+    ]
+  },
+  {
+    "case_id": "sa-20",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to set up a comprehensive process to manage hazardous substance compliance and employee safety across our manufacturing operations. This should identify all hazardous materials in our facilities, assess which departments and teams face exposure risks, and procure necessary safety equipment and protective gear. We also need to ensure that safety protocols and equipment are distributed based on our organizational structure so that each manager can track compliance for their direct reports. Additionally, the system should coordinate with our procurement team to track where safety supplies are sourced from and maintain records of all purchase orders for audit purposes. Can you help us establish a workflow that brings all these elements together?",
+    "expected_skill_id": "proc_004",
+    "expected_gap_ordIds": [
+      "sap.crm:apiResource:ProcurementVendorOrderManagement:v1",
+      "sap.s4:apiResource:WorkforceOrgStructureAPI:v1"
+    ]
+  }
+]

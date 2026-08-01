@@ -1,0 +1,33 @@
+{
+  "case_id": "oos-20",
+  "mode": "out_of_scope",
+  "difficulty": "easy",
+  "topic": "Flight booking and travel itinerary management",
+  "timestamp": "2026-06-08T13:00:58.197904+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need the ability to automatically split and rebook flights when a traveler's connecting flight is cancelled, prioritizing connections that minimize total trip delay and proactively notifying our finance team of any fare differences so we can recover refunds from our travel management company per our contract terms."
+      },
+      "generator_tokens": 146,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 247,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "oos-20",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "difficulty": "easy",
+    "topic": "Flight booking and travel itinerary management",
+    "user_prompt": "We need the ability to automatically split and rebook flights when a traveler's connecting flight is cancelled, prioritizing connections that minimize total trip delay and proactively notifying our finance team of any fare differences so we can recover refunds from our travel management company per our contract terms.",
+    "expected_ordIds": []
+  }
+}

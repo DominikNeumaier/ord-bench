@@ -1,0 +1,94 @@
+{
+  "process_id": "proc_005",
+  "process_type": "bpmn",
+  "gt_ordIds": [
+    "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+    "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1",
+    "emarsys.cx:apiResource:OrderFulfillmentServiceAPI:v1",
+    "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1"
+  ],
+  "enrichment": {
+    "sap.s4:agent:BOMComplianceAutomationAgent:v1": {
+      "capabilities": [
+        "validate-bom-compliance",
+        "assess-engineering-changes",
+        "verify-material-standards"
+      ],
+      "useCases": [
+        "Product engineering teams verify Bill of Materials compliance against company engineering standards and regulatory requirements.",
+        "Change control administrators validate that all material and product item changes are documented and approved before production."
+      ],
+      "processNext": [
+        "sap.sf:apiResource:MaterialAndVendorProcurementIntegration:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductLaunchVendorCompliance_v1",
+          "groupTypeId": "bpmn",
+          "sequencePosition": 1
+        }
+      ]
+    },
+    "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1": {
+      "capabilities": [
+        "manage-equipment-service",
+        "process-change-requests",
+        "track-service-tickets"
+      ],
+      "useCases": [
+        "Manufacturing operations teams verify production equipment is operational and configured to meet new product specifications.",
+        "Maintenance coordinators document equipment service requirements and process configuration changes before production launch."
+      ],
+      "processNext": [
+        "emarsys.cx:apiResource:OrderFulfillmentServiceAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductLaunchVendorCompliance_v1",
+          "groupTypeId": "bpmn",
+          "sequencePosition": 6
+        }
+      ]
+    },
+    "emarsys.cx:apiResource:OrderFulfillmentServiceAPI:v1": {
+      "capabilities": [
+        "fulfill-customer-orders",
+        "allocate-inventory",
+        "manage-customer-accounts"
+      ],
+      "useCases": [
+        "Sales fulfillment teams process initial customer orders for the new product while managing inventory and delivery commitments.",
+        "Customer account managers verify order accuracy and coordinate logistics for early-stage product shipments."
+      ],
+      "processNext": [
+        "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductLaunchVendorCompliance_v1",
+          "groupTypeId": "bpmn",
+          "sequencePosition": 7
+        }
+      ]
+    },
+    "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1": {
+      "capabilities": [
+        "engage-campaign-contacts",
+        "activate-customer-communications",
+        "manage-marketing-campaigns"
+      ],
+      "useCases": [
+        "Marketing teams launch customer engagement campaigns to drive awareness and adoption among target account segments.",
+        "Customer experience managers coordinate promotional messaging and track campaign performance across sales channels."
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductLaunchVendorCompliance_v1",
+          "groupTypeId": "bpmn",
+          "sequencePosition": 8
+        }
+      ]
+    }
+  }
+}

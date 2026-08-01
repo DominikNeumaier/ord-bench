@@ -1,0 +1,81 @@
+{
+  "case_id": "dy-05",
+  "mode": "dynamic",
+  "query_class": "single_intent",
+  "problem_type": "P1",
+  "selected_resources": [
+    "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1"
+  ],
+  "distractor": "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1",
+  "timestamp": "2026-06-08T13:19:28.358570+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to submit a change request for our financial reporting systems to meet new regulatory requirements, and we also need to track the equipment we're bringing in for compliance purposes. Can you help me log this and get it into the system so our audit team can follow up?"
+      },
+      "generator_tokens": 183,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+        "top1_correct": false,
+        "top5": [
+          "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+          "corp.itsm:apiResource:AssetProvisioningIntegrationAPI:v1",
+          "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+          "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1",
+          "sap.s4:apiResource:EngineeringChangeManagementAPI:v1"
+        ],
+        "note": "retro_certified"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": false,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": false,\n  \"C3\": true,\n  \"accepted\": false,\n  \"reason\": \"C2 fails because the prompt explicitly mentions 'financial reporting systems', 'regulatory requirements', 'equipment', 'audit team', and 'compliance' which are specific system/domain references that violate the P1",
+      "judge_tokens": 356,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "We need to track some updates we're making to meet regulatory requirements, including the equipment changes and related service work orders. Can you help us log this through the right system?"
+      },
+      "generator_tokens": 176,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+        "top1_correct": false,
+        "top5": [
+          "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+          "corp.itsm:apiResource:AssetProvisioningIntegrationAPI:v1",
+          "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+          "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1",
+          "sap.s4:apiResource:EngineeringChangeManagementAPI:v1"
+        ],
+        "note": "retro_certified"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```",
+      "judge_tokens": 281,
+      "outcome": "ACCEPTED",
+      "_retro_verdict": "HARD"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-05",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "We need to track some updates we're making to meet regulatory requirements, including the equipment changes and related service work orders. Can you help us log this through the right system?",
+    "expected_ordIds": [
+      "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1"
+    ],
+    "distractor_ordId": "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1"
+  }
+}

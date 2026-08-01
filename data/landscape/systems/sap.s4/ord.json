@@ -1,0 +1,1007 @@
+{
+  "openResourceDiscovery": "1.16",
+  "perspective": "system-instance",
+  "packages": [
+    {
+      "ordId": "sap.s4:package:Core:v1",
+      "title": "sap.s4 Core Package",
+      "shortDescription": "Core resources for the sap.s4 system in the benchmark landscape.",
+      "version": "1.0.0",
+      "vendor": "sap:vendor:SAP:"
+    }
+  ],
+  "agents": [
+    {
+      "ordId": "sap.s4:agent:ProcurementMatchingAgent:v1",
+      "title": "Procurement Matching Agent",
+      "shortDescription": "Autonomously matches purchase requisitions to optimal vendors based on cost, quality, and delivery performance.",
+      "description": "This agent analyzes open purchase requisitions against vendor master data, historical performance metrics, and material specifications to automatically recommend and create purchase orders. It evaluates vendor pricing, lead times, quality ratings, and contract terms to optimize procurement decisions, reducing manual effort and ensuring compliance with preferred vendor agreements.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:Vendor:v1"
+      ],
+      "lineOfBusiness": [
+        "Procurement",
+        "Finance",
+        "ERP"
+      ],
+      "tags": [
+        "procurement",
+        "vendor-management",
+        "purchasing",
+        "automation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+      "title": "BOM Compliance Automation Agent",
+      "shortDescription": "Automates bill-of-materials validation and supplier compliance verification across engineering changes.",
+      "description": "Monitors engineering changes and product item modifications to automatically validate material specifications against supplier qualifications and regulatory requirements. Coordinates material compliance checks and automates BOM update workflows to ensure all component sourcing adheres to supplier qualification standards and compliance policies.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "lineOfBusiness": [
+        "Product Lifecycle Management"
+      ],
+      "tags": [
+        "compliance",
+        "bom-validation",
+        "supplier-qualification",
+        "automation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1",
+      "title": "Asset Lifecycle Change Orchestrator",
+      "shortDescription": "Coordinates engineering changes across materials and product items with automated asset provisioning.",
+      "description": "Monitors engineering change requests and automatically orchestrates downstream impacts on materials and product items throughout their lifecycle. Automates compliance validation, coordinates asset provisioning workflows, and processes change notifications to maintain synchronization across manufacturing and procurement operations.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "lineOfBusiness": [
+        "it-service-management"
+      ],
+      "tags": [
+        "asset-lifecycle",
+        "change-automation",
+        "provisioning-orchestration"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:agent:OpportunityToOrderAutomationEngine:v1",
+      "title": "Opportunity-to-Order Automation Engine",
+      "shortDescription": "Monitors sales opportunities and automates order creation workflows.",
+      "description": "Automates the conversion of qualified sales opportunities into customer orders by continuously monitoring opportunity status changes and customer account eligibility. Coordinates with procurement and production planning systems to ensure order fulfillment readiness. Processes opportunity data against customer credit limits and inventory availability to streamline order creation.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:CustomerAccount:v1",
+        "sap.odm:entityType:SalesOpportunity:v1"
+      ],
+      "lineOfBusiness": [
+        "Sales and Order Management"
+      ],
+      "tags": [
+        "sales-automation",
+        "order-processing",
+        "workflow-orchestration"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:agent:IncidentRootCauseAutomationEngine:v1",
+      "title": "Incident Root Cause Automation Engine",
+      "shortDescription": "Automates incident analysis, root cause identification, and corrective action workflows.",
+      "description": "This agent monitors safety incidents and hazardous substance events across production environments, automatically correlating incident data to identify root causes and trigger corrective action processes. It processes incident reports in real-time, coordinates with compliance systems, and escalates high-risk safety events to designated stakeholders for immediate remediation.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:HazardousSubstance:v1",
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "lineOfBusiness": [
+        "Safety and Environment"
+      ],
+      "tags": [
+        "incident-analysis",
+        "root-cause",
+        "automation",
+        "corrective-action"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:agent:EngineeringChangeOrchestrator:v1",
+      "title": "Engineering Change Orchestrator",
+      "shortDescription": "Automates and coordinates engineering changes across materials and product items.",
+      "description": "Monitors incoming engineering change requests and automatically orchestrates the downstream provisioning of affected materials and product items. Coordinates change workflows across procurement, production planning, and asset management domains to ensure consistent application of design modifications. Processes compliance validations and triggers synchronized updates to maintain data integrity throughout the enterprise.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "lineOfBusiness": [
+        "IT Service Management"
+      ],
+      "tags": [
+        "change-automation",
+        "orchestration",
+        "provisioning"
+      ],
+      "industry": []
+    }
+  ],
+  "apiResources": [
+    {
+      "ordId": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+      "title": "Material Receipt Inbound API",
+      "shortDescription": "REST API for creating and managing goods receipt transactions against purchase orders.",
+      "description": "Enables integration systems and warehouse management applications to post goods receipts in real-time against procured materials. Supports batch material receipt posting, quality inspection workflows, and stock reservation updates. Critical for supply chain visibility and inventory accuracy in manufacturing operations.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/material-receipt-inbound-v1.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Material:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Procurement",
+        "Inventory Management",
+        "Manufacturing"
+      ],
+      "tags": [
+        "goods-receipt",
+        "inbound-logistics",
+        "material-management",
+        "procurement-integration"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:apiResource:ProductionPerformanceAPI:v1",
+      "title": "Production Performance API",
+      "shortDescription": "Retrieves machine efficiency and production order metrics for OEE monitoring.",
+      "description": "Exposes real-time and historical data on machine utilization, production order progress, and performance indicators. Manages access to equipment performance metrics and manufacturing KPIs, enabling systems to retrieve consolidated efficiency data for production analytics and continuous improvement initiatives.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Machine:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductionOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/production-performance.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Manufacturing Execution"
+      ],
+      "tags": [
+        "oee-monitoring",
+        "machine-analytics",
+        "performance-metrics",
+        "production-efficiency"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:apiResource:EmployeePayrollDataAPI:v1",
+      "title": "Employee Payroll Data API",
+      "shortDescription": "Exposes employee and workforce payroll information for financial processing and reporting.",
+      "description": "Retrieves and manages comprehensive payroll data for employees and workforce personnel, including compensation, deductions, and tax information. Provides access to employee master data integrated with financial accounting systems for payroll processing and statutory compliance. Manages workforce-related financial attributes necessary for accurate payroll calculations and audit trails.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:WorkforcePerson:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/employee-payroll-data.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Finance"
+      ],
+      "tags": [
+        "payroll",
+        "workforce",
+        "compensation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:apiResource:EngineeringChangeManagementAPI:v1",
+      "title": "Design Modification and Component Specification API",
+      "shortDescription": "Facilitates tracking and coordination of design updates and component specifications during product development and procurement cycles.",
+      "description": "Exposes design modification records and component specification data to enable integration systems to access approval statuses, impacted items, and change history throughout the product lifecycle. Supports retrieval of design update details, affected component relationships, and change request submissions to coordinate cross-functional teams. Enables real-time access to modification tracking, impact assessments, and stakeholder notifications for design changes across sourcing and manufacturing operations.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:EngineeringChange:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductItem:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/engineering-change-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Product Lifecycle Management"
+      ],
+      "tags": [
+        "design-modification",
+        "product-lifecycle-management",
+        "change-tracking",
+        "component-management"
+      ],
+      "industry": [],
+      "namespace": "sap.s4"
+    },
+    {
+      "ordId": "sap.s4:apiResource:CustomerOrderManagementAPI:v1",
+      "title": "Customer Order Management API",
+      "shortDescription": "Retrieves and manages customer orders and account details for order processing",
+      "description": "Exposes customer account information and order data to enable real-time order retrieval, modification, and status tracking. Provides access to customer account hierarchies, order histories, and line-item details for downstream sales and customer service operations. Manages customer order lifecycle events including creation, amendment, and fulfillment coordination.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/customer-order-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Sales and Customer"
+      ],
+      "tags": [
+        "dispute-resolution",
+        "customer-service",
+        "account-management",
+        "crm"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:apiResource:WorkforceOrgStructureAPI:v1",
+      "title": "Workforce Organization Structure API",
+      "shortDescription": "Retrieves and manages employee organizational hierarchy and reporting relationships.",
+      "description": "Exposes comprehensive workforce organizational data including employee hierarchies, reporting structures, and personnel assignments. Manages access to workforce person records and their positional relationships within the enterprise. Provides real-time queries on organizational dependencies and employee classification for planning and compliance purposes.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:WorkforcePerson:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/workforce-org-structure.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Capital Management"
+      ],
+      "tags": [
+        "workforce-management",
+        "organizational-structure",
+        "employee-hierarchy"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1",
+      "title": "Hazardous Substance Compliance API",
+      "shortDescription": "Retrieves and manages hazardous substance data for regulatory compliance.",
+      "description": "Exposes hazardous substance inventory, classification, and safety attributes across the enterprise. Provides access to material hazard profiles, regulatory mappings, and compliance documentation to support marketing compliance and product safety validation. Manages hazardous substance declarations and exposure limits for procurement and manufacturing workflows.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:HazardousSubstance:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/hazardous-substance-compliance.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "marketing-compliance"
+      ],
+      "tags": [
+        "compliance",
+        "hazard-management",
+        "regulatory-validation"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:apiResource:ProductionExecutionAPI:v1",
+      "title": "Production Execution API",
+      "shortDescription": "Retrieves and manages machine status and production order execution data.",
+      "description": "Exposes real-time production order and machine data to enable monitoring of manufacturing execution. Provides access to production order details, machine operational status, and scheduling information for production planning and shop floor control systems.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Machine:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductionOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/production-execution.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "manufacturing"
+      ],
+      "tags": [
+        "production-planning",
+        "shop-floor-control",
+        "machine-monitoring"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:apiResource:CustomerAccountFinancialAPI:v1",
+      "title": "Customer Account Financial API",
+      "shortDescription": "Retrieves and manages customer account financial data including balances and payment terms.",
+      "description": "This API exposes customer account financial information and order-related payment details, enabling retrieval of account balances, credit limits, and payment status. It manages customer financial profiles linked to their orders, providing access to aging analysis, credit adjustments, and transaction history for integrated financial accounting and receivables management.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/customer-account-financial.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Finance"
+      ],
+      "tags": [
+        "customer-financial",
+        "accounting",
+        "receivables"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:apiResource:EngineeringChangeProductDataAPI:v1",
+      "title": "Engineering Change & Product Item Data API",
+      "shortDescription": "Retrieves and manages engineering changes and product item modifications across manufacturing operations.",
+      "description": "Exposes real-time access to engineering change orders and product item definitions, enabling seamless integration between product development and manufacturing execution. Manages product item revisions, change approvals, and compliance tracking throughout the product lifecycle. Provides robust query and update capabilities for coordinating engineering modifications with procurement and production planning systems.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:EngineeringChange:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductItem:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/engineering-change-product-data.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Manufacturing"
+      ],
+      "tags": [
+        "engineering-change-management",
+        "product-lifecycle",
+        "manufacturing-integration"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:apiResource:HazardousSubstanceInventoryAPI:v1",
+      "title": "Chemical Inventory Management API",
+      "shortDescription": "Manages chemical substance records and regulatory documentation across manufacturing and procurement operations.",
+      "description": "Enables tracking and administration of chemical materials used in production and supply chain activities. Maintains substance registration, hazard classifications, and location-based inventory details. Supports regulatory reporting, safety audits, and compliance verification for occupational health and environmental protection requirements across enterprise facilities.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:HazardousSubstance:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/hazardous-substances.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "operations"
+      ],
+      "tags": [
+        "hazmat",
+        "inventory-control",
+        "regulatory-reporting"
+      ],
+      "industry": [],
+      "namespace": "sap.s4"
+    },
+    {
+      "ordId": "sap.s4:apiResource:SafetyComplianceCustomerEngagementAPI:v1",
+      "title": "Customer Safety Programs and Regulatory Reporting API",
+      "shortDescription": "Provides customer profile data alongside occupational health initiatives and regulatory audit documentation.",
+      "description": "Exposes customer master records integrated with workplace safety program participation and regulatory requirement tracking. Enables retrieval of environmental, health, and safety initiative metrics, program enrollment histories, and audit documentation tied to customer relationships. Supports incident ticket linkage to customer-specific safety obligations, facilitating coordinated response procedures and regulatory compliance reporting across supply chain and asset lifecycle management domains.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/safety-compliance-customer-engagement.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Environment, Health & Safety"
+      ],
+      "tags": [
+        "workplace-safety",
+        "regulatory-reporting",
+        "customer-programs"
+      ],
+      "industry": [],
+      "namespace": "sap.s4"
+    },
+    {
+      "ordId": "sap.s4:apiResource:WorkforceCapacityAndTimeOffManagement:v1",
+      "title": "Workforce Capacity and Time Off Management API",
+      "shortDescription": "Retrieves employee availability and time-off data for shift and labor capacity planning.",
+      "description": "Exposes real-time employee and time-off information to support manufacturing workforce planning and shift optimization. Manages access to employee capacity metrics, leave balances, and scheduling constraints. Provides comprehensive labor availability data for production scheduling and resource allocation decisions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:TimeOff:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/workforce-capacity-timeoff.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "manufacturing"
+      ],
+      "tags": [
+        "workforce-planning",
+        "shift-management",
+        "labor-capacity"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:apiResource:ProductionOrderAndMachineScheduling:v1",
+      "title": "Production Order and Machine Scheduling API",
+      "shortDescription": "Retrieves and manages production orders and machine assignments for real-time scheduling.",
+      "description": "Exposes production order details and machine capacity information to enable dynamic scheduling and order execution. Provides access to machine availability, production order status, and scheduling constraints. Manages updates to order sequencing and machine allocations across manufacturing facilities.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Machine:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductionOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/production-order-machine-scheduling.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Manufacturing"
+      ],
+      "tags": [
+        "production-planning",
+        "machine-scheduling",
+        "order-execution"
+      ],
+      "industry": []
+    }
+  ],
+  "dataProducts": [
+    {
+      "ordId": "sap.s4:dataProduct:ProcurementMetricsHub:v1",
+      "title": "Procurement Metrics Hub",
+      "shortDescription": "Aggregated procurement KPIs tracking vendor performance, order cycle times, and spend analysis.",
+      "description": "Delivers real-time analytical views of procurement operations, including vendor scorecards, purchase order aging, invoice reconciliation status, and material cost trends. Enables procurement teams to optimize supplier relationships, reduce cycle times, and identify cost-saving opportunities across the supply chain.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "type": "derived",
+      "category": "analytical",
+      "outputPorts": [
+        {
+          "ordId": "sap.s4:apiResource:ProcurementAnalyticsAPI:v1"
+        }
+      ],
+      "entityTypes": [
+        "sap.odm:entityType:Vendor:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:Invoice:v1"
+      ],
+      "lineOfBusiness": [
+        "Procurement",
+        "Finance"
+      ],
+      "tags": [
+        "vendor-analytics",
+        "spend-management",
+        "supply-chain-kpis",
+        "procurement-intelligence"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1",
+      "title": "Product Material Economics and Regulatory Assessment",
+      "shortDescription": "Evaluates material expenditures, regulatory adherence, and engineering modification impacts on bill-of-materials structures.",
+      "description": "Consolidates product item specifications, material master records, and engineering change documentation to deliver comprehensive supply chain economic analysis, regulatory compliance exposure assessment, and supplier relationship metrics. Enables finance and operations teams to monitor cost trends by component, track compliance obligations, and understand supplier performance implications for strategic procurement and product development initiatives.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.s4:apiResource:BOMCostComplianceReportingAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Product Lifecycle Management"
+      ],
+      "tags": [
+        "material-cost-analysis",
+        "supply-chain-economics",
+        "regulatory-exposure",
+        "supplier-performance"
+      ],
+      "industry": [],
+      "namespace": "sap.s4"
+    },
+    {
+      "ordId": "sap.s4:dataProduct:IncidentSafetyAnalyticsHub:v1",
+      "title": "Incident & Safety Analytics Hub",
+      "shortDescription": "Aggregates and analyzes incident and safety data across manufacturing operations.",
+      "description": "This data product aggregates incident and safety incident records throughout the production lifecycle to provide comprehensive safety metrics and compliance insights. It summarizes trends in workplace incidents, hazardous events, and safety violations to enable proactive risk mitigation and regulatory compliance monitoring. The hub provides actionable analytics on incident patterns, root causes, and safety performance indicators across all manufacturing facilities.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.s4:apiResource:IncidentSafetyReportingAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "product-lifecycle-management"
+      ],
+      "tags": [
+        "safety-analytics",
+        "incident-management",
+        "compliance-monitoring"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:dataProduct:ManufacturingQualityMetricsHub:v1",
+      "title": "Manufacturing Quality Metrics Hub",
+      "shortDescription": "Aggregates production order execution and quality inspection data for manufacturing analytics.",
+      "description": "Summarizes quality performance metrics across production orders and inspection results to provide actionable insights on defect rates, inspection compliance, and production yield. Delivers comprehensive dashboards and KPIs that enable root cause analysis and continuous improvement initiatives throughout the manufacturing process.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:ProductionOrder:v1",
+        "sap.odm:entityType:QualityInspection:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.s4:apiResource:ProductionExecutionAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Manufacturing"
+      ],
+      "tags": [
+        "quality-analytics",
+        "production-metrics",
+        "compliance-monitoring"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:dataProduct:AssetMaintenanceAndChangeAnalytics:v1",
+      "title": "Asset Maintenance and Change Analytics",
+      "shortDescription": "Aggregates maintenance, equipment, and change metrics for asset lifecycle insights.",
+      "description": "This data product aggregates maintenance tickets, IT equipment inventories, and change request workflows to provide comprehensive analytics on asset performance and operational changes. It summarizes equipment utilization rates, maintenance schedules, and change impact assessments, enabling proactive asset management and informed decision-making across manufacturing and IT operations.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:ChangeRequest:v1",
+        "sap.odm:entityType:ITEquipment:v1",
+        "sap.odm:entityType:ServiceTicket:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.s4:apiResource:AssetMaintenanceAnalyticsAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "operations-and-asset-management"
+      ],
+      "tags": [
+        "asset-maintenance",
+        "change-management",
+        "predictive-analytics"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:dataProduct:EquipmentComplianceAndMaintenanceInsights:v1",
+      "title": "Equipment Compliance and Maintenance Insights",
+      "shortDescription": "Aggregates maintenance safety metrics and equipment compliance across service operations.",
+      "description": "Summarizes change requests, IT equipment status, and service ticket patterns to provide comprehensive risk analytics on maintenance safety and regulatory compliance. Delivers actionable metrics on equipment lifecycle management and preventive maintenance effectiveness to support Health, Safety & Environment governance.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:ChangeRequest:v1",
+        "sap.odm:entityType:ITEquipment:v1",
+        "sap.odm:entityType:ServiceTicket:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.s4:apiResource:EquipmentComplianceReportingAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Health, Safety & Environment"
+      ],
+      "tags": [
+        "maintenance-safety",
+        "risk-analytics",
+        "equipment-compliance"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:dataProduct:ProductionQualityYieldAnalytics:v1",
+      "title": "Production Quality Yield Analytics",
+      "shortDescription": "Aggregates production orders and quality inspections to analyze yield metrics and defect patterns.",
+      "description": "This data product synthesizes production order execution data with quality inspection results to provide comprehensive yield and defect analytics. It summarizes key performance indicators across production runs, inspection outcomes, and quality metrics to enable root-cause analysis and process improvement initiatives. The analytics aggregate real-time quality data with planned versus actual production metrics to support data-driven manufacturing decisions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:ProductionOrder:v1",
+        "sap.odm:entityType:QualityInspection:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.s4:apiResource:ProductionQualityMetricsAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Manufacturing"
+      ],
+      "tags": [
+        "quality-management",
+        "production-analytics",
+        "yield-optimization"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+      "title": "Production Transition Capability and Skill Requirements Analytics",
+      "shortDescription": "Combines engineering modifications, supply chain items, and manufacturing configurations to evaluate organizational capability for product transitions.",
+      "description": "This data product synthesizes engineering change orders, component specifications, and production item details to generate metrics on organizational readiness for manufacturing transitions and competency gaps. It correlates product evolution activities with required skill development, identifies personnel training needs, and tracks adoption velocity across operational teams. Provides actionable intelligence for talent management, learning program prioritization, and operational readiness planning during product changes.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.s4:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.s4:apiResource:EngineeringChangeWorkforceAnalyticsAPI:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "human-resources"
+      ],
+      "tags": [
+        "change-management-analytics",
+        "organizational-readiness",
+        "manufacturing-transitions"
+      ],
+      "industry": [],
+      "namespace": "sap.s4"
+    }
+  ]
+}

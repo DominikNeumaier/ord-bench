@@ -1,0 +1,66 @@
+<process id="proc_SafetyComplianceWorkforce_v1" type="bpmn">
+  <step id="s1" 
+        label="Identify hazardous substances in operations"
+        description="Review and catalog all hazardous materials currently used in manufacturing and facility operations."
+        ordId="my.mes:apiResource:HazardousSubstanceComplianceManagement:v1"
+        capability="identify-hazardous-substances"
+        useCase="Safety managers need to maintain an accurate inventory of hazardous substances for regulatory compliance and employee protection."/>
+  
+  <step id="s2" 
+        label="Assess employee safety exposure and compensation impact"
+        description="Evaluate workforce members exposed to hazardous substances and determine if compensation adjustments or hazard pay is warranted."
+        ordId="workday.hcm:apiResource:WorkforceCompensationDataManagement:v1"
+        capability="assess-compensation-adjustments"
+        useCase="HR departments must ensure employees working with hazardous materials receive appropriate compensation for elevated risk."/>
+  
+  <step id="s3" 
+        label="Plan safety equipment maintenance and upgrades"
+        description="Request changes and service tickets for protective equipment and engineering controls needed to mitigate hazardous substance exposure."
+        ordId="my.mes:apiResource:EquipmentChangeAndServiceManagement:v1"
+        capability="manage-safety-equipment-changes"
+        useCase="Facility managers need to schedule maintenance and upgrades to protective systems that safeguard employees from hazardous substances."/>
+  
+  <step id="s4" 
+        label="Order compliant safety materials from vendors"
+        description="Create purchase orders with qualified vendors for safety equipment and supplies that meet regulatory compliance standards."
+        ordId="sap.ehs:apiResource:VendorSafetyComplianceOrders:v1"
+        capability="procure-safety-materials"
+        useCase="Procurement teams must source compliant safety materials from pre-qualified vendors to ensure regulatory adherence."/>
+  
+  <step id="s5" 
+        label="Manage employee time-off for safety training and recovery"
+        description="Process time-off requests and balance entitlements for employees attending mandatory safety training or recovering from hazard-related incidents."
+        ordId="workday.hcm:apiResource:TimeOffBalanceManagement:v1"
+        capability="manage-training-absences"
+        useCase="HR systems need to track and approve time-off for safety training and medical recovery without impacting operational schedules."/>
+  
+  <step id="s6" 
+        label="Coordinate product and material changes for safety"
+        description="Align engineering changes and material substitutions with safety requirements to eliminate or reduce hazardous substances in products."
+        ordId="sap.crm:agent:SalesProductChangeCoordinator:v1"
+        capability="coordinate-product-changes"
+        useCase="Sales and engineering teams must collaborate to introduce safer product variants that meet customer and regulatory safety expectations."/>
+  
+  <step id="s7" 
+        label="Execute customer safety programs and regulatory reporting"
+        description="Launch safety campaigns and prepare regulatory documentation communicating hazard controls and compliance status to customers and authorities."
+        ordId="sap.s4:apiResource:SafetyComplianceCustomerEngagementAPI:v1"
+        capability="execute-safety-campaigns"
+        useCase="Compliance and marketing teams need to demonstrate safety commitment through customer programs and timely regulatory disclosures."/>
+  
+  <step id="s8" 
+        label="Review employee safety performance and competency"
+        description="Evaluate employee performance against safety competencies and hazardous substance handling protocols as part of performance review cycles."
+        ordId="sap.sf:agent:PerformanceReviewCycleCoordinator:v1"
+        capability="assess-safety-performance"
+        useCase="HR teams need to incorporate safety performance and compliance competencies into employee evaluations to reinforce safety culture."/>
+
+  <!-- Sequence flows establishing the logical enterprise flow -->
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+</process>

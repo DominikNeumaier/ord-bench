@@ -1,0 +1,33 @@
+{
+  "case_id": "oos-03",
+  "mode": "out_of_scope",
+  "difficulty": "hard",
+  "topic": "Employee sentiment analysis and engagement scoring",
+  "timestamp": "2026-06-08T13:00:20.113942+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to automatically flag employees who are disengaging from Slack and email communications as early warning signals\u2014right now our managers only find out about retention risks after exit interviews, and we want to identify flight-risk patterns at least 60 days before someone actually leaves."
+      },
+      "generator_tokens": 147,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": false
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": false,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```\n\n**Justification:**\n\n- **C1 (Realistic):** True. Employee engagement monitoring and retention risk flagging are genuine enterprise HR/People Ops concerns.\n\n- **C2 (Genuinely Absent):** True. Slack/email beh",
+      "judge_tokens": 523,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "oos-03",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "difficulty": "hard",
+    "topic": "Employee sentiment analysis and engagement scoring",
+    "user_prompt": "We need to automatically flag employees who are disengaging from Slack and email communications as early warning signals\u2014right now our managers only find out about retention risks after exit interviews, and we want to identify flight-risk patterns at least 60 days before someone actually leaves.",
+    "expected_ordIds": []
+  }
+}

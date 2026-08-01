@@ -1,0 +1,67 @@
+<process id="proc_supply_production_compliance_v1" type="bpmn">
+  
+  <step id="s1" 
+        label="Initiate Campaign and Customer Engagement"
+        description="Launch a new product campaign and provision customer accounts to establish market engagement baseline."
+        ordId="corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1"
+        capability="provision-campaign-customers"
+        useCase="Sales operations teams create campaigns and activate customer accounts for new product releases"/>
+  
+  <step id="s2"
+        label="Identify and Evaluate Qualified Vendors"
+        description="Search and profile approved vendors in the procurement network to support campaign fulfillment requirements."
+        ordId="sap.ariba:apiResource:SourcedCampaignAndVendorManagement:v1"
+        capability="evaluate-vendor-profiles"
+        useCase="Procurement specialists review vendor credentials and sourcing capabilities for campaign support"/>
+  
+  <step id="s3"
+        label="Certify Materials and Regulatory Compliance"
+        description="Validate hazardous substances and regulatory declarations for materials used in production."
+        ordId="siemens.plm:apiResource:HazardousSubstanceComplianceAndTrackingManagement:v1"
+        capability="certify-regulated-materials"
+        useCase="EHS teams verify material safety data and regulatory certifications before manufacturing"/>
+  
+  <step id="s4"
+        label="Orchestrate Material and Vendor Qualification"
+        description="Coordinate multi-criteria qualification of materials and vendors against campaign and compliance requirements."
+        ordId="siemens.plm:agent:MaterialAndVendorQualificationOrchestrator:v1"
+        capability="orchestrate-qualification"
+        useCase="Supply chain managers run vendor-material compatibility assessments and qualification workflows"/>
+  
+  <step id="s5"
+        label="Execute Procurement Purchase Orders"
+        description="Create and manage vendor purchase orders for campaign materials and production components."
+        ordId="corp.itsm:apiResource:VendorProcurementOrderAPI:v1"
+        capability="execute-procurement-orders"
+        useCase="Buyers issue purchase orders to qualified vendors for campaign-driven production requirements"/>
+  
+  <step id="s6"
+        label="Manage Sourcing Campaign and Account Changes"
+        description="Update sourcing strategies and account relationships as campaign scope and vendor performance evolve."
+        ordId="sap.ariba:apiResource:SourceingCampaignAndAccountManagementAPI:v1"
+        capability="manage-sourcing-dynamics"
+        useCase="Procurement controllers adjust vendor allocations and account terms based on campaign execution"/>
+  
+  <step id="s7"
+        label="Request and Track Production Orders"
+        description="Translate campaign demand into machine production orders and monitor manufacturing execution."
+        ordId="siemens.plm:apiResource:MachineProductionOrderIntegration:v1"
+        capability="integrate-production-orders"
+        useCase="Production planners schedule machines and track work orders from campaign fulfillment requests"/>
+  
+  <step id="s8"
+        label="Register Change and Compliance Incidents"
+        description="Log service tickets, change requests, and IT equipment modifications required by production compliance audit trail."
+        ordId="sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1"
+        capability="register-compliance-incidents"
+        useCase="Operations teams document all production changes, equipment updates, and service tickets for regulatory compliance verification"/>
+  
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+  
+</process>

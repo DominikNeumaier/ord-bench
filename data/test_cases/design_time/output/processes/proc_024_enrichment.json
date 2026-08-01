@@ -1,0 +1,102 @@
+{
+  "process_id": "proc_024",
+  "process_type": "cmmn",
+  "gt_ordIds": [
+    "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+    "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1",
+    "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1",
+    "my.mes:agent:ProductionChangeOrchestrator:v1"
+  ],
+  "enrichment": {
+    "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1": {
+      "capabilities": [
+        "validate-vendor-material",
+        "process-invoice",
+        "verify-material-specification",
+        "audit-procurement-compliance"
+      ],
+      "useCases": [
+        "Procurement teams validate vendor invoices and material specifications before acceptance.",
+        "Inventory managers confirm material quality against regulatory standards.",
+        "Manufacturing ensures incoming materials meet engineering specifications."
+      ],
+      "processNext": [
+        "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProcurementSafetyCompliance_v1",
+          "groupTypeId": "cmmn",
+          "role": "evaluation_target"
+        }
+      ]
+    },
+    "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1": {
+      "capabilities": [
+        "assess-safety-compliance",
+        "identify-compliance-gaps",
+        "evaluate-customer-safety-risk",
+        "audit-campaign-safety"
+      ],
+      "useCases": [
+        "Safety officers review compliance requirements for customer-facing campaigns.",
+        "Risk managers assess environmental and health hazards in customer accounts.",
+        "Compliance teams validate campaign messaging against regulatory standards."
+      ],
+      "processNext": [
+        "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProcurementSafetyCompliance_v1",
+          "groupTypeId": "cmmn",
+          "role": "evaluation_target"
+        }
+      ]
+    },
+    "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1": {
+      "capabilities": [
+        "assign-employee-safety-training",
+        "identify-role-based-hazards",
+        "manage-workforce-hierarchy",
+        "track-employee-competency"
+      ],
+      "useCases": [
+        "HR teams enroll employees in mandatory safety programs based on organizational structure.",
+        "Safety managers assign role-specific training requirements.",
+        "Department heads track compliance across reporting hierarchies."
+      ],
+      "processNext": [
+        "my.mes:agent:ProductionChangeOrchestrator:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProcurementSafetyCompliance_v1",
+          "groupTypeId": "cmmn",
+          "role": "evaluation_target"
+        }
+      ]
+    },
+    "my.mes:agent:ProductionChangeOrchestrator:v1": {
+      "capabilities": [
+        "orchestrate-production-change",
+        "synchronize-engineering-change",
+        "coordinate-material-substitution",
+        "manage-change-impact"
+      ],
+      "useCases": [
+        "Manufacturing orchestrates production changes when new compliant materials are approved.",
+        "Operations synchronizes engineering changes across equipment and processes.",
+        "Change management tracks impacts of material updates on production schedules."
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProcurementSafetyCompliance_v1",
+          "groupTypeId": "cmmn",
+          "role": "evaluation_target"
+        }
+      ]
+    }
+  }
+}

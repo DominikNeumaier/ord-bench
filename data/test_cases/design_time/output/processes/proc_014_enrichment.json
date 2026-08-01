@@ -1,0 +1,90 @@
+{
+  "process_id": "proc_014",
+  "process_type": "bpmn",
+  "gt_ordIds": [
+    "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1",
+    "sap.sf:apiResource:EmployeeCompensationManagement:v1",
+    "emarsys.cx:apiResource:CustomerAccountCampaignManagementAPI:v1",
+    "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1"
+  ],
+  "enrichment": {
+    "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1": {
+      "capabilities": [
+        "assess-organizational-readiness",
+        "forecast-change-impact",
+        "identify-skill-gaps"
+      ],
+      "useCases": [
+        "Leadership evaluates workforce readiness before major product line transitions",
+        "HR identifies high-risk departments that need change management support"
+      ],
+      "processNext": [
+        "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductTransitionCompliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1": {
+      "capabilities": [
+        "validate-regulatory-compliance",
+        "audit-substance-safety",
+        "verify-jurisdictional-standards"
+      ],
+      "useCases": [
+        "Compliance ensures new product materials meet global safety regulations before manufacturing",
+        "EHS teams confirm regulatory alignment across all supply chain materials"
+      ],
+      "processNext": [
+        "sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductTransitionCompliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "emarsys.cx:apiResource:CustomerAccountCampaignManagementAPI:v1": {
+      "capabilities": [
+        "segment-customers-manage-campaigns",
+        "configure-account-targeting",
+        "personalize-campaign-strategy"
+      ],
+      "useCases": [
+        "Marketing teams tailor product transition campaigns to specific customer segments and account tiers",
+        "CRM orchestrates multi-channel customer outreach for product line changes"
+      ],
+      "processNext": [
+        "sap.sf:apiResource:EmployeeCompensationManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductTransitionCompliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.sf:apiResource:EmployeeCompensationManagement:v1": {
+      "capabilities": [
+        "validate-compensation-alignment",
+        "forecast-labor-costs",
+        "approve-salary-adjustments"
+      ],
+      "useCases": [
+        "Finance validates that labor cost changes support the product transition ROI projection",
+        "HR confirms employee compensation budgets align with transition financial model"
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductTransitionCompliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    }
+  }
+}

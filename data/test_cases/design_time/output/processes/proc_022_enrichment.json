@@ -1,0 +1,100 @@
+{
+  "process_id": "proc_022",
+  "process_type": "cmmn",
+  "gt_ordIds": [
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+    "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+    "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1",
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  ],
+  "enrichment": {
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1": {
+      "capabilities": [
+        "assess-operational-impact",
+        "analyze-material-requirements",
+        "evaluate-capability-gaps"
+      ],
+      "useCases": [
+        "Manufacturing leadership evaluates staffing and capability readiness before approving engineering changes to products.",
+        "Operations teams identify material and workforce constraints that could delay product transition timelines.",
+        "HR planners align training and development programs to new competency requirements introduced by product changes."
+      ],
+      "processNext": [
+        "my.mes:apiResource:WorkforceScheduleAndAbsenceManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_transition_compliance_v1",
+          "groupTypeId": "cmmn",
+          "sequencePosition": 1
+        }
+      ]
+    },
+    "sap.s4:agent:BOMComplianceAutomationAgent:v1": {
+      "capabilities": [
+        "validate-bom-compliance",
+        "detect-sourcing-conflicts",
+        "automate-compliance-verification"
+      ],
+      "useCases": [
+        "Quality teams automatically verify that new bill-of-materials aligns with engineering specifications before production startup.",
+        "PLM systems flag material sourcing conflicts that could prevent manufacturing execution of the new product design.",
+        "Compliance automation reduces manual validation errors and accelerates change approval cycles."
+      ],
+      "processNext": [
+        "sap.ariba:dataProduct:SupplyChainProductIntelligence:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_transition_compliance_v1",
+          "groupTypeId": "cmmn",
+          "sequencePosition": 4
+        }
+      ]
+    },
+    "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1": {
+      "capabilities": [
+        "update-workforce-compensation",
+        "align-role-classification",
+        "verify-competency-alignment"
+      ],
+      "useCases": [
+        "HR and Finance teams adjust employee compensation to reflect new skill requirements and responsibilities required by product transitions.",
+        "Compensation systems validate that role classifications match competencies needed for engineering change implementation.",
+        "Workforce planning aligns pay structures with capability assessments to support retention during organizational changes."
+      ],
+      "processNext": [
+        "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_transition_compliance_v1",
+          "groupTypeId": "cmmn",
+          "sequencePosition": 6
+        }
+      ]
+    },
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1": {
+      "capabilities": [
+        "create-change-request-tickets",
+        "track-implementation-tasks",
+        "manage-approval-workflows"
+      ],
+      "useCases": [
+        "Operations teams create formal change requests and service tickets to establish audit trail and task accountability for product transitions.",
+        "IT and operational dependencies are tracked end-to-end through ticketing system to prevent implementation gaps.",
+        "Change management leadership gains real-time visibility into transition status across all functional teams."
+      ],
+      "processNext": [
+        "sap.ehs:apiResource:SafetyIncidentOrderManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_transition_compliance_v1",
+          "groupTypeId": "cmmn",
+          "sequencePosition": 7
+        }
+      ]
+    }
+  }
+}

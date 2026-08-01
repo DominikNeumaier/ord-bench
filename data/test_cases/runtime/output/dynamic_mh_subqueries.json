@@ -1,0 +1,242 @@
+{
+  "dy-21": {
+    "case_id": "dy-21",
+    "expected_ordIds": [
+      "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+      "sap.sf:apiResource:CompensationAndSalaryManagement:v1"
+    ],
+    "sub_queries": [
+      "Analyze the workforce skills inventory and identify engineering requirements needed for the upcoming product line transition, including skill gaps and training needs.",
+      "Review and evaluate current compensation structures to ensure they are competitive and properly aligned with the new roles and responsibilities resulting from the product line transition."
+    ],
+    "n": 2
+  },
+  "dy-22": {
+    "case_id": "dy-22",
+    "expected_ordIds": [
+      "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1",
+      "sap.s4:dataProduct:IncidentSafetyAnalyticsHub:v1"
+    ],
+    "sub_queries": [
+      "Pull material expenses broken down by supplier and identify any compliance gaps in our production costs",
+      "Analyze recent safety incidents and trends across all manufacturing sites"
+    ],
+    "n": 2
+  },
+  "dy-23": {
+    "case_id": "dy-23",
+    "expected_ordIds": [
+      "corp.itsm:dataProduct:SafetyIncidentMetrics:v1",
+      "sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+    ],
+    "sub_queries": [
+      "Pull together incident tracking data for the quarterly board review",
+      "Update several customer cases that are stuck in the resolution queue"
+    ],
+    "n": 2
+  },
+  "dy-24": {
+    "case_id": "dy-24",
+    "expected_ordIds": [
+      "siemens.plm:agent:BOMComplianceValidator:v1",
+      "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+    ],
+    "sub_queries": [
+      "Verify that our current component sourcing meets all regulatory requirements for our qualified suppliers",
+      "Check our real-time inventory levels to ensure we have adequate stock before the next production run"
+    ],
+    "n": 2
+  },
+  "dy-25": {
+    "case_id": "dy-25",
+    "expected_ordIds": [
+      "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+      "my.mes:apiResource:HazardousSubstanceComplianceManagement:v1"
+    ],
+    "sub_queries": [
+      "Reconcile incoming supplier billing against materials received this quarter",
+      "Verify that all received materials meet regulatory obligations for restricted substances in each shipment"
+    ],
+    "n": 2
+  },
+  "dy-26": {
+    "case_id": "dy-26",
+    "expected_ordIds": [
+      "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1",
+      "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1"
+    ],
+    "sub_queries": [
+      "Pull together current payroll structure and benefit allocations for the upcoming fiscal review",
+      "Log and track equipment upgrades being rolled out across departments for audit readiness"
+    ],
+    "n": 2
+  },
+  "dy-27": {
+    "case_id": "dy-27",
+    "expected_ordIds": [
+      "sap.crm:apiResource:ProcurementVendorOrderManagement:v1",
+      "sap.s4:apiResource:CustomerOrderManagementAPI:v1"
+    ],
+    "sub_queries": [
+      "Retrieve all supplier payment terms and current financial commitments (accounts payable, outstanding invoices, and scheduled payments due this quarter)",
+      "Retrieve all client invoices, expected collections, and revenue commitments scheduled for this quarter (accounts receivable and projected cash inflows)"
+    ],
+    "n": 2
+  },
+  "dy-28": {
+    "case_id": "dy-28",
+    "expected_ordIds": [
+      "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1",
+      "sap.ariba:apiResource:MaterialAndVendorProcurementData:v1"
+    ],
+    "sub_queries": [
+      "Verify that all materials sourced from new suppliers meet current environmental and safety regulations",
+      "Pull complete specifications and vendor details for new suppliers to enable procurement team order processing"
+    ],
+    "n": 2
+  },
+  "dy-29": {
+    "case_id": "dy-29",
+    "expected_ordIds": [
+      "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+      "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1"
+    ],
+    "sub_queries": [
+      "Pull current production queue status and identify items scheduled for the next shift",
+      "Check active campaign outreach to identify which contacts have engaged with latest messaging"
+    ],
+    "n": 2
+  },
+  "dy-30": {
+    "case_id": "dy-30",
+    "expected_ordIds": [
+      "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+      "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1"
+    ],
+    "sub_queries": [
+      "Pull up the current status of ticket #12847 and identify the top-performing sales representative in the Northeast region",
+      "Retrieve what products the top-performing Northeast sales representative is certified to sell"
+    ],
+    "n": 2
+  },
+  "dy-31": {
+    "case_id": "dy-31",
+    "expected_ordIds": [
+      "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1",
+      "corp.itsm:dataProduct:IncidentEngagementReliability:v1"
+    ],
+    "sub_queries": [
+      "Pull current safety performance metrics across all reported events",
+      "Retrieve chemical inventory documentation status and regulatory compliance standards"
+    ],
+    "n": 2
+  },
+  "dy-32": {
+    "case_id": "dy-32",
+    "expected_ordIds": [
+      "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1",
+      "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1"
+    ],
+    "sub_queries": [
+      "Pull current inventory specifications and vendor details on file",
+      "Check status of pending maintenance requests and open change orders"
+    ],
+    "n": 2
+  },
+  "dy-33": {
+    "case_id": "dy-33",
+    "expected_ordIds": [
+      "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+      "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1"
+    ],
+    "sub_queries": [
+      "Log incoming shipments from suppliers and track product line modifications",
+      "Enable field technicians to submit equipment maintenance needs through an integrated workflow"
+    ],
+    "n": 2
+  },
+  "dy-34": {
+    "case_id": "dy-34",
+    "expected_ordIds": [
+      "workday.hcm:apiResource:PayrollProcessingDataManagement:v1",
+      "corp.itsm:apiResource:CampaignAccessManagementAPI:v1"
+    ],
+    "sub_queries": [
+      "Pull together compensation figures and tax withholdings for quarterly reconciliation",
+      "Grant marketing team access to manage client engagement initiatives across accounts"
+    ],
+    "n": 2
+  },
+  "dy-35": {
+    "case_id": "dy-35",
+    "expected_ordIds": [
+      "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1",
+      "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1"
+    ],
+    "sub_queries": [
+      "Analyze recent campaign safety incidents and engagement issues to identify friction points in customer-facing operations and overall operational health",
+      "Analyze product economics including cost drivers and supplier dependencies to identify friction points in manufacturing operations and cost structure"
+    ],
+    "n": 2
+  },
+  "dy-36": {
+    "case_id": "dy-36",
+    "expected_ordIds": [
+      "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+      "sap.s4:apiResource:EmployeePayrollDataAPI:v1"
+    ],
+    "sub_queries": [
+      "Pull workforce compensation figures and analyze labor costs for the transition model",
+      "Retrieve current stock levels and product specification changes to assess operational readiness impact"
+    ],
+    "n": 2
+  },
+  "dy-37": {
+    "case_id": "dy-37",
+    "expected_ordIds": [
+      "sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1",
+      "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1"
+    ],
+    "sub_queries": [
+      "Pull current production schedules and equipment status to finalize procurement forecast for next quarter",
+      "Submit a maintenance request for assembly line due to performance degradation requiring urgent service team attention"
+    ],
+    "n": 2
+  },
+  "dy-38": {
+    "case_id": "dy-38",
+    "expected_ordIds": [
+      "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1",
+      "sap.ehs:apiResource:VendorSafetyComplianceOrders:v1"
+    ],
+    "sub_queries": [
+      "Analyze internal staffing capabilities and resource allocation to determine if current team capacity is adequate for the planned organizational changes",
+      "Review procurement records and vendor relationships to verify all suppliers maintain current safety certifications and compliance standings"
+    ],
+    "n": 2
+  },
+  "dy-39": {
+    "case_id": "dy-39",
+    "expected_ordIds": [
+      "corp.itsm:apiResource:VendorProcurementOrderAPI:v1",
+      "workday.hcm:apiResource:PayrollDataExposure:v1"
+    ],
+    "sub_queries": [
+      "Retrieve current spending commitments and procurement expenses with the specific vendor for Q4 budget review",
+      "Extract latest payroll records and employee compensation costs for Q4 to cross-reference against procurement expenses for audit reconciliation"
+    ],
+    "n": 2
+  },
+  "dy-40": {
+    "case_id": "dy-40",
+    "expected_ordIds": [
+      "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+      "sap.ariba:apiResource:MaterialAndVendorProcurementAPI:v1"
+    ],
+    "sub_queries": [
+      "Validate internal part specifications against supplier certifications to ensure compliance and compatibility",
+      "Pull current inventory levels and retrieve vendor capabilities data to identify potential supply chain bottlenecks"
+    ],
+    "n": 2
+  }
+}

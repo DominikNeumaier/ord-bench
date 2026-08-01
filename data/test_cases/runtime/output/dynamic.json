@@ -1,0 +1,542 @@
+[
+  {
+    "case_id": "dy-01",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to pull up a recent issue that one of our customers reported last week so I can see what we promised to deliver and whether we're on track. Can you help me find that and check the current status?",
+    "expected_ordIds": [
+      "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1"
+    ],
+    "distractor_ordId": "emarsys.cx:apiResource:OrderFulfillmentServiceAPI:v1"
+  },
+  {
+    "case_id": "dy-02",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to pull together the current salary information and benefits breakdown for our sourcing and contracting team so we can review our staffing costs against this quarter's budget. Can you help me access that data?",
+    "expected_ordIds": [
+      "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1"
+    ],
+    "distractor_ordId": "sap.s4:apiResource:EmployeePayrollDataAPI:v1"
+  },
+  {
+    "case_id": "dy-03",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to set up automated safety checks for our engineering change orders and material updates before they go to production. We've been manually validating everything against our compliance requirements, but it's slowing down our releases. Can you help me automate this validation process?",
+    "expected_ordIds": [
+      "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1"
+    ],
+    "distractor_ordId": "sap.s4:agent:BOMComplianceAutomationAgent:v1"
+  },
+  {
+    "case_id": "dy-04",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "Our engineering team keeps pushing through design changes that require updates to our IT infrastructure, but we're struggling to keep pace with manual coordination across multiple systems. Right now, when a new component specification comes through, we have to manually track which servers need reconfiguration, which licenses need reallocation, and which hardware needs to be deployed\u2014and it's creating delays and tracking errors. We need a way to automate this entire workflow so that when engineering changes are approved, all the downstream IT infrastructure changes happen consistently and in the right sequence.",
+    "expected_ordIds": [
+      "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+    ],
+    "distractor_ordId": "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1"
+  },
+  {
+    "case_id": "dy-05",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "We need to track some updates we're making to meet regulatory requirements, including the equipment changes and related service work orders. Can you help us log this through the right system?",
+    "expected_ordIds": [
+      "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1"
+    ],
+    "distractor_ordId": "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1"
+  },
+  {
+    "case_id": "dy-06",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to schedule some updates to our manufacturing workflow next week and make sure all the dependent systems get notified at the right time. We have a few service components that need to be rolled out together, and I want to avoid any conflicts or downtime. Can you help me figure out what tool handles coordinating these kinds of synchronized deployments?",
+    "expected_ordIds": [
+      "my.mes:agent:ProductionChangeOrchestrator:v1"
+    ],
+    "distractor_ordId": "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1"
+  },
+  {
+    "case_id": "dy-07",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "We need to ensure our supply chain partners can deliver the materials we need on time and at the right cost. Our goal is to have complete visibility into what we've committed to buy from each supplier and be confident that those commitments will be fulfilled according to our specifications.",
+    "expected_ordIds": [
+      "corp.itsm:apiResource:VendorProcurementOrderAPI:v1"
+    ],
+    "distractor_ordId": "sap.crm:apiResource:ProcurementVendorOrderManagement:v1"
+  },
+  {
+    "case_id": "dy-08",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to pull together all our hazardous material inventory data to verify we're compliant with the latest regulations, and I'm not sure if I should be querying the system that gives me the actual substance records or the one that validates them against requirements. Can you help me figure out which endpoint I should be hitting to get the master list of substances we're tracking?",
+    "expected_ordIds": [
+      "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1"
+    ],
+    "distractor_ordId": "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1"
+  },
+  {
+    "case_id": "dy-09",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to pull up a customer's recent purchases and modify one of their orders before it ships out. Can you help me access their account information and make those changes?",
+    "expected_ordIds": [
+      "sap.s4:apiResource:CustomerOrderManagementAPI:v1"
+    ],
+    "distractor_ordId": "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1"
+  },
+  {
+    "case_id": "dy-10",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to understand which of our products are driving the most cost and why\u2014like breaking down material expenses, design complexity, and whether we're overpaying certain suppliers compared to our benchmarks. Can you show me which items in our portfolio have the most expensive components and where our supply chain dependencies might be creating risk?",
+    "expected_ordIds": [
+      "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1"
+    ],
+    "distractor_ordId": "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1"
+  },
+  {
+    "case_id": "dy-11",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to submit a maintenance request for our server infrastructure and track its progress through approval. Can you help me get this logged in the system and see what the current status is?",
+    "expected_ordIds": [
+      "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+    ],
+    "distractor_ordId": "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1"
+  },
+  {
+    "case_id": "dy-12",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "We need to pull together our material spend across all engine suppliers and see which components are driving costs up, plus make sure everything meets our compliance requirements. Can you help us get a comprehensive view of our BOM spending and any risk areas we should know about?",
+    "expected_ordIds": [
+      "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1"
+    ],
+    "distractor_ordId": "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1"
+  },
+  {
+    "case_id": "dy-13",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "We need to track a equipment modification we're rolling out next month and manage the related service requests from our field teams. Can you help me set up the workflow to document this change and keep everyone updated on the status?",
+    "expected_ordIds": [
+      "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1"
+    ],
+    "distractor_ordId": "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1"
+  },
+  {
+    "case_id": "dy-14",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "We need to record incoming shipments from our suppliers into the system, but I'm not sure if we should be using the invoicing module or if there's a different process for just logging what physically arrived at our warehouse before we even get the bills.",
+    "expected_ordIds": [
+      "sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+    ],
+    "distractor_ordId": "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1"
+  },
+  {
+    "case_id": "dy-15",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P2"
+    ],
+    "user_prompt": "Our finance team is struggling to reconcile payroll data across multiple departments because we can't easily track how individual pay rates align with our established pay bands and job levels. We need to ensure our payment structures remain competitive and compliant with market rates, but right now we're manually cross-referencing spreadsheets which is error-prone and time-consuming. Can you help us integrate our payroll processes so we have a single source of truth for all employee earnings and payment configurations?",
+    "expected_ordIds": [
+      "sap.sf:apiResource:CompensationAndSalaryManagement:v1"
+    ],
+    "distractor_ordId": "sap.sf:apiResource:EmployeeCompensationManagement:v1"
+  },
+  {
+    "case_id": "dy-16",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "We need to understand how our upcoming engineering changes will affect our team's capacity and skill levels across the plant. Can you pull together an analysis that shows us the workforce impact from all the material and product modifications we have planned?",
+    "expected_ordIds": [
+      "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+    ],
+    "distractor_ordId": "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+  },
+  {
+    "case_id": "dy-17",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to get approval for some design modifications we're making to our product line, and then make sure the updated materials are ordered and tracked through our supply chain. Can you help me coordinate the engineering paperwork and inventory adjustments all in one place?",
+    "expected_ordIds": [
+      "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+    ],
+    "distractor_ordId": "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+  },
+  {
+    "case_id": "dy-18",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to check the status of an order we placed last month and see if we can adjust the production schedule to move up the delivery date. Can you help me find where that information is tracked?",
+    "expected_ordIds": [
+      "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1"
+    ],
+    "distractor_ordId": "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1"
+  },
+  {
+    "case_id": "dy-19",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "We need to check our current compliance status for the hazardous materials we're storing across all our facilities and understand what regulatory requirements we need to meet. Can you pull a report showing our inventory levels and which items require updated certifications or documentation?",
+    "expected_ordIds": [
+      "my.mes:apiResource:HazardousSubstanceComplianceManagement:v1"
+    ],
+    "distractor_ordId": "sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1"
+  },
+  {
+    "case_id": "dy-20",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to figure out who reports to whom across our company and understand the chain of command structure. Can you help me pull together the reporting relationships and organizational breakdown?",
+    "expected_ordIds": [
+      "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1"
+    ],
+    "distractor_ordId": "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1"
+  },
+  {
+    "case_id": "dy-21",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "We need to analyze the workforce skills and engineering requirements for our upcoming product line transition, while simultaneously ensuring our compensation structures are competitive and properly aligned with the new roles and responsibilities our team will take on during this shift.",
+    "expected_ordIds": [
+      "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+      "sap.sf:apiResource:CompensationAndSalaryManagement:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-22",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "We need to pull together a comprehensive view of our production risks and costs right now - I want to see both our material expenses broken down by supplier along with any compliance gaps, and at the same time analyze our recent safety incidents and trends across all our manufacturing sites. Can you get me both of those datasets so we can address cost optimization and safety improvements in our next operations review?",
+    "expected_ordIds": [
+      "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1",
+      "sap.s4:dataProduct:IncidentSafetyAnalyticsHub:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-23",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "I need to pull together our incident tracking data for the quarterly board review while simultaneously updating several customer cases that are stuck in our resolution queue\u2014can you help me access both of those systems in one go so I don't have to toggle between platforms?",
+    "expected_ordIds": [
+      "corp.itsm:dataProduct:SafetyIncidentMetrics:v1",
+      "sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-24",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "We need to verify that our current component sourcing meets all regulatory requirements while simultaneously checking our real-time inventory levels to ensure we have adequate stock from our qualified suppliers before we proceed with the next production run.",
+    "expected_ordIds": [
+      "siemens.plm:agent:BOMComplianceValidator:v1",
+      "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-25",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "We need to reconcile our incoming supplier billing against the materials we've received this quarter, and at the same time, verify that everything we've taken in meets our regulatory obligations for restricted substances in each shipment.",
+    "expected_ordIds": [
+      "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+      "my.mes:apiResource:HazardousSubstanceComplianceManagement:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-26",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "I need to pull together our current payroll structure and benefit allocations for the upcoming fiscal review, and at the same time, I need to log and track some equipment upgrades we're rolling out across departments to stay audit-ready. Can you help me access both of those workflows in a single request?",
+    "expected_ordIds": [
+      "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1",
+      "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-27",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "We need to pull together our supplier payment terms and current commitments against what we've got coming in from our clients this quarter\u2014basically reconcile who we owe and what we're expecting to collect so we can forecast our cash position accurately.",
+    "expected_ordIds": [
+      "sap.crm:apiResource:ProcurementVendorOrderManagement:v1",
+      "sap.s4:apiResource:CustomerOrderManagementAPI:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-28",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "We need to verify that all the materials we're sourcing from our new suppliers meet current environmental and safety regulations, and simultaneously pull their complete specifications and vendor details so our procurement team can process these orders efficiently.",
+    "expected_ordIds": [
+      "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1",
+      "sap.ariba:apiResource:MaterialAndVendorProcurementData:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-29",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "We need to pull our current production queue status and see which items are scheduled for the next shift, while simultaneously checking our active campaign outreach to identify which contacts have engaged with our latest messaging so we can coordinate our manufacturing timeline with customer communication touchpoints.",
+    "expected_ordIds": [
+      "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+      "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-30",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "Can you pull up the current status of ticket #12847 and check who our top-performing sales representative is in the Northeast region so I can route this escalation appropriately, then also retrieve what products that employee is certified to sell?",
+    "expected_ordIds": [
+      "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+      "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-31",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "I need to pull together our current safety performance metrics across all reported events while simultaneously ensuring our chemical inventory documentation stays current with regulatory standards\u2014can I get both of those data sets integrated into one dashboard view?",
+    "expected_ordIds": [
+      "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1",
+      "corp.itsm:dataProduct:IncidentEngagementReliability:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-32",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "I need to pull together our current inventory specifications alongside the vendor details we have on file, and simultaneously check on the status of our pending maintenance requests and any open change orders we've submitted to understand our full operational picture.",
+    "expected_ordIds": [
+      "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1",
+      "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-33",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "I need to simultaneously log incoming shipments from our suppliers while also tracking the modifications we're making to our product line and ensuring our field technicians can submit their equipment maintenance needs through a single integrated workflow.",
+    "expected_ordIds": [
+      "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+      "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-34",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "I need to pull together compensation figures and tax withholdings for our quarterly reconciliation, and at the same time I'd like to grant our marketing team access to manage client engagement initiatives across our accounts. Can you help me set this up efficiently in a single request?",
+    "expected_ordIds": [
+      "workday.hcm:apiResource:PayrollProcessingDataManagement:v1",
+      "corp.itsm:apiResource:CampaignAccessManagementAPI:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-35",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "I need to pull together a comprehensive view of our current operational health by analyzing both our recent campaign safety incidents and engagement issues alongside our product economics to understand cost drivers and supplier dependencies\u2014so I can brief leadership on where we're experiencing the most friction across both customer-facing and manufacturing operations.",
+    "expected_ordIds": [
+      "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1",
+      "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-36",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "We need to pull together workforce compensation figures alongside our current stock levels and product spec changes so we can model how our transition impacts both our labor costs and operational readiness before we commit to the new setup.",
+    "expected_ordIds": [
+      "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+      "sap.s4:apiResource:EmployeePayrollDataAPI:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-37",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "I need to pull current production schedules and equipment status to finalize our procurement forecast for next quarter, and simultaneously submit a maintenance request for our assembly line since we're seeing performance degradation that needs urgent attention from our service team.",
+    "expected_ordIds": [
+      "sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1",
+      "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-38",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "I need to pull together both our internal capability analysis to see if we're adequately staffed for the upcoming changes we're planning, and simultaneously check our procurement records to ensure all our vendor relationships maintain proper safety standings before we move forward with any new initiatives.",
+    "expected_ordIds": [
+      "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1",
+      "sap.ehs:apiResource:VendorSafetyComplianceOrders:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-39",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "I need to simultaneously pull together our current spending commitments with a specific vendor and cross-reference that against our latest payroll records to reconcile Q4 budget allocations and ensure our procurement expenses align with employee compensation costs for audit purposes.",
+    "expected_ordIds": [
+      "corp.itsm:apiResource:VendorProcurementOrderAPI:v1",
+      "workday.hcm:apiResource:PayrollDataExposure:v1"
+    ],
+    "distractor_ordId": null
+  },
+  {
+    "case_id": "dy-40",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "We need to streamline our component sourcing workflow by simultaneously validating our internal part specifications against supplier certifications and pulling current inventory levels along with vendor capabilities to ensure we're not creating bottlenecks during our quarterly supply chain review.",
+    "expected_ordIds": [
+      "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+      "sap.ariba:apiResource:MaterialAndVendorProcurementAPI:v1"
+    ],
+    "distractor_ordId": null
+  }
+]

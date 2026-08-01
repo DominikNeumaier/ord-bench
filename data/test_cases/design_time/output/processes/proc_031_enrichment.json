@@ -1,0 +1,86 @@
+{
+  "process_id": "proc_031",
+  "process_type": "cmmn",
+  "gt_ordIds": [
+    "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1",
+    "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1",
+    "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1",
+    "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+  ],
+  "enrichment": {
+    "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1": {
+      "capabilities": [
+        "provision-customers",
+        "activate-campaigns"
+      ],
+      "useCases": [
+        "Sales teams activate new customer relationships for the upcoming product release campaign.",
+        "Marketing establishes customer segments for targeted product launch communications."
+      ],
+      "processNext": [
+        "siemens.plm:agent:MaterialAndVendorQualificationOrchestrator:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_workforce_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1": {
+      "capabilities": [
+        "analyze-product-economics",
+        "evaluate-complexity"
+      ],
+      "useCases": [
+        "Finance and product teams understand cost implications and design complexity to inform pricing and production planning.",
+        "Manufacturing optimizes production sequences based on identified complexity drivers."
+      ],
+      "processNext": [
+        "sap.s4:apiResource:EngineeringChangeProductDataAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_workforce_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1": {
+      "capabilities": [
+        "assess-workforce-readiness",
+        "identify-training-needs"
+      ],
+      "useCases": [
+        "Human Resources determines which employees require training and when skill gaps must be addressed before production ramp-up.",
+        "Manufacturing operations identifies workforce redeployment strategies to support material transition."
+      ],
+      "processNext": [
+        "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_workforce_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1": {
+      "capabilities": [
+        "validate-launch-readiness",
+        "assess-capability-gaps"
+      ],
+      "useCases": [
+        "Operations leadership confirms that the workforce has required skills and capacity to execute the manufacturing transition successfully.",
+        "Executive steering committee validates production readiness before committing to launch timeline."
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_workforce_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    }
+  }
+}

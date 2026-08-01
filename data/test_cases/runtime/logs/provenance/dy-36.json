@@ -1,0 +1,62 @@
+{
+  "case_id": "dy-36",
+  "mode": "dynamic",
+  "query_class": "multi_intent",
+  "selected_resources": [
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+    "sap.s4:apiResource:EmployeePayrollDataAPI:v1"
+  ],
+  "timestamp": "2026-06-08T13:25:09.015052+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "I need to simultaneously pull our current workforce compensation records for the quarterly financial audit while also evaluating our readiness to transition our product line by analyzing the latest component specifications, modification impacts, and stock levels across all warehouses."
+      },
+      "generator_tokens": 174,
+      "solver_output": {
+        "predicted": "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": false,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": false,\n  \"C3\": true,\n  \"accepted\": false,\n  \"reason\": \"C2 failed: prompt explicitly mentions system/domain names ('workforce compensation records', 'product line', 'component specifications', 'warehouses') violating the no-resource-name constraint.\"\n}\n```",
+      "judge_tokens": 317,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "We need to pull together workforce compensation figures alongside our current stock levels and product spec changes so we can model how our transition impacts both our labor costs and operational readiness before we commit to the new setup."
+      },
+      "generator_tokens": 182,
+      "solver_output": {
+        "predicted": "my.mes:dataProduct:ProductionLaborProductivityMetrics:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 271,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-36",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "We need to pull together workforce compensation figures alongside our current stock levels and product spec changes so we can model how our transition impacts both our labor costs and operational readiness before we commit to the new setup.",
+    "expected_ordIds": [
+      "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+      "sap.s4:apiResource:EmployeePayrollDataAPI:v1"
+    ],
+    "distractor_ordId": null
+  }
+}

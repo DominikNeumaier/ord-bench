@@ -1,0 +1,43 @@
+{
+  "case_id": "sa-14",
+  "mode": "skill_adjusted",
+  "skill_id": "proc_015",
+  "gap_resources": [
+    "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1",
+    "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1"
+  ],
+  "timestamp": "2026-06-08T12:51:57.819219+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "I need to launch a new product campaign that coordinates with our vendors, validates compliance requirements, and ensures production is ready to fulfill orders. We're provisioning new customers across multiple regions, so we'll need to qualify vendors and manage the entire supply chain orchestration. As part of this rollout, we also need to track any product modifications we're making and manage the associated equipment and service requests that come with the deployment. Can you help us coordinate all of these moving parts together so nothing falls through the cracks?",
+        "variant": 0
+      },
+      "generator_tokens": 310,
+      "solver_output": {
+        "predicted": "corp.itsm:agent:ChangeReleaseCoordinator:v1",
+        "correct": false
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 385,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "sa-14",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "I need to launch a new product campaign that coordinates with our vendors, validates compliance requirements, and ensures production is ready to fulfill orders. We're provisioning new customers across multiple regions, so we'll need to qualify vendors and manage the entire supply chain orchestration. As part of this rollout, we also need to track any product modifications we're making and manage the associated equipment and service requests that come with the deployment. Can you help us coordinate all of these moving parts together so nothing falls through the cracks?",
+    "expected_skill_id": "proc_015",
+    "expected_gap_ordIds": [
+      "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1",
+      "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1"
+    ]
+  }
+}

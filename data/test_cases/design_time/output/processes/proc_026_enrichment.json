@@ -1,0 +1,92 @@
+{
+  "process_id": "proc_026",
+  "process_type": "cmmn",
+  "gt_ordIds": [
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+    "emarsys.cx:apiResource:SalesCapacityAndTimeOffManagementAPI:v1",
+    "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+  ],
+  "enrichment": {
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1": {
+      "capabilities": [
+        "receive-material",
+        "validate-shipment",
+        "log-inventory"
+      ],
+      "useCases": [
+        "Production planners verify material arrivals match purchase orders before launch.",
+        "Inventory managers track inbound vendor shipments in real-time to prevent stockouts."
+      ],
+      "processNext": [
+        "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_transition_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "emarsys.cx:apiResource:SalesCapacityAndTimeOffManagementAPI:v1": {
+      "capabilities": [
+        "schedule-capacity",
+        "manage-time-off",
+        "block-availability"
+      ],
+      "useCases": [
+        "Sales operations reserve team availability during high-stakes product launch windows.",
+        "HR coordinators prevent conflicting vacation requests during critical go-live periods."
+      ],
+      "processNext": [
+        "sap.ehs:apiResource:SafetyInspectionCampaignManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_transition_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1": {
+      "capabilities": [
+        "assess-change-workforce",
+        "identify-skill-gaps",
+        "recommend-retraining"
+      ],
+      "useCases": [
+        "Manufacturing HR teams identify which employees need upskilling before new product line launch.",
+        "Operations leaders prioritize workforce development investments based on engineering change impact."
+      ],
+      "processNext": [
+        "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_transition_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1": {
+      "capabilities": [
+        "evaluate-operational-readiness",
+        "assess-material-requirements",
+        "identify-process-bottlenecks"
+      ],
+      "useCases": [
+        "Operations directors confirm production lines can accommodate new product specifications.",
+        "Supply chain planners validate material availability against updated bill-of-materials."
+      ],
+      "processNext": [
+        ""
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_product_launch_transition_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    }
+  }
+}

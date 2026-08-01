@@ -1,0 +1,67 @@
+<process id="proc_ProcurementSafetyCompliance_v1" type="cmmn">
+  
+  <step id="s1" 
+        label="Evaluate vendor material compliance"
+        description="Validate incoming vendor invoices and material specifications against procurement and inventory standards."
+        ordId="sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1"
+        capability="validate-vendor-material"
+        useCase="Procurement teams need to ensure vendor-supplied materials meet quality and regulatory requirements before acceptance."/>
+  
+  <step id="s2" 
+        label="Assess customer safety campaign readiness"
+        description="Review safety compliance requirements for customer accounts and associated campaigns to identify gaps."
+        ordId="corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1"
+        capability="assess-safety-compliance"
+        useCase="Safety officers must verify that customer-facing campaigns meet all environmental, health, and safety regulations."/>
+  
+  <step id="s3" 
+        label="Enroll workforce in safety programs"
+        description="Identify and assign employees to occupational health and safety training based on organizational hierarchy and role requirements."
+        ordId="sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1"
+        capability="assign-employee-safety-training"
+        useCase="HR and safety teams need to ensure all employees across departments receive mandatory safety program enrollment aligned with their roles."/>
+  
+  <step id="s4" 
+        label="Orchestrate production changes for material updates"
+        description="Coordinate engineering changes and material updates across production systems when new compliant materials are approved."
+        ordId="my.mes:agent:ProductionChangeOrchestrator:v1"
+        capability="orchestrate-production-change"
+        useCase="Manufacturing operations must synchronize production schedules and engineering changes when validated vendor materials are introduced."/>
+  
+  <step id="s5" 
+        label="Execute occupational health campaign deployment"
+        description="Deploy safety and health awareness campaigns to employees and customer accounts using coordinated engagement strategies."
+        ordId="sap.sf:apiResource:SafetyComplianceCampaignAndCustomerEngagement:v1"
+        capability="deploy-safety-campaign"
+        useCase="Safety program managers need to disseminate occupational health requirements and track employee engagement in real time."/>
+  
+  <step id="s6" 
+        label="Analyze safety performance metrics and compensation impact"
+        description="Correlate employee safety compliance with performance data to inform compensation and incentive decisions."
+        ordId="sap.crm:dataProduct:SalesCompensationPerformanceAnalytics:v1"
+        capability="analyze-safety-performance"
+        useCase="Sales and HR leadership need visibility into how safety program participation affects individual and team performance."/>
+  
+  <step id="s7" 
+        label="Coordinate vendor contract safety obligations"
+        description="Manage vendor contracts and purchase orders to embed safety compliance clauses and material specifications."
+        ordId="emarsys.cx:agent:VendorContractJourneyCoordinator:v1"
+        capability="coordinate-vendor-contract"
+        useCase="Procurement and vendor management teams must ensure contracts include binding safety and material quality commitments."/>
+  
+  <step id="s8" 
+        label="Optimize customer safety campaign targeting"
+        description="Refine customer segmentation and campaign messaging to maximize safety awareness and compliance adoption."
+        ordId="sap.crm:agent:CampaignAudienceOptimizationAgent:v1"
+        capability="optimize-campaign-audience"
+        useCase="Marketing and CX teams need to target high-risk customer segments with tailored safety messaging for maximum impact."/>
+  
+  <sequenceFlow from="s1" to="s2" label="Validated materials → Safety assessment"/>
+  <sequenceFlow from="s2" to="s3" label="Compliance gaps → Employee enrollment"/>
+  <sequenceFlow from="s3" to="s4" label="Trained workforce → Production readiness"/>
+  <sequenceFlow from="s4" to="s5" label="Updated production → Campaign launch"/>
+  <sequenceFlow from="s5" to="s6" label="Campaign deployment → Performance tracking"/>
+  <sequenceFlow from="s6" to="s7" label="Performance insights → Contract management"/>
+  <sequenceFlow from="s7" to="s8" label="Contract obligations → Audience targeting"/>
+  
+</process>

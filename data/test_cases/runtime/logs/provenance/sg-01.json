@@ -1,0 +1,96 @@
+{
+  "case_id": "sg-01",
+  "mode": "skill_guided",
+  "skill_id": "proc_022",
+  "selected_resources": [
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+    "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+    "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1",
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  ],
+  "timestamp": "2026-06-08T13:00:08.737202+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to streamline our product transition process and ensure everything stays compliant. Can you help us validate our bill-of-materials against supplier requirements, assess how product changes impact our current inventory and components, and then log this as a formal change request in our system? We also need to make sure our team's compensation structures are properly documented throughout this transition so there are no payroll issues."
+      },
+      "generator_tokens": 326,
+      "solver_output": {
+        "predicted": "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+        "correct": false
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true,
+        "C4": true,
+        "C5": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"C4\": true,\n  \"C5\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 443,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "sg-01",
+    "mode": "skill_guided",
+    "query_class": "explicit_multi_step",
+    "skill_id": "proc_022",
+    "process_type": "bpmn",
+    "user_prompt": "We need to streamline our product transition process and ensure everything stays compliant. Can you help us validate our bill-of-materials against supplier requirements, assess how product changes impact our current inventory and components, and then log this as a formal change request in our system? We also need to make sure our team's compensation structures are properly documented throughout this transition so there are no payroll issues.",
+    "expected_skill_id": "proc_022",
+    "expected_steps": [
+      {
+        "step_name": "step_1",
+        "expected_ordIds": [
+          "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+        ]
+      },
+      {
+        "step_name": "step_2",
+        "expected_ordIds": [
+          "sap.s4:agent:BOMComplianceAutomationAgent:v1"
+        ]
+      },
+      {
+        "step_name": "step_3",
+        "expected_ordIds": [
+          "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1"
+        ]
+      },
+      {
+        "step_name": "step_4",
+        "expected_ordIds": [
+          "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+        ]
+      }
+    ]
+  },
+  "post_gate_rewrite": {
+    "rewritten_after_gate": true,
+    "reason": "Original long enumerative prompts were classified as 'skill_adjusted' by the planner (Routing-Acc 0.700 on the eval_sg_routing pass), because each enumerated sub-activity looked like a separate step. The prompts were shortened to retain the same business intent (same skill, same expected ordIds) while making the single-skill routing intent unambiguous.",
+    "commit": "6429a4cac",
+    "preserved": [
+      "expected_ordIds",
+      "skill_id"
+    ],
+    "changed": [
+      "user_prompt"
+    ],
+    "original_user_prompt": "We need to streamline our product transition process and ensure everything stays compliant. Can you help us validate our bill-of-materials against supplier requirements, assess how product changes impact our current inventory and components, and then log this as a formal change request in our system? We also need to make sure our team's compensation structures are properly documented throughout this transition so there are no payroll issues.",
+    "final_user_prompt": "We need to handle a product engineering change end to end \u2014 from assessing the production impact all the way through validating our materials are compliant with the new design.",
+    "original_chars": 445,
+    "final_chars": 176,
+    "solver_recertification": {
+      "n_runs": 5,
+      "solved_runs": 0,
+      "failed_runs": 5,
+      "difficulty": 1.0,
+      "robust": true,
+      "borderline": false,
+      "too_easy": false,
+      "method": "post-hoc 5-run Method-S re-evaluation on the final (rewritten) prompt with per-run nonce cache bypass; see benchmark/certification/v2/"
+    }
+  }
+}

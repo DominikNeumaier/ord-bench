@@ -1,0 +1,86 @@
+{
+  "process_id": "proc_004",
+  "process_type": "bpmn",
+  "gt_ordIds": [
+    "my.mes:apiResource:HazardousSubstanceComplianceManagement:v1",
+    "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1",
+    "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1",
+    "sap.ehs:apiResource:VendorSafetyComplianceOrders:v1"
+  ],
+  "enrichment": {
+    "my.mes:apiResource:HazardousSubstanceComplianceManagement:v1": {
+      "capabilities": [
+        "identify-hazardous-substances",
+        "catalog-substances",
+        "track-compliance-status"
+      ],
+      "useCases": [
+        "Manufacturing facilities must maintain hazardous material inventories for regulatory inspection and employee safety"
+      ],
+      "processNext": [
+        "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_SafetyComplianceWorkforce_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1": {
+      "capabilities": [
+        "assess-compensation-adjustments",
+        "calculate-hazard-pay",
+        "evaluate-exposure-risk"
+      ],
+      "useCases": [
+        "HR organizations must align compensation for employees facing elevated hazard exposure from chemical or environmental substances"
+      ],
+      "processNext": [
+        "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_SafetyComplianceWorkforce_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1": {
+      "capabilities": [
+        "manage-safety-equipment-changes",
+        "schedule-maintenance",
+        "request-protective-upgrades"
+      ],
+      "useCases": [
+        "Facility operations teams must plan and execute maintenance of safety systems that protect workers from identified hazardous substances"
+      ],
+      "processNext": [
+        "sap.ehs:apiResource:VendorSafetyComplianceOrders:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_SafetyComplianceWorkforce_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.ehs:apiResource:VendorSafetyComplianceOrders:v1": {
+      "capabilities": [
+        "procure-safety-materials",
+        "qualify-vendors",
+        "verify-compliance-certifications"
+      ],
+      "useCases": [
+        "Procurement departments must source safety equipment from approved vendors to ensure hazardous substance controls meet regulatory standards"
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_SafetyComplianceWorkforce_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    }
+  }
+}

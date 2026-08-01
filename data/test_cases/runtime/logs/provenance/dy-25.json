@@ -1,0 +1,62 @@
+{
+  "case_id": "dy-25",
+  "mode": "dynamic",
+  "query_class": "multi_intent",
+  "selected_resources": [
+    "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+    "my.mes:apiResource:HazardousSubstanceComplianceManagement:v1"
+  ],
+  "timestamp": "2026-06-08T13:22:01.645857+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "I need to pull together all outstanding invoices from our suppliers that are tied to recent material purchases so I can reconcile our accounts payable, and at the same time I need to verify our current inventory of regulated chemicals meets all compliance requirements and export the status report for our next audit."
+      },
+      "generator_tokens": 192,
+      "solver_output": {
+        "predicted": "sap.ariba:agent:VendorInvoiceReconciliationAutomation:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": false,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": false,\n  \"C3\": true,\n  \"accepted\": false,\n  \"reason\": \"C2 fails: prompt contains explicit system references ('suppliers', 'accounts payable', 'regulated chemicals', 'compliance', 'audit') that map to known enterprise systems rather than being system-agnostic.\"\n}\n```",
+      "judge_tokens": 338,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "We need to reconcile our incoming supplier billing against the materials we've received this quarter, and at the same time, verify that everything we've taken in meets our regulatory obligations for restricted substances in each shipment."
+      },
+      "generator_tokens": 189,
+      "solver_output": {
+        "predicted": "sap.ariba:agent:VendorInvoiceReconciliationAutomation:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 276,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-25",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "We need to reconcile our incoming supplier billing against the materials we've received this quarter, and at the same time, verify that everything we've taken in meets our regulatory obligations for restricted substances in each shipment.",
+    "expected_ordIds": [
+      "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+      "my.mes:apiResource:HazardousSubstanceComplianceManagement:v1"
+    ],
+    "distractor_ordId": null
+  }
+}

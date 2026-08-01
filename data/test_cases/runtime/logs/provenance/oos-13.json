@@ -1,0 +1,48 @@
+{
+  "case_id": "oos-13",
+  "mode": "out_of_scope",
+  "difficulty": "hard",
+  "topic": "Workforce skill gap analysis and training recommendation",
+  "timestamp": "2026-06-08T13:00:41.525727+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need a way to automatically identify which of our 500+ field technicians are falling behind on certifications before they expire, then automatically recommend and enroll them in the specific online courses that would get them current\u2014ideally integrated with our learning management system so we're not manually tracking this in spreadsheets."
+      },
+      "generator_tokens": 157,
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": false,\n  \"reason\": \"Requires integrated HR/LMS functionality with predictive analytics, automated enrollment workflows, and multi-system data synchronization beyond core AI assistant capabilities.\"\n}\n```",
+      "judge_tokens": 283,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "Our manufacturing plants are experiencing high turnover in specialized maintenance roles, and we need a way to automatically identify which of our current operators have transferable skills that could fill these gaps\u2014ideally something that can scan our existing employee training records and certifications to recommend internal candidates for upskilling programs before we resort to external hiring."
+      },
+      "generator_tokens": 174,
+      "judge_results": {
+        "C1": true,
+        "C2": false,
+        "C3": false
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": false,\n  \"C3\": false,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```\n\n**Explanation:**\n- **C1 (True)**: This is a realistic enterprise request from HR/Operations leadership addressing genuine business pain (high turnover, internal talent mobility).\n- **C2 (False)**: This ca",
+      "judge_tokens": 451,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "oos-13",
+    "mode": "out_of_scope",
+    "query_class": "out_of_scope",
+    "difficulty": "hard",
+    "topic": "Workforce skill gap analysis and training recommendation",
+    "user_prompt": "Our manufacturing plants are experiencing high turnover in specialized maintenance roles, and we need a way to automatically identify which of our current operators have transferable skills that could fill these gaps\u2014ideally something that can scan our existing employee training records and certifications to recommend internal candidates for upskilling programs before we resort to external hiring.",
+    "expected_ordIds": []
+  }
+}

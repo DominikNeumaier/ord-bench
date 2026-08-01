@@ -1,0 +1,76 @@
+{
+  "case_id": "dy-04",
+  "mode": "dynamic",
+  "query_class": "single_intent",
+  "problem_type": "P1",
+  "selected_resources": [
+    "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+  ],
+  "distractor": "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1",
+  "timestamp": "2026-06-08T13:19:20.479833+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to set up automated workflows to handle our IT equipment deployment across all our engineering teams. Can you help me figure out which system manages the end-to-end provisioning coordination, from initial requests through delivery?"
+      },
+      "generator_tokens": 174,
+      "solver_output": {
+        "predicted": "corp.itsm:agent:AssetProvisioningOrchestrator:v1",
+        "top1_correct": true,
+        "top5": [
+          "corp.itsm:agent:AssetProvisioningOrchestrator:v1",
+          "corp.itsm:apiResource:AssetProvisioningIntegrationAPI:v1",
+          "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+          "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+          "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+        ],
+        "note": "retro_certified"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 290,
+      "outcome": "ACCEPTED",
+      "_retro_verdict": "TOO_EASY"
+    },
+    {
+      "iteration": 2,
+      "angle": "situation",
+      "generator_output": {
+        "user_prompt": "Our engineering team keeps pushing through design changes that require updates to our IT infrastructure, but we're struggling to keep pace with manual coordination across multiple systems. Right now, when a new component specification comes through, we have to manually track which servers need reconfiguration, which licenses need reallocation, and which hardware needs to be deployed\u2014and it's creating delays and tracking errors. We need a way to automate this entire workflow so that when engineering changes are approved, all the downstream IT infrastructure changes happen consistently and in the right sequence."
+      },
+      "generator_tokens": 282,
+      "solver_output": {
+        "predicted": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+        "top1_correct": false,
+        "note": "regen2_attempt"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```",
+      "judge_tokens": 355,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-04",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "Our engineering team keeps pushing through design changes that require updates to our IT infrastructure, but we're struggling to keep pace with manual coordination across multiple systems. Right now, when a new component specification comes through, we have to manually track which servers need reconfiguration, which licenses need reallocation, and which hardware needs to be deployed\u2014and it's creating delays and tracking errors. We need a way to automate this entire workflow so that when engineering changes are approved, all the downstream IT infrastructure changes happen consistently and in the right sequence.",
+    "expected_ordIds": [
+      "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+    ],
+    "distractor_ordId": "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1"
+  },
+  "_regen2_note": "Prompt replaced in regen2 pass. angle=situation, attempt=1."
+}

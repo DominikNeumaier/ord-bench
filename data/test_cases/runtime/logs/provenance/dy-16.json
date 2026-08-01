@@ -1,0 +1,54 @@
+{
+  "case_id": "dy-16",
+  "mode": "dynamic",
+  "query_class": "single_intent",
+  "problem_type": "P1",
+  "selected_resources": [
+    "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+  ],
+  "distractor": "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+  "timestamp": "2026-06-08T13:19:53.246628+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to understand how our upcoming engineering changes will affect our team's capacity and skill levels across the plant. Can you pull together an analysis that shows us the workforce impact from all the material and product modifications we have planned?"
+      },
+      "generator_tokens": 181,
+      "solver_output": {
+        "predicted": "my.mes:dataProduct:EngineeringChangeImpactAnalytics:v1",
+        "top1_correct": false,
+        "top5": [
+          "my.mes:dataProduct:EngineeringChangeImpactAnalytics:v1",
+          "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+          "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+          "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1",
+          "my.mes:dataProduct:ProductionLaborProductivityMetrics:v1"
+        ],
+        "note": "retro_certified"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```",
+      "judge_tokens": 302,
+      "outcome": "ACCEPTED",
+      "_retro_verdict": "HARD"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-16",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "We need to understand how our upcoming engineering changes will affect our team's capacity and skill levels across the plant. Can you pull together an analysis that shows us the workforce impact from all the material and product modifications we have planned?",
+    "expected_ordIds": [
+      "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+    ],
+    "distractor_ordId": "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+  }
+}

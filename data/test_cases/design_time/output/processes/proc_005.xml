@@ -1,0 +1,68 @@
+<process id="proc_ProductLaunchVendorCompliance_v1" type="bpmn">
+  
+  <step id="s1" 
+        label="Validate Bill of Materials Compliance"
+        description="Ensure all product components meet engineering standards and regulatory requirements before manufacturing begins."
+        ordId="sap.s4:agent:BOMComplianceAutomationAgent:v1"
+        capability="validate-bom-compliance"
+        useCase="Product engineering team needs to verify that all materials and product items in the BOM conform to company standards and change control policies."/>
+  
+  <step id="s2" 
+        label="Evaluate Material Sourcing Options"
+        description="Identify approved vendors and assess material availability for all components in the validated BOM."
+        ordId="sap.sf:apiResource:MaterialAndVendorProcurementIntegration:v1"
+        capability="source-material-vendors"
+        useCase="Procurement must find reliable suppliers and alternative sources for each material to mitigate supply chain risk."/>
+  
+  <step id="s3" 
+        label="Calculate Material Cost Impact"
+        description="Determine financial implications of material selections and invoice-based historical pricing metrics."
+        ordId="siemens.plm:dataProduct:MaterialInvoiceFinancialMetrics:v1"
+        capability="analyze-financial-metrics"
+        useCase="Finance and product managers need cost forecasts to evaluate profitability of the new product launch."/>
+  
+  <step id="s4" 
+        label="Negotiate and Finalize Vendor Contracts"
+        description="Coordinate with selected vendors to establish purchase orders and contractual terms aligned with procurement strategy."
+        ordId="emarsys.cx:agent:VendorContractJourneyCoordinator:v1"
+        capability="coordinate-vendor-contracts"
+        useCase="Procurement specialists need to manage multi-vendor negotiations and PO generation to secure favorable terms and delivery schedules."/>
+  
+  <step id="s5" 
+        label="Plan Manufacturing and Equipment Allocation"
+        description="Verify manufacturing equipment readiness and schedule production capacity based on workforce availability and maintenance requirements."
+        ordId="sap.s4:apiResource:WorkforceCapacityAndTimeOffManagement:v1"
+        capability="plan-capacity-scheduling"
+        useCase="Operations managers must confirm sufficient staffing and equipment availability for the production ramp-up timeline."/>
+  
+  <step id="s6" 
+        label="Manage Manufacturing Equipment Readiness"
+        description="Conduct equipment service reviews, document any change requests, and resolve outstanding maintenance or configuration issues."
+        ordId="my.mes:apiResource:EquipmentServiceAndChangeManagement:v1"
+        capability="manage-equipment-service"
+        useCase="Manufacturing engineering must ensure all production equipment is operational and configured to support the new product specifications."/>
+  
+  <step id="s7" 
+        label="Process Initial Customer Orders"
+        description="Activate order fulfillment workflows for early adopter customers and validate inventory allocation."
+        ordId="emarsys.cx:apiResource:OrderFulfillmentServiceAPI:v1"
+        capability="fulfill-customer-orders"
+        useCase="Sales and fulfillment teams need to process first-wave customer orders while ensuring accurate inventory tracking and delivery commitments."/>
+  
+  <step id="s8" 
+        label="Launch Product Marketing Campaign"
+        description="Engage target customer accounts with campaign messaging and coordinate promotional activities across sales channels."
+        ordId="emarsys.cx:apiResource:CampaignContactEngagementAPI:v1"
+        capability="engage-campaign-contacts"
+        useCase="Marketing must activate customer communications and drive awareness among key accounts to maximize product launch impact."/>
+  
+  <!-- Sequence Flow -->
+  <sequenceFlow from="s1" to="s2" label="BOM validated"/>
+  <sequenceFlow from="s2" to="s3" label="Vendors identified"/>
+  <sequenceFlow from="s3" to="s4" label="Costs approved"/>
+  <sequenceFlow from="s4" to="s5" label="Contracts signed"/>
+  <sequenceFlow from="s5" to="s6" label="Capacity confirmed"/>
+  <sequenceFlow from="s6" to="s7" label="Equipment ready"/>
+  <sequenceFlow from="s7" to="s8" label="Orders received"/>
+
+</process>

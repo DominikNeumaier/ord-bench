@@ -1,0 +1,90 @@
+{
+  "process_id": "proc_002",
+  "process_type": "bpmn",
+  "gt_ordIds": [
+    "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1",
+    "corp.itsm:dataProduct:IncidentEngagementReliability:v1",
+    "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1",
+    "sap.crm:apiResource:ProcurementVendorOrderManagement:v1"
+  ],
+  "enrichment": {
+    "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1": {
+      "capabilities": [
+        "analyze-product-costs",
+        "compare-complexity-benchmarks",
+        "identify-cost-optimization"
+      ],
+      "useCases": [
+        "Product managers evaluate cost implications of design decisions before procurement.",
+        "Finance teams benchmark actual product costs against target cost models."
+      ],
+      "processNext": [
+        "sap.sf:apiResource:MaterialAndVendorProcurementIntegration:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductLifecycleCompliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1": {
+      "capabilities": [
+        "validate-bom-compliance",
+        "audit-material-standards",
+        "verify-cost-targets"
+      ],
+      "useCases": [
+        "Compliance teams verify BOMs meet regulatory material restrictions before manufacturing.",
+        "Finance validates BOMs against approved cost budgets for product variants."
+      ],
+      "processNext": [
+        "sap.ariba:apiResource:EngineeringChangeAndProductItemManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductLifecycleCompliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.crm:apiResource:ProcurementVendorOrderManagement:v1": {
+      "capabilities": [
+        "execute-purchase-orders",
+        "manage-vendor-contracts",
+        "track-order-fulfillment"
+      ],
+      "useCases": [
+        "Procurement specialists issue purchase orders and manage vendor commitments.",
+        "Finance tracks vendor payment terms and contract compliance obligations."
+      ],
+      "processNext": [
+        "corp.itsm:dataProduct:IncidentEngagementReliability:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductLifecycleCompliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "corp.itsm:dataProduct:IncidentEngagementReliability:v1": {
+      "capabilities": [
+        "monitor-vendor-incidents",
+        "track-safety-metrics",
+        "escalate-compliance-issues"
+      ],
+      "useCases": [
+        "Quality teams monitor supplier incidents during purchase order fulfillment.",
+        "Supply chain managers identify vendors with escalating safety or quality issues."
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ProductLifecycleCompliance_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    }
+  }
+}

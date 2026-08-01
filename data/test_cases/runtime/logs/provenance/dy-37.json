@@ -1,0 +1,44 @@
+{
+  "case_id": "dy-37",
+  "mode": "dynamic",
+  "query_class": "multi_intent",
+  "selected_resources": [
+    "sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1",
+    "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1"
+  ],
+  "timestamp": "2026-06-08T13:25:16.614332+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "I need to pull current production schedules and equipment status to finalize our procurement forecast for next quarter, and simultaneously submit a maintenance request for our assembly line since we're seeing performance degradation that needs urgent attention from our service team."
+      },
+      "generator_tokens": 170,
+      "solver_output": {
+        "predicted": "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 277,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-37",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "I need to pull current production schedules and equipment status to finalize our procurement forecast for next quarter, and simultaneously submit a maintenance request for our assembly line since we're seeing performance degradation that needs urgent attention from our service team.",
+    "expected_ordIds": [
+      "sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1",
+      "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1"
+    ],
+    "distractor_ordId": null
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "process_id": "proc_010",
+  "process_type": "cmmn",
+  "gt_ordIds": [
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1",
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1",
+    "workday.hcm:apiResource:PayrollProcessingDataManagement:v1",
+    "sap.s4:apiResource:ProductionPerformanceAPI:v1"
+  ],
+  "enrichment": {
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1": {
+      "capabilities": [
+        "ingest-service-tickets",
+        "log-change-requests",
+        "track-equipment-issues"
+      ],
+      "useCases": [
+        "An IT technician receives a customer report of equipment failure and logs it as a service ticket for tracking.",
+        "Change requests from engineering teams are centralized for impact analysis and approval workflows."
+      ],
+      "processNext": [
+        "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ServiceToProduction_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1": {
+      "capabilities": [
+        "assess-engineering-changes",
+        "provision-materials",
+        "evaluate-change-impact"
+      ],
+      "useCases": [
+        "The system determines that the equipment failure requires a component replacement and identifies available materials from inventory.",
+        "Engineering changes to product designs are evaluated for material requirements and supply chain feasibility."
+      ],
+      "processNext": [
+        "sap.s4:agent:OpportunityToOrderAutomationEngine:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ServiceToProduction_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "sap.s4:apiResource:ProductionPerformanceAPI:v1": {
+      "capabilities": [
+        "analyze-production-impact",
+        "monitor-machine-status",
+        "prioritize-production-orders"
+      ],
+      "useCases": [
+        "The system checks production schedules and determines that the equipment failure affects three critical manufacturing orders due today.",
+        "Real-time production performance metrics inform resource allocation decisions and service urgency levels."
+      ],
+      "processNext": [
+        "workday.hcm:apiResource:PayrollProcessingDataManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ServiceToProduction_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    },
+    "workday.hcm:apiResource:PayrollProcessingDataManagement:v1": {
+      "capabilities": [
+        "resource-allocation-scheduling",
+        "identify-available-workforce",
+        "integrate-payroll-with-scheduling"
+      ],
+      "useCases": [
+        "Payroll and workforce data identifies two available technicians; their availability is checked and the nearest one is assigned to the job.",
+        "Workforce scheduling integrates with payroll to ensure accurate compensation tracking for assigned service activities."
+      ],
+      "processNext": [
+        "workday.hcm:agent:CompensationAdjustmentAutomation:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_ServiceToProduction_v1",
+          "groupTypeId": "cmmn"
+        }
+      ]
+    }
+  }
+}

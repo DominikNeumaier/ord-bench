@@ -1,0 +1,88 @@
+{
+  "case_id": "dy-10",
+  "mode": "dynamic",
+  "query_class": "single_intent",
+  "problem_type": "P1",
+  "selected_resources": [
+    "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1"
+  ],
+  "distractor": "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1",
+  "timestamp": "2026-06-08T13:19:41.063421+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "I need to pull together some data on what's driving our product costs and how our supply chain complexity is affecting our margins across the portfolio. Can you help me get visibility into the cost drivers and supplier dependencies so I can brief the executive team?"
+      },
+      "generator_tokens": 182,
+      "solver_output": {
+        "predicted": "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1",
+        "top1_correct": true,
+        "top5": [
+          "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1",
+          "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1",
+          "my.mes:dataProduct:SupplierPerformanceAndProcurementOptimization:v1",
+          "sap.ariba:dataProduct:ProcurementSpendAnalytics:v1",
+          "my.mes:dataProduct:EngineeringChangeImpactAnalytics:v1"
+        ],
+        "note": "retro_certified"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```",
+      "judge_tokens": 302,
+      "outcome": "ACCEPTED",
+      "_retro_verdict": "TOO_EASY"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "We need to understand what's driving our product margins across the portfolio\u2014things like which components are eating into our costs the most and how our supply chain decisions are impacting the bottom line. Can someone pull together a view that shows us the complexity factors and how different suppliers are affecting our overall unit economics?"
+      },
+      "generator_tokens": 211,
+      "solver_output": {
+        "predicted": "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1",
+        "top1_correct": true,
+        "note": "regen_attempt"
+      },
+      "outcome": "TOO_EASY"
+    },
+    {
+      "iteration": 3,
+      "generator_output": {
+        "user_prompt": "I need to understand which of our products are driving the most cost and why\u2014like breaking down material expenses, design complexity, and whether we're overpaying certain suppliers compared to our benchmarks. Can you show me which items in our portfolio have the most expensive components and where our supply chain dependencies might be creating risk?"
+      },
+      "generator_tokens": 218,
+      "solver_output": {
+        "predicted": "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1",
+        "top1_correct": false,
+        "note": "regen_attempt"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 318,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-10",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to understand which of our products are driving the most cost and why\u2014like breaking down material expenses, design complexity, and whether we're overpaying certain suppliers compared to our benchmarks. Can you show me which items in our portfolio have the most expensive components and where our supply chain dependencies might be creating risk?",
+    "expected_ordIds": [
+      "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1"
+    ],
+    "distractor_ordId": "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1"
+  },
+  "_regen_note": "Prompt replaced after retro solver check failed. Regen attempt 2."
+}

@@ -1,0 +1,413 @@
+{
+  "summary": {
+    "total": 20,
+    "too_easy (top1 correct)": 9,
+    "hard (top1 wrong)": 11,
+    "cases_too_easy": [
+      "dy-01",
+      "dy-02",
+      "dy-04",
+      "dy-07",
+      "dy-10",
+      "dy-14",
+      "dy-15",
+      "dy-18",
+      "dy-20"
+    ],
+    "cases_hard": [
+      "dy-03",
+      "dy-05",
+      "dy-06",
+      "dy-08",
+      "dy-09",
+      "dy-11",
+      "dy-12",
+      "dy-13",
+      "dy-16",
+      "dy-17",
+      "dy-19"
+    ]
+  },
+  "results": [
+    {
+      "case_id": "dy-01",
+      "query_class": "single_intent",
+      "user_prompt": "I need to pull up a recent issue that one of our customers reported last week so I can see what we promised to deliver and whether we're on track. Can you help me find that and check the current status?",
+      "expected_ordIds": [
+        "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1"
+      ],
+      "solver_top1": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+      "solver_top5": [
+        "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "corp.itsm:agent:IncidentRootCauseAnalyzer:v1",
+        "corp.itsm:dataProduct:ServiceHealthMetrics:v1",
+        "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+        "sap.s4:apiResource:CustomerOrderManagementAPI:v1"
+      ],
+      "top1_correct": true,
+      "top5_hit": true,
+      "verdict": "TOO_EASY"
+    },
+    {
+      "case_id": "dy-02",
+      "query_class": "single_intent",
+      "user_prompt": "I need to pull together the compensation breakdown for our procurement team members so I can review their current salary bands and bonus structures against our budget forecasts. Can you help me access the payroll information for our procurement staff?",
+      "expected_ordIds": [
+        "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1"
+      ],
+      "solver_top1": "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1",
+      "solver_top5": [
+        "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1",
+        "sap.sf:apiResource:EmployeeCompensationManagement:v1",
+        "workday.hcm:apiResource:CompensationStructureDataExposure:v1",
+        "sap.s4:apiResource:EmployeePayrollDataAPI:v1",
+        "workday.hcm:apiResource:PayrollDataExposure:v1"
+      ],
+      "top1_correct": true,
+      "top5_hit": true,
+      "verdict": "TOO_EASY"
+    },
+    {
+      "case_id": "dy-03",
+      "query_class": "single_intent",
+      "user_prompt": "I need to set up automated safety checks for our engineering change orders and material updates before they go to production. We've been manually validating everything against our compliance requirements, but it's slowing down our releases. Can you help me automate this validation process?",
+      "expected_ordIds": [
+        "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1"
+      ],
+      "solver_top1": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+      "solver_top5": [
+        "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+        "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1",
+        "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+        "siemens.plm:agent:EngineeringChangeAndComplianceOrchestrator:v1",
+        "my.mes:agent:BillOfMaterialsComplianceValidator:v1"
+      ],
+      "top1_correct": false,
+      "top5_hit": true,
+      "verdict": "HARD"
+    },
+    {
+      "case_id": "dy-04",
+      "query_class": "single_intent",
+      "user_prompt": "We need to set up automated workflows to handle our IT equipment deployment across all our engineering teams. Can you help me figure out which system manages the end-to-end provisioning coordination, from initial requests through delivery?",
+      "expected_ordIds": [
+        "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+      ],
+      "solver_top1": "corp.itsm:agent:AssetProvisioningOrchestrator:v1",
+      "solver_top5": [
+        "corp.itsm:agent:AssetProvisioningOrchestrator:v1",
+        "corp.itsm:apiResource:AssetProvisioningIntegrationAPI:v1",
+        "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+        "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+      ],
+      "top1_correct": true,
+      "top5_hit": true,
+      "verdict": "TOO_EASY"
+    },
+    {
+      "case_id": "dy-05",
+      "query_class": "single_intent",
+      "user_prompt": "We need to track some updates we're making to meet regulatory requirements, including the equipment changes and related service work orders. Can you help us log this through the right system?",
+      "expected_ordIds": [
+        "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1"
+      ],
+      "solver_top1": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+      "solver_top5": [
+        "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+        "corp.itsm:apiResource:AssetProvisioningIntegrationAPI:v1",
+        "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1",
+        "sap.s4:apiResource:EngineeringChangeManagementAPI:v1"
+      ],
+      "top1_correct": false,
+      "top5_hit": false,
+      "verdict": "HARD"
+    },
+    {
+      "case_id": "dy-06",
+      "query_class": "single_intent",
+      "user_prompt": "I need to schedule some updates to our manufacturing workflow next week and make sure all the dependent systems get notified at the right time. We have a few service components that need to be rolled out together, and I want to avoid any conflicts or downtime. Can you help me figure out what tool handles coordinating these kinds of synchronized deployments?",
+      "expected_ordIds": [
+        "my.mes:agent:ProductionChangeOrchestrator:v1"
+      ],
+      "solver_top1": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+      "solver_top5": [
+        "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+        "corp.itsm:agent:ChangeReleaseCoordinator:v1",
+        "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+        "sap.s4:agent:EngineeringChangeOrchestrator:v1",
+        "siemens.plm:agent:EngineeringChangeAndComplianceOrchestrator:v1"
+      ],
+      "top1_correct": false,
+      "top5_hit": false,
+      "verdict": "HARD"
+    },
+    {
+      "case_id": "dy-07",
+      "query_class": "single_intent",
+      "user_prompt": "We need to process a new order from our supplier for raw materials, but I'm not sure if I should submit this through our vendor management system or our purchasing platform. Can someone help me get this sourced and into our system so we can track it?",
+      "expected_ordIds": [
+        "corp.itsm:apiResource:VendorProcurementOrderAPI:v1"
+      ],
+      "solver_top1": "corp.itsm:apiResource:VendorProcurementOrderAPI:v1",
+      "solver_top5": [
+        "corp.itsm:apiResource:VendorProcurementOrderAPI:v1",
+        "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+        "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "my.mes:apiResource:SupplierProcurementOrderManagement:v1",
+        "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1"
+      ],
+      "top1_correct": true,
+      "top5_hit": true,
+      "verdict": "TOO_EASY"
+    },
+    {
+      "case_id": "dy-08",
+      "query_class": "single_intent",
+      "user_prompt": "I need to pull together all our hazardous material inventory data to verify we're compliant with the latest regulations, and I'm not sure if I should be querying the system that gives me the actual substance records or the one that validates them against requirements. Can you help me figure out which endpoint I should be hitting to get the master list of substances we're tracking?",
+      "expected_ordIds": [
+        "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1"
+      ],
+      "solver_top1": "sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1",
+      "solver_top5": [
+        "sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1",
+        "sap.s4:apiResource:HazardousSubstanceInventoryAPI:v1",
+        "my.mes:apiResource:HazardousSubstanceInventoryManagement:v1",
+        "sap.ehs:apiResource:MaterialHazardDataExchange:v1",
+        "sap.ehs:apiResource:ChemicalInventoryCompliance:v1"
+      ],
+      "top1_correct": false,
+      "top5_hit": false,
+      "verdict": "HARD"
+    },
+    {
+      "case_id": "dy-09",
+      "query_class": "single_intent",
+      "user_prompt": "I need to pull up a customer's recent purchases and modify one of their orders before it ships out. Can you help me access their account information and make those changes?",
+      "expected_ordIds": [
+        "sap.s4:apiResource:CustomerOrderManagementAPI:v1"
+      ],
+      "solver_top1": "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+      "solver_top5": [
+        "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+        "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1",
+        "sap.s4:apiResource:CustomerOrderManagementAPI:v1",
+        "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "my.mes:apiResource:CustomerOrderAndAccountManagement:v1"
+      ],
+      "top1_correct": false,
+      "top5_hit": true,
+      "verdict": "HARD"
+    },
+    {
+      "case_id": "dy-10",
+      "query_class": "single_intent",
+      "user_prompt": "I need to pull together some data on what's driving our product costs and how our supply chain complexity is affecting our margins across the portfolio. Can you help me get visibility into the cost drivers and supplier dependencies so I can brief the executive team?",
+      "expected_ordIds": [
+        "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1"
+      ],
+      "solver_top1": "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1",
+      "solver_top5": [
+        "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1",
+        "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1",
+        "my.mes:dataProduct:SupplierPerformanceAndProcurementOptimization:v1",
+        "sap.ariba:dataProduct:ProcurementSpendAnalytics:v1",
+        "my.mes:dataProduct:EngineeringChangeImpactAnalytics:v1"
+      ],
+      "top1_correct": true,
+      "top5_hit": true,
+      "verdict": "TOO_EASY"
+    },
+    {
+      "case_id": "dy-11",
+      "query_class": "single_intent",
+      "user_prompt": "I need to submit a maintenance request for our server infrastructure and track its progress through approval. Can you help me get this logged in the system and see what the current status is?",
+      "expected_ordIds": [
+        "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+      ],
+      "solver_top1": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+      "solver_top5": [
+        "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+        "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+        "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1",
+        "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1"
+      ],
+      "top1_correct": false,
+      "top5_hit": true,
+      "verdict": "HARD"
+    },
+    {
+      "case_id": "dy-12",
+      "query_class": "single_intent",
+      "user_prompt": "We need to pull together our material spend across all engine suppliers and see which components are driving costs up, plus make sure everything meets our compliance requirements. Can you help us get a comprehensive view of our BOM spending and any risk areas we should know about?",
+      "expected_ordIds": [
+        "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1"
+      ],
+      "solver_top1": "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1",
+      "solver_top5": [
+        "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1",
+        "sap.ariba:dataProduct:ProcurementSpendAnalytics:v1",
+        "my.mes:dataProduct:MaterialCostAndInvoiceReconciliationAnalytics:v1",
+        "sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1",
+        "sap.ehs:dataProduct:MaterialInvoiceComplianceCostAnalytics:v1"
+      ],
+      "top1_correct": false,
+      "top5_hit": false,
+      "verdict": "HARD"
+    },
+    {
+      "case_id": "dy-13",
+      "query_class": "single_intent",
+      "user_prompt": "We need to track a equipment modification we're rolling out next month and manage the related service requests from our field teams. Can you help me set up the workflow to document this change and keep everyone updated on the status?",
+      "expected_ordIds": [
+        "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1"
+      ],
+      "solver_top1": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+      "solver_top5": [
+        "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+        "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+        "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1",
+        "sap.s4:apiResource:EngineeringChangeManagementAPI:v1"
+      ],
+      "top1_correct": false,
+      "top5_hit": false,
+      "verdict": "HARD"
+    },
+    {
+      "case_id": "dy-14",
+      "query_class": "single_intent",
+      "user_prompt": "We need to record incoming shipments from our suppliers into the system, but I'm not sure if we should be using the invoicing module or if there's a different process for just logging what physically arrived at our warehouse before we even get the bills.",
+      "expected_ordIds": [
+        "sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+      ],
+      "solver_top1": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+      "solver_top5": [
+        "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1",
+        "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+        "my.mes:apiResource:SupplierProcurementOrderManagement:v1",
+        "sap.s4:apiResource:EngineeringChangeProductDataAPI:v1"
+      ],
+      "top1_correct": true,
+      "top5_hit": true,
+      "verdict": "TOO_EASY"
+    },
+    {
+      "case_id": "dy-15",
+      "query_class": "single_intent",
+      "user_prompt": "We need to integrate our payroll system with a solution that can handle our employee compensation structures and salary data updates. Can you help us set up the proper integration for managing our compensation data?",
+      "expected_ordIds": [
+        "sap.sf:apiResource:CompensationAndSalaryManagement:v1"
+      ],
+      "solver_top1": "sap.sf:apiResource:CompensationAndSalaryManagement:v1",
+      "solver_top5": [
+        "sap.sf:apiResource:CompensationAndSalaryManagement:v1",
+        "sap.s4:apiResource:EmployeePayrollDataAPI:v1",
+        "workday.hcm:apiResource:PayrollProcessingDataManagement:v1",
+        "workday.hcm:apiResource:CompensationStructureDataExposure:v1",
+        "sap.sf:apiResource:EmployeeCompensationManagement:v1"
+      ],
+      "top1_correct": true,
+      "top5_hit": true,
+      "verdict": "TOO_EASY"
+    },
+    {
+      "case_id": "dy-16",
+      "query_class": "single_intent",
+      "user_prompt": "We need to understand how our upcoming engineering changes will affect our team's capacity and skill levels across the plant. Can you pull together an analysis that shows us the workforce impact from all the material and product modifications we have planned?",
+      "expected_ordIds": [
+        "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+      ],
+      "solver_top1": "my.mes:dataProduct:EngineeringChangeImpactAnalytics:v1",
+      "solver_top5": [
+        "my.mes:dataProduct:EngineeringChangeImpactAnalytics:v1",
+        "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+        "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+        "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1",
+        "my.mes:dataProduct:ProductionLaborProductivityMetrics:v1"
+      ],
+      "top1_correct": false,
+      "top5_hit": false,
+      "verdict": "HARD"
+    },
+    {
+      "case_id": "dy-17",
+      "query_class": "single_intent",
+      "user_prompt": "I need to get approval for some design modifications we're making to our product line, and then make sure the updated materials are ordered and tracked through our supply chain. Can you help me coordinate the engineering paperwork and inventory adjustments all in one place?",
+      "expected_ordIds": [
+        "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+      ],
+      "solver_top1": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+      "solver_top5": [
+        "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+        "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+        "sap.s4:apiResource:EngineeringChangeManagementAPI:v1",
+        "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+        "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+      ],
+      "top1_correct": false,
+      "top5_hit": false,
+      "verdict": "HARD"
+    },
+    {
+      "case_id": "dy-18",
+      "query_class": "single_intent",
+      "user_prompt": "We need to pull together everything related to our Q3 production initiatives and the associated account commitments we've locked in with our key clients. Can you help me get a consolidated view of what we're running this quarter and what orders are tied to those efforts?",
+      "expected_ordIds": [
+        "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1"
+      ],
+      "solver_top1": "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+      "solver_top5": [
+        "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+        "my.mes:apiResource:CustomerOrderAndAccountManagement:v1",
+        "sap.s4:apiResource:CustomerOrderManagementAPI:v1",
+        "my.mes:dataProduct:CustomerOrderFulfillmentAndOEECorrelation:v1",
+        "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1"
+      ],
+      "top1_correct": true,
+      "top5_hit": true,
+      "verdict": "TOO_EASY"
+    },
+    {
+      "case_id": "dy-19",
+      "query_class": "single_intent",
+      "user_prompt": "We need to check our current compliance status for the hazardous materials we're storing across all our facilities and understand what regulatory requirements we need to meet. Can you pull a report showing our inventory levels and which items require updated certifications or documentation?",
+      "expected_ordIds": [
+        "my.mes:apiResource:HazardousSubstanceComplianceManagement:v1"
+      ],
+      "solver_top1": "sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1",
+      "solver_top5": [
+        "sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1",
+        "sap.ehs:apiResource:ChemicalInventoryCompliance:v1",
+        "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1",
+        "sap.s4:apiResource:HazardousSubstanceInventoryAPI:v1",
+        "sap.ehs:apiResource:MaterialVendorHazardousSubstanceCompliance:v1"
+      ],
+      "top1_correct": false,
+      "top5_hit": false,
+      "verdict": "HARD"
+    },
+    {
+      "case_id": "dy-20",
+      "query_class": "single_intent",
+      "user_prompt": "I need to pull a report showing all the direct reports under our VP of Operations and understand the full reporting structure for our department reorganization next quarter. Can you help me get that organizational data?",
+      "expected_ordIds": [
+        "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1"
+      ],
+      "solver_top1": "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1",
+      "solver_top5": [
+        "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1",
+        "sap.s4:apiResource:WorkforceOrgStructureAPI:v1",
+        "workday.hcm:apiResource:JobFamilyStructureManagement:v1",
+        "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1",
+        "sap.sf:dataProduct:EmployeePerformanceTrendAnalytics:v1"
+      ],
+      "top1_correct": true,
+      "top5_hit": true,
+      "verdict": "TOO_EASY"
+    }
+  ]
+}

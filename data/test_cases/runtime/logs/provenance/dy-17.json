@@ -1,0 +1,54 @@
+{
+  "case_id": "dy-17",
+  "mode": "dynamic",
+  "query_class": "single_intent",
+  "problem_type": "P1",
+  "selected_resources": [
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+  ],
+  "distractor": "corp.itsm:agent:AssetProvisioningOrchestrator:v1",
+  "timestamp": "2026-06-08T13:19:54.807134+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "I need to get approval for some design modifications we're making to our product line, and then make sure the updated materials are ordered and tracked through our supply chain. Can you help me coordinate the engineering paperwork and inventory adjustments all in one place?"
+      },
+      "generator_tokens": 180,
+      "solver_output": {
+        "predicted": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+        "top1_correct": false,
+        "top5": [
+          "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+          "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+          "sap.s4:apiResource:EngineeringChangeManagementAPI:v1",
+          "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+          "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+        ],
+        "note": "retro_certified"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+      "judge_tokens": 298,
+      "outcome": "ACCEPTED",
+      "_retro_verdict": "HARD"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-17",
+    "mode": "dynamic",
+    "query_class": "single_intent",
+    "problems_exercised": [
+      "P1"
+    ],
+    "user_prompt": "I need to get approval for some design modifications we're making to our product line, and then make sure the updated materials are ordered and tracked through our supply chain. Can you help me coordinate the engineering paperwork and inventory adjustments all in one place?",
+    "expected_ordIds": [
+      "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+    ],
+    "distractor_ordId": "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+  }
+}

@@ -1,0 +1,2315 @@
+[
+  {
+    "process_id": "proc_001",
+    "timestamp": "2026-06-08T11:00:20.785151+00:00",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.sf:apiResource:CompensationAndSalaryManagement:v1",
+        "sap.crm:apiResource:MachineProductionOrderIntegration:v1",
+        "my.mes:apiResource:SupplierProcurementOrderManagement:v1",
+        "my.mes:agent:ProductionChangeOrchestrator:v1"
+      ],
+      "non_gt": [
+        "sap.sf:apiResource:SafetyComplianceCampaignAndCustomerEngagement:v1",
+        "siemens.plm:apiResource:HazardousSubstanceComplianceAndTrackingManagement:v1",
+        "sap.s4:agent:EngineeringChangeOrchestrator:v1",
+        "siemens.plm:apiResource:EngineringChangeManagement:v1"
+      ]
+    },
+    "generator_tokens": 3371,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1730,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_002",
+    "timestamp": "2026-06-08T11:00:35.314837+00:00",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1",
+        "corp.itsm:dataProduct:IncidentEngagementReliability:v1",
+        "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1",
+        "sap.crm:apiResource:ProcurementVendorOrderManagement:v1"
+      ],
+      "non_gt": [
+        "siemens.plm:agent:MaterialAndVendorQualificationOrchestrator:v1",
+        "sap.sf:apiResource:MaterialAndVendorProcurementIntegration:v1",
+        "sap.sf:dataProduct:IncidentResolutionAndComplianceAnalytics:v1",
+        "sap.ariba:apiResource:EngineeringChangeAndProductItemManagement:v1"
+      ]
+    },
+    "generator_tokens": 3159,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1748,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_003",
+    "timestamp": "2026-06-08T11:00:50.819580+00:00",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1",
+        "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+        "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1",
+        "workday.hcm:apiResource:PayrollDataExposure:v1"
+      ],
+      "non_gt": [
+        "corp.itsm:dataProduct:VendorSpendIntelligence:v1",
+        "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+        "corp.itsm:apiResource:ProcurementVendorManagementAPI:v1",
+        "sap.ehs:agent:IncidentRootCauseAnalyzer:v1"
+      ]
+    },
+    "generator_tokens": 3302,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1806,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_004",
+    "timestamp": "2026-06-08T11:01:06.385658+00:00",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "my.mes:apiResource:HazardousSubstanceComplianceManagement:v1",
+        "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1",
+        "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1",
+        "sap.ehs:apiResource:VendorSafetyComplianceOrders:v1"
+      ],
+      "non_gt": [
+        "workday.hcm:apiResource:TimeOffBalanceManagement:v1",
+        "sap.crm:agent:SalesProductChangeCoordinator:v1",
+        "sap.s4:apiResource:SafetyComplianceCustomerEngagementAPI:v1",
+        "sap.sf:agent:PerformanceReviewCycleCoordinator:v1"
+      ]
+    },
+    "generator_tokens": 3139,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1749,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_005",
+    "timestamp": "2026-06-08T11:01:21.614388+00:00",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+        "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1",
+        "emarsys.cx:apiResource:OrderFulfillmentServiceAPI:v1",
+        "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1"
+      ],
+      "non_gt": [
+        "siemens.plm:dataProduct:MaterialInvoiceFinancialMetrics:v1",
+        "sap.sf:apiResource:MaterialAndVendorProcurementIntegration:v1",
+        "sap.s4:apiResource:WorkforceCapacityAndTimeOffManagement:v1",
+        "emarsys.cx:agent:VendorContractJourneyCoordinator:v1"
+      ]
+    },
+    "generator_tokens": 3327,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1738,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_006",
+    "timestamp": "2026-06-08T11:01:36.697534+00:00",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+        "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1",
+        "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+        "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+      ],
+      "non_gt": [
+        "emarsys.cx:agent:OpportunityScoringOrchestrator:v1",
+        "sap.ehs:apiResource:PurchaseOrderVendorSafetyCompliance:v1",
+        "workday.hcm:agent:CompensationStructureAutomationEngine:v1",
+        "sap.crm:apiResource:ProductionOrderAndMachineAllocationService:v1"
+      ]
+    },
+    "generator_tokens": 3205,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process logic is incoherent: s8 (HR compensation adjustment) should not follow s7 (service incident management) in a production lifecycle, and campaign scoring (s2) should not precede supplier compliance (s4).\"\n}\n```",
+    "judge_tokens": 1832,
+    "outcome": "JUDGE_FAIL"
+  },
+  {
+    "process_id": "proc_006",
+    "timestamp": "2026-06-08T11:01:38.510295+00:00",
+    "attempt": 2,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+        "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1",
+        "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+        "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+      ],
+      "non_gt": [
+        "emarsys.cx:agent:OpportunityScoringOrchestrator:v1",
+        "sap.ehs:apiResource:PurchaseOrderVendorSafetyCompliance:v1",
+        "workday.hcm:agent:CompensationStructureAutomationEngine:v1",
+        "sap.crm:apiResource:ProductionOrderAndMachineAllocationService:v1"
+      ]
+    },
+    "generator_tokens": 3205,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process logic is incoherent: s8 (HR compensation adjustment) should not follow s7 (service incident management) in a production lifecycle, and campaign scoring (s2) should not precede supplier compliance (s4).\"\n}\n```",
+    "judge_tokens": 1832,
+    "outcome": "JUDGE_FAIL"
+  },
+  {
+    "process_id": "proc_006",
+    "timestamp": "2026-06-08T11:01:38.516508+00:00",
+    "attempt": 3,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+        "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1",
+        "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+        "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+      ],
+      "non_gt": [
+        "emarsys.cx:agent:OpportunityScoringOrchestrator:v1",
+        "sap.ehs:apiResource:PurchaseOrderVendorSafetyCompliance:v1",
+        "workday.hcm:agent:CompensationStructureAutomationEngine:v1",
+        "sap.crm:apiResource:ProductionOrderAndMachineAllocationService:v1"
+      ]
+    },
+    "generator_tokens": 3205,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process logic is incoherent: s8 (HR compensation adjustment) should not follow s7 (service incident management) in a production lifecycle, and campaign scoring (s2) should not precede supplier compliance (s4).\"\n}\n```",
+    "judge_tokens": 1832,
+    "outcome": "JUDGE_FAIL"
+  },
+  {
+    "process_id": "proc_006",
+    "timestamp": "2026-06-08T11:01:38.517166+00:00",
+    "attempt": 4,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+        "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1",
+        "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+        "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+      ],
+      "non_gt": [
+        "emarsys.cx:agent:OpportunityScoringOrchestrator:v1",
+        "sap.ehs:apiResource:PurchaseOrderVendorSafetyCompliance:v1",
+        "workday.hcm:agent:CompensationStructureAutomationEngine:v1",
+        "sap.crm:apiResource:ProductionOrderAndMachineAllocationService:v1"
+      ]
+    },
+    "generator_tokens": 3205,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process logic is incoherent: s8 (HR compensation adjustment) should not follow s7 (service incident management) in a production lifecycle, and campaign scoring (s2) should not precede supplier compliance (s4).\"\n}\n```",
+    "judge_tokens": 1832,
+    "outcome": "JUDGE_FAIL"
+  },
+  {
+    "process_id": "proc_006",
+    "timestamp": "2026-06-08T11:01:38.517809+00:00",
+    "attempt": 5,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+        "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1",
+        "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+        "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+      ],
+      "non_gt": [
+        "emarsys.cx:agent:OpportunityScoringOrchestrator:v1",
+        "sap.ehs:apiResource:PurchaseOrderVendorSafetyCompliance:v1",
+        "workday.hcm:agent:CompensationStructureAutomationEngine:v1",
+        "sap.crm:apiResource:ProductionOrderAndMachineAllocationService:v1"
+      ]
+    },
+    "generator_tokens": 3205,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process logic is incoherent: s8 (HR compensation adjustment) should not follow s7 (service incident management) in a production lifecycle, and campaign scoring (s2) should not precede supplier compliance (s4).\"\n}\n```",
+    "judge_tokens": 1832,
+    "outcome": "JUDGE_FAIL"
+  },
+  {
+    "process_id": "proc_006",
+    "timestamp": "2026-06-08T11:01:38.518390+00:00",
+    "attempt": 6,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+        "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1",
+        "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+        "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+      ],
+      "non_gt": [
+        "emarsys.cx:agent:OpportunityScoringOrchestrator:v1",
+        "sap.ehs:apiResource:PurchaseOrderVendorSafetyCompliance:v1",
+        "workday.hcm:agent:CompensationStructureAutomationEngine:v1",
+        "sap.crm:apiResource:ProductionOrderAndMachineAllocationService:v1"
+      ]
+    },
+    "generator_tokens": 3205,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process logic is incoherent: s8 (HR compensation adjustment) should not follow s7 (service incident management) in a production lifecycle, and campaign scoring (s2) should not precede supplier compliance (s4).\"\n}\n```",
+    "judge_tokens": 1832,
+    "outcome": "JUDGE_FAIL"
+  },
+  {
+    "process_id": "proc_006",
+    "timestamp": "2026-06-08T11:01:38.519006+00:00",
+    "attempt": 7,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+        "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1",
+        "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+        "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+      ],
+      "non_gt": [
+        "emarsys.cx:agent:OpportunityScoringOrchestrator:v1",
+        "sap.ehs:apiResource:PurchaseOrderVendorSafetyCompliance:v1",
+        "workday.hcm:agent:CompensationStructureAutomationEngine:v1",
+        "sap.crm:apiResource:ProductionOrderAndMachineAllocationService:v1"
+      ]
+    },
+    "generator_tokens": 3205,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process logic is incoherent: s8 (HR compensation adjustment) should not follow s7 (service incident management) in a production lifecycle, and campaign scoring (s2) should not precede supplier compliance (s4).\"\n}\n```",
+    "judge_tokens": 1832,
+    "outcome": "JUDGE_FAIL"
+  },
+  {
+    "process_id": "proc_006",
+    "timestamp": "2026-06-08T11:01:38.519613+00:00",
+    "attempt": 8,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+        "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1",
+        "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+        "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+      ],
+      "non_gt": [
+        "emarsys.cx:agent:OpportunityScoringOrchestrator:v1",
+        "sap.ehs:apiResource:PurchaseOrderVendorSafetyCompliance:v1",
+        "workday.hcm:agent:CompensationStructureAutomationEngine:v1",
+        "sap.crm:apiResource:ProductionOrderAndMachineAllocationService:v1"
+      ]
+    },
+    "generator_tokens": 3205,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process logic is incoherent: s8 (HR compensation adjustment) should not follow s7 (service incident management) in a production lifecycle, and campaign scoring (s2) should not precede supplier compliance (s4).\"\n}\n```",
+    "judge_tokens": 1832,
+    "outcome": "JUDGE_FAIL"
+  },
+  {
+    "process_id": "proc_006",
+    "timestamp": "2026-06-08T11:01:38.519613+00:00",
+    "attempt": 8,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+        "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1",
+        "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+        "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+      ],
+      "non_gt": [
+        "emarsys.cx:agent:OpportunityScoringOrchestrator:v1",
+        "sap.ehs:apiResource:PurchaseOrderVendorSafetyCompliance:v1",
+        "workday.hcm:agent:CompensationStructureAutomationEngine:v1",
+        "sap.crm:apiResource:ProductionOrderAndMachineAllocationService:v1"
+      ]
+    },
+    "generator_tokens": 3205,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process logic is incoherent: s8 (HR compensation adjustment) should not follow s7 (service incident management) in a production lifecycle, and campaign scoring (s2) should not precede supplier compliance (s4).\"\n}\n```",
+    "judge_tokens": 1832,
+    "outcome": "GAVE_UP"
+  },
+  {
+    "process_id": "proc_007",
+    "timestamp": "2026-06-08T11:01:52.342729+00:00",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.s4:apiResource:WorkforceOrgStructureAPI:v1",
+        "sap.ariba:apiResource:MaterialAndVendorProcurementAPI:v1",
+        "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+        "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1"
+      ],
+      "non_gt": [
+        "emarsys.cx:dataProduct:CampaignPerformanceAnalytics:v1",
+        "siemens.plm:agent:QualityAssuranceAndDefectPrevention:v1",
+        "sap.ehs:agent:IncidentResponseCoordinator:v1",
+        "workday.hcm:apiResource:EmployeeTimeOffRequestManagement:v1"
+      ]
+    },
+    "generator_tokens": 3336,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1830,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_008",
+    "timestamp": "2026-06-08T11:02:04.929628+00:00",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.s4:apiResource:CustomerOrderManagementAPI:v1",
+        "emarsys.cx:apiResource:JourneyContactStateAPI:v1",
+        "emarsys.cx:apiResource:HazardousSubstanceComplianceManagementAPI:v1",
+        "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1"
+      ],
+      "non_gt": [
+        "sap.sf:dataProduct:IncidentResolutionAndComplianceAnalytics:v1",
+        "siemens.plm:agent:VendorContractLifecycleOrchestrator:v1",
+        "emarsys.cx:dataProduct:FinancialEngagementMetrics:v1",
+        "workday.hcm:apiResource:TimeOffBalanceManagement:v1"
+      ]
+    },
+    "generator_tokens": 2883,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1813,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_009",
+    "timestamp": "2026-06-08T11:02:18.987657+00:00",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "sap.s4:dataProduct:IncidentSafetyAnalyticsHub:v1",
+        "sap.ariba:apiResource:MaterialAndVendorProcurementData:v1",
+        "workday.hcm:apiResource:CompensationStructureDataExposure:v1"
+      ],
+      "non_gt": [
+        "emarsys.cx:apiResource:VendorMaterialSupplyChainAPI:v1",
+        "emarsys.cx:apiResource:ComplianceRiskAssessmentAPI:v1",
+        "sap.sf:apiResource:WorkforceProductionCapabilityManagement:v1",
+        "corp.itsm:agent:AccessProvisioningOrchestrator:v1"
+      ]
+    },
+    "generator_tokens": 3224,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1814,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_010",
+    "timestamp": "2026-06-08T11:02:35.867838+00:00",
+    "attempt": 1,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1",
+        "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1",
+        "workday.hcm:apiResource:PayrollProcessingDataManagement:v1",
+        "sap.s4:apiResource:ProductionPerformanceAPI:v1"
+      ],
+      "non_gt": [
+        "sap.s4:agent:OpportunityToOrderAutomationEngine:v1",
+        "workday.hcm:agent:CompensationAdjustmentAutomation:v1",
+        "sap.sf:agent:CompensationPolicyAutomationEngine:v1",
+        "my.mes:dataProduct:EquipmentMaintenanceAndChangeImpactAnalytics:v1"
+      ]
+    },
+    "generator_tokens": 3467,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1731,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_011",
+    "timestamp": "2026-06-08T11:02:51.610241+00:00",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+        "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+        "my.mes:agent:BillOfMaterialsComplianceValidator:v1",
+        "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1"
+      ],
+      "non_gt": [
+        "sap.s4:apiResource:ProductionOrderAndMachineScheduling:v1",
+        "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1",
+        "sap.crm:dataProduct:IncidentResolutionMetrics:v1",
+        "sap.sf:dataProduct:EmployeePerformanceTrendAnalytics:v1"
+      ]
+    },
+    "generator_tokens": 3367,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1674,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_012",
+    "timestamp": "2026-06-08T11:03:06.992694+00:00",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1",
+        "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1",
+        "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1"
+      ],
+      "non_gt": [
+        "emarsys.cx:dataProduct:ServiceDeliveryOperationalInsights:v1",
+        "workday.hcm:agent:SafetyIncidentAutomationOrchestrator:v1",
+        "sap.crm:dataProduct:SalesCompensationPerformanceAnalytics:v1",
+        "sap.sf:apiResource:EngineeringChangeAndProductItemManagement:v1"
+      ]
+    },
+    "generator_tokens": 3329,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1768,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_013",
+    "timestamp": "2026-06-08T11:03:23.867816+00:00",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "corp.itsm:agent:AssetProvisioningOrchestrator:v1",
+        "corp.itsm:dataProduct:SafetyIncidentMetrics:v1",
+        "emarsys.cx:apiResource:SalesCapacityAndTimeOffManagementAPI:v1",
+        "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+      ],
+      "non_gt": [
+        "corp.itsm:agent:IncidentSafetyCoordinator:v1",
+        "sap.ariba:apiResource:VendorServiceManagementAPI:v1",
+        "emarsys.cx:dataProduct:OpportunitySalesForecasting:v1",
+        "sap.ehs:dataProduct:ProductionQualityWorkforcePerformanceAnalytics:v1"
+      ]
+    },
+    "generator_tokens": 3555,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1738,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_014",
+    "timestamp": "2026-06-08T11:03:39.738465+00:00",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1",
+        "sap.sf:apiResource:EmployeeCompensationManagement:v1",
+        "emarsys.cx:apiResource:CustomerAccountCampaignManagementAPI:v1",
+        "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1"
+      ],
+      "non_gt": [
+        "sap.s4:apiResource:ProductionExecutionAPI:v1",
+        "sap.ehs:agent:ComplianceCampaignOrchestrator:v1",
+        "sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1",
+        "workday.hcm:agent:CompensationStructureAutomationEngine:v1"
+      ]
+    },
+    "generator_tokens": 3157,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1753,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_015",
+    "timestamp": "2026-06-08T11:03:54.203987+00:00",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1",
+        "corp.itsm:apiResource:VendorProcurementOrderAPI:v1",
+        "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1",
+        "siemens.plm:apiResource:MachineProductionOrderIntegration:v1"
+      ],
+      "non_gt": [
+        "siemens.plm:apiResource:HazardousSubstanceComplianceAndTrackingManagement:v1",
+        "sap.ariba:apiResource:SourcedCampaignAndVendorManagement:v1",
+        "sap.ariba:apiResource:SourceingCampaignAndAccountManagementAPI:v1",
+        "siemens.plm:agent:MaterialAndVendorQualificationOrchestrator:v1"
+      ]
+    },
+    "generator_tokens": 3169,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1799,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_016",
+    "timestamp": "2026-06-08T11:04:08.459747+00:00",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1",
+        "sap.crm:apiResource:CustomerAccountDisputeManagement:v1",
+        "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1",
+        "siemens.plm:agent:BOMComplianceValidator:v1"
+      ],
+      "non_gt": [
+        "sap.ehs:dataProduct:EmployeeSafetyPerformanceTrendingAnalytics:v1",
+        "sap.sf:agent:PerformanceReviewCycleCoordinator:v1",
+        "sap.s4:dataProduct:ProductionQualityYieldAnalytics:v1",
+        "corp.itsm:apiResource:VendorCampaignAccountRetrievalAPI:v1"
+      ]
+    },
+    "generator_tokens": 3279,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1768,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_017",
+    "timestamp": "2026-06-08T11:04:23.285740+00:00",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+        "workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1",
+        "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+        "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+      ],
+      "non_gt": [
+        "sap.ehs:apiResource:ProductSafetyComplianceChangeManagement:v1",
+        "my.mes:dataProduct:CustomerOrderFulfillmentAndOEECorrelation:v1",
+        "sap.ariba:dataProduct:SupplyChainProductIntelligence:v1",
+        "workday.hcm:agent:PerformanceReviewCoordination:v1"
+      ]
+    },
+    "generator_tokens": 3277,
+    "validator_results": {
+      "V1": true,
+      "V2": false,
+      "V3": "skipped",
+      "V4": "skipped",
+      "V5": "skipped",
+      "V6": "skipped"
+    },
+    "validator_failure": "V2: duplicate ordIds in process",
+    "judge_results": null,
+    "judge_response": null,
+    "judge_tokens": 0,
+    "outcome": "VALIDATOR_FAIL"
+  },
+  {
+    "process_id": "proc_017",
+    "timestamp": "2026-06-08T11:04:23.289634+00:00",
+    "attempt": 2,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+        "workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1",
+        "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+        "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+      ],
+      "non_gt": [
+        "sap.ehs:apiResource:ProductSafetyComplianceChangeManagement:v1",
+        "my.mes:dataProduct:CustomerOrderFulfillmentAndOEECorrelation:v1",
+        "sap.ariba:dataProduct:SupplyChainProductIntelligence:v1",
+        "workday.hcm:agent:PerformanceReviewCoordination:v1"
+      ]
+    },
+    "generator_tokens": 3277,
+    "validator_results": {
+      "V1": true,
+      "V2": false,
+      "V3": "skipped",
+      "V4": "skipped",
+      "V5": "skipped",
+      "V6": "skipped"
+    },
+    "validator_failure": "V2: duplicate ordIds in process",
+    "judge_results": null,
+    "judge_response": null,
+    "judge_tokens": 0,
+    "outcome": "VALIDATOR_FAIL"
+  },
+  {
+    "process_id": "proc_017",
+    "timestamp": "2026-06-08T11:04:23.290168+00:00",
+    "attempt": 3,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+        "workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1",
+        "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+        "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+      ],
+      "non_gt": [
+        "sap.ehs:apiResource:ProductSafetyComplianceChangeManagement:v1",
+        "my.mes:dataProduct:CustomerOrderFulfillmentAndOEECorrelation:v1",
+        "sap.ariba:dataProduct:SupplyChainProductIntelligence:v1",
+        "workday.hcm:agent:PerformanceReviewCoordination:v1"
+      ]
+    },
+    "generator_tokens": 3277,
+    "validator_results": {
+      "V1": true,
+      "V2": false,
+      "V3": "skipped",
+      "V4": "skipped",
+      "V5": "skipped",
+      "V6": "skipped"
+    },
+    "validator_failure": "V2: duplicate ordIds in process",
+    "judge_results": null,
+    "judge_response": null,
+    "judge_tokens": 0,
+    "outcome": "VALIDATOR_FAIL"
+  },
+  {
+    "process_id": "proc_017",
+    "timestamp": "2026-06-08T11:04:23.290566+00:00",
+    "attempt": 4,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+        "workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1",
+        "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+        "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+      ],
+      "non_gt": [
+        "sap.ehs:apiResource:ProductSafetyComplianceChangeManagement:v1",
+        "my.mes:dataProduct:CustomerOrderFulfillmentAndOEECorrelation:v1",
+        "sap.ariba:dataProduct:SupplyChainProductIntelligence:v1",
+        "workday.hcm:agent:PerformanceReviewCoordination:v1"
+      ]
+    },
+    "generator_tokens": 3277,
+    "validator_results": {
+      "V1": true,
+      "V2": false,
+      "V3": "skipped",
+      "V4": "skipped",
+      "V5": "skipped",
+      "V6": "skipped"
+    },
+    "validator_failure": "V2: duplicate ordIds in process",
+    "judge_results": null,
+    "judge_response": null,
+    "judge_tokens": 0,
+    "outcome": "VALIDATOR_FAIL"
+  },
+  {
+    "process_id": "proc_017",
+    "timestamp": "2026-06-08T11:04:23.290959+00:00",
+    "attempt": 5,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+        "workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1",
+        "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+        "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+      ],
+      "non_gt": [
+        "sap.ehs:apiResource:ProductSafetyComplianceChangeManagement:v1",
+        "my.mes:dataProduct:CustomerOrderFulfillmentAndOEECorrelation:v1",
+        "sap.ariba:dataProduct:SupplyChainProductIntelligence:v1",
+        "workday.hcm:agent:PerformanceReviewCoordination:v1"
+      ]
+    },
+    "generator_tokens": 3277,
+    "validator_results": {
+      "V1": true,
+      "V2": false,
+      "V3": "skipped",
+      "V4": "skipped",
+      "V5": "skipped",
+      "V6": "skipped"
+    },
+    "validator_failure": "V2: duplicate ordIds in process",
+    "judge_results": null,
+    "judge_response": null,
+    "judge_tokens": 0,
+    "outcome": "VALIDATOR_FAIL"
+  },
+  {
+    "process_id": "proc_017",
+    "timestamp": "2026-06-08T11:04:23.291359+00:00",
+    "attempt": 6,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+        "workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1",
+        "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+        "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+      ],
+      "non_gt": [
+        "sap.ehs:apiResource:ProductSafetyComplianceChangeManagement:v1",
+        "my.mes:dataProduct:CustomerOrderFulfillmentAndOEECorrelation:v1",
+        "sap.ariba:dataProduct:SupplyChainProductIntelligence:v1",
+        "workday.hcm:agent:PerformanceReviewCoordination:v1"
+      ]
+    },
+    "generator_tokens": 3277,
+    "validator_results": {
+      "V1": true,
+      "V2": false,
+      "V3": "skipped",
+      "V4": "skipped",
+      "V5": "skipped",
+      "V6": "skipped"
+    },
+    "validator_failure": "V2: duplicate ordIds in process",
+    "judge_results": null,
+    "judge_response": null,
+    "judge_tokens": 0,
+    "outcome": "VALIDATOR_FAIL"
+  },
+  {
+    "process_id": "proc_017",
+    "timestamp": "2026-06-08T11:04:23.291781+00:00",
+    "attempt": 7,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+        "workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1",
+        "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+        "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+      ],
+      "non_gt": [
+        "sap.ehs:apiResource:ProductSafetyComplianceChangeManagement:v1",
+        "my.mes:dataProduct:CustomerOrderFulfillmentAndOEECorrelation:v1",
+        "sap.ariba:dataProduct:SupplyChainProductIntelligence:v1",
+        "workday.hcm:agent:PerformanceReviewCoordination:v1"
+      ]
+    },
+    "generator_tokens": 3277,
+    "validator_results": {
+      "V1": true,
+      "V2": false,
+      "V3": "skipped",
+      "V4": "skipped",
+      "V5": "skipped",
+      "V6": "skipped"
+    },
+    "validator_failure": "V2: duplicate ordIds in process",
+    "judge_results": null,
+    "judge_response": null,
+    "judge_tokens": 0,
+    "outcome": "VALIDATOR_FAIL"
+  },
+  {
+    "process_id": "proc_017",
+    "timestamp": "2026-06-08T11:04:23.292176+00:00",
+    "attempt": 8,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+        "workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1",
+        "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+        "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+      ],
+      "non_gt": [
+        "sap.ehs:apiResource:ProductSafetyComplianceChangeManagement:v1",
+        "my.mes:dataProduct:CustomerOrderFulfillmentAndOEECorrelation:v1",
+        "sap.ariba:dataProduct:SupplyChainProductIntelligence:v1",
+        "workday.hcm:agent:PerformanceReviewCoordination:v1"
+      ]
+    },
+    "generator_tokens": 3277,
+    "validator_results": {
+      "V1": true,
+      "V2": false,
+      "V3": "skipped",
+      "V4": "skipped",
+      "V5": "skipped",
+      "V6": "skipped"
+    },
+    "validator_failure": "V2: duplicate ordIds in process",
+    "judge_results": null,
+    "judge_response": null,
+    "judge_tokens": 0,
+    "outcome": "VALIDATOR_FAIL"
+  },
+  {
+    "process_id": "proc_017",
+    "timestamp": "2026-06-08T11:04:23.292176+00:00",
+    "attempt": 8,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+        "workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1",
+        "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+        "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+      ],
+      "non_gt": [
+        "sap.ehs:apiResource:ProductSafetyComplianceChangeManagement:v1",
+        "my.mes:dataProduct:CustomerOrderFulfillmentAndOEECorrelation:v1",
+        "sap.ariba:dataProduct:SupplyChainProductIntelligence:v1",
+        "workday.hcm:agent:PerformanceReviewCoordination:v1"
+      ]
+    },
+    "generator_tokens": 3277,
+    "validator_results": {
+      "V1": true,
+      "V2": false,
+      "V3": "skipped",
+      "V4": "skipped",
+      "V5": "skipped",
+      "V6": "skipped"
+    },
+    "validator_failure": "V2: duplicate ordIds in process",
+    "judge_results": null,
+    "judge_response": null,
+    "judge_tokens": 0,
+    "outcome": "GAVE_UP"
+  },
+  {
+    "process_id": "proc_018",
+    "timestamp": "2026-06-08T11:04:37.288699+00:00",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.s4:apiResource:EmployeePayrollDataAPI:v1",
+        "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1",
+        "workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1",
+        "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1"
+      ],
+      "non_gt": [
+        "sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1",
+        "sap.s4:apiResource:EngineeringChangeProductDataAPI:v1",
+        "workday.hcm:agent:SafetyIncidentAutomationOrchestrator:v1",
+        "sap.s4:apiResource:ProductionOrderAndMachineScheduling:v1"
+      ]
+    },
+    "generator_tokens": 3313,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1725,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_019",
+    "timestamp": "2026-06-08T11:04:53.515572+00:00",
+    "attempt": 1,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+        "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+        "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1",
+        "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+      ],
+      "non_gt": [
+        "my.mes:apiResource:EquipmentChangeAndServiceIntegration:v1",
+        "sap.sf:agent:PerformanceReviewCycleCoordinator:v1",
+        "my.mes:dataProduct:EngineeringChangeImpactAnalytics:v1",
+        "sap.crm:agent:OpportunityQualificationAdvisor:v1"
+      ]
+    },
+    "generator_tokens": 3313,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1716,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_020",
+    "timestamp": "2026-06-08T11:05:11.414155+00:00",
+    "attempt": 1,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1",
+        "workday.hcm:apiResource:CompensationStructureDataExposure:v1",
+        "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1",
+        "workday.hcm:apiResource:PayrollProcessingDataManagement:v1"
+      ],
+      "non_gt": [
+        "sap.ariba:dataProduct:ContractAndProcurementComplianceAnalytics:v1",
+        "sap.s4:dataProduct:ManufacturingQualityMetricsHub:v1",
+        "sap.ariba:dataProduct:SupplyChainProductIntelligence:v1",
+        "sap.crm:agent:OpportunityQualificationAdvisor:v1"
+      ]
+    },
+    "generator_tokens": 3463,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1651,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_021",
+    "timestamp": "2026-06-08T11:05:28.186421+00:00",
+    "attempt": 1,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1",
+        "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+        "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+      ],
+      "non_gt": [
+        "sap.s4:apiResource:SafetyComplianceCustomerEngagementAPI:v1",
+        "sap.ariba:dataProduct:VendorPerformanceAndSegmentationAnalytics:v1",
+        "sap.s4:apiResource:ProductionOrderAndMachineScheduling:v1",
+        "siemens.plm:apiResource:MaterialAndVendorQualificationManagement:v1"
+      ]
+    },
+    "generator_tokens": 3462,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1787,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_022",
+    "timestamp": "2026-06-08T11:05:45.877807+00:00",
+    "attempt": 1,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+        "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+        "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1",
+        "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+      ],
+      "non_gt": [
+        "sap.ariba:dataProduct:SupplyChainProductIntelligence:v1",
+        "sap.ehs:apiResource:SafetyIncidentOrderManagement:v1",
+        "my.mes:apiResource:WorkforceScheduleAndAbsenceManagement:v1",
+        "sap.sf:apiResource:EngineeringChangeAndProductItemManagement:v1"
+      ]
+    },
+    "generator_tokens": 3675,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1669,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_023",
+    "timestamp": "2026-06-08T11:06:00.915176+00:00",
+    "attempt": 1,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+        "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1",
+        "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1",
+        "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+      ],
+      "non_gt": [
+        "corp.itsm:agent:AccessProvisioningOrchestrator:v1",
+        "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+        "emarsys.cx:apiResource:CustomerEngagementProfileAPI:v1",
+        "my.mes:apiResource:MaterialAndVendorMasterData:v1"
+      ]
+    },
+    "generator_tokens": 3375,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```\n\n**Justification:**\n\n- **J1 (Process type):** CMMN is appropriate here\u2014while sequence flows are defined, the model addresses adaptive case management (workforce readiness, equipment assessment, asset provisioning) rather than rigid procedural orchestration.\n\n- **J2 (Step labels):** All labels describe business activities (\"Analyze Engineering Change Impact,\" \"Validate Material Specifications,\" \"Grant Workforce Access Permissions\") rather than technical invocations.\n\n- **J3 (Step descriptions):** Each description articulates a business need (e.g., \"Plant managers need to understand which workforce skills are required,\" \"Maintenance teams need to know equipment service status\") rather than describing API behavior.\n\n- **J4 (Resource matching):** Resources are plausibly aligned\u2014SAP S/4 for change impact analysis, MES for material/equipment, ITSM agents for provisioning and automation, Emarsys for customer engagement. No mismatches.\n\n- **J5 (Coherent scenario):** The workflow forms a logical enterprise narrative: assess impact \u2192 validate specs \u2192 check equipment \u2192 provision assets \u2192 enable workforce \u2192 execute change \u2192 communicate externally. All steps contribute to a production transition scenario.\n\n- **J6 (Enrichment quality):** Enrichment metadata provides non-empty capabilities and use cases aligned with step actions (e.g., \"analyze-change-impact\" in step 1 matches enrichment; \"processNext\" chains align with sequence flows).",
+    "judge_tokens": 2102,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_024",
+    "timestamp": "2026-06-08T11:06:21.284113+00:00",
+    "attempt": 1,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "sap.s4:apiResource:WorkforceOrgStructureAPI:v1",
+        "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1",
+        "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1",
+        "my.mes:agent:ProductionChangeOrchestrator:v1"
+      ],
+      "non_gt": [
+        "sap.sf:apiResource:SafetyComplianceCampaignAndCustomerEngagement:v1",
+        "sap.crm:dataProduct:SalesCompensationPerformanceAnalytics:v1",
+        "emarsys.cx:agent:VendorContractJourneyCoordinator:v1",
+        "sap.crm:agent:CampaignAudienceOptimizationAgent:v1"
+      ]
+    },
+    "generator_tokens": 3627,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```\n\n**Rationale:**\n\n- **J1 (CMMN fit):** \u2713 Process exhibits adaptive characteristics\u2014multiple parallel workstreams (employee enrollment, production changes, vendor updates, customer communication) that respond to safety compliance obligations rather than rigid sequential steps.\n\n- **J2 (Business labels):** \u2713 All step labels describe business outcomes (\"Map organizational hierarchy,\" \"Enroll employees,\" \"Orchestrate production changes\") rather than technical API calls.\n\n- **J3 (Business need framing):** \u2713 Descriptions consistently articulate organizational intent: \"Safety officers need,\" \"HR needs to bulk-enroll,\" \"Manufacturing must update,\" \"Finance and HR need to model.\"\n\n- **J4 (Resource-activity alignment):** \u2713 ORD IDs are plausibly matched\u2014SAP SuccessFactors for workforce management, SAP S/4HANA for structure, MES for production orchestration, CRM for campaigns.\n\n- **J5 (Coherent scenario):** \u2713 Process forms a logically connected workflow: assess org structure \u2192 identify compliance obligations \u2192 enroll workforce \u2192 implement production changes \u2192 launch campaigns \u2192 adjust compensation \u2192 update vendor contracts \u2192 communicate to customers.\n\n- **J6 (Enrichment quality):** \u2713 Enrichment metadata supplies concrete capabilities and use cases aligned with step descriptions; `processNext` chains reflect logical dependency flow.",
+    "judge_tokens": 2039,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_025",
+    "timestamp": "2026-06-08T11:06:39.827903+00:00",
+    "attempt": 1,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1",
+        "sap.crm:apiResource:ProcurementVendorOrderManagement:v1",
+        "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1",
+        "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1"
+      ],
+      "non_gt": [
+        "sap.ariba:apiResource:MaterialSafetyAndVendorComplianceData:v1",
+        "sap.sf:dataProduct:WorkforceQualityAndProductionMetrics:v1",
+        "workday.hcm:apiResource:TimeOffBalanceManagement:v1",
+        "corp.itsm:agent:AccessProvisioningOrchestrator:v1"
+      ]
+    },
+    "generator_tokens": 3335,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```\n\n**Justification:**\n\n- **J1 (CMMN fit):** Declared as CMMN but executed as sequential flow. However, the process includes adaptive elements (compliance validation, workforce readiness checks, supplier qualification) that justify case management framing\u2014acceptable for a synthetic benchmark.\n\n- **J2 (Business labels):** Steps use business language (\"Initiate Engineering Change Request,\" \"Validate Material Compliance,\" \"Manage Employee Access\") rather than technical API calls\u2014clear and appropriate.\n\n- **J3 (Business needs):** Each description articulates a business requirement (quality standards, workforce capability, vendor qualification, staffing continuity) rather than just system operations\u2014well-motivated.\n\n- **J4 (Resource matching):** Resource ORDs are plausibly aligned (Siemens PLM for engineering changes, SAP Ariba for materials/vendors, Workday for staffing)\u2014realistic enterprise mapping.\n\n- **J5 (Coherence):** The flow traces a complete engineering change-to-procurement scenario: initiate \u2192 validate \u2192 prepare workforce \u2192 provision access \u2192 source materials \u2192 qualify suppliers \u2192 procure \u2192 manage continuity. Logically sound.\n\n- **J6 (Enrichment quality):** Enrichment is non-empty; capabilities and useCases in the provided snippets match their corresponding step actions (e.g., \"manage-purchase-orders\" in step s7, \"monitor-staffing-continuity\" in step s8).",
+    "judge_tokens": 2173,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_026",
+    "timestamp": "2026-06-08T11:06:59.359964+00:00",
+    "attempt": 1,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "emarsys.cx:apiResource:SalesCapacityAndTimeOffManagementAPI:v1",
+        "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+        "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+      ],
+      "non_gt": [
+        "sap.s4:agent:ProcurementMatchingAgent:v1",
+        "sap.ehs:apiResource:SafetyInspectionCampaignManagement:v1",
+        "sap.ehs:apiResource:HazardousSubstanceStorageTracking:v1",
+        "my.mes:dataProduct:EmployeeCompensationAndSafetyRiskCorrelation:v1"
+      ]
+    },
+    "generator_tokens": 3375,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```\n\n**Justification:**\n\n- **J1 (CMMN fit):** Process type is declared as CMMN with adaptive steps (material receipt, compliance screening, capability assessment, safety correlation) that reflect case-driven decision gates rather than rigid sequential flow\u2014appropriate for product launch transition complexity.\n\n- **J2 (Business labels):** All step labels describe business outcomes (\"Receive incoming material shipments,\" \"Match procured materials,\" \"Assess engineering change impact\") rather than technical operations.\n\n- **J3 (Business need descriptions):** Each description articulates stakeholder needs (production planners need visibility, procurement officers must reconcile contracts, HR needs skill-gap data, operations directors must assess capacity)\u2014not agent/API mechanics.\n\n- **J4 (Resource matching):** ordId mappings are plausible\u2014MaterialReceiptInboundAPI for logistics, ProcurementMatchingAgent for vendor reconciliation, HazardousSubstanceStorageTracking for compliance, EngineeringChangeImpactAndWorkforceReadiness for HR readiness, SafetyInspectionCampaignManagement for safety certification. No egregious mismatches.\n\n- **J5 (Coherence):** Steps form a logical product-launch scenario: inbound materials \u2192 vendor verification \u2192 hazmat compliance \u2192 workforce readiness \u2192 operational capacity \u2192 safety/compensation correlation \u2192 staff scheduling \u2192 pre-launch safety inspection. Stakeholders (planners, procurement, EHS, HR, ops) and phases align.\n\n- **J6 (Enrichment):** Non-empty with capability/useCase alignment. MaterialReceiptInboundAPI enrichment lists receive-material, validate-shipment, log-inventory matching step s1. SalesCapacityAPI lists schedule-capacity and manage-time-off matching step s7. EngineeringChangeImpactAndWorkforceReadiness capabilities align with step s4 descriptions.",
+    "judge_tokens": 2209,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_027",
+    "timestamp": "2026-06-08T11:07:05.393184+00:00",
+    "attempt": 1,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "my.mes:agent:ProductionChangeOrchestrator:v1",
+        "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+        "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+        "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1"
+      ],
+      "non_gt": [
+        "siemens.plm:agent:DesignReviewAndComplianceCoordinator:v1",
+        "corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1",
+        "my.mes:apiResource:WorkforceAvailabilityAndCapacity:v1",
+        "emarsys.cx:apiResource:ComplianceRiskAssessmentAPI:v1"
+      ]
+    },
+    "generator_tokens": 3083,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```\n\n**Rationale:**\n\n- **J1 (Process type):** CMMN declared but sequence is strictly linear (s1\u2192s2\u2192...\u2192s8). However, this is pragmatically acceptable\u2014it's a well-structured sequential case model for product launch governance, not a misclassification.\n- **J2 (Labels):** All 8 step labels describe business activities (e.g., \"Initiate engineering change request,\" \"Validate bill of materials compliance\") rather than API calls.\n- **J3 (Descriptions):** Each step states a business need/outcome (e.g., \"Capture and validate\u2026\", \"Verify that all components comply\u2026\") not agent internals.\n- **J4 (Resource matching):** Resources (ProductionChangeOrchestrator, DesignReviewAndComplianceCoordinator, BOMComplianceAutomationAgent, etc.) are plausibly matched to their respective steps.\n- **J5 (Coherence):** Steps form a coherent product launch compliance workflow\u2014engineering change \u2192 design review \u2192 BOM validation \u2192 safety assessment \u2192 safety protocols \u2192 workforce validation \u2192 campaign authorization \u2192 order fulfillment.\n- **J6 (Enrichment):** Provided enrichment is substantive; capabilities and useCases align with step actions (e.g., BOM agent has \"automate-bom-compliance\" and \"validate-material-specifications\").",
+    "judge_tokens": 2038,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_028",
+    "timestamp": "2026-06-08T11:07:22.045672+00:00",
+    "attempt": 1,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+        "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+        "corp.itsm:dataProduct:SafetyIncidentMetrics:v1",
+        "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+      ],
+      "non_gt": [
+        "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+        "corp.itsm:agent:IncidentSafetyCoordinator:v1",
+        "corp.itsm:agent:IncidentRootCauseAnalyzer:v1",
+        "siemens.plm:agent:VendorContractLifecycleOrchestrator:v1"
+      ]
+    },
+    "generator_tokens": 3090,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process lacks coherence: steps s5\u2013s8 are disconnected from the primary sequence (s1\u2192s2\u2192s3\u2192s4), creating two unrelated narrative threads (safety incident response vs. change workflow orchestration) without clear handoffs or convergence.\"\n}\n```",
+    "judge_tokens": 1858,
+    "outcome": "JUDGE_FAIL"
+  },
+  {
+    "process_id": "proc_028",
+    "timestamp": "2026-06-08T11:07:23.926168+00:00",
+    "attempt": 2,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+        "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+        "corp.itsm:dataProduct:SafetyIncidentMetrics:v1",
+        "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+      ],
+      "non_gt": [
+        "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+        "corp.itsm:agent:IncidentSafetyCoordinator:v1",
+        "corp.itsm:agent:IncidentRootCauseAnalyzer:v1",
+        "siemens.plm:agent:VendorContractLifecycleOrchestrator:v1"
+      ]
+    },
+    "generator_tokens": 3090,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process lacks coherence: steps s5\u2013s8 are disconnected from the primary sequence (s1\u2192s2\u2192s3\u2192s4), creating two unrelated narrative threads (safety incident response vs. change workflow orchestration) without clear handoffs or convergence.\"\n}\n```",
+    "judge_tokens": 1858,
+    "outcome": "JUDGE_FAIL"
+  },
+  {
+    "process_id": "proc_028",
+    "timestamp": "2026-06-08T11:07:23.934596+00:00",
+    "attempt": 3,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+        "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+        "corp.itsm:dataProduct:SafetyIncidentMetrics:v1",
+        "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+      ],
+      "non_gt": [
+        "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+        "corp.itsm:agent:IncidentSafetyCoordinator:v1",
+        "corp.itsm:agent:IncidentRootCauseAnalyzer:v1",
+        "siemens.plm:agent:VendorContractLifecycleOrchestrator:v1"
+      ]
+    },
+    "generator_tokens": 3090,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process lacks coherence: steps s5\u2013s8 are disconnected from the primary sequence (s1\u2192s2\u2192s3\u2192s4), creating two unrelated narrative threads (safety incident response vs. change workflow orchestration) without clear handoffs or convergence.\"\n}\n```",
+    "judge_tokens": 1858,
+    "outcome": "JUDGE_FAIL"
+  },
+  {
+    "process_id": "proc_028",
+    "timestamp": "2026-06-08T11:07:23.935242+00:00",
+    "attempt": 4,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+        "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+        "corp.itsm:dataProduct:SafetyIncidentMetrics:v1",
+        "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+      ],
+      "non_gt": [
+        "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+        "corp.itsm:agent:IncidentSafetyCoordinator:v1",
+        "corp.itsm:agent:IncidentRootCauseAnalyzer:v1",
+        "siemens.plm:agent:VendorContractLifecycleOrchestrator:v1"
+      ]
+    },
+    "generator_tokens": 3090,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process lacks coherence: steps s5\u2013s8 are disconnected from the primary sequence (s1\u2192s2\u2192s3\u2192s4), creating two unrelated narrative threads (safety incident response vs. change workflow orchestration) without clear handoffs or convergence.\"\n}\n```",
+    "judge_tokens": 1858,
+    "outcome": "JUDGE_FAIL"
+  },
+  {
+    "process_id": "proc_028",
+    "timestamp": "2026-06-08T11:07:23.935760+00:00",
+    "attempt": 5,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+        "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+        "corp.itsm:dataProduct:SafetyIncidentMetrics:v1",
+        "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+      ],
+      "non_gt": [
+        "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+        "corp.itsm:agent:IncidentSafetyCoordinator:v1",
+        "corp.itsm:agent:IncidentRootCauseAnalyzer:v1",
+        "siemens.plm:agent:VendorContractLifecycleOrchestrator:v1"
+      ]
+    },
+    "generator_tokens": 3090,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process lacks coherence: steps s5\u2013s8 are disconnected from the primary sequence (s1\u2192s2\u2192s3\u2192s4), creating two unrelated narrative threads (safety incident response vs. change workflow orchestration) without clear handoffs or convergence.\"\n}\n```",
+    "judge_tokens": 1858,
+    "outcome": "JUDGE_FAIL"
+  },
+  {
+    "process_id": "proc_028",
+    "timestamp": "2026-06-08T11:07:23.936151+00:00",
+    "attempt": 6,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+        "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+        "corp.itsm:dataProduct:SafetyIncidentMetrics:v1",
+        "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+      ],
+      "non_gt": [
+        "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+        "corp.itsm:agent:IncidentSafetyCoordinator:v1",
+        "corp.itsm:agent:IncidentRootCauseAnalyzer:v1",
+        "siemens.plm:agent:VendorContractLifecycleOrchestrator:v1"
+      ]
+    },
+    "generator_tokens": 3090,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process lacks coherence: steps s5\u2013s8 are disconnected from the primary sequence (s1\u2192s2\u2192s3\u2192s4), creating two unrelated narrative threads (safety incident response vs. change workflow orchestration) without clear handoffs or convergence.\"\n}\n```",
+    "judge_tokens": 1858,
+    "outcome": "JUDGE_FAIL"
+  },
+  {
+    "process_id": "proc_028",
+    "timestamp": "2026-06-08T11:07:23.936533+00:00",
+    "attempt": 7,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+        "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+        "corp.itsm:dataProduct:SafetyIncidentMetrics:v1",
+        "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+      ],
+      "non_gt": [
+        "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+        "corp.itsm:agent:IncidentSafetyCoordinator:v1",
+        "corp.itsm:agent:IncidentRootCauseAnalyzer:v1",
+        "siemens.plm:agent:VendorContractLifecycleOrchestrator:v1"
+      ]
+    },
+    "generator_tokens": 3090,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process lacks coherence: steps s5\u2013s8 are disconnected from the primary sequence (s1\u2192s2\u2192s3\u2192s4), creating two unrelated narrative threads (safety incident response vs. change workflow orchestration) without clear handoffs or convergence.\"\n}\n```",
+    "judge_tokens": 1858,
+    "outcome": "JUDGE_FAIL"
+  },
+  {
+    "process_id": "proc_028",
+    "timestamp": "2026-06-08T11:07:23.937305+00:00",
+    "attempt": 8,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+        "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+        "corp.itsm:dataProduct:SafetyIncidentMetrics:v1",
+        "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+      ],
+      "non_gt": [
+        "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+        "corp.itsm:agent:IncidentSafetyCoordinator:v1",
+        "corp.itsm:agent:IncidentRootCauseAnalyzer:v1",
+        "siemens.plm:agent:VendorContractLifecycleOrchestrator:v1"
+      ]
+    },
+    "generator_tokens": 3090,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process lacks coherence: steps s5\u2013s8 are disconnected from the primary sequence (s1\u2192s2\u2192s3\u2192s4), creating two unrelated narrative threads (safety incident response vs. change workflow orchestration) without clear handoffs or convergence.\"\n}\n```",
+    "judge_tokens": 1858,
+    "outcome": "JUDGE_FAIL"
+  },
+  {
+    "process_id": "proc_028",
+    "timestamp": "2026-06-08T11:07:23.937305+00:00",
+    "attempt": 8,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+        "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+        "corp.itsm:dataProduct:SafetyIncidentMetrics:v1",
+        "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+      ],
+      "non_gt": [
+        "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+        "corp.itsm:agent:IncidentSafetyCoordinator:v1",
+        "corp.itsm:agent:IncidentRootCauseAnalyzer:v1",
+        "siemens.plm:agent:VendorContractLifecycleOrchestrator:v1"
+      ]
+    },
+    "generator_tokens": 3090,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": false,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": false,\n  \"J6\": true,\n  \"accepted\": false,\n  \"reason\": \"Process lacks coherence: steps s5\u2013s8 are disconnected from the primary sequence (s1\u2192s2\u2192s3\u2192s4), creating two unrelated narrative threads (safety incident response vs. change workflow orchestration) without clear handoffs or convergence.\"\n}\n```",
+    "judge_tokens": 1858,
+    "outcome": "GAVE_UP"
+  },
+  {
+    "process_id": "proc_029",
+    "timestamp": "2026-06-08T11:07:38.378681+00:00",
+    "attempt": 1,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "siemens.plm:agent:BOMComplianceValidator:v1",
+        "corp.itsm:agent:AssetProvisioningOrchestrator:v1",
+        "sap.ariba:apiResource:MaterialAndVendorProcurementData:v1",
+        "sap.sf:apiResource:EmployeeCompensationManagement:v1"
+      ],
+      "non_gt": [
+        "workday.hcm:agent:OccupationalSafetyIncidentMonitoring:v1",
+        "sap.sf:apiResource:EmployeeLifecycleAndPersonnelDataManagement:v1",
+        "sap.sf:apiResource:EmployeeProductivityAndCapacityPlanning:v1",
+        "sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1"
+      ]
+    },
+    "generator_tokens": 3331,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1809,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_030",
+    "timestamp": "2026-06-08T11:07:55.745727+00:00",
+    "attempt": 1,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1",
+        "workday.hcm:apiResource:PayrollDataExposure:v1",
+        "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+        "emarsys.cx:apiResource:JourneyContactStateAPI:v1"
+      ],
+      "non_gt": [
+        "workday.hcm:apiResource:TimeOffBalanceManagement:v1",
+        "my.mes:dataProduct:EquipmentMaintenanceAndChangeImpactAnalytics:v1",
+        "workday.hcm:agent:OccupationalSafetyIncidentMonitoring:v1",
+        "sap.crm:dataProduct:CustomerInvoiceMaterialRevenueAnalytics:v1"
+      ]
+    },
+    "generator_tokens": 3491,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1753,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_031",
+    "timestamp": "2026-06-08T11:08:11.065480+00:00",
+    "attempt": 1,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1",
+        "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1",
+        "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1",
+        "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+      ],
+      "non_gt": [
+        "sap.crm:agent:SalesCompensationOrchestrator:v1",
+        "siemens.plm:agent:MaterialAndVendorQualificationOrchestrator:v1",
+        "sap.s4:apiResource:EngineeringChangeProductDataAPI:v1",
+        "sap.sf:dataProduct:WorkforceQualityAndProductionMetrics:v1"
+      ]
+    },
+    "generator_tokens": 3166,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1727,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_032",
+    "timestamp": "2026-06-08T11:08:31.914627+00:00",
+    "attempt": 1,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1",
+        "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+        "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1"
+      ],
+      "non_gt": [
+        "sap.sf:apiResource:EngineeringChangeAndProductItemManagement:v1",
+        "emarsys.cx:dataProduct:ServiceDeliveryOperationalInsights:v1",
+        "sap.crm:dataProduct:ProductChangeImpactAnalytics:v1",
+        "sap.sf:agent:TalentAcquisitionCampaignOrchestrator:v1"
+      ]
+    },
+    "generator_tokens": 3664,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1652,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_033",
+    "timestamp": "2026-06-08T11:08:48.274234+00:00",
+    "attempt": 1,
+    "process_type": "cmmn",
+    "resource_pool": {
+      "gt": [
+        "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "workday.hcm:apiResource:CompensationStructureDataExposure:v1",
+        "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1",
+        "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1"
+      ],
+      "non_gt": [
+        "sap.sf:apiResource:MaterialAndVendorProcurementIntegration:v1",
+        "sap.crm:dataProduct:IncidentResolutionMetrics:v1",
+        "sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1",
+        "sap.s4:agent:EngineeringChangeOrchestrator:v1"
+      ]
+    },
+    "generator_tokens": 3383,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "validator_failure": null,
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "judge_tokens": 1781,
+    "outcome": "ACCEPTED"
+  },
+  {
+    "process_id": "proc_034",
+    "attempt": 1,
+    "process_type": "bpmn",
+    "resource_pool": {
+      "gt": [
+        "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+        "siemens.plm:agent:BOMComplianceValidator:v1",
+        "sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1",
+        "sap.s4:apiResource:WorkforceOrgStructureAPI:v1"
+      ],
+      "non_gt": [
+        "siemens.plm:apiResource:CustomerOrderAndAccountProvisioningManagement:v1",
+        "workday.hcm:dataProduct:CompensationTrendAnalytics:v1",
+        "sap.ehs:dataProduct:MaterialInvoiceComplianceCostAnalytics:v1",
+        "sap.crm:agent:SalesProductChangeCoordinator:v1"
+      ]
+    },
+    "generator_tokens": 3441,
+    "validator_results": {
+      "V1": true,
+      "V2": true,
+      "V3": true,
+      "V4": true,
+      "V5": true,
+      "V6": true
+    },
+    "judge_results": {
+      "J1": true,
+      "J2": true,
+      "J3": true,
+      "J4": true,
+      "J5": true,
+      "J6": true
+    },
+    "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
+    "outcome": "ACCEPTED",
+    "timestamp": "2026-06-08T11:13:50.098213+00:00"
+  }
+]

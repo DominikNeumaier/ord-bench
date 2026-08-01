@@ -1,0 +1,961 @@
+{
+  "openResourceDiscovery": "1.16",
+  "perspective": "system-instance",
+  "packages": [
+    {
+      "ordId": "sap.sf:package:Core:v1",
+      "title": "sap.sf Core Package",
+      "shortDescription": "Core resources for the sap.sf system in the benchmark landscape.",
+      "version": "1.0.0",
+      "vendor": "sap:vendor:SAP:"
+    }
+  ],
+  "agents": [
+    {
+      "ordId": "sap.sf:agent:PerformanceReviewCycleCoordinator:v1",
+      "title": "Performance Review Cycle Coordinator",
+      "shortDescription": "Autonomous agent that orchestrates performance review cycles, routing reviews and managing deadlines.",
+      "description": "This agent automates the end-to-end coordination of performance review cycles in SuccessFactors. It creates review assignments based on organizational hierarchy, sends automated reminders to managers and employees at key milestones, escalates overdue reviews, and generates cycle completion reports. It reduces manual coordination overhead and ensures timely execution of performance management processes across the enterprise.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Employee:v1",
+        "sap.odm:entityType:WorkforcePerson:v1",
+        "sap.odm:entityType:PerformanceReview:v1"
+      ],
+      "lineOfBusiness": [
+        "Human Resources and People"
+      ],
+      "tags": [
+        "performance-management",
+        "workflow-automation",
+        "review-coordination",
+        "talent-management"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.sf:agent:CompensationPolicyAutomationEngine:v1",
+      "title": "Compensation Policy Automation Engine",
+      "shortDescription": "Automates compensation policy enforcement and processes salary adjustments based on organizational rules.",
+      "description": "Monitors compensation changes across the workforce and automatically coordinates policy-driven salary adjustments according to defined organizational guidelines. Processes compensation events triggered by employee lifecycle transitions, performance outcomes, and market adjustments while enforcing compliance with compensation policies and payroll regulations.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Compensation:v1",
+        "sap.odm:entityType:Employee:v1"
+      ],
+      "lineOfBusiness": [
+        "Human Resources"
+      ],
+      "tags": [
+        "compensation",
+        "automation",
+        "payroll",
+        "policy-driven"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.sf:agent:TalentAcquisitionCampaignOrchestrator:v1",
+      "title": "Talent Acquisition Campaign Orchestrator",
+      "shortDescription": "Automates recruitment campaign coordination across candidate segments and sourcing channels.",
+      "description": "Coordinates multi-channel recruitment campaigns by monitoring candidate engagement across different account segments and automating sourcing workflows. Processes campaign performance data to optimize talent pipeline velocity and orchestrates recruiter workflows based on segmented candidate attributes and campaign goals.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Campaign:v1",
+        "sap.odm:entityType:CustomerAccount:v1",
+        "sap.odm:entityType:CustomerSegment:v1"
+      ],
+      "lineOfBusiness": [
+        "talent-acquisition"
+      ],
+      "tags": [
+        "recruitment-automation",
+        "campaign-management",
+        "candidate-engagement"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.sf:agent:SkillsAndCapabilityMatchingOrchestrator:v1",
+      "title": "Skills and Capability Matching Orchestrator",
+      "shortDescription": "Automates workforce capability alignment with project resource requirements.",
+      "description": "Monitors employee competencies and engineering change requests to coordinate optimal resource allocation. Processes material and product item requirements across projects, automating the matching of personnel skills to organizational needs. Facilitates dynamic workforce planning by continuously evaluating capability gaps and recommending targeted development or reassignment actions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "lineOfBusiness": [
+        "Human Capital Management"
+      ],
+      "tags": [
+        "workforce-optimization",
+        "capability-planning",
+        "resource-orchestration"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.sf:agent:TalentAcquisitionAndCampaignOrchestrator:v1",
+      "title": "Talent Acquisition and Campaign Orchestrator",
+      "shortDescription": "Automates recruitment campaigns, candidate segmentation, and talent pipeline coordination.",
+      "description": "This agent monitors recruiting workflows and automates talent acquisition campaigns by coordinating candidate sourcing, segmentation, and engagement activities. It processes campaign performance metrics, orchestrates outreach sequences, and manages recruiter workflows to optimize hiring outcomes across organizational units.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:Campaign:v1",
+        "sap.odm:entityType:CustomerAccount:v1",
+        "sap.odm:entityType:CustomerSegment:v1"
+      ],
+      "lineOfBusiness": [
+        "human-resources-and-recruitment"
+      ],
+      "tags": [
+        "recruitment-automation",
+        "talent-acquisition",
+        "campaign-orchestration"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.sf:agent:OccupationalSafetyComplianceMonitor:v1",
+      "title": "Occupational Safety Compliance Monitor",
+      "shortDescription": "Monitors and automates occupational safety incident tracking and hazard compliance.",
+      "description": "Coordinates real-time monitoring of hazardous substances and safety incidents across the workforce. Automates compliance verification workflows and processes incident reports to ensure organizational adherence to occupational safety regulations. Triggers corrective actions and escalations based on incident severity and hazard classifications.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "relatedEntityTypes": [
+        "sap.odm:entityType:HazardousSubstance:v1",
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "lineOfBusiness": [
+        "Human Capital Management"
+      ],
+      "tags": [
+        "occupational-safety",
+        "incident-management",
+        "compliance-monitoring"
+      ],
+      "industry": []
+    }
+  ],
+  "apiResources": [
+    {
+      "ordId": "sap.sf:apiResource:EmployeeCompensationManagement:v1",
+      "title": "Employee Compensation Management API",
+      "shortDescription": "REST API for managing employee compensation, salary structures, and merit adjustments.",
+      "description": "Exposes employee compensation data and salary management capabilities, enabling integration with payroll systems and HR analytics platforms. Supports CRUD operations on compensation records, salary bands, and merit increase workflows. Essential for enterprises managing complex compensation structures across multiple organizational units.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/compensation-management/openapi.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:WorkforcePerson:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Resources"
+      ],
+      "tags": [
+        "compensation",
+        "salary-management",
+        "payroll-integration",
+        "employee-lifecycle"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.sf:apiResource:EmployeeChangeAndITServiceManagement:v1",
+      "title": "Personnel Transition and IT Support API",
+      "shortDescription": "Coordinates workforce modifications, technology asset allocation, and support ticket processing.",
+      "description": "Provides access to personnel transition workflows, IT infrastructure assignments, and support request tracking tied to employee movements and technology enablement. Manages authorization pathways, organizational policies, and impact evaluations for workforce changes. Integrates employee movement events with IT service provisioning and technical support operations across the enterprise.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:ChangeRequest:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ITEquipment:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ServiceTicket:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/employee-change-it-service.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "IT Service Management"
+      ],
+      "tags": [
+        "workforce-transitions",
+        "authorization-workflows",
+        "compliance-controls",
+        "impact-analysis"
+      ],
+      "industry": [],
+      "namespace": "sap.sf"
+    },
+    {
+      "ordId": "sap.sf:apiResource:RecruitmentWorkforceAllocationEngine:v1",
+      "title": "Recruitment Workforce Allocation Engine",
+      "shortDescription": "Retrieves and manages candidate-to-production-order mappings for staffing optimization.",
+      "description": "Exposes machine capacity and production order details to align recruitment pipelines with operational workforce demands. Provides access to real-time staffing requirements derived from production schedules and equipment utilization rates. Manages candidate allocation recommendations by correlating machine availability with open positions and production timelines.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Machine:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductionOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/recruitment-workforce-allocation.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "human-capital-management"
+      ],
+      "tags": [
+        "recruitment",
+        "workforce-planning",
+        "production-capacity"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.sf:apiResource:EmployeeProductivityAndCapacityPlanning:v1",
+      "title": "Employee Productivity and Capacity Planning API",
+      "shortDescription": "Retrieves workforce capacity metrics and production scheduling data for resource optimization.",
+      "description": "Exposes employee productivity metrics and production order capacity data to enable workforce planning and resource allocation. Manages access to machine utilization rates correlated with employee shift assignments and production order requirements. Provides real-time capacity visibility across manufacturing and service operations through integrated workforce and production data.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Machine:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductionOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "https://api.successfactors.com/v1/employee-productivity-capacity-planning.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Capital Management"
+      ],
+      "tags": [
+        "workforce-planning",
+        "capacity-optimization",
+        "production-integration"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.sf:apiResource:EmployeeLifecycleAndPersonnelDataManagement:v1",
+      "title": "Employee Lifecycle and Personnel Data Management API",
+      "shortDescription": "Exposes and manages complete employee and workforce person records throughout their organizational tenure.",
+      "description": "This API retrieves and manages comprehensive employee lifecycle data including personnel information, organizational assignments, and workforce person attributes. It provides access to employee records and person details maintained throughout the employment journey, enabling seamless data integration for HR processes and reporting.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:WorkforcePerson:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/employee-lifecycle-personnel-data.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Resources"
+      ],
+      "tags": [
+        "employee-data",
+        "workforce-management",
+        "personnel-records"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.sf:apiResource:TimeOffAndLeaveBalanceManagement:v1",
+      "title": "Time Off and Leave Balance Management API",
+      "shortDescription": "Manages time-off requests, leave balances, and accrual tracking for employees.",
+      "description": "Exposes employee time-off requests and leave balance data, enabling applications to retrieve, manage, and track accrual policies across the organization. Provides access to real-time leave balances, historical time-off records, and accrual calculations for compliance and workforce planning purposes.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:TimeOff:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/time-off-leave-balance.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Resources"
+      ],
+      "tags": [
+        "time-off",
+        "leave-management",
+        "balance-tracking",
+        "accrual"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.sf:apiResource:ProcurementVendorManagement:v1",
+      "title": "Procurement Vendor Management API",
+      "shortDescription": "Retrieves and manages vendor and purchase order data for HR procurement workflows.",
+      "description": "Exposes comprehensive vendor and purchase order information to support HR procurement processes, including contractor management, contingent workforce procurement, and training vendor coordination. Provides access to vendor profiles, contract terms, and purchase order status for seamless integration with employee lifecycle and learning initiatives.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:PurchaseOrder:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/procurement-vendor-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Capital Management"
+      ],
+      "tags": [
+        "procurement",
+        "vendor-management",
+        "contingent-workforce"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.sf:apiResource:CompensationAndSalaryManagement:v1",
+      "title": "Compensation and Salary Management API",
+      "shortDescription": "Manages employee compensation structures, salary data, and payroll integration.",
+      "description": "Exposes comprehensive compensation and salary information for employees and workforce persons. Retrieves salary bands, variable compensation, bonuses, and payroll-relevant attributes. Manages compensation planning data and provides access to salary history and payroll integration touchpoints.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:WorkforcePerson:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/compensation-salary-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Resources"
+      ],
+      "tags": [
+        "compensation",
+        "salary-management",
+        "payroll-integration",
+        "employee-lifecycle"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.sf:apiResource:EmployeeITServiceManagement:v1",
+      "title": "Employee IT Service Management API",
+      "shortDescription": "Manages employee IT infrastructure requests, equipment provisioning, and service incidents.",
+      "description": "Exposes endpoints to retrieve and manage employee IT service requests including equipment allocation, change tracking, and incident resolution. Provides access to service ticket lifecycle, IT equipment inventory linked to employee records, and change request workflows. Manages the complete employee technology experience from onboarding through offboarding.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:ChangeRequest:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ITEquipment:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ServiceTicket:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/employee-it-service-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Capital Management"
+      ],
+      "tags": [
+        "IT Service Management",
+        "Employee Experience",
+        "Infrastructure Provisioning"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.sf:apiResource:WorkforceProductionCapabilityManagement:v1",
+      "title": "Workforce Production Capability Management API",
+      "shortDescription": "Exposes employee skill mapping and production order allocation capabilities.",
+      "description": "Retrieves and manages employee competency profiles aligned with production order requirements. Provides access to workforce capacity planning data by matching machine operation certifications and production scheduling needs. Manages employee-to-production-order assignments for optimized resource utilization.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Machine:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductionOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/workforce-production-capability.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Capital Management"
+      ],
+      "tags": [
+        "workforce-planning",
+        "production-operations",
+        "skill-management"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.sf:apiResource:EngineeringChangeAndProductItemManagement:v1",
+      "title": "Engineering Change and Product Item Management API",
+      "shortDescription": "Manages engineering changes and product items across the HR and manufacturing lifecycle.",
+      "description": "Exposes and retrieves engineering change requests and product item data integrated with SuccessFactors workforce systems. Manages modifications to manufacturing processes and product specifications while maintaining alignment with employee skill requirements and production capabilities. Provides access to engineering change workflows and product item configurations for cross-functional enterprise integration.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:EngineeringChange:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:ProductItem:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/engineering-change-product-item-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Capital Management"
+      ],
+      "tags": [
+        "engineering-change-management",
+        "product-lifecycle",
+        "workforce-integration"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1",
+      "title": "Employee Hierarchy and Organization Management API",
+      "shortDescription": "Exposes employee organizational structure and hierarchical relationships.",
+      "description": "Provides access to employee organizational hierarchies, reporting relationships, and organizational unit assignments. Manages and retrieves workforce person roles within organizational structures to support workforce planning and organizational design. Exposes hierarchical data enabling integration with external organizational management systems.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Employee:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:WorkforcePerson:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/employee-hierarchy-organization-management.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Capital Management"
+      ],
+      "tags": [
+        "workforce-management",
+        "organizational-structure",
+        "employee-hierarchy"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.sf:apiResource:MaterialAndVendorProcurementIntegration:v1",
+      "title": "Procurement Source and Component Catalog API",
+      "shortDescription": "Connects supplier portfolios and component inventory data to workforce procurement and sourcing initiatives.",
+      "description": "Integrates supplier capability records and component stock information to align sourcing strategies with organizational procurement needs. Exposes supplier performance metrics, component availability, and sourcing channel relationships that inform acquisition decisions. Supports bidirectional synchronization between talent acquisition workflows and supplier contract management systems.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Material:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:Vendor:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/material-vendor-procurement.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Product Lifecycle Management"
+      ],
+      "tags": [
+        "supplier-catalog",
+        "procurement-sourcing",
+        "inventory-integration"
+      ],
+      "industry": [],
+      "namespace": "sap.sf"
+    },
+    {
+      "ordId": "sap.sf:apiResource:CustomerAccountAndOrderLifecycleManagement:v1",
+      "title": "Client Profile and Sales Transaction Integration API",
+      "shortDescription": "Integrates client profiles and transaction data with HR systems for cross-functional personnel and business operations.",
+      "description": "Provides bidirectional synchronization between client portfolio information and sales transaction records within the HR and people management ecosystem. Enables workforce systems to access customer relationship context, transaction history, and fulfillment metrics while maintaining data consistency across personnel and commercial operational domains. Supports entity mapping for ClientProfile and SalesTransaction to facilitate integrated business process workflows.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerOrder:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/customer-account-order-lifecycle.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "product-lifecycle-management"
+      ],
+      "tags": [
+        "client-relations",
+        "transaction-management",
+        "business-integration"
+      ],
+      "industry": [],
+      "namespace": "sap.sf"
+    },
+    {
+      "ordId": "sap.sf:apiResource:SafetyComplianceCampaignAndCustomerEngagement:v1",
+      "title": "Occupational Health Requirements and Employee Safety Program API",
+      "shortDescription": "Manages employee safety program participation, regulatory adherence status, and wellness initiative tracking within talent management systems.",
+      "description": "Integrates occupational health program data with employee records, enabling real-time visibility into safety certifications, risk assessments, and preventive health measures. Facilitates orchestration of safety-related workflows across HR processes, including onboarding, role transitions, and performance management. Provides consolidated metrics on employee participation in health and safety programs to support organizational risk management and regulatory reporting requirements.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "exposedEntityTypes": [
+        {
+          "ordId": "sap.odm:entityType:Campaign:v1"
+        },
+        {
+          "ordId": "sap.odm:entityType:CustomerAccount:v1"
+        }
+      ],
+      "apiProtocol": "rest",
+      "resourceDefinitions": [
+        {
+          "type": "openapi-v3",
+          "mediaType": "application/json",
+          "url": "/api/v1/safety-compliance-campaigns.json",
+          "accessStrategies": [
+            {
+              "type": "open"
+            }
+          ]
+        }
+      ],
+      "lineOfBusiness": [
+        "Environment, Health & Safety"
+      ],
+      "tags": [
+        "occupational-health",
+        "employee-wellness",
+        "regulatory-adherence"
+      ],
+      "industry": [],
+      "namespace": "sap.sf"
+    }
+  ],
+  "dataProducts": [
+    {
+      "ordId": "sap.sf:dataProduct:EmployeePerformanceTrendAnalytics:v1",
+      "title": "Employee Performance Trend Analytics",
+      "shortDescription": "Aggregated performance metrics and trend analysis across employee populations and review cycles.",
+      "description": "This analytical data product provides aggregated views of employee performance data, enabling HR leaders and managers to identify talent trends, performance distributions, and development patterns across the organization. It consolidates performance ratings, competency assessments, and review cycle outcomes into dimensional analytics for workforce planning and succession management decisions.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-06T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "type": "derived",
+      "category": "analytical",
+      "outputPorts": [
+        {
+          "ordId": "sap.sf:apiResource:PerformanceAnalyticsQueryService:v1"
+        }
+      ],
+      "entityTypes": [
+        "sap.odm:entityType:Employee:v1",
+        "sap.odm:entityType:PerformanceReview:v1"
+      ],
+      "lineOfBusiness": [
+        "Human Resources",
+        "People Analytics"
+      ],
+      "tags": [
+        "performance-management",
+        "workforce-analytics",
+        "talent-insights",
+        "trending"
+      ],
+      "industry": []
+    },
+    {
+      "ordId": "sap.sf:dataProduct:IncidentResolutionAndComplianceAnalytics:v1",
+      "title": "Workplace Safety and Resolution Performance Dashboard",
+      "shortDescription": "Consolidates HR incident records with safety metrics to enable workplace risk assessment and operational performance monitoring.",
+      "description": "Synthesizes incident and workplace safety data across the HR ecosystem to deliver insights on incident categories, closure velocity, and regulatory adherence status. Supports occupational risk management through aggregated performance indicators, timeline analytics, and safety protocol compliance validation for enterprise reporting and operational oversight.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Incident:v1",
+        "sap.odm:entityType:SafetyIncident:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.sf:apiResource:IncidentMetricsAndReportingEngine:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "customer-service"
+      ],
+      "tags": [
+        "workplace-safety",
+        "incident-performance",
+        "regulatory-adherence"
+      ],
+      "industry": [],
+      "namespace": "sap.sf"
+    },
+    {
+      "ordId": "sap.sf:dataProduct:WorkforceQualityAndProductionMetrics:v1",
+      "title": "Employee Performance Against Manufacturing Standards",
+      "shortDescription": "Combines staff capability assessments with production output and quality compliance data to evaluate operational effectiveness.",
+      "description": "Integrates workforce competency metrics with manufacturing order execution and quality verification outcomes to deliver actionable insights into staff productivity, operational compliance, and quality assurance results. Consolidates performance indicators across team capabilities, production throughput, and quality benchmarks to support evidence-based workforce strategy and personnel development initiatives.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:ProductionOrder:v1",
+        "sap.odm:entityType:QualityInspection:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.sf:apiResource:EmployeeProductivityAndCapacityPlanning:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "Human Resources and Talent Management"
+      ],
+      "tags": [
+        "workforce-productivity",
+        "manufacturing-compliance",
+        "operational-metrics"
+      ],
+      "industry": [],
+      "namespace": "sap.sf"
+    },
+    {
+      "ordId": "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+      "title": "Operational Capability Assessment for Product Transitions",
+      "shortDescription": "Combines product modifications, component data, and inventory updates to evaluate organizational capability and personnel preparedness.",
+      "description": "This data product integrates product engineering modifications, component specifications, and inventory configurations to measure organizational capacity for change initiatives and employee skill alignment. It synthesizes modification frequency, impacted teams, and supply chain considerations to inform talent strategy and capability development programs. The analytics support HR and operations teams in forecasting skill requirements, recommending targeted development activities, and optimizing team deployment across product transformation initiatives.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:EngineeringChange:v1",
+        "sap.odm:entityType:Material:v1",
+        "sap.odm:entityType:ProductItem:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.sf:apiResource:ProductChangeAndMaterialImpactMetrics:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "human-resources"
+      ],
+      "tags": [
+        "change-management",
+        "capability-planning",
+        "organizational-readiness"
+      ],
+      "industry": [],
+      "namespace": "sap.sf"
+    },
+    {
+      "ordId": "sap.sf:dataProduct:SalesCompensationAndEmployeeMetricsAnalytics:v1",
+      "title": "Sales Team Earnings and Productivity Intelligence",
+      "shortDescription": "Consolidates pay structures and workforce productivity data to support sales organizational strategy and resource allocation.",
+      "description": "This dataProduct combines variable compensation distributions with sales team performance indicators to deliver actionable insights on earnings patterns, incentive program ROI, and staffing metrics. Designed to empower sales leadership with evidence-based analytics for workforce planning, retention strategy development, and compensation program optimization across the enterprise.",
+      "version": "1.0.0",
+      "lastUpdate": "2026-06-07T00:00:00+00:00",
+      "visibility": "public",
+      "releaseStatus": "active",
+      "partOfPackage": "sap.sf:package:Core:v1",
+      "entityTypes": [
+        "sap.odm:entityType:Compensation:v1",
+        "sap.odm:entityType:Employee:v1"
+      ],
+      "type": "primary",
+      "category": "business-object",
+      "outputPorts": [
+        {
+          "ordId": "sap.sf:apiResource:SalesCompensationMetricsExposure:v1"
+        }
+      ],
+      "lineOfBusiness": [
+        "sales"
+      ],
+      "tags": [
+        "earnings-intelligence",
+        "workforce-productivity",
+        "sales-organization-metrics"
+      ],
+      "industry": [],
+      "namespace": "sap.sf"
+    }
+  ]
+}

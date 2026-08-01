@@ -1,0 +1,71 @@
+<process id="proc_ChangeTalentIntegration_v1" type="cmmn">
+  
+  <step id="s1" 
+        label="Initiate engineering change request"
+        description="Engineering teams submit product design changes that require cross-functional impact assessment and resource allocation."
+        ordId="sap.s4:agent:AssetLifecycleChangeOrchestrator:v1"
+        capability="orchestrate-engineering-change"
+        useCase="Manufacturing organization receives customer feedback on product design and initiates formal engineering change process"/>
+  
+  <step id="s2" 
+        label="Validate material and product impact"
+        description="Assess how proposed engineering changes affect bill of materials, product configurations, and inventory requirements."
+        ordId="sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+        capability="validate-material-impact"
+        useCase="Supply chain team confirms material availability and vendor lead times for changed product specifications"/>
+  
+  <step id="s3" 
+        label="Analyze change business impact"
+        description="Generate operational insights and impact projections across product portfolio to inform stakeholder decision-making."
+        ordId="sap.crm:dataProduct:ProductChangeImpactAnalytics:v1"
+        capability="analyze-change-impact"
+        useCase="Sales and product management review revenue, margin, and customer impact analysis before proceeding with engineering change"/>
+  
+  <step id="s4" 
+        label="Update product item specifications"
+        description="Formalize engineering change documentation by updating product item master data and change control records."
+        ordId="sap.sf:apiResource:EngineeringChangeAndProductItemManagement:v1"
+        capability="update-product-specifications"
+        useCase="Product engineering team records approved changes in centralized product lifecycle management system"/>
+  
+  <step id="s5" 
+        label="Evaluate workforce compensation impact"
+        description="Determine if engineering changes trigger skill requirement shifts, incentive plan adjustments, or workforce redeployment needs."
+        ordId="workday.hcm:apiResource:WorkforceCompensationDataManagement:v1"
+        capability="assess-compensation-impact"
+        useCase="HR and finance teams evaluate whether product changes require compensation adjustments for engineering or manufacturing staff"/>
+  
+  <step id="s6" 
+        label="Orchestrate talent acquisition campaign"
+        description="Launch targeted recruitment campaigns to source specialized skills required by the product change initiative."
+        ordId="sap.sf:agent:TalentAcquisitionCampaignOrchestrator:v1"
+        capability="orchestrate-talent-campaign"
+        useCase="Talent acquisition team launches campaign targeting engineers and technicians with skills needed for new product manufacturing processes"/>
+  
+  <step id="s7" 
+        label="Manage campaign access and targeting"
+        description="Configure campaign permissions, audience segmentation, and communication channels for recruitment campaign execution."
+        ordId="corp.itsm:apiResource:CampaignAccessManagementAPI:v1"
+        capability="manage-campaign-access"
+        useCase="Marketing operations team grants HR recruiting team access to campaign management platform with appropriate customer account segmentation"/>
+  
+  <step id="s8" 
+        label="Monitor service delivery impact"
+        description="Track operational performance metrics, service ticket trends, and IT equipment utilization against change implementation timeline."
+        ordId="emarsys.cx:dataProduct:ServiceDeliveryOperationalInsights:v1"
+        capability="monitor-service-delivery"
+        useCase="IT operations and customer service teams monitor whether engineering changes impact system availability, support ticket volume, or infrastructure requirements"/>
+
+  <!-- Sequence Flow: Linear progression with conditional loops back to analysis -->
+  <sequenceFlow from="s1" to="s2" label="Change initiated"/>
+  <sequenceFlow from="s2" to="s3" label="Material validated"/>
+  <sequenceFlow from="s3" to="s4" label="Impact approved"/>
+  <sequenceFlow from="s4" to="s5" label="Specifications updated"/>
+  <sequenceFlow from="s5" to="s6" label="Compensation assessed"/>
+  <sequenceFlow from="s6" to="s7" label="Campaign launched"/>
+  <sequenceFlow from="s7" to="s8" label="Campaign deployed"/>
+  
+  <!-- Conditional loop for re-evaluation -->
+  <sequenceFlow from="s8" to="s3" label="Issues detected - reanalyze impact" condition="service_degradation_detected"/>
+  
+</process>

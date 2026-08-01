@@ -1,0 +1,95 @@
+{
+  "process_id": "proc_020",
+  "process_type": "cmmn",
+  "gt_ordIds": [
+    "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1",
+    "workday.hcm:apiResource:CompensationStructureDataExposure:v1",
+    "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1",
+    "workday.hcm:apiResource:PayrollProcessingDataManagement:v1"
+  ],
+  "enrichment": {
+    "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1": {
+      "capabilities": [
+        "segment-customers-for-campaigns",
+        "activate-contact-engagement",
+        "map-customer-account-to-campaign"
+      ],
+      "useCases": [
+        "Marketing team launches targeted multi-channel campaigns to segmented customer accounts based on engagement history and behavioral attributes",
+        "Campaign orchestration system delivers personalized messaging to qualified customer contacts at scale"
+      ],
+      "processNext": [
+        "sap.ariba:dataProduct:SupplyChainProductIntelligence:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_talent_compliance_ops_v1",
+          "groupTypeId": "cmmn",
+          "role": "customer-engagement-activation"
+        }
+      ]
+    },
+    "workday.hcm:apiResource:CompensationStructureDataExposure:v1": {
+      "capabilities": [
+        "expose-compensation-hierarchy",
+        "aggregate-employee-compensation",
+        "surface-workforce-pay-data"
+      ],
+      "useCases": [
+        "Finance governance requires transparent view of employee compensation structures across all workforce persons to validate equity and compliance",
+        "Audit teams access compensation data to verify policy adherence and identify compensation anomalies"
+      ],
+      "processNext": [
+        "workday.hcm:apiResource:PayrollProcessingDataManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_talent_compliance_ops_v1",
+          "groupTypeId": "cmmn",
+          "role": "compensation-data-foundation"
+        }
+      ]
+    },
+    "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1": {
+      "capabilities": [
+        "automate-compliance-checks",
+        "validate-engineering-changes",
+        "assess-material-safety",
+        "coordinate-compliance-workflow"
+      ],
+      "useCases": [
+        "EHS team automates review of engineering changes to ensure material and product modifications meet safety and regulatory requirements before production",
+        "Compliance automation prevents unsafe or non-compliant product items from advancing to manufacturing"
+      ],
+      "processNext": [
+        "sap.s4:dataProduct:ManufacturingQualityMetricsHub:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_talent_compliance_ops_v1",
+          "groupTypeId": "cmmn",
+          "role": "compliance-gatekeeper"
+        }
+      ]
+    },
+    "workday.hcm:apiResource:PayrollProcessingDataManagement:v1": {
+      "capabilities": [
+        "process-payroll",
+        "validate-employee-payments",
+        "manage-workforce-compensation-execution"
+      ],
+      "useCases": [
+        "HR payroll administrator executes end-to-end payroll processing with full control over employee and workforce person payment records",
+        "Payroll system ensures accurate, timely compensation delivery while maintaining audit trail for regulatory compliance"
+      ],
+      "processNext": [],
+      "partOfGroups": [
+        {
+          "groupId": "proc_talent_compliance_ops_v1",
+          "groupTypeId": "cmmn",
+          "role": "payroll-execution-finalization"
+        }
+      ]
+    }
+  }
+}

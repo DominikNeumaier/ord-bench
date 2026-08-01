@@ -1,0 +1,44 @@
+{
+  "case_id": "dy-29",
+  "mode": "dynamic",
+  "query_class": "multi_intent",
+  "selected_resources": [
+    "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+    "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1"
+  ],
+  "timestamp": "2026-06-08T13:23:24.079885+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to pull our current production queue status and see which items are scheduled for the next shift, while simultaneously checking our active campaign outreach to identify which contacts have engaged with our latest messaging so we can coordinate our manufacturing timeline with customer communication touchpoints."
+      },
+      "generator_tokens": 174,
+      "solver_output": {
+        "predicted": "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": false,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": false,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```",
+      "judge_tokens": 283,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-29",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "We need to pull our current production queue status and see which items are scheduled for the next shift, while simultaneously checking our active campaign outreach to identify which contacts have engaged with our latest messaging so we can coordinate our manufacturing timeline with customer communication touchpoints.",
+    "expected_ordIds": [
+      "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+      "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1"
+    ],
+    "distractor_ordId": null
+  }
+}

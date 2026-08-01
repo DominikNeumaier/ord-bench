@@ -1,0 +1,68 @@
+<process id="proc_product_compliance_workforce_v1" type="bpmn">
+  
+  <step id="s1" 
+        label="Retrieve Customer Account and Order Context" 
+        description="Load customer accounts and associated orders to establish the baseline scope for compliance evaluation."
+        ordId="sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+        capability="retrieve-customer-orders"
+        useCase="A compliance officer needs to identify which customers and orders are subject to material change impact assessment."/>
+  
+  <step id="s2" 
+        label="Validate Bill of Materials Compliance" 
+        description="Verify that all product components in the bill of materials meet current regulatory and engineering standards."
+        ordId="siemens.plm:agent:BOMComplianceValidator:v1"
+        capability="validate-bom-compliance"
+        useCase="An engineering team must confirm that product specifications align with approved material lists before proceeding to production."/>
+  
+  <step id="s3" 
+        label="Assess Hazardous Substance Restrictions" 
+        description="Confirm that product materials and components comply with hazardous substance regulations and customer-specific restrictions."
+        ordId="sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1"
+        capability="assess-hazardous-compliance"
+        useCase="A marketing-compliance specialist needs assurance that no restricted or regulated substances are present in customer orders."/>
+  
+  <step id="s4" 
+        label="Analyze Material Change Readiness and Workforce Impact" 
+        description="Evaluate engineering changes and material modifications to determine organizational readiness and required workforce adjustments."
+        ordId="sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+        capability="analyze-change-readiness"
+        useCase="HR leadership requires impact projections for staffing, training, and organizational restructuring tied to material and product changes."/>
+  
+  <step id="s5" 
+        label="Assess Employee Safety Performance and Risk Profile" 
+        description="Review workforce safety trends and performance metrics to identify potential risks associated with production changes."
+        ordId="sap.ehs:dataProduct:EmployeeSafetyPerformanceTrendingAnalytics:v1"
+        capability="assess-safety-performance"
+        useCase="A safety manager needs to understand whether current workforce safety metrics support transition to revised production processes."/>
+  
+  <step id="s6" 
+        label="Coordinate Performance Review Cycle Adjustments" 
+        description="Align employee performance reviews with competency requirements for new products and process methodologies."
+        ordId="sap.sf:agent:PerformanceReviewCycleCoordinator:v1"
+        capability="coordinate-performance-reviews"
+        useCase="An HR business partner must synchronize performance evaluation timelines and competency assessments with the material change initiative."/>
+  
+  <step id="s7" 
+        label="Evaluate Production Quality and Yield Impact" 
+        description="Analyze historical quality and yield data to project production performance under new material and process conditions."
+        ordId="sap.s4:dataProduct:ProductionQualityYieldAnalytics:v1"
+        capability="evaluate-production-quality"
+        useCase="A manufacturing manager needs yield forecasts and quality baselines to validate that new materials will meet production targets."/>
+  
+  <step id="s8" 
+        label="Retrieve Vendor and Campaign Account Information" 
+        description="Consolidate vendor capabilities and campaign-linked customer accounts to finalize compliance and readiness approvals."
+        ordId="corp.itsm:apiResource:VendorCampaignAccountRetrievalAPI:v1"
+        capability="retrieve-vendor-campaign-data"
+        useCase="A procurement lead must verify vendor capacity and campaign alignment before authorizing material change and order fulfillment."/>
+  
+  <!-- Sequence Flow: Linear progression through all 8 steps -->
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+  
+</process>

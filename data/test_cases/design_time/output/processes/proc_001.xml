@@ -1,0 +1,68 @@
+<process id="proc_ManufacturingChangeCompliance_v1" type="bpmn">
+  
+  <step id="s1" 
+        label="Request Production Schedule Adjustment"
+        description="Initiate a change request to modify production orders based on demand forecasting or supply constraints."
+        ordId="sap.crm:apiResource:MachineProductionOrderIntegration:v1"
+        capability="manage-production-orders"
+        useCase="Production planners adjust machine allocation and order sequencing to meet revised delivery commitments."/>
+  
+  <step id="s2" 
+        label="Assess Hazardous Material Impact"
+        description="Evaluate whether the production change affects handling, storage, or declaration of regulated hazardous substances in the manufacturing process."
+        ordId="siemens.plm:apiResource:HazardousSubstanceComplianceAndTrackingManagement:v1"
+        capability="assess-substance-compliance"
+        useCase="Environmental and safety teams confirm that material substitutions or process modifications comply with regulatory thresholds."/>
+  
+  <step id="s3" 
+        label="Verify Employee Safety Requirements"
+        description="Confirm that affected manufacturing personnel meet updated occupational health and safety certifications required for the modified production process."
+        ordId="sap.sf:apiResource:SafetyComplianceCampaignAndCustomerEngagement:v1"
+        capability="validate-employee-safety"
+        useCase="HR ensures machine operators and line supervisors have current safety training and clearance for the adjusted production workflow."/>
+  
+  <step id="s4" 
+        label="Orchestrate Engineering Change Order"
+        description="Coordinate design and technical specifications for the production modification across engineering, manufacturing, and quality systems."
+        ordId="sap.s4:agent:EngineeringChangeOrchestrator:v1"
+        capability="orchestrate-change-workflow"
+        useCase="Engineering change management agent automates notifications and approvals when production process modifications affect product design or material bills."/>
+  
+  <step id="s5" 
+        label="Document Engineering Change Formally"
+        description="Create and publish formal engineering change records to establish traceability and maintain product configuration management."
+        ordId="siemens.plm:apiResource:EngineringChangeManagement:v1"
+        capability="document-engineering-change"
+        useCase="Product lifecycle managers record change rationale, affected product items, and implementation dates for audit and compliance."/>
+  
+  <step id="s6" 
+        label="Coordinate Procurement and Supplier Adjustments"
+        description="Update purchase orders and vendor commitments to align supplier delivery schedules and material specifications with the modified production plan."
+        ordId="my.mes:apiResource:SupplierProcurementOrderManagement:v1"
+        capability="manage-supplier-orders"
+        useCase="Procurement specialists revise PO quantities and dates with vendors to synchronize material availability with the new production schedule."/>
+  
+  <step id="s7" 
+        label="Orchestrate Production Implementation"
+        description="Coordinate material flow, machine configuration, and process sequencing to execute the approved engineering and procurement changes on the production line."
+        ordId="my.mes:agent:ProductionChangeOrchestrator:v1"
+        capability="orchestrate-production-execution"
+        useCase="Production agent orchestrates real-time scheduling of machines, material kits, and work orders to implement the change without line disruption."/>
+  
+  <step id="s8" 
+        label="Adjust Compensation for Modified Workload"
+        description="Recalculate employee compensation and incentives based on revised labor allocation, shift assignments, or skill premium requirements for the modified production roles."
+        ordId="sap.sf:apiResource:CompensationAndSalaryManagement:v1"
+        capability="recalculate-compensation"
+        useCase="Payroll and HR systems update employee earnings to reflect overtime, new role classifications, or performance adjustments tied to production change success."/>
+
+  <!-- Sequence Flow: Sequential BPMN process -->
+  <sequenceFlow from="s1" to="s2"/>
+  <sequenceFlow from="s2" to="s3"/>
+  <sequenceFlow from="s3" to="s4"/>
+  <sequenceFlow from="s4" to="s5"/>
+  <sequenceFlow from="s5" to="s6"/>
+  <sequenceFlow from="s6" to="s7"/>
+  <sequenceFlow from="s7" to="s8"/>
+
+</process>

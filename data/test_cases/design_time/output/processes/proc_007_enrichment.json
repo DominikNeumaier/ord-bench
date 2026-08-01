@@ -1,0 +1,93 @@
+{
+  "process_id": "proc_007",
+  "process_type": "bpmn",
+  "gt_ordIds": [
+    "sap.s4:apiResource:WorkforceOrgStructureAPI:v1",
+    "sap.ariba:apiResource:MaterialAndVendorProcurementAPI:v1",
+    "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+    "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1"
+  ],
+  "enrichment": {
+    "sap.s4:apiResource:WorkforceOrgStructureAPI:v1": {
+      "capabilities": [
+        "validate-approval-chain",
+        "resolve-organizational-hierarchy",
+        "identify-decision-makers"
+      ],
+      "useCases": [
+        "Determine approval requirements based on employee organizational structure and authority levels.",
+        "Map workforce roles to change request escalation paths."
+      ],
+      "processNext": [
+        "sap.ariba:apiResource:MaterialAndVendorProcurementAPI:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_integrated_service_change_mgmt_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "sap.ariba:apiResource:MaterialAndVendorProcurementAPI:v1": {
+      "capabilities": [
+        "map-procurement-dependencies",
+        "validate-vendor-availability",
+        "assess-material-constraints"
+      ],
+      "useCases": [
+        "Identify required materials and vendors for change implementation.",
+        "Confirm procurement timelines align with change schedule."
+      ],
+      "processNext": [
+        "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_integrated_service_change_mgmt_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "corp.itsm:apiResource:CampaignAccessManagementAPI:v1": {
+      "capabilities": [
+        "capture-service-request",
+        "provision-campaign-access",
+        "validate-customer-account-permissions"
+      ],
+      "useCases": [
+        "Log and track service requests related to campaign access and system provisioning.",
+        "Link campaign initiatives to IT service requests."
+      ],
+      "processNext": [
+        "emarsys.cx:dataProduct:CampaignPerformanceAnalytics:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_integrated_service_change_mgmt_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    },
+    "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1": {
+      "capabilities": [
+        "initiate-change-request",
+        "track-engineering-changes",
+        "manage-service-tickets",
+        "coordinate-it-equipment-updates"
+      ],
+      "useCases": [
+        "Register formal change requests with engineering review and technical documentation.",
+        "Link service tickets to change orders and IT equipment affected."
+      ],
+      "processNext": [
+        "siemens.plm:agent:QualityAssuranceAndDefectPrevention:v1"
+      ],
+      "partOfGroups": [
+        {
+          "groupId": "proc_integrated_service_change_mgmt_v1",
+          "groupTypeId": "bpmn"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "case_id": "sa-17",
+  "mode": "skill_adjusted",
+  "skill_id": "proc_018",
+  "gap_resources": [
+    "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1",
+    "workday.hcm:apiResource:CompensationStructureDataExposure:v1"
+  ],
+  "timestamp": "2026-06-08T12:52:22.144192+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to conduct a comprehensive review of our current compensation structure and analyze our total workforce costs across the organization. This should include validating our organizational structure to ensure accuracy, processing our benefits enrollment data, and coordinating with our procurement team on vendor costs. As part of this analysis, we also need to understand our employee hierarchy and their respective capability levels to ensure compensation aligns with roles and responsibilities. Additionally, we'll need to review our salary bands and grade levels to confirm they're being applied consistently across the company.",
+        "variant": 0
+      },
+      "generator_tokens": 309,
+      "solver_output": {
+        "predicted": "sap.sf:apiResource:EmployeeCompensationManagement:v1",
+        "correct": false
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": true,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": true,\n  \"C3\": true,\n  \"accepted\": true\n}\n```",
+      "judge_tokens": 378,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "sa-17",
+    "mode": "skill_adjusted",
+    "query_class": "implicit_multi_step",
+    "user_prompt": "We need to conduct a comprehensive review of our current compensation structure and analyze our total workforce costs across the organization. This should include validating our organizational structure to ensure accuracy, processing our benefits enrollment data, and coordinating with our procurement team on vendor costs. As part of this analysis, we also need to understand our employee hierarchy and their respective capability levels to ensure compensation aligns with roles and responsibilities. Additionally, we'll need to review our salary bands and grade levels to confirm they're being applied consistently across the company.",
+    "expected_skill_id": "proc_018",
+    "expected_gap_ordIds": [
+      "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1",
+      "workday.hcm:apiResource:CompensationStructureDataExposure:v1"
+    ]
+  }
+}

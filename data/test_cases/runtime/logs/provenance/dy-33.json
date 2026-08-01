@@ -1,0 +1,62 @@
+{
+  "case_id": "dy-33",
+  "mode": "dynamic",
+  "query_class": "multi_intent",
+  "selected_resources": [
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+    "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1"
+  ],
+  "timestamp": "2026-06-08T13:24:15.005262+00:00",
+  "evolution_log": [
+    {
+      "iteration": 1,
+      "generator_output": {
+        "user_prompt": "We need to process an incoming shipment of components from our supplier while simultaneously logging a critical equipment modification and updating the associated service tickets for our maintenance team. Can your system handle receiving the goods, tracking the engineering change documentation, and updating all related service workflows in a single integrated request?"
+      },
+      "generator_tokens": 180,
+      "solver_output": {
+        "predicted": "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": false,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": false,\n  \"C3\": true,\n  \"accepted\": false,\n  \"reason\": \"C2 fails: prompt explicitly mentions 'supplier', 'engineering change documentation', 'service tickets', and 'maintenance team' which are system/resource identifiers.\"\n}\n```",
+      "judge_tokens": 324,
+      "outcome": "JUDGE_FAIL"
+    },
+    {
+      "iteration": 2,
+      "generator_output": {
+        "user_prompt": "I need to simultaneously log incoming shipments from our suppliers while also tracking the modifications we're making to our product line and ensuring our field technicians can submit their equipment maintenance needs through a single integrated workflow."
+      },
+      "generator_tokens": 176,
+      "solver_output": {
+        "predicted": "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+      },
+      "judge_results": {
+        "C1": true,
+        "C2": false,
+        "C3": true
+      },
+      "judge_response": "```json\n{\n  \"C1\": true,\n  \"C2\": false,\n  \"C3\": true,\n  \"accepted\": true,\n  \"reason\": \"\"\n}\n```",
+      "judge_tokens": 271,
+      "outcome": "ACCEPTED"
+    }
+  ],
+  "accepted_case": {
+    "case_id": "dy-33",
+    "mode": "dynamic",
+    "query_class": "multi_intent",
+    "problems_exercised": [
+      "multi"
+    ],
+    "user_prompt": "I need to simultaneously log incoming shipments from our suppliers while also tracking the modifications we're making to our product line and ensuring our field technicians can submit their equipment maintenance needs through a single integrated workflow.",
+    "expected_ordIds": [
+      "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+      "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1"
+    ],
+    "distractor_ordId": null
+  }
+}
