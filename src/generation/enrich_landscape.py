@@ -193,7 +193,7 @@ def all_done(report: dict) -> bool:
 def spec_check(resource: dict) -> tuple[bool, list[str]]:
     """Run validate_ord.py on a single resource. Returns (passed, errors)."""
     import subprocess
-    validate_script = ROOT / "benchmark" / "landscape" / "validate_ord.py"
+    validate_script = ROOT / "src" / "generation" / "validate_ord.py"
     # Write resource to a temp file
     import tempfile, os
     tmp = tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False)
