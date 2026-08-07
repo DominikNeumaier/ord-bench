@@ -22,10 +22,10 @@ sys.path.insert(0, str(ROOT))
 
 from src.core import llm
 
-LANDSCAPE_DIR = ROOT / "benchmark" / "landscape" / "systems"
-AMBIGUITY_REPORT = ROOT / "benchmark" / "ambiguity" / "landscape_ambiguity_report.json"
-OUTPUT_DIR = ROOT / "benchmark" / "test_cases" / "design_time" / "output" / "processes"
-LOG_FILE = ROOT / "benchmark" / "test_cases" / "design_time" / "logs" / "process_construction_log.json"
+LANDSCAPE_DIR = ROOT / "data" / "landscape" / "systems"
+AMBIGUITY_REPORT = ROOT / "data" / "ambiguity" / "landscape_ambiguity_report.json"
+OUTPUT_DIR = ROOT / "data" / "test_cases" / "design_time" / "output" / "processes"
+LOG_FILE = ROOT / "data" / "test_cases" / "design_time" / "logs" / "process_construction_log.json"
 
 TARGET_BPMN = 15
 TARGET_CMMN = 15
