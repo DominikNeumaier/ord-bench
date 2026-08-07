@@ -5,8 +5,8 @@ using claude-haiku-4.5. Each resource goes through Judge C1 (validate_ord.py) +
 C2-C5 (LLM) before being written to disk.
 
 Usage:
-    python benchmark/landscape/generate_seeds.py
-    python benchmark/landscape/generate_seeds.py --systems benchmark/landscape/systems
+    python src/generation/generate_seeds.py
+    python src/generation/generate_seeds.py --systems data/landscape/systems
 """
 
 from __future__ import annotations
@@ -21,11 +21,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT))
 
-from src.core import llm, config
-from benchmark.landscape.enrich_landscape import (
+from src import llm, config
+from src.generation.enrich_landscape import (
     spec_check, save_resource, load_landscape, LOG_PATH
 )
-from benchmark.landscape.validate_ord import load_rules, validate_resource
+from src.generation.validate_ord import load_rules, validate_resource
 
 SYSTEMS = {
     "sap.s4":      "ERP, Finance, Manufacturing — SAP S/4HANA. Covers financial accounting, procurement, production planning, and asset management.",
@@ -335,7 +335,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Generate seed resources for benchmark landscape")
     parser.add_argument(
         "--systems",
-        default=str(ROOT / "benchmark" / "landscape" / "systems"),
+        default=str(ROOT / "data" / "landscape" / "systems"),
     )
     args = parser.parse_args()
 

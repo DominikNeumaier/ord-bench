@@ -31,8 +31,8 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 
-from src.core import config
-from src.core import ord_loader
+from src import config
+from src import loader as ord_loader
 from src.adversarial import preselect
 
 OUT = Path(__file__).resolve().parent.parent

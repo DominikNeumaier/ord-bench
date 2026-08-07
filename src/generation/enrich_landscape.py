@@ -7,8 +7,8 @@ Runs until every ground-truth resource has:
   - >= MIN_LOW   neighbors with sim >= LOW_THRESHOLD
 
 Usage:
-    python benchmark/landscape/enrich_landscape.py
-    python benchmark/landscape/enrich_landscape.py --systems benchmark/landscape/systems --max-attempts 5
+    python src/generation/enrich_landscape.py
+    python src/generation/enrich_landscape.py --systems data/landscape/systems --max-attempts 5
 """
 
 from __future__ import annotations
@@ -25,7 +25,7 @@ sys.path.insert(0, str(ROOT))
 
 # Uses claude-haiku-4.5 by default (config.LLM_MODEL) to keep costs low.
 # The enrichment loop can make hundreds of Generator + Judge calls.
-# Override with: LLM_MODEL=anthropic--claude-opus-4-5 python benchmark/landscape/enrich_landscape.py
+# Override with: LLM_MODEL=anthropic--claude-opus-4-5 python src/generation/enrich_landscape.py
 
 from src.adversarial.preselect import (
     compute_landscape_ambiguity,
@@ -49,8 +49,8 @@ MIN_LOW    = 5
 MAX_ATTEMPTS_PER_FILL = 5   # Generator retries before giving up on a tier-fill
 MIN_SYSTEM_SPREAD     = 3   # neighbors must come from at least this many different systems per tier
 
-LOG_PATH    = ROOT / "benchmark" / "landscape" / "enrichment_log.json"
-REPORT_PATH = ROOT / "benchmark" / "landscape" / "enrichment_report.md"
+LOG_PATH    = ROOT / "data" / "landscape" / "logs" / "enrichment_log.json"
+REPORT_PATH = ROOT / "data" / "landscape" / "logs" / "enrichment_report.md"
 
 
 # ── Load / save landscape ────────────────────────────────────────────────────
@@ -193,7 +193,7 @@ def all_done(report: dict) -> bool:
 def spec_check(resource: dict) -> tuple[bool, list[str]]:
     """Run validate_ord.py on a single resource. Returns (passed, errors)."""
     import subprocess
-    validate_script = ROOT / "benchmark" / "landscape" / "validate_ord.py"
+    validate_script = ROOT / "src" / "generation" / "validate_ord.py"
     # Write resource to a temp file
     import tempfile, os
     tmp = tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False)
@@ -225,7 +225,7 @@ def spec_check(resource: dict) -> tuple[bool, list[str]]:
 
 
 import re
-from src.core import llm
+from src import llm
 
 MAX_LANDSCAPE_SIZE = 200  # hard cap — Generator must prefer modify once reached
 
@@ -888,7 +888,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Adversarial landscape enrichment")
     parser.add_argument(
         "--systems",
-        default=str(ROOT / "benchmark" / "landscape" / "systems"),
+        default=str(ROOT / "data" / "landscape" / "systems"),
         help="Directory containing namespace subdirs with ord.json files",
     )
     parser.add_argument("--max-attempts", type=int, default=MAX_ATTEMPTS_PER_FILL)

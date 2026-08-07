@@ -6,7 +6,7 @@ For each pair with full_sim >= 0.75:
   - If rewrite fails after 3 attempts → remove it
 
 Usage:
-    python3 benchmark/landscape/reduce_near_dups.py
+    python3 src/generation/reduce_near_dups.py
 """
 
 from __future__ import annotations
@@ -20,8 +20,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT))
 
-from src.core import llm
-from benchmark.landscape.enrich_landscape import (
+from src import llm
+from src.generation.enrich_landscape import (
     load_landscape, log_action, LOG_PATH, spec_check,
     HIGH_THRESHOLD, MIN_HIGH,
 )
@@ -89,7 +89,7 @@ def _rewrite_resource(resource: dict, reference: dict, idf: dict, tfidf: dict,
                       systems_dir: Path) -> dict | None:
     """Try to rewrite resource so full_sim(resource, reference) < NEAR_DUP_THRESHOLD."""
     ns = resource.get("namespace", resource["ordId"].split(":")[0])
-    from benchmark.landscape.generate_seeds import SYSTEMS
+    from src.generation.generate_seeds import SYSTEMS
     domain = SYSTEMS.get(ns, ns)
 
     for attempt in range(1, 4):
@@ -264,4 +264,4 @@ def run(systems_dir: Path) -> None:
 
 
 if __name__ == "__main__":
-    run(ROOT / "benchmark" / "landscape" / "systems")
+    run(ROOT / "data" / "landscape" / "systems")

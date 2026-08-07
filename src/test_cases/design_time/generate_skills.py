@@ -4,8 +4,8 @@ Reads all proc_*.xml + proc_*_enrichment.json from output/processes/.
 Generates one SKILL.md per process via LLM, then validates it with the
 deterministic S1-S4 structural checks. Output goes to output/skills/.
 
-Output: benchmark/test_cases/design_time/output/skills/{process_id}.md
-        benchmark/test_cases/design_time/logs/skill_construction_log.json
+Output: data/test_cases/design_time/output/skills/{process_id}.md
+        data/test_cases/design_time/logs/skill_construction_log.json
 """
 from __future__ import annotations
 
@@ -18,11 +18,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 
-from src.core import llm
+from src import llm
 
-PROCESSES_DIR = ROOT / "benchmark" / "test_cases" / "design_time" / "output" / "processes"
-SKILLS_DIR = ROOT / "benchmark" / "test_cases" / "design_time" / "output" / "skills"
-LOG_FILE = ROOT / "benchmark" / "test_cases" / "design_time" / "logs" / "skill_construction_log.json"
+PROCESSES_DIR = ROOT / "data" / "test_cases" / "design_time" / "output" / "processes"
+SKILLS_DIR = ROOT / "data" / "test_cases" / "design_time" / "output" / "skills"
+LOG_FILE = ROOT / "data" / "test_cases" / "design_time" / "logs" / "skill_construction_log.json"
 MAX_ATTEMPTS = 5
 
 

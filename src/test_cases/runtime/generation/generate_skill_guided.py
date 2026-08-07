@@ -6,8 +6,8 @@ For each accepted process model:
   Validator (script) → V1-V3
   Judge (LLM) → C1-C5
 
-Output: benchmark/test_cases/runtime/output/skill_guided.json
-        benchmark/test_cases/runtime/logs/provenance/sg-*.json
+Output: data/test_cases/runtime/output/skill_guided.json
+        data/test_cases/runtime/logs/provenance/sg-*.json
 """
 from __future__ import annotations
 
@@ -20,11 +20,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(ROOT))
 
-from benchmark.test_cases.runtime.generation._common import (
+from src.test_cases.runtime.generation._common import (
     load_resources, load_skills, get_resource_by_id,
     solver_check, save_provenance, save_output, now_iso, MAX_ITERATIONS,
 )
-from src.core import llm
+from src import llm
 
 TARGET = 30
 MAX_ATTEMPTS_PER_CASE = MAX_ITERATIONS

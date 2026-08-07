@@ -8,10 +8,10 @@ Combined with the original gate run (assumed = fail), every case has 5 samples.
 A case is "robustly certified" when difficulty >= 0.80 (S fails in >=4/5 runs).
 
 Usage:
-    python benchmark/certification/run_certification.py
-    python benchmark/certification/run_certification.py --extra-runs 4
-    python benchmark/certification/run_certification.py --modes dynamic
-    python benchmark/certification/run_certification.py --no-resume   # re-run all
+    python data/certification/run_certification.py
+    python data/certification/run_certification.py --extra-runs 4
+    python data/certification/run_certification.py --modes dynamic
+    python data/certification/run_certification.py --no-resume   # re-run all
 """
 
 from __future__ import annotations
@@ -26,7 +26,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-from src.core import ord_loader, config
+from src import loader as ord_loader, config
 from src.methods import method_s
 
 # ── paths ────────────────────────────────────────────────────────────────────
@@ -39,8 +39,8 @@ REPORT_PATH  = CERT_DIR / "report.md"
 ROBUST_THRESHOLD = 0.80   # difficulty >= this → robustly certified
 BORDERLINE_THRESHOLD = 0.60  # difficulty in [0.60, 0.80) → borderline
 
-PROV_DIR = ROOT / "benchmark" / "test_cases" / "runtime" / "logs" / "provenance"
-DY_CASES = ROOT / "benchmark" / "test_cases" / "runtime" / "output" / "dynamic.json"
+PROV_DIR = ROOT / "data" / "test_cases" / "runtime" / "logs" / "provenance"
+DY_CASES = ROOT / "data" / "test_cases" / "runtime" / "output" / "dynamic.json"
 
 
 def _load_provenance_ords() -> dict[str, list[str]]:

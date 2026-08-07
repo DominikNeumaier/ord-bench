@@ -7,10 +7,10 @@ Differences vs v1:
   - Robust = solved in 0/5 runs (stricter than v1's 4/5 threshold)
 
 Usage:
-    python benchmark/certification/run_certification_v2.py
-    python benchmark/certification/run_certification_v2.py --runs 5
-    python benchmark/certification/run_certification_v2.py --cases dy-01 sg-11
-    python benchmark/certification/run_certification_v2.py --no-resume
+    python data/certification/run_certification_v2.py
+    python data/certification/run_certification_v2.py --runs 5
+    python data/certification/run_certification_v2.py --cases dy-01 sg-11
+    python data/certification/run_certification_v2.py --no-resume
 """
 
 from __future__ import annotations
@@ -25,7 +25,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-from src.core import ord_loader, llm  # noqa: E402
+from src import loader as ord_loader, llm  # noqa: E402
 
 # ── paths ────────────────────────────────────────────────────────────────────
 CERT_DIR     = Path(__file__).parent
@@ -34,8 +34,8 @@ RUNS_DIR     = V2_DIR / "runs"
 RESULTS_PATH = V2_DIR / "results.jsonl"
 SUMMARY_PATH = V2_DIR / "summary.json"
 REPORT_PATH  = V2_DIR / "report.md"
-PROV_DIR     = ROOT / "benchmark" / "test_cases" / "runtime" / "logs" / "provenance"
-DY_CASES     = ROOT / "benchmark" / "test_cases" / "runtime" / "output" / "dynamic.json"
+PROV_DIR     = ROOT / "data" / "test_cases" / "runtime" / "logs" / "provenance"
+DY_CASES     = ROOT / "data" / "test_cases" / "runtime" / "output" / "dynamic.json"
 
 # ── thresholds (interpreted strictly: only failures across ALL runs count) ──
 # A case is robust iff S solved in 0 of N runs.
@@ -101,7 +101,7 @@ def _load_cases() -> list[dict]:
     """
     cases: list[dict] = []
     for mode in ["skill_guided", "skill_adjusted", "dynamic"]:
-        case_file = ROOT / "benchmark" / "test_cases" / "runtime" / "output" / f"{mode}.json"
+        case_file = ROOT / "data" / "test_cases" / "runtime" / "output" / f"{mode}.json"
         if not case_file.exists():
             continue
         for c in json.loads(case_file.read_text()):

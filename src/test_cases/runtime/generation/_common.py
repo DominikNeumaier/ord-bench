@@ -7,14 +7,14 @@ import random
 from datetime import datetime, timezone
 from pathlib import Path
 
-from src.core import config, llm, ord_loader
+from src import config, llm, loader as ord_loader
 
 ROOT = config.ROOT
-PROCESSES_DIR   = ROOT / "benchmark" / "test_cases" / "design_time" / "output" / "processes"
-SKILLS_DIR      = ROOT / "benchmark" / "test_cases" / "design_time" / "output" / "skills"
-AMBIGUITY_REPORT = ROOT / "benchmark" / "ambiguity" / "landscape_ambiguity_report.json"
-PROVENANCE_DIR  = ROOT / "benchmark" / "test_cases" / "runtime" / "logs" / "provenance"
-OUTPUT_DIR      = ROOT / "benchmark" / "test_cases" / "runtime" / "output"
+PROCESSES_DIR   = ROOT / "data" / "test_cases" / "design_time" / "output" / "processes"
+SKILLS_DIR      = ROOT / "data" / "test_cases" / "design_time" / "output" / "skills"
+AMBIGUITY_REPORT = ROOT / "data" / "ambiguity" / "landscape_ambiguity_report.json"
+PROVENANCE_DIR  = ROOT / "data" / "test_cases" / "runtime" / "logs" / "provenance"
+OUTPUT_DIR      = ROOT / "data" / "test_cases" / "runtime" / "output"
 
 MAX_ITERATIONS = 10
 

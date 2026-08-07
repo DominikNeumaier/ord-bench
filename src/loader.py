@@ -21,7 +21,7 @@ from __future__ import annotations
 import json
 from typing import Any
 
-from src.core import config
+from src import config
 
 
 RESOURCE_KEYS = ["apiResources", "agents", "dataProducts", "entityTypes", "eventResources"]
@@ -49,7 +49,7 @@ def _extract_entity_types(item: dict[str, Any]) -> list[str]:
     forward compatibility (the spec says exposedEntityTypes replaces it
     on api/event resources since v1.11), but the canonical landscape on
     disk has been normalised to drop it during benchmark landscape
-    generation (see `benchmark/landscape/normalize_metadata.py`).
+    generation.
     """
     ets: list[str] = []
 

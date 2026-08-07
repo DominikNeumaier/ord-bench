@@ -4,8 +4,8 @@ Reads proc_*_enrichment.json files. For each GT-eligible resource, writes
 capabilities, useCases, processNext, partOfGroups into ord_enriched.json
 (which starts as a copy of ord.json). Non-GT resources stay at Clean-ORD level.
 
-Output: benchmark/landscape/systems/{namespace}/ord_enriched.json (updated)
-        benchmark/test_cases/design_time/logs/enrichment_log.json
+Output: data/landscape/systems/{namespace}/ord_enriched.json (updated)
+        data/test_cases/design_time/logs/enrichment_log.json
 """
 from __future__ import annotations
 
@@ -17,10 +17,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 
-PROCESSES_DIR = ROOT / "benchmark" / "test_cases" / "design_time" / "output" / "processes"
-SYSTEMS_DIR = ROOT / "benchmark" / "landscape" / "systems"
-ENRICHED_DIR = ROOT / "benchmark" / "landscape" / "systems_enriched"
-LOG_FILE = ROOT / "benchmark" / "test_cases" / "design_time" / "logs" / "enrichment_log.json"
+PROCESSES_DIR = ROOT / "data" / "test_cases" / "design_time" / "output" / "processes"
+SYSTEMS_DIR = ROOT / "data" / "landscape" / "systems"
+ENRICHED_DIR = ROOT / "data" / "landscape" / "systems_enriched"
+LOG_FILE = ROOT / "data" / "test_cases" / "design_time" / "logs" / "enrichment_log.json"
 
 
 def load_all_enrichments() -> dict[str, dict]:
@@ -81,7 +81,7 @@ def run():
         print(f"  {ns_dir.name}: {ns_count} resources enriched")
 
     LOG_FILE.write_text(json.dumps(log_entries, indent=2))
-    print(f"\nDone. {total_enriched} resources enriched → benchmark/landscape/systems_enriched/")
+    print(f"\nDone. {total_enriched} resources enriched → data/landscape/systems_enriched/")
     print(f"Log: {LOG_FILE}")
 
 

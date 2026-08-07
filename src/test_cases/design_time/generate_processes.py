@@ -4,8 +4,8 @@ Each model: 8 steps, 4 GT-eligible + 4 non-GT resources, ≥3 namespaces,
 ≥1 agent + ≥1 apiResource. Generator produces process XML + enrichment fields
 in one call. Validator (V1-V6) runs first, Judge (J1-J6) only if validator passes.
 
-Output: benchmark/test_cases/design_time/output/processes/{id}.xml
-        benchmark/test_cases/design_time/logs/process_construction_log.json
+Output: data/test_cases/design_time/output/processes/{id}.xml
+        data/test_cases/design_time/logs/process_construction_log.json
 """
 from __future__ import annotations
 
@@ -20,12 +20,12 @@ from xml.etree import ElementTree as ET
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 
-from src.core import llm
+from src import llm
 
-LANDSCAPE_DIR = ROOT / "benchmark" / "landscape" / "systems"
-AMBIGUITY_REPORT = ROOT / "benchmark" / "ambiguity" / "landscape_ambiguity_report.json"
-OUTPUT_DIR = ROOT / "benchmark" / "test_cases" / "design_time" / "output" / "processes"
-LOG_FILE = ROOT / "benchmark" / "test_cases" / "design_time" / "logs" / "process_construction_log.json"
+LANDSCAPE_DIR = ROOT / "data" / "landscape" / "systems"
+AMBIGUITY_REPORT = ROOT / "data" / "ambiguity" / "landscape_ambiguity_report.json"
+OUTPUT_DIR = ROOT / "data" / "test_cases" / "design_time" / "output" / "processes"
+LOG_FILE = ROOT / "data" / "test_cases" / "design_time" / "logs" / "process_construction_log.json"
 
 TARGET_BPMN = 15
 TARGET_CMMN = 15

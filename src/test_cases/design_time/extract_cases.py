@@ -4,7 +4,7 @@ Reads proc_*.xml files. For each step, creates one retrieval case:
   input:  step label + " — " + step description
   output: expected_ordId
 
-Output: benchmark/test_cases/design_time/output/activity_cases.json
+Output: data/test_cases/design_time/output/activity_cases.json
 """
 from __future__ import annotations
 
@@ -16,8 +16,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 
-PROCESSES_DIR = ROOT / "benchmark" / "test_cases" / "design_time" / "output" / "processes"
-OUTPUT_FILE = ROOT / "benchmark" / "test_cases" / "design_time" / "output" / "activity_cases.json"
+PROCESSES_DIR = ROOT / "data" / "test_cases" / "design_time" / "output" / "processes"
+OUTPUT_FILE = ROOT / "data" / "test_cases" / "design_time" / "output" / "activity_cases.json"
 
 
 def run():
