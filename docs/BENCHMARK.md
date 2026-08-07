@@ -99,7 +99,7 @@ All 10 systems share a single entity type vocabulary: `sap.odm`. There is no sep
 | ServiceTicket, ITEquipment, Asset, SoftwareLicense, ChangeRequest | corp.itsm | sap.s4, sap.sf |
 | Project, Document, Task, Report, Notification, Compliance | all systems | — |
 
-**Required fields per resource type** (from `benchmark/landscape/ord_spec_rules.json`):
+**Required fields per resource type** (from `data/landscape/generation/ord_spec_rules.json`):
 
 ```
 agent:       ordId, title, shortDescription, version, partOfPackage, visibility, releaseStatus
@@ -166,7 +166,7 @@ Missing fields contribute 0.0. The cross-namespace bonus is added before dividin
 
 **Implementation:** `src/adversarial/preselect.py` → `compute_landscape_ambiguity()`
 
-**Run:** `python3 benchmark/ambiguity/run_ambiguity.py`
+**Run:** `python3 data/ambiguity/run_ambiguity.py`
 
 ---
 
@@ -205,13 +205,13 @@ Only resources that satisfy the **GT-eligibility criterion** (H≥3 · M≥5 · 
 | **lineOfBusiness** | Marketing and CX | Marketing and CX |
 | **score breakdown** | text=0.44 · ET=1.00 · LoB=1.00 · tags=1.00 · cross-ns=+0.5 | → **sim=0.74** |
 
-Link: https://pages.github.tools.sap/I750252/MasterThesis/landscape/emarsys.cx/emarsys-cx-dataProduct-CampaignPerformanceAnalytics-v1/
+Link: http://localhost:4321/landscape/emarsys.cx/emarsys-cx-dataProduct-CampaignPerformanceAnalytics-v1/
 
 Identical entity types and LoB make them structurally indistinguishable without system-context. A request for "campaign ROI analytics" could match either equally well.
 </details>
 
 <details>
-<summary><strong>MEDIUM (sim = 0.50)</strong> — sales capacity across CRM and HR systems</summary>
+<summary><strong>MEDIUM (sim = 0.49)</strong> — sales capacity across CRM and HR systems</summary>
 
 | | Resource A | Resource B |
 |---|---|---|
@@ -220,9 +220,9 @@ Identical entity types and LoB make them structurally indistinguishable without 
 | **system** | sap.crm | workday.hcm |
 | **entityTypes** | Employee, TimeOff | Employee, TimeOff |
 | **lineOfBusiness** | Sales | Sales |
-| **score breakdown** | text=0.38 · ET=1.00 · LoB=1.00 · tags=0.00 · cross-ns=+0.5 | → **sim=0.50** |
+| **score breakdown** | text=0.38 · ET=1.00 · LoB=1.00 · tags=0.00 · cross-ns=+0.5 | → **sim=0.49** |
 
-Link: https://pages.github.tools.sap/I750252/MasterThesis/landscape/sap.crm/sap-crm-apiResource-SalesTeamAvailabilityAndCapacityService-v1/
+Link: http://localhost:4321/landscape/sap.crm/sap-crm-apiResource-SalesTeamAvailabilityAndCapacityService-v1/
 
 Same entity types and shared LoB, different systems (CRM vs. HR). Distinguishable with domain context — CRM manages availability for sales operations, HR exposes the underlying leave data.
 </details>
@@ -239,7 +239,7 @@ Same entity types and shared LoB, different systems (CRM vs. HR). Distinguishabl
 | **lineOfBusiness** | Operations | Product Lifecycle Management |
 | **score breakdown** | text=0.31 · ET=0.32 · LoB=0.00 · tags=0.20 · cross-ns=+0.5 | → **sim=0.25** |
 
-Link: https://pages.github.tools.sap/I750252/MasterThesis/landscape/corp.itsm/corp-itsm-apiResource-ProcurementVendorManagementAPI-v1/
+Link: http://localhost:4321/landscape/corp.itsm/corp-itsm-apiResource-ProcurementVendorManagementAPI-v1/
 
 Only one shared entity type (Vendor), different LoB. Structurally connected but functionally distinct — ITSM procurement vs. manufacturing master data.
 </details>
@@ -302,7 +302,7 @@ EACH ROUND:
 
 LOW tier is not actively generated — it fills automatically as the landscape grows (any resource in 0.10–0.25 range counts).
 
-Every action is logged to `benchmark/landscape/logs/enrichment_log.json` with phase, round, outcome, profile, achieved_sim, judge_verdict, and token counts.
+Every action is logged to `data/landscape/logs/enrichment_log.json` with phase, round, outcome, profile, achieved_sim, judge_verdict, and token counts.
 
 ---
 
@@ -378,8 +378,8 @@ The `target_resource` is the existing resource the new resource was generated to
 
 | Artefact | Location | Contents |
 |---|---|---|
-| Generation log | `benchmark/landscape/logs/enrichment_log.json` | Every seed/iterative/dedup action: phase, round, outcome, profile, achieved_sim, judge_verdict, tokens |
-| Near-dup pairs | `benchmark/landscape/logs/near_dup_pairs.json` | All resolved pairs with full_sim ≥ 0.75 |
+| Generation log | `data/landscape/logs/enrichment_log.json` | Every seed/iterative/dedup action: phase, round, outcome, profile, achieved_sim, judge_verdict, tokens |
+| Near-dup pairs | `data/landscape/logs/near_dup_pairs.json` | All resolved pairs with full_sim ≥ 0.75 |
 | Web explorer | `/audit/` → Landscape tab | Filterable table of accepted/rejected resources with judge responses |
 
 ---
@@ -627,7 +627,7 @@ Resulting `ord_enriched.json` entry for `EquipmentOEEAnalytics:v1`:
 }
 ```
 
-Script: `benchmark/test_cases/enrich_from_processes.py`
+Script: `data/test_cases/design_time/enrich_from_processes.py`
 
 ---
 
@@ -746,7 +746,7 @@ JUDGE:   C1 realistic · C2 coherent with process · C3 skill covers end-to-end
 ```
 
 <details>
-<summary>Log example — sg-01 · benchmark/test_cases/runtime/logs/provenance/sg-01.json</summary>
+<summary>Log example — sg-01 · data/test_cases/runtime/logs/provenance/sg-01.json</summary>
 
 ```json
 {
@@ -779,7 +779,7 @@ JUDGE:   C1 skill covers core (not gaps) · C2 gaps implied not stated · C3 coh
 ```
 
 <details>
-<summary>Log example — sa-01 · benchmark/test_cases/runtime/logs/provenance/sa-01.json</summary>
+<summary>Log example — sa-01 · data/test_cases/runtime/logs/provenance/sa-01.json</summary>
 
 ```json
 {
@@ -814,7 +814,7 @@ JUDGE:   C1 realistic · C2 P-label verifiable · C3 distractor plausible but wr
 ```
 
 <details>
-<summary>Log example — dy-01 (P1) · benchmark/test_cases/runtime/logs/provenance/dy-01.json</summary>
+<summary>Log example — dy-01 (P1) · data/test_cases/runtime/logs/provenance/dy-01.json</summary>
 
 ```json
 {
@@ -846,7 +846,7 @@ JUDGE:   C1 realistic request · C2 genuinely absent · C3 adjacent resource ide
 ```
 
 <details>
-<summary>Log example — oos-01 · benchmark/test_cases/runtime/logs/provenance/oos-01.json</summary>
+<summary>Log example — oos-01 · data/test_cases/runtime/logs/provenance/oos-01.json</summary>
 
 ```json
 {
@@ -957,9 +957,9 @@ Decisions made during implementation that deviated from or refined the original 
 
 **Original concept:** Generator → Method S (Baseline-Solver) gate → Judge. Solver must fail before a case is accepted.
 
-**Implemented:** SG cases went through the Solver gate during the initial generation (see `generate_skill_guided.py:150`). However, the resulting prompts were long and explicit, which created routing-evaluation noise (the planner sometimes classified them as `skill_adjusted` rather than `skill_guided`). In commit `6429a4cac` ("SG case prompts rewritten") the 30 SG prompts in `benchmark/test_cases/runtime/output/skill_guided.json` were replaced with shorter, more focused variants intended to make the routing intent unambiguous. The new prompts were **not re-validated** through the Solver gate.
+**Implemented:** SG cases went through the Solver gate during the initial generation (see `generate_skill_guided.py:150`). However, the resulting prompts were long and explicit, which created routing-evaluation noise (the planner sometimes classified them as `skill_adjusted` rather than `skill_guided`). In commit `6429a4cac` ("SG case prompts rewritten") the 30 SG prompts in `data/test_cases/runtime/output/skill_guided.json` were replaced with shorter, more focused variants intended to make the routing intent unambiguous. The new prompts were **not re-validated** through the Solver gate.
 
-**Consequence:** The provenance logs in `benchmark/test_cases/runtime/logs/provenance/sg-*.json` reflect the original (gated) prompts; the actually evaluated prompts in the output JSON differ. Since the Skill-Guided evaluation reports Routing-Accuracy as the primary metric (not retrieval P@1), this is acknowledged as a documented methodological caveat. The post-hoc certification in `benchmark/certification/v2/` re-runs Method S five times on the current SG prompts to quantify what fraction would still pass a stricter gate.
+**Consequence:** The provenance logs in `data/test_cases/runtime/logs/provenance/sg-*.json` reflect the original (gated) prompts; the actually evaluated prompts in the output JSON differ. Since the Skill-Guided evaluation reports Routing-Accuracy as the primary metric (not retrieval P@1), this is acknowledged as a documented methodological caveat. The post-hoc certification in `data/certification/v2/` re-runs Method S five times on the current SG prompts to quantify what fraction would still pass a stricter gate.
 
 ### Skill-Adjusted: Solver Gate Active
 

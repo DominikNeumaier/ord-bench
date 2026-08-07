@@ -251,7 +251,7 @@ let _ambiguityCache: Map<string, AmbiguityEntry> | null = null;
 
 export function loadAmbiguity(): Map<string, AmbiguityEntry> {
   if (_ambiguityCache) return _ambiguityCache;
-  const p = path.join(ROOT, "data", "landscape", "ambiguity", "landscape_ambiguity_report.json");
+  const p = path.join(ROOT, "data", "ambiguity", "landscape_ambiguity_report.json");
   if (!fs.existsSync(p)) return new Map();
   const report = JSON.parse(fs.readFileSync(p, "utf8"));
   const map = new Map<string, AmbiguityEntry>();

@@ -535,6 +535,7 @@ function fmtBreakdown(bd: any): string {
                 <th class="text-left py-2 hidden md:table-cell cursor-pointer hover:text-ink select-none" data-col="et">ET</th>
                 <th class="text-left py-2 hidden md:table-cell cursor-pointer hover:text-ink select-none" data-col="lob">LoB</th>
                 <th class="text-left py-2 hidden lg:table-cell cursor-pointer hover:text-ink select-none" data-col="tags">Tags</th>
+                <th class="text-left py-2 hidden lg:table-cell cursor-pointer hover:text-ink select-none" data-col="localid">localId</th>
                 <th class="text-left py-2" data-col="problems">Flags</th>
               </tr>
             </thead>
@@ -551,7 +552,8 @@ function fmtBreakdown(bd: any): string {
                     data-text={bd?.text ?? 0}
                     data-et={bd?.entityTypes ?? 0}
                     data-lob={bd?.lineOfBusiness ?? 0}
-                    data-tags={bd?.tags ?? 0}>
+                    data-tags={bd?.tags ?? 0}
+                    data-localid={bd?.localId ?? 0}>
                     <td class="text-right pr-3 py-1.5 font-semibold">
                       <span class={tierColor}>{nb.sim.toFixed(4)}</span>
                     </td>
@@ -571,6 +573,7 @@ function fmtBreakdown(bd: any): string {
                     <td class="py-1.5 hidden md:table-cell text-ink-muted">{typeof bd?.entityTypes === 'number' ? bd.entityTypes.toFixed(3) : "—"}</td>
                     <td class="py-1.5 hidden md:table-cell text-ink-muted">{typeof bd?.lineOfBusiness === 'number' ? bd.lineOfBusiness.toFixed(3) : "—"}</td>
                     <td class="py-1.5 hidden lg:table-cell text-ink-muted">{typeof bd?.tags === 'number' ? bd.tags.toFixed(3) : "—"}</td>
+                    <td class="py-1.5 hidden lg:table-cell text-ink-muted">{typeof bd?.localId === 'number' ? bd.localId.toFixed(3) : "—"}</td>
                     <td class="py-1.5">
                       <div class="flex gap-1 flex-wrap">
                         {nb.problems?.map((p) => (
@@ -661,7 +664,7 @@ function fmtBreakdown(bd: any): string {
           return sortAsc ? va.localeCompare(vb as string) : (vb as string).localeCompare(va as string);
         }
         const dataMap: Record<string, string> = {
-          sim: "sim", usecase: "usecase", et: "et", caps: "caps", tags: "tags", lob: "lob"
+          sim: "sim", text: "text", et: "et", lob: "lob", tags: "tags", localid: "localid"
         };
         const attr = dataMap[col] ?? col;
         va = parseFloat(a.dataset[attr] ?? "0") || 0;

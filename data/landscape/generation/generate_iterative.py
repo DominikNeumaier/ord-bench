@@ -4,7 +4,9 @@ Round-based: starts from 30 seeds, generates new resources per gap until 300 tot
 Key design: pre-check sim uses only structural dimensions (NO TF-IDF) → fast O(1) checks.
 TF-IDF text dimension is only used in the final ambiguity report, not during generation.
 
-Tier targets per resource: HIGH>=3 (sim>=0.50), MEDIUM>=5 (0.25-0.50), LOW>=5 (0.10-0.25)
+Tier targets per resource: HIGH>=3 (0.50-0.75), MEDIUM>=5 (0.25-0.50), LOW>=5 (0.10-0.25)
+HIGH is bounded above at 0.75 because near-duplicate reduction removes any pair
+with full_sim >= 0.75 (see reduce_near_dups.py).
 LOW fills automatically as landscape grows — only HIGH and MEDIUM are actively generated.
 
 Usage:
