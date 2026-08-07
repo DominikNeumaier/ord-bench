@@ -5,8 +5,8 @@ using claude-haiku-4.5. Each resource goes through Judge C1 (validate_ord.py) +
 C2-C5 (LLM) before being written to disk.
 
 Usage:
-    python benchmark/landscape/generate_seeds.py
-    python benchmark/landscape/generate_seeds.py --systems benchmark/landscape/systems
+    python src/generation/generate_seeds.py
+    python src/generation/generate_seeds.py --systems data/landscape/systems
 """
 
 from __future__ import annotations

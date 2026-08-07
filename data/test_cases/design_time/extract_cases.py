@@ -4,7 +4,7 @@ Reads proc_*.xml files. For each step, creates one retrieval case:
   input:  step label + " — " + step description
   output: expected_ordId
 
-Output: benchmark/test_cases/design_time/output/activity_cases.json
+Output: data/test_cases/design_time/output/activity_cases.json
 """
 from __future__ import annotations
 

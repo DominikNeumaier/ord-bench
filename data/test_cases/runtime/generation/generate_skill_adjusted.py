@@ -4,8 +4,8 @@ Base: 1 Skill-Guided skill + 1-3 gap resources (sim ≥ 0.25, NOT in skill, GT-e
 Generator extends the skill scenario implicitly.
 Mutator loop until Solver@273-clean fails on gap steps.
 
-Output: benchmark/test_cases/runtime/output/skill_adjusted.json
-        benchmark/test_cases/runtime/logs/provenance/sa-*.json
+Output: data/test_cases/runtime/output/skill_adjusted.json
+        data/test_cases/runtime/logs/provenance/sa-*.json
 """
 from __future__ import annotations
 

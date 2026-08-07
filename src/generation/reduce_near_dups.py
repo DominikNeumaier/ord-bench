@@ -6,7 +6,7 @@ For each pair with full_sim >= 0.75:
   - If rewrite fails after 3 attempts → remove it
 
 Usage:
-    python3 benchmark/landscape/reduce_near_dups.py
+    python3 src/generation/reduce_near_dups.py
 """
 
 from __future__ import annotations

@@ -7,8 +7,8 @@ No Solver check — OOS has no GT to fail on.
 Validator: programmatic absence check (text similarity to any resource).
 Judge: landscape-aware — checks against our 10 specific systems.
 
-Output: benchmark/test_cases/runtime/output/out_of_scope.json
-        benchmark/test_cases/runtime/logs/provenance/oos-*.json
+Output: data/test_cases/runtime/output/out_of_scope.json
+        data/test_cases/runtime/logs/provenance/oos-*.json
 """
 from __future__ import annotations
 

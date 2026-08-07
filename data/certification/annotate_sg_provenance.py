@@ -3,7 +3,7 @@
 The block documents that the original SG prompts (which went through Method-S
 gate during initial generation) were shortened post-gate in commit 6429a4cac
 to clean up routing-eval noise, and that the final prompts were re-validated
-by the v2 5-run certification (benchmark/certification/v2/).
+by the v2 5-run certification (data/certification/v2/).
 
 This script is idempotent — it only adds the block if it does not already exist.
 """
@@ -86,7 +86,7 @@ def main() -> None:
                 "too_easy":    v2["too_easy"],
                 "method":      "post-hoc 5-run Method-S re-evaluation on the "
                                "final (rewritten) prompt with per-run nonce "
-                               "cache bypass; see benchmark/certification/v2/",
+                               "cache bypass; see data/certification/v2/",
             }
 
         prov["post_gate_rewrite"] = {

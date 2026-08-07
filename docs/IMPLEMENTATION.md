@@ -20,10 +20,10 @@ src/
 ## core/
 
 **`config.py`** — Central configuration. Reads `.env` from project root. Key paths:
-- `LANDSCAPE_DIR` → `benchmark/landscape/systems/`
-- `LANDSCAPE_ENRICHED_DIR` → `benchmark/landscape/systems_enriched/`
-- `DT_OUTPUT_DIR` → `benchmark/test_cases/design_time/output/`
-- `RT_OUTPUT_DIR` → `benchmark/test_cases/runtime/output/`
+- `LANDSCAPE_DIR` → `data/landscape/systems/`
+- `LANDSCAPE_ENRICHED_DIR` → `data/landscape/systems_enriched/`
+- `DT_OUTPUT_DIR` → `data/test_cases/design_time/output/`
+- `RT_OUTPUT_DIR` → `data/test_cases/runtime/output/`
 - `RESULTS_DT` / `RESULTS_RT` → `results/design-time/` / `results/runtime/`
 
 **`llm.py`** — LLM and embedding client with file-based cache (hash of model+prompt). Every call returns `(text, {"tokens": int, "latency_s": float, "cached": bool})`. Auto-refreshes JWT token on 401 errors.
@@ -65,7 +65,7 @@ Note: For Design-Time, all methods use `allow_refuse=False` — the benchmark al
 2. **Planner** (`planner.py`): decides coverage (full/partial/none) and builds the step list.
 3. **Retrieval**: calls the configured method per step.
 
-**`skill_registry.py`** — Loads SKILL.md files from `benchmark/test_cases/design_time/output/skills/`. Parses frontmatter and `ord_confirmed` annotations. Used by Method D's `list_skills()`/`describe_skill()` tools and the Intent Resolver.
+**`skill_registry.py`** — Loads SKILL.md files from `data/test_cases/design_time/output/skills/`. Parses frontmatter and `ord_confirmed` annotations. Used by Method D's `list_skills()`/`describe_skill()` tools and the Intent Resolver.
 
 **`intent_resolver.py`** — LLM-based skill matcher. Uses a strict system prompt: only returns a skill_id if the skill covers the request end-to-end. Returns null for ad-hoc / single-resource requests (Dynamic mode).
 
@@ -166,11 +166,11 @@ Six retrieval strategies evaluated against the 273-resource ORD benchmark landsc
 
 **Tools:** `list_dir(path)`, `read_file(path)` (capped at 200 lines), `pick_resource(ord_id, reason)`, `refuse(reason)`, plus persistent notes (`read_notes`, `write_notes`).
 
-**Allowed paths:** `benchmark/` subtree only.
+**Allowed paths:** `data/landscape/` subtree only.
 
 **How it works:**
 - Agent starts cold (no pre-loaded index)
-- Navigates `benchmark/landscape/systems/<ns>/ord.json` or `benchmark/landscape/systems_enriched/<ns>/ord_enriched.json`
+- Navigates `data/landscape/systems/<ns>/ord.json` or `data/landscape/systems_enriched/<ns>/ord_enriched.json`
 - Reads 1–3 system files guided by persistent notes from previous queries
 - Maximum 10 tool calls per query
 

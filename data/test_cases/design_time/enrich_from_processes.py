@@ -4,8 +4,8 @@ Reads proc_*_enrichment.json files. For each GT-eligible resource, writes
 capabilities, useCases, processNext, partOfGroups into ord_enriched.json
 (which starts as a copy of ord.json). Non-GT resources stay at Clean-ORD level.
 
-Output: benchmark/landscape/systems/{namespace}/ord_enriched.json (updated)
-        benchmark/test_cases/design_time/logs/enrichment_log.json
+Output: data/landscape/systems/{namespace}/ord_enriched.json (updated)
+        data/test_cases/design_time/logs/enrichment_log.json
 """
 from __future__ import annotations
 
@@ -81,7 +81,7 @@ def run():
         print(f"  {ns_dir.name}: {ns_count} resources enriched")
 
     LOG_FILE.write_text(json.dumps(log_entries, indent=2))
-    print(f"\nDone. {total_enriched} resources enriched → benchmark/landscape/systems_enriched/")
+    print(f"\nDone. {total_enriched} resources enriched → data/landscape/systems_enriched/")
     print(f"Log: {LOG_FILE}")
 
 

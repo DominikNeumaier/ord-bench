@@ -10,8 +10,8 @@ with full_sim >= 0.75 (see reduce_near_dups.py).
 LOW fills automatically as landscape grows — only HIGH and MEDIUM are actively generated.
 
 Usage:
-    python3 benchmark/landscape/generate_iterative.py
-    python3 benchmark/landscape/generate_iterative.py --max-rounds 20 --max-resources 300
+    python3 src/generation/generate_iterative.py
+    python3 src/generation/generate_iterative.py --max-rounds 20 --max-resources 300
 """
 
 from __future__ import annotations

@@ -8,10 +8,10 @@ Combined with the original gate run (assumed = fail), every case has 5 samples.
 A case is "robustly certified" when difficulty >= 0.80 (S fails in >=4/5 runs).
 
 Usage:
-    python benchmark/certification/run_certification.py
-    python benchmark/certification/run_certification.py --extra-runs 4
-    python benchmark/certification/run_certification.py --modes dynamic
-    python benchmark/certification/run_certification.py --no-resume   # re-run all
+    python data/certification/run_certification.py
+    python data/certification/run_certification.py --extra-runs 4
+    python data/certification/run_certification.py --modes dynamic
+    python data/certification/run_certification.py --no-resume   # re-run all
 """
 
 from __future__ import annotations

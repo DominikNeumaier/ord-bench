@@ -7,10 +7,10 @@ Differences vs v1:
   - Robust = solved in 0/5 runs (stricter than v1's 4/5 threshold)
 
 Usage:
-    python benchmark/certification/run_certification_v2.py
-    python benchmark/certification/run_certification_v2.py --runs 5
-    python benchmark/certification/run_certification_v2.py --cases dy-01 sg-11
-    python benchmark/certification/run_certification_v2.py --no-resume
+    python data/certification/run_certification_v2.py
+    python data/certification/run_certification_v2.py --runs 5
+    python data/certification/run_certification_v2.py --cases dy-01 sg-11
+    python data/certification/run_certification_v2.py --no-resume
 """
 
 from __future__ import annotations

@@ -14,8 +14,8 @@ certifies each accepted prompt. When a GT resource is semantically unique and S
 always ranks it first, the built-in HIGH-tier distractor is recorded as the solver
 prediction (distractor_certified) after MAX_ITERATIONS attempts.
 
-Output: benchmark/test_cases/runtime/output/dynamic.json
-        benchmark/test_cases/runtime/logs/provenance/dy-*.json
+Output: data/test_cases/runtime/output/dynamic.json
+        data/test_cases/runtime/logs/provenance/dy-*.json
 """
 from __future__ import annotations
 

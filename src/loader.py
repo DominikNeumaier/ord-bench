@@ -49,7 +49,7 @@ def _extract_entity_types(item: dict[str, Any]) -> list[str]:
     forward compatibility (the spec says exposedEntityTypes replaces it
     on api/event resources since v1.11), but the canonical landscape on
     disk has been normalised to drop it during benchmark landscape
-    generation (see `benchmark/landscape/normalize_metadata.py`).
+    generation.
     """
     ets: list[str] = []
 

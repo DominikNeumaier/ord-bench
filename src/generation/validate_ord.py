@@ -4,9 +4,9 @@ Deterministic, no LLM. Checks every resource in a landscape against
 the ORD spec rules defined in ord_spec_rules.json.
 
 Usage:
-    python benchmark/landscape/validate_ord.py
-    python benchmark/landscape/validate_ord.py --landscape benchmark/landscape/systems
-    python benchmark/landscape/validate_ord.py --file path/to/ord.json
+    python src/generation/validate_ord.py
+    python src/generation/validate_ord.py --landscape data/landscape/systems
+    python src/generation/validate_ord.py --file path/to/ord.json
 """
 
 from __future__ import annotations
@@ -285,7 +285,7 @@ def main() -> int:
         landscape_dir = Path(args.landscape)
         if not landscape_dir.exists():
             print(f"Landscape directory not found: {landscape_dir}")
-            print("Run with --landscape to specify a path, or create benchmark/landscape/systems/ first.")
+            print("Run with --landscape to specify a path, or create data/landscape/systems/ first.")
             return 1
         report = validate_landscape(landscape_dir, rules)
 

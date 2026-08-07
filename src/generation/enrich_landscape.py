@@ -7,8 +7,8 @@ Runs until every ground-truth resource has:
   - >= MIN_LOW   neighbors with sim >= LOW_THRESHOLD
 
 Usage:
-    python benchmark/landscape/enrich_landscape.py
-    python benchmark/landscape/enrich_landscape.py --systems benchmark/landscape/systems --max-attempts 5
+    python src/generation/enrich_landscape.py
+    python src/generation/enrich_landscape.py --systems data/landscape/systems --max-attempts 5
 """
 
 from __future__ import annotations
@@ -25,7 +25,7 @@ sys.path.insert(0, str(ROOT))
 
 # Uses claude-haiku-4.5 by default (config.LLM_MODEL) to keep costs low.
 # The enrichment loop can make hundreds of Generator + Judge calls.
-# Override with: LLM_MODEL=anthropic--claude-opus-4-5 python benchmark/landscape/enrich_landscape.py
+# Override with: LLM_MODEL=anthropic--claude-opus-4-5 python src/generation/enrich_landscape.py
 
 from src.adversarial.preselect import (
     compute_landscape_ambiguity,

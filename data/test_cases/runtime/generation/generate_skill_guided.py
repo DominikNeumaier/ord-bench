@@ -6,8 +6,8 @@ For each accepted process model:
   Validator (script) → V1-V3
   Judge (LLM) → C1-C5
 
-Output: benchmark/test_cases/runtime/output/skill_guided.json
-        benchmark/test_cases/runtime/logs/provenance/sg-*.json
+Output: data/test_cases/runtime/output/skill_guided.json
+        data/test_cases/runtime/logs/provenance/sg-*.json
 """
 from __future__ import annotations
 

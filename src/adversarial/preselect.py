@@ -2,8 +2,8 @@
 
 No LLM calls. Fully deterministic, reproducible.
 
-Based exclusively on fields defined in the official ORD v1.16 specification
-examples (benchmark/landscape/ord_example_files/). No custom fields used.
+Based exclusively on fields defined in the official ORD v1.16 specification.
+No custom fields used.
 
 Four orthogonal similarity signals per resource pair:
 

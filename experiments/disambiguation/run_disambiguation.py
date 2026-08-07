@@ -52,7 +52,7 @@ TOP_K = preselect.TOP_K            # 5, same as the benchmark
 GT_TYPES = preselect.GROUND_TRUTH_TYPES
 
 # Same similarity tiers the benchmark uses to certify difficulty
-# (benchmark/landscape/generation/enrich_landscape.py). A HIGH-tier neighbour
+# (src/generation/enrich_landscape.py). A HIGH-tier neighbour
 # (sim >= 0.50) is a genuine confusable — the exact quantity Fig. 4 tracks.
 HIGH_THRESHOLD = 0.50
 MEDIUM_THRESHOLD = 0.25

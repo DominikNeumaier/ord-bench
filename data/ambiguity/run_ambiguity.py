@@ -1,9 +1,9 @@
 """Standalone runner for landscape ambiguity scoring.
 
 Usage:
-    python benchmark/ambiguity/run_ambiguity.py
-    python benchmark/ambiguity/run_ambiguity.py --output benchmark/ambiguity/landscape_ambiguity_report.json
-    python benchmark/ambiguity/run_ambiguity.py --top-k 10 --min-score 0.30
+    python data/ambiguity/run_ambiguity.py
+    python data/ambiguity/run_ambiguity.py --output data/ambiguity/landscape_ambiguity_report.json
+    python data/ambiguity/run_ambiguity.py --top-k 10 --min-score 0.30
 """
 
 from __future__ import annotations
@@ -21,7 +21,7 @@ from src.adversarial.preselect import compute_landscape_ambiguity, pre_select_am
 
 def main():
     parser = argparse.ArgumentParser(description="Compute ORD landscape ambiguity scores")
-    parser.add_argument("--output", default="benchmark/ambiguity/landscape_ambiguity_report.json")
+    parser.add_argument("--output", default="data/ambiguity/landscape_ambiguity_report.json")
     parser.add_argument("--top-k", type=int, default=5)
     parser.add_argument("--min-score", type=float, default=0.25)
     parser.add_argument("--state", default="enriched", choices=["clean", "enriched"])

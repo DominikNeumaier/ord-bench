@@ -4,8 +4,8 @@ Reads all proc_*.xml + proc_*_enrichment.json from output/processes/.
 Generates one SKILL.md per process via LLM, then validates it with the
 deterministic S1-S4 structural checks. Output goes to output/skills/.
 
-Output: benchmark/test_cases/design_time/output/skills/{process_id}.md
-        benchmark/test_cases/design_time/logs/skill_construction_log.json
+Output: data/test_cases/design_time/output/skills/{process_id}.md
+        data/test_cases/design_time/logs/skill_construction_log.json
 """
 from __future__ import annotations
 

@@ -4,8 +4,8 @@ Each model: 8 steps, 4 GT-eligible + 4 non-GT resources, ≥3 namespaces,
 ≥1 agent + ≥1 apiResource. Generator produces process XML + enrichment fields
 in one call. Validator (V1-V6) runs first, Judge (J1-J6) only if validator passes.
 
-Output: benchmark/test_cases/design_time/output/processes/{id}.xml
-        benchmark/test_cases/design_time/logs/process_construction_log.json
+Output: data/test_cases/design_time/output/processes/{id}.xml
+        data/test_cases/design_time/logs/process_construction_log.json
 """
 from __future__ import annotations
 

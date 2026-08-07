@@ -99,7 +99,7 @@ All 10 systems share a single entity type vocabulary: `sap.odm`. There is no sep
 | ServiceTicket, ITEquipment, Asset, SoftwareLicense, ChangeRequest | corp.itsm | sap.s4, sap.sf |
 | Project, Document, Task, Report, Notification, Compliance | all systems | — |
 
-**Required fields per resource type** (from `data/landscape/generation/ord_spec_rules.json`):
+**Required fields per resource type** (from `src/generation/ord_spec_rules.json`):
 
 ```
 agent:       ordId, title, shortDescription, version, partOfPackage, visibility, releaseStatus
@@ -1090,38 +1090,41 @@ Method F (Meta-Agent):
 ## A.5 File Structure
 
 ```
-benchmark/
+src/
+  generation/
+    generate_seeds.py       — 30 seed resources (3 per system: 1 agent, 1 apiResource, 1 dataProduct)
+    generate_iterative.py   — round-based iterative gap-filling
+    reduce_near_dups.py     — rewrite/remove pairs with full_sim ≥ 0.75
+    enrich_landscape.py     — tier thresholds + shared utilities
+    validate_ord.py         — spec validation (deterministic, no LLM)
+    validate_taxonomy.py    — sap.odm structural checks
+    ord_spec_rules.json     — required fields per resource type
+  adversarial/
+    preselect.py            — ambiguity metric (compute_landscape_ambiguity)
+    ambiguity.py            — embedding-ratio ambiguity helpers
+  loader.py                 — ORD landscape loader
+  llm.py                    — LLM + embedding client (cache, seed 42)
+  config.py                 — paths, model, temperature, seed
+
+data/
   landscape/
-    generation/
-      generate_seeds.py       — 30 seed resources (3 per system)
-      generate_iterative.py   — round-based iterative generation
-      reduce_near_dups.py     — rewrite/remove pairs with full_sim ≥ 0.75
-      enrich_landscape.py     — tier thresholds + shared utilities
-      validate_ord.py         — spec validation (deterministic, no LLM)
-      validate_taxonomy.py    — sap.odm structural checks
-      ord_spec_rules.json     — required fields per resource type
     logs/
       enrichment_log.json     — all actions: seed / iterative / dedup phases
       near_dup_pairs.json     — resolved near-duplicate pairs
     systems/
       sap.odm/ord.json        — 50 entity types (shared vocabulary)
-      sap.s4/ord.json         — Clean-ORD (~27 resources per system)
-      sap.s4/ord_enriched.json — Enriched-ORD (capabilities, useCases, processNext, partOfGroups)
-      ...                     — one ord.json + ord_enriched.json per namespace
-
+      <ns>/ord.json           — Clean-ORD, one per namespace
+    systems_enriched/
+      <ns>/ord_enriched.json  — Enriched-ORD (capabilities, useCases, processNext, partOfGroups)
   ambiguity/
     run_ambiguity.py
-    landscape_ambiguity_report.json          — Clean-ORD scores
-    landscape_ambiguity_report_enriched.json — Enriched-ORD scores (optional, Phase 2)
-    README.md
-
+    landscape_ambiguity_report.json
   test_cases/
     design_time/
       generate_processes.py
       generate_skills.py
       enrich_from_processes.py
       extract_cases.py
-      evaluate.py
       logs/
         process_construction_log.json
         skill_construction_log.json
@@ -1130,15 +1133,12 @@ benchmark/
         activity_cases.json
         processes/
         skills/
-
     runtime/
       generation/
         generate_skill_guided.py
         generate_skill_adjusted.py
         generate_dynamic.py
         generate_out_of_scope.py
-        # solver_baseline.py → see src/methods/method_s.py
-      evaluate.py
       logs/
         provenance/
       output/
@@ -1146,4 +1146,9 @@ benchmark/
         skill_adjusted.json
         dynamic.json
         out_of_scope.json
+  certification/
+    run_certification.py
+    run_certification_v2.py
+    results.jsonl
+    summary.json
 ```

@@ -10,8 +10,8 @@ are a flat vocabulary list. The graph structure emerges from retrieval resources
 that reference these IDs, not from links between entity types themselves.
 
 Usage:
-    python benchmark/landscape/validate_taxonomy.py
-    python benchmark/landscape/validate_taxonomy.py --taxonomy benchmark/landscape/systems/sap.odm/ord.json
+    python src/generation/validate_taxonomy.py
+    python src/generation/validate_taxonomy.py --taxonomy data/landscape/systems/sap.odm/ord.json
 """
 
 from __future__ import annotations
