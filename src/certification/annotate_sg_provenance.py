@@ -13,9 +13,9 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-PROV_DIR = ROOT / "benchmark" / "test_cases" / "runtime" / "logs" / "provenance"
-SG_CASE_FILE = ROOT / "benchmark" / "test_cases" / "runtime" / "output" / "skill_guided.json"
-V2_RESULTS = ROOT / "benchmark" / "certification" / "v2" / "results.jsonl"
+PROV_DIR = ROOT / "data" / "test_cases" / "runtime" / "logs" / "provenance"
+SG_CASE_FILE = ROOT / "data" / "test_cases" / "runtime" / "output" / "skill_guided.json"
+V2_RESULTS = ROOT / "data" / "certification" / "v2" / "results.jsonl"
 
 REWRITE_COMMIT = "6429a4cac"
 REWRITE_REASON = (

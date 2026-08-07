@@ -27,7 +27,7 @@ mpl.rcParams.update({
 ROOT = next(p for p in Path(__file__).resolve().parents if (p / "src").is_dir())
 sys.path.insert(0, str(ROOT))
 
-from src.core import ord_loader                  # noqa: E402
+from src import loader as ord_loader                  # noqa: E402
 from src.adversarial import preselect            # noqa: E402
 from experiments.paper1.disambiguation import extended_metric as em  # noqa: E402
 

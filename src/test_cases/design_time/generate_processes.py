@@ -20,7 +20,7 @@ from xml.etree import ElementTree as ET
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 
-from src.core import llm
+from src import llm
 
 LANDSCAPE_DIR = ROOT / "data" / "landscape" / "systems"
 AMBIGUITY_REPORT = ROOT / "data" / "ambiguity" / "landscape_ambiguity_report.json"

@@ -166,7 +166,7 @@ Missing fields contribute 0.0. The cross-namespace bonus is added before dividin
 
 **Implementation:** `src/adversarial/preselect.py` → `compute_landscape_ambiguity()`
 
-**Run:** `python3 data/ambiguity/run_ambiguity.py`
+**Run:** `python3 src/ambiguity/run_ambiguity.py`
 
 ---
 
@@ -627,7 +627,7 @@ Resulting `ord_enriched.json` entry for `EquipmentOEEAnalytics:v1`:
 }
 ```
 
-Script: `data/test_cases/design_time/enrich_from_processes.py`
+Script: `src/test_cases/design_time/enrich_from_processes.py`
 
 ---
 
@@ -1091,22 +1091,41 @@ Method F (Meta-Agent):
 
 ```
 src/
-  generation/
-    generate_seeds.py       — 30 seed resources (3 per system: 1 agent, 1 apiResource, 1 dataProduct)
-    generate_iterative.py   — round-based iterative gap-filling
-    reduce_near_dups.py     — rewrite/remove pairs with full_sim ≥ 0.75
-    enrich_landscape.py     — tier thresholds + shared utilities
-    validate_ord.py         — spec validation (deterministic, no LLM)
-    validate_taxonomy.py    — sap.odm structural checks
-    ord_spec_rules.json     — required fields per resource type
+  generation/                 — landscape construction
+    generate_seeds.py         — 30 seed resources (3 per system: 1 agent, 1 apiResource, 1 dataProduct)
+    generate_iterative.py     — round-based iterative gap-filling
+    reduce_near_dups.py       — rewrite/remove pairs with full_sim ≥ 0.75
+    enrich_landscape.py       — tier thresholds + shared utilities
+    validate_ord.py           — spec validation (deterministic, no LLM)
+    validate_taxonomy.py      — sap.odm structural checks
+    ord_spec_rules.json       — required fields per resource type
+  ambiguity/
+    run_ambiguity.py          — compute + report landscape ambiguity
+  test_cases/
+    design_time/
+      generate_processes.py
+      generate_skills.py
+      enrich_from_processes.py
+      extract_cases.py
+    runtime/
+      generation/
+        _common.py
+        generate_skill_guided.py
+        generate_skill_adjusted.py
+        generate_dynamic.py
+        generate_out_of_scope.py
+  certification/
+    run_certification.py
+    run_certification_v2.py
+    annotate_sg_provenance.py
   adversarial/
-    preselect.py            — ambiguity metric (compute_landscape_ambiguity)
-    ambiguity.py            — embedding-ratio ambiguity helpers
-  loader.py                 — ORD landscape loader
-  llm.py                    — LLM + embedding client (cache, seed 42)
-  config.py                 — paths, model, temperature, seed
+    preselect.py              — ambiguity metric (compute_landscape_ambiguity)
+    ambiguity.py              — embedding-ratio ambiguity helpers
+  loader.py                   — ORD landscape loader
+  llm.py                      — LLM + embedding client (cache, seed 42)
+  config.py                   — paths, model, temperature, seed
 
-data/
+data/                         — artefacts only (no code)
   landscape/
     logs/
       enrichment_log.json     — all actions: seed / iterative / dedup phases
@@ -1117,14 +1136,9 @@ data/
     systems_enriched/
       <ns>/ord_enriched.json  — Enriched-ORD (capabilities, useCases, processNext, partOfGroups)
   ambiguity/
-    run_ambiguity.py
     landscape_ambiguity_report.json
   test_cases/
     design_time/
-      generate_processes.py
-      generate_skills.py
-      enrich_from_processes.py
-      extract_cases.py
       logs/
         process_construction_log.json
         skill_construction_log.json
@@ -1134,11 +1148,6 @@ data/
         processes/
         skills/
     runtime/
-      generation/
-        generate_skill_guided.py
-        generate_skill_adjusted.py
-        generate_dynamic.py
-        generate_out_of_scope.py
       logs/
         provenance/
       output/
@@ -1147,8 +1156,7 @@ data/
         dynamic.json
         out_of_scope.json
   certification/
-    run_certification.py
-    run_certification_v2.py
     results.jsonl
     summary.json
+    v2/
 ```

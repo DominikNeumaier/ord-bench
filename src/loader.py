@@ -21,7 +21,7 @@ from __future__ import annotations
 import json
 from typing import Any
 
-from src.core import config
+from src import config
 
 
 RESOURCE_KEYS = ["apiResources", "agents", "dataProducts", "entityTypes", "eventResources"]

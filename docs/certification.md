@@ -37,5 +37,5 @@ difficulty = (number of runs where S failed) / (total runs = 5)
 ## Script
 
 ```bash
-python data/certification/run_certification.py
+python src/certification/run_certification.py
 ```

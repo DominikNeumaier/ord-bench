@@ -26,12 +26,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT))
 
-from src.core import llm
-from benchmark.landscape.enrich_landscape import (
+from src import llm
+from src.generation.enrich_landscape import (
     spec_check, save_resource, load_landscape, LOG_PATH, log_action,
     HIGH_THRESHOLD, MEDIUM_THRESHOLD, LOW_THRESHOLD, MIN_HIGH, MIN_MEDIUM, MIN_LOW, _tier_of,
 )
-from benchmark.landscape.generate_seeds import SYSTEMS, generate_package
+from src.generation.generate_seeds import SYSTEMS, generate_package
 from src.adversarial.preselect import _pairwise_sim, _et_idf, _build_tfidf_index
 
 ITERATIVE_MODEL  = "anthropic--claude-4.5-haiku"
@@ -592,7 +592,7 @@ def run_iterative(systems_dir: Path, max_rounds: int = 20, max_resources: int = 
 def main() -> None:
     import argparse
     p = argparse.ArgumentParser()
-    p.add_argument("--systems", default=str(ROOT/"benchmark"/"landscape"/"systems"))
+    p.add_argument("--systems", default=str(ROOT/"data"/"landscape"/"systems"))
     p.add_argument("--max-rounds", type=int, default=20)
     p.add_argument("--max-resources", type=int, default=300)
     args = p.parse_args()

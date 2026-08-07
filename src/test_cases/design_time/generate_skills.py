@@ -18,11 +18,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 
-from src.core import llm
+from src import llm
 
-PROCESSES_DIR = ROOT / "benchmark" / "test_cases" / "design_time" / "output" / "processes"
-SKILLS_DIR = ROOT / "benchmark" / "test_cases" / "design_time" / "output" / "skills"
-LOG_FILE = ROOT / "benchmark" / "test_cases" / "design_time" / "logs" / "skill_construction_log.json"
+PROCESSES_DIR = ROOT / "data" / "test_cases" / "design_time" / "output" / "processes"
+SKILLS_DIR = ROOT / "data" / "test_cases" / "design_time" / "output" / "skills"
+LOG_FILE = ROOT / "data" / "test_cases" / "design_time" / "logs" / "skill_construction_log.json"
 MAX_ATTEMPTS = 5
 
 

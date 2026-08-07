@@ -17,10 +17,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 
-PROCESSES_DIR = ROOT / "benchmark" / "test_cases" / "design_time" / "output" / "processes"
-SYSTEMS_DIR = ROOT / "benchmark" / "landscape" / "systems"
-ENRICHED_DIR = ROOT / "benchmark" / "landscape" / "systems_enriched"
-LOG_FILE = ROOT / "benchmark" / "test_cases" / "design_time" / "logs" / "enrichment_log.json"
+PROCESSES_DIR = ROOT / "data" / "test_cases" / "design_time" / "output" / "processes"
+SYSTEMS_DIR = ROOT / "data" / "landscape" / "systems"
+ENRICHED_DIR = ROOT / "data" / "landscape" / "systems_enriched"
+LOG_FILE = ROOT / "data" / "test_cases" / "design_time" / "logs" / "enrichment_log.json"
 
 
 def load_all_enrichments() -> dict[str, dict]:

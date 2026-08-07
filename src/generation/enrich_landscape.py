@@ -49,8 +49,8 @@ MIN_LOW    = 5
 MAX_ATTEMPTS_PER_FILL = 5   # Generator retries before giving up on a tier-fill
 MIN_SYSTEM_SPREAD     = 3   # neighbors must come from at least this many different systems per tier
 
-LOG_PATH    = ROOT / "benchmark" / "landscape" / "enrichment_log.json"
-REPORT_PATH = ROOT / "benchmark" / "landscape" / "enrichment_report.md"
+LOG_PATH    = ROOT / "data" / "landscape" / "logs" / "enrichment_log.json"
+REPORT_PATH = ROOT / "data" / "landscape" / "logs" / "enrichment_report.md"
 
 
 # ── Load / save landscape ────────────────────────────────────────────────────
@@ -225,7 +225,7 @@ def spec_check(resource: dict) -> tuple[bool, list[str]]:
 
 
 import re
-from src.core import llm
+from src import llm
 
 MAX_LANDSCAPE_SIZE = 200  # hard cap — Generator must prefer modify once reached
 
@@ -888,7 +888,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Adversarial landscape enrichment")
     parser.add_argument(
         "--systems",
-        default=str(ROOT / "benchmark" / "landscape" / "systems"),
+        default=str(ROOT / "data" / "landscape" / "systems"),
         help="Directory containing namespace subdirs with ord.json files",
     )
     parser.add_argument("--max-attempts", type=int, default=MAX_ATTEMPTS_PER_FILL)

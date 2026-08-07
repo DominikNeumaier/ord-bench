@@ -13,7 +13,7 @@ ambiguity_profile() returns the full picture:
 
 from __future__ import annotations
 import math
-from src.core import llm
+from src import llm
 
 
 def _cosine(a: list[float], b: list[float]) -> float:

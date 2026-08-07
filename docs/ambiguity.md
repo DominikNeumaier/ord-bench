@@ -34,10 +34,10 @@ A **type penalty of ×0.5** is applied when two resources have different types (
 
 ```bash
 # From repo root
-python3 data/ambiguity/run_ambiguity.py
+python3 src/ambiguity/run_ambiguity.py
 
 # With options
-python3 data/ambiguity/run_ambiguity.py --top-k 5 --min-score 0.25 --state enriched
+python3 src/ambiguity/run_ambiguity.py --top-k 5 --min-score 0.25 --state enriched
 ```
 
 Output: `data/ambiguity/landscape_ambiguity_report.json`

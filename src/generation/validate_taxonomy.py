@@ -95,7 +95,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Validate sap.odm entity type taxonomy")
     parser.add_argument(
         "--taxonomy",
-        default=str(ROOT / "benchmark" / "landscape" / "systems" / "sap.odm" / "ord.json"),
+        default=str(ROOT / "data" / "landscape" / "systems" / "sap.odm" / "ord.json"),
         help="Path to sap.odm ord.json",
     )
     parser.add_argument("--output", help="Write JSON result to this path")

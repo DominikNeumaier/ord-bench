@@ -26,7 +26,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-from src.core import ord_loader, config
+from src import loader as ord_loader, config
 from src.methods import method_s
 
 # ── paths ────────────────────────────────────────────────────────────────────
@@ -39,8 +39,8 @@ REPORT_PATH  = CERT_DIR / "report.md"
 ROBUST_THRESHOLD = 0.80   # difficulty >= this → robustly certified
 BORDERLINE_THRESHOLD = 0.60  # difficulty in [0.60, 0.80) → borderline
 
-PROV_DIR = ROOT / "benchmark" / "test_cases" / "runtime" / "logs" / "provenance"
-DY_CASES = ROOT / "benchmark" / "test_cases" / "runtime" / "output" / "dynamic.json"
+PROV_DIR = ROOT / "data" / "test_cases" / "runtime" / "logs" / "provenance"
+DY_CASES = ROOT / "data" / "test_cases" / "runtime" / "output" / "dynamic.json"
 
 
 def _load_provenance_ords() -> dict[str, list[str]]:

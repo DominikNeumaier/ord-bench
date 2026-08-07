@@ -21,11 +21,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(ROOT))
 
-from benchmark.test_cases.runtime.generation._common import (
+from src.test_cases.runtime.generation._common import (
     load_resources, save_provenance, save_output, now_iso, MAX_ITERATIONS,
     OUTPUT_DIR,
 )
-from src.core import llm
+from src import llm
 
 TARGET = 20
 RANDOM_SEED = 44

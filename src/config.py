@@ -3,8 +3,8 @@
 import os
 from pathlib import Path
 
-# config.py is at src/core/config.py -> project root is two levels up
-ROOT = Path(__file__).resolve().parent.parent.parent
+# config.py is at src/config.py -> project root is two levels up
+ROOT = Path(__file__).resolve().parent.parent
 
 try:
     from dotenv import load_dotenv
@@ -26,12 +26,12 @@ LLM_TEMPERATURE = 0.0
 LLM_SEED = 42
 TOP_K = 5
 
-# Paths (match thesis Sec. 5.2 naming)
-BENCHMARK_DIR    = ROOT / "benchmark"
-LANDSCAPE_DIR    = BENCHMARK_DIR / "landscape" / "systems"
-LANDSCAPE_ENRICHED_DIR = BENCHMARK_DIR / "landscape" / "systems_enriched"
-DT_OUTPUT_DIR    = BENCHMARK_DIR / "test_cases" / "design_time" / "output"
-RT_OUTPUT_DIR    = BENCHMARK_DIR / "test_cases" / "runtime" / "output"
+# Paths (data/ holds all artefacts; code lives in src/)
+DATA_DIR         = ROOT / "data"
+LANDSCAPE_DIR    = DATA_DIR / "landscape" / "systems"
+LANDSCAPE_ENRICHED_DIR = DATA_DIR / "landscape" / "systems_enriched"
+DT_OUTPUT_DIR    = DATA_DIR / "test_cases" / "design_time" / "output"
+RT_OUTPUT_DIR    = DATA_DIR / "test_cases" / "runtime" / "output"
 CACHE_DIR        = ROOT / "cache"
 RESULTS_DT       = ROOT / "results" / "design-time"
 RESULTS_RT       = ROOT / "results" / "runtime"

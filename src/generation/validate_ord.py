@@ -260,7 +260,7 @@ def print_report(report: dict, verbose: bool = False) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Validate ORD documents against spec rules")
-    parser.add_argument("--landscape", default=str(ROOT / "benchmark" / "landscape" / "systems"),
+    parser.add_argument("--landscape", default=str(ROOT / "data" / "landscape" / "systems"),
                         help="Directory containing namespace subdirs with ord.json files")
     parser.add_argument("--file", help="Validate a single ORD document file")
     parser.add_argument("--output", help="Write JSON report to this path")
