@@ -2,9 +2,9 @@
 
 Uses the pairwise.csv already in experiments/embedding_analysis/ (no API calls).
 Tier boundaries from src/adversarial/preselect.py:
-  HIGH   >= 0.50
-  MEDIUM  0.25 – 0.49
-  LOW     0.10 – 0.24
+  HIGH   0.50 – 0.75
+  MEDIUM  0.25 – 0.50
+  LOW     0.10 – 0.25
   NONE  < 0.10
 
 Output: experiments/embedding_analysis/embedding_by_tier.pdf/.png
@@ -36,7 +36,7 @@ def tier(s):
 df["tier"] = df["structural_sim"].apply(tier)
 
 order = ["HIGH", "MEDIUM", "LOW", "NONE"]
-labels = ["HIGH\n(≥ 0.50)", "MEDIUM\n(0.25–0.49)", "LOW\n(0.10–0.24)", "NONE\n(< 0.10)"]
+labels = ["HIGH\n(0.50–0.75)", "MEDIUM\n(0.25–0.50)", "LOW\n(0.10–0.25)", "NONE\n(< 0.10)"]
 colors = ["#d62728", "#ff7f0e", "#2ca02c", "#aec7e8"]
 
 groups = [df.loc[df["tier"] == t, "embedding_cos"].values for t in order]
