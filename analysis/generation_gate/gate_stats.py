@@ -48,16 +48,21 @@ def main() -> None:
         if v.get("c3_not_duplicate") is False:
             duplication += 1
 
+    reached_judge = len(accepted) + len(rejected_judge)
+    rate = 100 * len(accepted) / reached_judge if reached_judge else 0.0
+
     print("Landscape generation gate (final run)")
     print("-" * 44)
-    print(f"candidates reaching the Judge : {len(created)}")
-    print(f"  accepted                    : {len(accepted)}")
-    print(f"  rejected by Judge           : {len(rejected_judge)}")
-    print(f"    domain incoherence (c2)   : {incoherence}")
-    print(f"    unjustified entityTypes(c4): {entitytypes}")
-    print(f"    duplication (c3)          : {duplication}")
-    print(f"  wrong tier                  : {len(wrong_tier)}")
-    print(f"rejected by pre-check (c1)     : {len(rejected_pre)}")
+    print(f"create attempts (validator-passed): {len(created)}")
+    print(f"reached the Judge (acc + rej)      : {reached_judge}")
+    print(f"  accepted                         : {len(accepted)}")
+    print(f"  rejected by Judge                : {len(rejected_judge)}")
+    print(f"  acceptance rate                  : {rate:.0f}%")
+    print(f"    domain incoherence (c2)        : {incoherence}")
+    print(f"    unjustified entityTypes (c4)   : {entitytypes}")
+    print(f"    duplication (c3)               : {duplication}")
+    print(f"  wrong tier (did not reach Judge) : {len(wrong_tier)}")
+    print(f"rejected by pre-check (c1)         : {len(rejected_pre)}")
 
 
 if __name__ == "__main__":

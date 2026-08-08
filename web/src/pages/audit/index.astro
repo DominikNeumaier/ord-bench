@@ -46,9 +46,14 @@ const procLog = loadJson(path.join(ROOT, "data", "test_cases", "design_time", "l
 const skillLog = loadJson(path.join(ROOT, "data", "test_cases", "design_time", "logs", "skill_construction_log.json"));
 
 // ── Derived iteration stats ───────────────────────────────────────────────────
-// Landscape
-const lsAcceptanceRate = lsLog.length > 0
-  ? Math.round((lsLog.filter((e: any) => e.outcome === "accepted").length / lsLog.filter((e: any) => e.outcome !== "no_profile").length) * 100)
+// Landscape. Judge-level accept/reject are counted on the iterative phase only,
+// so the acceptance rate is on the same footing as rejected_judge (seed resources
+// are pre-accepted and dedup rewrites are a later pass, so neither belongs here).
+const lsIterAccepted = lsLog.filter((e: any) => e.phase === "iterative" && e.outcome === "accepted").length;
+const lsIterRejected = lsLog.filter((e: any) => e.phase === "iterative" && e.outcome === "rejected_judge").length;
+const lsReachedJudge = lsIterAccepted + lsIterRejected;
+const lsAcceptanceRate = lsReachedJudge > 0
+  ? Math.round((lsIterAccepted / lsReachedJudge) * 100)
   : 0;
 const lsPhases: Record<string, number> = {};
 for (const e of lsLog) { const p = e.phase ?? "?"; lsPhases[p] = (lsPhases[p] ?? 0) + 1; }
@@ -145,8 +150,8 @@ const oneIterCase   = provCases.find((c: any) => (c.evolution_log?.length ?? 0) 
     <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-4">
       {[
         { label: "Total log entries", v: lsLog.length.toLocaleString() },
-        { label: "Accepted", v: count(lsLog, "outcome", "accepted"), cls: "text-green-700" },
-        { label: "Rejected (judge)", v: count(lsLog, "outcome", "rejected_judge") },
+        { label: "Accepted (judge)", v: lsIterAccepted, cls: "text-green-700" },
+        { label: "Rejected (judge)", v: lsIterRejected },
         { label: "Wrong tier", v: count(lsLog, "outcome", "wrong_tier") },
         { label: "Removed (dedup)", v: 27 },
       ].map((s) => (
@@ -157,7 +162,7 @@ const oneIterCase   = provCases.find((c: any) => (c.evolution_log?.length ?? 0) 
       ))}
     </div>
     <div class="flex flex-wrap gap-4 mb-10 text-xs font-mono text-ink-subtle">
-      <span>Acceptance rate (excl. no_profile): <strong class="text-green-700">{lsAcceptanceRate}%</strong></span>
+      <span>Judge acceptance rate ({lsReachedJudge} reached judge): <strong class="text-green-700">{lsAcceptanceRate}%</strong></span>
       {Object.entries(lsPhases).map(([phase, n]) => (
         <span>{phase}: <strong class="text-ink">{(n as number).toLocaleString()}</strong> entries</span>
       ))}
