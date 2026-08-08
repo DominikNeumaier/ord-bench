@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_dy-17_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to get approval for some design modifications we're making to our product line, and then make sure the updated materials are ordered and tracked through our supply chain. Can you help me coordinate the engineering paperwork and inventory adjustments all in one place?",
+    "n_resources": 273,
+    "user_msg_chars": 53929
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:** The ChangeAutomationOrchestrator is the best match because it specifically \"automates and coordinates engineering changes, material updates, and product item deployments\" - which directly addresses your need to:\n\n1. **Get approval for design modifications** - It handles engineering changes\n2. **Coordinate engineering paperwork** - It manages change workflows\n3. **Track updated materials and inventory adjustments** - It coordinates material updates and deployments across the supply chain\n\nWhile other resources like `sap.s4:agent:EngineeringChangeOrchestrator:v1` or `siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1` are similar, the ChangeAutomationOrchestrator is the most comprehensive orchestrator that encompasses the full lifecycle you described: approval workflow, engineering coordination, and supply chain tracking in a single integrated agent.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+  ],
   "solved": false,
-  "tokens": 13718,
-  "latency_s": 0.0,
-  "wall_s": 0.007,
-  "run": 2
+  "tokens": 13766,
+  "latency_s": 3.65,
+  "wall_s": 3.653,
+  "cached": false
 }

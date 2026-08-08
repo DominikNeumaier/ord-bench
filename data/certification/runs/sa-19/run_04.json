@@ -1,8 +1,22 @@
 {
-  "picked_ordId": "sap.ehs:agent:IncidentResponseCoordinator:v1",
+  "nonce": "v2_cert_sa-19_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to set up a comprehensive monitoring system for our workplace safety incidents and regulatory compliance across all our facilities. This should track hazardous events as they occur, evaluate our exposure to violations, and coordinate the necessary corrective actions. As we implement this, we also need to ensure our safety team can engage with relevant stakeholders in real-time across different communication channels to coordinate responses. Additionally, we'll need to make sure all hazardous materials data is properly managed and accessible so our sales and compliance teams can verify we're meeting all regulatory requirements when working with customers. Can you help us establish this integrated approach to safety management and compliance?",
+    "n_resources": 273,
+    "user_msg_chars": 54413
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:agent:IncidentResponseCoordinator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires a comprehensive workplace safety incident monitoring and regulatory compliance system with real-time coordination capabilities. While multiple resources address aspects of this need, the **Incident Response Coordinator** is the best primary match because it:\n\n1. **Automates safety incident workflows** - directly aligns with tracking hazardous events as they occur\n2. **Coordinates emergency response actions** - supports real-time stakeholder engagement across communication channels\n3. **Integrates with hazardous substance systems** - the SAP EHS module has dedicated APIs for hazardous materials management and compliance verification\n\nThis agent works synergistically with complementary SAP EHS resources like:\n- `sap.ehs:apiResource:EmployeeSafetyIncidentReporting:v1` (incident tracking)\n- `sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1` (materials data accessibility)\n- `sap.ehs:dataProduct:SafetyIncidentMetricsAggregate:v1` (compliance analytics)\n\nThe SAP EHS domain is purpose-built for occupational health, environmental, and safety management with integrated incident response, hazmat tracking, and regulatory compliance\u2014making it the most suitable foundation for an integrated safety management system.",
+    "picked_ordId": "sap.ehs:agent:IncidentResponseCoordinator:v1"
+  },
+  "expected_ordIds": [
+    "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1",
+    "emarsys.cx:apiResource:HazardousSubstanceComplianceManagementAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13956,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 4
+  "tokens": 13933,
+  "latency_s": 4.714,
+  "wall_s": 4.716,
+  "cached": false
 }

@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.s4:apiResource:WorkforceOrgStructureAPI:v1",
-  "solved": false,
-  "tokens": 13690,
-  "latency_s": 0.0,
-  "wall_s": 0.004,
-  "run": 1
+  "nonce": "v2_cert_dy-20_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to figure out who reports to whom across our company and understand the chain of command structure. Can you help me pull together the reporting relationships and organizational breakdown?",
+    "n_resources": 273,
+    "user_msg_chars": 53849
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1\"\n}\n```\n\nThis resource is the best match because it directly exposes employee organizational structure and hierarchical relationships, which is exactly what you need to understand reporting relationships and chain of command across your company.",
+    "picked_ordId": "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1"
+  ],
+  "solved": true,
+  "tokens": 13593,
+  "latency_s": 2.004,
+  "wall_s": 2.005,
+  "cached": false
 }

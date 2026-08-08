@@ -1,8 +1,22 @@
 {
-  "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+  "nonce": "v2_cert_sa-12_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to submit a new infrastructure update request that will impact multiple departments, and I need the system to automatically assess whether this change requires executive approval based on the business scope. Can you walk me through the entire process from when I submit the request through final implementation, including tracking any related equipment modifications and service dependencies? I also need documentation of all regulatory requirements that apply to this change, as well as any existing maintenance schedules we should coordinate with during rollout.",
+    "n_resources": 273,
+    "user_msg_chars": 54226
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1\"\n}\n```\n\n**Rationale:** The Change Request Approval Workflow API is the primary resource that directly addresses your core requirement: submitting an infrastructure update request with automatic assessment for executive approval based on business scope. This API specifically handles:\n\n- Change request submissions\n- Approval workflow management\n- Impact assessment\n- Scheduling coordination\n\n**Complementary resources you should coordinate with:**\n\n1. **corp.itsm:apiResource:AssetProvisioningIntegrationAPI:v1** - For tracking equipment modifications\n2. **corp.itsm:agent:ChangeAutomationOrchestrator:v1** - For automating the entire change lifecycle\n3. **corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1** - For regulatory requirements documentation\n4. **my.mes:apiResource:ServiceTicketChangeRequestManagement:v1** - For maintenance schedule coordination\n5. **sap.s4:apiResource:EngineeringChangeManagementAPI:v1** - For service dependencies tracking\n\nThe ChangeRequestApprovalWorkflow is your entry point; the orchestrator agents and supporting APIs will manage the end-to-end process you described.",
+    "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1",
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13900,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 4
+  "tokens": 13877,
+  "latency_s": 4.76,
+  "wall_s": 4.763,
+  "cached": false
 }

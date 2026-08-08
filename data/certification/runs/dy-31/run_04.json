@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.ehs:dataProduct:SafetyIncidentMetricsAggregate:v1",
+  "nonce": "v2_cert_dy-31_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together our current safety performance metrics across all reported events while simultaneously ensuring our chemical inventory documentation stays current with regulatory standards\u2014can I get both of those data sets integrated into one dashboard view?",
+    "n_resources": 273,
+    "user_msg_chars": 53921
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:dataProduct:SafetyIncidentMetricsAggregate:v1\"\n}\n```\n\n**Rationale:** This data product aggregates safety incident KPIs and trends across sites and time periods, directly addressing the \"safety performance metrics across all reported events\" requirement. While it doesn't directly include chemical inventory, it's the best single resource that fulfills the primary safety metrics need. \n\nHowever, I should note that ideally this activity would benefit from a composite solution combining:\n- `sap.ehs:dataProduct:SafetyIncidentMetricsAggregate:v1` (safety metrics)\n- `sap.ehs:apiResource:ChemicalInventoryCompliance:v1` or `sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1` (chemical inventory compliance)\n\nBut since only a single ordId is permitted, the Safety Incident Metrics Aggregate is the best match as it's specifically designed for aggregated dashboard metrics and compliance tracking.",
+    "picked_ordId": "sap.ehs:dataProduct:SafetyIncidentMetricsAggregate:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13698,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 4
+  "tokens": 13765,
+  "latency_s": 3.377,
+  "wall_s": 3.379,
+  "cached": false
 }

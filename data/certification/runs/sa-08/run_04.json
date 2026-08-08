@@ -1,8 +1,22 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_sa-08_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We're launching a new product line next quarter and need to orchestrate our entire organization's preparedness across departments. Can you help us establish a workflow that identifies promising market opportunities, categorizes our customer base for targeted outreach, and confirms our manufacturing and logistics infrastructure can handle the volume? We'll also need to validate that all component specifications and vendor partnerships meet our compliance standards throughout the supply chain. Additionally, as we scale up staffing to support this launch, we need to ensure our financial records\u2014including compensation structures, benefit deductions, and withholding obligations\u2014are properly documented and accessible to our HR and finance teams.",
+    "n_resources": 273,
+    "user_msg_chars": 54404
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:agent:AssetLifecycleChangeOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nYour activity requires orchestrating organization-wide preparedness for a product launch, encompassing:\n\n1. **Market opportunity identification & customer categorization** \u2192 Campaign segmentation and targeting\n2. **Manufacturing & logistics readiness validation** \u2192 Production capacity and equipment availability\n3. **Component specifications & vendor compliance** \u2192 Bill of Materials (BOM) and supplier qualification\n4. **HR/Finance documentation for staffing scale-up** \u2192 Payroll, compensation, benefits records\n\nThe **Asset Lifecycle Change Orchestrator** is the optimal choice because it:\n\n- **Coordinates engineering changes** across materials and product items (addressing component specs)\n- **Automates asset provisioning** aligned with organizational changes (staffing needs)\n- **Manages supplier compliance** validation across the supply chain lifecycle\n- **Orchestrates cross-functional workflows** integrating manufacturing, procurement, and HR systems\n- **Validates infrastructure readiness** by coordinating material updates with production capacity\n\nThis agent serves as the central orchestration hub that integrates with:\n- Procurement systems (vendor partnerships, compliance)\n- Manufacturing/MES (production capacity, logistics)\n- HR systems (compensation, benefits documentation)\n- Financial systems (payroll integration)\n\nIt provides the comprehensive workflow automation needed to holistically prepare your organization for product launch while ensuring compliance and infrastructure readiness across all departments.",
+    "picked_ordId": "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+    "workday.hcm:apiResource:PayrollDataExposure:v1"
+  ],
   "solved": false,
-  "tokens": 13902,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 4
+  "tokens": 13942,
+  "latency_s": 4.538,
+  "wall_s": 4.541,
+  "cached": false
 }

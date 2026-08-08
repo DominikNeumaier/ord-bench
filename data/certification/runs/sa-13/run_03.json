@@ -1,8 +1,22 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_sa-13_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to process an engineering change request for one of our key products that involves design modifications and supply chain validation. The change impacts multiple departments, so we'll need to coordinate the assessment across product design, manufacturing, and procurement to evaluate resource requirements and timeline implications. As part of this, we also need to identify which customer accounts are affected by this change so we can incorporate them into our communication strategy and any related marketing outreach. Can you help us orchestrate this entire workflow from initial change submission through cross-functional impact analysis and stakeholder notification?",
+    "n_resources": 273,
+    "user_msg_chars": 54334
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires orchestrating a comprehensive engineering change request workflow that spans:\n1. **Initial change submission and approval** - change management\n2. **Cross-functional impact analysis** - design, manufacturing, and procurement assessment\n3. **Stakeholder notification and communication** - customer account identification and outreach coordination\n\nThe **ChangeAutomationOrchestrator** is specifically designed to \"automate and coordinate engineering changes, material updates, and product item deployments\" - which directly addresses the core requirement of orchestrating the entire workflow from submission through cross-functional assessment.\n\nWhile other resources could support specific sub-tasks (e.g., `ChangeRequestApprovalWorkflow` for approvals, various customer APIs for account identification), the ChangeAutomationOrchestrator is the single best resource that can orchestrate the complete end-to-end workflow across all departments and coordinate the assessment, timeline implications, and cross-functional coordination needed for this engineering change initiative.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1",
+    "emarsys.cx:apiResource:CustomerAccountCampaignManagementAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13915,
-  "latency_s": 0.0,
-  "wall_s": 0.001,
-  "run": 3
+  "tokens": 13840,
+  "latency_s": 4.013,
+  "wall_s": 4.016,
+  "cached": false
 }

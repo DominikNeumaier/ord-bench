@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:agent:SupplierQualityComplianceOrchestrator:v1",
+  "nonce": "v2_cert_dy-40_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to streamline our component sourcing workflow by simultaneously validating our internal part specifications against supplier certifications and pulling current inventory levels along with vendor capabilities to ensure we're not creating bottlenecks during our quarterly supply chain review.",
+    "n_resources": 273,
+    "user_msg_chars": 53953
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1\"\n}\n```\n\nThis resource best fulfills the activity because it:\n\n1. **Validates internal part specifications** - Retrieves and manages material specifications needed to compare against supplier data\n2. **Accesses supplier certifications** - Provides vendor information and capabilities for validation\n3. **Pulls current inventory levels** - Exposes material master data including inventory status\n4. **Vendor capabilities assessment** - Manages vendor information to evaluate their capabilities\n5. **Supply chain review alignment** - Designed specifically for procurement operations and vendor management workflows\n\nWhile other resources like `sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1` or `siemens.plm:apiResource:MaterialAndVendorQualificationManagement:v1` could support parts of this workflow, the Material and Vendor Master Data API is the most direct single resource that addresses all four core requirements: specification validation, certification checking, inventory retrieval, and vendor capability assessment in one integrated interface.",
+    "picked_ordId": "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:agent:BOMComplianceAutomationAgent:v1"
+  ],
   "solved": false,
-  "tokens": 13829,
-  "latency_s": 0.0,
-  "wall_s": 0.005,
-  "run": 1
+  "tokens": 13778,
+  "latency_s": 3.89,
+  "wall_s": 3.892,
+  "cached": false
 }

@@ -1,8 +1,22 @@
 {
-  "picked_ordId": "sap.ehs:agent:VendorComplianceInvoiceAutomation:v1",
+  "nonce": "v2_cert_sa-02_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to orchestrate a comprehensive readiness validation for our upcoming product launch that coordinates material receipt verification, workforce capability assessment, and operational readiness evaluation. As part of this process, we also need to ensure we can track and validate all the materials coming in from our suppliers, including verifying their specifications against our master records. Additionally, we'll need to reconcile all incoming supplier billing documentation with our purchase commitments to ensure financial accuracy before we greenlight the launch. Please design a workflow that brings all these validation streams together into a single orchestrated process.",
+    "n_resources": 273,
+    "user_msg_chars": 54341
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:agent:BOMComplianceAutomationAgent:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires orchestrating a comprehensive readiness validation workflow that integrates:\n1. **Material receipt verification** - validating incoming materials against specifications\n2. **Workforce capability assessment** - ensuring team readiness\n3. **Operational readiness evaluation** - comprehensive launch validation\n4. **Supplier material tracking** - verification against master records\n5. **Invoice reconciliation** - validating billing against purchase commitments\n\nThe **BOM Compliance Automation Agent** is the optimal choice because it:\n\n- **Automates bill-of-materials validation** - directly addresses material specification verification against master records\n- **Performs supplier compliance verification** - validates that incoming materials meet qualification requirements\n- **Coordinates across engineering changes** - ensures all material updates are synchronized\n- **Integrates with procurement workflows** - connects to purchase order and vendor data for invoice reconciliation\n- **Orchestrates multi-stream validation** - capable of coordinating the material, workforce, and operational readiness streams into a unified process\n\nThis agent can be configured to orchestrate the complete readiness validation by:\n- Validating material receipts against procurement specifications\n- Cross-referencing supplier invoices with purchase commitments\n- Coordinating with workforce capability data\n- Triggering operational readiness checks before launch greenlight\n\n```",
+    "picked_ordId": "sap.s4:agent:BOMComplianceAutomationAgent:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:MaterialAndVendorProcurementAPI:v1",
+    "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13895,
-  "latency_s": 0.0,
-  "wall_s": 0.004,
-  "run": 1
+  "tokens": 13914,
+  "latency_s": 4.607,
+  "wall_s": 4.61,
+  "cached": false
 }

@@ -28,12 +28,11 @@ sys.path.insert(0, str(ROOT))
 from src import loader as ord_loader, llm  # noqa: E402
 
 # ── paths ────────────────────────────────────────────────────────────────────
-CERT_DIR     = Path(__file__).parent
-V2_DIR       = CERT_DIR / "v2"
-RUNS_DIR     = V2_DIR / "runs"
-RESULTS_PATH = V2_DIR / "results.jsonl"
-SUMMARY_PATH = V2_DIR / "summary.json"
-REPORT_PATH  = V2_DIR / "report.md"
+CERT_DIR     = ROOT / "data" / "certification"
+RUNS_DIR     = CERT_DIR / "runs"
+RESULTS_PATH = CERT_DIR / "results.jsonl"
+SUMMARY_PATH = CERT_DIR / "summary.json"
+REPORT_PATH  = CERT_DIR / "report.md"
 PROV_DIR     = ROOT / "data" / "test_cases" / "runtime" / "logs" / "provenance"
 DY_CASES     = ROOT / "data" / "test_cases" / "runtime" / "output" / "dynamic.json"
 
@@ -231,7 +230,7 @@ def certify(cases: list[dict], resources: list[dict],
 
 
 def write_results(results: list[dict]) -> None:
-    V2_DIR.mkdir(parents=True, exist_ok=True)
+    CERT_DIR.mkdir(parents=True, exist_ok=True)
 
     with RESULTS_PATH.open("w") as f:
         for r in results:

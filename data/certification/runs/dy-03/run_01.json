@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1",
+  "nonce": "v2_cert_dy-03_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to set up automated safety checks for our engineering change orders and material updates before they go to production. We've been manually validating everything against our compliance requirements, but it's slowing down our releases. Can you help me automate this validation process?",
+    "n_resources": 273,
+    "user_msg_chars": 53945
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1\"\n}\n```\n\n**Rationale:** The Safety Compliance Automation Coordinator is specifically designed to automate safety validation across engineering changes, materials, and product items. This agent directly addresses your need to set up automated safety checks for engineering change orders and material updates before production release, replacing manual compliance validation with automated workflows that validate against safety and compliance requirements.",
+    "picked_ordId": "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1"
+  ],
   "solved": true,
-  "tokens": 13764,
-  "latency_s": 3.713,
-  "wall_s": 3.714,
-  "run": 1
+  "tokens": 13643,
+  "latency_s": 2.482,
+  "wall_s": 2.484,
+  "cached": false
 }

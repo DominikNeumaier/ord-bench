@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:agent:SupplierQualityComplianceOrchestrator:v1",
+  "nonce": "v2_cert_dy-40_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to streamline our component sourcing workflow by simultaneously validating our internal part specifications against supplier certifications and pulling current inventory levels along with vendor capabilities to ensure we're not creating bottlenecks during our quarterly supply chain review.",
+    "n_resources": 273,
+    "user_msg_chars": 53953
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1\"\n}\n```\n\n**Rationale:** This activity requires simultaneous validation of internal part specifications against supplier certifications while pulling current inventory levels and vendor capabilities. The **Material and Vendor Master Data API** from SAP Ariba is the best match because it:\n\n1. **Retrieves material specifications** - allows you to access and validate internal part specifications\n2. **Exposes vendor information** - provides supplier certifications and capabilities data\n3. **Supports procurement workflows** - designed specifically for component sourcing validation\n4. **Integrates with procurement operations** - enables the cross-functional validation needed during supply chain reviews\n\nThis resource directly addresses the core requirement of validating specifications against certifications while providing vendor capability visibility to prevent bottlenecks during your quarterly supply chain review.",
+    "picked_ordId": "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:agent:BOMComplianceAutomationAgent:v1"
+  ],
   "solved": false,
-  "tokens": 13829,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 2
+  "tokens": 13729,
+  "latency_s": 3.279,
+  "wall_s": 3.28,
+  "cached": false
 }

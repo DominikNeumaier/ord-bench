@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.ehs:dataProduct:SafetyIncidentMetricsAggregate:v1",
+  "nonce": "v2_cert_dy-31_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together our current safety performance metrics across all reported events while simultaneously ensuring our chemical inventory documentation stays current with regulatory standards\u2014can I get both of those data sets integrated into one dashboard view?",
+    "n_resources": 273,
+    "user_msg_chars": 53921
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:dataProduct:SafetyIncidentMetricsAggregate:v1\"\n}\n```\n\n**Rationale:** The activity requires integrating two distinct data sets into a single dashboard:\n\n1. **Safety performance metrics across reported events** - This is directly provided by `SafetyIncidentMetricsAggregate`, which \"aggregates KPIs and trends for safety incidents across sites and time periods\"\n\n2. **Chemical inventory documentation with regulatory standards** - The `ChemicalInventoryCompliance` API (`sap.ehs:apiResource:ChemicalInventoryCompliance:v1`) manages \"hazardous substance inventory and regulatory compliance tracking\"\n\nWhile the selected data product is the primary dashboard resource, it integrates with the chemical compliance APIs available in the SAP EHS suite. The `SafetyIncidentMetricsAggregate` data product is specifically designed for aggregating safety metrics and compliance data, making it the best single resource that fulfills both requirements through SAP EHS's unified safety and chemical compliance framework.",
+    "picked_ordId": "sap.ehs:dataProduct:SafetyIncidentMetricsAggregate:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13698,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 3
+  "tokens": 13766,
+  "latency_s": 3.651,
+  "wall_s": 3.653,
+  "cached": false
 }

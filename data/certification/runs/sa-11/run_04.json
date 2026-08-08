@@ -1,8 +1,22 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_sa-11_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to orchestrate a production transition that's been triggered by recent engineering changes to one of our product lines. This should coordinate assessments to ensure our workforce is ready for the transition, validate that all equipment meets the new specifications, provision the necessary assets, and communicate the changes to our affected customers. As part of this process, we'll also need to track how these product changes flow through our materials and components, including automated coordination across all related items. Can you help us manage this comprehensive transition while ensuring all service requests and equipment documentation are kept current throughout the changeover?",
+    "n_resources": 273,
+    "user_msg_chars": 54354
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires orchestrating a comprehensive production transition triggered by engineering changes, which must coordinate:\n\n1. **Workforce readiness assessments** - evaluating capability for transition\n2. **Equipment specification validation** - ensuring compliance with new specs\n3. **Asset provisioning** - supplying necessary resources\n4. **Customer communication** - notifying affected parties\n5. **Material and component tracking** - flowing changes through supply chain with automated coordination\n6. **Service requests and documentation** - maintaining currency throughout changeover\n\nThe **ChangeAutomationOrchestrator** is explicitly designed to \"automate and coordinate engineering changes, material updates, and product item deployments\" - directly addressing the core requirement of coordinating a production transition across engineering changes.\n\nWhile other resources handle specific domains (workforce via `sap.sf` agents, equipment via `AssetProvisioningOrchestrator`, customer communication via `emarsys` agents), the `ChangeAutomationOrchestrator` serves as the primary orchestration engine that integrates these elements across the production transition lifecycle, including material flow tracking and change propagation through related items.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1",
+    "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1"
+  ],
   "solved": false,
-  "tokens": 13857,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 4
+  "tokens": 13880,
+  "latency_s": 4.313,
+  "wall_s": 4.318,
+  "cached": false
 }

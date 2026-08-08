@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+  "nonce": "v2_cert_dy-13_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to track a equipment modification we're rolling out next month and manage the related service requests from our field teams. Can you help me set up the workflow to document this change and keep everyone updated on the status?",
+    "n_resources": 273,
+    "user_msg_chars": 53888
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1\"\n}\n```\n\n**Rationale:** The activity requires tracking an equipment modification rollout and managing related service requests with workflow documentation and status updates. The **Change Request Approval Workflow API** is the best match because it:\n\n1. **Manages change requests** - Directly handles the equipment modification documentation\n2. **Tracks approval and scheduling** - Enables workflow setup and status tracking\n3. **Provides impact assessment** - Helps document the change impact\n4. **Coordinates field team updates** - Integrates with service request management for field team communication\n\nWhile `ServiceTicketOrderManagementAPI` could supplement this for service request tracking, the Change Request Approval Workflow is the primary system designed to document modifications, manage approvals, and keep stakeholders updated on change status across the organization.",
+    "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13671,
-  "latency_s": 0.0,
-  "wall_s": 0.003,
-  "run": 2
+  "tokens": 13730,
+  "latency_s": 3.478,
+  "wall_s": 3.479,
+  "cached": false
 }

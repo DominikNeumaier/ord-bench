@@ -1,9 +1,9 @@
 """Standalone runner for landscape ambiguity scoring.
 
 Usage:
-    python data/ambiguity/run_ambiguity.py
-    python data/ambiguity/run_ambiguity.py --output data/ambiguity/landscape_ambiguity_report.json
-    python data/ambiguity/run_ambiguity.py --top-k 10 --min-score 0.30
+    python src/ambiguity/run_ambiguity.py
+    python src/ambiguity/run_ambiguity.py --output data/ambiguity/landscape_ambiguity_report.json
+    python src/ambiguity/run_ambiguity.py --top-k 10 --min-score 0.30
 """
 
 from __future__ import annotations

@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:agent:BillOfMaterialsComplianceValidator:v1",
+  "nonce": "v2_cert_sg-19_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are getting ready for a product launch \u2014 validate the BOM, sort out our material sourcing and vendor contracts, and confirm manufacturing is ready.",
+    "n_resources": 273,
+    "user_msg_chars": 53805
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:agent:BillOfMaterialsComplianceValidator:v1\"\n}\n```\n\n**Rationale:**\n\nFor a product launch requiring BOM validation, material sourcing, vendor contracts, and manufacturing readiness confirmation, the **Bill of Materials Compliance Validator** agent is the best match because it:\n\n1. **BOM Validation** - Directly automates BOM validation and supplier qualification checks\n2. **Material Sourcing** - Coordinates with supplier qualification workflows to validate material sourcing\n3. **Vendor Contracts** - Integrates supplier compliance verification essential for vendor contract confirmation\n4. **Manufacturing Readiness** - Validates engineering changes across production materials and items, ensuring manufacturing is prepared\n\nThis agent orchestrates the core pre-launch activities across the manufacturing execution system (my.mes) and provides the comprehensive validation framework needed across all three domains (BOM, sourcing, vendor management, and manufacturing readiness).",
+    "picked_ordId": "my.mes:agent:BillOfMaterialsComplianceValidator:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:agent:BOMComplianceAutomationAgent:v1"
+  ],
   "solved": false,
-  "tokens": 13856,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 3
+  "tokens": 13727,
+  "latency_s": 3.785,
+  "wall_s": 3.787,
+  "cached": false
 }

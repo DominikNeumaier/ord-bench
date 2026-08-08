@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:IncidentRootCauseAnalyzer:v1",
+  "nonce": "v2_cert_dy-23_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together our incident tracking data for the quarterly board review while simultaneously updating several customer cases that are stuck in our resolution queue\u2014can you help me access both of those systems in one go so I don't have to toggle between platforms?",
+    "n_resources": 273,
+    "user_msg_chars": 53928
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:IncidentRootCauseAnalyzer:v1\"\n}\n```\n\n**Rationale:** While you need access to both incident tracking and customer case management systems, the IncidentRootCauseAnalyzer agent is the best single resource because:\n\n1. **Incident Tracking**: It autonomously analyzes service tickets to identify patterns and root causes\u2014directly supporting quarterly board review preparation with incident data insights.\n\n2. **Case Resolution Support**: By analyzing stuck tickets and service incidents, it provides the contextual intelligence needed to understand resolution bottlenecks and stuck cases in your queue.\n\n3. **Unified Intelligence**: Rather than simply toggling between two separate systems, this agent synthesizes ticket data across both domains (incidents and cases) to give you comprehensive insights for board reporting while simultaneously informing which cases need prioritization for resolution.\n\nThis is more efficient than accessing raw APIs separately, as it provides analyzed, actionable intelligence that serves both your quarterly review needs and your case resolution queue optimization in one go.",
+    "picked_ordId": "corp.itsm:agent:IncidentRootCauseAnalyzer:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:dataProduct:SafetyIncidentMetrics:v1"
+  ],
   "solved": false,
-  "tokens": 13792,
-  "latency_s": 0.0,
-  "wall_s": 0.004,
-  "run": 1
+  "tokens": 13768,
+  "latency_s": 3.618,
+  "wall_s": 3.622,
+  "cached": false
 }

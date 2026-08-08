@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_sg-07_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We have a new service and change request. Log it, assess the organizational approvals needed, and identify all dependencies before we can proceed.",
+    "n_resources": 273,
+    "user_msg_chars": 53801
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1\"\n}\n```\n\n**Rationale:** The activity explicitly requires logging a change request, assessing organizational approvals, and identifying dependencies. The Change Request Approval Workflow API is purpose-built for managing change request approvals, scheduling, and impact assessment\u2014making it the single best match for this integrated change management activity.",
+    "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:WorkforceOrgStructureAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13745,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 2
+  "tokens": 13608,
+  "latency_s": 2.785,
+  "wall_s": 2.787,
+  "cached": false
 }

@@ -512,6 +512,11 @@ def run_iterative(systems_dir: Path, max_rounds: int = 20, max_resources: int = 
                 "timestamp": datetime.now(timezone.utc).isoformat(),
                 "phase":"iterative","round":rnd,"action":"create",
                 "outcome":"accepted" if accepted else "rejected_judge",
+                # ordId of the resource that was actually created (only meaningful
+                # when accepted). Recorded so the per-round landscape state can be
+                # reconstructed exactly from the log alone — the profile below is
+                # the generation TARGET, not the produced resource's real fields.
+                "ordId": resource.get("ordId") if accepted else None,
                 "target_resource":target_ordid,"tier_target":tier,
                 "achieved_sim":sim,"pre_check_sim":pre_sim,
                 "profile":{"et_ids":sorted(et_ids),"lob":lob,"rtype":rtype,"namespace":namespace},

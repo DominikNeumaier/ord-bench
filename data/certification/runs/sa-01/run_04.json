@@ -1,8 +1,22 @@
 {
-  "picked_ordId": "sap.s4:agent:OpportunityToOrderAutomationEngine:v1",
+  "nonce": "v2_cert_sa-01_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to establish a comprehensive procurement and delivery workflow that coordinates vendor assessment, augments customer purchases with enriched data, validates regulatory requirements, and manages incoming stock alongside staff and resource allocation. The process should also track milestone progression and delivery status throughout the entire cycle, including the ability to handle customer grievances and reconcile any disagreements that arise during fulfillment. Can you design this end-to-end supply chain orchestration to ensure seamless coordination across all these interconnected operations?",
+    "n_resources": 273,
+    "user_msg_chars": 54262
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:agent:VendorProcurementOrderManagementOrchestrator\"\n}\n```\n\nActually, let me reconsider. Looking at this comprehensive end-to-end supply chain orchestration requirement, the activity demands coordination across:\n\n1. **Vendor assessment** \u2192 Procurement vendor management\n2. **Customer purchase enrichment** \u2192 Order data augmentation\n3. **Regulatory validation** \u2192 Compliance checking\n4. **Incoming stock management** \u2192 Material receipt & inventory\n5. **Staff & resource allocation** \u2192 Workforce scheduling\n6. **Milestone & delivery tracking** \u2192 Order fulfillment status\n7. **Customer grievance handling** \u2192 Dispute resolution\n8. **Reconciliation** \u2192 Invoice/order matching\n\nThe best match is the orchestrator that coordinates vendor procurement with compliance validation and order fulfillment tracking:\n\n```json\n{\n  \"ordId\": \"sap.ariba:agent:VendorInvoiceReconciliationAutomation\"\n}\n```\n\nWait - that's too narrow. The core need is a master orchestrator spanning procurement \u2192 fulfillment \u2192 dispute resolution. The optimal resource is:\n\n```json\n{\n  \"ordId\": \"sap.s4:agent:ProcurementMatchingAgent\"\n}\n```\n\nActually, reconsidering the full scope including orchestration of interconnected operations, the best fit is:\n\n```json\n{\n  \"ordId\": \"sap.ariba:agent:MaterialAndEngineeringChangeCoordinator\"\n}\n```\n\nNo - the most comprehensive match for end-to-end supply chain orchestration is:\n\n```json\n{\n  \"ordId\": \"my.mes:agent:SupplierQualityComplianceOrchestrator\"\n}\n```\n\nThe best single resource that orchestrates vendor assessment, compliance, inventory, and fulfillment coordination is:\n\n```json\n{\n  \"ordId\": \"sap.s4:agent:BOMComplianceAutomationAgent\"\n}\n```\n\nAfter careful analysis, the optimal resource for comprehensive procurement-to-delivery workflow orchestration is:\n\n```json\n{\n  \"ordId\": \"sap.ariba:agent:SupplierComplianceAndIncidentMonitor\"\n}\n```",
+    "picked_ordId": "sap.ariba:agent:VendorProcurementOrderManagementOrchestrator"
+  },
+  "expected_ordIds": [
+    "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+    "sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13884,
-  "latency_s": 0.0,
-  "wall_s": 0.001,
-  "run": 4
+  "tokens": 14106,
+  "latency_s": 6.115,
+  "wall_s": 6.117,
+  "cached": false
 }

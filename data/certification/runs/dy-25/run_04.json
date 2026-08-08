@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.ariba:agent:VendorInvoiceReconciliationAutomation:v1",
+  "nonce": "v2_cert_dy-25_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to reconcile our incoming supplier billing against the materials we've received this quarter, and at the same time, verify that everything we've taken in meets our regulatory obligations for restricted substances in each shipment.",
+    "n_resources": 273,
+    "user_msg_chars": 53893
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:agent:VendorInvoiceReconciliationAutomation:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires:\n1. **Reconciling supplier billing against materials received** - This is invoice-to-PO matching\n2. **Verifying regulatory compliance for restricted substances** - This is hazmat/restricted substance validation per shipment\n\nThe **Vendor Invoice Reconciliation Agent** is the best match because it:\n- Autonomously matches vendor invoices to purchase orders and contracts\n- Flags discrepancies for approval\n- Operates within the procurement domain where supplier billing and material receipt reconciliation occur\n\nWhile this agent alone doesn't directly address restricted substances compliance, it handles the core reconciliation requirement. For the regulatory compliance verification aspect, this agent would typically work in conjunction with procurement systems and compliance data (which SAP Ariba can access), making it the single best primary resource for orchestrating this dual-requirement activity.\n\nAlternative consideration: `sap.ehs:agent:VendorComplianceInvoiceAutomation:v1` (Safety Procurement Invoice Validator) could also be relevant as it verifies invoices against contractual commitments and compliance documentation, but the Ariba invoice reconciliation agent is the primary procurement system resource for this activity.",
+    "picked_ordId": "sap.ariba:agent:VendorInvoiceReconciliationAutomation:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13732,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 4
+  "tokens": 13823,
+  "latency_s": 4.348,
+  "wall_s": 4.35,
+  "cached": false
 }

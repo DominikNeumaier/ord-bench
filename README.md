@@ -22,7 +22,7 @@ data/
   test_cases/   350 test cases (design_time/, runtime/)
   ambiguity/    Pairwise ambiguity report
   certification/ Test-case difficulty certification harness
-experiments/    Reproduction scripts and figures (disambiguation analysis, embedding validation)
+analysis/    Reproduction scripts and figures (disambiguation analysis, embedding validation)
 paper/          Conference paper LaTeX source and PDF
 docs/           Design documentation
 web/            Interactive benchmark browser (landscape, ambiguity, test cases)
@@ -31,8 +31,8 @@ web/            Interactive benchmark browser (landscape, ambiguity, test cases)
 ## Reproducing the numbers
 
 ```bash
-python experiments/run_disambiguation.py   # -24.5% / -28.3% structural ambiguity
-python experiments/embedding_analysis/scripts/embedding_by_tier.py  # r=0.63
+python analysis/disambiguation/run_disambiguation.py   # -24.5% / -28.3% structural ambiguity
+python analysis/embedding_analysis/scripts/embedding_by_tier.py  # r=0.63
 ```
 
 ## Paper

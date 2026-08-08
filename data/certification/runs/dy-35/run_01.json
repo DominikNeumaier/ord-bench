@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1",
+  "nonce": "v2_cert_dy-35_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together a comprehensive view of our current operational health by analyzing both our recent campaign safety incidents and engagement issues alongside our product economics to understand cost drivers and supplier dependencies\u2014so I can brief leadership on where we're experiencing the most friction across both customer-facing and manufacturing operations.",
+    "n_resources": 273,
+    "user_msg_chars": 54025
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1\"\n}\n```\n\n**Rationale:**\n\nThis data product directly addresses your need for a comprehensive operational health view by aggregating:\n\n1. **Product Economics & Cost Drivers** - Material expenditures and engineering modification impacts on bill-of-materials structures\n2. **Regulatory Adherence** - Compliance assessment across manufacturing operations\n3. **Supplier Dependencies** - Bill-of-materials structure visibility showing supplier relationships and component sourcing\n\nWhile other resources address individual friction points (safety incidents via `sap.ehs:dataProduct:SafetyIncidentMetricsAggregate:v1`, engagement issues via `emarsys.cx:dataProduct:EngagementIncidentMetrics:v1`, manufacturing via `my.mes:dataProduct:SupplierPerformanceAndProcurementOptimization:v1`), the **BOM Cost and Compliance Analytics** data product provides the integrated lens you need\u2014connecting customer-facing campaign safety and engagement friction to the underlying manufacturing economics and supplier dependencies that drive operational friction across both domains.\n\nThis enables you to brief leadership on where cost, compliance, and supplier risks intersect with operational challenges.",
+    "picked_ordId": "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1"
+  ],
   "solved": false,
-  "tokens": 13823,
-  "latency_s": 0.0,
-  "wall_s": 0.004,
-  "run": 1
+  "tokens": 13827,
+  "latency_s": 4.337,
+  "wall_s": 4.339,
+  "cached": false
 }

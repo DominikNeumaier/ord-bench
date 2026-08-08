@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+  "nonce": "v2_cert_dy-29_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to pull our current production queue status and see which items are scheduled for the next shift, while simultaneously checking our active campaign outreach to identify which contacts have engaged with our latest messaging so we can coordinate our manufacturing timeline with customer communication touchpoints.",
+    "n_resources": 273,
+    "user_msg_chars": 53974
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:CampaignAndCustomerOrderManagement:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires two simultaneous capabilities:\n1. **Production queue status and next shift scheduling** - needs access to production/manufacturing data\n2. **Active campaign outreach and customer engagement** - needs access to campaign and contact engagement data\n\nThe `my.mes:apiResource:CampaignAndCustomerOrderManagement:v1` (Campaign and Customer Order Management API) is the best single match because it:\n\n- **Manages production campaigns and customer account orders** within manufacturing execution workflows, providing access to production queue and scheduling data\n- **Integrates campaign management with manufacturing operations**, enabling coordination between customer communication touchpoints and manufacturing timeline\n- Operates in the MES (Manufacturing Execution System) domain where production queue status and shift scheduling naturally reside\n- Provides the bridge between campaign outreach data and production order management needed for this coordination activity\n\nWhile alternatives like `emarsys.cx:apiResource:CampaignContactEngagementAPI:v1` could address the campaign engagement aspect, or `my.mes:apiResource:EquipmentOEEAnalytics:v1` could address production metrics, only the Campaign and Customer Order Management API directly integrates both production queuing/scheduling AND customer campaign coordination capabilities.",
+    "picked_ordId": "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:apiResource:MachineProductionOrderIntegration:v1"
+  ],
   "solved": false,
-  "tokens": 13728,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 4
+  "tokens": 13841,
+  "latency_s": 4.428,
+  "wall_s": 4.431,
+  "cached": false
 }

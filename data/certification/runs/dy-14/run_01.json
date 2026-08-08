@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+  "nonce": "v2_cert_dy-14_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to record incoming shipments from our suppliers into the system, but I'm not sure if we should be using the invoicing module or if there's a different process for just logging what physically arrived at our warehouse before we even get the bills.",
+    "n_resources": 273,
+    "user_msg_chars": 53909
+  },
+  "output": {
+    "raw_text": "```json\n{\"ordId\": \"sap.s4:apiResource:MaterialReceiptInboundAPI:v1\"}\n```\n\nThis is the best match because:\n\n1. **Direct alignment with the activity**: The Material Receipt Inbound API is specifically designed for \"creating and managing goods receipt transactions against purchase orders\" - which is exactly what you need for recording incoming shipments from suppliers into the system.\n\n2. **Solves the invoicing vs. receiving dilemma**: This API handles the physical receipt/inbound logistics process (what arrived at the warehouse) separately from invoicing, which is the exact distinction you're asking about.\n\n3. **Precedes invoice processing**: Goods receipt transactions typically occur before supplier invoices are processed, so this allows you to log physical arrivals first, then reconcile against bills later.\n\n4. **Purchase order linkage**: It ties receipts to POs, providing proper traceability and audit trails for warehouse intake processes.",
+    "picked_ordId": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+  ],
   "solved": true,
-  "tokens": 13636,
-  "latency_s": 2.726,
-  "wall_s": 2.731,
-  "run": 1
+  "tokens": 13741,
+  "latency_s": 3.545,
+  "wall_s": 3.547,
+  "cached": false
 }

@@ -1,8 +1,22 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_sa-08_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We're launching a new product line next quarter and need to orchestrate our entire organization's preparedness across departments. Can you help us establish a workflow that identifies promising market opportunities, categorizes our customer base for targeted outreach, and confirms our manufacturing and logistics infrastructure can handle the volume? We'll also need to validate that all component specifications and vendor partnerships meet our compliance standards throughout the supply chain. Additionally, as we scale up staffing to support this launch, we need to ensure our financial records\u2014including compensation structures, benefit deductions, and withholding obligations\u2014are properly documented and accessible to our HR and finance teams.",
+    "n_resources": 273,
+    "user_msg_chars": 54404
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.sf:agent:TalentAcquisitionAndCampaignOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThis activity requires orchestrating organization-wide preparedness across multiple departments for a product launch. While it spans market analysis, customer segmentation, manufacturing/logistics validation, compliance verification, and HR/finance documentation, the **core orchestration challenge** is coordinating workforce scaling and ensuring all systems work together.\n\nThe **TalentAcquisitionAndCampaignOrchestrator** is the best single resource because it:\n\n1. **Automates recruitment campaigns and candidate segmentation** - addressing the staffing scale-up need\n2. **Coordinates talent pipeline** across the organization during growth phases\n3. **Orchestrates cross-functional campaign coordination** - the closest match to orchestrating \"entire organization preparedness\"\n4. **Integrates with HR systems** that manage compensation, benefits, and withholding obligations (through linked SAP SuccessFactors APIs)\n\nWhile other resources address specific sub-activities (e.g., `sap.s4:agent:BOMComplianceAutomationAgent` for supply chain validation, `sap.ehs:agent:VendorComplianceAutomationOrchestrator` for compliance), the TalentAcquisitionAndCampaignOrchestrator provides the highest-level orchestration across organizational readiness, which is the critical bottleneck for launch success.",
+    "picked_ordId": "sap.sf:agent:TalentAcquisitionAndCampaignOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+    "workday.hcm:apiResource:PayrollDataExposure:v1"
+  ],
   "solved": false,
-  "tokens": 13902,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 2
+  "tokens": 13948,
+  "latency_s": 4.472,
+  "wall_s": 4.475,
+  "cached": false
 }

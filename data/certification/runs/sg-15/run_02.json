@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:dataProduct:SupplierPerformanceAndProcurementOptimization:v1",
+  "nonce": "v2_cert_sg-15_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Our team needs to review product costs and qualify our material and vendor setup before we commit to the next procurement cycle.",
+    "n_resources": 273,
+    "user_msg_chars": 53783
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:MaterialAndVendorInventoryManagement:v1\"\n}\n```\n\n**Rationale:** This activity requires reviewing product costs and qualifying material and vendor setup before procurement. The Material and Vendor Inventory Management API directly addresses this need by retrieving and managing material stock levels and vendor supply chain data, enabling your team to assess vendor performance, material availability, and cost structures prior to committing to the next procurement cycle.",
+    "picked_ordId": "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1"
+  ],
   "solved": false,
-  "tokens": 13659,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 2
+  "tokens": 13611,
+  "latency_s": 2.651,
+  "wall_s": 2.652,
+  "cached": false
 }

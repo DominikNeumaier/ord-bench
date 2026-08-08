@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "emarsys.cx:agent:ProductLifecycleOrchestrator:v1",
+  "nonce": "v2_cert_sg-08_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are transitioning to a new product line. Assess our organizational and hazardous substance readiness, handle the material and procurement impacts, and reconfigure production accordingly.",
+    "n_resources": 273,
+    "user_msg_chars": 53844
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires a comprehensive, integrated approach to product line transition covering:\n1. **Organizational readiness assessment** - evaluating capability for change\n2. **Hazardous substance readiness** - compliance and inventory management\n3. **Material and procurement impacts** - sourcing and supply chain adjustments\n4. **Production reconfiguration** - manufacturing execution alignment\n\nThe **Safety Compliance Automation Coordinator** is the optimal resource because it:\n\n- **Automates safety validation across engineering changes, materials, and product items** - directly addressing hazardous substance readiness during transition\n- **Coordinates with compliance frameworks** - ensuring organizational readiness from an EHS perspective\n- **Integrates with material and product item systems** - handling procurement and production impacts\n- **Provides orchestration capabilities** - managing the multi-faceted nature of the transition\n\nWhile specialized resources exist for individual aspects (e.g., `sap.s4:agent:EngineeringChangeOrchestrator` for production changes, `sap.ehs:apiResource:HazardousSubstanceInventoryExchange` for substance data), the **SafetyComplianceAutomationCoordinator** uniquely consolidates safety/hazmat validation with engineering changes and material coordination\u2014critical for assessing organizational and hazardous substance readiness while reconfiguring production.",
+    "picked_ordId": "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1"
+  ],
   "solved": false,
-  "tokens": 13805,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 4
+  "tokens": 13855,
+  "latency_s": 4.437,
+  "wall_s": 4.438,
+  "cached": false
 }

@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1",
+  "nonce": "v2_cert_dy-37_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull current production schedules and equipment status to finalize our procurement forecast for next quarter, and simultaneously submit a maintenance request for our assembly line since we're seeing performance degradation that needs urgent attention from our service team.",
+    "n_resources": 273,
+    "user_msg_chars": 53938
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:ServiceTicketChangeRequestManagement:v1\"\n}\n```\n\n**Rationale:**\n\nYour activity requires two distinct capabilities:\n\n1. **Pull current production schedules and equipment status** for procurement forecasting\n2. **Submit a maintenance request** for assembly line performance issues\n\nThe `ServiceTicketChangeRequestManagement:v1` API from the MES (Manufacturing Execution System) is the best match because it:\n\n- **Manages service tickets and change requests** - directly supports submitting maintenance requests for equipment issues\n- **Retrieves equipment maintenance records** - provides access to current equipment status and maintenance history needed for procurement planning\n- **Integrates with production operations** - designed specifically for manufacturing environments to track both equipment status and service workflows\n\nThis single resource enables you to:\n- Access real-time equipment status for your procurement forecast\n- Immediately submit the urgent maintenance request through the same system\n- Maintain integrated tracking between procurement planning and asset management\n\nAlternative complementary resources you might also consider: `my.mes:apiResource:EquipmentOEEAnalytics:v1` (for detailed equipment performance metrics) and `my.mes:apiResource:EquipmentChangeAndServiceManagement:v1` (for change coordination), but the selected API is the primary match for your dual activity.",
+    "picked_ordId": "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1"
+  ],
   "solved": false,
-  "tokens": 13742,
-  "latency_s": 0.0,
-  "wall_s": 0.003,
-  "run": 1
+  "tokens": 13831,
+  "latency_s": 4.914,
+  "wall_s": 4.916,
+  "cached": false
 }

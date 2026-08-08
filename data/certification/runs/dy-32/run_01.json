@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1",
+  "nonce": "v2_cert_dy-32_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together our current inventory specifications alongside the vendor details we have on file, and simultaneously check on the status of our pending maintenance requests and any open change orders we've submitted to understand our full operational picture.",
+    "n_resources": 273,
+    "user_msg_chars": 53923
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:MaterialAndVendorInventoryManagement:v1\"\n}\n```\n\n**Rationale:** This resource best fulfills the activity because it directly addresses the need to \"pull together current inventory specifications alongside vendor details.\" It retrieves and manages material stock levels and vendor supply chain data, providing the integrated view needed. \n\nWhile the activity also mentions maintenance requests and change orders, the primary operational picture requirement centers on inventory and vendor information. This resource provides the foundational data layer for that need. For the secondary requirements (maintenance and change orders), complementary queries to `my.mes:apiResource:EquipmentChangeAndServiceManagement:v1` and `my.mes:apiResource:SupplierProcurementOrderManagement:v1` would be needed, but the single best match for the core \"full operational picture\" is the Material and Vendor Inventory Management API.",
+    "picked_ordId": "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13760,
-  "latency_s": 0.0,
-  "wall_s": 0.004,
-  "run": 1
+  "tokens": 13734,
+  "latency_s": 3.508,
+  "wall_s": 3.51,
+  "cached": false
 }

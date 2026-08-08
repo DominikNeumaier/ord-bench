@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1",
+  "nonce": "v2_cert_dy-33_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to simultaneously log incoming shipments from our suppliers while also tracking the modifications we're making to our product line and ensuring our field technicians can submit their equipment maintenance needs through a single integrated workflow.",
+    "n_resources": 273,
+    "user_msg_chars": 53910
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:ServiceTicketChangeRequestManagement:v1\"\n}\n```\n\n**Rationale:** \n\nThe activity requires a single integrated workflow that simultaneously handles:\n1. **Incoming shipment logging** - supplier material receipt tracking\n2. **Product line modifications** - engineering changes tracking\n3. **Field technician equipment maintenance requests** - service ticket submission\n\nThe `my.mes:apiResource:ServiceTicketChangeRequestManagement:v1` (Service Ticket & Change Request Management API) is the best fit because it:\n\n- **Manages service tickets** for equipment maintenance requests from field technicians\n- **Manages change requests** for product line modifications\n- Integrates with **SupplierProcurementOrderManagement** and **MaterialAndVendorInventoryManagement** APIs in the MES ecosystem to handle incoming shipments\n\nThis MES (Manufacturing Execution System) resource is purpose-built for manufacturing operations and provides the integrated workflow capability needed to consolidate all three activities (procurement, engineering changes, and maintenance) into a single operational interface, unlike siloed resources that only handle individual functions.",
+    "picked_ordId": "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13745,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 4
+  "tokens": 13780,
+  "latency_s": 3.794,
+  "wall_s": 3.797,
+  "cached": false
 }

@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1",
-  "solved": true,
-  "tokens": 13744,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 4
+  "nonce": "v2_cert_dy-30_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Can you pull up the current status of ticket #12847 and check who our top-performing sales representative is in the Northeast region so I can route this escalation appropriately, then also retrieve what products that employee is certified to sell?",
+    "n_resources": 273,
+    "user_msg_chars": 53902
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1\"\n}\n```\n\n**Rationale:** This activity requires three distinct capabilities:\n\n1. **Ticket status (#12847)** - `corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1` handles service tickets, but the single best match must prioritize the most complex requirement.\n\n2. **Top-performing sales rep in Northeast** - This requires sales employee hierarchy, organizational structure, and performance metrics. `sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1` exposes \"employee organizational structure and sales capabilities\" which directly supports identifying regional sales leadership.\n\n3. **Product certifications for that employee** - The same resource description includes \"sales capabilities,\" which encompasses product certification data needed for routing escalations appropriately.\n\nWhile `sap.crm:dataProduct:SalesOpportunityPipelineAnalytics:v1` could provide performance insights, the API resource selected provides the direct access to employee hierarchy, regional organization, and capability/certification data needed to identify and route to the appropriate sales representative\u2014making it the single best fulfillment of this multi-part business activity.",
+    "picked_ordId": "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13820,
+  "latency_s": 4.572,
+  "wall_s": 4.576,
+  "cached": false
 }

@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1",
+  "nonce": "v2_cert_dy-37_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull current production schedules and equipment status to finalize our procurement forecast for next quarter, and simultaneously submit a maintenance request for our assembly line since we're seeing performance degradation that needs urgent attention from our service team.",
+    "n_resources": 273,
+    "user_msg_chars": 53938
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:ServiceTicketChangeRequestManagement:v1\"\n}\n```\n\n**Rationale:** \n\nThis activity requires two integrated capabilities:\n1. **Production schedules & equipment status** - needed for procurement forecast finalization\n2. **Maintenance request submission** - for assembly line performance degradation\n\nThe `ServiceTicketChangeRequestManagement` API is the best match because it explicitly manages both:\n- **Service tickets** (for maintenance requests on the assembly line)\n- **Change requests** (for documenting equipment status changes)\n- **Equipment maintenance records** (directly supporting the performance degradation issue)\n\nThis resource provides a unified interface to both pull current equipment status/maintenance data and simultaneously submit new maintenance requests through a single MES-integrated endpoint, making it ideal for coordinating procurement decisions with urgent service needs.",
+    "picked_ordId": "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1"
+  ],
   "solved": false,
-  "tokens": 13742,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 4
+  "tokens": 13721,
+  "latency_s": 3.156,
+  "wall_s": 3.157,
+  "cached": false
 }

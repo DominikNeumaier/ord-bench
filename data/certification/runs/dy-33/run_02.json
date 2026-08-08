@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1",
+  "nonce": "v2_cert_dy-33_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to simultaneously log incoming shipments from our suppliers while also tracking the modifications we're making to our product line and ensuring our field technicians can submit their equipment maintenance needs through a single integrated workflow.",
+    "n_resources": 273,
+    "user_msg_chars": 53910
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:SupplierProcurementOrderManagement:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires a single integrated workflow that handles three concurrent operations:\n1. **Logging incoming shipments from suppliers** - procurement/inbound logistics\n2. **Tracking product line modifications** - engineering changes\n3. **Field technician equipment maintenance submissions** - service requests\n\nThe `SupplierProcurementOrderManagement` API is the best match because it:\n\n- **Manages purchase orders and vendor data** for incoming supplier shipments (satisfies requirement #1)\n- Integrates with the broader MES ecosystem that includes `EngineeringChangeProductIntegration` and `EquipmentChangeAndServiceManagement` for coordinated workflows\n- Provides the procurement foundation that connects to equipment maintenance tracking through the MES service management capabilities\n- Offers a unified interface for supplier order lifecycle management while being part of a system designed for integrated manufacturing execution that encompasses both material receiving and equipment service operations\n\nWhile no single API perfectly covers all three needs, `SupplierProcurementOrderManagement` serves as the core integration point for the incoming shipment logging requirement and can be orchestrated with complementary MES resources for the complete workflow.",
+    "picked_ordId": "my.mes:apiResource:SupplierProcurementOrderManagement:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13745,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 2
+  "tokens": 13815,
+  "latency_s": 4.457,
+  "wall_s": 4.458,
+  "cached": false
 }

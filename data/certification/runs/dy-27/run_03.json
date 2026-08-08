@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.s4:apiResource:CustomerAccountFinancialAPI:v1",
+  "nonce": "v2_cert_dy-27_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to pull together our supplier payment terms and current commitments against what we've got coming in from our clients this quarter\u2014basically reconcile who we owe and what we're expecting to collect so we can forecast our cash position accurately.",
+    "n_resources": 273,
+    "user_msg_chars": 53909
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:dataProduct:ProcurementMetricsHub:v1\"\n}\n```\n\n**Rationale:** This activity requires reconciling supplier payment terms and commitments against client receivables to forecast cash position. The **Procurement Metrics Hub** is the best match because it aggregates procurement KPIs including vendor performance, order cycle times, and spend analysis\u2014providing the supplier-side financial visibility needed. \n\nHowever, a more complete solution would ideally combine this with customer financial data. The runner-up would be **sap.s4:apiResource:CustomerAccountFinancialAPI:v1** (for client receivables and payment terms), but since only one resource can be selected, the Procurement Metrics Hub provides the critical supplier payment commitment visibility essential for cash forecasting.",
+    "picked_ordId": "sap.s4:dataProduct:ProcurementMetricsHub:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:apiResource:ProcurementVendorOrderManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13672,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 3
+  "tokens": 13714,
+  "latency_s": 3.377,
+  "wall_s": 3.379,
+  "cached": false
 }

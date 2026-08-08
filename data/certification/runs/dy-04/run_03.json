@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_dy-04_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Our engineering team keeps pushing through design changes that require updates to our IT infrastructure, but we're struggling to keep pace with manual coordination across multiple systems. Right now, when a new component specification comes through, we have to manually track which servers need reconfiguration, which licenses need reallocation, and which hardware needs to be deployed\u2014and it's creating delays and tracking errors. We need a way to automate this entire workflow so that when engineering changes are approved, all the downstream IT infrastructure changes happen consistently and in the right sequence.",
+    "n_resources": 273,
+    "user_msg_chars": 54272
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity describes a need to automate the entire workflow triggered when engineering changes are approved, ensuring consistent and sequenced downstream IT infrastructure changes (server reconfiguration, license reallocation, hardware deployment).\n\nThe **ChangeAutomationOrchestrator** is the best match because it:\n\n1. **Directly addresses the core need**: \"Automates and coordinates engineering changes, material updates, and product item deployments\"\n2. **Handles orchestration**: Manages the workflow coordination across multiple downstream systems\n3. **Ensures consistency and sequencing**: Orchestrators are designed to execute processes in the correct sequence\n4. **Integrates with infrastructure systems**: Works alongside the Asset Provisioning Integration API and Change Request Approval Workflow to automate infrastructure changes\n\nWhile other resources like **AssetProvisioningOrchestrator** and **ChangeRequestApprovalWorkflow** are relevant, the **ChangeAutomationOrchestrator** is specifically designed to automate engineering change workflows with downstream coordination, making it the most comprehensive solution for automating the entire process from approval to infrastructure deployment.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+  ],
   "solved": false,
-  "tokens": 13858,
-  "latency_s": 0.0,
-  "wall_s": 0.001,
-  "run": 3
+  "tokens": 13869,
+  "latency_s": 4.154,
+  "wall_s": 4.156,
+  "cached": false
 }

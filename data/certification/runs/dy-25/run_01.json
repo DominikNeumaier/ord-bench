@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.ariba:agent:VendorInvoiceReconciliationAutomation:v1",
+  "nonce": "v2_cert_dy-25_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to reconcile our incoming supplier billing against the materials we've received this quarter, and at the same time, verify that everything we've taken in meets our regulatory obligations for restricted substances in each shipment.",
+    "n_resources": 273,
+    "user_msg_chars": 53893
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:agent:VendorInvoiceReconciliationAutomation:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires two key functions:\n1. **Supplier billing reconciliation** against materials received this quarter\n2. **Verification of regulatory compliance** for restricted substances in each shipment\n\nThe **Vendor Invoice Reconciliation Agent** is the best match because it:\n- Autonomously matches vendor invoices to purchase orders and contracts\n- Flags discrepancies for approval (reconciliation function)\n- Works with procurement workflows where material receipt and supplier compliance are tracked\n\nThis agent directly addresses the billing reconciliation requirement. For the restricted substances verification component, this agent operates within procurement workflows that integrate with compliance systems (like SAP EHS APIs that manage hazardous substance data), making it the optimal single resource that orchestrates both reconciliation and compliance validation activities.",
+    "picked_ordId": "sap.ariba:agent:VendorInvoiceReconciliationAutomation:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13732,
-  "latency_s": 0.0,
-  "wall_s": 0.005,
-  "run": 1
+  "tokens": 13731,
+  "latency_s": 3.295,
+  "wall_s": 3.296,
+  "cached": false
 }

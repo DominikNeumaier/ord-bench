@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_sg-23_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Our production schedule needs to be adjusted. Handle the change request, run the hazardous material and safety checks, and formally document the engineering change.",
+    "n_resources": 273,
+    "user_msg_chars": 53819
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires three integrated functions:\n1. **Handle change request** - managing production schedule adjustments\n2. **Run hazardous material and safety checks** - compliance validation\n3. **Formally document engineering change** - change documentation\n\nThe **ChangeAutomationOrchestrator** is purpose-built to \"automate and coordinate engineering changes, material updates, and product item deployments.\" This agent directly addresses the core requirement of coordinating the entire change workflow.\n\nWhile other resources could support individual aspects (e.g., `HazardousSubstanceComplianceAPI` for safety checks, `ChangeRequestApprovalWorkflow` for approvals), the orchestrator agent is the single best resource that integrates all three requirements into a cohesive change management workflow, including the formal documentation needed for production schedule engineering changes.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:apiResource:CompensationAndSalaryManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13731,
-  "latency_s": 0.0,
-  "wall_s": 0.007,
-  "run": 2
+  "tokens": 13733,
+  "latency_s": 3.736,
+  "wall_s": 3.738,
+  "cached": false
 }

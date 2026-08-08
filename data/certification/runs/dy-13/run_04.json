@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+  "nonce": "v2_cert_dy-13_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to track a equipment modification we're rolling out next month and manage the related service requests from our field teams. Can you help me set up the workflow to document this change and keep everyone updated on the status?",
+    "n_resources": 273,
+    "user_msg_chars": 53888
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1\"\n}\n```\n\n**Rationale:** The activity requires tracking an equipment modification rollout and managing related service requests with workflow documentation and status updates. The Change Request Approval Workflow API is the best match as it:\n\n1. **Manages change requests** - Directly handles the equipment modification documentation\n2. **Tracks approvals and scheduling** - Supports the workflow setup and status tracking\n3. **Performs impact assessment** - Helps evaluate the change scope\n4. **Integrates with service requests** - Complements field team service ticket management\n\nWhile `ServiceTicketOrderManagementAPI` could handle service requests and `AssetProvisioningIntegrationAPI` could manage equipment, the Change Request Approval Workflow provides the comprehensive workflow orchestration needed to \"set up the workflow to document this change and keep everyone updated on the status.\"",
+    "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13671,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 4
+  "tokens": 13740,
+  "latency_s": 3.678,
+  "wall_s": 3.68,
+  "cached": false
 }

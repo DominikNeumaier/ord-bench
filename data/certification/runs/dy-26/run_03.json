@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.sf:apiResource:EmployeeCompensationManagement:v1",
+  "nonce": "v2_cert_dy-26_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together our current payroll structure and benefit allocations for the upcoming fiscal review, and at the same time, I need to log and track some equipment upgrades we're rolling out across departments to stay audit-ready. Can you help me access both of those workflows in a single request?",
+    "n_resources": 273,
+    "user_msg_chars": 53960
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.sf:apiResource:CompensationAndSalaryManagement:v1\"\n}\n```\n\n**Rationale:** \n\nThe activity requires accessing **two distinct workflows simultaneously**:\n1. **Payroll structure and benefit allocations** for fiscal review\n2. **Equipment upgrade logging and tracking** for audit readiness\n\nHowever, the instruction specifies returning a **single ordId** for the best match. Given this constraint, **sap.sf:apiResource:CompensationAndSalaryManagement:v1** is the most direct resource for the primary business need (payroll/benefits for fiscal review), as it explicitly manages compensation structures and salary data\u2014core components of payroll structure and benefit allocations needed for an upcoming fiscal review.\n\n**Note:** The equipment tracking aspect would ideally require a separate resource like `corp.itsm:apiResource:AssetProvisioningIntegrationAPI:v1` or `siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1`, but since only one selection is permitted, the payroll/compensation API takes precedence for fiscal review purposes.",
+    "picked_ordId": "sap.sf:apiResource:CompensationAndSalaryManagement:v1"
+  },
+  "expected_ordIds": [
+    "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13851,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 3
+  "tokens": 13805,
+  "latency_s": 3.826,
+  "wall_s": 3.828,
+  "cached": false
 }

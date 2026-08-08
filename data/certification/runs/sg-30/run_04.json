@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_sg-30_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to push an engineering change through to completion \u2014 formal request, material and compliance validation, workforce readiness, approvals, and final vendor data retrieval.",
+    "n_resources": 273,
+    "user_msg_chars": 53833
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:** The Change Automation Orchestrator is the optimal resource for managing an engineering change through to completion. This agent is specifically designed to \"automate and coordinate engineering changes, material updates, and product item deployments\" \u2014 directly addressing all phases of the requested activity:\n\n1. **Formal request** - Initiates and manages change requests\n2. **Material validation** - Coordinates material updates and validates component specifications\n3. **Compliance validation** - Works with compliance systems through coordinated workflows\n4. **Workforce readiness** - Coordinates product item deployments that affect workforce operations\n5. **Approvals** - Manages the approval workflow orchestration\n6. **Vendor data retrieval** - Integrates with material and vendor systems through coordinated deployment\n\nWhile the ChangeRequestApprovalWorkflow API handles approvals specifically, the ChangeAutomationOrchestrator agent provides end-to-end orchestration across all required phases, making it the single best match for pushing an engineering change through to completion.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+  ],
   "solved": false,
-  "tokens": 13750,
-  "latency_s": 0.0,
-  "wall_s": 0.001,
-  "run": 4
+  "tokens": 13773,
+  "latency_s": 4.148,
+  "wall_s": 4.151,
+  "cached": false
 }

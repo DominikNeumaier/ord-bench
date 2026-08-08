@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
-  "solved": true,
-  "tokens": 13823,
-  "latency_s": 0.0,
-  "wall_s": 0.004,
-  "run": 1
+  "nonce": "v2_cert_sg-14_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are launching a new product \u2014 kick off the customer campaign, qualify vendors and materials, and confirm we have the engineering specs and supply chain ready.",
+    "n_resources": 273,
+    "user_msg_chars": 53816
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"emarsys.cx:agent:SegmentDrivenCampaignOptimizer:v1\"\n}\n```\n\n**Rationale:** This agent best fulfills the product launch activity because it:\n\n1. **Kicks off the customer campaign** - The Segment-Driven Campaign Optimizer autonomously identifies high-value customer segments and optimizes campaign targeting and messaging, which is essential for launching a new product campaign.\n\n2. **Qualifies vendors and materials** - While this agent focuses on campaign optimization, it works in conjunction with the broader ecosystem. However, for the complete vendor/material qualification need, you would pair it with procurement-focused resources. This agent is the primary coordinator for the customer-facing campaign launch.\n\n3. **Confirms engineering specs and supply chain readiness** - The agent integrates with product lifecycle data and can coordinate across systems to validate that specifications and supply chain are ready before campaign execution.\n\nThe Segment-Driven Campaign Optimizer is the orchestration point that ties together customer targeting, campaign execution, and the operational readiness requirements for a successful product launch. It automates the critical path for campaign initiation while coordinating with underlying procurement, engineering, and supply chain systems.",
+    "picked_ordId": "emarsys.cx:agent:SegmentDrivenCampaignOptimizer:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13781,
+  "latency_s": 4.075,
+  "wall_s": 4.076,
+  "cached": false
 }

@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1",
+  "nonce": "v2_cert_sg-29_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We had a safety incident at one of our sites. Run the full response \u2014 hazard monitoring, exposure evaluation, equipment impact analysis, customer compliance check, and payroll review.",
+    "n_resources": 273,
+    "user_msg_chars": 53838
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1\"\n}\n```\n\n**Rationale:** The Occupational Safety Incident Coordinator agent is purpose-built to handle comprehensive safety incident responses. It \"monitors and coordinates safety incidents with hazardous substance involvement for compliance\" \u2014 directly addressing all five required components:\n\n1. **Hazard monitoring** - Monitors hazardous substance involvement\n2. **Exposure evaluation** - Part of incident coordination workflows\n3. **Equipment impact analysis** - Coordinates across incident response systems\n4. **Customer compliance check** - Ensures compliance integration\n5. **Payroll review** - Can coordinate with payroll systems through the agent's orchestration capabilities\n\nThis agent integrates with the necessary APIs (hazardous substance data, compliance tracking, customer accounts) and coordinates the full incident response workflow, making it the single best match for orchestrating all five required activities in sequence.",
+    "picked_ordId": "corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13751,
-  "latency_s": 4.22,
-  "wall_s": 4.221,
-  "run": 1
+  "tokens": 13736,
+  "latency_s": 3.769,
+  "wall_s": 3.771,
+  "cached": false
 }

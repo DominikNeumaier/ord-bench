@@ -1,8 +1,22 @@
 {
-  "picked_ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+  "nonce": "v2_cert_sa-06_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to establish a complete acquisition and delivery system that starts with gathering customer orders, then assesses both supplier and product safety standards, identifies appropriate sourcing partners, and ensures our logistics network remains uninterrupted. The workflow should also track how this impacts our team's compensation structures given the increased procurement workload, and we'd like visibility into any workplace safety events that occur during the fulfillment process so we can maintain our compliance records. Can you design this entire sourcing-to-delivery journey with all these considerations built in?",
+    "n_resources": 273,
+    "user_msg_chars": 54283
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires establishing a complete acquisition and delivery system with multiple integrated components: customer order gathering, supplier/product safety assessment, sourcing partner identification, logistics continuity, compensation tracking, and workplace safety compliance.\n\nWhile this is a complex, multi-faceted requirement that would ideally involve orchestration across multiple resources, the **Purchase Order Network API** is the single best match because it:\n\n1. **Serves as the operational hub** for the entire sourcing-to-delivery workflow - it manages purchase orders across supplier networks, which is fundamental to acquisition and delivery systems\n\n2. **Integrates with the broader procurement ecosystem** - PO creation and monitoring naturally connects to vendor management, safety compliance, and logistics tracking\n\n3. **Enables supplier and safety assessment integration** - POs are the control point where supplier qualifications, product safety standards, and compliance requirements converge\n\n4. **Supports logistics tracking** - PO status monitoring provides visibility into delivery and uninterrupted logistics network management\n\n5. **Works with compensation workflows** - PO data feeds downstream systems for workload tracking and compensation structure adjustments\n\n6. **Connects to compliance systems** - PO data flows to safety incident tracking and workplace compliance records\n\nThis API serves as the central resource that orchestrates the entire journey while maintaining the required visibility into supplier standards, safety compliance, and operational impact across all domains mentioned in the activity.",
+    "picked_ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1",
+    "corp.itsm:dataProduct:SafetyIncidentMetrics:v1"
+  ],
   "solved": false,
-  "tokens": 13918,
-  "latency_s": 0.0,
-  "wall_s": 0.003,
-  "run": 1
+  "tokens": 13925,
+  "latency_s": 5.586,
+  "wall_s": 5.593,
+  "cached": false
 }

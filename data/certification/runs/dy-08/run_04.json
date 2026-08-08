@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1",
+  "nonce": "v2_cert_dy-08_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together all our hazardous material inventory data to verify we're compliant with the latest regulations, and I'm not sure if I should be querying the system that gives me the actual substance records or the one that validates them against requirements. Can you help me figure out which endpoint I should be hitting to get the master list of substances we're tracking?",
+    "n_resources": 273,
+    "user_msg_chars": 54038
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:apiResource:HazardousSubstanceInventoryAPI:v1\"\n}\n```\n\n**Rationale:** You need the master list of hazardous substances your organization is tracking to verify compliance. The **HazardousSubstanceInventoryAPI** is the primary resource for this purpose\u2014it \"Manages chemical substance records and regulatory documentation across manufacturing and procurement operations.\"\n\nWhile other hazardous substance APIs exist in the landscape (like validation and compliance checking APIs), the Inventory API is the authoritative source for the actual substance records themselves. Once you have the master inventory data, you can then use validation/compliance APIs if needed to check those substances against regulatory requirements, but the inventory API is the correct starting point for pulling together your complete hazardous material data.",
+    "picked_ordId": "sap.s4:apiResource:HazardousSubstanceInventoryAPI:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13714,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 4
+  "tokens": 13738,
+  "latency_s": 3.222,
+  "wall_s": 3.225,
+  "cached": false
 }

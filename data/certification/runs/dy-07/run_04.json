@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+  "nonce": "v2_cert_dy-07_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to ensure our supply chain partners can deliver the materials we need on time and at the right cost. Our goal is to have complete visibility into what we've committed to buy from each supplier and be confident that those commitments will be fulfilled according to our specifications.",
+    "n_resources": 273,
+    "user_msg_chars": 53946
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1\"\n}\n```\n\n**Rationale:** The activity requires visibility into supplier commitments, delivery timelines, and cost management of purchased materials. The **Purchase Order Network API** is the best match because it directly enables:\n\n1. **Complete visibility** into commitments to buy from suppliers through purchase order creation, updates, and monitoring\n2. **Fulfillment confidence** via purchase order tracking across supplier networks\n3. **Specification compliance** through PO management that captures detailed requirements and delivery terms\n4. **Cost management** by tracking pricing and financial terms with each supplier\n\nWhile other resources like `sap.ariba:dataProduct:ProcurementSpendAnalytics:v1` provide analytics and `my.mes:apiResource:SupplierProcurementOrderManagement:v1` offers supplier data, the Purchase Order Network API is the primary operational resource for managing the actual supply chain commitments and monitoring their fulfillment.",
+    "picked_ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:VendorProcurementOrderAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13804,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 4
+  "tokens": 13770,
+  "latency_s": 3.759,
+  "wall_s": 3.762,
+  "cached": false
 }

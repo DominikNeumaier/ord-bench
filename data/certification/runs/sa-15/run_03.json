@@ -1,8 +1,22 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_sa-15_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to set up a comprehensive engineering change management process that takes us from the initial impact assessment all the way through to production handoff. The process should coordinate with our workforce teams to ensure they're ready for the changes, validate that our supply chain can support the transition, and also verify that we have the right staffing levels and skills in place to execute effectively. Additionally, we need to make sure our operational teams can actually handle the product modifications we're planning, including updating our component data and inventory systems accordingly. Can you help us design a workflow that manages all of these interdependencies from start to finish?",
+    "n_resources": 273,
+    "user_msg_chars": 54364
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe **Change Automation Orchestrator** is the optimal resource for this comprehensive engineering change management workflow because it:\n\n1. **Directly manages the full change lifecycle** - Automates and coordinates engineering changes from impact assessment through to production handoff\n\n2. **Handles material and component updates** - Coordinates material updates and product item deployments, including component data and inventory system modifications\n\n3. **Coordinates cross-functional interdependencies** - Orchestrates the workflow across multiple teams and systems:\n   - Workforce readiness coordination\n   - Supply chain validation\n   - Staffing and skills assessment\n   - Operational capability verification\n\n4. **Integrates with supporting systems** - Works in conjunction with:\n   - Change Request Approval Workflow (impact assessment)\n   - Asset Change Lifecycle API (workforce asset management)\n   - Production systems and inventory management\n   - Vendor/procurement systems for supply chain validation\n\n5. **End-to-end workflow management** - Manages interdependencies from initial impact assessment all the way through production handoff, which is precisely the scope described in your activity\n\nWhile other agents like `AssetProvisioningOrchestrator` or `ChangeReleaseCoordinator` handle specific aspects, the **ChangeAutomationOrchestrator** is the primary orchestration engine designed specifically for managing comprehensive engineering change management processes with all the cross-functional coordination you need.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+    "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1"
+  ],
   "solved": false,
-  "tokens": 13917,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 3
+  "tokens": 13953,
+  "latency_s": 4.804,
+  "wall_s": 4.806,
+  "cached": false
 }

@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1",
+  "nonce": "v2_cert_dy-12_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to pull together our material spend across all engine suppliers and see which components are driving costs up, plus make sure everything meets our compliance requirements. Can you help us get a comprehensive view of our BOM spending and any risk areas we should know about?",
+    "n_resources": 273,
+    "user_msg_chars": 53936
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1\"\n}\n```\n\n**Rationale:** This resource best fulfills your activity because it directly addresses both core requirements:\n\n1. **Material spend analysis across suppliers**: \"Product Material Economics and Regulatory Assessment\" aggregates material expenditures and provides spend analysis across bill-of-materials structures, enabling you to identify which components are driving costs up across all engine suppliers.\n\n2. **Compliance risk identification**: The resource evaluates regulatory adherence and engineering modification impacts, helping you identify compliance risk areas within your BOM.\n\nThis data product is specifically designed for the exact use case you described\u2014comprehensive BOM spending visibility with integrated compliance assessment.",
+    "picked_ordId": "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1"
+  ],
   "solved": false,
-  "tokens": 13618,
-  "latency_s": 0.0,
-  "wall_s": 0.009,
-  "run": 2
+  "tokens": 13702,
+  "latency_s": 3.508,
+  "wall_s": 3.511,
+  "cached": false
 }

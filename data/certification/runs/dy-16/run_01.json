@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+  "nonce": "v2_cert_dy-16_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to understand how our upcoming engineering changes will affect our team's capacity and skill levels across the plant. Can you pull together an analysis that shows us the workforce impact from all the material and product modifications we have planned?",
+    "n_resources": 273,
+    "user_msg_chars": 53914
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1\"\n}\n```\n\n**Rationale:** This data product is specifically designed to combine engineering modifications, supply chain items, and manufacturing configurations to evaluate organizational capability for product transitions. It directly addresses your need to understand how engineering changes and material/product modifications will impact workforce capacity and skill levels across the plant.\n\nWhile several other resources touch on workforce capacity or engineering changes individually (such as `my.mes:dataProduct:EngineeringChangeImpactAnalytics:v1` or `sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1`), the selected resource uniquely integrates the complete picture of production transition capability and skill requirements\u2014precisely what you need for comprehensive workforce impact analysis.",
+    "picked_ordId": "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+  ],
   "solved": false,
-  "tokens": 13607,
-  "latency_s": 2.522,
-  "wall_s": 2.524,
-  "run": 1
+  "tokens": 13719,
+  "latency_s": 3.079,
+  "wall_s": 3.081,
+  "cached": false
 }

@@ -1,8 +1,22 @@
 {
-  "picked_ordId": "sap.s4:agent:OpportunityToOrderAutomationEngine:v1",
+  "nonce": "v2_cert_sa-01_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to establish a comprehensive procurement and delivery workflow that coordinates vendor assessment, augments customer purchases with enriched data, validates regulatory requirements, and manages incoming stock alongside staff and resource allocation. The process should also track milestone progression and delivery status throughout the entire cycle, including the ability to handle customer grievances and reconcile any disagreements that arise during fulfillment. Can you design this end-to-end supply chain orchestration to ensure seamless coordination across all these interconnected operations?",
+    "n_resources": 273,
+    "user_msg_chars": 54262
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:agent:MaterialAndEngineeringChangeCoordinator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires a comprehensive end-to-end supply chain orchestration that coordinates multiple interconnected operations: vendor assessment, customer purchase enrichment, regulatory validation, inventory management, staff allocation, milestone tracking, delivery status, and dispute resolution.\n\nThe **Material and Engineering Change Coordinator** agent is the best fit because it:\n\n1. **Vendor Assessment & Procurement**: Automates coordination of material updates and engineering changes across procurement workflows, managing vendor interactions\n2. **Regulatory Validation**: Integrates with compliance data to validate requirements across the supply chain\n3. **Inventory Management**: Coordinates material lifecycle and stock management through engineering change processing\n4. **Order Fulfillment**: Manages customer order integration with material sourcing and delivery coordination\n5. **Central Orchestration Hub**: Acts as the primary orchestrator connecting:\n   - `sap.ariba:apiResource:PurchaseOrderNetworkAPI` (vendor management)\n   - `sap.ariba:apiResource:MaterialAndVendorMasterDataAPI` (enriched data)\n   - `sap.ariba:apiResource:MaterialSafetyAndVendorComplianceData` (regulatory)\n   - `sap.ariba:apiResource:VendorMaterialInvoiceManagement` (reconciliation)\n\n6. **Cross-system Integration**: Works with complementary APIs to track milestones, delivery status, and handle grievance resolution through invoice reconciliation and dispute workflows\n\nThis agent provides the unified coordination point needed to orchestrate vendor assessment, data enrichment, compliance, inventory, staffing, tracking, and dispute resolution across the entire supply chain lifecycle.",
+    "picked_ordId": "sap.ariba:agent:MaterialAndEngineeringChangeCoordinator:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+    "sap.crm:apiResource:CustomerAccountDisputeManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13884,
-  "latency_s": 0.0,
-  "wall_s": 0.001,
-  "run": 3
+  "tokens": 13983,
+  "latency_s": 5.552,
+  "wall_s": 5.555,
+  "cached": false
 }
