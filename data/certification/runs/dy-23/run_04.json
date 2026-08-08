@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:IncidentRootCauseAnalyzer:v1",
+  "nonce": "v2_cert_dy-23_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together our incident tracking data for the quarterly board review while simultaneously updating several customer cases that are stuck in our resolution queue\u2014can you help me access both of those systems in one go so I don't have to toggle between platforms?",
+    "n_resources": 273,
+    "user_msg_chars": 53928
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:IncidentRootCauseAnalyzer:v1\"\n}\n```\n\n**Rationale:** The activity requires accessing two distinct systems simultaneously\u2014incident tracking data for board review and customer case resolution workflows. While no single resource perfectly covers both needs, the **IncidentRootCauseAnalyzer agent** is the best match because:\n\n1. It autonomously analyzes service tickets to identify root causes and recommend preventive actions, which directly supports incident tracking data compilation for quarterly reporting\n2. Service tickets are core ITSM artifacts that typically encompass both incident tracking and customer case management\n3. As an agent resource, it provides intelligent orchestration across incident workflows rather than forcing manual toggling between platforms\n\n**Alternative consideration:** If a data product were acceptable, `corp.itsm:dataProduct:IncidentComplianceAnalytics:v1` would aggregate incident data for compliance reporting, but it doesn't address the live customer case updates requirement. The agent approach provides more comprehensive coverage of the dual activity needs.",
+    "picked_ordId": "corp.itsm:agent:IncidentRootCauseAnalyzer:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:dataProduct:SafetyIncidentMetrics:v1"
+  ],
   "solved": false,
-  "tokens": 13792,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 4
+  "tokens": 13771,
+  "latency_s": 3.828,
+  "wall_s": 3.83,
+  "cached": false
 }

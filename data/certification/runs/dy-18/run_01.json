@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:apiResource:CustomerOrderAndAccountManagement:v1",
+  "nonce": "v2_cert_dy-18_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to check the status of an order we placed last month and see if we can adjust the production schedule to move up the delivery date. Can you help me find where that information is tracked?",
+    "n_resources": 273,
+    "user_msg_chars": 53849
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:CustomerOrderAndAccountManagement:v1\"\n}\n```\n\n**Rationale:** This resource is the best match because it explicitly \"exposes customer accounts and orders for production scheduling and fulfillment tracking.\" Your activity requires checking order status and adjusting production schedules to move up delivery dates, which directly aligns with this API's capability to manage customer orders and support production scheduling operations.",
+    "picked_ordId": "my.mes:apiResource:CustomerOrderAndAccountManagement:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13675,
-  "latency_s": 0.0,
-  "wall_s": 0.004,
-  "run": 1
+  "tokens": 13621,
+  "latency_s": 2.329,
+  "wall_s": 2.332,
+  "cached": false
 }

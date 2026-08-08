@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.ariba:dataProduct:ProcurementSpendAnalytics:v1",
+  "nonce": "v2_cert_dy-39_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to simultaneously pull together our current spending commitments with a specific vendor and cross-reference that against our latest payroll records to reconcile Q4 budget allocations and ensure our procurement expenses align with employee compensation costs for audit purposes.",
+    "n_resources": 273,
+    "user_msg_chars": 53939
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:dataProduct:ProcurementSpendAnalytics:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires simultaneously pulling together:\n1. **Current spending commitments with a specific vendor** - vendor spend data\n2. **Latest payroll records** - employee compensation costs\n3. **Q4 budget allocations reconciliation** - budget alignment analysis\n4. **Procurement expenses vs. employee compensation** - cross-functional cost analysis\n5. **Audit purposes** - compliance and financial audit readiness\n\n**Procurement Spend Analytics** is the optimal choice because it:\n- Aggregates spend metrics and vendor performance trends across purchase orders and contracts\n- Provides comprehensive vendor spending data needed to pull current commitments\n- Enables comparison of procurement expenses against other cost categories (like payroll) for budget reconciliation\n- Supports audit-ready financial analytics with spending visibility\n- Integrates vendor and procurement data necessary for Q4 budget allocation analysis\n\nWhile other resources like payroll APIs and individual procurement APIs exist, this data product synthesizes the vendor spend and procurement metrics in an aggregated, audit-ready format specifically designed for spend analysis and budget reconciliation activities.",
+    "picked_ordId": "sap.ariba:dataProduct:ProcurementSpendAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:VendorProcurementOrderAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13829,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 3
+  "tokens": 13801,
+  "latency_s": 4.186,
+  "wall_s": 4.192,
+  "cached": false
 }

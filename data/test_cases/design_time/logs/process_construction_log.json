@@ -2309,7 +2309,8 @@
       "J6": true
     },
     "judge_response": "```json\n{\n  \"J1\": true,\n  \"J2\": true,\n  \"J3\": true,\n  \"J4\": true,\n  \"J5\": true,\n  \"J6\": true,\n  \"accepted\": true,\n  \"reason\": null\n}\n```",
-    "outcome": "ACCEPTED",
-    "timestamp": "2026-06-08T11:13:50.098213+00:00"
+    "outcome": "ARCHIVED",
+    "timestamp": "2026-06-08T11:13:50.098213+00:00",
+    "archived_reason": "orphan output; not used in any benchmark result \u2014 see output/processes/_archived/README.md"
   }
 ]

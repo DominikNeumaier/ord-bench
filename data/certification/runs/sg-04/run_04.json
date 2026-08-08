@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1",
+  "nonce": "v2_cert_sg-04_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "There was a workplace hazard event. Run through our complete safety and compliance workflow \u2014 exposure assessment, equipment checks, and verify our compliance status is intact.",
+    "n_resources": 273,
+    "user_msg_chars": 53831
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires running a \"complete safety and compliance workflow\" involving:\n1. **Exposure assessment** - evaluating worker exposure to hazards\n2. **Equipment checks** - verifying safety equipment status\n3. **Compliance verification** - ensuring compliance status remains intact\n\nThe **Occupational Safety Incident Coordinator** agent is the best match because it:\n- Explicitly monitors and coordinates safety incidents with **hazardous substance involvement** for compliance\n- Handles the full incident lifecycle including exposure assessment and response coordination\n- Directly addresses workplace hazard events with compliance tracking\n- Integrates with hazardous substance data and regulatory compliance systems\n\nWhile other resources like `sap.ehs:agent:IncidentResponseCoordinator:v1` or `workday.hcm:agent:OccupationalSafetyIncidentMonitoring:v1` could support aspects of this workflow, the Occupational Safety Incident Coordinator is purpose-built for coordinating the complete safety and compliance workflow following a workplace hazard event.",
+    "picked_ordId": "corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13674,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 4
+  "tokens": 13785,
+  "latency_s": 4.113,
+  "wall_s": 4.115,
+  "cached": false
 }

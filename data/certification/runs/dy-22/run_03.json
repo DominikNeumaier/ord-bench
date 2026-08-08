@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:dataProduct:IncidentSafetyAnalytics:v1",
+  "nonce": "v2_cert_dy-22_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to pull together a comprehensive view of our production risks and costs right now - I want to see both our material expenses broken down by supplier along with any compliance gaps, and at the same time analyze our recent safety incidents and trends across all our manufacturing sites. Can you get me both of those datasets so we can address cost optimization and safety improvements in our next operations review?",
+    "n_resources": 273,
+    "user_msg_chars": 54076
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:dataProduct:IncidentSafetyAnalytics:v1\"\n}\n```\n\n**Reasoning:**\n\nThe activity requests a **comprehensive view combining two distinct datasets**:\n1. Material expenses broken down by supplier + compliance gaps\n2. Recent safety incidents and trends across manufacturing sites\n\nHowever, the resource selector must choose a **single ordId** that best fulfills the activity.\n\n**Why this selection:**\n\n`my.mes:dataProduct:IncidentSafetyAnalytics:v1` is the best single resource because:\n\n- It **directly addresses the safety component** (safety incidents, trends across sites) which is explicitly mentioned and critical for the operations review\n- It **aggregates incident and safety data with compliance metrics**, providing the compliance gap visibility needed\n- It's from the MES (Manufacturing Execution System) domain, which is the authoritative source for production operations data\n- While it doesn't fully cover supplier material expense breakdown, the activity's primary stated goal for the review is \"address cost optimization **and safety improvements**\" - making safety incident analysis the more critical gap to fill\n\n**Note:** A more complete solution would ideally use an agent or integration combining `my.mes:dataProduct:SupplierPerformanceAndProcurementOptimization:v1` (for supplier costs) with this safety analytics product, but constrained to a single resource, the safety analytics product addresses the more operationally critical and compliance-sensitive requirement for the manufacturing operations review.",
+    "picked_ordId": "my.mes:dataProduct:IncidentSafetyAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1"
+  ],
   "solved": false,
-  "tokens": 13915,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 3
+  "tokens": 13895,
+  "latency_s": 4.96,
+  "wall_s": 4.962,
+  "cached": false
 }

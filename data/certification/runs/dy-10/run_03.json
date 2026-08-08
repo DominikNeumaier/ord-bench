@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1",
+  "nonce": "v2_cert_dy-10_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to understand which of our products are driving the most cost and why\u2014like breaking down material expenses, design complexity, and whether we're overpaying certain suppliers compared to our benchmarks. Can you show me which items in our portfolio have the most expensive components and where our supply chain dependencies might be creating risk?",
+    "n_resources": 273,
+    "user_msg_chars": 54007
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1\"\n}\n```\n\n**Rationale:** This data product directly addresses your need to understand product cost drivers and supply chain dependencies. It aggregates material expenditures, engineering modification impacts, and regulatory adherence across bill-of-materials structures\u2014providing exactly the breakdown of material expenses, design complexity, and supplier impact analysis you're seeking.\n\n**Secondary recommendations** if you need additional context:\n- `my.mes:dataProduct:MaterialCostAndInvoiceReconciliationAnalytics:v1` - Material consumption vs. supplier invoicing for procurement ROI\n- `sap.ariba:dataProduct:ProcurementSpendAnalytics:v1` - Vendor performance trends and spend metrics\n- `siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1` - Product cost drivers and supplier impact analysis",
+    "picked_ordId": "sap.s4:dataProduct:BOMCostAndComplianceAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1"
+  ],
   "solved": false,
-  "tokens": 13830,
-  "latency_s": 0.0,
-  "wall_s": 0.001,
-  "run": 3
+  "tokens": 13770,
+  "latency_s": 4.156,
+  "wall_s": 4.159,
+  "cached": false
 }

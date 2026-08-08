@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1",
-  "solved": true,
-  "tokens": 13724,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 2
+  "nonce": "v2_cert_dy-24_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to verify that our current component sourcing meets all regulatory requirements while simultaneously checking our real-time inventory levels to ensure we have adequate stock from our qualified suppliers before we proceed with the next production run.",
+    "n_resources": 273,
+    "user_msg_chars": 53913
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:MaterialAndVendorInventoryManagement:v1\"\n}\n```\n\n**Rationale:** This activity requires two concurrent checks:\n\n1. **Regulatory compliance verification** for component sourcing\n2. **Real-time inventory levels** from qualified suppliers\n\nThe `MaterialAndVendorInventoryManagement` API is the best match because it:\n- Retrieves and manages **material stock levels** (real-time inventory data)\n- Accesses **vendor supply chain data** (qualified supplier information)\n- Supports production planning decisions before production runs\n\nWhile `my.mes:apiResource:HazardousSubstanceComplianceManagement:v1` could address regulatory requirements for hazmat materials, the primary activity emphasizes inventory verification alongside compliance, making the material and vendor inventory resource the most comprehensive single solution for this integrated operational need.",
+    "picked_ordId": "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:agent:BOMComplianceValidator:v1"
+  ],
+  "solved": false,
+  "tokens": 13726,
+  "latency_s": 3.379,
+  "wall_s": 3.381,
+  "cached": false
 }

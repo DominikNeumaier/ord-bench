@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_sg-12_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to coordinate our vendor compliance checks with our occupational safety programs and production change rollout.",
+    "n_resources": 273,
+    "user_msg_chars": 53774
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:VendorContractComplianceOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires coordinating three interconnected domains:\n1. **Vendor compliance checks** - Vendor performance and contract validation\n2. **Occupational safety programs** - Safety incident and hazard management\n3. **Production change rollout** - Engineering changes and deployment coordination\n\nThe **VendorContractComplianceOrchestrator** is the best match because it:\n- Automates vendor contract and purchase order compliance monitoring across the procurement lifecycle\n- Integrates with safety and change management workflows through its orchestration capabilities\n- Serves as a coordination hub that can bridge vendor compliance requirements with safety program validations and production change schedules\n\nThis agent is specifically designed to manage the vendor compliance dimension while being part of the broader ITSM ecosystem that includes safety (via incidents/hazards) and change management (via engineering changes) orchestrators that would complement this coordination effort.",
+    "picked_ordId": "corp.itsm:agent:VendorContractComplianceOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13897,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 2
+  "tokens": 13734,
+  "latency_s": 4.58,
+  "wall_s": 4.581,
+  "cached": false
 }

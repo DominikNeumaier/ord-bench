@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeReleaseCoordinator:v1",
+  "nonce": "v2_cert_sg-20_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "A new product introduction needs full engineering change management \u2014 from the initial change request through BOM compliance, hazardous substance assessment, and supply chain confirmation.",
+    "n_resources": 273,
+    "user_msg_chars": 53843
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires \"full engineering change management \u2014 from the initial change request through BOM compliance, hazardous substance assessment, and supply chain confirmation.\" The **ChangeAutomationOrchestrator** is the best match because it:\n\n1. **Automates and coordinates engineering changes** - directly addresses the core requirement\n2. **Manages material updates and product item deployments** - covers BOM and product configuration aspects\n3. **Orchestrates across the full lifecycle** - from change initiation through deployment\n\nThis agent integrates with complementary resources in the ecosystem:\n- **ChangeRequestApprovalWorkflow** (for initial change requests)\n- **HazardousSubstanceComplianceAPI** (for hazmat assessment)\n- **VendorProcurementOrderAPI** (for supply chain confirmation)\n- **AssetChangeLifecycleAPI** (for engineering change tracking)\n\nThe ChangeAutomationOrchestrator serves as the orchestration hub that coordinates these specific compliance and operational requirements throughout the product introduction lifecycle.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:agent:ProductionChangeOrchestrator:v1"
+  ],
   "solved": false,
-  "tokens": 13747,
-  "latency_s": 0.0,
-  "wall_s": 0.004,
-  "run": 1
+  "tokens": 13783,
+  "latency_s": 4.058,
+  "wall_s": 4.06,
+  "cached": false
 }

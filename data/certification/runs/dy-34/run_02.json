@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.sf:apiResource:EmployeeCompensationManagement:v1",
+  "nonce": "v2_cert_dy-34_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together compensation figures and tax withholdings for our quarterly reconciliation, and at the same time I'd like to grant our marketing team access to manage client engagement initiatives across our accounts. Can you help me set this up efficiently in a single request?",
+    "n_resources": 273,
+    "user_msg_chars": 53941
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"workday.hcm:apiResource:PayrollDataExposure:v1\"\n}\n```\n\n**Reasoning:**\n\nYour activity has two distinct components:\n\n1. **Compensation figures and tax withholdings for quarterly reconciliation** - This is a payroll/financial reporting need\n2. **Marketing team access for client engagement initiatives** - This is an access management need\n\nHowever, you're asking for a **single resource** to handle both efficiently. The challenge is that these are functionally different domains (payroll vs. access management), and most resources specialize in one area.\n\n**Why this selection:**\n\nThe **PayrollDataExposure API** is the best single match because:\n- It directly exposes \"payroll records, earnings, deductions, and **tax information** for employees\" - exactly what's needed for compensation figures and tax withholding reconciliation\n- It's from the Workday HCM system, which is typically the authoritative source for payroll and compensation data\n- For the access management portion, while not explicitly handling \"marketing team access,\" payroll systems often integrate with broader HR provisioning workflows\n\n**Note:** Ideally, this activity would benefit from two resources:\n- **workday.hcm:apiResource:PayrollDataExposure:v1** (for compensation/tax data)\n- **corp.itsm:apiResource:CampaignAccessManagementAPI:v1** (for marketing team access)\n\nBut given the constraint of selecting a single resource, the payroll API addresses the more critical/specific requirement.",
+    "picked_ordId": "workday.hcm:apiResource:PayrollDataExposure:v1"
+  },
+  "expected_ordIds": [
+    "workday.hcm:apiResource:PayrollProcessingDataManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13813,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 2
+  "tokens": 13891,
+  "latency_s": 4.518,
+  "wall_s": 4.519,
+  "cached": false
 }

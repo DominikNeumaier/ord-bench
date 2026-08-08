@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+  "nonce": "v2_cert_dy-11_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to submit a maintenance request for our server infrastructure and track its progress through approval. Can you help me get this logged in the system and see what the current status is?",
+    "n_resources": 273,
+    "user_msg_chars": 53846
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1\"\n}\n```\n\n**Reasoning:** The activity requires submitting a maintenance request for server infrastructure and tracking its approval progress through the system. The **Change Request Approval Workflow API** is the best match because it:\n\n1. Manages change request approvals and scheduling\n2. Provides workflow tracking capabilities\n3. Is specifically designed for IT infrastructure changes\n4. Supports impact assessment, which is relevant for server maintenance\n5. Enables status tracking through the approval process\n\nWhile other resources like `ServiceTicketOrderManagementAPI` handle tickets, the Change Request Approval Workflow is purpose-built for infrastructure maintenance requests that require formal approval workflows and progress tracking.",
+    "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13737,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 3
+  "tokens": 13691,
+  "latency_s": 3.146,
+  "wall_s": 3.148,
+  "cached": false
 }

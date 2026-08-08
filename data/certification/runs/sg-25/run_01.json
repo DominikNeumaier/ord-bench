@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_sg-25_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "An engineering change is triggering a production transition. Coordinate the workforce readiness, equipment validation, asset provisioning, and access permissions for the teams involved.",
+    "n_resources": 273,
+    "user_msg_chars": 53840
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:** The Change Automation Orchestrator is the optimal resource for this activity because it:\n\n1. **Automates engineering change coordination** - directly addresses the production transition triggered by engineering changes\n2. **Coordinates across multiple domains** - handles material updates and product item deployments that align with workforce, equipment, and asset requirements\n3. **Integrates with related workflows** - works in conjunction with:\n   - Workforce readiness (through change approvals and impact assessment)\n   - Equipment validation (change impact on production assets)\n   - Asset provisioning (product item and material lifecycle)\n   - Access permissions (through change request approval workflows)\n\nThis agent orchestrates the entire production transition lifecycle, ensuring all four required coordination domains (workforce readiness, equipment validation, asset provisioning, and access permissions) are addressed holistically during the engineering change process.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+  ],
   "solved": false,
-  "tokens": 13742,
-  "latency_s": 3.964,
-  "wall_s": 3.966,
-  "run": 1
+  "tokens": 13735,
+  "latency_s": 3.473,
+  "wall_s": 3.474,
+  "cached": false
 }

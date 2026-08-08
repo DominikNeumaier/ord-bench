@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "emarsys.cx:agent:ProductLifecycleOrchestrator:v1",
+  "nonce": "v2_cert_sg-08_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are transitioning to a new product line. Assess our organizational and hazardous substance readiness, handle the material and procurement impacts, and reconfigure production accordingly.",
+    "n_resources": 273,
+    "user_msg_chars": 53844
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:agent:EngineeringChangeOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires a comprehensive approach to product line transition covering:\n1. **Organizational readiness** - assessing capability and structure\n2. **Hazardous substance readiness** - compliance and safety validation\n3. **Material and procurement impacts** - sourcing and supply chain adjustments\n4. **Production reconfiguration** - manufacturing process updates\n\nThe **Engineering Change Orchestrator** is the optimal choice because it:\n- Automates and coordinates engineering changes across materials and product items (core to product line transition)\n- Integrates with hazardous substance compliance systems\n- Coordinates procurement and material lifecycle management\n- Manages production reconfiguration through coordinated change workflows\n- Orchestrates cross-functional impacts across the organization\n\nWhile other resources address specific domains (e.g., `sap.ehs:agent:SafetyComplianceAutomationCoordinator` for compliance, `sap.ariba:agent:MaterialAndEngineeringChangeCoordinator` for procurement), the Engineering Change Orchestrator serves as the primary orchestration engine that can coordinate all these aspects of a product line transition holistically.",
+    "picked_ordId": "sap.s4:agent:EngineeringChangeOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1"
+  ],
   "solved": false,
-  "tokens": 13805,
-  "latency_s": 0.0,
-  "wall_s": 0.005,
-  "run": 1
+  "tokens": 13803,
+  "latency_s": 4.284,
+  "wall_s": 4.285,
+  "cached": false
 }

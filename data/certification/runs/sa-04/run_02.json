@@ -1,8 +1,22 @@
 {
-  "picked_ordId": "emarsys.cx:agent:SegmentDrivenCampaignOptimizer:v1",
+  "nonce": "v2_cert_sa-04_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We're launching a new product line next quarter and need to orchestrate the entire go-to-market process\u2014including provisioning our key customers, qualifying our supplier network, analyzing the cost structure, managing our engineering modifications, and ensuring our teams are ready. As part of this, we also need to identify which customer segments from our marketing campaigns should be prioritized for this launch, including pulling their account details and engagement history. We'll also need to assess whether our current staff has the right skills and capacity to support the new product specifications and training requirements. Can you help us coordinate all these moving pieces into one comprehensive launch workflow?",
+    "n_resources": 273,
+    "user_msg_chars": 54381
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"emarsys.cx:agent:SegmentDrivenCampaignOptimizer:v1\"\n}\n```\n\n**Rationale:**\n\nThis comprehensive product launch requires orchestrating multiple interconnected workflows. While no single resource perfectly covers all dimensions, the **Segment-Driven Campaign Optimizer Agent** is the best choice because:\n\n1. **Campaign Segmentation & Prioritization**: It \"autonomously identifies high-value customer segments and optimizes campaign targeting,\" directly addressing your need to identify priority customer segments from marketing campaigns and pull their account details and engagement history.\n\n2. **Multi-dimensional Coordination**: As an orchestration agent, it can coordinate across:\n   - Customer provisioning (through campaign-linked provisioning APIs)\n   - Supplier network qualification (by interfacing with procurement workflows)\n   - Cross-functional readiness assessment (by analyzing segment characteristics and engagement patterns)\n\n3. **Go-to-Market Alignment**: It's specifically designed for launch-type scenarios, automating the identification and activation of high-value segments\u2014a core requirement for your product line launch.\n\n4. **Extensible Orchestration**: The agent can trigger downstream workflows for engineering change coordination, staff capacity assessment, and vendor qualification through its orchestration capabilities.\n\n**Alternative consideration**: For a more comprehensive approach, you might pair this with `sap.s4:agent:OpportunityToOrderAutomationEngine:v1` or `emarsys.cx:agent:ProductLifecycleOrchestrator:v1`, but the Segment-Driven Campaign Optimizer best addresses the stated priority of identifying and prioritizing customer segments.",
+    "picked_ordId": "emarsys.cx:agent:SegmentDrivenCampaignOptimizer:v1"
+  },
+  "expected_ordIds": [
+    "emarsys.cx:apiResource:CustomerAccountCampaignManagementAPI:v1",
+    "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1"
+  ],
   "solved": false,
-  "tokens": 13888,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 2
+  "tokens": 13975,
+  "latency_s": 5.164,
+  "wall_s": 5.168,
+  "cached": false
 }

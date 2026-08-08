@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.sf:apiResource:EmployeeCompensationManagement:v1",
+  "nonce": "v2_cert_dy-02_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together the current salary information and benefits breakdown for our sourcing and contracting team so we can review our staffing costs against this quarter's budget. Can you help me access that data?",
+    "n_resources": 273,
+    "user_msg_chars": 53871
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.sf:apiResource:EmployeeCompensationManagement:v1\"\n}\n```\n\n**Rationale:** You need to access current salary information and benefits breakdown for your sourcing and contracting team to review staffing costs against budget. The **Employee Compensation Management API** from SAP SuccessFactors is the best match because it provides:\n\n- Direct access to employee compensation data\n- Salary structures and compensation information\n- Merit and pay adjustment details\n\nWhile other resources like `workday.hcm:apiResource:CompensationStructureDataExposure:v1` or `sap.s4:apiResource:EmployeePayrollDataAPI:v1` could provide complementary payroll data, the SAP SF compensation management API is the primary system of record for managing and retrieving comprehensive employee compensation and benefits information needed for staffing cost analysis.",
+    "picked_ordId": "sap.sf:apiResource:EmployeeCompensationManagement:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13824,
-  "latency_s": 0.0,
-  "wall_s": 0.001,
-  "run": 2
+  "tokens": 13727,
+  "latency_s": 3.433,
+  "wall_s": 3.435,
+  "cached": false
 }

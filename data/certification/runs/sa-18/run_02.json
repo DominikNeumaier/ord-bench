@@ -1,8 +1,22 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_sa-18_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to manage a comprehensive transition of our manufacturing operations whenever we implement engineering changes to our products. The process should coordinate impact assessment across all affected areas, handle workforce planning requirements, and validate compliance with all relevant regulations. As part of this transition, we also need to ensure that our supplier materials and component specifications are validated and qualified for the new product design. Additionally, we'll need to coordinate all equipment modifications, maintenance adjustments, and necessary service updates required to support the new production specifications. Can you help us set up a workflow that handles all these interconnected aspects of the changeover?",
+    "n_resources": 273,
+    "user_msg_chars": 54401
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires a comprehensive workflow that manages interconnected aspects of manufacturing transition during engineering changes, including:\n- Impact assessment across affected areas\n- Workforce planning coordination\n- Regulatory compliance validation\n- Supplier material and component specification validation/qualification\n- Equipment modifications, maintenance adjustments, and service updates\n\nThe **Change Automation Orchestrator** is the optimal resource because it:\n\n1. **Automates engineering changes** - Directly handles the core product engineering change implementation\n2. **Coordinates material updates** - Manages supplier materials and component specifications as part of the change workflow\n3. **Orchestrates product deployments** - Synchronizes all interconnected aspects of the changeover process\n4. **Integrates with impact assessment** - Works in conjunction with the Change Request Approval Workflow to validate compliance and assess organizational readiness\n\nWhile other resources like `corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1` handle approval workflows, and specialized agents like `sap.s4:agent:BOMComplianceAutomationAgent:v1` or `my.mes:agent:BillOfMaterialsComplianceValidator:v1` handle specific validations, the **ChangeAutomationOrchestrator** is explicitly designed to coordinate all these interconnected aspects of engineering changes across materials, products, and manufacturing operations into a unified workflow.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:agent:BillOfMaterialsComplianceValidator:v1",
+    "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13827,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 2
+  "tokens": 13942,
+  "latency_s": 4.723,
+  "wall_s": 4.724,
+  "cached": false
 }

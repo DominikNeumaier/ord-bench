@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_sg-12_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to coordinate our vendor compliance checks with our occupational safety programs and production change rollout.",
+    "n_resources": 273,
+    "user_msg_chars": 53774
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:VendorContractComplianceOrchestrator:v1\"\n}\n```\n\n**Rationale:** This activity requires coordinating three interconnected domains:\n\n1. **Vendor compliance checks** - The VendorContractComplianceOrchestrator automates vendor contract and purchase order compliance monitoring\n2. **Occupational safety programs** - It integrates with safety compliance workflows across the ITSM ecosystem\n3. **Production change rollout** - It coordinates with engineering changes and product deployments\n\nThis agent is the best match because it explicitly orchestrates vendor compliance monitoring across procurement lifecycles while maintaining integration with safety and change management systems. It sits at the intersection of procurement, safety, and change management\u2014exactly what this coordinated activity requires.",
+    "picked_ordId": "corp.itsm:agent:VendorContractComplianceOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13897,
-  "latency_s": 0.0,
-  "wall_s": 0.003,
-  "run": 1
+  "tokens": 13683,
+  "latency_s": 3.35,
+  "wall_s": 3.354,
+  "cached": false
 }

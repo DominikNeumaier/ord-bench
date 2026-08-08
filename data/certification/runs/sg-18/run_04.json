@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_sg-18_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We have an engineering change request that needs to go through full impact validation, business case analysis, specification updates, and workforce cost review.",
+    "n_resources": 273,
+    "user_msg_chars": 53815
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1\"\n}\n```\n\n**Rationale:** The Change Request Approval Workflow API is the best match because it explicitly handles:\n- Change request approvals and impact assessment\n- The core workflow needed for \"full impact validation\"\n- Scheduling and management of change requests\n\nWhile the activity mentions multiple components (business case analysis, specification updates, workforce cost review), the Change Request Approval Workflow API is the primary resource that orchestrates the engineering change request process. It would integrate with or trigger the other analyses and reviews as part of its workflow. The other resources in the list (like workforce management APIs, procurement APIs, etc.) could support specific aspects but are not as directly aligned with the central ECR (Engineering Change Request) approval and validation workflow.",
+    "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+  },
+  "expected_ordIds": [
+    "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13703,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 4
+  "tokens": 13696,
+  "latency_s": 3.887,
+  "wall_s": 3.889,
+  "cached": false
 }

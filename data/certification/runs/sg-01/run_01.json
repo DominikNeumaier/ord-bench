@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+  "nonce": "v2_cert_sg-01_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to handle a product engineering change end to end \u2014 from assessing the production impact all the way through validating our materials are compliant with the new design.",
+    "n_resources": 273,
+    "user_msg_chars": 53831
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Reasoning:** This activity requires end-to-end engineering change management from production impact assessment through materials compliance validation. The **ChangeAutomationOrchestrator** is specifically designed to \"automate and coordinate engineering changes, material updates, and product item deployments\" - precisely matching the need to handle a product engineering change comprehensively. \n\nWhile other resources like `siemens.plm:agent:EngineeringChangeAndComplianceOrchestrator:v1` could also work, the ITSM orchestrator is the best match as it explicitly covers the full lifecycle from change coordination through material compliance validation integrated within an ITSM context.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1"
+  ],
   "solved": false,
-  "tokens": 13738,
-  "latency_s": 4.843,
-  "wall_s": 4.844,
-  "run": 1
+  "tokens": 13695,
+  "latency_s": 4.402,
+  "wall_s": 4.404,
+  "cached": false
 }

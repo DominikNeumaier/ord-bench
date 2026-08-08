@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1",
+  "nonce": "v2_cert_dy-33_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to simultaneously log incoming shipments from our suppliers while also tracking the modifications we're making to our product line and ensuring our field technicians can submit their equipment maintenance needs through a single integrated workflow.",
+    "n_resources": 273,
+    "user_msg_chars": 53910
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:apiResource:ServiceTicketChangeRequestManagement:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires a single integrated workflow that simultaneously handles three operational needs:\n1. **Logging incoming shipments** - supplier shipment tracking\n2. **Tracking product line modifications** - engineering changes\n3. **Field technician equipment maintenance requests** - maintenance ticket submission\n\nThe `ServiceTicketChangeRequestManagement` API is the best match because it explicitly manages and retrieves:\n- **Service tickets** - for field technician equipment maintenance requests\n- **Change requests** - for product line modifications\n- **Equipment maintenance records** - directly supporting the maintenance submission workflow\n\nWhile other resources address individual components (e.g., `SupplierProcurementOrderManagement` for shipments, `EngineeringChangeProductIntegration` for product changes), this API uniquely integrates service tickets and change requests in a single interface, enabling the unified workflow requested. For supplier shipment logging, this would be the starting point before routing to procurement systems as needed.",
+    "picked_ordId": "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13745,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 3
+  "tokens": 13768,
+  "latency_s": 5.92,
+  "wall_s": 5.923,
+  "cached": false
 }

@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+  "nonce": "v2_cert_dy-16_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to understand how our upcoming engineering changes will affect our team's capacity and skill levels across the plant. Can you pull together an analysis that shows us the workforce impact from all the material and product modifications we have planned?",
+    "n_resources": 273,
+    "user_msg_chars": 53914
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1\"\n}\n```\n\nThis data product directly addresses your need by combining engineering modifications, supply chain items, and manufacturing configurations to evaluate organizational capability for product transitions. It provides the workforce impact analysis across skill levels and team capacity that you're seeking for your upcoming material and product modifications.",
+    "picked_ordId": "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1"
+  ],
   "solved": false,
-  "tokens": 13607,
-  "latency_s": 0.0,
-  "wall_s": 0.006,
-  "run": 2
+  "tokens": 13620,
+  "latency_s": 2.257,
+  "wall_s": 2.26,
+  "cached": false
 }

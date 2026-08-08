@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+  "nonce": "v2_cert_dy-09_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull up a customer's recent purchases and modify one of their orders before it ships out. Can you help me access their account information and make those changes?",
+    "n_resources": 273,
+    "user_msg_chars": 53827
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1\"\n}\n```\n\n**Rationale:** This activity requires accessing customer account information and retrieving their recent purchase/order history to make modifications. The **Customer Account Order Enrichment API** is specifically designed to \"retrieve and manage integrated customer account and order data,\" making it the best match for pulling up customer information and their orders. While other order management APIs exist in the system, this resource explicitly combines both customer account access and order data retrieval in a single enrichment API, directly supporting the stated need to access accounts and modify orders before shipment.",
+    "picked_ordId": "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:CustomerOrderManagementAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13668,
-  "latency_s": 0.0,
-  "wall_s": 0.001,
-  "run": 4
+  "tokens": 13660,
+  "latency_s": 3.076,
+  "wall_s": 3.078,
+  "cached": false
 }

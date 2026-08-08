@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_dy-04_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Our engineering team keeps pushing through design changes that require updates to our IT infrastructure, but we're struggling to keep pace with manual coordination across multiple systems. Right now, when a new component specification comes through, we have to manually track which servers need reconfiguration, which licenses need reallocation, and which hardware needs to be deployed\u2014and it's creating delays and tracking errors. We need a way to automate this entire workflow so that when engineering changes are approved, all the downstream IT infrastructure changes happen consistently and in the right sequence.",
+    "n_resources": 273,
+    "user_msg_chars": 54272
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nYour engineering team needs to **automate the entire workflow** so that when design changes are approved, all downstream IT infrastructure changes (server reconfigurations, license reallocations, hardware deployments) happen consistently and in the right sequence.\n\nThe **ChangeAutomationOrchestrator** is the best match because it:\n\n1. **Automates and coordinates engineering changes** - directly addresses your core need to automate the workflow triggered by engineering design approvals\n2. **Handles material updates and product item deployments** - manages the component specification changes flowing through your systems\n3. **Orchestrates in sequence** - ensures downstream IT infrastructure changes occur in the correct order, eliminating manual coordination delays and tracking errors\n4. **Integrates with change approvals** - works with the ChangeRequestApprovalWorkflow to execute automated actions post-approval\n\nThis agent eliminates the manual tracking across servers, licenses, and hardware by orchestrating the entire downstream infrastructure change process automatically.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+  ],
   "solved": false,
-  "tokens": 13858,
-  "latency_s": 0.0,
-  "wall_s": 0.001,
-  "run": 4
+  "tokens": 13842,
+  "latency_s": 4.539,
+  "wall_s": 4.541,
+  "cached": false
 }

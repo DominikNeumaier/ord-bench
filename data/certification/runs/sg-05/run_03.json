@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:agent:BillOfMaterialsComplianceValidator:v1",
+  "nonce": "v2_cert_sg-05_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We have an engineering change to process. Take it from the initial request through material and compliance validation, workforce checks, and getting the right vendor data locked in.",
+    "n_resources": 273,
+    "user_msg_chars": 53836
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires processing an engineering change through multiple validation stages: initial request, material and compliance validation, workforce checks, and vendor data lock-in.\n\n**ChangeAutomationOrchestrator** is the optimal choice because it:\n\n1. **Automates engineering changes** - directly handles the change request processing\n2. **Coordinates material updates** - manages material validation and updates\n3. **Handles product item deployments** - validates material specifications and compliance\n4. **Integrates across systems** - can orchestrate workforce checks and vendor coordination through its comprehensive change automation capabilities\n\nWhile other agents like `sap.s4:agent:EngineeringChangeOrchestrator` and `siemens.plm:agent:EngineeringChangeAndMaterialProvisioning` are similar, the **corp.itsm** version is best positioned as it explicitly mentions coordinating engineering changes, material updates, AND product item deployments in a unified orchestration workflow - covering all four requirements: change processing, material validation, compliance, workforce, and vendor management.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+  ],
   "solved": false,
-  "tokens": 13762,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 3
+  "tokens": 13784,
+  "latency_s": 4.486,
+  "wall_s": 4.488,
+  "cached": false
 }

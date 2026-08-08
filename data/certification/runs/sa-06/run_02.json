@@ -1,8 +1,22 @@
 {
-  "picked_ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+  "nonce": "v2_cert_sa-06_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to establish a complete acquisition and delivery system that starts with gathering customer orders, then assesses both supplier and product safety standards, identifies appropriate sourcing partners, and ensures our logistics network remains uninterrupted. The workflow should also track how this impacts our team's compensation structures given the increased procurement workload, and we'd like visibility into any workplace safety events that occur during the fulfillment process so we can maintain our compliance records. Can you design this entire sourcing-to-delivery journey with all these considerations built in?",
+    "n_resources": 273,
+    "user_msg_chars": 54283
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity describes a complete end-to-end sourcing-to-delivery system with multiple integrated requirements:\n\n1. **Customer order gathering** - needs order management capability\n2. **Supplier and product safety assessment** - requires vendor compliance and hazmat evaluation\n3. **Sourcing partner identification** - supplier selection and qualification\n4. **Logistics network continuity** - supply chain fulfillment tracking\n5. **Team compensation impact tracking** - procurement workload effects on pay structures\n6. **Workplace safety compliance visibility** - incident tracking during fulfillment\n\nThe **Purchase Order Network API** is the optimal orchestration point because it:\n\n- **Centralizes procurement workflows** - manages the complete PO lifecycle from requisition through fulfillment\n- **Integrates vendor networks** - connects supplier selection, qualification, and performance monitoring\n- **Supports multi-system coordination** - designed to work across supplier ecosystems and logistics partners\n- **Enables compliance integration** - interfaces with safety, hazmat, and regulatory requirements\n- **Facilitates operational visibility** - provides status tracking for fulfillment operations that impact team workload and compensation structures\n\nWhile specialized APIs exist for specific functions (e.g., `sap.ehs:apiResource:MaterialHazardDataExchange:v1` for hazmat, `sap.sf:apiResource:EmployeeCompensationManagement:v1` for compensation), the Purchase Order Network API serves as the foundational orchestration layer that naturally connects all these considerations across the complete acquisition-to-delivery journey.",
+    "picked_ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1"
+  },
+  "expected_ordIds": [
+    "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1",
+    "corp.itsm:dataProduct:SafetyIncidentMetrics:v1"
+  ],
   "solved": false,
-  "tokens": 13918,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 2
+  "tokens": 13968,
+  "latency_s": 4.922,
+  "wall_s": 4.925,
+  "cached": false
 }

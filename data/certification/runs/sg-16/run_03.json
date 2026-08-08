@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_sg-16_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are kicking off a product campaign \u2014 bring in the right vendors, get materials certified, run the compliance checks, and push through the purchase orders.",
+    "n_resources": 273,
+    "user_msg_chars": 53812
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1\"\n}\n```\n\n**Rationale:** A product campaign kickoff requiring vendor engagement, material certification, compliance checks, and purchase order processing is best served by the **Purchase Order Network API**. This resource directly manages the complete PO lifecycle across supplier networks, which is central to:\n\n1. **Bringing in vendors** - manages vendor relationships in PO workflows\n2. **Getting materials certified** - integrates with vendor qualification and compliance data\n3. **Running compliance checks** - PO execution includes compliance validation\n4. **Pushing through purchase orders** - core functionality for PO creation, updates, and monitoring\n\nWhile complementary resources exist (e.g., `sap.ehs` for hazmat compliance, `siemens.plm` for engineering changes), the PurchaseOrderNetworkAPI is the primary orchestration point for campaign-driven procurement execution across the full vendor-to-PO lifecycle.",
+    "picked_ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13821,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 3
+  "tokens": 13739,
+  "latency_s": 3.887,
+  "wall_s": 3.889,
+  "cached": false
 }

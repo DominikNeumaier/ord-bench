@@ -959,7 +959,7 @@ Decisions made during implementation that deviated from or refined the original 
 
 **Implemented:** SG cases went through the Solver gate during the initial generation (see `generate_skill_guided.py:150`). However, the resulting prompts were long and explicit, which created routing-evaluation noise (the planner sometimes classified them as `skill_adjusted` rather than `skill_guided`). In commit `6429a4cac` ("SG case prompts rewritten") the 30 SG prompts in `data/test_cases/runtime/output/skill_guided.json` were replaced with shorter, more focused variants intended to make the routing intent unambiguous. The new prompts were **not re-validated** through the Solver gate.
 
-**Consequence:** The provenance logs in `data/test_cases/runtime/logs/provenance/sg-*.json` reflect the original (gated) prompts; the actually evaluated prompts in the output JSON differ. Since the Skill-Guided evaluation reports Routing-Accuracy as the primary metric (not retrieval P@1), this is acknowledged as a documented methodological caveat. The post-hoc certification in `data/certification/v2/` re-runs Method S five times on the current SG prompts to quantify what fraction would still pass a stricter gate.
+**Consequence:** The provenance logs in `data/test_cases/runtime/logs/provenance/sg-*.json` reflect the original (gated) prompts; the actually evaluated prompts in the output JSON differ. Since the Skill-Guided evaluation reports Routing-Accuracy as the primary metric (not retrieval P@1), this is acknowledged as a documented methodological caveat. The post-hoc certification in `data/certification/` re-runs Method S five times on the current SG prompts to quantify what fraction would still pass a stricter gate.
 
 ### Skill-Adjusted: Solver Gate Active
 
@@ -1115,7 +1115,6 @@ src/
         generate_dynamic.py
         generate_out_of_scope.py
   certification/
-    run_certification.py
     run_certification_v2.py
     annotate_sg_provenance.py
   adversarial/

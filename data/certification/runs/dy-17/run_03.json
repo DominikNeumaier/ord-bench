@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_dy-17_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to get approval for some design modifications we're making to our product line, and then make sure the updated materials are ordered and tracked through our supply chain. Can you help me coordinate the engineering paperwork and inventory adjustments all in one place?",
+    "n_resources": 273,
+    "user_msg_chars": 53929
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:** The Change Automation Orchestrator is the best match because it is specifically designed to \"automate and coordinate engineering changes, material updates, and product item deployments.\" Your activity requires:\n\n1. **Design modification approval** - handled by the change coordination capabilities\n2. **Material ordering** - covered by material update management\n3. **Supply chain tracking** - integrated through the orchestrator's coordination across systems\n\nThis agent consolidates all three requirements (engineering paperwork approval, material updates, and inventory tracking) in one orchestrated workflow, which is exactly what you're asking for.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+  ],
   "solved": false,
-  "tokens": 13718,
-  "latency_s": 0.0,
-  "wall_s": 0.001,
-  "run": 3
+  "tokens": 13694,
+  "latency_s": 3.036,
+  "wall_s": 3.039,
+  "cached": false
 }

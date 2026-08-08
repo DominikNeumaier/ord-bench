@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_dy-17_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to get approval for some design modifications we're making to our product line, and then make sure the updated materials are ordered and tracked through our supply chain. Can you help me coordinate the engineering paperwork and inventory adjustments all in one place?",
+    "n_resources": 273,
+    "user_msg_chars": 53929
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:** The ChangeAutomationOrchestrator is the best fit because it:\n\n1. **Handles engineering change approvals** - Automates and coordinates engineering changes, which directly addresses your need for design modification approvals\n2. **Manages material updates** - Specifically processes material updates across workflows\n3. **Coordinates product deployments** - Handles product item deployments, aligning with your product line modifications\n4. **Provides integrated workflow** - Consolidates all necessary paperwork and coordination in one orchestration agent\n\nWhile other resources like `sap.s4:agent:EngineeringChangeOrchestrator:v1` or `siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1` offer similar capabilities, the ITSM ChangeAutomationOrchestrator is specifically designed to coordinate engineering changes, material updates, and inventory adjustments through an integrated approval and tracking workflow, which directly fulfills your complete requirement.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+  ],
   "solved": false,
-  "tokens": 13718,
-  "latency_s": 0.0,
-  "wall_s": 0.001,
-  "run": 4
+  "tokens": 13789,
+  "latency_s": 3.901,
+  "wall_s": 3.905,
+  "cached": false
 }

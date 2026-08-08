@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.s4:apiResource:CustomerAccountFinancialAPI:v1",
+  "nonce": "v2_cert_dy-27_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to pull together our supplier payment terms and current commitments against what we've got coming in from our clients this quarter\u2014basically reconcile who we owe and what we're expecting to collect so we can forecast our cash position accurately.",
+    "n_resources": 273,
+    "user_msg_chars": 53909
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1\"\n}\n```\n\n**Rationale:** This activity requires reconciling supplier payment terms and commitments (accounts payable) against customer collections (accounts receivable) for cash position forecasting. The **Invoice and Material Procurement Analytics** data product is the best match because it:\n\n1. **Aggregates invoice data** - captures what you owe to suppliers\n2. **Aggregates material procurement metrics** - tracks supplier commitments and payment terms\n3. **Provides spend analysis** - enables reconciliation of obligations against budget/commitments\n4. **Supports financial forecasting** - the spend analytics foundation needed for cash flow modeling\n\nWhile other resources touch related areas (procurement orders, customer orders, financial data), this data product specifically combines invoice reconciliation with procurement metrics\u2014the exact foundation needed to reconcile payables against receivables for cash forecasting.",
+    "picked_ordId": "sap.ariba:dataProduct:InvoiceAndMaterialProcurementAnalytics:v1"
+  },
+  "expected_ordIds": [
+    "sap.crm:apiResource:ProcurementVendorOrderManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13672,
-  "latency_s": 0.0,
-  "wall_s": 0.004,
-  "run": 1
+  "tokens": 13748,
+  "latency_s": 3.413,
+  "wall_s": 3.415,
+  "cached": false
 }

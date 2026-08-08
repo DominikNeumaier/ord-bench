@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_sg-09_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are going through a product and material transition triggered by an engineering change. Assess the impact, check our operational capability, and validate vendor readiness before we commit.",
+    "n_resources": 273,
+    "user_msg_chars": 53846
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires a comprehensive assessment of impact, operational capability, and vendor readiness for a product and material transition triggered by an engineering change. The **ChangeAutomationOrchestrator** is the best match because it:\n\n1. **Automates engineering change coordination** - directly addresses the engineering change trigger\n2. **Coordinates material updates** - handles the product and material transition aspects\n3. **Orchestrates product item deployments** - manages the transition execution\n4. **Integrates with impact assessment workflows** - can assess operational impact\n\nWhile other resources like `siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1` or `sap.s4:agent:EngineeringChangeOrchestrator:v1` are relevant, the ITSM-based orchestrator best aligns with the holistic need to assess impact, validate operational capability, and coordinate vendor readiness across the enterprise systems landscape before commitment.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:agent:AssetProvisioningOrchestrator:v1"
+  ],
   "solved": false,
-  "tokens": 13854,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 3
+  "tokens": 13768,
+  "latency_s": 3.801,
+  "wall_s": 3.802,
+  "cached": false
 }

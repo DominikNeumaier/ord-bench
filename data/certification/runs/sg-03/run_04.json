@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeReleaseCoordinator:v1",
+  "nonce": "v2_cert_sg-03_run_4",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are launching a new product line \u2014 coordinate everything from receiving materials through engineering readiness, documentation, and operational safety before production starts.",
+    "n_resources": 273,
+    "user_msg_chars": 53834
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:** The activity requires coordinating a comprehensive new product launch from materials receipt through engineering readiness, documentation, and operational safety before production. The **Change Automation Orchestrator** is the best match because it:\n\n1. **Automates and coordinates engineering changes** - central to product line launch\n2. **Manages material updates** - handles receiving materials coordination\n3. **Coordinates product item deployments** - ensures engineering readiness\n4. **Integrates across lifecycle stages** - from materials through operational readiness\n\nWhile other resources address specific components (e.g., procurement, safety, workforce), the Change Automation Orchestrator provides the orchestration layer needed to coordinate everything from material receiving through engineering validation, documentation, and safety readiness in a unified workflow before production startup.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:MaterialReceiptInboundAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13766,
-  "latency_s": 0.0,
-  "wall_s": 0.001,
-  "run": 4
+  "tokens": 13713,
+  "latency_s": 4.091,
+  "wall_s": 4.093,
+  "cached": false
 }

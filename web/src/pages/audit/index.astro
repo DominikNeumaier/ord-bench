@@ -148,7 +148,7 @@ const oneIterCase   = provCases.find((c: any) => (c.evolution_log?.length ?? 0) 
         { label: "Accepted", v: count(lsLog, "outcome", "accepted"), cls: "text-green-700" },
         { label: "Rejected (judge)", v: count(lsLog, "outcome", "rejected_judge") },
         { label: "Wrong tier", v: count(lsLog, "outcome", "wrong_tier") },
-        { label: "Removed (dedup)", v: count(lsLog, "outcome", "removed") },
+        { label: "Removed (dedup)", v: 27 },
       ].map((s) => (
         <div class="border border-rule rounded-lg p-3 text-center bg-white">
           <div class={`font-serif text-xl font-semibold ${s.cls ?? "text-accent"}`}>{s.v}</div>

@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:IncidentRootCauseAnalyzer:v1",
+  "nonce": "v2_cert_dy-23_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to pull together our incident tracking data for the quarterly board review while simultaneously updating several customer cases that are stuck in our resolution queue\u2014can you help me access both of those systems in one go so I don't have to toggle between platforms?",
+    "n_resources": 273,
+    "user_msg_chars": 53928
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:IncidentRootCauseAnalyzer:v1\"\n}\n```\n\n**Rationale:** \n\nThe activity requires accessing two distinct systems simultaneously:\n1. **Incident tracking data** for quarterly board review\n2. **Customer cases in resolution queue** for updates\n\nThe **IncidentRootCauseAnalyzer** agent is the best match because it:\n\n- **Autonomously analyzes service tickets** (covering incident tracking data needed for board review)\n- **Identifies root causes and recommends preventive actions** (directly supporting resolution queue case management)\n- **Operates as an orchestration agent** that can integrate across multiple data sources within the ITSM ecosystem\n- **Eliminates platform toggling** by providing unified analysis of both incident metrics and case resolution data\n\nThis agent bridges both requirements in a single resource, avoiding the need to toggle between separate APIs for incident reporting and case management.",
+    "picked_ordId": "corp.itsm:agent:IncidentRootCauseAnalyzer:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:dataProduct:SafetyIncidentMetrics:v1"
+  ],
   "solved": false,
-  "tokens": 13792,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 3
+  "tokens": 13750,
+  "latency_s": 3.292,
+  "wall_s": 3.294,
+  "cached": false
 }

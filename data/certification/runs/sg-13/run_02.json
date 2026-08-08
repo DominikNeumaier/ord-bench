@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:agent:ProductionChangeOrchestrator:v1",
+  "nonce": "v2_cert_sg-13_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We have an engineering change to manage from impact assessment through workforce development and supply chain validation.",
+    "n_resources": 273,
+    "user_msg_chars": 53776
+  },
+  "output": {
+    "raw_text": "```json\n{\"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"}\n```\n\n**Rationale:** The Change Automation Orchestrator is the best match because it explicitly automates and coordinates engineering changes, material updates, and product item deployments\u2014covering the full lifecycle from impact assessment through workforce development and supply chain validation. This agent orchestrates the complete change management process across these three critical phases of your engineering change initiative.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+  ],
   "solved": false,
-  "tokens": 13910,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 2
+  "tokens": 13601,
+  "latency_s": 2.858,
+  "wall_s": 2.859,
+  "cached": false
 }

@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1",
-  "solved": true,
-  "tokens": 13744,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 2
+  "nonce": "v2_cert_dy-30_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Can you pull up the current status of ticket #12847 and check who our top-performing sales representative is in the Northeast region so I can route this escalation appropriately, then also retrieve what products that employee is certified to sell?",
+    "n_resources": 273,
+    "user_msg_chars": 53902
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1\"\n}\n```\n\n**Reasoning:**\n\nThe activity requires three sequential actions:\n1. **Pull ticket status** \u2192 `corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1` handles this\n2. **Find top-performing sales rep in Northeast** \u2192 `sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1` exposes employee organizational structure and sales capabilities, which is needed to identify and evaluate sales representatives by region and performance\n3. **Retrieve product certifications** \u2192 The same resource that maps employee hierarchy also needs to connect to their capabilities/certifications\n\nHowever, since you must select a **single** ordId that \"best fulfils the activity,\" the **SalesEmployeeHierarchyAndCapabilityDirectory** is the most critical resource because:\n- It directly addresses the core requirement: identifying the top-performing sales rep in the Northeast region\n- It provides employee hierarchy and capability data needed to determine certifications\n- The ticket lookup is secondary context; the routing decision depends on finding the right rep\n\nIf forced to choose between ticket lookup and rep identification, rep identification is the bottleneck for proper escalation routing.",
+    "picked_ordId": "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13829,
+  "latency_s": 4.596,
+  "wall_s": 4.598,
+  "cached": false
 }

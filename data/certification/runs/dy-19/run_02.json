@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "sap.ehs:apiResource:ChemicalInventoryCompliance:v1",
+  "nonce": "v2_cert_dy-19_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to check our current compliance status for the hazardous materials we're storing across all our facilities and understand what regulatory requirements we need to meet. Can you pull a report showing our inventory levels and which items require updated certifications or documentation?",
+    "n_resources": 273,
+    "user_msg_chars": 53946
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1\"\n}\n```\n\nThis is the best match because:\n\n1. **Direct alignment with the activity**: The HazardousSubstanceInventoryExchange API is specifically designed to \"retrieve and manage hazardous substance inventory data for compliance tracking\" - which directly addresses the need to check current compliance status and inventory levels.\n\n2. **Multi-facility support**: This resource handles inventory data across locations, supporting the requirement to check hazardous materials \"across all our facilities.\"\n\n3. **Compliance focus**: The API explicitly targets compliance tracking, which aligns with understanding regulatory requirements.\n\n4. **Comprehensive data**: Combined with other EHS resources available, this API provides the inventory and compliance foundation needed for the report.\n\nAlternative strong candidates would be:\n- `sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1` (for regulatory requirements validation)\n- `sap.ehs:apiResource:MaterialHazardDataExchange:v1` (for hazard records and certifications)\n- `my.mes:apiResource:HazardousSubstanceInventoryManagement:v1` (for manufacturing operations perspective)\n\nHowever, the HazardousSubstanceInventoryExchange API is the most direct and comprehensive single resource for pulling an integrated compliance status and inventory report.",
+    "picked_ordId": "sap.ehs:apiResource:HazardousSubstanceInventoryExchange:v1"
+  },
+  "expected_ordIds": [
+    "my.mes:apiResource:HazardousSubstanceComplianceManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13782,
-  "latency_s": 0.0,
-  "wall_s": 0.007,
-  "run": 2
+  "tokens": 13857,
+  "latency_s": 4.391,
+  "wall_s": 4.393,
+  "cached": false
 }

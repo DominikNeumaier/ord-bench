@@ -1,8 +1,22 @@
 {
-  "picked_ordId": "emarsys.cx:agent:ProductLifecycleOrchestrator:v1",
+  "nonce": "v2_cert_sa-09_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We need to orchestrate the launch of our new product line, ensuring that procurement sources quality raw materials that meet our standards, engineering designs and validates the components, operations sets up manufacturing processes, and sales prepares go-to-market strategies. As we ramp up production, we'll also need to seamlessly integrate with our systems to retrieve and manage incoming customer orders and account information for processing. Additionally, the process should include coordinating any engineering modifications and material lifecycle changes across departments to keep everything synchronized. Can you help us design a workflow that handles all of these moving parts together?",
+    "n_resources": 273,
+    "user_msg_chars": 54353
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"emarsys.cx:agent:ProductLifecycleOrchestrator:v1\"\n}\n```\n\n**Rationale:**\n\nThis activity requires orchestrating a complex, multi-departmental product launch workflow that spans procurement, engineering, operations, sales, and customer order management. The **Product Lifecycle Orchestrator** is the best fit because it:\n\n1. **Automates product change coordination** - directly addresses engineering modifications and material lifecycle changes across departments\n2. **Synchronizes inventory across sales channels** - ensures manufacturing processes and go-to-market strategies stay aligned\n3. **Integrates with customer order systems** - handles incoming customer orders and account information for processing\n4. **Manages material updates** - coordinates raw material changes from procurement through manufacturing\n\nWhile other resources handle specific components (e.g., `ChangeAutomationOrchestrator` for changes, `VendorProcurementAutomationOrchestrator` for procurement, `OpportunityEngagementOrchestrator` for sales), the **Product Lifecycle Orchestrator** is uniquely designed to orchestrate all these moving parts together as an integrated workflow - which is precisely what the activity requests.",
+    "picked_ordId": "emarsys.cx:agent:ProductLifecycleOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:CustomerOrderManagementAPI:v1",
+    "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1"
+  ],
   "solved": false,
-  "tokens": 13909,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 3
+  "tokens": 13869,
+  "latency_s": 3.884,
+  "wall_s": 3.888,
+  "cached": false
 }

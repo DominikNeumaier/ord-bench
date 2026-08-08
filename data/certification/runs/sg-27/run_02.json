@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:agent:BillOfMaterialsComplianceValidator:v1",
+  "nonce": "v2_cert_sg-27_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We are updating our material specifications and need a full compliance and readiness check \u2014 regulatory validation, supplier qualification, workforce impact, and safety record review.",
+    "n_resources": 273,
+    "user_msg_chars": 53838
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1\"\n}\n```\n\n**Rationale:**\n\nThe activity requires a comprehensive compliance and readiness check covering:\n1. **Regulatory validation** - hazardous substance and safety compliance verification\n2. **Supplier qualification** - vendor compliance assessment\n3. **Workforce impact** - personnel readiness evaluation\n4. **Safety record review** - incident and safety compliance tracking\n\nThe **SafetyComplianceAutomationCoordinator** is the best match because it:\n\n- Automates safety validation across **engineering changes, materials, and product items** (covers material specifications updates)\n- Integrates with regulatory compliance frameworks for **hazardous substance validation**\n- Coordinates with vendor compliance systems for **supplier qualification checks**\n- Assesses workforce safety readiness and compliance posture through incident tracking\n- Orchestrates across multiple compliance domains (regulatory, safety, supplier) in a single coordinated workflow\n\nWhile other resources handle individual aspects (e.g., `sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1` for regulatory validation alone, or `sap.s4:agent:BOMComplianceAutomationAgent:v1` for supplier checks), the SafetyComplianceAutomationCoordinator provides integrated orchestration across all four required dimensions of the readiness check.",
+    "picked_ordId": "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13678,
-  "latency_s": 0.0,
-  "wall_s": 0.008,
-  "run": 2
+  "tokens": 13840,
+  "latency_s": 5.16,
+  "wall_s": 5.161,
+  "cached": false
 }

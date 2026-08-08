@@ -1,8 +1,22 @@
 {
-  "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+  "nonce": "v2_cert_sa-12_run_1",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to submit a new infrastructure update request that will impact multiple departments, and I need the system to automatically assess whether this change requires executive approval based on the business scope. Can you walk me through the entire process from when I submit the request through final implementation, including tracking any related equipment modifications and service dependencies? I also need documentation of all regulatory requirements that apply to this change, as well as any existing maintenance schedules we should coordinate with during rollout.",
+    "n_resources": 273,
+    "user_msg_chars": 54226
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1\"\n}\n```\n\n**Rationale:**\n\nYour activity requires a comprehensive change management solution that addresses:\n\n1. **Automatic approval assessment based on business scope** - The Change Request Approval Workflow API explicitly handles \"impact assessment\" and determines approval routing based on change magnitude\n2. **End-to-end process tracking** - Manages the complete lifecycle from submission through implementation\n3. **Equipment modification tracking** - Integrated with asset provisioning workflows\n4. **Service dependency documentation** - Built for multi-department impact assessment\n5. **Regulatory requirements and maintenance coordination** - Core ITSM change management capability\n\nWhile complementary resources exist (AssetProvisioningIntegrationAPI for equipment, HazardousSubstanceComplianceAPI for regulatory data, ChangeAutomationOrchestrator agents for orchestration), the **ChangeRequestApprovalWorkflow** is the authoritative system of record for change governance and serves as the primary entry point for your infrastructure update submission process.",
+    "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1",
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13900,
-  "latency_s": 0.0,
-  "wall_s": 0.004,
-  "run": 1
+  "tokens": 13821,
+  "latency_s": 4.124,
+  "wall_s": 4.126,
+  "cached": false
 }

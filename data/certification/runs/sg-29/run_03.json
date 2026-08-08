@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1",
+  "nonce": "v2_cert_sg-29_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "We had a safety incident at one of our sites. Run the full response \u2014 hazard monitoring, exposure evaluation, equipment impact analysis, customer compliance check, and payroll review.",
+    "n_resources": 273,
+    "user_msg_chars": 53838
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1\"\n}\n```\n\n**Rationale:** The Occupational Safety Incident Coordinator agent is purpose-built to handle the full safety incident response workflow you've described. It:\n\n1. **Hazard monitoring** - Monitors and coordinates safety incidents with hazardous substance involvement\n2. **Exposure evaluation** - Assesses hazard exposure as part of incident coordination\n3. **Equipment impact analysis** - Coordinates across ITSM systems including asset/equipment tracking\n4. **Customer compliance check** - Ensures compliance tracking throughout incident response\n5. **Payroll review** - Integrates with workforce/compensation systems through ITSM orchestration\n\nWhile other resources like `sap.ehs:agent:IncidentResponseCoordinator:v1` or `workday.hcm:agent:SafetyIncidentAutomationOrchestrator:v1` handle specific aspects, the OccupationalSafetyIncidentCoordinator is uniquely positioned as a cross-functional orchestrator that explicitly combines hazardous substance involvement with full ITSM incident response coordination.",
+    "picked_ordId": "corp.itsm:agent:OccupationalSafetyIncidentCoordinator:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1"
+  ],
   "solved": false,
-  "tokens": 13751,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 3
+  "tokens": 13795,
+  "latency_s": 3.78,
+  "wall_s": 3.788,
+  "cached": false
 }

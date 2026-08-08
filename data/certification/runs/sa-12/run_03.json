@@ -1,8 +1,22 @@
 {
-  "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1",
+  "nonce": "v2_cert_sa-12_run_3",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "I need to submit a new infrastructure update request that will impact multiple departments, and I need the system to automatically assess whether this change requires executive approval based on the business scope. Can you walk me through the entire process from when I submit the request through final implementation, including tracking any related equipment modifications and service dependencies? I also need documentation of all regulatory requirements that apply to this change, as well as any existing maintenance schedules we should coordinate with during rollout.",
+    "n_resources": 273,
+    "user_msg_chars": 54226
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1\"\n}\n```\n\n**Reasoning:**\n\nYour activity requires a comprehensive change management system that handles:\n1. **Automatic executive approval assessment** based on business scope\n2. **End-to-end process tracking** from submission through implementation\n3. **Equipment modification tracking** and service dependency management\n4. **Regulatory requirement documentation**\n5. **Maintenance schedule coordination**\n\nThe **Change Request Approval Workflow API** is the primary resource that directly fulfills this need as it explicitly provides:\n- Change request approval management with impact assessment\n- Scheduling capabilities for coordinated rollout\n- Multi-department impact assessment\n- Executive approval routing based on business scope\n\nWhile you would likely integrate complementary resources for specific aspects (e.g., `AssetProvisioningIntegrationAPI` for equipment tracking, `HazardousSubstanceComplianceAPI` for regulatory requirements, `ChangeAutomationOrchestrator` agent for workflow automation), the **ChangeRequestApprovalWorkflow** is the single best match as the authoritative system for orchestrating the entire infrastructure update request lifecycle you described.",
+    "picked_ordId": "corp.itsm:apiResource:ChangeRequestApprovalWorkflow:v1"
+  },
+  "expected_ordIds": [
+    "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1",
+    "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1"
+  ],
   "solved": false,
-  "tokens": 13900,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 3
+  "tokens": 13846,
+  "latency_s": 4.77,
+  "wall_s": 4.776,
+  "cached": false
 }

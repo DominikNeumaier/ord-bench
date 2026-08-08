@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "my.mes:agent:BillOfMaterialsComplianceValidator:v1",
-  "solved": true,
-  "tokens": 13820,
-  "latency_s": 0.0,
-  "wall_s": 0.0,
-  "run": 2
+  "nonce": "v2_cert_sg-11_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "Before we move forward with production we need to confirm all materials and operations meet our compliance requirements \u2014 hazardous substances, BOM standards, and vendor purchase orders.",
+    "n_resources": 273,
+    "user_msg_chars": 53841
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"my.mes:agent:BillOfMaterialsComplianceValidator:v1\"\n}\n```\n\n**Rationale:** The activity requires confirming that materials and operations meet compliance requirements across three specific areas: hazardous substances, BOM standards, and vendor purchase orders before production.\n\nThe **Bill of Materials Compliance Validator** agent is the best match because it:\n- Automates BOM validation and supplier qualification checks across engineering changes\n- Directly validates bill-of-materials against regulatory and supplier qualification requirements\n- Integrates with hazardous substance compliance and vendor procurement compliance\n\nWhile other resources address individual aspects (e.g., `sap.ehs:agent:VendorComplianceAutomationOrchestrator` for vendor compliance, `my.mes:apiResource:HazardousSubstanceComplianceManagement` for hazmat), this orchestrating agent provides the comprehensive pre-production compliance validation workflow needed before moving forward with manufacturing.",
+    "picked_ordId": "my.mes:agent:BillOfMaterialsComplianceValidator:v1"
+  },
+  "expected_ordIds": [
+    "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1"
+  ],
+  "solved": false,
+  "tokens": 13737,
+  "latency_s": 5.089,
+  "wall_s": 5.091,
+  "cached": false
 }

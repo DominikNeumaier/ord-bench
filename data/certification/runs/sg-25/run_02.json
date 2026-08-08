@@ -1,8 +1,21 @@
 {
-  "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1",
+  "nonce": "v2_cert_sg-25_run_2",
+  "input": {
+    "system": "You are a resource selector. Given a business activity and a list of ORD resources, return the single ordId that best fulfils the activity. Respond with a JSON object: {\"ordId\": \"<best match>\"}",
+    "activity": "An engineering change is triggering a production transition. Coordinate the workforce readiness, equipment validation, asset provisioning, and access permissions for the teams involved.",
+    "n_resources": 273,
+    "user_msg_chars": 53840
+  },
+  "output": {
+    "raw_text": "```json\n{\n  \"ordId\": \"corp.itsm:agent:ChangeAutomationOrchestrator:v1\"\n}\n```\n\n**Rationale:** The Change Automation Orchestrator is the best fit because it:\n\n1. **Directly addresses engineering changes** - Automates and coordinates engineering changes, which is the triggering event\n2. **Handles all four required coordination areas**:\n   - **Workforce readiness** - Coordinates personnel aspects of changes\n   - **Equipment validation** - Manages equipment impact and validation\n   - **Asset provisioning** - Orchestrates asset allocation and provisioning\n   - **Access permissions** - Coordinates access control through the change workflow\n\n3. **Integrates with complementary resources** - Works with change approval workflows, asset provisioning, and access management systems to provide end-to-end production transition coordination\n\nThis agent is purpose-built for orchestrating complex engineering changes across multiple operational domains, making it the optimal single resource for this multi-faceted production transition activity.",
+    "picked_ordId": "corp.itsm:agent:ChangeAutomationOrchestrator:v1"
+  },
+  "expected_ordIds": [
+    "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1"
+  ],
   "solved": false,
-  "tokens": 13742,
-  "latency_s": 0.0,
-  "wall_s": 0.022,
-  "run": 2
+  "tokens": 13741,
+  "latency_s": 3.21,
+  "wall_s": 3.213,
+  "cached": false
 }
