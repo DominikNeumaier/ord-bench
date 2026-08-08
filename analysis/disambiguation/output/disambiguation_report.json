@@ -8678,19 +8678,443 @@
   "embedding_nn": {
     "coverage": {
       "gt_resources": 70,
-      "covered": 0,
-      "misses_clean_text": 70,
-      "misses_enriched_text": 70
+      "covered": 70,
+      "misses_clean_text": 0,
+      "misses_enriched_text": 0
     },
-    "per_resource": [],
+    "per_resource": [
+      {
+        "ordId": "corp.itsm:apiResource:CampaignAccessManagementAPI:v1",
+        "nn_cosine_clean": 0.7915,
+        "nn_cosine_enriched": 0.7899,
+        "delta": -0.0016
+      },
+      {
+        "ordId": "corp.itsm:apiResource:ServiceTicketOrderManagementAPI:v1",
+        "nn_cosine_clean": 0.7405,
+        "nn_cosine_enriched": 0.7811,
+        "delta": 0.0405
+      },
+      {
+        "ordId": "corp.itsm:apiResource:HazardousSubstanceComplianceAPI:v1",
+        "nn_cosine_clean": 0.9319,
+        "nn_cosine_enriched": 0.9164,
+        "delta": -0.0154
+      },
+      {
+        "ordId": "corp.itsm:apiResource:VendorProcurementOrderAPI:v1",
+        "nn_cosine_clean": 0.8502,
+        "nn_cosine_enriched": 0.8509,
+        "delta": 0.0008
+      },
+      {
+        "ordId": "corp.itsm:apiResource:CampaignCustomerProvisioningAPI:v1",
+        "nn_cosine_clean": 0.7915,
+        "nn_cosine_enriched": 0.8008,
+        "delta": 0.0093
+      },
+      {
+        "ordId": "corp.itsm:apiResource:SafetyComplianceCustomerAPI:v1",
+        "nn_cosine_clean": 0.6718,
+        "nn_cosine_enriched": 0.713,
+        "delta": 0.0412
+      },
+      {
+        "ordId": "corp.itsm:agent:AssetProvisioningOrchestrator:v1",
+        "nn_cosine_clean": 0.7936,
+        "nn_cosine_enriched": 0.8164,
+        "delta": 0.0229
+      },
+      {
+        "ordId": "corp.itsm:dataProduct:IncidentEngagementReliability:v1",
+        "nn_cosine_clean": 0.8048,
+        "nn_cosine_enriched": 0.8395,
+        "delta": 0.0347
+      },
+      {
+        "ordId": "corp.itsm:dataProduct:SafetyIncidentMetrics:v1",
+        "nn_cosine_clean": 0.7374,
+        "nn_cosine_enriched": 0.8127,
+        "delta": 0.0753
+      },
+      {
+        "ordId": "emarsys.cx:apiResource:JourneyContactStateAPI:v1",
+        "nn_cosine_clean": 0.7114,
+        "nn_cosine_enriched": 0.7061,
+        "delta": -0.0054
+      },
+      {
+        "ordId": "emarsys.cx:apiResource:CustomerAccountOrderEnrichmentAPI:v1",
+        "nn_cosine_clean": 0.7326,
+        "nn_cosine_enriched": 0.7847,
+        "delta": 0.0522
+      },
+      {
+        "ordId": "emarsys.cx:apiResource:CampaignContactEngagementAPI:v1",
+        "nn_cosine_clean": 0.7114,
+        "nn_cosine_enriched": 0.7106,
+        "delta": -0.0008
+      },
+      {
+        "ordId": "emarsys.cx:apiResource:CustomerAccountCampaignManagementAPI:v1",
+        "nn_cosine_clean": 0.7759,
+        "nn_cosine_enriched": 0.8008,
+        "delta": 0.0249
+      },
+      {
+        "ordId": "emarsys.cx:apiResource:SalesCapacityAndTimeOffManagementAPI:v1",
+        "nn_cosine_clean": 0.6326,
+        "nn_cosine_enriched": 0.6692,
+        "delta": 0.0366
+      },
+      {
+        "ordId": "emarsys.cx:apiResource:HazardousSubstanceComplianceManagementAPI:v1",
+        "nn_cosine_clean": 0.8928,
+        "nn_cosine_enriched": 0.9013,
+        "delta": 0.0085
+      },
+      {
+        "ordId": "emarsys.cx:apiResource:OrderFulfillmentServiceAPI:v1",
+        "nn_cosine_clean": 0.7533,
+        "nn_cosine_enriched": 0.814,
+        "delta": 0.0607
+      },
+      {
+        "ordId": "emarsys.cx:dataProduct:EngagementIncidentMetrics:v1",
+        "nn_cosine_clean": 0.8048,
+        "nn_cosine_enriched": 0.8395,
+        "delta": 0.0347
+      },
+      {
+        "ordId": "my.mes:apiResource:ServiceTicketChangeRequestManagement:v1",
+        "nn_cosine_clean": 0.8578,
+        "nn_cosine_enriched": 0.8714,
+        "delta": 0.0136
+      },
+      {
+        "ordId": "my.mes:apiResource:HazardousSubstanceComplianceManagement:v1",
+        "nn_cosine_clean": 0.925,
+        "nn_cosine_enriched": 0.9081,
+        "delta": -0.0169
+      },
+      {
+        "ordId": "my.mes:apiResource:SupplierProcurementOrderManagement:v1",
+        "nn_cosine_clean": 0.7908,
+        "nn_cosine_enriched": 0.8122,
+        "delta": 0.0214
+      },
+      {
+        "ordId": "my.mes:apiResource:MaterialAndVendorInventoryManagement:v1",
+        "nn_cosine_clean": 0.7268,
+        "nn_cosine_enriched": 0.7641,
+        "delta": 0.0372
+      },
+      {
+        "ordId": "my.mes:apiResource:EquipmentChangeAndServiceManagement:v1",
+        "nn_cosine_clean": 0.9043,
+        "nn_cosine_enriched": 0.9077,
+        "delta": 0.0034
+      },
+      {
+        "ordId": "my.mes:apiResource:CampaignAndCustomerOrderManagement:v1",
+        "nn_cosine_clean": 0.7056,
+        "nn_cosine_enriched": 0.7568,
+        "delta": 0.0511
+      },
+      {
+        "ordId": "my.mes:apiResource:EquipmentServiceAndChangeManagement:v1",
+        "nn_cosine_clean": 0.9043,
+        "nn_cosine_enriched": 0.9077,
+        "delta": 0.0034
+      },
+      {
+        "ordId": "my.mes:agent:ProductionChangeOrchestrator:v1",
+        "nn_cosine_clean": 0.7765,
+        "nn_cosine_enriched": 0.8297,
+        "delta": 0.0532
+      },
+      {
+        "ordId": "my.mes:agent:BillOfMaterialsComplianceValidator:v1",
+        "nn_cosine_clean": 0.8781,
+        "nn_cosine_enriched": 0.9156,
+        "delta": 0.0375
+      },
+      {
+        "ordId": "sap.ariba:apiResource:PurchaseOrderNetworkAPI:v1",
+        "nn_cosine_clean": 0.6706,
+        "nn_cosine_enriched": 0.7404,
+        "delta": 0.0698
+      },
+      {
+        "ordId": "sap.ariba:apiResource:ProcurementWorkforceCompensationAPI:v1",
+        "nn_cosine_clean": 0.7337,
+        "nn_cosine_enriched": 0.794,
+        "delta": 0.0603
+      },
+      {
+        "ordId": "sap.ariba:apiResource:MaterialAndVendorMasterDataAPI:v1",
+        "nn_cosine_clean": 0.9036,
+        "nn_cosine_enriched": 0.8853,
+        "delta": -0.0183
+      },
+      {
+        "ordId": "sap.ariba:apiResource:MaterialAndVendorProcurementData:v1",
+        "nn_cosine_clean": 0.9311,
+        "nn_cosine_enriched": 0.8853,
+        "delta": -0.0458
+      },
+      {
+        "ordId": "sap.ariba:apiResource:VendorMaterialInvoiceManagement:v1",
+        "nn_cosine_clean": 0.7263,
+        "nn_cosine_enriched": 0.7593,
+        "delta": 0.033
+      },
+      {
+        "ordId": "sap.ariba:apiResource:ProductionOrderAndMachineIntegration:v1",
+        "nn_cosine_clean": 0.8532,
+        "nn_cosine_enriched": 0.8724,
+        "delta": 0.0192
+      },
+      {
+        "ordId": "sap.ariba:apiResource:MaterialAndVendorProcurementAPI:v1",
+        "nn_cosine_clean": 0.9311,
+        "nn_cosine_enriched": 0.8672,
+        "delta": -0.0638
+      },
+      {
+        "ordId": "sap.crm:apiResource:CustomerAccountDisputeManagement:v1",
+        "nn_cosine_clean": 0.6304,
+        "nn_cosine_enriched": 0.6658,
+        "delta": 0.0354
+      },
+      {
+        "ordId": "sap.crm:apiResource:CustomerOrderFulfillmentTracking:v1",
+        "nn_cosine_clean": 0.7533,
+        "nn_cosine_enriched": 0.814,
+        "delta": 0.0607
+      },
+      {
+        "ordId": "sap.crm:apiResource:SalesEmployeeHierarchyAndCapabilityDirectory:v1",
+        "nn_cosine_clean": 0.7328,
+        "nn_cosine_enriched": 0.7787,
+        "delta": 0.046
+      },
+      {
+        "ordId": "sap.crm:apiResource:MachineProductionOrderIntegration:v1",
+        "nn_cosine_clean": 0.8453,
+        "nn_cosine_enriched": 0.8675,
+        "delta": 0.0222
+      },
+      {
+        "ordId": "sap.crm:apiResource:ProcurementVendorOrderManagement:v1",
+        "nn_cosine_clean": 0.8502,
+        "nn_cosine_enriched": 0.8509,
+        "delta": 0.0008
+      },
+      {
+        "ordId": "sap.crm:dataProduct:BillOfMaterialsCostAndComplianceAnalytics:v1",
+        "nn_cosine_clean": 0.8073,
+        "nn_cosine_enriched": 0.8239,
+        "delta": 0.0165
+      },
+      {
+        "ordId": "sap.crm:dataProduct:MaterialChangeReadinessAndWorkforceImpactAnalytics:v1",
+        "nn_cosine_clean": 0.7709,
+        "nn_cosine_enriched": 0.8329,
+        "delta": 0.0619
+      },
+      {
+        "ordId": "sap.ehs:apiResource:VendorSafetyComplianceOrders:v1",
+        "nn_cosine_clean": 0.7597,
+        "nn_cosine_enriched": 0.7839,
+        "delta": 0.0242
+      },
+      {
+        "ordId": "sap.ehs:apiResource:HazardousSubstanceRegulatoryValidation:v1",
+        "nn_cosine_clean": 0.8621,
+        "nn_cosine_enriched": 0.8713,
+        "delta": 0.0092
+      },
+      {
+        "ordId": "sap.ehs:apiResource:ComplianceChangeServiceIntegration:v1",
+        "nn_cosine_clean": 0.7995,
+        "nn_cosine_enriched": 0.8034,
+        "delta": 0.0038
+      },
+      {
+        "ordId": "sap.ehs:agent:SafetyComplianceAutomationCoordinator:v1",
+        "nn_cosine_clean": 0.7604,
+        "nn_cosine_enriched": 0.7787,
+        "delta": 0.0183
+      },
+      {
+        "ordId": "sap.s4:apiResource:MaterialReceiptInboundAPI:v1",
+        "nn_cosine_clean": 0.6603,
+        "nn_cosine_enriched": 0.6963,
+        "delta": 0.036
+      },
+      {
+        "ordId": "sap.s4:apiResource:ProductionPerformanceAPI:v1",
+        "nn_cosine_clean": 0.7325,
+        "nn_cosine_enriched": 0.7679,
+        "delta": 0.0353
+      },
+      {
+        "ordId": "sap.s4:apiResource:EmployeePayrollDataAPI:v1",
+        "nn_cosine_clean": 0.8655,
+        "nn_cosine_enriched": 0.8818,
+        "delta": 0.0164
+      },
+      {
+        "ordId": "sap.s4:apiResource:CustomerOrderManagementAPI:v1",
+        "nn_cosine_clean": 0.7369,
+        "nn_cosine_enriched": 0.8081,
+        "delta": 0.0712
+      },
+      {
+        "ordId": "sap.s4:apiResource:WorkforceOrgStructureAPI:v1",
+        "nn_cosine_clean": 0.8519,
+        "nn_cosine_enriched": 0.8657,
+        "delta": 0.0138
+      },
+      {
+        "ordId": "sap.s4:apiResource:HazardousSubstanceComplianceAPI:v1",
+        "nn_cosine_clean": 0.9319,
+        "nn_cosine_enriched": 0.9164,
+        "delta": -0.0154
+      },
+      {
+        "ordId": "sap.s4:agent:BOMComplianceAutomationAgent:v1",
+        "nn_cosine_clean": 0.8781,
+        "nn_cosine_enriched": 0.9156,
+        "delta": 0.0375
+      },
+      {
+        "ordId": "sap.s4:agent:AssetLifecycleChangeOrchestrator:v1",
+        "nn_cosine_clean": 0.7936,
+        "nn_cosine_enriched": 0.8238,
+        "delta": 0.0303
+      },
+      {
+        "ordId": "sap.s4:dataProduct:IncidentSafetyAnalyticsHub:v1",
+        "nn_cosine_clean": 0.7305,
+        "nn_cosine_enriched": 0.8127,
+        "delta": 0.0822
+      },
+      {
+        "ordId": "sap.s4:dataProduct:EngineeringChangeImpactAndWorkforceReadiness:v1",
+        "nn_cosine_clean": 0.8228,
+        "nn_cosine_enriched": 0.8527,
+        "delta": 0.03
+      },
+      {
+        "ordId": "sap.sf:apiResource:EmployeeCompensationManagement:v1",
+        "nn_cosine_clean": 0.8723,
+        "nn_cosine_enriched": 0.8883,
+        "delta": 0.016
+      },
+      {
+        "ordId": "sap.sf:apiResource:CompensationAndSalaryManagement:v1",
+        "nn_cosine_clean": 0.8723,
+        "nn_cosine_enriched": 0.8883,
+        "delta": 0.016
+      },
+      {
+        "ordId": "sap.sf:apiResource:EmployeeHierarchyAndOrganizationManagement:v1",
+        "nn_cosine_clean": 0.8519,
+        "nn_cosine_enriched": 0.8657,
+        "delta": 0.0138
+      },
+      {
+        "ordId": "sap.sf:dataProduct:ProductChangeImpactAndMaterialAnalytics:v1",
+        "nn_cosine_clean": 0.8268,
+        "nn_cosine_enriched": 0.8527,
+        "delta": 0.0259
+      },
+      {
+        "ordId": "siemens.plm:apiResource:SupplierQualificationAndServiceManagement:v1",
+        "nn_cosine_clean": 0.7028,
+        "nn_cosine_enriched": 0.7115,
+        "delta": 0.0087
+      },
+      {
+        "ordId": "siemens.plm:apiResource:MachineProductionOrderIntegration:v1",
+        "nn_cosine_clean": 0.8532,
+        "nn_cosine_enriched": 0.8724,
+        "delta": 0.0192
+      },
+      {
+        "ordId": "siemens.plm:apiResource:EngineeringChangeAndServiceManagement:v1",
+        "nn_cosine_clean": 0.8571,
+        "nn_cosine_enriched": 0.8714,
+        "delta": 0.0143
+      },
+      {
+        "ordId": "siemens.plm:agent:BOMComplianceValidator:v1",
+        "nn_cosine_clean": 0.8709,
+        "nn_cosine_enriched": 0.8964,
+        "delta": 0.0255
+      },
+      {
+        "ordId": "siemens.plm:agent:EngineeringChangeAndMaterialProvisioning:v1",
+        "nn_cosine_clean": 0.7521,
+        "nn_cosine_enriched": 0.8297,
+        "delta": 0.0776
+      },
+      {
+        "ordId": "siemens.plm:dataProduct:ProductCostAndComplexityAnalytics:v1",
+        "nn_cosine_clean": 0.8073,
+        "nn_cosine_enriched": 0.8239,
+        "delta": 0.0165
+      },
+      {
+        "ordId": "workday.hcm:apiResource:PayrollDataExposure:v1",
+        "nn_cosine_clean": 0.8655,
+        "nn_cosine_enriched": 0.8818,
+        "delta": 0.0164
+      },
+      {
+        "ordId": "workday.hcm:apiResource:BenefitsEnrollmentDataManagement:v1",
+        "nn_cosine_clean": 0.6196,
+        "nn_cosine_enriched": 0.6969,
+        "delta": 0.0773
+      },
+      {
+        "ordId": "workday.hcm:apiResource:CompensationStructureDataExposure:v1",
+        "nn_cosine_clean": 0.7946,
+        "nn_cosine_enriched": 0.837,
+        "delta": 0.0424
+      },
+      {
+        "ordId": "workday.hcm:apiResource:PayrollProcessingDataManagement:v1",
+        "nn_cosine_clean": 0.8254,
+        "nn_cosine_enriched": 0.8623,
+        "delta": 0.0369
+      },
+      {
+        "ordId": "workday.hcm:apiResource:WorkforceCompensationDataManagement:v1",
+        "nn_cosine_clean": 0.7946,
+        "nn_cosine_enriched": 0.8521,
+        "delta": 0.0575
+      },
+      {
+        "ordId": "workday.hcm:dataProduct:WorkforceChangeImpactAnalytics:v1",
+        "nn_cosine_clean": 0.8268,
+        "nn_cosine_enriched": 0.8175,
+        "delta": -0.0092
+      }
+    ],
     "summary": {
-      "note": "no embedding cache coverage \u2014 run Method A first"
+      "mean_nn_cosine_clean": 0.7988,
+      "mean_nn_cosine_enriched": 0.8241,
+      "mean_delta": 0.0253,
+      "pct_pulled_apart": 14.3
     }
   },
   "avg_similarity_enriched_pairs": {
     "n_enriched_resources": 70,
     "n_pairs": 2415,
-    "embedding_covered": 0,
+    "embedding_covered": 2415,
     "structural": {
       "n": 2415,
       "mean_original": 0.1107,
@@ -8700,7 +9124,15 @@
       "pairs_less_similar": 2176,
       "pairs_more_similar": 237
     },
-    "embedding": null,
+    "embedding": {
+      "n": 2415,
+      "mean_original": 0.3924,
+      "mean_extended": 0.501,
+      "mean_delta": 0.1086,
+      "pct_change": 27.7,
+      "pairs_less_similar": 23,
+      "pairs_more_similar": 2392
+    },
     "structural_high_subset": {
       "n": 85,
       "mean_original": 0.6428,
@@ -8710,7 +9142,23 @@
       "pairs_less_similar": 85,
       "pairs_more_similar": 0
     },
-    "embedding_mixed_pairs": null,
-    "embedding_high_subset": null
+    "embedding_mixed_pairs": {
+      "n": 14210,
+      "mean_original": 0.3683,
+      "mean_extended": 0.3878,
+      "mean_delta": 0.0195,
+      "pct_change": 5.3,
+      "pairs_less_similar": 3693,
+      "pairs_more_similar": 10517
+    },
+    "embedding_high_subset": {
+      "n": 85,
+      "mean_original": 0.7201,
+      "mean_extended": 0.7613,
+      "mean_delta": 0.0412,
+      "pct_change": 5.7,
+      "pairs_less_similar": 7,
+      "pairs_more_similar": 78
+    }
   }
 }

@@ -10,13 +10,17 @@ Two independent notions of "how similar are two ORD resources":
   2. embedding cosine — cosine between text-embedding-3-large vectors of the
      Method-A resource text. This is what Method A actually retrieves on.
 
-We pull the embeddings straight from the on-disk cache (cache/embed/), keyed
-by the same hash llm.embed uses, so this makes ZERO API calls.
+We pull the embeddings straight from the bundled on-disk cache
+(analysis/embedding_analysis/embed_cache/, the 343 text-embedding-3-large vectors
+this analysis needs), keyed by the same hash llm.embed uses, so this makes ZERO
+API calls. Falls back to the global cache/embed/ for any key not bundled.
 
-Outputs (to analysis/embedding_analysis/):
+Outputs (to analysis/embedding_analysis/output/):
   - correlation printed to stdout (Pearson + Spearman over all pairs)
-  - scatter_metric_vs_embedding.html/.png
-  - embedding_pca_clusters.html/.png   (PCA-2D, colored by namespace & type)
+  - scatter_metric_vs_embedding.svg/.png
+  - pairwise.csv (structural sim + embedding cosine for every pair)
+  - pca_unused/embedding_pca_by_{namespace,type}.svg (reference only; the paper
+    uses t-SNE, see scripts/gen_tsne_tikz.py)
 """
 
 from __future__ import annotations
@@ -35,8 +39,13 @@ from src import config
 from src import loader as ord_loader
 from src.adversarial import preselect
 
-OUT = Path(__file__).resolve().parent.parent
+OUT = Path(__file__).resolve().parent.parent / "output"
 OUT.mkdir(parents=True, exist_ok=True)
+
+# Embeddings ship with the repo under analysis/embedding_analysis/embed_cache/
+# (the 343 text-embedding-3-large vectors this analysis needs). Fall back to the
+# global cache/embed/ if a key is not in the bundled set.
+EMBED_CACHE = Path(__file__).resolve().parent.parent / "embed_cache"
 
 
 # Inlined verbatim from src/methods/method_a._resource_text so we don't import
@@ -69,7 +78,9 @@ def _hash(payload) -> str:
 
 def cached_embedding(text: str) -> np.ndarray | None:
     key = _hash({"model": config.EMBEDDING_MODEL, "text": text})
-    cp = config.CACHE_DIR / "embed" / f"{key}.json"
+    cp = EMBED_CACHE / f"{key}.json"
+    if not cp.exists():
+        cp = config.CACHE_DIR / "embed" / f"{key}.json"
     if not cp.exists():
         return None
     return np.asarray(json.loads(cp.read_text())["vec"], dtype=np.float64)
@@ -313,13 +324,17 @@ def plot(rows, X, S, C, s, c):
         _pearson(s, c), _spearman(s, c),
     )
 
+    # PCA cluster plots — kept for reference but NOT used in the paper (the paper
+    # uses t-SNE, see scripts/gen_tsne_tikz.py). Written to output/pca_unused/.
     coords, var = pca_2d(X)
     ns = [r.get("namespace", "?") for r in rows]
     typ = [r.get("type", "?") for r in rows]
+    pca_dir = OUT / "pca_unused"
+    pca_dir.mkdir(parents=True, exist_ok=True)
     cluster_svg(coords, ns, sorted(set(ns)),
-                OUT / "embedding_pca_by_namespace.svg", var)
+                pca_dir / "embedding_pca_by_namespace.svg", var)
     cluster_svg(coords, typ, sorted(set(typ)),
-                OUT / "embedding_pca_by_type.svg", var)
+                pca_dir / "embedding_pca_by_type.svg", var)
 
     # dump the pairwise data too, for any downstream stats
     iu = np.triu_indices(len(rows), k=1)

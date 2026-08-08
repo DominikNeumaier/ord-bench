@@ -22,7 +22,7 @@ import matplotlib.patches as mpatches
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 
-OUT = Path(__file__).resolve().parent.parent
+OUT = Path(__file__).resolve().parent.parent / "output"
 
 df = pd.read_csv(OUT / "pairwise.csv")
 
