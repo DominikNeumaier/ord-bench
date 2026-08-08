@@ -79,6 +79,30 @@ def bars_per_round(log: list[dict]) -> dict[int, dict[str, int]]:
     return per
 
 
+def gap_reach_per_round(log: list[dict]) -> dict[int, dict[str, int]]:
+    """Per iterative round: how many open gaps reached a generation attempt
+    (action=create) versus were skipped before any LLM call
+    (action=skip, outcome=no_profile). The 'reach rate' = create/(create+skip)
+    is the share of gaps that produced a candidate; it falls as the landscape
+    fills because the per-namespace cap and duplicate pre-check skip a growing
+    fraction of gaps."""
+    create: dict[int, int] = defaultdict(int)
+    skip: dict[int, int] = defaultdict(int)
+    for e in log:
+        if e.get("phase") != "iterative":
+            continue
+        if e.get("action") == "create":
+            create[e["round"]] += 1
+        elif e.get("action") == "skip" and e.get("outcome") == "no_profile":
+            skip[e["round"]] += 1
+    per: dict[int, dict[str, int]] = {}
+    for r in sorted(set(create) | set(skip)):
+        c, s = create[r], skip[r]
+        per[r] = {"create": c, "skip_no_profile": s,
+                  "reach_pct": round(100 * c / (c + s), 1) if (c + s) else 0.0}
+    return per
+
+
 def accepted_ids_per_round(log: list[dict]) -> dict[int, list[str]]:
     """Matched ordIds of resources accepted in each iterative round (survivors
     only; dedup-removed accepts carry ordId=None and are skipped)."""
@@ -113,6 +137,7 @@ def convergence_series(log: list[dict]) -> list[dict]:
     final = {r["ordId"]: r for r in loader.load_landscape("clean")}
     bars = bars_per_round(log)
     acc_ids = accepted_ids_per_round(log)
+    reach = gap_reach_per_round(log)
 
     cum = [final[o] for o in seed_ids(log) if o in final]
     series = [{
@@ -121,6 +146,7 @@ def convergence_series(log: list[dict]) -> list[dict]:
         "accepted": bars[0]["accepted"],
         "cumulative": len(cum),
         "mean_top5_ambiguity": round(mean_top5_ambiguity(cum), 4),
+        "gap_reach_pct": None,
     }]
     for r in sorted(k for k in bars if k != 0):
         for oid in acc_ids.get(r, []):
@@ -132,6 +158,7 @@ def convergence_series(log: list[dict]) -> list[dict]:
             "accepted": bars[r]["accepted"],
             "cumulative": len(cum),
             "mean_top5_ambiguity": round(mean_top5_ambiguity(cum), 4),
+            "gap_reach_pct": reach.get(r, {}).get("reach_pct"),
         })
     return series
 
@@ -188,11 +215,12 @@ def main() -> None:
     log = load_log()
     series = convergence_series(log)
 
-    print(f"{'round':>5} {'generated':>9} {'accepted':>8} {'cumulative':>10} {'ambig':>8}")
+    print(f"{'round':>5} {'generated':>9} {'accepted':>8} {'cumulative':>10} {'ambig':>8} {'gapReach%':>9}")
     for s in series:
         label = "0(S)" if s["round"] == 0 else str(s["round"])
+        reach = "" if s["gap_reach_pct"] is None else f"{s['gap_reach_pct']:>8.0f}%"
         print(f"{label:>5} {s['generated']:>9} {s['accepted']:>8} "
-              f"{s['cumulative']:>10} {s['mean_top5_ambiguity']:>8.4f}")
+              f"{s['cumulative']:>10} {s['mean_top5_ambiguity']:>8.4f} {reach:>9}")
 
     tot_g = sum(s["generated"] for s in series)
     tot_a = sum(s["accepted"] for s in series)
