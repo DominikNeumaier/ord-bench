@@ -68,7 +68,11 @@ def _hash(payload) -> str:
 
 def _cached_embedding(text: str) -> np.ndarray | None:
     key = _hash({"model": config.EMBEDDING_MODEL, "text": text})
-    cp = config.CACHE_DIR / "embed" / f"{key}.json"
+    # Embeddings ship with the repo under analysis/embedding_analysis/embed_cache/;
+    # fall back to the global cache/embed/ for any key not in the bundled set.
+    cp = ROOT / "analysis" / "embedding_analysis" / "embed_cache" / f"{key}.json"
+    if not cp.exists():
+        cp = config.CACHE_DIR / "embed" / f"{key}.json"
     if not cp.exists():
         return None
     return np.asarray(json.loads(cp.read_text())["vec"], dtype=np.float64)

@@ -10,8 +10,10 @@ Two independent notions of "how similar are two ORD resources":
   2. embedding cosine — cosine between text-embedding-3-large vectors of the
      Method-A resource text. This is what Method A actually retrieves on.
 
-We pull the embeddings straight from the on-disk cache (cache/embed/), keyed
-by the same hash llm.embed uses, so this makes ZERO API calls.
+We pull the embeddings straight from the bundled on-disk cache
+(analysis/embedding_analysis/embed_cache/, the 343 text-embedding-3-large vectors
+this analysis needs), keyed by the same hash llm.embed uses, so this makes ZERO
+API calls. Falls back to the global cache/embed/ for any key not bundled.
 
 Outputs (to analysis/embedding_analysis/):
   - correlation printed to stdout (Pearson + Spearman over all pairs)
@@ -37,6 +39,11 @@ from src.adversarial import preselect
 
 OUT = Path(__file__).resolve().parent.parent
 OUT.mkdir(parents=True, exist_ok=True)
+
+# Embeddings ship with the repo under analysis/embedding_analysis/embed_cache/
+# (the 343 text-embedding-3-large vectors this analysis needs). Fall back to the
+# global cache/embed/ if a key is not in the bundled set.
+EMBED_CACHE = OUT / "embed_cache"
 
 
 # Inlined verbatim from src/methods/method_a._resource_text so we don't import
@@ -69,7 +76,9 @@ def _hash(payload) -> str:
 
 def cached_embedding(text: str) -> np.ndarray | None:
     key = _hash({"model": config.EMBEDDING_MODEL, "text": text})
-    cp = config.CACHE_DIR / "embed" / f"{key}.json"
+    cp = EMBED_CACHE / f"{key}.json"
+    if not cp.exists():
+        cp = config.CACHE_DIR / "embed" / f"{key}.json"
     if not cp.exists():
         return None
     return np.asarray(json.loads(cp.read_text())["vec"], dtype=np.float64)
