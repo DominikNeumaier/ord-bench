@@ -29,7 +29,7 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 from src import config, loader as ord_loader  # noqa: E402
 
-OUT = ROOT / "analysis" / "embedding_analysis"
+OUT = ROOT / "analysis" / "embedding_analysis" / "output"
 CACHE = Path(os.environ.get("EMBED_CACHE", str(Path(__file__).resolve().parent.parent / "embed_cache")))
 SEED = 42
 

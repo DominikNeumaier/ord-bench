@@ -32,7 +32,7 @@ import csv
 import math
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
+HERE = Path(__file__).resolve().parent.parent / "output"
 PAIRWISE = HERE / "pairwise.csv"
 
 

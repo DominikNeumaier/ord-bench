@@ -38,7 +38,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 REPORT = ROOT / "analysis" / "disambiguation" / "output" / "disambiguation_report.json"
-OUT = Path(__file__).resolve().parent
+OUT = Path(__file__).resolve().parent.parent / "output"
 
 INK_CLEAN = "#c7c7c7"     # grey  — clean text
 INK_ENRICHED = "#ffffff"  # white — enriched text (black edge)
