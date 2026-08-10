@@ -9127,11 +9127,11 @@
     "embedding": {
       "n": 2415,
       "mean_original": 0.3924,
-      "mean_extended": 0.501,
-      "mean_delta": 0.1086,
-      "pct_change": 27.7,
-      "pairs_less_similar": 23,
-      "pairs_more_similar": 2392
+      "mean_extended": 0.4888,
+      "mean_delta": 0.0964,
+      "pct_change": 24.6,
+      "pairs_less_similar": 10,
+      "pairs_more_similar": 2405
     },
     "structural_high_subset": {
       "n": 85,
@@ -9145,20 +9145,20 @@
     "embedding_mixed_pairs": {
       "n": 14210,
       "mean_original": 0.3683,
-      "mean_extended": 0.3878,
-      "mean_delta": 0.0195,
-      "pct_change": 5.3,
-      "pairs_less_similar": 3693,
-      "pairs_more_similar": 10517
+      "mean_extended": 0.3841,
+      "mean_delta": 0.0157,
+      "pct_change": 4.3,
+      "pairs_less_similar": 3981,
+      "pairs_more_similar": 10229
     },
     "embedding_high_subset": {
       "n": 85,
       "mean_original": 0.7201,
-      "mean_extended": 0.7613,
-      "mean_delta": 0.0412,
-      "pct_change": 5.7,
-      "pairs_less_similar": 7,
-      "pairs_more_similar": 78
+      "mean_extended": 0.7647,
+      "mean_delta": 0.0446,
+      "pct_change": 6.2,
+      "pairs_less_similar": 2,
+      "pairs_more_similar": 83
     }
   }
 }

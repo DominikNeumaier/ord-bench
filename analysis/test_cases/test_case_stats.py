@@ -22,7 +22,7 @@ or output file:
       Out-of-Scope: judge-accepted candidates vs. absence-check survivors.
 
   Certification (5-run re-certification, SA + DY)
-      from data/certification/summary.json + results.jsonl: robust counts per
+      from analysis/certification/summary.json + results.jsonl: robust counts per
       mode and mean difficulty over SA+DY.
 
 Run:  python3 analysis/test_cases/test_case_stats.py
@@ -42,7 +42,7 @@ sys.path.insert(0, str(ROOT))
 
 DT = ROOT / "data" / "test_cases" / "design_time"
 RT = ROOT / "data" / "test_cases" / "runtime"
-CERT = ROOT / "data" / "certification"
+CERT = ROOT / "analysis" / "certification"
 PROV = RT / "logs" / "provenance"
 
 

@@ -84,7 +84,12 @@ def _clean_text(r: dict) -> str:
 
 
 def _enriched_text(r: dict) -> str:
-    """Method A's _resource_text, inlined to avoid importing the openai client."""
+    """Method A's _resource_text, inlined to avoid importing the openai client.
+
+    This is the full retriever-facing text (all four semantic fields incl.
+    processNext) and is used by the nearest-neighbour analysis, which models
+    what a real embedding retriever ingests.
+    """
     parts = [r["title"], r["shortDescription"], r["description"]]
     groups = r.get("partOfGroups") or []
     if groups:
@@ -93,6 +98,32 @@ def _enriched_text(r: dict) -> str:
     nexts = r.get("processNext") or []
     if nexts:
         parts.append("processNext: " + ", ".join(nexts))
+    caps = r.get("capabilities") or []
+    if caps:
+        parts.append("capabilities: " + ", ".join(caps))
+    ucs = r.get("useCases") or []
+    if ucs:
+        parts.append("useCases: " + " | ".join(ucs))
+    return " | ".join(p for p in parts if p)
+
+
+def _enriched_text_semantic(r: dict) -> str:
+    """Enriched text for the field-symmetric clean-vs-enriched comparison.
+
+    Identical to _enriched_text but WITHOUT processNext. processNext is a
+    process-sequence relation, not a similarity dimension: two resources that
+    share a next step are adjacent in a workflow, not interchangeable. The
+    structural extended metric adds exactly the three semantic similarity
+    dimensions (capabilities, partOfGroups, useCases) and deliberately excludes
+    processNext for the same reason. Mirroring that exclusion on the embedding
+    side keeps both measures over identical fields, so the opposite-direction
+    result cannot be an artefact of a field mismatch.
+    """
+    parts = [r["title"], r["shortDescription"], r["description"]]
+    groups = r.get("partOfGroups") or []
+    if groups:
+        names = [g.get("groupId", "") for g in groups]
+        parts.append("partOfGroups: " + ", ".join(n for n in names if n))
     caps = r.get("capabilities") or []
     if caps:
         parts.append("capabilities: " + ", ".join(caps))
@@ -349,8 +380,8 @@ def avg_similarity_analysis(clean_res, enriched_res) -> dict:
             struct_e.append(se)
             ca = _cached_embedding(_clean_text(clean_by_id[a["ordId"]]))
             cb = _cached_embedding(_clean_text(clean_by_id[b["ordId"]]))
-            ea = _cached_embedding(_enriched_text(a))
-            eb = _cached_embedding(_enriched_text(b))
+            ea = _cached_embedding(_enriched_text_semantic(a))
+            eb = _cached_embedding(_enriched_text_semantic(b))
             has_emb = ca is not None and cb is not None and ea is not None and eb is not None
             if has_emb:
                 emb_covered += 1
@@ -371,7 +402,7 @@ def avg_similarity_analysis(clean_res, enriched_res) -> dict:
     non_enriched = [r for r in scored if not _is_enriched(r)]
     mix_cos_c, mix_cos_e = [], []
     for a in enriched:
-        ea = _cached_embedding(_enriched_text(a))
+        ea = _cached_embedding(_enriched_text_semantic(a))
         ca = _cached_embedding(_clean_text(clean_by_id[a["ordId"]]))
         if ea is None or ca is None:
             continue

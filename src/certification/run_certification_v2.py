@@ -7,10 +7,10 @@ Differences vs v1:
   - Robust = solved in 0/5 runs (stricter than v1's 4/5 threshold)
 
 Usage:
-    python data/certification/run_certification_v2.py
-    python data/certification/run_certification_v2.py --runs 5
-    python data/certification/run_certification_v2.py --cases dy-01 sg-11
-    python data/certification/run_certification_v2.py --no-resume
+    python src/certification/run_certification_v2.py
+    python src/certification/run_certification_v2.py --runs 5
+    python src/certification/run_certification_v2.py --cases dy-01 sg-11
+    python src/certification/run_certification_v2.py --no-resume
 """
 
 from __future__ import annotations
@@ -28,7 +28,7 @@ sys.path.insert(0, str(ROOT))
 from src import loader as ord_loader, llm  # noqa: E402
 
 # ── paths ────────────────────────────────────────────────────────────────────
-CERT_DIR     = ROOT / "data" / "certification"
+CERT_DIR     = ROOT / "analysis" / "certification"
 RUNS_DIR     = CERT_DIR / "runs"
 RESULTS_PATH = CERT_DIR / "results.jsonl"
 SUMMARY_PATH = CERT_DIR / "summary.json"

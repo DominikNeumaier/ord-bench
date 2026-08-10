@@ -8,7 +8,6 @@
  *   ../data/landscape/logs/              — generation logs
  *   ../data/test_cases/design_time/      — processes, skills, cases
  *   ../data/test_cases/runtime/          — runtime test cases
- *   ../data/certification/               — audit / cert artefacts
  */
 import fs from "node:fs";
 import path from "node:path";

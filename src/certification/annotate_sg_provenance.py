@@ -3,7 +3,7 @@
 The block documents that the original SG prompts (which went through Method-S
 gate during initial generation) were shortened post-gate in commit 6429a4cac
 to clean up routing-eval noise, and that the final prompts were re-validated
-by the 5-run certification (data/certification/).
+by the 5-run certification (analysis/certification/).
 
 This script is idempotent — it only adds the block if it does not already exist.
 """
@@ -15,7 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 PROV_DIR = ROOT / "data" / "test_cases" / "runtime" / "logs" / "provenance"
 SG_CASE_FILE = ROOT / "data" / "test_cases" / "runtime" / "output" / "skill_guided.json"
-V2_RESULTS = ROOT / "data" / "certification" / "results.jsonl"
+V2_RESULTS = ROOT / "analysis" / "certification" / "results.jsonl"
 
 REWRITE_COMMIT = "6429a4cac"
 REWRITE_REASON = (
@@ -86,7 +86,7 @@ def main() -> None:
                 "too_easy":    v2["too_easy"],
                 "method":      "post-hoc 5-run Method-S re-evaluation on the "
                                "final (rewritten) prompt with per-run nonce "
-                               "cache bypass; see data/certification/",
+                               "cache bypass; see analysis/certification/",
             }
 
         prov["post_gate_rewrite"] = {
