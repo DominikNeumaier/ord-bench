@@ -9,3 +9,6 @@ __pycache__/
 
 # runtime embedding cache (bundled cache lives under analysis/embedding_analysis/embed_cache/)
 cache/
+
+# paper (kept local, not published)
+paper/
