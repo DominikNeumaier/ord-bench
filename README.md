@@ -24,7 +24,6 @@ data/
   certification/ Test-case difficulty certification harness
 analysis/    Reproduction scripts and figures (disambiguation analysis, embedding validation)
 paper/          Conference paper LaTeX source and PDF
-docs/           Design documentation
 web/            Interactive benchmark browser (landscape, ambiguity, test cases)
 ```
 
