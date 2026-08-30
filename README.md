@@ -11,7 +11,7 @@ Enterprise agents must identify the right resource among many semantically simil
 3. **Process-derived semantic enrichment** — 30 BPMN/CMMN process models matched to landscape resources, writing four typed semantic fields (`capabilities`, `useCases`, `partOfGroups`, `processNext`) back into each resource. Produces paired Clean-ORD and Enriched-ORD states over the same fixed landscape.
 4. **350 test cases** — split into design-time (activity-to-resource matching) and runtime families (Skill-Guided, Skill-Adjusted, Dynamic, Out-of-Scope), reusable as a substrate for retrieval and selection studies.
 
-**Key finding:** Semantic enrichment lowers structural ambiguity by up to 28.3% on the most confusable pairs, yet raises embedding-based similarity by 27.7% on the same pairs — ambiguity is a property of the retrieval representation, not the resource.
+**Key finding:** Semantic enrichment lowers structural ambiguity by up to 28.3% on the most confusable pairs, yet raises embedding-based similarity by 24.6% on the same pairs — ambiguity is a property of the retrieval representation, not the resource.
 
 ## Structure
 
