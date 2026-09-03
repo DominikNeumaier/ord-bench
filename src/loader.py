@@ -37,7 +37,7 @@ TYPE_FROM_KEY = {
 def _extract_entity_types(item: dict[str, Any]) -> list[str]:
     """Collect every entity-type ORD ID a resource references.
 
-    The ORD v1.15 spec uses different fields per resource kind:
+    The ORD v1.16 spec uses different fields per resource kind:
 
       apiResource    →  exposedEntityTypes  ([{"ordId": "..."}, ...])
       eventResource  →  exposedEntityTypes

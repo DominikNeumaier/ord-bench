@@ -2,19 +2,29 @@
 
 **An adversarially constructed benchmark for enterprise resource selection.**
 
-Enterprise agents must identify the right resource among many semantically similar alternatives across heterogeneous systems. Whether structured, semantically enriched resource descriptions actually reduce this ambiguity has not been measurable — no benchmark provided typed enterprise resources with controlled ambiguity and paired enriched/non-enriched states. ORD-Bench fills this gap.
+ORD-Bench provides a typed enterprise resource landscape with controlled ambiguity, paired Clean-ORD/Enriched-ORD descriptions, and 350 design-time and runtime test cases.
 
-## Contributions
+## Contents
 
-1. **Typed enterprise landscape** — 273 resources across 10 systems (SAP, Workday, Siemens, and others), represented natively in Open Resource Discovery (ORD) v1.16.
-2. **Adversarial ambiguity metric** — a field-based similarity metric over six ORD dimensions that drives an iterative construction loop placing graded distractors around every target resource. Difficulty is a controlled property, not a by-product of catalogue size.
-3. **Process-derived semantic enrichment** — 30 BPMN/CMMN process models matched to landscape resources, writing four typed semantic fields (`capabilities`, `useCases`, `partOfGroups`, `processNext`) back into each resource. Produces paired Clean-ORD and Enriched-ORD states over the same fixed landscape.
-4. **350 test cases** — split into design-time (activity-to-resource matching) and runtime families (Skill-Guided, Skill-Adjusted, Dynamic, Out-of-Scope), reusable as a substrate for retrieval and selection studies.
+- **273 resources across 10 systems** in ORD v1.16-shaped documents
+- **30 process models and 30 skills** used for process-derived enrichment
+- **240 design-time cases** and **110 runtime cases**
+- deterministic structural ambiguity analyses and committed paper artefacts
 
-**Key finding:** Semantic enrichment lowers structural ambiguity by up to 28.3% on the most confusable pairs, yet raises embedding-based similarity by 27.7% on the same pairs — ambiguity is a property of the retrieval representation, not the resource.
+```text
+src/                         benchmark construction, validation, certification
+data/                        canonical benchmark artefacts and construction logs
+analysis/                    analysis scripts and derived results
+analysis/certification/      post-hoc certification outputs
+web/                         static benchmark browser
+```
 
-## Structure
+## Setup
 
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e ".[analysis,dev]"
 ```
 src/            Benchmark construction code (ambiguity metric, adversarial loop, case builder)
 data/
@@ -27,13 +37,34 @@ paper/          Conference paper LaTeX source and PDF
 web/            Interactive benchmark browser (landscape, ambiguity, test cases)
 ```
 
-## Reproducing the numbers
+## Verify the committed benchmark
+
+These checks are offline and do not call an LLM:
 
 ```bash
-python analysis/disambiguation/run_disambiguation.py   # -24.5% / -28.3% structural ambiguity
-python analysis/embedding_analysis/scripts/embedding_by_tier.py  # r=0.63
+python3 -m unittest discover -s tests
+python3 -m src.loader
+python3 analysis/test_cases/test_case_stats.py
 ```
+
+Expected headline counts are 273 resources, 10 systems, 240 design-time cases, 110 runtime cases, and 30 skills.
+
+## Regenerate analyses
+
+The following commands write derived files under `analysis/` and may overwrite committed outputs:
+
+```bash
+python3 analysis/disambiguation/run_disambiguation.py
+python3 analysis/embedding_analysis/scripts/embedding_by_tier.py
+python3 analysis/embedding_analysis/scripts/embedding_stats.py
+```
+
+`run_disambiguation.py` reproduces the reported mean structural changes (-24.5% overall enriched pairs and -28.3% for the previous HIGH subset). `embedding_stats.py` reports the structural/embedding correlation; `embedding_by_tier.py` regenerates the tier plot.
+
+## Repository boundary
+
+ORD-Bench owns benchmark data, generation, validation, and benchmark analyses. Retrieval algorithms and their evaluation live in the separate `semantic-retrieval` repository. ORD-Bench does not import that repository; its construction gate uses the frozen baseline in `src/certification/baseline_solver.py`.
 
 ## Paper
 
-*ORD-Bench: An Adversarially Constructed Benchmark for Enterprise Resource Selection*, Neumaier, 2026.
+*ORD-Bench: An Adversarially Constructed Benchmark for Enterprise Resource Selection*, Neumaier, 2026. The paper source is maintained with the thesis and is not part of this repository checkout.

@@ -75,8 +75,8 @@ def get_resource_by_id(resources: list[dict], ord_id: str) -> dict | None:
 
 def solver_check(prompt: str, resources: list[dict], expected_ids: list[str]) -> tuple[bool, str]:
     """Run Solver@273-clean. Returns (solver_correct, predicted_ordId)."""
-    from src.methods import method_s
-    result = method_s.retrieve(prompt, resources, top_k=1)
+    from src.certification import baseline_solver
+    result = baseline_solver.retrieve(prompt, resources, top_k=1)
     predicted = result["candidates"][0]["ordId"] if result["candidates"] else None
     correct = predicted in expected_ids if predicted else False
     return correct, predicted or ""
