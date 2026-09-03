@@ -26,15 +26,15 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -e ".[analysis,dev]"
 ```
-
-Generation and certification use an OpenAI-compatible endpoint configured through `.env` or environment variables:
-
-```bash
-LLM_BASE_URL=...
-LLM_API_KEY=...
-LLM_MODEL=anthropic--claude-4.5-haiku
-EMBEDDING_BASE_URL=...
-EMBEDDING_MODEL=text-embedding-3-large
+src/            Benchmark construction code (ambiguity metric, adversarial loop, case builder)
+data/
+  landscape/    273 ORD resources, clean and enriched (systems/, systems_enriched/)
+  test_cases/   350 test cases (design_time/, runtime/)
+  ambiguity/    Pairwise ambiguity report
+  certification/ Test-case difficulty certification harness
+analysis/       Reproduction scripts and figures (disambiguation analysis, embedding validation)
+paper/          Conference paper LaTeX source and PDF
+web/            Interactive benchmark browser (landscape, ambiguity, test cases)
 ```
 
 ## Verify the committed benchmark
